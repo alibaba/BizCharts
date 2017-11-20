@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const data = [
+  {year: '2000',internally:21.0 ,refugees:16 ,seekers: 0.8},
+  {year: '2001',internally:25.0 ,refugees:16 ,seekers: 0.8},
+  {year: '2002',internally:25.0 ,refugees:15 ,seekers: 0.8},
+  {year: '2003',internally:25.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2004',internally:25.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2005',internally:24.0 ,refugees:13 ,seekers: 0.8},
+  {year: '2006',internally:24.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2007',internally:26.0 ,refugees:16 ,seekers: 0.7},
+  {year: '2008',internally:26.0 ,refugees:15.2 ,seekers: 0.8},
+  {year: '2009',internally:27.1 ,refugees:15.2 ,seekers: 1.0},
+  {year: '2010',internally:27.5 ,refugees:15.4 ,seekers: 0.8},
+  {year: '2011',internally:26.4 ,refugees:15.2 ,seekers: 0.9},
+  {year: '2012',internally:28.8 ,refugees:15.4 ,seekers: 0.9},
+  {year: '2013',internally:33.3 ,refugees:16.7 ,seekers: 1.2},
+  {year: '2014',internally:38.2 ,refugees:19.5 ,seekers: 1.8}
+];
+const { DataView } = DataSet;
+const dv = new DataView();
+dv.source(data)
+  .transform({
+  type: 'fold',
+  fields: ['internally', 'refugees', 'seekers'],
+  key: '难民类型',
+  value: 'count',
+  remains: 'year'
+});
+
+ReactDOM.render((
+	  <Chart height={window.innerHeight} data={dv} forceFit>
+    <Coord type="polar" inner={0.1}/>
+    <Axis name="year" />
+    <Axis name="count" />
+    <Legend name="难民类型" position='bottom' />
+    <Geom type='intervalStack' position='year*count' color={['难民类型',['rgb(136,186,174)','rgb(184,189,61)','rgb(107,136,138)']]} style={{
+    lineWidth: 1,
+    stroke: '#fff'
+  }}/>
+  </Chart>
+), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

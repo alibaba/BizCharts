@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const { DataView } = DataSet;
+      const cols = {
+        'trend': {
+          alias: '趋势'
+        },
+        'time': {
+          type: 'timeCat',
+          nice: false,
+          mask: 'MM-DD',
+          alias: '时间',
+          tickCount: 10
+        },
+        'volumn': {alias: '成交量'},
+        'start': {alias: '开盘价'},
+        'end': {alias: '收盘价'},
+        'max': {alias: '最高价'},
+        'min': {alias: '最低价'},
+        'range': {alias: '股票价格'}
+      }
+  $.getJSON('/public/data/candle-sticks.json',function(data) {
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'map',
+        callback: obj => {
+          obj.trend = (obj.start <= obj.end) ? '上涨' : '下跌';
+          obj.range = [ obj.start, obj.end, obj.max, obj.min ];
+          return obj;
+        }
+      });
+    ReactDOM.render((
+          <Chart height={window.innerHeight} data={dv} scale={cols} forceFit>
+            <Axis name="time" />
+            <Legend />
+            <Axis name="range" />
+            <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">开盘价：{start}</span><br/><span style="padding-left: 16px">收盘价：{end}</span><br/><span style="padding-left: 16px">最高价：{max}</span><br/><span style="padding-left: 16px">最低价：{min}</span><br/><span style="padding-left: 16px">成交量：{volumn}</span><br/></li>' />
+          <Geom type='schema' position="time*range" color={['trend', [ '#2AF483', '#F80041' ]]} tooltip={['time*start*end*max*min*volumn', (time, start, end, max, min, volumn) => {
+        return {
+          name: time,
+          start,
+          end,
+          max,
+          min,
+          volumn
+        };
+      }]} shape="candle" />
+        </Chart>
+      ), document.getElementById("mountNode"));
+  });
+    </script>
+  </body>
+</html>

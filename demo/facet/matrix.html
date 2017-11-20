@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	  <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+
+  $.getJSON('/public/data/iris.json', data => {
+    const { Chart, Axis, Geom, Tooltip, Facet, View } = window.BizCharts;
+    const { DataView } = window.DataSet;
+
+    const scale = {
+      Species: {
+        sync: true
+      }
+    };
+
+    ReactDOM.render((
+      <Chart data={data} width={800} scale={scale}>
+        <Facet type='matrix' fields={['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']} eachView={(view, facet)=>{
+          if (facet.rowIndex === facet.colIndex) {
+            var dv = new DataView();
+            dv.source(facet.data)
+              .transform({
+                type: 'bin.histogram',
+                field: facet.colField,  // 对应数轴上的一个点
+                bins: 30,               // 分箱个数
+                as: [ facet.colField, 'count' ],
+                groupBy: [ 'Species' ]
+              });
+            view.source(dv.rows);
+            view.intervalStack()
+              .position(facet.colField + '*count')
+              .color('Species', [ '#880000', '#008800', '#000088' ])
+              .opacity(0.85);
+          } else {
+            view.point()
+              .position([ facet.colField, facet.rowField ])
+              .color('Species', [ '#880000', '#008800', '#000088' ])
+              .shape('circle')
+              .opacity(0.3)
+              .size(3);
+          }
+        }}>
+        </Facet>
+      </Chart>), 
+      
+      document.getElementById('c1'));
+    
+    });
+    
+    </script>
+  </body>
+</html>

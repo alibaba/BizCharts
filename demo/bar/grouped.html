@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.3/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Axis, Geom, Tooltip, Coord } = window.BizCharts;
+      const data = [
+        { label: 'Monday', series1: 2800, series2: 2260 },
+        { label: 'Tuesday', series1: 1800, series2: 1300 },
+        { label: 'Wednesday', series1: 950, series2: 900 },
+        { label: 'Thursday', series1: 500, series2: 390 },
+        { label: 'Friday', series1: 170, series2: 100 },
+      ];
+      const ds = new DataSet();
+      const dv = ds.createView().source(data);
+      dv.transform({
+        type: 'fold',
+        fields: [ 'series1', 'series2' ], // 展开字段集
+        key: 'type', // key字段
+        value: 'value', // value字段
+      });
+      
+      ReactDOM.render((
+        <Chart height={400} data={dv} forceFit>
+          <Coord transpose scale={[1,-1]}/>
+          <Axis name="label" label={{offset: 12}} />
+          <Axis name="value" position={'right'} />
+          <Tooltip />
+          <Geom type="interval" position="label*value" color={'type'} adjust={[{
+          type: 'dodge',
+          marginRatio: 1 / 32
+        }]}/>
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

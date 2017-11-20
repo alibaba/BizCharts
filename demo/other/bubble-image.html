@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      // 自定义 shape, 支持图片形式的气泡
+      Shape.registerShape('point', 'image', {
+        drawShape: function(cfg, container) {
+          cfg.points = this.parsePoints(cfg.points);
+          const coord = this._coord;
+          container.addShape('line', {
+            attrs: {
+              x1: cfg.points[0].x,
+              y1: cfg.points[0].y,
+              x2: cfg.points[0].x,
+              y2: coord.start.y,
+              stroke: '#ccc',
+              lineWidth: 1,
+              lineDash: [4, 2]
+            }
+          });
+          return container.addShape('image', {
+            attrs: {
+              x: cfg.points[0].x - (12 * cfg.size / 2),
+              y: cfg.points[0].y - 12 * cfg.size,
+              width: 12 * cfg.size,
+              height: 12 * cfg.size,
+              img: cfg.shape[1]
+            }
+          });
+        }
+      });
+      const data = [
+        {name: 'Internet Explorer', value: 26},
+        {name: 'Chrome', value: 40},
+        {name: 'Firefox', value: 30},
+        {name: 'Safari',  value: 24},
+        {name: 'Opera', value: 15},
+        {name: 'Undetectable', value: 8}
+      ];
+      const imageMap = {
+        'Internet Explorer': 'https://zos.alipayobjects.com/rmsportal/FDWrsEmamcNvtEf.png',
+        'Chrome': 'https://zos.alipayobjects.com/rmsportal/GHGrgIDTVMCaYZT.png',
+        'Firefox': 'https://zos.alipayobjects.com/rmsportal/vzhXpeDRQURIStk.png',
+        'Safari': 'https://zos.alipayobjects.com/rmsportal/nAVchPnSaAWncPj.png',
+        'Opera': 'https://zos.alipayobjects.com/rmsportal/RdEElDcYVXtHDRD.png',
+        'Undetectable': 'https://zos.alipayobjects.com/rmsportal/YCLAblnKOdToECl.png'
+      };
+      const cols = {
+        value: {
+          nice: false,
+          max: 60,
+          min: 0
+        }
+      }
+
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} padding={[20, 20, 90]} scale={cols} forceFit>
+          <Legend name="name" marker="circle" />
+          <Axis name="name" />
+          <Axis name="value" visible={false} />
+          <Tooltip />
+          <Geom type='point' position="name*value" color="name" shape={['name', (name) => {
+            return ['image', imageMap[name]]; // 根据具体的字段指定 shape
+          }]} size='value' style={{stroke: '#fff',
+          lineWidth: 1,
+            fillOpacity: 1}} >
+          <Label content="value" offset={-20} textStyle={{
+              fontSize:16, // 文本大小
+            }}/>
+          </Geom>
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

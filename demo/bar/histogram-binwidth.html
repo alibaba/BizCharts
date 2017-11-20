@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.3/dist/bizcharts"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Axis, Geom, Tooltip } = window.BizCharts;
+        $.getJSON('/public/data/diamond.json', data => {
+          const ds = new DataSet();
+          const dv = ds.createView('diamond').source(data);
+          dv.transform({
+              type: 'bin.histogram',
+              field: 'depth',
+              binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小
+              as: ['depth', 'count'],
+          });
+          const cols = {
+            depth: {
+              tickInterval: 2
+            }
+          }
+      
+        ReactDOM.render((
+          <Chart height={400} data={dv} scale={cols} forceFit>
+            <Axis name="depth" />
+            <Axis name="count" />
+            <Tooltip inPlot={false} crosshairs={false} position={'top'} />
+            <Geom type='interval' position="depth*count" />
+          </Chart>
+        ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>demo-detail</title>
+  <meta name="description" content="">
+
+
+
+  <meta name="viewport" content="width=device-width">
+  <!-- 需要替换的链接 Start -->
+  <link rel="stylesheet" href="./lib/next.min.css">
+  <link rel="stylesheet" href="./pages/demo-detail/index.bundle.css">
+  <!-- 需要替换的链接 End -->
+  <!-- 正式环境中,请将上面几个链接替换为下面的链接,注意 {version} 改为你对应的资源版本号 -->
+  <!--<link rel="stylesheet" href="//g.alicdn.com/bizcharts/client/{version}??lib/next.css,pages/demo-detail/index.bundle.css">-->
+  <script src="//retcode.alicdn.com/retcode/pro/log.js"></script>
+  <script>
+    //多页面跳转配置当前页面的对应菜单选中,如果需要，结合sideMenu组件设置
+    //window.selectedMenuKey = 'index';
+
+    //请根据页面所处的环境,设置不同的变量:local/development/pre/production
+    //用于ajax请求接口进行切换
+    window._APIMAP_ENV = 'local';
+
+    //retCode监控平台配置
+    window.__WPO && window.__WPO.setConfig({
+      sample: 100, // 抽样率，100 = 1%，1 = 100%，默认100
+      spmId: '', // spmId，如果没写默认值，会自动抓页面的spm
+      modVal: 1, // 抽样的取值，取模后的数值==该值的认为符合抽样，以页面uid作为基数来抽样，默认1
+      startTime: 0 // 自定义测速类页面统计起始时间
+    });
+    window.openRetcode = false; //接入retCode开关
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="container">
+    <div class="c-loading">页面加载中...</div>
+  </div>
+  <div class="demo-detail-page" style="visibility: hidden;">
+    <div class="main-content">
+      <div id="doc-nav" class="doc-nav"></div>
+      <div id="demo-detail"></div>
+    </div>
+    <textarea id="codeString" style="display:none">demoString</textarea>
+  </div>
+  <!-- 需要替换的链接 Start -->
+  <script src="./lib/polyfill.js"></script>
+  <script src="./lib/react-with-addons.js"></script>
+  <script src="./lib/react-dom.js"></script>
+  <script src="./lib/next.min.js"></script>
+
+  <script type="text/javascript" src="./demo/summary.js"></script>
+  <script type="text/javascript" src="./vendor.js"></script>
+  <script type="text/javascript" src="./pages/demo-detail/index.js"></script>
+  <!-- 需要替换的链接 End -->
+  <!-- 正式环境中,请将上面几个链接替换为下面2个链接,注意 {version} 改为你对应的资源版本号 -->
+  <!--<script src="//g.alicdn.com/bizcharts/client/{version}??lib/polyfill.min.js,lib/react-with-addons.min.js,lib/react-dom.min.js,lib/redux.min.js,lib/react-redux.min.js,lib/ReactRouter.min.js,lib/ReactRouterRedux.min.js,lib/redux-thunk.min.js,lib/next.js"></script>-->
+  <!--<script src="//g.alicdn.com/bizcharts/client/{version}??vendor.js,pages/demo-detail/index.js"></script>-->
+
+</body>
+
+</html>
