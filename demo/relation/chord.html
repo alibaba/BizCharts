@@ -15,7 +15,7 @@
 
   $.getJSON('/public/data/relationship-with-weight.json', data => {
 
-    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts.default;
 
     const ds = new DataSet();
     const dv = ds.createView().source(data, {

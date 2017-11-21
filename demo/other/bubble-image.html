@@ -11,7 +11,7 @@
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts.default;
       // 自定义 shape, 支持图片形式的气泡
       Shape.registerShape('point', 'image', {
         drawShape: function(cfg, container) {

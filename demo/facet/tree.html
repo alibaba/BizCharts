@@ -14,7 +14,7 @@
    <script type="text/babel">
 
   $.getJSON('/public/data/diamond.json', data => {
-    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend } = window.BizCharts;
+    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend } = window.BizCharts.default;
     const DataView = window.DataSet.DataView;
     const scale = {
       cut: {

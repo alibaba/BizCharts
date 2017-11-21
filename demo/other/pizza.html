@@ -12,7 +12,7 @@
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts.default;
       $.getJSON('/public/data/diamond.json', (data) => {
       data.forEach(obj => {
         obj.type = '1';

@@ -14,7 +14,7 @@
    <script type="text/babel">
 
   $.getJSON('/public/data/iris.json', data => {
-    const { Chart, Axis, Geom, Tooltip, Facet, View } = window.BizCharts;
+    const { Chart, Axis, Geom, Tooltip, Facet, View } = window.BizCharts.default;
     const { DataView } = window.DataSet;
 
     const scale = {

@@ -12,7 +12,7 @@
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts.default;
       $('<div id="slider" style="text-align:center;color:#666;">关于slider部分的功能正在火速开发中......</div>').insertAfter('#mountNode');
       $.getJSON('/assets/data/rain-flow.json', data => {
         const ds = new DataSet({
