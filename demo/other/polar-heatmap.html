@@ -12,7 +12,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts.default;
-      $.getJSON('/public/data/polar-heatmap.json', (data) => {
+      $.getJSON('/BizCharts/public/data/polar-heatmap.json', (data) => {
       ReactDOM.render((
           <Chart height={window.innerHeight} data={data} padding={40} forceFit>
             <Tooltip showTitle={null} />

@@ -13,7 +13,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
         const { Chart, Axis, Geom, Tooltip } = window.BizCharts.default;
-        $.getJSON('/public/data/diamond.json', data => {
+        $.getJSON('/BizCharts/public/data/diamond.json', data => {
           const ds = new DataSet();
           const dv = ds.createView('diamond').source(data);
           dv.transform({

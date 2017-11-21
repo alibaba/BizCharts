@@ -31,7 +31,7 @@
         'range': {alias: '股票价格'}
       }
   $('<div id="slider" style="text-align:center;color:#666;">关于slider部分的功能正在火速开发中......</div>').insertAfter('#mountNode');
-  $.getJSON('/public/data/candle-sticks.json',function(data) {
+  $.getJSON('/BizCharts/public/data/candle-sticks.json',function(data) {
     // 设置状态量，时间格式建议转换为时间戳，转换为时间戳时请注意区间
     const ds = new DataSet({
       state: {

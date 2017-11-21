@@ -38,7 +38,7 @@ Shape.registerShape('point', 'cloud', {
     });
   }
 });
-$.getJSON('/public/data/g2pv.json', data => {
+$.getJSON('/BizCharts/public/data/g2pv.json', data => {
 const ds = new DataSet();
 const dv = ds.createView('g2pv').source(data);
 dv.transform({

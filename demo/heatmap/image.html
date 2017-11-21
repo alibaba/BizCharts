@@ -14,7 +14,7 @@
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts.default;
       const { Image } = Guide;
-      $.getJSON('/public/data/heatmap.json',function(data) {
+      $.getJSON('/BizCharts/public/data/heatmap.json',function(data) {
         ReactDOM.render((
           <Chart height={window.innerHeight} padding={[ 0, 30, 60, 30 ]} data={data} forceFit>
             <Tooltip showTitle={false}/>

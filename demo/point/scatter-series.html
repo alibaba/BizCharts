@@ -13,7 +13,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts.default;
-      $.getJSON('/public/data/scatter.json', function(data){
+      $.getJSON('/BizCharts/public/data/scatter.json', function(data){
 
       ReactDOM.render((
           <Chart height={window.innerHeight} data={data} forceFit>
