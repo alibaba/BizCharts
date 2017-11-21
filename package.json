@@ -1,6 +1,6 @@
 {
-  "name": "bizcharts",
-  "version": "3.0.0",
+  "name": "@alibaba/BizCharts",
+  "version": "3.0.0-rc0.1",
   "description": "A powerful React chart library based G2 for browser",
   "main": "lib/index",
   "module": "es6/index",
@@ -20,7 +20,8 @@
     "reactjs",
     "chart",
     "react-component",
-    "g2"
+    "g2",
+    "BizCharts"
   ],
   "scripts": {
     "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
