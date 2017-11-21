@@ -19,4 +19,4 @@ var data = [
 ```
 
 ### DataView
-详见 [DataSet 教程](./dataset)。
+详见 [DataSet 教程](./dataset.md)。
