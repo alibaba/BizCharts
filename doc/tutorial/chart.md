@@ -29,4 +29,4 @@
 ## 空间构成
 下图所示为常用图表的各组件的空间构成。
 
-![7df8bc11-09dc-4d8d-9832-54364f594501.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/7df8bc11-09dc-4d8d-9832-54364f594501.png)
+![7df8bc11-09dc-4d8d-9832-54364f594501.png](https://img.alicdn.com/tfs/TB105z4efDH8KJjy1XcXXcpdXXa-2030-1480.png)

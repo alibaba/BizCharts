@@ -45,7 +45,7 @@
 ```
 
 ## 使用示例
-![e051f3e7-35ab-4895-8aa6-89fba3045da9.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/e051f3e7-35ab-4895-8aa6-89fba3045da9.png)
+![e051f3e7-35ab-4895-8aa6-89fba3045da9.png](https://img.alicdn.com/tfs/TB16XZ8bOqAXuNjy1XdXXaYcVXa-1186-510.png)
 ```jsx
 <Chart width={600} height={400} data={data}>
   <Guide>
