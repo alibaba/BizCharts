@@ -1,0 +1,6 @@
+build/
+demo/
+doc/
+es6/
+node_modules/
+lib/

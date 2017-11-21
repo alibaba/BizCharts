@@ -1,0 +1,5 @@
+/**
+ * themes
+ */
+export default {
+};
