@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
-    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -65,7 +65,7 @@ ReactDOM.render((
       },
     }}
       />
-    <Axis name="y" title={{offset: 80}} label={{
+    <Axis name="y" title={{offset: 64}} label={{
       formatter: function(val) {
         if (val > 0) {
           return val + ' gr';
@@ -74,12 +74,9 @@ ReactDOM.render((
     }} />
   	
     <Tooltip title='country' />
-    <Geom type='point' position="x*y" color="#3182bd" shape='circle' size={['z', [ 10, 40 ]]} tooltip='x*y*z' opacity={0.5} >
+    <Geom type='point' position="x*y" color="#1890ff" style={{ineWidth: 1,stroke: '#1890ff'}} shape='circle' size={['z', [ 10, 40 ]]} tooltip='x*y*z' opacity={0.3} >
     <Label content="name*country" offset={0} textStyle={{
-        fill: '#000',
-        fontWeight: 'bold', // 文本粗细
-        shadowBlur: 5, // 文本阴影模糊
-        shadowColor: '#fff', // 阴影颜色
+        fill: '#1890FF',
       }}/>
     </Geom>
     <Guide>

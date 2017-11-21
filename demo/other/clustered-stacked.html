@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
-    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -43,13 +43,13 @@ dv.source(data)
   }
 });
 const colorMap = {
-  'Under 5 Years': '#98abc5',
-  '5 to 13 Years': '#8a89a6',
-  '14 to 17 Years': '#7b6888',
-  '18 to 24 Years': '#6b486b',
-  '25 to 44 Years': '#a05d56',
-  '45 to 64 Years': '#d0743c',
-  '65 Years and Over': 'darkorange'
+  'Under 5 Years': '#E3F4BF',
+  '5 to 13 Years': '#BEF7C8',
+  '14 to 17 Years': '#86E6C8',
+  '18 to 24 Years': '#36CFC9',
+  '25 to 44 Years': '#209BDD',
+  '45 to 64 Years': '#1581E6',
+  '65 Years and Over': '#0860BF'
 };
 const cols = {
   population: {
@@ -64,6 +64,7 @@ ReactDOM.render((
             }
         }} />
     <Legend position="right" />
+    <Tooltip />
     <Geom type='interval' position='State*population' color={['age', function(age) {
             return colorMap[age];
         }]} tooltip={['age*population', (age, population) => {

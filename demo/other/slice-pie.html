@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
-    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -88,18 +88,12 @@ ReactDOM.render((
 	  <Chart height={window.innerHeight} data={dv} scale={cols} forceFit>
     <Coord type="theta" radius={0.8} innerRadius={0.7} />
     <Tooltip showTitle={false} />
+    <Legend />
     <Axis name="percent"  title={{
     offset: 40,
     text: '百分比'
   }}/>
-    <Geom type='intervalStack' shape='burstPie' position="percent" color={['key', ['#00D9DF', '#EBA538', '#69C7FF']]} style={{stroke: '#444', lineWidth: 1}} >
-      <Label content="key" offset={-8} textStyle={{
-      fontSize: 14,
-      textBaseline: 'bottom',
-      shadowBlur: 10, // 文本阴影模糊
-      shadowColor: '#000' // 阴影颜色
-    }} />
-    </Geom>
+    <Geom type='intervalStack' shape='burstPie' position="percent" color={['key', [ '#1890ff', '#f04864', '#bfbfbf']]} />
   </Chart>
 ), document.getElementById("mountNode"));
     </script>

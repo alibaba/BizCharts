@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
+      $('<div id="slider" style="text-align:center;color:#666;">关于slider部分的功能正在火速开发中......</div>').insertAfter('#mountNode');
+      $.getJSON('/assets/data/rain-flow.json', data => {
+        const ds = new DataSet({
+          state: {
+            start: new Date('2009/7/20 0:00').getTime(),
+            end: new Date('2009/9/9 0:00').getTime()
+          }
+        });
+        const originDv = ds.createView('origin');
+        originDv.source(data)
+          .transform({
+            type: 'fold',
+            fields: [ 'rain', 'flow' ],
+            key: 'type',
+            value: 'value',
+            retains: [ 'rain', 'flow', 'time' ]
+          });
+
+        const chartDv = ds.createView();
+        chartDv.source(originDv)
+          .transform({
+            type: 'fold',
+            fields: [ 'rain', 'flow' ],
+            key: 'type',
+            value: 'value',
+            retains: [ 'rain', 'flow', 'time' ]
+          })
+          .transform({
+            type: 'filter',
+            callback(obj) {
+              const time = new Date(obj.time).getTime(); // !注意：时间格式，建议转换为时间戳进行比较
+              return time >= ds.state.start && time <= ds.state.end;
+            }
+          });
+        const cols = {
+            time: {
+              type: 'time',
+              tickCount: 10,
+              mask: 'M/DD H:mm'
+            }
+          }
+        ReactDOM.render((
+          <Chart height={window.innerHeight- 60} data={chartDv} scale={cols} forceFit padding={[ 20, 80 ]}>\
+            <Facet type="mirror" fields={[ 'type' ]} showTitle={false} padding={[ 0, 0, 40, 0]} eachView={(view, facet) => {
+              const { colValue, data } = facet;
+              let color;
+              let alias;
+              if (colValue === 'rain') {
+                color = '#1890ff';
+                alias = '降雨量(mm)';
+
+              } else if (colValue === 'flow') {
+                color = '#2FC25B';
+                alias = '流量(m^3/s)';
+              }
+              view.source(data, {
+                [`${colValue}`]: {
+                  alias
+                }
+              });
+              view.axis(colValue, {
+                title: {
+                  autoRotate: false,
+                  offset: -10,
+                  position: 'end',
+                  textStyle: {
+                    textAlign: 'start'
+                  }
+                }
+              });
+              view.line().position('time*' + colValue).color(color);
+             }}/>
+          </Chart>
+        ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

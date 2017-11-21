@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
-    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -65,16 +65,16 @@ Shape.registerShape('interval', 'radiusPie', {
     return rect;
   }
 });
-const COLORS = [ '#00D9DF', '#EBA538' ];
+const COLORS = [ '#1890ff', '#f04864' ];
 ReactDOM.render((
 	  <Chart height={window.innerHeight} data={data} padding={[20, 30, 30, 20]} plotBackground={{stroke: '#eee'}} forceFit>
     <Coord type="theta" radius={0.8} />
     <Tooltip showTitle={false} />
-    <Geom type='intervalStack' position="sold" color={['sex', [ '#00D9DF', '#EBA538' ]]} shape='radiusPie' >
+    <Geom type='intervalStack' position="sold" color={['sex', COLORS]} shape='radiusPie' >
     	<Label content='sold' custom={true} htmlTemplate={(text, item) => {
           const isFemale = item.point.sex === '女';
-          const src = isFemale ? '//img.alicdn.com/tps/TB1up3oPpXXXXbYXFXXXXXXXXXX-94-204.png'
-            : '//img.alicdn.com/tps/TB1cYZxPpXXXXX7XpXXXXXXXXXX-85-206.png';
+          const src = isFemale ? 'https://gw.alipayobjects.com/zos/rmsportal/mweUsJpBWucJRixSfWVP.png'
+          : 'https://gw.alipayobjects.com/zos/rmsportal/oeCxrAewtedMBYOETCln.png';
           const color = isFemale ? COLORS[1] : COLORS[0];
           const IMG = `<img style="width:40px" src="${src}" /><br/>`;
           return `<div style="text-align:center;color:${color}">${IMG}${(text * 100).toFixed(0)}%</div>`;

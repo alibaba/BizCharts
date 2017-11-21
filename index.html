@@ -34,10 +34,38 @@
   <script src="./lib/react-with-addons.js"></script>
   <script src="./lib/react-dom.js"></script>
   <script src="./lib/next.min.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.3/dist/bizcharts"></script>
+  <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
   <script type="text/javascript" src="./vendor.js"></script>
   <script type="text/javascript" src="./pages/index/index.js"></script>
   <!-- 正式环境中,请将上面几个链接替换为下面2个链接,注意 {version} 改为你对应的资源版本号 -->
   <!--<script src="//g.alicdn.com//{version}??lib/polyfill.min.js,lib/react-with-addons.min.js,lib/react-dom.min.js,lib/redux.min.js,lib/react-redux.min.js,lib/ReactRouter.min.js,lib/ReactRouterRedux.min.js,lib/redux-thunk.min.js,lib/next.js"></script>-->
   <!--<script src="//g.alicdn.com//{version}??vendor.js,pages/index/index.js"></script>-->
+  
+  <script type="text/babel">
+    const { Chart, Axis, Geom, Tooltip, Legend } = window.BizCharts;
+    const data = [
+      { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
+      { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
+    ];
+    const ds = new DataSet();
+    const dv = ds.createView().source(data);
+    dv.transform({
+      type: 'fold',
+      fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ], // 展开字段集
+      key: '月份', // key字段
+      value: '月均降雨量', // value字段
+    });
+    ReactDOM.render((
+      <Chart height={400} data={dv} forceFit>
+        <Axis name="月份" />
+        <Axis name="月均降雨量" />
+        <Legend />
+        <Tooltip crosshairs={{type : "y"}}/>
+        <Geom type='interval' position="月份*月均降雨量" color={'name'} adjust={[{type: 'dodge',marginRatio: 1/32}]} />
+      </Chart>
+    ), document.getElementById("mountNode"));
+</script>
 </body>
 </html>

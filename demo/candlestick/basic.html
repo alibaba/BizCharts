@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/@ali/bizcharts@3.0.0-rc5.4/dist/bizcharts"> </script>
-    <script type="text/javascript" src="https://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
+    <script type="text/javascript" src="http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -15,15 +15,13 @@
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
       const { DataView } = DataSet;
       const cols = {
-        'trend': {
-          alias: '趋势'
-        },
         'time': {
           type: 'timeCat',
           nice: false,
-          mask: 'MM-DD',
-          alias: '时间',
-          tickCount: 10
+          range: [ 0, 1 ]
+        },
+        trend: {
+          values: [ '上涨', '下跌' ]
         },
         'volumn': {alias: '成交量'},
         'start': {alias: '开盘价'},
@@ -32,9 +30,24 @@
         'min': {alias: '最低价'},
         'range': {alias: '股票价格'}
       }
+  $('<div id="slider" style="text-align:center;color:#666;">关于slider部分的功能正在火速开发中......</div>').insertAfter('#mountNode');
   $.getJSON('/public/data/candle-sticks.json',function(data) {
-    const dv = new DataView();
+    // 设置状态量，时间格式建议转换为时间戳，转换为时间戳时请注意区间
+    const ds = new DataSet({
+      state: {
+        start: '2015-04-07',
+        end: '2015-07-28'
+      }
+    });
+    const dv = ds.createView();
     dv.source(data)
+      .transform({
+        type: 'filter',
+        callback: obj => {
+          const date = obj.time;
+          return date <= ds.state.end && date >= ds.state.start;
+        }
+      })
       .transform({
         type: 'map',
         callback: obj => {
@@ -44,24 +57,68 @@
         }
       });
     ReactDOM.render((
-          <Chart height={window.innerHeight} data={dv} scale={cols} forceFit>
-            <Axis name="time" />
-            <Legend />
-            <Axis name="range" />
-            <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">开盘价：{start}</span><br/><span style="padding-left: 16px">收盘价：{end}</span><br/><span style="padding-left: 16px">最高价：{max}</span><br/><span style="padding-left: 16px">最低价：{min}</span><br/><span style="padding-left: 16px">成交量：{volumn}</span><br/></li>' />
-          <Geom type='schema' position="time*range" color={['trend', [ '#2AF483', '#F80041' ]]} tooltip={['time*start*end*max*min*volumn', (time, start, end, max, min, volumn) => {
-        return {
-          name: time,
-          start,
-          end,
-          max,
-          min,
-          volumn
-        };
-      }]} shape="candle" />
+          <Chart height={window.innerHeight - 50} animate={false} padding={[ 10, 40, 40, 40 ]} data={dv} scale={cols} forceFit>
+            <Legend offset={20} />
+            <Tooltip showTitle={false} itemTpl='<li data-index={index}><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}{value}</li>' />
+            <View end={{x: 1,y: 0.5}} data={dv}>
+              <Axis name="time" />
+              <Axis name="range" />
+              <Geom 
+                type='schema' 
+                position="time*range" 
+                color={['trend', val => {
+                  if (val === '上涨') {
+                    return '#f04864';
+                  }
+
+                  if (val === '下跌') {
+                    return '#2fc25b';
+                  }
+                }]} 
+                tooltip={['time*start*end*max*min', (time, start, end, max, min) => {
+                  return {
+                    name: time,
+                    value: '<br><span style="padding-left: 16px">开盘价：' + start + '</span><br/>'
+                    + '<span style="padding-left: 16px">收盘价：' + end + '</span><br/>'
+                    + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
+                    + '<span style="padding-left: 16px">最低价：' + min + '</span>'
+                  };
+                }]} 
+                shape="candle" 
+              />
+            </View>
+            <View start={{x: 0,y: 0.65}} data={dv} scale={{volumn: {tickCount: 2}}}>
+              <Axis name="volumn" label={{
+                formatter: function(val) {
+                  return parseInt(val / 1000, 10) + 'k';
+                }
+              }} />
+              <Axis name="time" tickLine={null} label={null} />
+              <Geom 
+                type='interval' 
+                position="time*volumn" 
+                color={['trend', val => {
+                  if (val === '上涨') {
+                    return '#f04864';
+                  }
+
+                  if (val === '下跌') {
+                    return '#2fc25b';
+                  }
+                }]} 
+                tooltip={['time*volumn', (time, volumn) => {
+                  return {
+                    name: time,
+                    value: '<br/><span style="padding-left: 16px">成交量：' + volumn + '</span><br/>'
+                  };
+                }]} 
+                shape="candle" 
+              />
+            </View>
         </Chart>
       ), document.getElementById("mountNode"));
   });
+  // 关于slider部分的功能正在火速开发中......
     </script>
   </body>
 </html>
