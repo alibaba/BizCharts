@@ -2,7 +2,7 @@
 # BizChart 文档
 
 ## 教程
-- [快速入门](/doc/doc/tutorial/start.md)
+- [快速入门](/doc/tutorial/start.md)
 - [图表介绍](/doc/tutorial/chart.md)
 - [图表类型](/doc/tutorial/chartType.md)
 - [数据](/doc/tutorial/data.md)
