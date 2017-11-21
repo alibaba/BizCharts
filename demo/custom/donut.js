@@ -47,7 +47,7 @@ const intervalX = spaceX / chartWidth / 2;
 const intervalY = spaceY / chartHeight / 2;
 
 ReactDOM.render((
-  <Chart width={chartWidth} height={chartHeight} plotCfg={{ margin: 0 }} animate={false}>
+  <Chart  data={[1]} width={chartWidth} height={chartHeight} plotCfg={{ margin: 0 }} animate={false}>
 		{
 			groups.map((subFrame, index) => {
         console.log(subFrame);
