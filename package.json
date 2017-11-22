@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A powerful React chart library based G2 for browser",
   "main": "lib/index",
   "module": "es6/index",
