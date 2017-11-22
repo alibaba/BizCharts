@@ -21,7 +21,7 @@ BizCharts 是基于 [G2](https://antv.alipay.com/) 的 React 图表库，历经�
 
 ### npm
 ```sh
-$ npm install @alibaba/BizCharts
+$ npm install bizcharts
 ```
 
 ### umd
