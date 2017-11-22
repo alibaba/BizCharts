@@ -23,4 +23,4 @@ const BizCharts = Util.mix(Components, {
   },
 });
 
-export default BizCharts;
+module.exports = BizCharts;
