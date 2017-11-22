@@ -28,7 +28,7 @@ duration: 600 // 动画执行时间
 ```
 
 ## *<Geom/>* 如何使用动画
-可以通过 *<Geom/>* 上的 *animate 属性*, 详见 [Geom animate属性](../api/geom#animate)
+可以通过 *<Geom/>* 上的 *animate 属性*, 详见 [Geom animate属性](../api/geom.md#animate)
 
 <span id="animationType"></span>
 

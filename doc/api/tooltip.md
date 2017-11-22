@@ -147,7 +147,7 @@ ReactDOM.render((
 
 ```html
 // 略...
-import { Chart, Geom, Axis, Tooltip } from '@ali/bizcharts';
+import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
 
 const data = [{ genre: 'Sports', sold: 275 } /* 略... */];
 const tooltipCfg = {
