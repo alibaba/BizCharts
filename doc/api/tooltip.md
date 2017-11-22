@@ -128,7 +128,7 @@ tooltip 展示位置。
 
 ```html
 // 略...
-import { Chart, Geom, Axis, Tooltip } from '@ali/bizcharts';
+import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
 
 const data = [{ genre: 'Sports', sold: 275 } /* 略... */];
 const cols = {sold: { alias: '销售量' }, genre: { alias: '游戏种类' }};

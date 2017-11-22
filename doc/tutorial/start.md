@@ -17,7 +17,7 @@ BizCharts 是一个基于G2封装的React图表库，具有G2、React的全部�
 我们提供了 BizCharts npm 包，通过下面的命令即可完成安装
 
 ```bash
-npm install @alibaba/BizCharts@3.0.0 --save
+npm install bizcharts@3.0.0 --save
 ```
 
 成功安装完成之后，即可使用 import 或 require 进行引用。
@@ -45,7 +45,7 @@ npm install @alibaba/BizCharts@3.0.0 --save
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Chart, Geom, Axis, Tooltip, Legend, Coord } from '@ali/bizcharts@3.0.0-rc3.8';
+import { Chart, Geom, Axis, Tooltip, Legend, Coord } from 'bizcharts@3.0.0';
 
 // 数据源
 const data = [
