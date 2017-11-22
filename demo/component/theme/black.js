@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
+import { setTheme, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import DataSet from '@antv/data-set';
 import data from '../../data/relationship-with-weight.json';
 
@@ -16,6 +16,9 @@ dv.transform({
   marginRatio: 0.5,
   // sortBy: 'frequency' // id, weight, frequency, {function}
 });
+
+
+setTheme("dark");
 
 
 export default class Arc extends Component {

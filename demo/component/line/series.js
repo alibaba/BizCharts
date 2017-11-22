@@ -1,8 +1,7 @@
 import React,  { Component } from 'react';
-import BizCharts from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import DataSet from '@antv/data-set';
 
-const { Chart, Axis, Geom, Tooltip } = BizCharts;
 
 const data = [
 { month: 'Jan', Tokyo: 7.0, London: 3.9 },

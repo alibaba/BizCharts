@@ -1,9 +1,8 @@
 import React,  { Component } from 'react';
-import BizCharts from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, G2 } from 'bizcharts';
 import DataSet from '@antv/data-set';
 import data from '../../data/bubble.json'
 
-const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = BizCharts;
 
 const cols={
   LifeExpectancy: {
@@ -22,10 +21,10 @@ const cols={
 };
 
 const colorMap = {
-  'Asia': BizCharts.G2.Global.colors[0],
-  'Americas': BizCharts.G2.Global.colors[1],
-  'Europe': BizCharts.G2.Global.colors[2],
-  'Oceania': BizCharts.G2.Global.colors[3]
+  'Asia': G2.Global.colors[0],
+  'Americas': G2.Global.colors[1],
+  'Europe': G2.Global.colors[2],
+  'Oceania': G2.Global.colors[3]
 };
 
 export default class PointC extends Component {

@@ -1,9 +1,7 @@
 import React,  { Component } from 'react';
-import BizCharts from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import DataSet from '@antv/data-set';
 import data from '../../data/diamond.json'
-
-const { Chart, Axis, Geom, Tooltip, Coord } = BizCharts;
 
 const ds = new DataSet();
 const dv = ds.createView().source(data);

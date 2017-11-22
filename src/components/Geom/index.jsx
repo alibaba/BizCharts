@@ -12,7 +12,7 @@ const GEOM_PROPS = ['position', 'color', 'size', 'shape', 'opacity', 'tooltip', 
 export default class Geom extends Component {
   static propTypes = {
     type: PropTypes.oneOf(['line', 'interval', 'intervalStack', 'area', 'areaStack', 'point', 'polygon', 'edge',
-      'schema', 'pointStack', 'pointJitter', 'pointDodge', 'intervalDodge', 'schemaDodge', 'intervalSymmetric']),
+      'schema', 'pointStack', 'pointJitter', 'pointDodge', 'intervalDodge', 'schemaDodge', 'intervalSymmetric', 'lineStack', 'heatmap']),
     active: PropTypes.bool,
     select: PropTypes.oneOfType([
       PropTypes.bool,

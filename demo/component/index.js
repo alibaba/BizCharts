@@ -8,6 +8,7 @@ import Heatmap from './heatmap';
 import Funnel from './funnel';
 import Relation from './relation';
 import Facet from './facet';
+import Theme from './theme';
 
 export default {
   lineChart: {
@@ -21,5 +22,6 @@ export default {
     Funnel,
     Relation,
     Facet,
+    Theme
   },
 };

@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
-import BizCharts from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 
-const { Chart, Axis, Geom, Tooltip } = BizCharts;
 
 const data = [
   { year: "1991", value: 3 },
