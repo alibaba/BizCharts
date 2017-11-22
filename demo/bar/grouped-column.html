@@ -4,14 +4,14 @@
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/@antv/data-set@0.5.2/build/data-set.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.0/umd/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts@3.0.1/umd/BizCharts.min.js"> </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-        const { Chart, Axis, Geom, Tooltip, Legend } = window.BizCharts.default;
+        const { Chart, Axis, Geom, Tooltip, Legend } = window.BizCharts;
         const data = [
           { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
           { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
