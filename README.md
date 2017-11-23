@@ -91,4 +91,4 @@ const data = [...];
   - [transform](./doc/api/transform.md)
   - [theme](./doc/api/theme.md)
 
-### (FAQ)[./doc/faq/faq.md]
+### [FAQ](./doc/faq/faq.md)
