@@ -53,7 +53,7 @@
     "react-addons-transition-group": "^15.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.0.0-rc5.14",
+    "@antv/g2": "3.0.0",
     "invariant": "^2.2.2",
     "warning": "^3.0.0",
     "prop-types": "^15.6.0"
