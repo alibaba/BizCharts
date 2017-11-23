@@ -57,7 +57,7 @@ const data = [
 ];
 
 // 定义度量
-const scale = {
+const cols = {
   sold: { alias: '销售量' },
   genre: { alias: '游戏种类' }
 };
