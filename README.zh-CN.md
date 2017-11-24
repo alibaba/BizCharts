@@ -2,19 +2,19 @@
 
 # BizCharts
 
-BizCharts: a powerful data visualization library based [G2](https://antv.alipay.com/) React。
+BizCharts 是基于 [G2](https://antv.alipay.com/) 的 React 图表库，历经阿里两年打磨，覆盖数十个产品，于 11.21 开源，并同步升级到 G2 3.0 版本。
 
-[More details about BizCharts](https://alibaba.github.io/BizCharts/)
+[了解更多 BizCharts 详情](https://alibaba.github.io/BizCharts/)
 
-## Features
-- easy to use
-- strong expansion capability
-- support most data visualization charts
+## 特性
+- 简单、易用
+- 强大的扩展能力
+- 有跟 G2 1:1 的能力
 
-[see more demos](https://alibaba.github.io/BizCharts/demo.html)
+[查看更多图表示例](https://alibaba.github.io/BizCharts/demo.html)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
-## Installation
+## 安装
 
 ### npm
 ```sh
@@ -28,7 +28,7 @@ $ npm install bizcharts
 
 ### dev build
 ```sh
-$ git clone https://github.com/alibaba/BizCharts.git
+$ git clone https://github.com/alibaba/BizCharts/BizCharts.git
 $ cd BizCharts
 $ npm install
 $ npm run build
@@ -38,12 +38,12 @@ $ npm run build
 
 ```sh
 $ sudo vi /etc/hosts
-// add 127.0.0.1 localhost
+// 加入 127.0.0.1 localhost
 $ npm run[-script] demo
-// open in browser http://localhost:3510/
+// 浏览器打开 http://localhost:3510/
 ```
 
-## Usage
+## 快速开始
 ```jsx
 import {Chart, Axis, Tooltip, Geom} from "bizcharts";
 
@@ -58,21 +58,21 @@ const data = [...];
 </Chart>
 ```
 
-## Document
-### totorial
-- [quick start](doc/tutorial/start.md)
-- [chart introduce](./doc/tutorial/chart.md)
-- [chart type](./doc/tutorial/chartType.md)
-- [data](./doc/tutorial/data.md)
+## 文档
+### 教程
+- [快速入门](doc/tutorial/start.md)
+- [图表介绍](./doc/tutorial/chart.md)
+- [图表类型](./doc/tutorial/chartType.md)
+- [数据](./doc/tutorial/data.md)
 - [DataSet](./doc/tutorial/dataset.md)
 - [dataflow](./doc/tutorial/dataflow.md)
-- [theme](./doc/tutorial/theme.md)
-- [interaction](./doc/tutorial/interaction.md)
-- [animation](./doc/tutorial/animate.md)
+- [主题](./doc/tutorial/theme.md)
+- [交互](./doc/tutorial/interaction.md)
+- [动画](./doc/tutorial/animate.md)
 
-### api
+### api 文档
 - [BizCharts](./doc/api/bizcharts.md)
-- components
+- 组件
   - [Chart](./doc/api/chart.md)
   - [Coord](./doc/api/coord.md)
   - [Axis](./doc/api/axis.md)
@@ -83,7 +83,7 @@ const data = [...];
   - [Guide](./doc/api/guide.md)
   - [Facet](./doc/api/facet.md)
   - [View](./doc/api/view.md)
-- others
+- 其他
   - [scale](./doc/api/scale.md)
   - [shape](./doc/api/shape.md)
   - [dataset](./doc/api/dataset.md)
@@ -91,4 +91,10 @@ const data = [...];
   - [transform](./doc/api/transform.md)
   - [theme](./doc/api/theme.md)
 
-### [FAQ](./doc/faq/faq.md)
+### 常见问题
+- [有问题怎么办](./doc/faq/faq.md#ques)
+- [坐标轴空间不够](./doc/faq/faq.md#axisSpace)
+- [坐标轴label自定义](./doc/faq/faq.md#customLabel)
+- [tooltip显示](./doc/faq/faq.md#tooltipShow)
+- [tooltip自定义](./doc/faq/faq.md#customTooltip)
+ 
