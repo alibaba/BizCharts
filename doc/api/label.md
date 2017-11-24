@@ -69,7 +69,7 @@
 ```jsx
 <Label
   content='name'
-  formatter={(name, item, index)=>{
+  formatter={(text, item, index)=>{
     // text 为每条记录 x 属性的值
     // item 为映射后的每条数据记录，是一个对象，可以从里面获取你想要的数据信息
     // index 为每条记录的索引
@@ -86,7 +86,7 @@
 ```jsx
 <Label
   content='name'
-  htmlTemplate={(name, item, index)=>{
+  htmlTemplate={(text, item, index)=>{
     // text 为每条记录 x 属性的值
     // item 为映射后的每条数据记录，是一个对象，可以从里面获取你想要的数据信息
     // index 为每条记录的索引
