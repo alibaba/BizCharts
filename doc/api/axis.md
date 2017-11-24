@@ -26,7 +26,7 @@
 
 ```html
 // 不显示坐标轴
-<Chart width={600} height={400} source={data}>
+<Chart width={600} height={400} data={data}>
   <Geom type="interval" position="genre*sold" color="genre" />
 </Chart>
 ```
@@ -34,7 +34,7 @@
 
 ```html
 // 指定坐标轴对应数据源中的字段名
-<Chart width={600} height={400} source={data}>
+<Chart width={600} height={400} data={data}>
   <Axis name="sold" />
   <Geom type="interval" position="genre*sold" color="genre" />
 </Chart>
@@ -44,7 +44,7 @@
 
 ```html
 // 只显示其中一条坐标轴
-<Chart width={600} height={400} source={data}>
+<Chart width={600} height={400} data={data}>
   <Axis name="sold" />
   <Axis name="genre" visible={false} />
   <Geom type="interval" position="genre*sold" color="genre" />

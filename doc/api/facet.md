@@ -24,7 +24,7 @@
   {(view, facet)=>{
     if(facet.colIndex == 0){
 	  return
-	  <View source={facet.data}>
+	  <View data={facet.data}>
 		<Axis visible={false} name='carat' />
 		<Axis  name='price' />
 		<Geom type="point" position='carat*price' color='cut' />
@@ -32,7 +32,7 @@
 	} else
 	{
 	return
-	  <View source={facet.data}>
+	  <View data={facet.data}>
 	    <Geom type="point" position='carat*price' color='cut' />
 	  </View>;
 	}
@@ -112,7 +112,7 @@ facet 中每个 view 的配置。该属性比较特殊，可以直接等于一�
 <Facet type='matrix' fields = {['cut','clarity']}>
   {(view, facet)=>{
 	return
-	  <View source={facet.data}>
+	  <View data={facet.data}>
 	    <Geom type="point" position='carat*price' color='cut' />
 	  </View>;
   }}
