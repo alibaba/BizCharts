@@ -74,6 +74,7 @@ schema | 自定义图形，用于构建箱型图（或者称箱须图）、蜡�
 heatmap | 用于**热力图**的绘制。
 
 同时 BizCharts 默认提供了如下 8 中几何标记和[数据调整](geom.md#adjust)的组合类型。
+
 geom 类型 | 描述
 --- | ---
 pointStack | 层叠点图

@@ -24,7 +24,7 @@
 | [Guide.Arc](../api/guide.md#arc) |实体组件| 辅助标记弧形组件。该组件处于 Guide 组件命名空间下。且必须作为 ``<Guide />`` 的孩子才会生效|
 | [Guide.Html](../api/guide.md#html) |实体组件| 辅助标记html组件。该组件处于 Guide 组件命名空间下。且必须作为 ``<Guide />`` 的孩子才会生效|
 | [Facet](../api/facet.md) |抽象组件| 分面组件。|
-| [View](../api/view.md) |虚拟组件| 视图组件。|
+| [View](../api/view.md) |抽象组件| 视图组件。|
 
 ## 空间构成
 下图所示为常用图表的各组件的空间构成。

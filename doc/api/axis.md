@@ -20,7 +20,7 @@
 
 ## 使用说明
 
-* `<Axis />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Axis />` 组件下不能嵌套其他图表组件。
+* `<Axis />` 坐标轴组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Axis />` 组件下不能嵌套其他图表组件。
 
 * BizCharts中将Axis抽离为一个单独的组件，不使用Axis组件则默认不显示所有坐标轴及相关的信息，如下所示：
 
@@ -33,7 +33,7 @@
 * 使用Axis组件时，必须指定当前坐标轴对应数据源中的字段名（字段名为name），否则该坐标轴相关配置信息将不起作用；
 
 ```html
-// 制定坐标轴对应数据源中的字段名
+// 指定坐标轴对应数据源中的字段名
 <Chart width={600} height={400} source={data}>
   <Axis name="sold" />
   <Geom type="interval" position="genre*sold" color="genre" />
