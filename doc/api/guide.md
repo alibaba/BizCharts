@@ -17,14 +17,11 @@
 | Arc | 辅助弧线。| [参见Arc](#arc) |
 
 
-- 不同辅助标记组件所支持的配置属性也不一样，主要差异为：
-<span id = "position"></span>
+- 不同辅助标记组件所支持的配置属性也不一样，主要差异为坐标位置属性差异:
+  - Text, Html 中使用 position
+  - Line, Region, Image, Line 中使用 start、end 字段
 
-坐标位置属性差异:
-	  - Text, Html 中使用 position
-	  - Line, Region, Image, Line 中使用 start、end 字段
-
-** 位置值说明 **
+**位置值说明**
 - Object 使用图表 x,y 对应的原始数据例如： {time: ‘2010-01-01’, value: 200}
 - Array 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
 	- x，y 都是原始数据 [‘2010-01-01’]
