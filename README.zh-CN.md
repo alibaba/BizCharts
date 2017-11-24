@@ -28,7 +28,7 @@ $ npm install bizcharts
 
 ### dev build
 ```sh
-$ git clone https://github.com/alibaba/BizCharts/BizCharts.git
+$ git clone https://github.com/alibaba/BizCharts.git
 $ cd BizCharts
 $ npm install
 $ npm run build
