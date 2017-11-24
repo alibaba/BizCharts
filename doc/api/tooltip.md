@@ -35,7 +35,7 @@
 默认值:true。
 
 ### 2、crosshairs 	* Object *
-是否展示 title。
+是否展示 crosshairs。
 ```jsx
 //可配置值
 //geom为 'line', 'area', 'path', 'areaStack 时默认会展示垂直辅助线

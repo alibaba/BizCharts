@@ -4,7 +4,7 @@
 
 ## 使用说明
 
-** `<View />` 组件只可以作为 [`<Chart />`](chart.md) 组件的孩子，同时 `<View />` 组件下可以嵌套的组件有：**
+**`<View />` 组件只可以作为 [`<Chart />`](chart.md) 组件的孩子，同时 `<View />` 组件下可以嵌套的组件有：**
   - [`<Coord/>`](coord.md) 坐标系组件
   - [`<Axis/>`](axis.md) 坐标轴组件,特性跟`<Chart/>`一样，默认全部不显示，若配置一个轴显示，则全部轴显示。
   - [`<Geom/>`](geom.md) 几何标记组件
@@ -15,12 +15,12 @@
   - [`<View/>`](view.md) 视图组件
 
 
-** 实际开发过程中，很多图表都可以采用View组件来实现，包含但不限于以下几个方面：**
+**实际开发过程中，很多图表都可以采用View组件来实现，包含但不限于以下几个方面：**
 
-* 在同一个容器中出现两个或者更多不同坐标系的图表时，可以采用View组件来实现，如下图所示；[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/pie/sunburst)
+* 在同一个容器中出现两个或者更多不同坐标系的图表时，可以采用View组件来实现，如下图所示；[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/pie/sunburst)
 ![image | center](https://img.alicdn.com/tfs/TB1GqOTa4rI8KJjy0FpXXb5hVXa-1600-856.png)
 
-* 同一个容器中的两个图表需要采用不同的数据源时，如下图所示：[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/funnel/symmetric)
+* 同一个容器中的两个图表需要采用不同的数据源时，如下图所示：[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/funnel/symmetric)
 ![image | center](https://img.alicdn.com/tfs/TB1w1flbhrI8KJjy0FpXXb5hVXa-1600-856.png)
 
 
