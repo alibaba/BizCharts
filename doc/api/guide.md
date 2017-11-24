@@ -55,7 +55,7 @@
   </Guide>
 </Chart>
 ```
-[demo链接](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/other/bullet-graph)
+[demo链接](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bullet-graph)
 
 ## Guide 组件属性
 `<Guide>` 组件主要是用来管理他下面孩子组件的渲染、属性更新的，本身并没有属性需要配置。
