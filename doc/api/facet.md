@@ -17,7 +17,7 @@
 - `<Facet />` 系组件只可以作为 [`<Chart />`](chart.md) 组件的孩子，同时 `<Facet />` 组件下只能嵌套一个返回组件的匿名函数。
 
 > BizCharts 中将 G2 的 `chart.facet(type, cfg)` 函数转为了 `<Facet />` 组件,将 cfg 中最顶层的属性平坦到了 <Facet /> 组件属性上，`eachView` 例外。
-> 考虑到 React 用户的使用习惯，在 `eachView` 回调函数中用原生 G2 接口自定义 eachView 图表可能不太合适，因此设计为用 <Facet />组件嵌套一个返回 React 组件的匿名函数的形式用来自定、`eachView` 参见如下代码。
+> 考虑到 React 用户的使用习惯，在 `eachView` 回调函数中用原生 G2 接口自定义 eachView 图表可能不太合适，因此设计为用 <Facet />组件嵌套一个返回 React 组件的匿名函数的形式用来自定义`eachView` 参见如下代码。
 ```jsx
 <Facet type='matrix' fields = {['cut','clarity']}>
   //该匿名函数会转为 `eachView:function`
