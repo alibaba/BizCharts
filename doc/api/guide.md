@@ -19,7 +19,7 @@
 
 - 不同辅助标记组件所支持的配置属性也不一样，主要差异为坐标位置属性差异:
   - Text, Html 中使用 position
-  - Line, Region, Image, Line 中使用 start、end 字段
+  - Line, Region, Image, Arc 中使用 start、end 字段
 
 **位置值说明**
 - Object 使用图表 x,y 对应的原始数据例如： {time: ‘2010-01-01’, value: 200}
