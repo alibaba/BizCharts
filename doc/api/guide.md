@@ -13,7 +13,7 @@
 | Image | 辅助图片，在图表上添加辅助图片。| [参见Image](#image) |
 | Text | 辅助文本，指定位置添加文本说明。| [参见Text](#text) |
 | Region | 辅助框，框选一段图区，设置背景、边框等。| [参见Region](#region) |
-| Ttml | 辅助 html，指定位置添加自定义 html，显示自定义信息。| [参见Html](#html) |
+| Html | 辅助 html，指定位置添加自定义 html，显示自定义信息。| [参见Html](#html) |
 | Arc | 辅助弧线。| [参见Arc](#arc) |
 
 
