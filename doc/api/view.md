@@ -17,7 +17,7 @@
 
 ** 实际开发过程中，很多图表都可以采用View组件来实现，包含但不限于以下几个方面：**
 
-* 在同一个容器中出现两个或者更多不同坐标系的图表时，可以采用View组件来实现，如下图所示；[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/pie/sunburst)
+* 在同一个容器中出现两个或者更多不同坐标系的图表时，可以采用View组件来实现，如下图所示；[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/pie/sunburst)
 ![image | center](https://img.alicdn.com/tfs/TB1GqOTa4rI8KJjy0FpXXb5hVXa-1600-856.png)
 
 * 同一个容器中的两个图表需要采用不同的数据源时，如下图所示：[Demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/funnel/symmetric)
