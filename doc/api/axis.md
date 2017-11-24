@@ -33,7 +33,7 @@
 * 使用Axis组件时，必须指定当前坐标轴对应数据源中的字段名（字段名为name），否则该坐标轴相关配置信息将不起作用；
 
 ```html
-// 制定坐标轴对应数据源中的字段名
+// 指定坐标轴对应数据源中的字段名
 <Chart width={600} height={400} source={data}>
   <Axis name="sold" />
   <Geom type="interval" position="genre*sold" color="genre" />
