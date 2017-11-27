@@ -25,4 +25,4 @@ BizCharts 默认提供了两种主题:default、dark。
   };
   BizCharts.setTheme(seaTheme);
 ```
-更多主题配置请参见 [defaultTheme](../api/defaultTheme.js)
+更多主题配置请参见 [defaultTheme](../api/defaultTheme.md)
