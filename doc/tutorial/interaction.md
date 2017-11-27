@@ -36,5 +36,5 @@
 
 默认情况下，G2 中只有饼图支持选中交互，其他 geom 的选中模式默认情况下都是关闭的。
 
-** 图表交互控制可以跟[图表事件](../api/chart.md#event)结合用来定制图表的自定义交互，参见demo:[地图省市下钻](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/drill-down)**
+**图表交互控制可以跟[图表事件](../api/chart.md#event)结合用来定制图表的自定义交互，参见demo:[地图省市下钻](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/drill-down)**
 
