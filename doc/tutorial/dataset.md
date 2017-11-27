@@ -67,7 +67,7 @@ const dv = new View();
 ```
 
 ## api文档
-具体参见[dataset api 文档](../api/dataset)
+具体参见[dataset api 文档](../api/dataset.md)
 
 ## 使用实例
 
