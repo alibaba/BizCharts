@@ -95,7 +95,7 @@ schema| 'box','candle'| 目前仅支持箱须图、K线图
 * position 支持3种数据类型：
    + x，y都是单个标量值，如 {name: '分类一',value: 100}
    + x是单个标量值，y是一个数组 ，如 {name: '分类一',range: [10, 100]}
-   + x是数组，y是单个标量值，例如学生成绩分布 {score: [60,70],count: 90}
+   + x是数组，y是单个标量值，例如学生成绩分布 {score: [60,70],count: 30}
 
   ![image](https://zos.alipayobjects.com/basement/skylark/0ad6383d14791772321173794d7553/attach/4080/900/image.png)
 
