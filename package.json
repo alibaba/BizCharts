@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -49,8 +49,8 @@
   },
   "homepage": "https://alibaba.github.io/BizCharts/",
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": ">15",
+    "react-dom": ">15",
     "react-addons-transition-group": "^15.0.0"
   },
   "dependencies": {
