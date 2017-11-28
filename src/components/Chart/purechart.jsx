@@ -137,10 +137,10 @@ export default class PureChart extends Component {
     }
 
     if (!Util.shallowEqual(scale, nextScale)) {
-      if (Util.isArray(scale)) {
-        chart.scale(scale[0], scale[1]);
+      if (Util.isArray(nextScale)) {
+        chart.scale(nextScale[0], nextScale[1]);
       } else {
-        chart.scale(scale);
+        chart.scale(nextScale);
       }
     }
 
