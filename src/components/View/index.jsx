@@ -142,7 +142,8 @@ export default class View extends Component {
       ReactDOM.unstable_renderSubtreeIntoContainer(this, (
         <Context chart={view}>{ children }</Context>
       ), element, () => {
-        view.repaint();
+       // should not render view singley because when update purechart component will render all views.
+       // view.repaint();
       });
     } else {
       view.repaint();
