@@ -1,3 +1,6 @@
+# 3.0.3 (11.28, 2017)
+fix when resize chart container size, chart's label will be drawed twice.
+
 # 3.0.2 (11.23, 2017)
 修复包入口，改为打包后的 umd 格式文件。
 修改 Readme.md, 加入中英文双语介绍。
