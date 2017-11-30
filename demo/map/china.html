@@ -18,9 +18,7 @@
             y: { sync: true, nice: false }
           }
   $.getJSON('/BizCharts/public/data/china-geo.json',function(data) {
-        const {
-            features
-        } = data;
+        const { features } = data;
         const userData = [];
         for(let i=0; i<features.length; i++) {
             const name = features[i].properties.name;
@@ -52,17 +50,16 @@
             }
         });
     ReactDOM.render((
-          <Chart data={[1]} height={window.innerHeight} scale={cols} padding={[40, 90]} forceFit>
-            <View data={dvGeo} >
-              <Geom type='polygon' position='x*y' style={{stroke: '#ddd',lineWidth: 0.5}}/>
-            </View>
-            <View data={dvData} >
-              <Geom type='point' position='x*y' size={0}>
-                <Label content='name' offset={0} textStyle={{fill: '#545454',fontSize: 10}}/>
-            </Geom>
-            </View>
-          <Geom type='polygon' position="x*y" style={{lineWidth: 1,stroke: '#fff'}} color={['count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ]]} />
-        </Chart>
+    <Chart data={[1]} height={window.innerHeight} scale={cols} padding={[40, 90]} forceFit>
+        <View data={dvGeo} >
+            <Geom type='polygon' position='x*y' style={{stroke: '#ddd',lineWidth: 0.5}}/>
+        </View>
+        <View data={dvData} >
+            <Geom type='point' position='x*y' size={0}>
+            <Label content='name' offset={0} textStyle={{fill: '#545454',fontSize: 10}}/>
+        </Geom>
+        </View>
+    </Chart>
       ), document.getElementById("mountNode"));
   });
     </script>
