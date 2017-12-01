@@ -9,6 +9,7 @@ import Funnel from './funnel';
 import Relation from './relation';
 import Facet from './facet';
 import Theme from './theme';
+import Map from './map';
 
 export default {
   lineChart: {
@@ -22,6 +23,7 @@ export default {
     Funnel,
     Relation,
     Facet,
-    Theme
+    Theme,
+    Map,
   },
 };
