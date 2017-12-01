@@ -19,12 +19,12 @@ BizCharts 生成的图表的类型，是由几何标记和坐标系共同决定�
 
 geom 类型| 图表类型 | 备注
 -------- | -------- | --------
-point| 点图、折线图中的点| 点的形状有很多，也可以使用图片代表点（[气泡图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/point/bubble），同时点也可以在不同坐标系下显示，所以可以扩展出非常多的图表类型。
-path| [路径图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/other/path)，地图上的路径 | 路径图是无序的线图。
-line| 折线图、曲线图、[阶梯线图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/line/step)| 在极坐标系下可以转换成雷达图。
-area| 区域图（面积图）、层叠区域图、[区间区域图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/area/range)|极坐标系下可用于绘制雷达区域图。
+point| 点图、折线图中的点| 点的形状有很多，也可以使用图片代表点[气泡图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/point/bubble)，同时点也可以在不同坐标系下显示，所以可以扩展出非常多的图表类型。
+path| [路径图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/path)，地图上的路径 | 路径图是无序的线图。
+line| 折线图、曲线图、[阶梯线图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/line/step)| 在极坐标系下可以转换成雷达图。
+area| 区域图（面积图）、层叠区域图、[区间区域图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/area/range)|极坐标系下可用于绘制雷达区域图。
 interval| 柱状图、直方图、南丁格尔玫瑰图、饼图、条形环图（玉缺图）、漏斗图等| 通过坐标系的转置、变化，可以生成各种常见的图表类型；所有的图表都可以进行层叠、分组。
-polygon|[色块图（像素图）](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/heatmap/heatmap)、[热力图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/heatmap/image)、[地图](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/map/china)| 多个点可以构成多边形。
+polygon|[色块图（像素图）](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/heatmap/heatmap)、[热力图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/heatmap/image)、[地图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/china)| 多个点可以构成多边形。
 schema| k 线图，箱型图 | 自定义的图表类型。
 edge| 树图、流程图、关系图 | 与点一起构建关系图。
 heatmap| 热力图 | --
