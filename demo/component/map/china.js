@@ -35,8 +35,8 @@ dvData.transform({
 dvGeo.transform({
   type: 'rename',
   map: {
-      longitude: 'x',
-      latitude: 'y',
+    longitude: 'x',
+    latitude: 'y',
   }
 });
 

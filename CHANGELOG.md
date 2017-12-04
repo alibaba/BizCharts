@@ -1,3 +1,6 @@
+# 3.0.4 (12.04, 2017)
+fix chart invalid onPlotClick event.
+
 # 3.0.3 (11.28, 2017)
 fix when resize chart container size, chart's label will be drawed twice.
 
