@@ -19,9 +19,9 @@ const EVENTS = [
   { prop: 'onItemSelected', event: 'itemselected' },
   { prop: 'onItemUnselected', event: 'itemunselected' },
   { prop: 'onItemSelectedChange', event: 'itemselectedchange' },
-  { prop: 'onTooltipChange', event: 'tooltipchange' },
-  { prop: 'onTooltipShow', event: 'tooltipshow' },
-  { prop: 'onTooltipHide', event: 'tooltiphide' },
+  { prop: 'onTooltipChange', event: 'tooltip:change' },
+  { prop: 'onTooltipShow', event: 'tooltip:show' },
+  { prop: 'onTooltipHide', event: 'tooltip:hide' },
 ];
 
 const baseEvents = [
@@ -72,7 +72,7 @@ for (let i = 0; i < shapes.length; ++i) {
   }
 }
 
-const chartEvents = Util.mix(EVENTS, shapeEvents);
+const chartEvents = EVENTS.concat(shapeEvents);
 
 export default class PureChart extends Component {
 
@@ -211,10 +211,8 @@ export default class PureChart extends Component {
     // use <Component /> instead
     chart.guide().clear();
     // 如果有 facet 的情况下默认不隐藏轴，因为让用户挨个配置每一根轴会很累。
-    if ((props.children && !props.children.length && props.children.type !== Facet) 
-    || (props.children && props.children.length && !props.children.find((child) => {
-      return child.type === Facet;
-    })) || others.axis === false) {
+    if ((props.children && !props.children.length && props.children.type !== Facet)
+    || (props.children && props.children.length && !props.children.find(child => child.type === Facet)) || others.axis === false) {
       chart.axis(false);
     }
 
