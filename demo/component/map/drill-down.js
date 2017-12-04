@@ -2,7 +2,9 @@ import React,  { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import ChinaGeoJSON from '../../data/chinageo';
-import DataSet from '@antv/data-set';
+import DataSet from '@antv/data-set'; 
+import PropTypes from 'prop-types';
+
 
 function processData(mapData) {
   // 构造虚拟数据
@@ -71,11 +73,11 @@ function calProvinceData(name) {
     pHeight: height,
   };
 }
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = calProvinceData("浙江");
+class China extends React.Component {
+
+  static contextTypes = {
+    updateProvince: PropTypes.func
   }
 
   onGetG2Ins = (chart) => {
@@ -101,28 +103,17 @@ export default class App extends React.Component {
       const item = shape.get('origin');
       const data = item['_origin'];
       const name = data.name;
-      this.setState(calProvinceData(name));
+      this.context.updateProvince(calProvinceData(name));
     } else {
-      provinceChart && provinceChart.clear();
     }
+  }
 
-    const selectName = shape.get('origin')['_origin'].name
-            
-    const shapes = this.chart.getAllGeoms()[0].getShapes();
-    for (let i = 0, len = shapes.length; i < len; i++) {
-      const tshape = shapes[i];
-      const origin = tshape.get('origin')['_origin'];
-      const name = origin.name;
-      if (name === selectName) {
-        this.chart.getAllGeoms()[0].setShapeSelected(tshape);
-      }
-    }
+  shouldComponentUpdate () {
+    return false;
   }
 
   render() {
     return (
-    <div>
-      
       <div>
         <Chart height={250/ratio} container='china' width={250} data={chinaDv}
           padding={0} animate={false}
@@ -153,9 +144,20 @@ export default class App extends React.Component {
             />
         </Chart>
       </div>
-      
+    );
+  }
+
+}
+
+class Province extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
       <div id="provinceContainer">
-        <Chart data={this.state.provinceDv} width={this.state.pWidth} height={this.state.pHeight} padding={0} >
+        <Chart data={this.props.provinceDv} width={this.props.width} height={this.props.height} padding={0} >
           <Geom type="polygon" position='longitude*lantitude'
             style={{
               stroke: '#fff',
@@ -173,6 +175,37 @@ export default class App extends React.Component {
           </Geom>
         </Chart>
       </div>
+    );
+  }
+}
+
+
+export default class App extends React.Component {
+  static childContextTypes = {
+    updateProvince: PropTypes.func,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = calProvinceData("浙江");
+  }
+
+  getChildContext() {
+    return {
+      updateProvince: this.updateProvince,
+    };
+  }
+
+  updateProvince = (config) => {
+    this.setState(config)
+  }
+
+  render() {
+    return (
+    <div>
+      <China />
+      <Province provinceDv={this.state.provinceDv} width={this.state.pWidth} height={this.state.pHeight}/>
     </div>
     );
   }
