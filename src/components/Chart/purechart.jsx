@@ -72,7 +72,7 @@ for (let i = 0; i < shapes.length; ++i) {
   }
 }
 
-const chartEvents = Util.mix(EVENTS, shapeEvents);
+const chartEvents = EVENTS.concat(shapeEvents);
 
 export default class PureChart extends Component {
 

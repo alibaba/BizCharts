@@ -17,6 +17,7 @@ export default class Geom extends Component {
     select: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.array,
+      PropTypes.object,
     ]),
     position: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string),
