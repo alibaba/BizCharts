@@ -11,19 +11,10 @@ import Facet from './facet';
 import Theme from './theme';
 import Map from './map';
 
+import Com16 from './com16';
+
 export default {
   lineChart: {
-    Empty,
-    Line,
-    Area,
-    Bar,
-    Point,
-    Pie,
-    Heatmap,
-    Funnel,
-    Relation,
-    Facet,
-    Theme,
-    Map,
+    Com16,
   },
 };
