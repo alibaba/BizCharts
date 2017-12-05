@@ -86,7 +86,7 @@ intervalSymmetric | 对称柱状图
 areaStack | 层叠区域图
 schemaDodge | 分组箱型图
 
-### 3、adjust    * Object *
+### 2、adjust    * Object *
 数据调整配置。
 什么是数据调整，有哪些数据调整方式，及为什么要有数据调整，详见[几何标记中的adjust](geom.md#adjust)
 ```jsx
@@ -120,7 +120,7 @@ schemaDodge | 分组箱型图
 
 <span id="color"></span>
 
-### 4、color    * String *
+### 4、color    * String | Array *
 颜色属性的映射；用于确定由数据中的哪个字段来确定几何图形的颜色。
 
 color 支持的映射值如下：
@@ -250,7 +250,7 @@ size 支持映射值如下：
 //代码示例
 <Geom opacity={0.2}/>
 ```
-- ['field', callback)]，使用回调函数获取透明度。
+- ['field', callback]，使用回调函数获取透明度。
 ```jsx
 //代码示例
 <Geom opacity={['count', (count)=>{
