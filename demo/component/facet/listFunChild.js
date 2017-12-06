@@ -27,14 +27,20 @@ export default class List extends Component {
       <Chart height={450} data={data} width={800} height={600} padding={[30, 80, 80, 80]} scale={scale}>
         <Tooltip />
         <Legend />
-        <Facet type='list' fields={['cut']} cols={3} padding={30} eachView={(view, facet)=>{
-          view.point()
-          .position('carat*price')
-          .color('cut')
-          .shape('circle')
-          .opacity(0.3)
-          .size(3); 
-        }}>
+        <Facet type='list' fields={['cut']} cols={3} padding={30} >
+          {(view, facet)=>{
+            return (
+              <View>
+                <Geom 
+                  type='point' 
+                  position='carat*price' 
+                  color='cut' 
+                  shape='circle' 
+                  size={3}
+                />
+              </View>
+            )
+          }}
         </Facet>
       </Chart>
     );

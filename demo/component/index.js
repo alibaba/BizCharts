@@ -15,6 +15,16 @@ import Com16 from './com16';
 
 export default {
   lineChart: {
+    Line,
+    Bar,
     Com16,
+    Area,
+    Point,
+    Pie,
+    Heatmap,
+    Funnel,
+    Relation,
+    Facet,
+    Theme,
   },
 };

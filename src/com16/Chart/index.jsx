@@ -48,6 +48,7 @@ export default class PureChart extends Component {
   }
 
   componentDidMount() {
+    console.log("componentDidMount");
     this.cId = this.addElement(
       this.name,
       this.id,
@@ -75,10 +76,18 @@ export default class PureChart extends Component {
     this.containerWrap = null;
   }
 
-  notifyG2Instance() {
-    if (this.props.onGetG2Instance) {
-      this.props.onGetG2Instance(this.chart);
-    }
+  getViewId = () => {}
+
+  getParentInfo = () => {
+    return {
+      id: this.id,
+      name: this.name,
+    };
+  }
+
+  createId = () => {
+    this.gId += 1;
+    return this.gId;
   }
 
   addElement = (name, id, props, parentInfo, viewId) => {
@@ -93,19 +102,11 @@ export default class PureChart extends Component {
     this.g2Processor.deleteElement(name, id, parentInfo);
   }
 
-  createId = () => {
-    this.gId += 1;
-    return this.gId;
+  notifyG2Instance() {
+    if (this.props.onGetG2Instance) {
+      this.props.onGetG2Instance(this.chart);
+    }
   }
-
-  getParentInfo = () => {
-    return {
-      id: this.id,
-      name: this.name,
-    };
-  }
-
-  getViewId = () => {}
 
   refHandle = (cw) => {
     // chart container wrap for reset operation

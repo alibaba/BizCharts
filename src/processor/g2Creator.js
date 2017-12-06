@@ -29,7 +29,10 @@ export default {
     const coordConfig = config.coord;
 
     if (!coordConfig) { return; }
-    const coordIns = chart.coord(coordConfig.type, coordConfig);
+    const coordIns = chart.coord(
+      coordConfig.type ? coordConfig.type : 'rect',
+      Util.without(coordConfig, COORD_FUNC_PROPS)
+    );
     Prop.init(COORD_FUNC_PROPS, coordConfig, (value, key) => {
       coordIns[key](...value);
     });
@@ -97,7 +100,7 @@ export default {
       if (Object.prototype.hasOwnProperty.call(axises, id)) {
         const axisConfig = axises[id];
         const { name, visible, ...others } = axisConfig;
-        if (visible) {
+        if (visible || !Object.prototype.hasOwnProperty.call(axisConfig, visible)) {
           chart.axis(name, others);
         } else {
           chart.axis(name, false);
@@ -150,6 +153,8 @@ export default {
   },
 
   guide(chart, config) {
+    if (!config.guide) { return; }
+
     const guides = config.guide.elements;
 
     for (const id in guides) {
@@ -159,6 +164,15 @@ export default {
         chart.guide()[type](others);
       }
     }
+  },
+
+  facet(chart, config) {
+    const facetConfig = config.facet;
+
+    if (!facetConfig) { return; }
+
+    const { children, type, ...others } = facetConfig;
+    chart.facet(type, others);
   },
 
 };

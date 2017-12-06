@@ -18,6 +18,7 @@ const addFuncMap = {
   GuideRegion: 'addGuideRegion',
   GuideHtml: 'addGuideHtml',
   GuideArc: 'addGuideArc',
+  Facet: 'addFacet',
 };
 
 
@@ -46,9 +47,9 @@ export default class Processor extends iAdd() {
   }
 
   createG2Instance() {
-    debugger;
     const chart = g2Creator.chart(this.config);
     g2Creator.coord(chart, this.config);
+    g2Creator.facet(chart, this.config);
     g2Creator.tooltip(chart, this.config);
     g2Creator.legends(chart, this.config);
     g2Creator.geoms(chart, this.config);
@@ -60,6 +61,10 @@ export default class Processor extends iAdd() {
 
     this.chart = chart;
     return chart;
+  }
+
+  destory() {
+    this.chart.destroy();
   }
 
   batchedUpdate() {

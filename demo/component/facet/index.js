@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import List from './list';
+import ListFuncChild from './listFunChild';
+
 
 
 export default class FacetChart extends Component {
@@ -7,7 +9,7 @@ export default class FacetChart extends Component {
     return (
       <div className='pie-charts'>
         <div className='pie-chart'>
-          <List />
+          <ListFuncChild />
         </div>
       </div>
     );

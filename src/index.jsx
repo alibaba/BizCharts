@@ -5,7 +5,7 @@ import * as Components from './components';
 import * as Com16 from './com16';
 
 
-const BizCharts = Util.mix(Components, {
+const BizCharts = Util.mix(Com16, {
   G2,
   Util,
   Shape,
