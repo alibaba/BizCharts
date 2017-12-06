@@ -1,7 +1,7 @@
 import React,  { Component } from 'react';
 import { Com16 } from 'bizcharts';
 
-const { Chart } = Com16;
+const { Chart, Geom, Legend, Tooltip, Axis } = Com16;
 
 const data = [
   { year: "1991", value: 3 },
@@ -24,7 +24,11 @@ export default class BasicLineChart extends Component {
   
   render() {
     return (
-      <Chart height={400} data={data} scale={scale} forceFit>
+      <Chart height={400} width={600} data={data} forceFit scale={scale}>
+        <Legend />
+        <Tooltip />
+        <Axis />
+        <Geom type="line" data={data} position={'year*value'}/>
       </Chart>
     );
   }
