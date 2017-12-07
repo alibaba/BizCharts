@@ -28,19 +28,15 @@ export default class List extends Component {
         <Tooltip />
         <Legend />
         <Facet type='list' fields={['cut']} cols={3} padding={30} >
-          {(view, facet)=>{
-            return (
-              <View>
-                <Geom 
-                  type='point' 
-                  position='carat*price' 
-                  color='cut' 
-                  shape='circle' 
-                  size={3}
-                />
-              </View>
-            )
-          }}
+          <View>
+            <Geom 
+              type='point' 
+              position='carat*price' 
+              color='cut' 
+              shape='circle' 
+              size={3}
+            />
+          </View>
         </Facet>
       </Chart>
     );
