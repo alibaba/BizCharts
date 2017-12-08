@@ -62,6 +62,8 @@
 
 ## 分类图例
 
+![image | center](https://img.alicdn.com/tfs/TB1roBwhrYI8KJjy0FaXXbAiVXa-450-232.png "")
+
 ### 1、name		_ String _
 图例的对应到数据源中的数据字段名，不传则默认设置所有图例。
 
@@ -112,7 +114,7 @@
 用于格式化图例每项的文本显示。
 
 ### 14、marker 	_ String _
-用于格式化图例每项的文本显示。
+用于图例 marker 的显示样式。
 可选项有: `'circle', 'square', 'bowtie', 'diamond', 'hexagon', 'triangle', 'triangle-down', 'hollowCircle', 'hollowSquare', 'hollowBowtie', 'hollowDiamond', 'hollowHexagon', 'hollowTriangle', 'hollowTriangle-down', 'cross', 'tick', 'plus', 'hyphen', 'line'`
 
 ### 15、textStyle 	_ Number _
