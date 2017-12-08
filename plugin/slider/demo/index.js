@@ -91,7 +91,8 @@ export default class SliderChart extends React.Component {
           <Slider width="auto" height={26} start={ds.state.start} end={ds.state.end}
             xAxis="time" yAxis='value' scales={scale} data={originDv} 
             backgroundChart={{type: 'line'}} 
-            onChange={(startValue, endValue) => {
+            onChange={(obj) => {
+              const { startValue, endValue, startText, endText } = obj;
               ds.setState('start', startValue);
               ds.setState('end', endValue);
             }}
