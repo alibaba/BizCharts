@@ -76,12 +76,12 @@ see [demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/
 
 #### 4、 `xAxis` *string*
 
-**必须声明**，我们的 Slider 是带有背景图表的滑动条组件，该字段用于声明该背景图表的横轴映射字段，同时该字段也是数据过滤字段。
+**必须声明** Slider 是带有背景图表的滑动条组件，该字段用于声明该背景图表的横轴映射字段，同时该字段也是数据过滤字段。
 
 #### 5、 `yAxis` *string*
 
 
-**必须声明**，我们的 Slider 是带有背景图表的滑动条组件，该字段用于声明该背景图表的纵轴轴映射字段。
+**必须声明** Slider 是带有背景图表的滑动条组件，该字段用于声明该背景图表的纵轴轴映射字段。
 
 ### 6、 `data` *array | dataview*
 
@@ -104,14 +104,12 @@ see [demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/
 
   ```jsx
   <Slider 
-    fillerStyle={{
-      scales:{
+      scales={{
         [`${xAxis}`]: {
           type: 'time',
           mask: 'MM-DD'
         }
-      }
-    }}
+      }}
   />
   ```
 
@@ -163,11 +161,8 @@ slider 滑块的背景图表配置，可配置其图表类型以及颜色：
     }}
   />
   ```
-
-
-### Methods
-
-#### 1、 `onChange` *function*
+  
+#### 15、 `onChange` *function*
 
 当滑动条滑块发生变化时，触发该回调函数，主要用于更新 ds 的状态量。该回调函数会提供一个参数，该参数是一个对象，包含如下属性：
 
@@ -185,4 +180,3 @@ slider 滑块的背景图表配置，可配置其图表类型以及颜色：
   * `endText` 终点滑块当前的显示文本值
 
 > 说明：之所以区分 text 和 value，是因为大部分情况下用户会对数值进行格式化，所以在设置状态量和更新状态量时，需要保证前后数值类型的一致。
-
