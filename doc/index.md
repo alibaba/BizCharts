@@ -32,6 +32,7 @@
   - [connector](/doc/api/connector.md)
   - [transform](/doc/api/transform.md)
   - [theme](/doc/api/theme.md)
+  - [slider](https://github.com/alibaba/BizCharts/tree/slider/plugin/slider)
 
 ## 常见问题
 - [有问题怎么办](/doc/faq/faq.md#ques)
