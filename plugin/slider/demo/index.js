@@ -50,6 +50,35 @@ const scale = {
 };
 
 export default class SliderChart extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      width: "auto",
+      scale: scale,
+      filler: {
+        fill: '#BDCCED',
+        fillOpacity: 0.3
+      }
+    };
+  }
+
+  componentDidMount() {
+    setTimeout((function(){
+      this.setState({
+        filler: {
+          fill: '#ff0000',
+          fillOpacity: 0.3
+        }
+      });
+    }).bind(this), 2000)
+  }
+
+  onChange = (obj) => {
+    const { startValue, endValue, startText, endText } = obj;
+    ds.setState('start', startValue);
+    ds.setState('end', endValue);
+  }
   
   render() {
     return (
@@ -88,14 +117,10 @@ export default class SliderChart extends React.Component {
           </Facet>
         </Chart>
         <div>
-          <Slider width="auto" height={26} start={ds.state.start} end={ds.state.end}
-            xAxis="time" yAxis='value' scales={scale} data={originDv} 
+          <Slider fillerStyle={this.state.filler} width={this.state.width} height={26} start={ds.state.start} end={ds.state.end}
+            xAxis="time" yAxis='value' scales={this.state.scale} data={originDv} 
             backgroundChart={{type: 'line'}} 
-            onChange={(obj) => {
-              const { startValue, endValue, startText, endText } = obj;
-              ds.setState('start', startValue);
-              ds.setState('end', endValue);
-            }}
+            onChange={this.onChange}
           />
         </div>
       </div>

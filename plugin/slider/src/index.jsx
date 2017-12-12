@@ -2,9 +2,9 @@ import G2Slider from '@antv/g2-plugin-slider';
 import React, { Component } from 'react';
 
 const SliderAttrs = ['width', 'height', 'padding', 'xAis', 'yAxis', 'start', 'end',
-  'fillerStyle', 'backgroundStyle', 'textStyle', 'handleStyle', 'backgroundChart'];
+  'fillerStyle', 'backgroundStyle', 'scales', 'textStyle', 'handleStyle', 'backgroundChart'];
 
-function isArray(obj) {return Array.isArray(obj);}
+function isArray(obj) { return Array.isArray(obj); }
 function isObject(obj) { return typeof obj === 'object' && obj !== null; }
 
 function length(obj) {
@@ -23,6 +23,17 @@ function is(x, y) {
     return x !== 0 || y !== 0 || 1 / x === 1 / y;
   }
   return x !== x && y !== y; //  NaN == NaN
+}
+
+function each(obj, fun) {
+  if (obj.forEach) {
+    obj.forEach(fun);
+  }
+  if (isObject(obj)) {
+    Object.keys(obj).forEach((key) => {
+      fun(obj[key], key);
+    });
+  }
 }
 
 function shallowEqual(objA, objB) {
@@ -44,7 +55,7 @@ function shallowEqual(objA, objB) {
 
   let ret = true;
 
-  Util.each(objA, (v, k) => {
+  each(objA, (v, k) => {
     if (!is(v, objB[k])) {
       return (ret = false);
     }
@@ -59,7 +70,10 @@ function sliderNeedRebuild(props, nextProps) {
 
   for (let i = 0; i < SliderAttrs.length; i += 1) {
     const attr = SliderAttrs[i];
-    if (!shallowEqual(props[attr], nextProps[attr])) { return true; }
+    if (!shallowEqual(props[attr], nextProps[attr])) {
+      console.log('need rebuild');
+      return true;
+    }
   }
 
   return false;
@@ -92,6 +106,7 @@ export default class Slider extends Component {
     this.slider.destroy();
     const slider = this.createG2Instance();
     slider.render();
+    this.reBuild = false;
   }
 
   componentWillUnmount() {
