@@ -25,11 +25,24 @@
   }]}
 />
 ```
+### 2、labelLine     * Object *
+文本距离几何线的配置，如果值为 false，表示不展示文本线。
+默认不展示。
+使用示例:
+```jsx
+<Label
+  labelLine={{
+    lineWidth: 1, // 线的粗细
+    stroke: '#ff8800', // 线的颜色
+    lineDash: [ 2, 1 ], // 虚线样式
+  }}
+/>
+```
 
-### 2、offset  	* Number *
-设置坐标轴文本 label 距离坐标轴线的距离
+### 3、offset  	* Number *
+设置文本距离几何图形的的距离
 
-### 3、textStyle  	* Object *
+### 4、textStyle  	* Object *
 文本的图形样式。
 可配置样式值有：
  ```jsx
@@ -60,11 +73,11 @@
 />
 ```
 
-### 4、autoRotate  	* Boolean *
+### 5、autoRotate  	* Boolean *
 是否需要自动旋转。
 默认值：true
 
-### 5、formatter  	* Function *
+### 6、formatter  	* Function *
 用于格式化坐标轴上显示的文本信息。
 ```jsx
 <Label
@@ -81,7 +94,7 @@
 />
 ```
 
-### 6、htmlTemplate  	* Function *
+### 7、htmlTemplate  	* Function *
 自定义 html 文本
 ```jsx
 <Label
@@ -95,8 +108,6 @@
 	percent = (percent * 100).toFixed(2) + '%';
 	// 自定义 html 模板
 	return '<span class="title" style="display: inline-block;width: 50px;">' + text + '</span><br><span style="color:' + point.color + '">' + percent + '</span>';
-    }
-  });
-chart.render();  }}
+  }
 />
 ```
