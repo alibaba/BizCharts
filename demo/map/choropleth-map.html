@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.alipay.com/bizcharts@3.0.4/umd/BizCharts.js"> </script>
-    <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -21,7 +21,7 @@
           sync: true
         },
       }
-      $.getJSON('./public/data/world.geo.json',function(mapData) {
+      $.getJSON('/BizCharts/public/data/world.geo.json',function(mapData) {
           // 绘制世界地图背景
       const ds = new DataSet();
       const worldMap = ds.createView('back')
