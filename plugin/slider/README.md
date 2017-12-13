@@ -35,7 +35,6 @@ slider $ npm run demo
 ```
 
 ## Usage
-see [demo src](https://github.com/alibaba/BizCharts/blob/slider/demo/index.js)
 see [demo](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/rain-and-flow)
 
 
