@@ -441,6 +441,10 @@ window.demoNav =[{
       title: '个性化 tooltip',
       url: './demo-detail.html?code=demo/other/cutomize-tooltip'
     }, {
+      img: 'https://img.alicdn.com/tfs/TB1Jo9bim_I8KJjy0FoXXaFnVXa-1095-542.png',
+      title: '个性化 legend',
+      url: './demo-detail.html?code=demo/other/cutomize-legend'
+    }, {
       img: 'https://img.alicdn.com/tfs/TB19hvlegDD8KJjy0FdXXcjvXXa-800-428.png',
       title: 'Kagi Chart',
       url: './demo-detail.html?code=demo/other/kagi-chart'
