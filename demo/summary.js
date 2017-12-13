@@ -258,15 +258,15 @@ window.demoNav =[{
     title: '地图',
     iconClass: 'next-icon next-icon-map next-icon-large',
     list: [{
-      img: 'https://img.alicdn.com/tfs/TB1wmDmbgnD8KJjy1XdXXaZsVXa-1600-856.png',
-      title: '中国地图',
-      url: './demo-detail.html?code=demo/map/china'
+      img: 'https://img.alicdn.com/tfs/TB1K_tUhfDH8KJjy1XcXXcpdXXa-800-428.png',
+      title: '带气泡的地图',
+      url: './demo-detail.html?code=demo/map/bubble-map'
     }, {
       img: 'https://img.alicdn.com/tfs/TB1xCDmbgnD8KJjy1XdXXaZsVXa-1600-856.png',
       title: '世界分级统计地图',
-      url: './demo-detail.html?code=demo/map/world'
+      url: './demo-detail.html?code=demo/map/choropleth-map'
     }, {
-      img: 'https://img.alicdn.com/tfs/TB1ODwibOqAXuNjy1XdXXaYcVXa-800-428.png',
+      img: 'https://img.alicdn.com/tfs/TB1Rbo_g8fH8KJjy1XbXXbLdXXa-800-428.png',
       title: '中国地图-省市下钻',
       url: './demo-detail.html?code=demo/map/drill-down'
     }]
@@ -359,6 +359,14 @@ window.demoNav =[{
       img: 'https://img.alicdn.com/tfs/TB1SubobgnD8KJjy1XdXXaZsVXa-1600-856.png',
       title: '矩形树图',
       url: './demo-detail.html?code=demo/relation/treemap'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1EINZhhPI8KJjSspfXXcCFXXa-800-428.png',
+      title: '径向系统树图',
+      url: './demo-detail.html?code=demo/relation/radial-dendrogram'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1mYdHhhrI8KJjy0FpXXb5hVXa-800-428.png',
+      title: '径向紧凑树图',
+      url: './demo-detail.html?code=demo/relation/radial-tidy-tree'
     }]
   }, 
   {
