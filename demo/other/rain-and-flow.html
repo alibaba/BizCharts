@@ -3,7 +3,7 @@
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.5/umd/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
     <script src="https://unpkg.com/bizcharts-plugin-slier@1.0.0/umd/BizCharts-plugin-slider.js"> </script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
@@ -15,7 +15,7 @@
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
       const Slider  = window['bizcharts-plugin-slider'];
-      $.getJSON('/BizCharts/public/data/rain-flow.json', data => {
+      $.getJSON('/public/data/rain-flow.json', data => {
         const ds = new DataSet({
           state: {
             start: new Date('2009/7/20 0:00').getTime(),
