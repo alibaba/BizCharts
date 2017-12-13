@@ -2,7 +2,7 @@
   <head>
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
-	  <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+	  <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
@@ -12,36 +12,35 @@
 
    <div id="c1" ></div>
    <script type="text/babel">
+      $.getJSON('/public/data/flare.json', data => {
 
-  $.getJSON('/BizCharts/public/data/flare.json', data => {
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        const { DataView } = DataSet;
 
-    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
-    const { DataView } = DataSet;
+        const ds = new DataSet();
+        const dv = ds.createView().source(data, {
+            type: 'hierarchy'
+        });
+        dv.transform({
+            type: 'hierarchy.partition'
+        });
 
-    const ds = new DataSet();
-    const dv = ds.createView().source(data, {
-        type: 'hierarchy'
-    });
-    dv.transform({
-        type: 'hierarchy.partition'
-    });
+        const realData = dv.getAllNodes().map(node => ({
+          name: node.data.name,
+          value: node.value,
+          depth: node.depth,
+          x: node.x,
+          y: node.y
+        }));
 
-    const realData = dv.getAllNodes().map(node => ({
-      name: node.data.name,
-      value: node.value,
-      depth: node.depth,
-      x: node.x,
-      y: node.y
-    }));
+        ReactDOM.render(
+          <Chart  data={realData} forceFit={true} height={window.innerHeight}  >
+            <Tooltip showTitle={false}/>
+            <Geom type='polygon' position='x*y' color='name' />
+          </Chart>, document.getElementById('c1')
+        );
 
-    ReactDOM.render(
-      <Chart  data={realData} forceFit={true} height={window.innerHeight}  >
-        <Tooltip showTitle={false}/>
-        <Geom type='polygon' position='x*y' color='name' />
-      </Chart>, document.getElementById('c1')
-    );
-
-  })
+      })
     </script>
   </body>
 </html>

@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -13,7 +13,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
-      $.getJSON('/BizCharts/public/data/diamond.json',function(data) {
+      $.getJSON('/public/data/diamond.json',function(data) {
         const { DataView } = DataSet;
         const dv = new DataView();
         dv.source(data)

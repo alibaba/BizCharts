@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -39,63 +39,63 @@
           type: 'time'
         }
       }
-  $.getJSON('/BizCharts/public/data/stock-calendar.json',function(data) {
-    const { DataView } = DataSet;
-    
-        // 获取当前月的第几周,从 0 开始
-        function getMonthWeek(date) {
-          const year = date.getFullYear();
-          const month = date.getMonth();
-          const monthFirst = new Date(year, month, 0);
-          const intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
-          const index = Math.floor((intervalDays + monthFirst.getDay()) / 7);
-          return index;
-        }
-        // 加工数据
-        // 增加涨幅、跌幅
-        // 添加所属月、周几、每个月的第几周
-        data.forEach(function(obj) {
-          const date = new Date(obj['日期']);
-          const month = date.getMonth();
-          obj.month = month;
-          obj.day = date.getDay();
-          obj.week = getMonthWeek(date).toString();
-        });
-        // 对数据进行排序
-        const dv = new DataView();
-        dv.source(data)
-          .transform({
-            type: 'sort-by',
-            fields: [ 'day' ],
-            order: 'DESC'
+    $.getJSON('/public/data/stock-calendar.json',function(data) {
+      const { DataView } = DataSet;
+      
+          // 获取当前月的第几周,从 0 开始
+          function getMonthWeek(date) {
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const monthFirst = new Date(year, month, 0);
+            const intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
+            const index = Math.floor((intervalDays + monthFirst.getDay()) / 7);
+            return index;
+          }
+          // 加工数据
+          // 增加涨幅、跌幅
+          // 添加所属月、周几、每个月的第几周
+          data.forEach(function(obj) {
+            const date = new Date(obj['日期']);
+            const month = date.getMonth();
+            obj.month = month;
+            obj.day = date.getDay();
+            obj.week = getMonthWeek(date).toString();
           });
-    ReactDOM.render((
-          <Chart height={window.innerHeight} data={dv} scale={cols} forceFit padding={[20, 120, 50, 120]}>
-            <Legend name="涨跌幅" offset={0} />
-            <Tooltip title='日期' />
-            <Axis name='day' visible={false} />
-            <Axis name='week' visible={false} />
-            <Axis name='日期' visible={false} />
-            <Facet type="list" fields={['month']} cols={3} padding={[0, 15, 30, 15]} colTitle={{
-              offsetY: -10,
-              style: {
-                fontSize: 12,
-                textAlign: 'center',
-                fill: '#666'
+          // 对数据进行排序
+          const dv = new DataView();
+          dv.source(data)
+            .transform({
+              type: 'sort-by',
+              fields: [ 'day' ],
+              order: 'DESC'
+            });
+      ReactDOM.render((
+            <Chart height={window.innerHeight} data={dv} scale={cols} forceFit padding={[20, 120, 50, 120]}>
+              <Legend name="涨跌幅" offset={0} />
+              <Tooltip title='日期' />
+              <Axis name='day' visible={false} />
+              <Axis name='week' visible={false} />
+              <Axis name='日期' visible={false} />
+              <Facet type="list" fields={['month']} cols={3} padding={[0, 15, 30, 15]} colTitle={{
+                offsetY: -10,
+                style: {
+                  fontSize: 12,
+                  textAlign: 'center',
+                  fill: '#666'
+                }
+              }}>
+              {(view) => {
+                return (
+                  <View>        
+                    <Geom type='polygon' position="day*week*日期" style={{lineWidth: 1,stroke: '#fff'}} color={['涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7']} />
+                  </View>
+                )
               }
-            }}>
-            {(view) => {
-              return (
-                <View>        
-                  <Geom type='polygon' position="day*week*日期" style={{lineWidth: 1,stroke: '#fff'}} color={['涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7']} />
-                </View>
-              )
-            }
-            }
-            </Facet>
-        </Chart>
-      ), document.getElementById("mountNode"));
-  });
+              }
+              </Facet>
+          </Chart>
+        ), document.getElementById("mountNode"));
+    });
     </script>
   </body>
 </html>

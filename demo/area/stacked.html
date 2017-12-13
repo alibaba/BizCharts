@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -13,51 +13,51 @@
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
       const data = [
-    {country: 'Asia', year: '1750', value: 502},
-    {country: 'Asia', year: '1800', value: 635},
-    {country: 'Asia', year: '1850', value: 809},
-    {country: 'Asia', year: '1900', value: 5268},
-    {country: 'Asia', year: '1950', value: 4400},
-    {country: 'Asia', year: '1999', value: 3634},
-    {country: 'Asia', year: '2050', value: 947},
-    {country: 'Africa', year: '1750', value: 106},
-    {country: 'Africa', year: '1800', value: 107},
-    {country: 'Africa', year: '1850', value: 111},
-    {country: 'Africa', year: '1900', value: 1766},
-    {country: 'Africa', year: '1950', value: 221},
-    {country: 'Africa', year: '1999', value: 767},
-    {country: 'Africa', year: '2050', value: 133},
-    {country: 'Europe', year: '1750', value: 163},
-    {country: 'Europe', year: '1800', value: 203},
-    {country: 'Europe', year: '1850', value: 276},
-    {country: 'Europe', year: '1900', value: 628},
-    {country: 'Europe', year: '1950', value: 547},
-    {country: 'Europe', year: '1999', value: 729},
-    {country: 'Europe', year: '2050', value: 408},
-    {country: 'Oceania', year: '1750', value: 200},
-    {country: 'Oceania', year: '1800', value: 200},
-    {country: 'Oceania', year: '1850', value: 200},
-    {country: 'Oceania', year: '1900', value: 460},
-    {country: 'Oceania', year: '1950', value: 230},
-    {country: 'Oceania', year: '1999', value: 300},
-    {country: 'Oceania', year: '2050', value: 300},
-  ];
-const cols = {
-  year: {
-    type: 'linear',
-    tickInterval: 50
-  }
-}
-ReactDOM.render((
-  <Chart height={window.innerHeight} data={data} scale={cols} forceFit>
-    <Axis name="year" />
-    <Axis name="value" />
-    <Legend />
-    <Tooltip crosshairs={{type:'line'}}/>
-    <Geom type="area" position="year*value" color='country' />
-    <Geom type="line" position="year*value" size={2} color='country' />
-  </Chart>
-), document.getElementById("mountNode"));
+          {country: 'Asia', year: '1750', value: 502},
+          {country: 'Asia', year: '1800', value: 635},
+          {country: 'Asia', year: '1850', value: 809},
+          {country: 'Asia', year: '1900', value: 5268},
+          {country: 'Asia', year: '1950', value: 4400},
+          {country: 'Asia', year: '1999', value: 3634},
+          {country: 'Asia', year: '2050', value: 947},
+          {country: 'Africa', year: '1750', value: 106},
+          {country: 'Africa', year: '1800', value: 107},
+          {country: 'Africa', year: '1850', value: 111},
+          {country: 'Africa', year: '1900', value: 1766},
+          {country: 'Africa', year: '1950', value: 221},
+          {country: 'Africa', year: '1999', value: 767},
+          {country: 'Africa', year: '2050', value: 133},
+          {country: 'Europe', year: '1750', value: 163},
+          {country: 'Europe', year: '1800', value: 203},
+          {country: 'Europe', year: '1850', value: 276},
+          {country: 'Europe', year: '1900', value: 628},
+          {country: 'Europe', year: '1950', value: 547},
+          {country: 'Europe', year: '1999', value: 729},
+          {country: 'Europe', year: '2050', value: 408},
+          {country: 'Oceania', year: '1750', value: 200},
+          {country: 'Oceania', year: '1800', value: 200},
+          {country: 'Oceania', year: '1850', value: 200},
+          {country: 'Oceania', year: '1900', value: 460},
+          {country: 'Oceania', year: '1950', value: 230},
+          {country: 'Oceania', year: '1999', value: 300},
+          {country: 'Oceania', year: '2050', value: 300},
+        ];
+      const cols = {
+        year: {
+          type: 'linear',
+          tickInterval: 50
+        }
+      }
+      ReactDOM.render((
+        <Chart height={window.innerHeight} data={data} scale={cols} forceFit>
+          <Axis name="year" />
+          <Axis name="value" />
+          <Legend />
+          <Tooltip crosshairs={{type:'line'}}/>
+          <Geom type="area" position="year*value" color='country' />
+          <Geom type="line" position="year*value" size={2} color='country' />
+        </Chart>
+      ), document.getElementById("mountNode"));
     </script>
   </body>
 </html>

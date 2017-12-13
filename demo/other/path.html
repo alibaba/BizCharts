@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
     <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script type="text/javascript" src="http://gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -13,39 +13,39 @@
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
       const data = [
-  {consumption: 0.65, price: 1, year: 1965},
-  {consumption: 0.66, price: 1.05, year: 1966},
-  {consumption: 0.64, price: 1.1, year: 1967},
-  {consumption: 0.63, price: 1.12, year: 1968},
-  {consumption: 0.55, price: 1.15, year: 1969},
-  {consumption: 0.57, price: 1.19, year: 1970},
-  {consumption: 0.58, price: 1.14, year: 1971},
-  {consumption: 0.59, price: 1, year: 1972},
-  {consumption: 0.57, price: 0.96, year: 1973},
-  {consumption: 0.55, price: 0.92, year: 1974},
-  {consumption: 0.54, price: 0.88, year: 1975},
-  {consumption: 0.55, price: 0.87, year: 1976},
-  {consumption: 0.42, price: 0.89, year: 1977},
-  {consumption: 0.28, price: 1, year: 1978},
-  {consumption: 0.15, price: 1.1, year: 1979}
-];
-ReactDOM.render((
-	  <Chart height={window.innerHeight} data={data} forceFit >
-    <Axis name="month" />
-    <Axis name="tem" />
-    <Tooltip 
-			title='year'
-      />
-    <Geom type='path' position='price*consumption' size={2}>
-    <Label content={['year', function(val) {
-            return val + '年';
-        }]}/>
-    </Geom>
-        <Geom type='point' position='price*consumption' size={5}
-          shape='triangle' style={{lineWidth: 1,
-            stroke: '#fff'}}/>
-  </Chart>
-), document.getElementById("mountNode"));
+        {consumption: 0.65, price: 1, year: 1965},
+        {consumption: 0.66, price: 1.05, year: 1966},
+        {consumption: 0.64, price: 1.1, year: 1967},
+        {consumption: 0.63, price: 1.12, year: 1968},
+        {consumption: 0.55, price: 1.15, year: 1969},
+        {consumption: 0.57, price: 1.19, year: 1970},
+        {consumption: 0.58, price: 1.14, year: 1971},
+        {consumption: 0.59, price: 1, year: 1972},
+        {consumption: 0.57, price: 0.96, year: 1973},
+        {consumption: 0.55, price: 0.92, year: 1974},
+        {consumption: 0.54, price: 0.88, year: 1975},
+        {consumption: 0.55, price: 0.87, year: 1976},
+        {consumption: 0.42, price: 0.89, year: 1977},
+        {consumption: 0.28, price: 1, year: 1978},
+        {consumption: 0.15, price: 1.1, year: 1979}
+      ];
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} forceFit >
+          <Axis name="month" />
+          <Axis name="tem" />
+          <Tooltip 
+            title='year'
+            />
+          <Geom type='path' position='price*consumption' size={2}>
+          <Label content={['year', function(val) {
+                  return val + '年';
+              }]}/>
+          </Geom>
+              <Geom type='point' position='price*consumption' size={5}
+                shape='triangle' style={{lineWidth: 1,
+                  stroke: '#fff'}}/>
+        </Chart>
+      ), document.getElementById("mountNode"));
     </script>
   </body>
 </html>
