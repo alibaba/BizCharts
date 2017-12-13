@@ -1,3 +1,6 @@
+# 3.0.5 (12.13, 2017)
+Synchronization to g2 3.0.1 release version.
+
 # 3.0.4 (12.04, 2017)
 fix chart invalid onPlotClick event.
 
