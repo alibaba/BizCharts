@@ -20,8 +20,8 @@
             x: { sync: true, nice: false },
             y: { sync: true, nice: false }
           }
-      $.getJSON('/public/data/world.geo.json',mapData => {
-        $.getJSON('/public/data/earthquake.json', data => {
+      $.getJSON('./public/data/world.geo.json',mapData => {
+        $.getJSON('./public/data/earthquake.json', data => {
           // data set
         const ds = new DataSet();
 

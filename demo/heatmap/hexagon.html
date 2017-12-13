@@ -22,7 +22,7 @@
                 ds.setState('sizeEncoding', false);
             }
         });
-        $.getJSON('/public/data/gaussion-distribution.json',function(data) {
+        $.getJSON('./public/data/gaussion-distribution.json',function(data) {
             const ds = new DataSet({
                 state: {
                     sizeEncoding: false

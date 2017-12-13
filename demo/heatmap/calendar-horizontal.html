@@ -81,7 +81,7 @@
       sync: true
     }
   }
-  $.getJSON('/public/data/github-commit.json',function(data) { 
+  $.getJSON('./public/data/github-commit.json',function(data) { 
     ReactDOM.render((
           <Chart height={window.innerHeight} data={data} scale={cols} forceFit padding={[ window.innerHeight / 3, 20, window.innerHeight / 3, 80]}>
             <Tooltip title='date' />

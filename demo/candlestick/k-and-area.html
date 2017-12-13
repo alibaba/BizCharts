@@ -38,7 +38,7 @@
           nice: false
         }
       }
-      $.getJSON('/BizCharts/public/data/stock-03.json',function(data) {
+      $.getJSON('./public/data/stock-03.json',function(data) {
         const dv = new DataView();
         dv.source(data)
           .transform({
