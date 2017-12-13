@@ -32,7 +32,7 @@
         'min': {alias: '最低价'},
         'range': {alias: '股票价格'}
       }
-  $.getJSON('/public/data/candle-sticks.json',function(data) {
+  $.getJSON('/BizCharts/public/data/candle-sticks.json',function(data) {
     // 设置状态量，时间格式建议转换为时间戳，转换为时间戳时请注意区间
     const ds = new DataSet({
       state: {
