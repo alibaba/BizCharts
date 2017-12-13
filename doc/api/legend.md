@@ -170,20 +170,21 @@ clickable 为 true 时生效，图例的选中模式。
   <span class="g2-legend-text">{value}</span>
 </li>
 ```
-### 4、g2-legend | g2-legend-item | ... *Object*
-当用户使用html时，可以通过向<Legend /> 组件传递 html的class名来修改模板样式；
+### 4、g2-legend | g2-legend-item | g2-legend-list-item | g2-legend-marker | g2-legend-text |  *Object*
+当用户使用html时，可以通过向<Legend /> 组件传递 html原生支持的的class名来修改模板样式；
 ```jsx
-<Legend
-  custom={true},
-  items={[
-    { value: 'waiting', fill: '#3182bd', marker: 'shape' },
-    { value: 'call', fill: '#99d8c9', marker: 'shape' },
-    { value: 'people', fill: '#fdae6b', marker: 'shape' },
-  ]}
-  onHover={ev => {}} // 自定义 hover 事件
-  onClick={ev => {}} // 自定义 click 事件
+<Legend position='bottom'
+  useHtml={true} 
+  g2-legend = {{
+    marginLeft: '100px',
+    marginTop: '-107px'
+  }}
+  g2-legend-list={{
+    border: 'none'
+  }}
 />
 ```
+demo详情，请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/cutomize-legend)
 
 ### 3、scroll *Boolean*
 当用户使用 html 的时候，超出高度或者宽度会自动换行。
