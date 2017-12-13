@@ -79,7 +79,7 @@ function sliderNeedRebuild(props, nextProps) {
   return false;
 }
 
-export default class Slider extends Component {
+class Slider extends Component {
 
   componentDidMount() {
     const slider = this.createG2Instance();
@@ -131,3 +131,6 @@ export default class Slider extends Component {
     );
   }
 }
+
+exports.default = Slider;
+module.exports = exports['default'];

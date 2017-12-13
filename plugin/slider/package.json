@@ -1,9 +1,9 @@
 {
   "name": "bizcharts-plugin-slier",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "A datazoom slider plugin for BizCharts based g2-plugin-sliber. ",
-  "main": "umd/BizCharts-plugin-slider.min.js",
-  "browser": "umd/BizCharts-plugin-slider.min.js",
+  "main": "umd/bizcharts-plugin-slider.min.js",
+  "browser": "umd/bizcharts-plugin-slider.min.js",
   "module": "es6/index",
   "jsnext:main": "es6/index",
   "files": [
