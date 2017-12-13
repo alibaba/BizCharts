@@ -13,7 +13,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, G2 } = window.BizCharts;
-      $.getJSON('/public/data/iris.json', function(data) {
+      $.getJSON('./public/data/iris.json', function(data) {
         const { DataView } = DataSet;
         const dv = new DataView().source(data);
         dv.transform({

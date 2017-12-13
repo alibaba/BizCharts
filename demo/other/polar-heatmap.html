@@ -11,30 +11,30 @@
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
-      $.getJSON('/public/data/polar-heatmap.json', (data) => {
-      ReactDOM.render((
-          <Chart height={window.innerHeight} data={data} padding={40} forceFit>
-            <Tooltip showTitle={null} />
-            <Coord type="polar" innerRadius={0.2} />
-            <Axis name="week"
-                grid={null}
-              />
-            <Axis name="time"
-                grid={null}
-                line={null}
-                label={{
-                  offset: 3,
-                  textStyle: {
-                    textAlign: 'left'
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        $.getJSON('./public/data/polar-heatmap.json', (data) => {
+        ReactDOM.render((
+            <Chart height={window.innerHeight} data={data} padding={40} forceFit>
+              <Tooltip showTitle={null} />
+              <Coord type="polar" innerRadius={0.2} />
+              <Axis name="week"
+                  grid={null}
+                />
+              <Axis name="time"
+                  grid={null}
+                  line={null}
+                  label={{
+                    offset: 3,
+                    textStyle: {
+                      textAlign: 'left'
+                    }
                   }
-                }
-                }
-              />
-            <Geom type='polygon' position="time*week" color={['value', '#BAE7FF-#1890FF-#0050B3']} tooltip='week*time*value' style={{stroke: '#ccc',lineWidth: 1}} />
-        </Chart>
-      ), document.getElementById("mountNode"));
-      });
+                  }
+                />
+              <Geom type='polygon' position="time*week" color={['value', '#BAE7FF-#1890FF-#0050B3']} tooltip='week*time*value' style={{stroke: '#ccc',lineWidth: 1}} />
+          </Chart>
+        ), document.getElementById("mountNode"));
+        });
     </script>
   </body>
 </html>

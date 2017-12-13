@@ -13,7 +13,7 @@
       <div id="mountNode" ></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
-      $.getJSON('/public/data/scatter.json', function(data){
+      $.getJSON('./public/data/scatter.json', function(data){
       ReactDOM.render((
           <Chart height={window.innerHeight} data={data} forceFit>
             <Tooltip showTitle={false} crosshairs={{type:'cross'}} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/>{value}</li>'/>

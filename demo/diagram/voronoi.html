@@ -13,29 +13,29 @@
    <div id="c1" ></div>
    <script type="text/babel">
 
-  $.getJSON('/public/data/voronoi.json', data => {
+      $.getJSON('./public/data/voronoi.json', data => {
 
-    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
-    const { DataView } = DataSet;
-    const ds = new DataSet();
-    const dv = ds.createView().source(data);
-    dv.transform({
-        type: 'diagram.voronoi',
-        fields: [ 'x', 'y' ],
-        size: [ 800, 600 ],
-        as: [ '_x', '_y' ]
-    });
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        const { DataView } = DataSet;
+        const ds = new DataSet();
+        const dv = ds.createView().source(data);
+        dv.transform({
+            type: 'diagram.voronoi',
+            fields: [ 'x', 'y' ],
+            size: [ 800, 600 ],
+            as: [ '_x', '_y' ]
+        });
 
-    ReactDOM.render(
-      <Chart  data={dv} forceFit={true} height={window.innerHeight}  >
-        <Tooltip showTitle={false}/>
-        <Geom type='polygon' position='_x*_y' color='value'>
-          <Label content='value'/>
-        </Geom>
-      </Chart>, document.getElementById('c1')
-    );
+        ReactDOM.render(
+          <Chart  data={dv} forceFit={true} height={window.innerHeight}  >
+            <Tooltip showTitle={false}/>
+            <Geom type='polygon' position='_x*_y' color='value'>
+              <Label content='value'/>
+            </Geom>
+          </Chart>, document.getElementById('c1')
+        );
 
-  })
+      })
     </script>
   </body>
 </html>
