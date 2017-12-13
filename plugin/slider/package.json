@@ -1,6 +1,6 @@
 {
   "name": "bizcharts-plugin-slier",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "A datazoom slider plugin for BizCharts based g2-plugin-sliber. ",
   "main": "umd/BizCharts-plugin-slider.min.js",
   "browser": "umd/BizCharts-plugin-slider.min.js",
@@ -50,8 +50,7 @@
     "react-addons-transition-group": "^15.0.0"
   },
   "dependencies": {
-    "@antv/g2-plugin-slider": "2.0.0",
-    "prop-types": "^15.6.0"
+    "@antv/g2-plugin-slider": "2.0.0"
   },
   "devDependencies": {
     "@antv/g2": ">= 3.0.1",
