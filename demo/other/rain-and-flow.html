@@ -15,7 +15,7 @@
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
       const Slider  = window['bizcharts-plugin-slider'];
-      $.getJSON('/public/data/rain-flow.json', data => {
+      $.getJSON('/BizCharts/public/data/rain-flow.json', data => {
         const ds = new DataSet({
           state: {
             start: new Date('2009/7/20 0:00').getTime(),
