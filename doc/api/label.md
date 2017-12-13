@@ -6,7 +6,7 @@
 `<Label ／>` 组件只能够被嵌套在 [`<Geom/>`](geom.md) 组件内,如下所示。
 ```jsx
 <Geom>
-  <Label content='sales' .../>
+  <Label content='sales' ... />
 </Geom>
 ```
 
