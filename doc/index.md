@@ -25,6 +25,8 @@
   - [Guide](/doc/api/guide.md)
   - [Facet](/doc/api/facet.md)
   - [View](/doc/api/view.md)
+- 插件
+  - [Slider](//github.com/alibaba/BizCharts/blob/slider/plugin/slider/README.md)
 - 其他
   - [scale](/doc/api/scale.md)
   - [shape](/doc/api/shape.md)
