@@ -48,6 +48,18 @@ class BaseComponent extends Component {
     );
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.context.updateElement(
+      this.name, this.id, nextProps,
+      this.context.getParentInfo(),
+      this.context.getViewId()
+    );
+  }
+
+  componentWillUnmount() {
+    this.context.deleteElement(this.name, this.id);
+  }
+
   getParentInfo = () => {
     return {
       id: this.id,
@@ -146,13 +158,41 @@ class Facet extends BaseComponent {
   }
 }
 
+class Legend extends BaseComponent {
+  static defaultProps = {
+    visible: true,
+  }
+
+  constructor(props) {
+    super(props, 'Legend');
+  }
+}
+
+class Label extends BaseComponent {
+  constructor(props) {
+    super(props, 'Label');
+  }
+
+  componentWillMount() {
+    const parentInfo = this.context.getParentInfo();
+    invariant(parentInfo.name === 'Geom', '`<Label />` must be wrapped in `<Geom />`');
+
+    this.id = this.context.createId();
+
+    this.context.addElement(
+      this.name, this.id, this.props,
+      this.context.getParentInfo(),
+      this.context.getViewId()
+    );
+  }
+
+}
+
 const Geom = generateBaseTypedComponent('Geom');
 const Axis = generateBaseTypedComponent('Axis');
 const Tooltip = generateBaseTypedComponent('Tooltip');
-const Legend = generateBaseTypedComponent('Legend');
 const Guide = generateBaseTypedComponent('Guide');
 const Coord = generateBaseTypedComponent('Coord');
-const Label = generateBaseTypedComponent('Label');
 
 
 Guide.Line = generateBaseTypedComponent('GuideLine');

@@ -62,7 +62,7 @@ export default class PureChart extends Component {
   }
 
   componentDidUpdate() {
-    this.updateElement(this.cId, this.props);
+    this.updateElement(this.name, this.cId, this.props);
     const newChart = this.g2Processor.batchedUpdate();
     if (this.chart !== newChart) {
       this.chart = newChart;
@@ -94,8 +94,8 @@ export default class PureChart extends Component {
     return this.g2Processor.addElement(name, id, props, parentInfo, viewId);
   }
 
-  updateElement = (name, id, props, parentInfo) => {
-    this.g2Processor.updateElement(name, id, props, parentInfo);
+  updateElement = (name, id, props, parentInfo, viewId) => {
+    this.g2Processor.updateElement(name, id, props, parentInfo, viewId);
   }
 
   deleteElement = (name, id, parentInfo) => {

@@ -1,4 +1,4 @@
-import Interface from 'interface-es6';
+import interfaceEs6 from 'interface-es6';
 import { Util } from '../shared';
 
 function mix(obj1, obj2) {
@@ -14,7 +14,7 @@ function mix(obj1, obj2) {
   return Util.mix(obj1, obj2);
 }
 
-const iAdd = Interface({
+const iAdd = interfaceEs6({
   getConfigContainer(vId) {
     let viewContainer = this.config;
 
@@ -120,7 +120,7 @@ const iAdd = Interface({
     return this.addUniqueElement('guide', props, id, vId);
   },
 
-  addGuideInstance(name, props, id, vId, parentInfo) {
+  addTypedGuide(name, props, id, vId, parentInfo) {
     const configContainer = this.getConfigContainer(vId);
     let guide = configContainer.guide;
     if (!guide) {
@@ -137,27 +137,27 @@ const iAdd = Interface({
   },
 
   addGuideLine(props, id, vId, parentInfo) {
-    this.addGuideInstance('line', props, id, vId, parentInfo);
+    this.addTypedGuide('line', props, id, vId, parentInfo);
   },
 
   addGuideImage(props, id, vId, parentInfo) {
-    this.addGuideInstance('image', props, id, vId, parentInfo);
+    this.addTypedGuide('image', props, id, vId, parentInfo);
   },
 
   addGuideText(props, id, vId, parentInfo) {
-    this.addGuideInstance('text', props, id, vId, parentInfo);
+    this.addTypedGuide('text', props, id, vId, parentInfo);
   },
 
   addGuideRegion(props, id, vId, parentInfo) {
-    this.addGuideInstance('region', props, id, vId, parentInfo);
+    this.addTypedGuide('region', props, id, vId, parentInfo);
   },
 
   addGuideHtml(props, id, vId, parentInfo) {
-    this.addGuideInstance('html', props, id, vId, parentInfo);
+    this.addTypedGuide('html', props, id, vId, parentInfo);
   },
 
   addGuideArc(props, id, vId, parentInfo) {
-    this.addGuideInstance('arc', props, id, vId, parentInfo);
+    this.addTypedGuide('arc', props, id, vId, parentInfo);
   },
 
 });
