@@ -3,6 +3,8 @@
 import warning from 'warning';
 import { Util, Prop } from '../shared';
 import common from './common';
+import g2Creator from './g2Creator';
+import iMerge from './merge';
 
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
@@ -15,6 +17,7 @@ const iUpdate = {
     this.updateCoord(chart, config, nextConfig);
     this.updateLegends(chart, config.legends, nextConfig.legends);
     this.updateGeoms(chart, config.geoms, nextConfig.geoms);
+    this.updateGuide(chart, config.guide, nextConfig.guide);
   },
 
   updateAxis(chart, props, nextProps) {
@@ -120,9 +123,6 @@ const iUpdate = {
       return;
     }
 
-    console.log(props);
-    console.log(nextProps);
-
     const { content, ...others } = props;
     const { content: nextContent, ...nextOthers } = nextProps;
 
@@ -167,7 +167,6 @@ const iUpdate = {
 
     if (Util.length(geoms) !== Util.length(nextGeoms)) {
       console.log('error !!!, update geoms length not equal');
-      // return;
     }
 
     for (const id in geoms) {
@@ -178,6 +177,43 @@ const iUpdate = {
     }
 
     return false;
+  },
+
+  isTypedGuideChanged(chart, props, nextProps) {
+    if (!Util.shallowEqual(props, nextProps)) {
+      return true;
+    }
+
+    return false;
+  },
+
+  updateGuide(chart, guide, nextGuide) {
+    if (guide == null || nextGuide == null) {
+      return;
+    }
+
+    const guides = guide.elements;
+    const nextGuides = nextGuide.elements;
+    let needRebuildGuide = false;
+
+    if ((guides && !nextGuides) || (guides.length !== nextGuides.length)) {
+      needRebuildGuide = true;
+    } else {
+      for (const id in guides) {
+        if (Object.prototype.hasOwnProperty.call(guides, id)) {
+          if (this.isTypedGuideChanged(guides[id], nextGuides[id])) {
+            needRebuildGuide = true;
+            break;
+          }
+        }
+      }
+    }
+
+    if (needRebuildGuide) {
+      iMerge.mergeGuide(guide, nextGuide, true);
+      chart.guide().clear();
+      g2Creator.guide(chart, guide);
+    }
   },
 
 };

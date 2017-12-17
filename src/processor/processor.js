@@ -92,7 +92,7 @@ export default class Processor extends iAdd() {
     g2Creator.tooltip(chart, this.config);
     g2Creator.geoms(chart, this.config);
     g2Creator.views(chart, this.config);
-    g2Creator.guide(chart, this.config);
+    g2Creator.guide(chart, this.config.guide);
     g2Creator.facet(chart, this.config);
 
     chart.render();
@@ -136,6 +136,7 @@ export default class Processor extends iAdd() {
     this.deleted = false;
     this.updated = false;
     this.updateConfig = {};
+    iMerge.merge(this.addConfig, this.updateConfig, false);
 
     return this.chart;
   }

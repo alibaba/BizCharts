@@ -169,13 +169,13 @@ export default {
     this.coord(view, viewConfig);
     this.axises(view, viewConfig);
     this.geoms(view, viewConfig);
-    this.guide(view, viewConfig);
+    this.guide(view, viewConfig.guide);
   },
 
-  guide(chart, config) {
-    if (!config.guide) { return; }
+  guide(chart, guide) {
+    if (!guide) { return; }
 
-    const guides = config.guide.elements;
+    const guides = guide.elements;
 
     for (const id in guides) {
       if (Object.prototype.hasOwnProperty.call(guides, id)) {
@@ -204,7 +204,7 @@ export default {
     this.tooltip(chart, config);
     this.geoms(chart, config);
     this.views(chart, config);
-    this.guide(chart, config);
+    this.guide(chart, config.guide);
     this.facet(chart, config);
   },
 

@@ -14,7 +14,7 @@ const iMerge = {
     const axises = config.axises;
     const nextAxises = nextConfig.axises;
 
-    if (axises == null && nextAxises == null) {
+    if (axises == null || nextAxises == null) {
       return;
     }
 
@@ -51,7 +51,7 @@ const iMerge = {
   },
 
   mergeLegends(legends, nextLegends, clear) {
-    if (legends == null && nextLegends == null) {
+    if (legends == null || nextLegends == null) {
       return;
     }
 
@@ -68,7 +68,7 @@ const iMerge = {
   },
 
   mergeGeoms(geoms, nextGeoms, clear) {
-    if (geoms == null && nextGeoms == null) {
+    if (geoms == null || nextGeoms == null) {
       return false;
     }
 
@@ -79,6 +79,32 @@ const iMerge = {
           nextGeoms[id].g2Instance = geoms[id].g2Instance;
         }
         geoms[id] = nextGeoms[id];
+      }
+    }
+
+    return false;
+  },
+
+  mergeGuide(guide, nextGuide, clear) {
+    if (guide == null || nextGuide == null) {
+      return false;
+    }
+
+    const guides = guide.elements;
+    let nextGuides = nextGuide.elements;
+    if (nextGuides == null) nextGuides = {};
+    for (const id in guides) {
+      if (Object.prototype.hasOwnProperty.call(guides, id)
+      && Object.prototype.hasOwnProperty.call(nextGuides, id)) {
+        if (clear) {
+          guides[id] = nextGuides[id];
+        } else {
+          nextGuides[id].g2Instance = guides[id].g2Instance;
+        }
+      } else {
+        if (clear) {
+          delete guides[id].g2Instance;
+        }
       }
     }
 

@@ -31,6 +31,15 @@ const iDelete = {
   deleteLabel() {
     return true;
   },
+
+  deleteGuide(chart, config) {
+    delete config.guide;
+    chart.guide().clear();
+  },
+
+  deleteGuideLine(chart, config, id) {
+    delete config.guide.elements[id];
+  },
 };
 
 export default iDelete;
