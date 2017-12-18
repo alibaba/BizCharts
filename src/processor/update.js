@@ -11,7 +11,7 @@ const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 
 
 const iUpdate = {
-  update(chart, config, nextConfig) {
+  synchronizeG2Update(chart, config, nextConfig) {
     this.updateAxises(chart, config.axises, nextConfig.axises);
     this.updateTooltip(chart, config, nextConfig);
     this.updateCoord(chart, config, nextConfig);

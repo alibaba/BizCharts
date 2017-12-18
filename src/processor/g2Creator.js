@@ -197,7 +197,7 @@ export default {
     facetConfig.g2Instance = chart.facet(type, others);
   },
 
-  addUpdate(chart, config) {
+  synchronizeG2Add(chart, config) {
     this.coord(chart, config);
     this.axises(chart, config);
     this.legends(chart, config);

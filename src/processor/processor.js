@@ -93,7 +93,7 @@ export default class Processor extends iAdd() {
     return chart;
   }
 
-  rebuildChart() {
+  reExecuteChart() {
     this.chart.clear();
     iMerge.merge(this.addConfig, this.updateConfig, true);
     g2Creator.addUpdate(this.chart, this.addConfig);
@@ -110,7 +110,7 @@ export default class Processor extends iAdd() {
     this.chart = null;
   }
 
-  needRebuild() {
+  needReExecute() {
     const elementInfos = this.elementInfos;
     return Object.keys(this.deleteInfos).find((id) => {
       return deleteRebuildElements[elementInfos[id].name] && !elementInfos[id].viewId;
@@ -119,18 +119,18 @@ export default class Processor extends iAdd() {
 
   batchedUpdate() {
     if (this.chart == null) return null;
-    if (this.needRebuild()) {
-      this.rebuildChart();
+    if (this.needReExecute()) {
+      this.reExecuteChart();
       return this.chart;
     }
 
     iDelete.synchronizeG2Delete(this.chart, this.addConfig, this.deleteInfos, this.elementInfos);
 
     if (this.added) {
-      g2Creator.addUpdate(this.chart, this.addConfig);
+      g2Creator.synchronizeG2Add(this.chart, this.addConfig);
     }
     if (this.updated) {
-      iUpdate.update(this.chart, this.addConfig, this.updateConfig);
+      iUpdate.synchronizeG2Update(this.chart, this.addConfig, this.updateConfig);
     }
     if (this.added || this.updated) {
       this.chart.repaint();
