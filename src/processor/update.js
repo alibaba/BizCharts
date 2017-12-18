@@ -253,6 +253,8 @@ const iUpdate = {
     const views = config.views;
     const nextViews = nextConfig.views;
 
+    if (!views || !nextViews) return;
+
     for (const id in views) {
       if (Object.prototype.hasOwnProperty.call(views, id)
         && Object.prototype.hasOwnProperty.call(nextViews, id)

@@ -23,23 +23,9 @@ const addFuncMap = {
   Facet: 'addFacet',
 };
 
-const deleteFuncMap = {
-  Chart: 'deleteChart',
-  Coord: 'deleteCoord',
-  Geom: 'deleteGeom',
-  Axis: 'deleteAxis',
-  Tooltip: 'deleteTooltip',
-  Legend: 'deleteLegend',
-  Label: 'deleteLabel',
-  View: 'deleteView',
-  Guide: 'deleteGuide',
-  GuideLine: 'deleteGuideLine',
-  GuideImage: 'deleteGuideImage',
-  GuideText: 'deleteGuideText',
-  GuideRegion: 'deleteGuideRegion',
-  GuideHtml: 'deleteGuideHtml',
-  GuideArc: 'deleteGuideArc',
-  Facet: 'deleteFacet',
+const deleteRebuildElements = {
+  Geom: true,
+  Label: true,
 };
 
 export default class Processor extends iAdd() {
@@ -48,40 +34,44 @@ export default class Processor extends iAdd() {
     this.config = null;
     this.addConfig = {};
     this.updateConfig = {};
+    this.elementInfos = {};
     this.idToName = {};
     this.added = false;
+    this.initedG2 = false;
     this.updated = false;
-    this.deleted = false;
-    this.rebuild = false;
+    this.deleteInfos = {};
   }
 
   addElement(name, id, props, parentInfo, viewId) {
-    console.log('add element', name);
+    if (!this.chart && this.initedG2) return;
     this.added = true;
     this.config = this.addConfig;
-    this.idToName[id] = name;
+    this.elementInfos[id] = {
+      id,
+      viewId,
+      parentInfo,
+      name,
+    };
     if (parentInfo) {
-      this.idToName[parentInfo.id] = parentInfo.name;
+      this.elementInfos[parentInfo.id] = {
+        id: parentInfo.id,
+        name: parentInfo.name,
+      };
     }
 
     this[addFuncMap[name]](props, id, viewId, parentInfo);
   }
 
   updateElement(name, id, props, parentInfo, viewId) {
-    console.log('update element', name, props);
     this.updated = true;
     this.config = this.updateConfig;
     this[addFuncMap[name]](props, id, viewId, parentInfo);
   }
 
   deleteElement(name, id) {
-    if (this.chart == null) return;
-    console.log('delete element', name);
-    this.deleted = true;
-    if (iDelete[deleteFuncMap[name]] == null) return;
-    if (iDelete[deleteFuncMap[name]](this.chart, this.addConfig, id)) {
-      this.rebuild = true;
-    }
+    if (!this.chart) return;
+
+    this.deleteInfos[id] = id;
   }
 
   createG2Instance() {
@@ -99,6 +89,7 @@ export default class Processor extends iAdd() {
     chart.render();
 
     this.chart = chart;
+    this.initedG2 = true;
     return chart;
   }
 
@@ -108,10 +99,8 @@ export default class Processor extends iAdd() {
     g2Creator.addUpdate(this.chart, this.addConfig);
     this.chart.repaint();
     this.added = false;
-    this.deleted = false;
     this.updated = false;
     this.updateConfig = {};
-    this.rebuild = false;
 
     return this.chart;
   }
@@ -121,22 +110,33 @@ export default class Processor extends iAdd() {
     this.chart = null;
   }
 
+  needRebuild() {
+    const elementInfos = this.elementInfos;
+    return Object.keys(this.deleteInfos).find((id) => {
+      return deleteRebuildElements[elementInfos[id].name] && !elementInfos[id].viewId;
+    });
+  }
+
   batchedUpdate() {
-    if (this.rebuild) {
-      return this.rebuildChart();
+    if (this.chart == null) return null;
+    if (this.needRebuild()) {
+      this.rebuildChart();
+      return this.chart;
     }
+
+    iDelete.synchronizeG2Delete(this.chart, this.addConfig, this.deleteInfos, this.elementInfos);
+
     if (this.added) {
       g2Creator.addUpdate(this.chart, this.addConfig);
     }
     if (this.updated) {
       iUpdate.update(this.chart, this.addConfig, this.updateConfig);
     }
-    if (this.deleted || this.updated) {
+    if (this.added || this.updated) {
       this.chart.repaint();
     }
-    iMerge.merge(this.addConfig, this.updateConfig, false);    
+    iMerge.merge(this.addConfig, this.updateConfig, false);
     this.added = false;
-    this.deleted = false;
     this.updated = false;
     this.updateConfig = {};
 
