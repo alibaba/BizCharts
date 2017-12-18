@@ -152,8 +152,12 @@ export default class PureChart extends Component {
       chart.filter(nextFilter);
     }
 
-    if (width !== nextWidth || height !== nextHeight) {
+    if (width !== nextWidth && height !== nextHeight) {
       chart.changeSize(nextWidth, nextHeight);
+    } else if (width !== nextWidth) {
+      chart.changeWidth(nextWidth)
+    } else if (height !== nextHeight) {
+      chart.changeHeight(nextHeight)
     }
 
     GEvent.updateEvents(chart, chartEvents, props, nextProps);
