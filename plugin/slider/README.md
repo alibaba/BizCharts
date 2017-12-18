@@ -1,4 +1,6 @@
-# bizcharts-plugin-slier
+![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts-plugin-slider.svg)](https://www.npmjs.com/package/bizcharts)[![NPM Downloads](https://img.shields.io/npm/dm/bizcharts-plugin-slider.svg)](https://npmjs.org/package/bizcharts)
+
+# bizcharts-plugin-slider
 
 A datazoom slider plugin for BizCharts base g2-plugin-slider.
 
@@ -8,12 +10,12 @@ Please make sure BizCharts has been already loaded.
 
 ### npm
 ```sh
-$ npm install bizcharts-plugin-slier
+$ npm install bizcharts-plugin-slider
 ```
 
 ### html
 ```html
-<script src=https://unpkg.com/bizcharts-plugin-slier@1.0.0/umd/BizCharts-plugin-slider.js"> </script>
+<script src=https://unpkg.com/bizcharts-plugin-slider@1.0.0/umd/BizCharts-plugin-slider.js"> </script>
 ```
 
 ### dev build
