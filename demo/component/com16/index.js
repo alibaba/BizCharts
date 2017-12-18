@@ -9,9 +9,9 @@ export default class LineChart extends Component {
     return (
       <div className='line-charts'>
         <div className='line-chart-basic'>
-          {/* <Basic />
-          <ViewChart /> */}
-          <GuideChart />
+          {/* <Basic /> */}
+          <ViewChart />
+          {/* <GuideChart /> */}
         </div>
       </div>
     );

@@ -38,6 +38,23 @@ dv1.source(data).transform({
 });
 
 export default class PieC extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLabel: true,
+      lineWidth : 1,
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        showLabel: true,
+        lineWidth: 15,
+      });
+    }, 2000);
+  }
   
   render() {
     return (
@@ -76,10 +93,12 @@ export default class PieC extends Component {
               value: percent
             };
           }]}
-          style={{lineWidth: 1,stroke: '#fff'}}
+          style={{lineWidth: this.state.lineWidth, stroke: '#fff'}}
           select={false}
         >
-        <Label content='name'/>
+        {
+         this.state.showLabel ? <Label content='name'/> : null
+        }
       </Geom>
     </View>
   </Chart>
