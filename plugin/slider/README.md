@@ -15,7 +15,7 @@ $ npm install bizcharts-plugin-slider
 
 ### html
 ```html
-<script src=https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/BizCharts-plugin-slider.js"> </script>
+<script src=https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/bizcharts-plugin-slider.js"> </script>
 ```
 
 ### dev build
