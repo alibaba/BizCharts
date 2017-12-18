@@ -40,6 +40,7 @@ const iDelete = {
   deleteGuideLine(chart, config, id) {
     delete config.guide.elements[id];
   },
+
 };
 
 export default iDelete;

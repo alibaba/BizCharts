@@ -5,9 +5,10 @@ const iMerge = {
   merge(config, nextConfig, clear) {
     this.mergeAxises(config, nextConfig, clear);
     this.mergeCoord(config, nextConfig, clear);
-    this.mergeGeoms(config, nextConfig, clear);
-    this.mergeLegends(config, nextConfig, clear);
+    this.mergeGeoms(config.geoms, nextConfig.geoms, clear);
+    this.mergeLegends(config.legends, nextConfig.legends, clear);
     this.mergeTooltip(config, nextConfig, clear);
+    this.mergeViews(config, nextConfig, clear);
   },
 
   mergeAxises(config, nextConfig, clear) {
@@ -109,6 +110,27 @@ const iMerge = {
     }
 
     return false;
+  },
+
+  mergeView(view, nextView, clear) {
+    // merge self
+
+    this.mergeCoord(view, nextView);
+    this.mergeAxises(view, nextView);
+    this.mergeGeoms(view.geoms, nextView.geoms);
+    this.mergeGuide(view.guide, nextView.guide);
+  },
+
+  mergeViews(views, nextViews, clear) {
+    if (views == null || nextViews == null) return;
+
+    for (const id in views) {
+      if (Object.prototype.hasOwnProperty.call(views, id)
+        && Object.prototype.hasOwnProperty.call(nextViews, id)
+      ) {
+        this.mergeView(views[id], nextViews[id], clear);
+      }
+    }
   },
 
 };

@@ -18,6 +18,7 @@ const iUpdate = {
     this.updateLegends(chart, config.legends, nextConfig.legends);
     this.updateGeoms(chart, config.geoms, nextConfig.geoms);
     this.updateGuide(chart, config.guide, nextConfig.guide);
+    this.updateViews(chart, config, nextConfig);
   },
 
   updateAxis(chart, props, nextProps) {
@@ -213,6 +214,51 @@ const iUpdate = {
       iMerge.mergeGuide(guide, nextGuide, true);
       chart.guide().clear();
       g2Creator.guide(chart, guide);
+    }
+  },
+
+  updateView(chart, props, nextProps) {
+    if (props == null || nextProps == null) { return; }
+    const view = props.g2Instance;
+    /*
+       Others object must exclude geoms property.
+       Because geoms property will cover the g2 view' inner geoms property.
+    */
+    const { scale, data, animate, axis } = props;
+    const { scale: nextScale, animate: nextAnimate, data: nextData, axis: nextAxis } = nextProps;
+
+    if (animate !== nextAnimate) {
+      view.animate(nextAnimate);
+    }
+
+    if (data !== nextData) {
+      view.changeData(data);
+    }
+
+    if (!Util.shallowEqual(scale, nextScale)) {
+      view.scale(nextScale);
+    }
+
+    if (axis !== nextAxis) {
+      view.axis(nextAxis);
+    }
+
+    this.updateCoord(view, props, nextProps);
+    this.updateAxises(view, props.axises, nextProps.axises);
+    this.updateGeoms(view, props.geoms, nextProps.geoms);
+    this.updateGuide(view, props.guide, nextProps.guide);
+  },
+
+  updateViews(chart, config, nextConfig) {
+    const views = config.views;
+    const nextViews = nextConfig.views;
+
+    for (const id in views) {
+      if (Object.prototype.hasOwnProperty.call(views, id)
+        && Object.prototype.hasOwnProperty.call(nextViews, id)
+      ) {
+        this.updateView(chart, views[id], nextViews[id]);
+      }
     }
   },
 

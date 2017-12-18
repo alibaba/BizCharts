@@ -75,6 +75,7 @@ export default class Processor extends iAdd() {
   }
 
   deleteElement(name, id) {
+    if (this.chart == null) return;
     console.log('delete element', name);
     this.deleted = true;
     if (iDelete[deleteFuncMap[name]] == null) return;
@@ -117,6 +118,7 @@ export default class Processor extends iAdd() {
 
   destory() {
     this.chart.destroy();
+    this.chart = null;
   }
 
   batchedUpdate() {
@@ -132,11 +134,11 @@ export default class Processor extends iAdd() {
     if (this.deleted || this.updated) {
       this.chart.repaint();
     }
+    iMerge.merge(this.addConfig, this.updateConfig, false);    
     this.added = false;
     this.deleted = false;
     this.updated = false;
     this.updateConfig = {};
-    iMerge.merge(this.addConfig, this.updateConfig, false);
 
     return this.chart;
   }
