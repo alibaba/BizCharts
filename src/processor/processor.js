@@ -23,9 +23,10 @@ const addFuncMap = {
   Facet: 'addFacet',
 };
 
-const deleteRebuildElements = {
+const reExecuteDeleteElements = {
   Geom: true,
   Label: true,
+  Facet: true,
 };
 
 export default class Processor extends iAdd() {
@@ -93,18 +94,6 @@ export default class Processor extends iAdd() {
     return chart;
   }
 
-  reExecuteChart() {
-    this.chart.clear();
-    iMerge.merge(this.addConfig, this.updateConfig, true);
-    g2Creator.addUpdate(this.chart, this.addConfig);
-    this.chart.repaint();
-    this.added = false;
-    this.updated = false;
-    this.updateConfig = {};
-
-    return this.chart;
-  }
-
   destory() {
     this.chart.destroy();
     this.chart = null;
@@ -113,12 +102,44 @@ export default class Processor extends iAdd() {
   needReExecute() {
     const elementInfos = this.elementInfos;
     return Object.keys(this.deleteInfos).find((id) => {
-      return deleteRebuildElements[elementInfos[id].name] && !elementInfos[id].viewId;
+      return reExecuteDeleteElements[elementInfos[id].name] && !elementInfos[id].viewId;
     });
+  }
+
+  resetStates() {
+    this.added = false;
+    this.updated = false;
+    this.updateConfig = {};
+    this.deleteInfos = {};
+  }
+
+  reExecuteChart() {
+    this.chart.clear();
+    iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, true);
+    iUpdate.updateChart(this.chart, this.addConfig.chart, this.updateConfig.chart);
+    g2Creator.synchronizeG2Add(this.chart, this.addConfig);
+    this.chart.repaint();
+    this.resetStates();
+    return this.chart;
+  }
+
+  needRebuild() {
+    return false;
+  }
+
+  rebuildChart() {
+
   }
 
   batchedUpdate() {
     if (this.chart == null) return null;
+    if (iUpdate.needRebuildChart(this.addConfig, this.updateConfig)) {
+      iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, true);
+      this.chart.destroy();
+      this.chart = 'destroy';
+
+      return this.createG2Instance();
+    }
     if (this.needReExecute()) {
       this.reExecuteChart();
       return this.chart;
@@ -135,10 +156,8 @@ export default class Processor extends iAdd() {
     if (this.added || this.updated) {
       this.chart.repaint();
     }
-    iMerge.merge(this.addConfig, this.updateConfig, false);
-    this.added = false;
-    this.updated = false;
-    this.updateConfig = {};
+    iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, false);
+    this.resetStates();
 
     return this.chart;
   }

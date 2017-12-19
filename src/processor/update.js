@@ -9,9 +9,23 @@ import iMerge from './merge';
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 
-
 const iUpdate = {
+  needRebuildChart(config, nextConfig) {
+    if (config.chart == null || nextConfig.chart == null) return false;
+    const chartProps = config.chart;
+    const nextChartProps = nextConfig.chart;
+
+    if (!Util.shallowEqual(chartProps.padding, nextChartProps.padding)
+      || !Util.shallowEqual(chartProps.background, nextChartProps.background)
+      || !Util.shallowEqual(chartProps.plotBackground, nextChartProps.plotBackground)
+      || !Util.shallowEqual(chartProps.pixelRatio, nextChartProps.pixelRatio)
+    ) return true;
+
+    return false;
+  },
+
   synchronizeG2Update(chart, config, nextConfig) {
+    this.updateChart(chart, config.chart, nextConfig.chart);
     this.updateAxises(chart, config.axises, nextConfig.axises);
     this.updateTooltip(chart, config, nextConfig);
     this.updateCoord(chart, config, nextConfig);
@@ -19,6 +33,37 @@ const iUpdate = {
     this.updateGeoms(chart, config.geoms, nextConfig.geoms);
     this.updateGuide(chart, config.guide, nextConfig.guide);
     this.updateViews(chart, config, nextConfig);
+    this.updateFacet(chart, config, nextConfig);
+  },
+
+  updateChart(chart, props, nextProps) {
+    const { width, height, animate, data, scale } = props;
+    const { width: nextWidth, height: nextHeight, animate: nextAnimate, data: nextData,
+    scale: nextScale } = nextProps;
+
+    if (data !== nextData) {
+      chart.changeData(nextData);
+    }
+
+    if (!Util.shallowEqual(scale, nextScale)) {
+      if (Util.isArray(nextScale)) {
+        chart.scale(nextScale[0], nextScale[1]);
+      } else {
+        chart.scale(nextScale);
+      }
+    }
+
+    if (animate !== nextAnimate) {
+      chart.animate(nextAnimate);
+    }
+
+    if (width !== nextWidth && height !== nextHeight) {
+      chart.changeSize(nextWidth, nextHeight);
+    } else if (width !== nextWidth) {
+      chart.changeWidth(nextWidth);
+    } else if (height !== nextHeight) {
+      chart.changeHeight(nextHeight);
+    }
   },
 
   updateAxis(chart, props, nextProps) {
@@ -261,6 +306,19 @@ const iUpdate = {
       ) {
         this.updateView(chart, views[id], nextViews[id]);
       }
+    }
+  },
+
+  updateFacet(chart, config, nextConfig) {
+    const props = config.facet;
+    const nextProps = nextConfig.facet;
+    if (props == null || nextProps == null) return;
+
+    const { children, type, ...others } = props;
+    const { children: nextChildren, type: nextType, ...nextOthers } = nextProps;
+
+    if (type !== nextType || !Util.shallowEqual(others, nextOthers)) {
+      props.g2Instance = chart.facet(nextType, nextOthers);
     }
   },
 

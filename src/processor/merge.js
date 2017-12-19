@@ -1,14 +1,94 @@
 
-// import interfaceEs6 from 'interface-es6';
+import { Util } from '../shared';
+
+const notViewSelfProps = ['axises', 'coord', 'geoms', 'guide', 'children'];
+
+const deleteFuncMap = {
+  Chart: 'deleteChart',
+  Coord: 'deleteCoord',
+  Geom: 'deleteGeom',
+  Axis: 'deleteAxis',
+  Tooltip: 'deleteTooltip',
+  Legend: 'deleteLegend',
+  Label: 'deleteLabel',
+  View: 'deleteView',
+  Guide: 'deleteGuide',
+  GuideLine: 'deleteTypedGuide',
+  GuideImage: 'deleteTypedGuide',
+  GuideText: 'deleteTypedGuide',
+  GuideRegion: 'deleteTypedGuide',
+  GuideHtml: 'deleteTypedGuide',
+  GuideArc: 'deleteTypedGuide',
+  Facet: 'deleteFacet',
+};
 
 const iMerge = {
-  merge(config, nextConfig, clear) {
+  merge(config, nextConfig, deleteInfos, elementInfos, clear) {
+    this.mergeDelete(config, deleteInfos, elementInfos);
+    this.mergeUpdate(config, nextConfig, clear);
+  },
+
+  mergeDelete(config, deleteInfos, elementInfos) {
+    console.log(this);
+    Object.keys(deleteInfos).forEach((id) => {
+      const funName = deleteFuncMap[elementInfos[id].name];
+      console.log(this);
+      if (this[funName]) {
+        this[funName](config, id);
+      }
+    });
+  },
+
+  deleteAxis(config, id) {
+    delete config.axises[id];
+  },
+
+  deleteTooltip(config) {
+    delete config.tooltip;
+  },
+
+  deleteCoord(config) {
+    delete config.coord;
+  },
+
+  deleteLegend(config, id) {
+    delete config.legends[id];
+  },
+
+  deleteGuide(config) {
+    delete config.guide;
+  },
+
+  deleteTypedGuide(config, id) {
+    delete config.guide.elements[id];
+  },
+
+  deleteView(config, id) {
+    delete config.views[id];
+  },
+
+  deleteFacet(config) {
+    delete config.facet;
+  },
+
+  mergeUpdate(config, nextConfig, clear) {
     this.mergeAxises(config, nextConfig, clear);
     this.mergeCoord(config, nextConfig, clear);
     this.mergeGeoms(config.geoms, nextConfig.geoms, clear);
     this.mergeLegends(config.legends, nextConfig.legends, clear);
     this.mergeTooltip(config, nextConfig, clear);
     this.mergeViews(config, nextConfig, clear);
+  },
+
+  mergeChart(config, nextConfig, clear) {
+    if (nextConfig.chart) {
+      if (!clear) {
+        nextConfig.chart.g2Instance = config.chart.g2Instance;
+      }
+      config.chart = nextConfig.chart;
+    } else if (clear) {
+      delete config.chart.g2Instance;
+    }
   },
 
   mergeAxises(config, nextConfig, clear) {
@@ -20,13 +100,13 @@ const iMerge = {
     }
 
     for (const id in axises) {
-      if (Object.prototype.hasOwnProperty.call(axises, id)
-        && Object.prototype.hasOwnProperty.call(nextAxises, id)
-      ) {
+      if (nextAxises[id]) {
         if (!clear) {
           nextAxises[id].g2Instance = axises[id].g2Instance;
         }
         axises[id] = nextAxises[id];
+      } else if (clear) {
+        delete axises[id].g2Instance;
       }
     }
 
@@ -39,6 +119,8 @@ const iMerge = {
         nextConfig.tooltip.g2Instance = config.tooltip.g2Instance;
       }
       config.tooltip = nextConfig.tooltip;
+    } else if (config.tooltip && clear) {
+      delete config.tooltip.g2Instance;
     }
   },
 
@@ -48,87 +130,83 @@ const iMerge = {
         nextConfig.coord.g2Instance = config.coord.g2Instance;
       }
       config.coord = nextConfig.coord;
+    } else if (config.coord && clear) {
+      delete config.coord.g2Instance;
     }
   },
 
   mergeLegends(legends, nextLegends, clear) {
-    if (legends == null || nextLegends == null) {
-      return;
-    }
+    if (!legends) return;
 
     for (const id in legends) {
-      if (Object.prototype.hasOwnProperty.call(legends, id)
-      && Object.prototype.hasOwnProperty.call(nextLegends, id)
-      ) {
+      if (nextLegends && nextLegends[id]) {
         if (!clear) {
           nextLegends[id].g2Instance = legends[id].g2Instance;
         }
         legends[id] = nextLegends[id];
+      } else if (clear) {
+        delete legends[id].g2Instance;
       }
     }
   },
 
   mergeGeoms(geoms, nextGeoms, clear) {
-    if (geoms == null || nextGeoms == null) {
-      return false;
-    }
+    if (geoms == null) return;
 
     for (const id in geoms) {
-      if (Object.prototype.hasOwnProperty.call(geoms, id)
-      && Object.prototype.hasOwnProperty.call(nextGeoms, id)) {
+      if (nextGeoms && nextGeoms[id]) {
         if (!clear) {
           nextGeoms[id].g2Instance = geoms[id].g2Instance;
         }
         geoms[id] = nextGeoms[id];
+      } else if (clear) {
+        delete geoms[id].g2Instance;
       }
     }
-
-    return false;
   },
 
   mergeGuide(guide, nextGuide, clear) {
-    if (guide == null || nextGuide == null) {
-      return false;
-    }
+    if (guide == null) return;
 
     const guides = guide.elements;
     let nextGuides = nextGuide.elements;
     if (nextGuides == null) nextGuides = {};
     for (const id in guides) {
-      if (Object.prototype.hasOwnProperty.call(guides, id)
-      && Object.prototype.hasOwnProperty.call(nextGuides, id)) {
+      if (nextGuides[id]) {
         if (clear) {
           guides[id] = nextGuides[id];
         } else {
           nextGuides[id].g2Instance = guides[id].g2Instance;
         }
-      } else {
-        if (clear) {
-          delete guides[id].g2Instance;
-        }
+      } else if (clear) {
+        delete guides[id].g2Instance;
       }
     }
-
-    return false;
   },
 
   mergeView(view, nextView, clear) {
     // merge self
+    const nextViewProps = Util.without(nextView, notViewSelfProps);
 
-    this.mergeCoord(view, nextView);
-    this.mergeAxises(view, nextView);
-    this.mergeGeoms(view.geoms, nextView.geoms);
-    this.mergeGuide(view.guide, nextView.guide);
+    Util.mix(view, nextViewProps);
+
+    this.mergeCoord(view, nextView, clear);
+    this.mergeAxises(view, nextView, clear);
+    this.mergeGeoms(view.geoms, nextView.geoms, clear);
+    this.mergeGuide(view.guide, nextView.guide, clear);
+    if (clear) {
+      delete view.g2Instance;
+    }
   },
 
   mergeViews(views, nextViews, clear) {
-    if (views == null || nextViews == null) return;
+    if (views == null) return;
 
     for (const id in views) {
-      if (Object.prototype.hasOwnProperty.call(views, id)
-        && Object.prototype.hasOwnProperty.call(nextViews, id)
-      ) {
+      if (nextViews && nextViews[id]) {
         this.mergeView(views[id], nextViews[id], clear);
+      } else if (clear) {
+        delete views[id].g2Instance;
       }
     }
   },

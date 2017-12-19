@@ -48,7 +48,6 @@ export default class PureChart extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     this.cId = this.addElement(
       this.name,
       this.id,
