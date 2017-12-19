@@ -42,7 +42,7 @@ export default class PieC extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLabel: true,
+      showLabel: false,
       lineWidth : 1,
     };
   }
@@ -80,9 +80,11 @@ export default class PieC extends Component {
       >
       <Label content='type' offset={-10} />
     </Geom>
-    <View data={dv1} scale={cols} >
-      <Coord type='theta' radius={0.75} innerRadius={0.5 / 0.75}/>
-      <Geom
+    {
+      this.state.showLabel ?
+      <View data={dv1} scale={cols} >
+        <Coord type='theta' radius={0.75} innerRadius={0.5 / 0.75}/>
+        <Geom
           type="intervalStack"
           position="percent"
           color={['name', [ '#BAE7FF', '#7FC9FE', '#71E3E3', '#ABF5F5', '#8EE0A1', '#BAF5C4' ]]}
@@ -96,11 +98,13 @@ export default class PieC extends Component {
           style={{lineWidth: this.state.lineWidth, stroke: '#fff'}}
           select={false}
         >
-        {
-         this.state.showLabel ? <Label content='name'/> : null
-        }
-      </Geom>
-    </View>
+          {
+          this.state.showLabel ? <Label content='name'/> : null
+          }
+        </Geom>
+      </View>
+      : null
+    }
   </Chart>
     );
   }

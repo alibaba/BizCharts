@@ -31,7 +31,9 @@ export default class BasicLineChart extends Component {
       position: 'top',
       name: 'year',
       size:30,
-      color: "#ff0000"
+      color: "#ff0000",
+      height: 400,
+      padding: 10,
     }
   }
 
@@ -45,14 +47,16 @@ export default class BasicLineChart extends Component {
         position: 'bottom',
         name: 'value',
         size:50,
-        color: "#00ff00"
+        color: "#00ff00",
+        height: 800,
+        padding: 300,
       });
     }).bind(this), 2000);
   }
   
   render() {
     return (
-      <Chart height={400} data={data} scale={scale} forceFit>
+      <Chart height={this.state.height} data={data} scale={scale} padding={this.state.padding} forceFit>
         {
           this.state.showAxis ? <Axis name="year" visible={ this.state.showAxis }/> : null
         }
@@ -60,9 +64,9 @@ export default class BasicLineChart extends Component {
         {/*
           this.state.showAxis ? <Coord type={this.state.type} scale={this.state.scale}/> : null
         */}
-        <Legend name={this.state.name} position={this.state.position}/>
+        <Legend name='value' position={this.state.position}/>
         {
-          this.state.showAxis ? <Legend name='value' position={this.state.position}/> : null
+          this.state.showAxis ? <Legend name='year' position={this.state.position}/> : null
         }
         <Axis name="value" />
         <Tooltip crosshairs={{type : this.state.tooltipType}}/>
