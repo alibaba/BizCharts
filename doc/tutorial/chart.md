@@ -26,6 +26,13 @@
 | [Facet](../api/facet.md) |抽象组件| 分面组件。|
 | [View](../api/view.md) |抽象组件| 视图组件。|
 
+
+图表插件有:
+
+| 名称 | 类型 | 说明 |
+| :- | :- | :- |
+| [Slider](https://github.com/alibaba/BizCharts/tree/slider/plugin/slider) | 图标插件 |使用前必须确定已经安装了Bizcarts。|
+
 ## 空间构成
 下图所示为常用图表的各组件的空间构成。
 
