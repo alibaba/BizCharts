@@ -1,39 +1,12 @@
-import iAdd from './add';
-import iUpdate from './update';
-import iDelete from './delete';
-import iMerge from './merge';
+import configAdd from './configAdd';
+import configMerge from './configMerge';
+import g2Update from './g2Update';
+import g2Delete from './g2Delete';
 import g2Creator from './g2Creator';
 
-const addFuncMap = {
-  Chart: 'addChart',
-  Coord: 'addCoord',
-  Geom: 'addGeom',
-  Axis: 'addAxis',
-  Tooltip: 'addTooltip',
-  Legend: 'addLegend',
-  Label: 'addLabel',
-  View: 'addView',
-  Guide: 'addGuide',
-  GuideLine: 'addGuideLine',
-  GuideImage: 'addGuideImage',
-  GuideText: 'addGuideText',
-  GuideRegion: 'addGuideRegion',
-  GuideHtml: 'addGuideHtml',
-  GuideArc: 'addGuideArc',
-  Facet: 'addFacet',
-};
-
-const reExecuteDeleteElements = {
-  Geom: true,
-  Label: true,
-  Facet: true,
-};
-
-export default class Processor extends iAdd() {
-  constructor(props) {
-    super(props);
-    this.config = null;
-    this.addConfig = {};
+export default class Processor {
+  constructor() {
+    this.config = {};
     this.updateConfig = {};
     this.elementInfos = {};
     this.idToName = {};
@@ -46,7 +19,6 @@ export default class Processor extends iAdd() {
   addElement(name, id, props, parentInfo, viewId) {
     if (!this.chart && this.initedG2) return;
     this.added = true;
-    this.config = this.addConfig;
     this.elementInfos[id] = {
       id,
       viewId,
@@ -60,13 +32,12 @@ export default class Processor extends iAdd() {
       };
     }
 
-    this[addFuncMap[name]](props, id, viewId, parentInfo);
+    configAdd.addElement(name, this.config, props, id, viewId, parentInfo);
   }
 
   updateElement(name, id, props, parentInfo, viewId) {
     this.updated = true;
-    this.config = this.updateConfig;
-    this[addFuncMap[name]](props, id, viewId, parentInfo);
+    configAdd.addElement(name, this.updateConfig, props, id, viewId, parentInfo);
   }
 
   deleteElement(name, id) {
@@ -76,16 +47,9 @@ export default class Processor extends iAdd() {
   }
 
   createG2Instance() {
-    this.config = this.addConfig;
-    const chart = g2Creator.chart(this.config);
-    g2Creator.coord(chart, this.config);
-    g2Creator.axises(chart, this.config);
-    g2Creator.legends(chart, this.config);
-    g2Creator.tooltip(chart, this.config);
-    g2Creator.geoms(chart, this.config);
-    g2Creator.views(chart, this.config);
-    g2Creator.guide(chart, this.config.guide);
-    g2Creator.facet(chart, this.config);
+    const config = this.config;
+    const chart = g2Creator.chart(config);
+    g2Creator.synchronizeG2Add(chart, config);
 
     chart.render();
 
@@ -99,13 +63,6 @@ export default class Processor extends iAdd() {
     this.chart = null;
   }
 
-  needReExecute() {
-    const elementInfos = this.elementInfos;
-    return Object.keys(this.deleteInfos).find((id) => {
-      return reExecuteDeleteElements[elementInfos[id].name] && !elementInfos[id].viewId;
-    });
-  }
-
   resetStates() {
     this.added = false;
     this.updated = false;
@@ -115,48 +72,42 @@ export default class Processor extends iAdd() {
 
   reExecuteChart() {
     this.chart.clear();
-    iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, true);
-    iUpdate.updateChart(this.chart, this.addConfig.chart, this.updateConfig.chart);
-    g2Creator.synchronizeG2Add(this.chart, this.addConfig);
+    configMerge.merge(this.config, this.updateConfig, this.deleteInfos, this.elementInfos, true);
+    g2Update.updateChart(this.chart, this.config.chart, this.updateConfig.chart);
+    g2Creator.synchronizeG2Add(this.chart, this.config);
     this.chart.repaint();
     this.resetStates();
     return this.chart;
   }
 
-  needRebuild() {
-    return false;
-  }
-
-  rebuildChart() {
-
-  }
-
   batchedUpdate() {
     if (this.chart == null) return null;
-    if (iUpdate.needRebuildChart(this.addConfig, this.updateConfig)) {
-      iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, true);
+    if (g2Update.needRebuildChart(this.config, this.updateConfig)) {
+      configMerge.merge(this.config, this.updateConfig, this.deleteInfos, this.elementInfos, true);
       this.chart.destroy();
       this.chart = 'destroy';
 
       return this.createG2Instance();
     }
-    if (this.needReExecute()) {
+    if (g2Delete.needReExecute(this.deleteInfos, this.elementInfos)) {
       this.reExecuteChart();
       return this.chart;
     }
 
-    iDelete.synchronizeG2Delete(this.chart, this.addConfig, this.deleteInfos, this.elementInfos);
+    g2Delete.synchronizeG2Delete(this.chart, this.config, this.deleteInfos, this.elementInfos);
+    configMerge.mergeDelete(this.config, this.deleteInfos, this.elementInfos);
 
     if (this.added) {
-      g2Creator.synchronizeG2Add(this.chart, this.addConfig);
+      g2Creator.synchronizeG2Add(this.chart, this.config);
     }
     if (this.updated) {
-      iUpdate.synchronizeG2Update(this.chart, this.addConfig, this.updateConfig);
+      g2Update.synchronizeG2Update(this.chart, this.config, this.updateConfig);
     }
     if (this.added || this.updated) {
       this.chart.repaint();
     }
-    iMerge.merge(this.addConfig, this.updateConfig, this.deleteInfos, this.elementInfos, false);
+
+    configMerge.mergeUpdate(this.config, this.updateConfig, false);
     this.resetStates();
 
     return this.chart;

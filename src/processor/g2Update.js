@@ -4,7 +4,7 @@ import warning from 'warning';
 import { Util, Prop } from '../shared';
 import common from './common';
 import g2Creator from './g2Creator';
-import iMerge from './merge';
+import configMerge from './configMerge';
 
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
@@ -239,14 +239,16 @@ const iUpdate = {
     }
 
     const guides = guide.elements;
+    const guidesLen = Object.keys(guides).length;
     const nextGuides = nextGuide.elements;
+    const nextGuidesLen = Object.keys(nextGuides).length;
     let needRebuildGuide = false;
 
-    if ((guides && !nextGuides) || (guides.length !== nextGuides.length)) {
+    if ((guides && !nextGuides) || (guidesLen !== nextGuidesLen)) {
       needRebuildGuide = true;
     } else {
       for (const id in guides) {
-        if (Object.prototype.hasOwnProperty.call(guides, id)) {
+        if (nextGuides[id]) {
           if (this.isTypedGuideChanged(guides[id], nextGuides[id])) {
             needRebuildGuide = true;
             break;
@@ -256,7 +258,7 @@ const iUpdate = {
     }
 
     if (needRebuildGuide) {
-      iMerge.mergeGuide(guide, nextGuide, true);
+      configMerge.mergeGuide(guide, nextGuide, true);
       chart.guide().clear();
       g2Creator.guide(chart, guide);
     }
@@ -301,10 +303,12 @@ const iUpdate = {
     if (!views || !nextViews) return;
 
     for (const id in views) {
-      if (Object.prototype.hasOwnProperty.call(views, id)
-        && Object.prototype.hasOwnProperty.call(nextViews, id)
-      ) {
-        this.updateView(chart, views[id], nextViews[id]);
+      if (nextViews[id]) {
+        if (views[id].needReExecute) {
+          g2Creator.synchronizeG2View(views[id].g2Instance, nextViews[id]);
+        } else {
+          this.updateView(chart, views[id], nextViews[id]);
+        }
       }
     }
   },

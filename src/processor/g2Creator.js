@@ -71,9 +71,10 @@ export default {
       geom[key](...value);
     });
 
+    geomConfig.g2Instance = geom;
+
     // create label
     this.createLabel(geom, geomConfig.label);
-    geomConfig.g2Instance = geom;
   },
 
   geoms(chart, config) {
@@ -204,8 +205,69 @@ export default {
     this.tooltip(chart, config);
     this.geoms(chart, config);
     this.views(chart, config);
+    // this.synchronizeG2Views(chart, config);
     this.guide(chart, config.guide);
     this.facet(chart, config);
+  },
+
+  synchronizeG2Views(chart, config) {
+    const views = config.views;
+
+    for (const id in views) {
+      if (Object.prototype.hasOwnProperty.call(views, id)) {
+        this.synchronizeG2View(views[id].g2Instance, views[id]);
+      }
+    }
+  },
+
+  synchronizeG2View(view, viewConfig) {
+    /*
+       Others object must exclude geoms property.
+       Because geoms property will cover the g2 view' inner geoms property.
+    */
+    view.clear();
+    this.clearViewG2Instance(viewConfig);
+    const { scale, data, instance, axis, geoms, ...others } = viewConfig;
+
+    if (data) {
+      view.source(data, scale);
+    }
+
+    if (scale) {
+      view.scale(scale);
+    }
+
+    if (!(axis === true || instance)) {
+      view.axis(false);
+    }
+    this.coord(view, viewConfig);
+    this.axises(view, viewConfig);
+    this.geoms(view, viewConfig);
+    this.guide(view, viewConfig.guide);
+  },
+
+  clearViewG2Instance(viewConfig) {
+    if (viewConfig.coord) {
+      delete viewConfig.coord.g2Instance;
+    }
+    if (viewConfig.axises) {
+      Object.keys(viewConfig.axises).forEach((id) => {
+        delete viewConfig.axises[id].g2Instance;
+      });
+    }
+    if (viewConfig.geoms) {
+      Object.keys(viewConfig.geoms).forEach((id) => {
+        delete viewConfig.geoms[id].g2Instance;
+        if (viewConfig.geoms[id].label) {
+          delete viewConfig.geoms[id].label.g2Instance;
+        }
+      });
+    }
+    if (viewConfig.guide && viewConfig.guide.elements) {
+      Object.keys(viewConfig.guide.elements).forEach((id) => {
+        delete viewConfig.guide.elements[id].g2Instance;
+      });
+    }
   },
 
 };

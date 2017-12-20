@@ -29,12 +29,14 @@ const iMerge = {
   },
 
   mergeDelete(config, deleteInfos, elementInfos) {
-    console.log(this);
     Object.keys(deleteInfos).forEach((id) => {
       const funName = deleteFuncMap[elementInfos[id].name];
-      console.log(this);
+      let deleteConfigContainer = config;
+      if (elementInfos[id].viewId) {
+        deleteConfigContainer = config.views[elementInfos[id].viewId];
+      }
       if (this[funName]) {
-        this[funName](config, id);
+        this[funName](deleteConfigContainer, id);
       }
     });
   },
@@ -77,7 +79,7 @@ const iMerge = {
     this.mergeGeoms(config.geoms, nextConfig.geoms, clear);
     this.mergeLegends(config.legends, nextConfig.legends, clear);
     this.mergeTooltip(config, nextConfig, clear);
-    this.mergeViews(config, nextConfig, clear);
+    this.mergeViews(config.views, nextConfig.views, clear);
   },
 
   mergeChart(config, nextConfig, clear) {
