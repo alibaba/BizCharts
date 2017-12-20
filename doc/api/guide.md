@@ -32,7 +32,6 @@
 // 应用于数据动态更新，辅助元素的位置根据数据变化
 <Guide>
   <Text
-    type="text"
     content='最大值'
     position={(xScale, yScale)=>{
       return []; //位置信息
@@ -46,12 +45,12 @@
 ```jsx
 <Chart width={600} height={400} data={data}>
   <Guide>
-	<Region start={[-1, 0]} end={[1, ranges[0]]} style={{fill: '#e96e33',
-	fillOpacity: 0.5}}/>
-	<Region start={[-1, ranges[0]]} end={[1, ranges[1]]} style={{fill: '#f9ca47',
-	fillOpacity: 0.5}}/>
-	<Region start={[-1, ranges[1]]} end={[1, ranges[2]]} style={{fill: '#88bb34',
-	fillOpacity: 0.5}}/>
+    <Region start={[-1, 0]} end={[1, ranges[0]]} style={{fill: '#e96e33',
+    fillOpacity: 0.5}}/>
+    <Region start={[-1, ranges[0]]} end={[1, ranges[1]]} style={{fill: '#f9ca47',
+    fillOpacity: 0.5}}/>
+    <Region start={[-1, ranges[1]]} end={[1, ranges[2]]} style={{fill: '#88bb34',
+    fillOpacity: 0.5}}/>
   </Guide>
 </Chart>
 ```
@@ -64,57 +63,74 @@
 
 ## Line
 
-### 1、top 	* Boolean *
+```jsx
+<Guide>
+  <Line
+    top={boolean} // 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+    start= {object} | {function} | {array} // 辅助线起始位置，值为原始数据值，支持 callback
+    end= {object} | {function} | {array} // 辅助线结束位置，值为原始数据值，支持 callback
+    lineStyle= {{
+      stroke: '#999', // 线的颜色
+      lineDash: [ 0, 2, 2 ], // 虚线的设置
+      lineWidth: 3 // 线的宽度
+    }} // 图形样式配置
+    text={{
+      position: 'start' | 'center' | 'end' | '39%' | 0.5, // 文本的显示位置
+      autoRotate: {boolean}, // 是否沿线的角度排布，默认为 true
+      style: {object}, // 文本图形样式配置
+      content: {string}, // 文本的内容
+      offsetX: {number}, // x 方向的偏移量
+      offsetY: {number} // y 方向的偏移量
+    }}
+  />
+</Guide>
+```
+
+### 1、top 	*Boolean*
 指定 giude 是否绘制在 canvas 最上层。
 默认值:false, 即绘制在最下层。
 
-### 2、zIndex 	* Number *
-指定 giude 的 z 坐标。
+### 2、start 	*Object | Function | Array*
+指定辅助线的起始位置，该值的类型如下：
 
-### 3、start 	* Object | Function | Array *
-辅助线起始位置，值为原始数据值。[具体参见位置值说明](#position)
+* object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
 
-### 4、end 	* Object | Function | Array *
-辅助线结束位置，值为原始数据值。[具体参见位置值说明](#position)
+* array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
+    x，y 都是原始数据 [ '2010-01-01', 200 ];
+    x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
+    x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
+* function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
 
-### 5、lineStyle 	* Object *
+### 4、end 	*Object | Function | Array*
+指定辅助线的结束位置，使用同 start。
+
+### 5、lineStyle 	*Object*
 辅助线样式配置。
-```jsx
-<Guide
-  type='line'
-  lineStyle={{
-    stroke:'#999',//线的颜色
-	lineDash:[0, 2, 2]//虚线的设置
-	lineWidth:2,//线的宽度
-  }}
-/>
-```
 <span id = "text"></span>
 
-### 6、Text
-辅助线上说明文本的配置。
-具体参见:
+### 6、text *Object*
+辅助线可以带文本，该属性使用如下：
 ```jsx
-<Guide
-  type='line'
-  text={{
-    position:{'start'|'center'|'end'|'39%'|0.5} //文本的显示位置
-	autoRotate={Boolean} // 是否沿线的角度排布，默认为 true
-	style={{
-      //文本图形样式配置
-	  fill:"#ddd",
-	  fontSize:'12'//字体大小
+<Guide>
+  <Line
+    text={{
+      position: 'start' | 'center' | 'end' | '39%' | 0.5, // 文本的显示位置，值除了指定的常量外，还可以是百分比或者小数
+      autoRotate: {boolean}, // 指定文本是否沿着线的方向排布，默认为 true，即沿着线排布
+      // 设置文本的显示样式
+      style: {
+        fill: 'red'
+      },
+      content: {string}, // 文本的内容
+      offsetX: {number}, // x 方向的偏移量
+      offsetY: {number} // y 方向的偏移量
     }}
-	content={String}//文本的内容
-	offsetX={Number}//x 方向的偏移量
-    offsetY={Number}//y 方向的偏移量
-  }}
-/>
+  />
+</Guide>
 ```
 
 <span id = "text"></span>
 
-## text
+## Text
 ### 1、top 	* Boolean *
 指定 giude 是否绘制在 canvas 最上层。
 默认值:false, 即绘制在最下层。
@@ -131,14 +147,15 @@
 ### 5、style 	* Object *
 辅助线样式配置。
 ```jsx
-<Guide
-  type='line'
-  style={{
-    fill:'#999',//文本颜色
-	fontSize:'12'//字体大小
-	rotate:30,//旋转角度
-  }}
-/>
+<Guide>
+  <Line
+    style={{
+        fill:'#999',//文本颜色
+      fontSize:'12'//字体大小
+      rotate:30,//旋转角度
+    }}
+  />
+</Guide>
 ```
 
 ### 6、offsetX 	* Number *
@@ -149,7 +166,7 @@ y 方向的偏移量。
 
 <span id = "image"></span>
 
-## image
+## Image
 ### 1、top 	* Boolean *
 指定 giude 是否绘制在 canvas 最上层。
 默认值:false, 即绘制在最下层。
@@ -181,7 +198,7 @@ y 方向的偏移量。
 
 <span id = "region"></span>
 
-## region
+## Region
 ### 1、top 	* Boolean *
 指定 giude 是否绘制在 canvas 最上层。
 默认值:false, 即绘制在最下层。
@@ -198,20 +215,21 @@ y 方向的偏移量。
 ### 5、style 	* Object *
 辅助框图形样式属性。
 ```jsx
-<Guide
-  type='line'
-  style={{
+<Guide>
+  <Line
+    style={{
     lineWidth: 0, // 辅助框的边框宽度
     fill: '#f80', // 辅助框填充的颜色
     fillOpacity: 0.1, // 辅助框的背景透明度
     stroke: '#ccc' // 辅助框的边框颜色设置
   }}
-/>
+  />
+</Guide>
 ```
 
 <span id = "html"></span>
 
-## html
+## Html
 ### 1、position 	* Object | Function |Array *
 html 的中心位置， 值为原始数据值，[具体参见位置值说明](#position)
 
@@ -235,7 +253,7 @@ html 代码，也支持callback,可能是最大值、最小值之类的判定
 
 <span id = "arc"></span>
 
-## arc
+## Arc
 ### 1、top 	* boolean *
 指定 giude 是否绘制在 canvas 最上层。
 默认值： false, 即绘制在最下层。
@@ -249,13 +267,14 @@ html 代码，也支持callback,可能是最大值、最小值之类的判定
 ### 4、style 	* Object *
 辅助框图形样式属性。
 ```jsx
-<Guide
-  type='line'
-  style={{
-    lineWidth: 0, // 辅助框的边框宽度
-    fill: '#f80', // 辅助框填充的颜色
-    fillOpacity: 0.1, // 辅助框的背景透明度
-    stroke: '#ccc' // 辅助框的边框颜色设置
-  }}
-/>
+<Guide>
+  <Line
+    style={{
+        lineWidth: 0, // 辅助框的边框宽度
+        fill: '#f80', // 辅助框填充的颜色
+        fillOpacity: 0.1, // 辅助框的背景透明度
+        stroke: '#ccc' // 辅助框的边框颜色设置
+    }}
+  />
+</Guide>
 ```

@@ -113,9 +113,10 @@ DataSet 主要完成了以下功能：
     ds.setState('year', '2012');
 
     ```
-    ####注意：
-        *在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 watchingStates 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
-        *所有引用了 DataSet 管理的 DataView 的图表都会受自动刷新，不需要手工刷新。
+
+####注意：
+    *在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 watchingStates 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
+    *所有引用了 DataSet 管理的 DataView 的图表都会受自动刷新，不需要手工刷新。
 
 ### 图表联动示例
 
@@ -174,18 +175,54 @@ dvForAll.transform({
 > Step4：为饼图创建数据视图实例，继承上一个数据视图的数据，通过状态量 currentState 过滤数据、统计不同年龄段人口占比
 
 ```js
-<Chart data={dvForAll} height={400} scale={scale} forceFit={true} >
-<Legend position='top' />
-<Axis >
-<Facet type='list' fields={['cut']} cols={3} padding={30} eachView={(view, facet)=>{
-    view.point()
-    .position('carat*price')
-    .color('cut')
-    .shape('circle')
-    .opacity(0.3)
-    .size(3); 
-}}>
-</Facet>
+<Chart
+    data={dvForAll} 
+    height={400} 
+    forceFit={true} 
+    onTooltipChange={(evt)=>{
+        const items = evt.items || [];
+        if (items[0]) {
+            ds.setState('currentState', items[0].title);
+        }
+      }
+    }
+>
+    <Legend position='top' />
+    <Axis name="population" label={{
+        formatter: val => {
+        return val / 1000000 + 'M';
+        }
+    }}>
+    <Geom 
+        type="intervalStack"
+        position="state*population"
+        color="age"
+        select={[true, {
+            mode: 'single',
+            style: {
+            stroke: 'red',
+            strokeWidth: 5
+            }
+        }]}
+    />
+</Chart>
+<Chart
+    data={dvForOneState} 
+    height={300} 
+    forceFit={true}
+    padding={0}
+>
+    <Coord type='theta' radius={0.8}/>
+    <Geom 
+        type="intervalStack"
+        position="percent"
+        color="age"
+    >
+      <Label content={['age*percent',(age, percent) => {
+        percent = (percent * 100).toFixed(2) + '%';
+        return age + ' ' + percent;
+      }]} />
+    </Geom>
 </Chart>
 ```
 
