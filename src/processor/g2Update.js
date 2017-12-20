@@ -5,6 +5,7 @@ import { Util, Prop } from '../shared';
 import common from './common';
 import g2Creator from './g2Creator';
 import configMerge from './configMerge';
+import EventUtil from './event';
 
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
@@ -64,6 +65,9 @@ const iUpdate = {
     } else if (height !== nextHeight) {
       chart.changeHeight(nextHeight);
     }
+
+    EventUtil.updateEvents(chart, EventUtil.chartEvents, props, nextProps);
+    EventUtil.updateBaseEvents(chart, props, nextProps);
   },
 
   updateAxis(chart, props, nextProps) {

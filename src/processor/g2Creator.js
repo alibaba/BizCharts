@@ -1,6 +1,7 @@
 import G2 from '@antv/g2';
 import { Prop, Util } from '../shared';
 import common from './common';
+import EventUtil from './event';
 
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
@@ -18,8 +19,9 @@ export default {
     chart.legend(false);
     chart.tooltip(false);
     if (chartConfig.filter) {
-
     }
+    EventUtil.bindEvents(chart, EventUtil.chartEvents, config.chart);
+    EventUtil.bindBaseEvents(chart, config.chart);
     chartConfig.g2Instance = chart;
     return chart;
   },

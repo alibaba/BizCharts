@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import China from './china';
+import DrillDown from './drill-down';
 
 
 export default class MapChart extends Component {
@@ -8,6 +9,7 @@ export default class MapChart extends Component {
       <div className='map-charts'>
         <div className='map-chart-china'>
           <China />
+          <DrillDown />
         </div>
       </div>
     );

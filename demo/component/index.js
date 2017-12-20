@@ -25,5 +25,6 @@ export default {
     Facet,
     Theme,
     Guage,
+    Map,
   },
 };
