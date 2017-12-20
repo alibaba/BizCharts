@@ -74,6 +74,7 @@ const iMerge = {
   },
 
   mergeUpdate(config, nextConfig, clear) {
+    this.mergeChart(config, nextConfig, clear);
     this.mergeAxises(config, nextConfig, clear);
     this.mergeCoord(config, nextConfig, clear);
     this.mergeGeoms(config.geoms, nextConfig.geoms, clear);

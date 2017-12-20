@@ -61,7 +61,14 @@ export default class PureChart extends Component {
   }
 
   componentDidUpdate() {
-    this.updateElement(this.name, this.cId, this.props);
+    this.updateElement(
+      this.name,
+      this.cId,
+      {
+        ...this.props,
+        container: this.containerWrap,
+      }
+    );
     const newChart = this.g2Processor.batchedUpdate();
     if (this.chart !== newChart) {
       this.chart = newChart;
