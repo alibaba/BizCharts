@@ -1,6 +1,3 @@
-import g2Creator from './g2Creator';
-import configMerge from './configMerge';
-
 const deleteFuncMap = {
   Chart: 'deleteChart',
   Coord: 'deleteCoord',
