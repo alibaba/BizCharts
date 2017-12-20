@@ -1,9 +1,6 @@
-import React,  { Component } from 'react';
+import React, { Component } from 'react';
 import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
-import DataSet from '@antv/data-set';
-import { setTimeout } from 'timers';
 
-const { DataView } = DataSet;
 const { Text, Html, Arc } = Guide;
 
 function creatData(d) {
@@ -15,13 +12,9 @@ function creatData(d) {
   } else {
     data.push({value: d});
   }
-  
+
   return data;
 }
-
-const data1 =creatData(4.5);
-const data2 = creatData(0.1);
-
 
 // 自定义Shape 部分
 Shape.registerShape('point', 'pointer', {
@@ -79,12 +72,6 @@ export default class Color extends Component {
     const self = this;
     setInterval(function(){
       const data=creatData();
-      // let data;
-      // if (self.state.data == data1) {
-      //   data = data2;
-      // } else {
-      //   data = data1;
-      // }
       self.setState({
         data:data
       })
@@ -114,7 +101,7 @@ export default class Color extends Component {
           }}
         />
         <Guide>
-          <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
+          <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]} vvv={val}
             style={{ // 底灰色
             stroke: 'rgba(0, 0, 0, 0.09)',
             lineWidth
@@ -151,8 +138,8 @@ export default class Color extends Component {
         </Guide>
         <Geom 
           type="point" 
-          position="value*1" 
-          shape='pointer' 
+          position="value*1"
+          shape='pointer'
           color='#1890FF'
           active={false}
           style={{stroke: '#fff',lineWidth: 1}}

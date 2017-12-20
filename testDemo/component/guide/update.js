@@ -50,8 +50,34 @@ const cols = {
   }
 }
 
+function genColor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return `rgb(${r},${g},${b})`;
+}
 
 export default class Basic extends Component {
+  constructor() {
+    super();
+    this.state = {
+      backColor: genColor(),
+      backWidth: Math.random() * 50,
+      width: Math.random() * 30,
+      color: genColor(),
+    }
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        backColor: genColor(),
+        backWidth: Math.random() * 50,
+        width: Math.random() * 30,
+        color: genColor(),
+      });
+    }, 1000);
+  }
   
   render() {
     return (
@@ -82,14 +108,14 @@ export default class Basic extends Component {
           <Guide  >
             <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 9, 0.965 ]}
               style={{ // 底灰色
-              stroke: '#000',
-              lineWidth: 18,
-              opacity: 0.09
+              stroke: this.state.backColor,
+              lineWidth: this.state.backWidth,
+              opacity: 0.2
             }}/>
             <Arc zIndex={1} start={[ 0, 0.965 ]} end={[ data[0].value, 0.965 ]}
               style={{ // 底灰色
-                stroke: '#1890FF',
-                lineWidth: 18,
+                stroke: this.state.color,
+                lineWidth: this.state.width,
               }}  
             />
             <Html 

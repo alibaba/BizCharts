@@ -1,9 +1,8 @@
 import React,  { Component } from 'react';
-import { Com16 } from 'bizcharts';
+import { Chart, Geom, Legend, Tooltip, Axis, Guide } from 'bizcharts';
 import DataSet from '@antv/data-set';
 import data from '../../data/heatmap.json'
 
-const { Chart, Geom, Legend, Tooltip, Axis, Guide } = Com16;
 const { Image } = Guide;
 
 const { DataView } = DataSet;

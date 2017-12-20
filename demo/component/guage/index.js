@@ -10,7 +10,7 @@ export default class GuageChart extends Component {
     return (
       <div className='guage'>
         <div className='guage-basic'>
-          {/* <Basic /> */}
+          <Basic />
           <Color />
         </div>
       </div>

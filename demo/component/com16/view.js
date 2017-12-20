@@ -1,8 +1,6 @@
 import React,  { Component } from 'react';
-import { Com16 } from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import DataSet from '@antv/data-set';
-
-const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = Com16;
 
 const { DataView } = DataSet;
 
@@ -42,16 +40,18 @@ export default class PieC extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLabel: false,
+      showLabel: true,
       lineWidth : 1,
+      showView: true,
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        showLabel: true,
+        showLabel: false,
         lineWidth: 15,
+        showView: true,
       });
     }, 2000);
   }
@@ -78,10 +78,13 @@ export default class PieC extends Component {
       style={{lineWidth: 1,stroke: '#fff'}}
       select={false}
       >
-      <Label content='type' offset={-10} />
+      {/* {
+        this.state.showLabel ? <Label content='type' offset={-10} /> : null
+      } */}
+      
     </Geom>
     {
-      this.state.showLabel ?
+      this.state.showView ?
       <View data={dv1} scale={cols} >
         <Coord type='theta' radius={0.75} innerRadius={0.5 / 0.75}/>
         <Geom

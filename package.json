@@ -31,6 +31,7 @@
     "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx build/BizCharts.js",
     "build-min": "cross-env NODE_ENV=production webpack src/index.jsx build/BizCharts.min.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
+    "testDemo": "webpack-dev-server --progress --port 4000 --content-base testDemo --inline --config testDemo/webpack.config.js",    
     "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
     "lint": "eslint src",
     "autofix": "eslint src --fix",
@@ -57,8 +58,7 @@
     "@antv/g2": "3.0.0",
     "invariant": "^2.2.2",
     "warning": "^3.0.0",
-    "prop-types": "^15.6.0",
-    "interface-es6": "1.0.1"
+    "prop-types": "^15.6.0"
   },
   "devDependencies": {
     "@antv/data-set": "0.6.2",
