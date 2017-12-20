@@ -225,4 +225,4 @@ dvForAll.transform({
     </Geom>
 </Chart>
 ```
-
+详情信息请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bar-change-pie)
