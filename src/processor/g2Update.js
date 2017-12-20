@@ -279,7 +279,7 @@ const iUpdate = {
     }
 
     if (data !== nextData) {
-      view.changeData(data);
+      view.changeData(nextData);
     }
 
     if (!Util.shallowEqual(scale, nextScale)) {
