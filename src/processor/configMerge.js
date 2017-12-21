@@ -67,7 +67,7 @@ const iMerge = {
   },
 
   deleteTypedGuide(config, id) {
-    if (!config) return;
+    if (!config || !config.guide) return;
     delete config.guide.elements[id];
   },
 
@@ -177,7 +177,7 @@ const iMerge = {
   },
 
   mergeGuide(guide, nextGuide, clear) {
-    if (guide == null) return;
+    if (guide == null || nextGuide == null) return;
 
     const guides = guide.elements;
     let nextGuides = nextGuide.elements;
