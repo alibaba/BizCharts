@@ -41,6 +41,7 @@
     "no-lonely-if" : "off",
     "class-methods-use-this" : "off",
     "no-restricted-syntax" : "off",
-    "no-param-reassign" : "off"
+    "no-param-reassign" : "off",
+    "linebreak-style" : "off"
   }
 }
