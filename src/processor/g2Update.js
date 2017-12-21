@@ -139,12 +139,15 @@ const iUpdate = {
     // todo attrs have g2Instance..
     if (!Util.shallowEqual(attrs, nextAttrs)) {
       g2Instance = chart.coord(nextProps.type, nextAttrs);
+      Prop.init(COORD_FUNC_PROPS, nextProps, (value, key) => {
+        g2Instance[key](...value);
+      });
+    } else {
+      // diff value
+      Prop.update(COORD_FUNC_PROPS, props, nextProps, (value, key) => {
+        g2Instance[key](...value);
+      });
     }
-
-    // diff value
-    Prop.update(COORD_FUNC_PROPS, props, nextProps, (value, key) => {
-      g2Instance[key](...value);
-    });
   },
 
   updateLegend(chart, props, nextProps) {

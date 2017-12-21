@@ -142,7 +142,13 @@ export default {
   },
 
   createView(chart, viewConfig) {
-    if (viewConfig.g2Instance) { return; }
+    if (viewConfig.g2Instance) {
+      this.coord(viewConfig.g2Instance, viewConfig);
+      this.axises(viewConfig.g2Instance, viewConfig);
+      this.geoms(viewConfig.g2Instance, viewConfig);
+      this.guide(viewConfig.g2Instance, viewConfig.guide);
+      return;
+    }
     /*
        Others object must exclude geoms property.
        Because geoms property will cover the g2 view' inner geoms property.
