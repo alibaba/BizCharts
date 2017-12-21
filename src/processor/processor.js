@@ -25,7 +25,7 @@ export default class Processor {
       parentInfo,
       name,
     };
-    if (parentInfo) {
+    if (parentInfo && !this.elementInfos[parentInfo.id]) {
       this.elementInfos[parentInfo.id] = {
         id: parentInfo.id,
         name: parentInfo.name,
