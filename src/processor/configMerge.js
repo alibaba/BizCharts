@@ -42,34 +42,42 @@ const iMerge = {
   },
 
   deleteAxis(config, id) {
+    if (!config) return;
     delete config.axises[id];
   },
 
   deleteTooltip(config) {
+    if (!config) return;
     delete config.tooltip;
   },
 
   deleteCoord(config) {
+    if (!config) return;
     delete config.coord;
   },
 
   deleteLegend(config, id) {
+    if (!config) return;
     delete config.legends[id];
   },
 
   deleteGuide(config) {
+    if (!config) return;
     delete config.guide;
   },
 
   deleteTypedGuide(config, id) {
+    if (!config) return;
     delete config.guide.elements[id];
   },
 
   deleteView(config, id) {
+    if (!config) return;
     delete config.views[id];
   },
 
   deleteFacet(config) {
+    if (!config) return;
     delete config.facet;
   },
 

@@ -71,7 +71,7 @@ const iUpdate = {
   },
 
   updateAxis(chart, props, nextProps) {
-    const { name, visible, ...others } = props;
+    const { name, visible, g2Instance, ...others } = props;
     const { name: nextName, visible: nextVisible, ...nextOthers } = nextProps;
 
     warning(name === nextName, '`name` propertry should not be changed in `<Axis />`');
@@ -83,6 +83,7 @@ const iUpdate = {
       }
     }
 
+    // todo others have g2Instance
     if (!Util.shallowEqual(others, nextOthers)) {
       chart.axis(name, nextOthers);
     }
@@ -131,8 +132,11 @@ const iUpdate = {
     }
     let g2Instance = props.g2Instance;
 
-    const attrs = Util.without(props, COORD_FUNC_PROPS);
-    const nextAttrs = Util.without(nextProps, COORD_FUNC_PROPS);
+    // type can not be in coord's second param.
+    const attrs = Util.without(props, COORD_FUNC_PROPS.concat(['type']));
+    const nextAttrs = Util.without(nextProps, COORD_FUNC_PROPS.concat(['type']));
+
+    // todo attrs have g2Instance..
     if (!Util.shallowEqual(attrs, nextAttrs)) {
       g2Instance = chart.coord(nextProps.type, nextAttrs);
     }
