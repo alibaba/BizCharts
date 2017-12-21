@@ -66,7 +66,7 @@ export default class Basic extends Component {
       line={{
         stroke: 'dddddd',
         fill: '#ffffff',
-        lineDash: [2, 2, 3],
+        lineDash: [2, 3],
         lineWidth: 3
       }}
       tickLine={{
@@ -97,7 +97,7 @@ export default class Basic extends Component {
         lineWidth: 1, // 网格线的宽度复制代码
         lineDash: [4, 4] // 网格线的虚线配置，第一个参数描述虚线的实部占多少像素，第二个参数描述虚线的虚部占多少像素
         }, // 网格线的样式配置，原有属性为 line
-        alternateColor: '#ccc' || ['#f80', '#ccc'], // 为网格设置交替的背景色，指定一个值则先渲染奇数层，两个值则交替渲染。**代替原有的 odd 和 even 属性**
+        alternateColor: ['#f80', '#ccc',], // 为网格设置交替的背景色，指定一个值则先渲染奇数层，两个值则交替渲染。**代替原有的 odd 和 even 属性**
       }}
       subTickCount={10}
       subTickLine={//可配置样式
