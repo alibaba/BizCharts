@@ -13,11 +13,20 @@
 
 <span id="shuoming"></span>
 
-## 使用说明
-- `<Facet />` 系组件只可以作为 [`<Chart />`](chart.md) 组件的孩子，同时 `<Facet />` 组件下只能嵌套一个返回组件的匿名函数。
+## 父组件
+[`<Chart />`](chart.md) 
 
-> BizCharts 中将 G2 的 `chart.facet(type, cfg)` 函数转为了 `<Facet />` 组件,将 cfg 中最顶层的属性平坦到了 <Facet /> 组件属性上，`eachView` 例外。
-> 考虑到 React 用户的使用习惯，在 `eachView` 回调函数中用原生 G2 接口自定义 eachView 图表可能不太合适，因此设计为用 <Facet />组件嵌套一个返回 React 组件的匿名函数的形式用来自定义`eachView` 参见如下代码。
+## 子组件
+- 3.1.x 版本开始*不支持* `<Facet />`组件下嵌套函数。
+正式版将会支持如下写法(3.1.0-beta.1暂不支持)：
+```jsx
+<Facet>
+  <View>
+    <Geom />
+  </View>
+</Facet>
+```
+- 3.0.x 版本允许 `<Facet />` 组件下嵌套一个返回组件的匿名函数。参见如下
 ```jsx
 <Facet type='matrix' fields = {['cut','clarity']}>
   //该匿名函数会转为 `eachView:function`
@@ -105,18 +114,6 @@ facet 中每个 view 的配置。该属性比较特殊，可以直接等于一�
 <Facet type='matrix' fields = {['cut','clarity']} eachView={(view, facet) => {
   view.point().position('carat*price');
 }}／>
-```
-
-也可以这样：
-```
-<Facet type='matrix' fields = {['cut','clarity']}>
-  {(view, facet)=>{
-	return
-	  <View data={facet.data}>
-	    <Geom type="point" position='carat*price' color='cut' />
-	  </View>;
-  }}
-</Facet>
 ```
 
 <span id="facetType"></span>
