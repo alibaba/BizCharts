@@ -31,7 +31,7 @@
     "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx build/BizCharts.js",
     "build-min": "cross-env NODE_ENV=production webpack src/index.jsx build/BizCharts.min.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
-    "testDemo": "webpack-dev-server --progress --port 4000 --content-base testDemo --inline --config testDemo/webpack.config.js",    
+    "testDemo": "webpack-dev-server --progress --port 9000 --content-base testDemo --inline --config testDemo/webpack.config.js",    
     "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
     "lint": "eslint src",
     "autofix": "eslint src --fix",
