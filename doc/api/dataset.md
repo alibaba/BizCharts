@@ -210,12 +210,13 @@ const dv1 = new DataSet.View(ds, {
 #### dv.transform()
 
 `dv.transform(options)` 执行数据处理数据。执行完这个函数后，transform会被
+`options` 里指定了处理数据使用的 `transform` 和数据处理的配置项。
 
 | 参数 | 类型 | 是否可选 |
 | ---- | ---- | ---- |
 | options | Object | 否 |
 
-`options` 里指定了处理数据使用的 `transform` 和数据处理的配置项。
+
 
 详细文档见 [Transform API](transform.md)
 
