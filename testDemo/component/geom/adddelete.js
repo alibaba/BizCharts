@@ -35,7 +35,7 @@ export default class Basic extends Component {
     this.state = {
         data: data1,
         position: 'bottom',
-        typeAry:'interval',
+        typeAry:'line',
         boolean: true
     }
   }
@@ -55,86 +55,17 @@ export default class Basic extends Component {
       />
       <Axis name="sales"
       />
-      <Tooltip crosshairs={{type : "y"}}/>
-      {this.state.typeAry==='interval' &&<Geom
-       type="interval"
-      //  adjust='stack' // 失败可能是只有一组数据的原因
-      color='sales'
-      shape={['sales', ['diamond', 'square' ]]}
-      // size={['sales', (count)=>{
-      //   if(count > 50)
-      //     return 100;
-      //   else return 50;
-      // }]}
-      opacity='sales'
-      style={{ // 统一为所有 shape 设置固定的样式
-        lineWidth: 2,
-        stroke: '#ddd',
-      }}
-      tooltip={['year*sales', (sales, year)=>{
-        return {
-        name:'year',
-        value:year + ':' + sales
-      }
-      }]}
-      select={[true, {
-        mode: 'single' || 'multiple', // 选中模式，单选、多选
-      style: { }, // 选中后 shape 的样式
-      cancelable: true | false, // 选中之后是否允许取消选中，默认允许取消选中
-      animate: true | false // 选中是否执行动画，默认执行动画
-      }]}
-      Active={false}
-      animate={{
-        animation: 'fadeIn', // 动画名称
-        easing: 'easeInQuart', // 动画缓动效果
-        delay: 100, // 动画延迟执行时间
-        duration: 600 // 动画执行时间
-        }}
-      position="year*sales"
-      />}
-      {this.state.typeAry==='point' &&<Geom
-       type="point"
-      //  adjust='stack' // 失败可能是只有一组数据的原因
-      color='sales'
-      shape={['sales', ['diamond', 'square' ]]}
-      // size={['sales', (count)=>{
-      //   if(count > 50)
-      //     return 100;
-      //   else return 50;
-      // }]}
-      opacity='sales'
-      style={{ // 统一为所有 shape 设置固定的样式
-        lineWidth: 2,
-        stroke: '#ddd',
-      }}
-      tooltip={['year*sales', (sales, year)=>{
-        return {
-        name:'year',
-        value:year + ':' + sales
-      }
-      }]}
-      select={[true, {
-        mode: 'single' || 'multiple', // 选中模式，单选、多选
-      style: { }, // 选中后 shape 的样式
-      cancelable: true | false, // 选中之后是否允许取消选中，默认允许取消选中
-      animate: true | false // 选中是否执行动画，默认执行动画
-      }]}
-      Active={false}
-      animate={{
-        animation: 'fadeIn', // 动画名称
-        easing: 'easeInQuart', // 动画缓动效果
-        delay: 100, // 动画延迟执行时间
-        duration: 600 // 动画执行时间
-        }}
-      position="year*sales"
-      />}
-       {this.state.typeAry==='path' &&<Geom type="path" position="year*sales" />}
-       {this.state.typeAry==='line' &&<Geom type="line" position="year*sales" />}
-       {this.state.typeAry==='area' &&<Geom type="area" position="year*sales" />}
-       {this.state.typeAry==='polygon' &&<Geom type="area" position="year*sales" />}
+       {this.state.typeAry==='path' &&<Geom type="path" position="year*sales" color="green" />}
+       {this.state.typeAry==='line' &&<Geom type="line" position="year*sales" color="red"/>}
+       {this.state.typeAry==='area' &&<Geom type="area" position="year*sales" color="pink"/>}
+       {this.state.typeAry==='polygon' &&<Geom type="area" position="year*sales" color="yelow"/>}
+       {this.state.typeAry==='polygon' &&<Geom type="interval" position="year*sales" color="yelow"/>}
        {this.state.typeAry==='edge' &&<Geom type="edge" position="year*sales" />}
-       {this.state.typeAry==='schema' &&<Geom type="area" position="year*sales" />}
+       {this.state.typeAry==='schema' &&<Geom type="area" position="year*sales" color="#aacc00" />}
+       {this.state.typeAry==='schema' &&<Geom type="point" position="year*sales" color="#aacc00" />}
        {this.state.typeAry==='heatmap' &&<Geom type="area" position="year*sales" />}
+       {this.state.typeAry==='interval' &&<Geom type="interval" position="year*sales" />}
+       {this.state.typeAry==='interval' &&<Geom type="line" position="year*sales" />}
 
     </Chart>
     );

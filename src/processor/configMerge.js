@@ -36,7 +36,7 @@ const iMerge = {
         deleteConfigContainer = config.views[elementInfos[id].viewId];
       }
       if (this[funName]) {
-        this[funName](deleteConfigContainer, id);
+        this[funName](deleteConfigContainer, id, elementInfos[id].parentInfo.id);
       }
     });
   },
@@ -64,6 +64,24 @@ const iMerge = {
   deleteGuide(config) {
     if (!config) return;
     delete config.guide;
+  },
+
+  deleteGeom(config, id) {
+    if (!config || !config.geoms) return;
+
+    delete config.geoms[id];
+  },
+
+  deleteLabel(config, id, parentId) {
+    if (!config || !config.geoms) return;
+
+    delete config.geoms[parentId].label;
+  },
+
+  deleteFacet(config) {
+    if (!config) return;
+
+    delete config.facet;
   },
 
   deleteTypedGuide(config, id) {

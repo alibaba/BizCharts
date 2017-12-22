@@ -218,7 +218,7 @@ const iUpdate = {
   },
 
   updateGeoms(chart, geoms, nextGeoms) {
-    if (geoms == null && nextGeoms == null) {
+    if (geoms == null || nextGeoms == null) {
       return false;
     }
 
