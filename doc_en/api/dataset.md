@@ -11,21 +11,21 @@ For example, `DataSet.HIERARCHY` is the name of the hierarchical data structure.
 
 ### DataSet.connectors
 
-An array of registered Connectors（Key-value pairs）
+An array of registered Connectors（Key-value pairs）.
 
 ### DataSet.transforms
 
-Get registered transform（Key-value pairs)
+Get registered transform（Key-value pairs).
 
 ## Classes
 
 ### DataSet
 
-The constructor of dataset
+The constructor of dataset.
 
 #### new DataSet([options])
 
-Create and return a DataSet instance
+Create and return a DataSet instance.
 `new DataSet(options = {})`
 
 | parameter | type | required |
@@ -115,7 +115,7 @@ ds.setState('foo', 'bar');
 
 #### ds.on(eventName, callback)
 
-`ds.on(eventName, callback)` Listen to the specified event on the data set。
+`ds.on(eventName, callback)` Listen to the specified event on the data set.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
@@ -128,7 +128,7 @@ Currently supported events：
 
 > important！This event is not triggered synchronously after the state amount has changed. But **asynchronously trigger ** after setState is called.
 
-> The current view listening to a state view of the data automatically listen to this event。
+> The current view listening to a state view of the data automatically listen to this event.
 
 ```js
 ds.on('statechange', (name, value) => {
@@ -138,7 +138,7 @@ ds.on('statechange', (name, value) => {
 
 #### ds.emit(eventName[, params])
 
-`ds.emit(eventName[, params])` Trigger event on the data set。
+`ds.emit(eventName[, params])` Trigger event on the data set.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
@@ -148,7 +148,7 @@ ds.on('statechange', (name, value) => {
 
 Currently supported events：
 
-- `statechange` State change event，the state-related view will re-executes all data processing flow after triggering。
+- `statechange` State change event，the state-related view will re-executes all data processing flow after triggering.
 
 ### DataSet.View
 
@@ -182,7 +182,7 @@ IS the data set associated. It will return `false` if there are instantiated by 
 
 #### dv.dataType
 
-To get the data type. Default value is `DataSet.TABLE`，optionaly `DataSet.TABLE`（Two-dimensional data）,`DataSet.GEO`（Geographic）, `DataSet.HIERARCHY` （hierarchy），and `DataSet.GRAPH`（Graph Data Structure）。
+To get the data type. Default value is `DataSet.TABLE`，optionaly `DataSet.TABLE`（Two-dimensional data）,`DataSet.GEO`（Geographic）, `DataSet.HIERARCHY` （hierarchy），and `DataSet.GRAPH`（Graph Data Structure）.
 
 #### dv.origin
 
@@ -197,7 +197,7 @@ The processed data of dataview.
 All registered transform of dataview.
 
 #### dv.source(data[, options])
-`dv.source(data, options)` Set source data into dataview。
+`dv.source(data, options)` Set source data into dataview.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
@@ -271,7 +271,7 @@ console.log(dv.rows);
 
 ### DataSet.getConnector(name)
 
-Returns the connector for the specified name string
+Returns the connector for the specified name string.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
@@ -315,7 +315,7 @@ console.log(dv.rows);
 
 ### DataSet.getTransform(name)
 
-Returns the transform for the specified name string
+Returns the transform for the specified name string.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
