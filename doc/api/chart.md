@@ -11,7 +11,7 @@ BizCharts中其他组件都必须包裹在 `<Chart />` 组件内。
 - [`<Axis/>`](axis.md) 坐标轴组件
 - [`<Geom/>`](geom.md) 几何标记组件
 - [`<Legend/>`](legend.md) 图例组件
-- [`<Tooltip/>`](axis.md) 提示框组件
+- [`<Tooltip/>`](tooltip.md) 提示框组件
 - [`<Guide/>`](guide.md) 辅助标记组件
 - [`<Facet/>`](facet.md) 分面组件
 - [`<View/>`](view.md) 视图组件
