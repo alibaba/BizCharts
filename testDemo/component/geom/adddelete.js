@@ -66,6 +66,8 @@ export default class Basic extends Component {
        {this.state.typeAry==='heatmap' &&<Geom type="area" position="year*sales" />}
        {this.state.typeAry==='interval' &&<Geom type="interval" position="year*sales" />}
        {this.state.typeAry==='interval' &&<Geom type="line" position="year*sales" />}
+       {this.state.typeAry==='point' &&<Geom type="point" position="year*sales" size='sales'/>}
+
 
     </Chart>
     );

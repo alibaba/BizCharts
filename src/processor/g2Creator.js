@@ -7,12 +7,18 @@ const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 
 export default {
-  chart(config) {
+  createChart(config) {
     const chartConfig = config.chart;
-    const chart = new G2.Chart(config.chart);
+    const chart = new G2.Chart(chartConfig);
+    this.executeChartConfig(chart, config);
+    chartConfig.g2Instance = chart;
+    return chart;
+  },
+
+  executeChartConfig(chart, config) {
+    const chartConfig = config.chart;
     chart.coord('rect', {});
     chart.source(chartConfig.data, chartConfig.scale);
-    chart.guide().clear();
     if (!config.Facet || !chartConfig.axis) {
       chart.axis(false);
     }
@@ -22,8 +28,6 @@ export default {
     }
     EventUtil.bindEvents(chart, EventUtil.chartEvents, config.chart);
     EventUtil.bindBaseEvents(chart, config.chart);
-    chartConfig.g2Instance = chart;
-    return chart;
   },
 
   coord(chart, config) {

@@ -48,7 +48,8 @@ export default class Processor {
 
   createG2Instance() {
     const config = this.config;
-    const chart = g2Creator.chart(config);
+    const chart = g2Creator.createChart(config);
+    g2Creator.executeChartConfig(chart, config);
     g2Creator.synchronizeG2Add(chart, config);
 
     chart.render();
@@ -73,7 +74,7 @@ export default class Processor {
   reExecuteChart() {
     this.chart.clear();
     configMerge.merge(this.config, this.updateConfig, this.deleteInfos, this.elementInfos, true);
-    g2Update.updateChart(this.chart, this.config.chart, this.updateConfig.chart);
+    g2Creator.executeChartConfig(this.chart, this.config);
     g2Creator.synchronizeG2Add(this.chart, this.config);
     this.chart.repaint();
     this.resetStates();
