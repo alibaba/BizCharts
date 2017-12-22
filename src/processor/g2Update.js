@@ -94,11 +94,6 @@ const iUpdate = {
       return;
     }
 
-    if (Util.length(axises) !== Util.length(nextAxises)) {
-      console.log('error !!!, update axis length not equal');
-      // return;
-    }
-
     for (const id in axises) {
       if (Object.prototype.hasOwnProperty.call(axises, id)
         && Object.prototype.hasOwnProperty.call(nextAxises, id)
@@ -220,10 +215,6 @@ const iUpdate = {
   updateGeoms(chart, geoms, nextGeoms) {
     if (geoms == null || nextGeoms == null) {
       return false;
-    }
-
-    if (Util.length(geoms) !== Util.length(nextGeoms)) {
-      console.log('error !!!, update geoms length not equal');
     }
 
     for (const id in geoms) {
