@@ -88,11 +88,12 @@ export default class Basic extends Component {
         // lineDash:[Math.floor(Math.random()*2+1),Math.floor(Math.random()*3-1),],
         tickLineWidth:Math.floor(Math.random()*5),
         tickLineStroke:genColor(),
-        tickLineStrokeOpacity:Math.floor(Math.random()),
+        tickLineStrokeOpacity:Math.random(),
         tickLineLength:Math.floor(Math.random()*40-20),
         fontSize:Math.floor(Math.random()*10+12),
         typeAry:typeAry[Math.floor(Math.random()*6)],
-        marker:marker[Math.floor(Math.random()*19)]
+        marker:marker[Math.floor(Math.random()*19)],
+        crosshairs:crosshairs[Math.floor(Math.random()*4)],
       });
     }, 1000);
   }
@@ -106,25 +107,25 @@ export default class Basic extends Component {
       <Tooltip
       showTitle={this.state.boolean}
       offset={this.state.titleOffset}
-      // containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
-      // itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{name}: {value}</td></tr>'
-      // g2-tooltip={{
-      //   position: 'absolute',
-      //   visibility: 'hidden',
-      //   border : '1px solid #efefef',
-      //   backgroundColor: 'white',
-      //   color: this.state.lineFill,
-      //   opacity: this.state.tickLineStrokeOpacity,
-      //   padding: '5px 15px',
-      //   'transition': 'top 200ms,left 200ms'
-      // }}
-      // g2-tooltip-list={{
-      //   margin: '10px'
-      // }}
-      // inPlot={this.state.boolean}
-      // follow={this.state.boolean}
-      // shared={this.state.boolean}
-      // position={this.state.position}
+      containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
+      itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{name}: {value}</td></tr>'
+      g2-tooltip={{
+        position: 'absolute',
+        visibility: 'hidden',
+        border : '1px solid #efefef',
+        backgroundColor: 'white',
+        color: this.state.lineFill,
+        opacity: this.state.tickLineStrokeOpacity,
+        padding: '5px 15px',
+        'transition': 'top 20ms,left 20ms'
+      }}
+      g2-tooltip-list={{
+        margin: '10px'
+      }}
+      inPlot={this.state.boolean}
+      follow={this.state.boolean}
+      shared={this.state.boolean}
+      position={this.state.position}
       crosshairs={{
         //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
         type: this.state.crosshairs,
