@@ -92,7 +92,8 @@ export default class Basic extends Component {
         tickLineLength:Math.floor(Math.random()*40-20),
         fontSize:Math.floor(Math.random()*10+12),
         typeAry:typeAry[Math.floor(Math.random()*6)],
-        marker:marker[Math.floor(Math.random()*19)]
+        marker:marker[Math.floor(Math.random()*19)],
+        crosshairs:crosshairs[Math.floor(Math.random()*4)],
       });
     }, 1000);
   }
@@ -104,8 +105,8 @@ export default class Basic extends Component {
       <Axis name="月均降雨量"
       />
       <Tooltip
-      showTitle={this.state.boolean}
-      offset={this.state.titleOffset}
+      // showTitle={this.state.boolean}
+      // offset={this.state.titleOffset}
       // containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
       // itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{name}: {value}</td></tr>'
       // g2-tooltip={{
@@ -128,11 +129,7 @@ export default class Basic extends Component {
       crosshairs={{
         //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
         type: this.state.crosshairs,
-        style: {
-        lineWidth:this.state.tickLineWidth,
-        fill:this.state.lineFill,
-        stroke:this.state.lineStroke,
-        }
+        
       }}
       />
       <Geom
