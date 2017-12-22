@@ -26,15 +26,15 @@ export default class List extends Component {
     super(props);
     this.state = {
       type: 'list',
-      showFacet: false,
+      showFacet: true,
       height: 400,
     };
   }
 
   componentDidMount() {
-    setTimeout(()=>{
+    setInterval(()=>{
       this.setState({
-        type: 'rect',
+        type: this.state.type == 'list' ? 'rect' : 'list',
         showFacet: true,
         height: 800,
       });
