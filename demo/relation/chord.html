@@ -2,9 +2,9 @@
   <head>
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
-	  <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
 
   </head>
@@ -13,49 +13,49 @@
    <div id="c1" ></div>
    <script type="text/babel">
 
-  $.getJSON('/BizCharts/public/data/relationship-with-weight.json', data => {
+      $.getJSON('/BizCharts/public/data/relationship-with-weight.json', data => {
 
-    const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
 
-    const ds = new DataSet();
-    const dv = ds.createView().source(data, {
-        type: 'graph',
-        edges: d => d.links
-    });
-    dv.transform({
-        type: 'diagram.arc',
-        sourceWeight: e => e.sourceWeight,
-        targetWeight: e => e.targetWeight,
-        weight: true,
-        marginRatio: 0.3
-    });
+        const ds = new DataSet();
+        const dv = ds.createView().source(data, {
+            type: 'graph',
+            edges: d => d.links
+        });
+        dv.transform({
+            type: 'diagram.arc',
+            sourceWeight: e => e.sourceWeight,
+            targetWeight: e => e.targetWeight,
+            weight: true,
+            marginRatio: 0.3
+        });
 
-    const scale = {
-      x: {
-          sync: true
-      },
-      y: {
-          sync: true
-      }
-    };
+        const scale = {
+          x: {
+              sync: true
+          },
+          y: {
+              sync: true
+          }
+        };
 
-    ReactDOM.render(
-      <Chart  data={data} forceFit={true} height={window.innerHeight} scale={scale} >
-        <Tooltip showTitle={false} />
-        <View data={dv.edges} axis={false}>
-          <Coord type='polar' reflect='y' />
-          <Geom type='edge' position='x*y' shape='arc' color='source' opacity={0.5} tooltip={'source*target*value'} />
-        </View>
-        <View data={dv.nodes} axis={false}>
-          <Coord type='polar' reflect='y' />
-          <Geom type='polygon' position='x*y' color='id' >
-            <Label content='name' labelEmit={true} textStyle={{ fill:'black'}} />
-          </Geom>
-        </View>
-      </Chart>, document.getElementById('c1')
-    );
+        ReactDOM.render(
+          <Chart  data={data} forceFit={true} height={window.innerHeight} scale={scale} >
+            <Tooltip showTitle={false} />
+            <View data={dv.edges} axis={false}>
+              <Coord type='polar' reflect='y' />
+              <Geom type='edge' position='x*y' shape='arc' color='source' opacity={0.5} tooltip={'source*target*value'} />
+            </View>
+            <View data={dv.nodes} axis={false}>
+              <Coord type='polar' reflect='y' />
+              <Geom type='polygon' position='x*y' color='id' >
+                <Label content='name' labelEmit={true} textStyle={{ fill:'black'}} />
+              </Geom>
+            </View>
+          </Chart>, document.getElementById('c1')
+        );
 
-  })
+      })
     </script>
   </body>
 </html>

@@ -3,9 +3,9 @@
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/lodash-4.17.4.min.js"></script>
     
@@ -13,75 +13,75 @@
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
-      function getTextAttrs(cfg) {
-  return _.assign({}, {
-    fillOpacity: cfg.opacity,
-    fontSize: cfg.size,
-    rotate: cfg.origin._origin.rotate,
-    text: cfg.origin._origin.text,
-    textAlign: 'center',
-    fontFamily: cfg.origin._origin.font,
-    fill: cfg.color,
-    textBaseline: 'Alphabetic'
-  }, cfg.style);
-}
-// 给point注册一个词云的shape
-Shape.registerShape('point', 'cloud', {
-  drawShape(cfg, container) {
-    const attrs = getTextAttrs(cfg);
-    return container.addShape('text', {
-      attrs: _.assign(attrs, {
-        x: cfg.x,
-        y: cfg.y
-      })
-    });
-  }
-});
-$.getJSON('/BizCharts/public/data/g2pv.json', data => {
-const ds = new DataSet();
-const dv = ds.createView('g2pv').source(data);
-dv.transform({
-  type: 'tag-cloud',
-  fields: [ 'site', 'pv' ],
-  font: 'Impact',
-  size: [ window.innerWidth, window.innerHeight ],
-  padding: 0,
-  text(d) {
-    const site = d.site;
-    let index = site.indexOf('.');
-    let text = site;
-    if (index > 0 && index < site.length) {
-      text = site.substr(0, index);
-      // 当字符串是'www'时获取下一个
-      if (text === 'www') {
-        text = site.substr(index + 1);
-        index = text.indexOf('.');
-        text = text.substr(0, index);
-      }
-      // 当字符串是数字时获取整个网址
-      if (/^[0-9]*$/g.test(text)) {
-        text = site;
-      }
-    }
-    return text;
-  },
-  fontSize(d) {
-    const max = dv.max('pv');
-    const min = dv.min('pv');
-    return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
-  }
-});
-ReactDOM.render((
-	  <Chart height={window.innerHeight} width={window.innerWidth} data={dv} padding={0} forceFit>
-    <Tooltip showTitle={false} />
-    <Coord />
-    <Geom type='point' position="x*y" color="text" shape='cloud' size={['size', function(size) {
-      return size;
-    }]} />
-  </Chart>
-), document.getElementById("mountNode"));
-});
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        function getTextAttrs(cfg) {
+          return _.assign({}, {
+            fillOpacity: cfg.opacity,
+            fontSize: cfg.size,
+            rotate: cfg.origin._origin.rotate,
+            text: cfg.origin._origin.text,
+            textAlign: 'center',
+            fontFamily: cfg.origin._origin.font,
+            fill: cfg.color,
+            textBaseline: 'Alphabetic'
+          }, cfg.style);
+        }
+        // 给point注册一个词云的shape
+        Shape.registerShape('point', 'cloud', {
+          drawShape(cfg, container) {
+            const attrs = getTextAttrs(cfg);
+            return container.addShape('text', {
+              attrs: _.assign(attrs, {
+                x: cfg.x,
+                y: cfg.y
+              })
+            });
+          }
+        });
+      $.getJSON('/BizCharts/public/data/g2pv.json', data => {
+      const ds = new DataSet();
+      const dv = ds.createView('g2pv').source(data);
+      dv.transform({
+        type: 'tag-cloud',
+        fields: [ 'site', 'pv' ],
+        font: 'Impact',
+        size: [ window.innerWidth, window.innerHeight ],
+        padding: 0,
+        text(d) {
+          const site = d.site;
+          let index = site.indexOf('.');
+          let text = site;
+          if (index > 0 && index < site.length) {
+            text = site.substr(0, index);
+            // 当字符串是'www'时获取下一个
+            if (text === 'www') {
+              text = site.substr(index + 1);
+              index = text.indexOf('.');
+              text = text.substr(0, index);
+            }
+            // 当字符串是数字时获取整个网址
+            if (/^[0-9]*$/g.test(text)) {
+              text = site;
+            }
+          }
+          return text;
+        },
+        fontSize(d) {
+          const max = dv.max('pv');
+          const min = dv.min('pv');
+          return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
+        }
+      });
+      ReactDOM.render((
+          <Chart height={window.innerHeight} width={window.innerWidth} data={dv} padding={0} forceFit>
+          <Tooltip showTitle={false} />
+          <Coord />
+          <Geom type='point' position="x*y" color="text" shape='cloud' size={['size', function(size) {
+            return size;
+          }]} />
+        </Chart>
+      ), document.getElementById("mountNode"));
+      });
     </script>
   </body>
 </html>

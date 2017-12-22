@@ -3,8 +3,8 @@
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.3/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.5/data-set/0.6.2/data-set.min.js"></script>
+    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -22,34 +22,34 @@
                 ds.setState('sizeEncoding', false);
             }
         });
-  $.getJSON('/BizCharts/public/data/gaussion-distribution.json',function(data) {
-    const ds = new DataSet({
-        state: {
-            sizeEncoding: false
-        }
-    });
-    const dv = ds.createView().source(data)
-        .transform({
-            sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-            type: 'bin.hexagon',
-            fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-            bins: [ 10, 5 ]
-        });
-    ReactDOM.render((
-          <Chart height={window.innerHeight} data={dv} forceFit>
-            <Tooltip showTitle={false} crosshairs={false}/>
-            <Axis name="x" grid={{
-                lineStyle: {
-                    stroke: '#d9d9d9',
-                    lineWidth: 1,
-                    lineDash: [ 2, 2 ]
+        $.getJSON('/BizCharts/public/data/gaussion-distribution.json',function(data) {
+            const ds = new DataSet({
+                state: {
+                    sizeEncoding: false
                 }
-            }} />
-            <Legend offset={40} />
-          <Geom type='polygon' position="x*y" style={{lineWidth: 1,stroke: '#fff'}} color={['count', '#BAE7FF-#1890FF-#0050B3']} />
-        </Chart>
-      ), document.getElementById("mountNode"));
-  });
+            });
+            const dv = ds.createView().source(data)
+                .transform({
+                    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+                    type: 'bin.hexagon',
+                    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
+                    bins: [ 10, 5 ]
+                });
+            ReactDOM.render((
+                <Chart height={window.innerHeight} data={dv} forceFit>
+                    <Tooltip showTitle={false} crosshairs={false}/>
+                    <Axis name="x" grid={{
+                        lineStyle: {
+                            stroke: '#d9d9d9',
+                            lineWidth: 1,
+                            lineDash: [ 2, 2 ]
+                        }
+                    }} />
+                    <Legend offset={40} />
+                <Geom type='polygon' position="x*y" style={{lineWidth: 1,stroke: '#fff'}} color={['count', '#BAE7FF-#1890FF-#0050B3']} />
+                </Chart>
+            ), document.getElementById("mountNode"));
+        });
     </script>
   </body>
 </html>
