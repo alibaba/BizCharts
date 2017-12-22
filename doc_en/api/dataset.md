@@ -1,27 +1,27 @@
 
 # DataSet
 
-`DataSet` register in the global namespace. It is a data set constructor.
+Will registered in the global namespace. It is a DataSet constructor.
 
 ## Constants
 
 ### DataSet.CONSTANTS
 
-for example, `DataSet.HIERARCHY` is the name of the tree structure.
+For example, `DataSet.HIERARCHY` is the name of the hierarchical data structure.
 
 ### DataSet.connectors
 
-Store registered Connector（Key-value pairs）
+An array of registered Connectors（Key-value pairs）
 
 ### DataSet.transforms
 
-Store registered transform（Key-value pairs)
+Get registered transform（Key-value pairs)
 
 ## Classes
 
 ### DataSet
 
-constructor of dataset
+The constructor of dataset
 
 #### new DataSet([options])
 
@@ -46,11 +46,11 @@ Used to determine whether it is a DataSet instance，`ds.isDataSet === true`.
 
 #### ds.views
 
-Stores all the views, which mount on the dataset（key-value pairs）.
+To get all views, which mount on the dataset（key-value pairs）.
 
 #### ds.state
 
-Stores the state variables on the dataset（key-value pairs）.
+To get the state variables on the dataset（key-value pairs）.
 
 #### ds.createView()
 
@@ -85,7 +85,7 @@ const dv = ds.getView('foo');
 
 #### ds.setView(name, dv)
 
-`ds.setView(name, dv)` Set the corresponding data view instance as dv。
+`ds.setView(name, dv)` Set the corresponding data view instance as dv.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
@@ -98,7 +98,7 @@ ds.setView('foo', new DataSet.View());
 
 #### ds.setState(name, value)
 
-`ds.setState(name, value)` set state of name as specified value.
+To set state of name as specified value.
 
 > important！It will re-execute all name-related data processing flow. This interface provides a communication channel for the data views mounted on the data collection.
 
@@ -154,7 +154,7 @@ Currently supported events：
 
 > alias DataSet.DataView
 
-constructor of data-view.
+The constructor of DataView.
 
 #### new View()
 
@@ -178,40 +178,39 @@ const dv1 = new DataSet.View(ds, {
 
 #### dv.loose
 
-whether the data set is associated. It will return `false` if there are instantiated by `ds.createView()` ，and return `true` by `new DataSet.View(options)`.
+IS the data set associated. It will return `false` if there are instantiated by `ds.createView()` ，and return `true` by `new DataSet.View(options)`.
 
 #### dv.dataType
 
-get the data type. Default value is `DataSet.TABLE`，optional: `DataSet.TABLE`（Two-dimensional data），`DataSet.GEO`（Geographic）， `DataSet.HIERARCHY` （hierarchy），and `DataSet.GRAPH`（Graph Data Structure）。
+To get the data type. Default value is `DataSet.TABLE`，optionaly `DataSet.TABLE`（Two-dimensional data）,`DataSet.GEO`（Geographic）, `DataSet.HIERARCHY` （hierarchy），and `DataSet.GRAPH`（Graph Data Structure）。
 
 #### dv.origin
 
-get source data.
+The source data of dataview.
 
 #### dv.rows
 
-get processed data.
+The processed data of dataview.
 
 #### dv.transforms
 
-get a selection of transform.
+All registered transform of dataview.
 
 #### dv.source(data[, options])
-
-`dv.source(data, options)` set source data into data-view。
+`dv.source(data, options)` Set source data into dataview。
 
 | parameter | type | required |
 | ---- | ---- | ---- |
 | data | String / Array / Object / DataView | Y |
 | options | Object | N |
 
-input a source data `data` , maybe a string / array / object or an instance of DataView. And `options` config the `connector` and the configuration items of the data processing.
+Input a source data `data`, it could be a string/ array/object or an instance of DataView. And `options` config the `connector` and the configuration items of the data processing.
 
 See the details [Connector API](connector.md)
 
 #### dv.transform()
 
-`dv.transform(options)` transform data, and store transform into dv.transforms.
+`dv.transform(options)` Transform the source data, and store transform into dv.transforms.
 `options` config the `transform`.
 
 | parameter | type | required |
@@ -224,14 +223,14 @@ See the details [Transform API](transform.md)
 
 ### DataSet.registerConnector(name, callback)
 
-`DataSet.registerConnector(name, callback)` register a connector function，and all data-view can use this connector name to input source data.
+`DataSet.registerConnector(name, callback)` To register a connector function，and all dataview can use this connector name to input source data.
 
 | parameter | type | required |
 | ---- | ---- | ---- |
 | name | String | Y |
 | callback | Function | Y |
 
-`callback` is a function that receives two parameters, and return the data needed by the DataView instance.
+`callback` is a function that receives two parameters and returns the data needed by the DataView instance.
 Here is an exemple for a Connector register CSV data:
 
 ```js
