@@ -32,11 +32,13 @@ const cols = {
   'sales': {tickInterval: 20,'alias':"请显示我！！！"},
 };
 const typeAry=['point','path','line','area','interval','edge'];
-const position = ['top','bottom','left','right']
-const titlePosition=['center', 'start', 'end']
-const textBaseline=['top', 'middle', 'bottom']
-const labelTextAlign=['middle', 'start', 'end']
-const gridType=['line', 'polygon']
+const position = ['top','bottom','left','right'];
+const titlePosition=['center', 'start', 'end'];
+const textBaseline=['top', 'middle', 'bottom'];
+const labelTextAlign=['middle', 'start', 'end'];
+const gridType=['line', 'polygon'];
+const crosshairs = ['rect', 'x', 'y', 'cross']
+const marker =['circle', 'square', 'bowtie', 'diamond', 'hexagon', 'triangle', 'triangle-down', 'hollowCircle', 'hollowSquare', 'hollowBowtie', 'hollowDiamond', 'hollowHexagon', 'hollowTriangle', 'hollowTriangle-down', 'cross', 'tick', 'plus', 'hyphen', 'line'];
 function genColor() {
   const r = Math.floor(Math.random() * 255);
   const g = Math.floor(Math.random() * 255);
@@ -65,75 +67,78 @@ export default class Basic extends Component {
         tickLineLength:Math.floor(Math.random()*40-20),
         fontSize:Math.floor(Math.random()*10+12),
         subTickCount:Math.floor(Math.random()*10+5),
-        typeAry:typeAry[Math.floor(Math.random()*6)]
+        typeAry:typeAry[Math.floor(Math.random()*6)],
+        marker:marker[Math.floor(Math.random()*19)],
+        crosshairs:crosshairs[Math.floor(Math.random()*4)],
     }
   }
 
   componentDidMount() {
     setInterval(() => {
       this.setState({
-        // position: position[Math.floor(Math.random()*5)],
+        position: position[Math.floor(Math.random()*5)],
         boolean: this.state.boolean === true ? false : true,
         // titleOffset:Math.floor(Math.random()*50),
         titleColor:genColor(),
         // titlePosition: titlePosition[Math.floor(Math.random()*3)],
         // labelTextAlign: labelTextAlign[Math.floor(Math.random()*3)],
-        // lineStroke:genColor(),
-        // lineFill:genColor(),
+        lineStroke:genColor(),
+        lineFill:genColor(),
         // lineWidth:Math.floor(Math.random()*30),
         // lineDash:[Math.floor(Math.random()*2+1),Math.floor(Math.random()*3-1),],
-        // tickLineWidth:Math.floor(Math.random()*5),
-        // tickLineStroke:genColor(),
+        tickLineWidth:Math.floor(Math.random()*5),
+        tickLineStroke:genColor(),
         tickLineStrokeOpacity:Math.floor(Math.random()),
         tickLineLength:Math.floor(Math.random()*40-20),
-        // fontSize:Math.floor(Math.random()*10+12),
-        typeAry:typeAry[Math.floor(Math.random()*6)]
+        fontSize:Math.floor(Math.random()*10+12),
+        typeAry:typeAry[Math.floor(Math.random()*6)],
+        marker:marker[Math.floor(Math.random()*19)]
       });
     }, 1000);
   }
   render() {
     return (
-      <Chart height={400} data={this.state.data} forceFit>
+      <Chart height={400} data={dv1} forceFit>
       <Axis name="月份"
       />
       <Axis name="月均降雨量"
       />
-      <Legend />
-      <Tooltip crosshairs={{type : "y"}}/>
-      <Geom
-       type='interval'//
-       adjust={[{type: 'dodge',marginRatio: 1/32}]}
-      color={'name'}
-      shape={['月均降雨量', ['diamond', 'square' ]]}
-      size={['月均降雨量', (count)=>{
-        if(count > 50)
-          return 100;
-        else return 50;
-      }]}
-      opacity={this.state.tickLineStrokeOpacity}
-      style={{ // 统一为所有 shape 设置固定的样式
-        lineWidth: this.state.tickLineLength,
-        stroke: this.state.titleColor,
+      <Tooltip
+      showTitle={this.state.boolean}
+      offset={this.state.titleOffset}
+      // containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
+      // itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{name}: {value}</td></tr>'
+      // g2-tooltip={{
+      //   position: 'absolute',
+      //   visibility: 'hidden',
+      //   border : '1px solid #efefef',
+      //   backgroundColor: 'white',
+      //   color: this.state.lineFill,
+      //   opacity: this.state.tickLineStrokeOpacity,
+      //   padding: '5px 15px',
+      //   'transition': 'top 200ms,left 200ms'
+      // }}
+      // g2-tooltip-list={{
+      //   margin: '10px'
+      // }}
+      // inPlot={this.state.boolean}
+      // follow={this.state.boolean}
+      // shared={this.state.boolean}
+      // position={this.state.position}
+      crosshairs={{
+        //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
+        type: this.state.crosshairs,
+        style: {
+        lineWidth:this.state.tickLineWidth,
+        fill:this.state.lineFill,
+        stroke:this.state.lineStroke,
+        }
       }}
-      tooltip={["月份*月均降雨量", (sales, year)=>{
-        return {
-        name:'月均降雨量',
-        value:year + ':' + sales
-      }
-      }]}
-      select={[true, {
-        mode: 'single' || 'multiple', // 选中模式，单选、多选
-      style: { }, // 选中后 shape 的样式
-      cancelable: this.state.boolean, // 选中之后是否允许取消选中，默认允许取消选中
-      animate: this.state.boolean // 选中是否执行动画，默认执行动画
-      }]}
-      Active={this.state.boolean}
-      animate={{
-        animation: 'fadeIn', // 动画名称
-        easing: 'easeInQuart', // 动画缓动效果
-        delay: 0, // 动画延迟执行时间
-        duration: 100 // 动画执行时间
-        }}
+      />
+      <Geom
+        type='interval'//
+        adjust={[{type: 'dodge',marginRatio: 1/32}]}
+        color='name'
         position="月份*月均降雨量"
       />
     </Chart>
