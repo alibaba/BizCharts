@@ -129,11 +129,7 @@ export default class Basic extends Component {
       crosshairs={{
         //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
         type: this.state.crosshairs,
-        style: {
-        lineWidth:this.state.tickLineWidth,
-        fill:this.state.lineFill,
-        stroke:this.state.lineStroke,
-        }
+
       }}
       />
       <Geom

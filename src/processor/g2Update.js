@@ -25,6 +25,18 @@ const iUpdate = {
     return false;
   },
 
+  needReExecute(config, nextConfig) {
+    const geoms = config.geoms;
+    const nextGeoms = nextConfig.geoms;
+
+    if (geoms == null || nextGeoms == null) return false;
+
+    return Object.keys(geoms).find((id) => {
+      if (!nextGeoms[id]) return false;
+      return geoms[id].type !== nextGeoms[id].type;
+    });
+  },
+
   synchronizeG2Update(chart, config, nextConfig) {
     this.updateChart(chart, config.chart, nextConfig.chart);
     this.updateAxises(chart, config.axises, nextConfig.axises);
@@ -218,8 +230,7 @@ const iUpdate = {
     }
 
     for (const id in geoms) {
-      if (Object.prototype.hasOwnProperty.call(geoms, id)
-          && Object.prototype.hasOwnProperty.call(nextGeoms, id)) {
+      if (nextGeoms[id]) {
         if (this.updateGeom(chart, geoms[id], nextGeoms[id])) { return true; }
       }
     }
@@ -306,7 +317,7 @@ const iUpdate = {
 
     for (const id in views) {
       if (nextViews[id]) {
-        if (views[id].needReExecute) {
+        if (views[id].needReExecute || this.needReExecute(views[id], nextViews[id])) {
           g2Creator.synchronizeG2View(views[id].g2Instance, nextViews[id]);
         } else {
           this.updateView(chart, views[id], nextViews[id]);

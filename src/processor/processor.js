@@ -90,7 +90,9 @@ export default class Processor {
 
       return this.createG2Instance();
     }
-    if (g2Delete.needReExecute(this.deleteInfos, this.elementInfos)) {
+    if (g2Delete.needReExecute(this.deleteInfos, this.elementInfos)
+      || g2Update.needReExecute(this.config, this.updateConfig)
+    ) {
       this.reExecuteChart();
       return this.chart;
     }

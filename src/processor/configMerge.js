@@ -94,11 +94,6 @@ const iMerge = {
     delete config.views[id];
   },
 
-  deleteFacet(config) {
-    if (!config) return;
-    delete config.facet;
-  },
-
   mergeUpdate(config, nextConfig, clear) {
     this.mergeChart(config, nextConfig, clear);
     this.mergeAxises(config, nextConfig, clear);

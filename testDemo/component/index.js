@@ -6,6 +6,8 @@ import Legend from './legend';
 import Tooltip from './tooltip';
 import ViewAD from './viewAD';
 import ViewUpdate from './viewUpdate';
+import Com16 from './com16';
+
 
 export default {
   Demos: {
@@ -17,5 +19,6 @@ export default {
     Tooltip,
     ViewAD,
     ViewUpdate,
+    Com16,
   },
 };

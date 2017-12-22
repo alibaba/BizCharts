@@ -126,7 +126,7 @@ export default class Basic extends Component {
         //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
         type: 'rect',
       }}/>}
-       <Geom type="interval" position="year*sales" color="yelow"/>
+       <Geom type="interval" position="year*sales" color="sales"/>
     </Chart>
     );
   }
