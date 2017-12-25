@@ -5,7 +5,7 @@ BizCharts implements all the features of G2's animation.
 
 ## Animation Types
 
-Animation comes with the element's lifecycle. There are four types of animation you can define with `animate` API.
+Animation comes with the element's lifecycle. There are four scenarios you can deal with `animate` API.
 
 * appear: initial create of element, aka first mount
 * enter: applied when a new element added to the exist animation queue 
@@ -14,23 +14,28 @@ Animation comes with the element's lifecycle. There are four types of animation 
 
 ## Animation configuration
 
-* [animation:String] animation name, different scenaria supports different animatioin. Reference: [Built in Animations](#animationType)
-* [easing:String | Function]  easing effect
+Applied animation in different animation scenario, just define as follows. 
+
+* [animation:String] animation name, different scenario supports different animatioin. Reference: [Built in Animations](#animationType)
+* [easing:String | Function]  easing function
 * [delay:Number | Function]  Configures the delay between the time the element is loaded and the beginning of the animation sequence.
 * [duration:Number | Function]  Configures the length of time that an animation should take to complete one cycle.
 
 Examples：
 ```jsx
+// when element enter, the animation will take effect. Same with appear, update, leave.
 {
-animation: 'fadeIn', // animation name
-easing: 'easeInQuart' // easing effect
-delay: 100, // animation delay
-duration: 600 // animation duration
+  enter: {
+    animation: 'fadeIn', // animation name
+    easing: 'easeInQuart' // easing function
+    delay: 100, // animation delay
+    duration: 600 // animation duration
+  }
 }
 ```
 
-## How to implement `animate` in <Geom />
-*Reference:[Geom animate](../api/geom.md#animate)*
+## How to implement `animate` in \<Geom />
+*Reference: [Geom animate](../api/geom.md#animate)*
 
 <span id="animationType"></span>
 
