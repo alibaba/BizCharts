@@ -4,6 +4,20 @@ import PropTypes from 'prop-types';
 import Processor from '../../processor/processor';
 
 export default class PureChart extends Component {
+  static propTypes = {
+    data: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.object),
+      PropTypes.object,
+    ]),
+    scale: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    animate: PropTypes.bool,
+    width: PropTypes.number,
+    height: PropTypes.number.isRequired,
+    onGetG2Instance: PropTypes.func,
+  }
   static childContextTypes = {
     addElement: PropTypes.func,
     updateElement: PropTypes.func,
