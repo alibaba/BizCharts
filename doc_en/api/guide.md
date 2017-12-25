@@ -1,12 +1,15 @@
 
 # Guide
-Auxiliary element components are used primarily to identify additional markup annotations on the chart.
+Guide components are used to annotate chart. Such as to annotate the text, special region and so on.
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png" width="500px">
 
-## Instructions for use
-- `<Guide />` can only be a Child Component of a  [`<Chart />`](chart.md) component or a [`<View />`](view.md) component.The Child Components of `<Guide />` are these：
-
+## Instruction
+###Parent Components###
+<Guide />
+- 
+  - `<Guide />` can only be a Child Component of a  [`<Chart />`](chart.md) component or a [`<View />`](view.md) component.
+###Child Components###
 | Component | Description | property |
 | :- | :-| :- |
 | Line |Auxiliary lines (can take text), such as lines representing the average or expected distribution.| [Reference Line](#line) |
@@ -17,8 +20,8 @@ Auxiliary element components are used primarily to identify additional markup an
 | Arc | Auxiliary arc | [Reference Arc](#arc) |
 
 - Different auxiliary mark components support the configuration properties are not the same, the main difference is the difference of the coordinate position properties:
-  - In the Text, Html use position.
-  - In the Line, Region, Image, Arc use start、end field.
+  - In the Text, Html use `position`.
+  - In the Line, Region, Image, Arc use `start`、`end`.
 
 **The description of position value**
 - Object using chart x,y  corresponding to the original data. For example: {time: ‘2010-01-01’, value: 200}.
@@ -55,8 +58,8 @@ Auxiliary element components are used primarily to identify additional markup an
 ```
 [demo link](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bullet-graph)
 
-## Guide component properties
-`<Guide>` Component is mainly used to manage the rendering of the child components below him, the property is updated, there is no property need to be configured.
+## Properties
+`<Guide>` Component is mainly used to manage the rendering of the child components and the property update of the child components that below it. It does not have properties that need to be configured.
 
 <span id = "line"></span>
 
@@ -65,7 +68,7 @@ Auxiliary element components are used primarily to identify additional markup an
 ```jsx
 <Guide>
   <Line
-    top={boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+    top={boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
     start= {object} | {function} | {array} // The starting position of the auxiliary line, the value of the original data, support callback
     end= {object} | {function} | {array} // The end of the auxiliary line, the value of the original data, support callback
     lineStyle= {{
@@ -87,7 +90,7 @@ Auxiliary element components are used primarily to identify additional markup an
 
 ### 1、top 	*Boolean*
 Specify whether the guide is drawn on the canvas top.
-The default is false, that is drawn at the bottom
+The default is false, that will be drawed at the bottom.
 
 ### 2、start 	*Object | Function | Array*
 - Object using chart x,y  corresponding to the original data. For example: {time: ‘2010-01-01’, value: 200}.
@@ -131,7 +134,7 @@ Auxiliary lines can take the text, this attribute is used as follows:
 ```jsx
 <Guide>
   <Text
-    top= {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+    top= {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
     position= {object} | {function} | {array} // The starting position of the text, the value of the original data, support callback
     content= {string} // Displayed text content
     style= {{
@@ -147,7 +150,7 @@ Auxiliary lines can take the text, this attribute is used as follows:
 ```
 ### 1、top 	*Boolean*
 Specify whether the guide is drawn on the canvas top.
-The default is false, that is drawn at the bottom.
+The default is false, that will be drawed at the bottom..
 
 ### 2、position 	* Object|Function|Array *
 Specify the display position of the auxiliary text, the value of the type as follows:
@@ -178,7 +181,7 @@ y-direction offset.
 <Guide>
   // Auxiliary image, just specify start. The point represents the coordinates of the upper left corner of the picture.
   <Image
-    top = {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+    top = {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
     start= {object} | {function} | {array} // The starting position of the image, the value of the original data, support callback
     src= {string} // The path to the picture
     width= {number}
@@ -188,7 +191,7 @@ y-direction offset.
     />
     // Auxiliary image, by specifying the start and end to determine the location and width and height of the picture
     <Image
-      top = {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+      top = {boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
       start= {object} | {function} | {array} // The starting position of the image, the value of the original data, support callback
       end= {array} | {function} | {array} // The end of the image, the value of the original data, support callback
       src= {string} // The path to the picture
@@ -202,7 +205,7 @@ y-direction offset.
 
 ### 1、top 	*Boolean*
 Specify whether the guide is drawn on the canvas top.
-The default is false, that is drawn at the bottom.
+The default is false, that will be drawed at the bottom..
 
 ### 2、start 	*Object|Function|Array*
 Specify the starting position of the auxiliary picture, that is, the upper left corner of the picture, the type of the value is as follows:
@@ -238,7 +241,7 @@ y-direction offset
 ```jsx
 <Guide>
   <Region
-    top={boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+    top={boolean} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
     start= {object} | {function} | {array} // The starting position of the region, the value of the original data, support callback
     end= {object} | {function} | {array}// Auxiliary region end position, the value of the original data, support callback
     style= {{
@@ -252,7 +255,7 @@ y-direction offset
 ```
 ### 1、top 	*Boolean*
 Specify whether the guide is drawn on the canvas top.
-The default is false, that is drawn at the bottom.
+The default is false, that will be drawed at the bottom..
 
 ### 2、start 	*Object|Function|Array*
 Specify the starting position of the auxiliary background region, that is, the upper left corner of the background region, the type of the value is as follows:
@@ -323,7 +326,7 @@ The content of Html that needs to be displayed.
 ```jsx
 <Guide>
   <Arc
-    top={object} // Specify whether the guide is drawn on the canvas top, the default is false, that is drawn at the bottom
+    top={object} // Specify whether the guide is drawn on the canvas top, the default is false, that will be drawed at the bottom.
     start={object} | {function} | {array} // Auxiliary arc starting position, the value of the original data, support callback
     end={object} | {function} | {array}// Auxiliary arc end position, the value of the original data, support callback
     style={object} // The attributes of  graphic style 
@@ -333,7 +336,7 @@ The content of Html that needs to be displayed.
 
 ### 1、top 	*boolean*
 Specify whether the guide is drawn on the canvas top.
-The default is false, that is drawn at the bottom.
+The default is false, that will be drawed at the bottom..
 
 ### 2、start 	*Object|Function|Array*
 Specify the starting position of auxiliary arc, the type of this value is as follows:
