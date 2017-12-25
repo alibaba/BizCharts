@@ -5,11 +5,12 @@ Guide components are used to annotate chart. Such as to annotate the text, speci
 <img src="https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png" width="500px">
 
 ## Instruction
-###Parent Components###
-<Guide />
+
+### Parent Components
+`<Guide />`
 - 
   - `<Guide />` can only be a Child Component of a  [`<Chart />`](chart.md) component or a [`<View />`](view.md) component.
-###Child Components###
+### Child Components
 | Component | Description | property |
 | :- | :-| :- |
 | Line |Auxiliary lines (can take text), such as lines representing the average or expected distribution.| [Reference Line](#line) |
@@ -22,6 +23,7 @@ Guide components are used to annotate chart. Such as to annotate the text, speci
 - Different auxiliary mark components support the configuration properties are not the same, the main difference is the difference of the coordinate position properties:
   - In the Text, Html use `position`.
   - In the Line, Region, Image, Arc use `start`、`end`.
+
 
 **The description of position value**
 - Object using chart x,y  corresponding to the original data. For example: {time: ‘2010-01-01’, value: 200}.
