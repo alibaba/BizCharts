@@ -10,7 +10,6 @@ export default {
   createChart(config) {
     const chartConfig = config.chart;
     const chart = new G2.Chart(chartConfig);
-    this.executeChartConfig(chart, config);
     chartConfig.g2Instance = chart;
     return chart;
   },
