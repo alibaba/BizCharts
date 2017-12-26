@@ -67,7 +67,7 @@ export default {
       return;
     }
 
-    const geom = chart[geomConfig.type]();
+    const geom = chart[geomConfig.type || 'interval']();
 
     if (geomConfig.adjust) {
       geom.adjust(geomConfig.adjust);
@@ -98,11 +98,15 @@ export default {
     const legends = config.legends;
 
     for (const id in legends) {
-      if (Object.prototype.hasOwnProperty.call(legends, id)) {
+      if (legends[id]) {
         const legendConfig = legends[id];
         if (legendConfig.g2Instance) { return; }
         const { name, visible, ...cfg } = legendConfig;
-        const arg = !visible ? visible : cfg;
+        let relVisible = visible;
+        if (!Object.prototype.hasOwnProperty.call(legendConfig, 'visible')) {
+          relVisible = true;
+        }
+        const arg = !relVisible ? relVisible : cfg;
         legendConfig.g2Instance = chart.legend(...(name ? [name, arg] : [arg]));
       }
     }
