@@ -22,12 +22,20 @@ function hasSource(source) {
 }
 
 export default class Chart extends (React.PureComponent || React.Component) {
+  getG2Instance() {
+    return this.chart;
+  }
+  _refCallback = (c) => {
+    if (c) {
+      this.chart = c.getG2Instance();
+    }
+  }
   render() {
     const { data, width, height, placeholder } = this.props;
     return (<div>
       {
         hasSource(data) ?
-          <PureChart {...this.props} /> :
+          <PureChart ref={this._refCallback} {...this.props} /> :
           <Empty width={width} height={height} placeholder={placeholder} />
       }
     </div>);

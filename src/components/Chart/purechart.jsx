@@ -81,7 +81,11 @@ export default class PureChart extends Component {
     this.containerWrap = null;
   }
 
-  getViewId = () => {}
+  getG2Instance() {
+    return this.chart;
+  }
+
+  getViewId = () => { }
 
   getParentInfo = () => {
     return {
