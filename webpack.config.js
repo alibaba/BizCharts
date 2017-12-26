@@ -30,9 +30,6 @@ var config = {
     extensions: ['.js', '.jsx'],
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
-      'react-addons-transition-group':
-          path.resolve(__dirname, './node_modules/react-addons-transition-group'),
-    },
   },
 
   externals: {
@@ -41,12 +38,6 @@ var config = {
       commonjs2: 'react',
       commonjs: 'react',
       amd: 'react',
-    },
-    'react-addons-transition-group': {
-      root: ['React', 'addons', 'TransitionGroup'],
-      commonjs2: 'react-addons-transition-group',
-      commonjs: 'react-addons-transition-group',
-      amd: 'react-addons-transition-group',
     },
   },
 

@@ -2,7 +2,7 @@
  * Chart Component
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import Util from '../../shared/util';
 import PureChart from './purechart';
 import Empty from './empty';
@@ -21,21 +21,17 @@ function hasSource(source) {
   return !!flag;
 }
 
-export default class Chart extends Component {
-
+export default class Chart extends (React.PureComponent || React.Component) {
   getG2Instance() {
     return this.chart;
   }
-
   _refCallback = (c) => {
     if (c) {
       this.chart = c.getG2Instance();
     }
   }
-
   render() {
     const { data, width, height, placeholder } = this.props;
-
     return (<div>
       {
         hasSource(data) ?

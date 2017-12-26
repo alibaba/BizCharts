@@ -3,7 +3,71 @@
  * prop function
  */
 import PropTypes from 'prop-types';
-import Util from './util';
+import Util from '../shared/util';
+
+const chartItemEvents = [
+  { prop: 'onPlotMove', event: 'plotmove' },
+  { prop: 'onPlotEnter', event: 'plotenter' },
+  { prop: 'onPlotLeave', event: 'plotleave' },
+  { prop: 'onPlotClick', event: 'plotclick' },
+  { prop: 'onPlotDblClick', event: 'plotdblclick' },
+  { prop: 'onItemSelected', event: 'itemselected' },
+  { prop: 'onItemUnselected', event: 'itemunselected' },
+  { prop: 'onItemSelectedChange', event: 'itemselectedchange' },
+  { prop: 'onTooltipChange', event: 'tooltip:change' },
+  { prop: 'onTooltipShow', event: 'tooltip:show' },
+  { prop: 'onTooltipHide', event: 'tooltip:hide' },
+];
+
+const baseEventNames = [
+  'mouseenter',
+  'mousemove',
+  'mouseleave',
+  'click',
+  'dblclick',
+  'mousedown',
+  'mouseup',
+  'touchstart',
+  'touchmove',
+  'touchend',
+];
+
+const baseEventsPostfix = [
+  'Mouseenter',
+  'Mousemove',
+  'Mouseleave',
+  'Click',
+  'Dblclick',
+  'Mousedown',
+  'Mouseup',
+  'Touchstart',
+  'Touchmove',
+  'Touchend',
+];
+
+const shapes = ['point', 'area', 'line', 'path', 'interval', 'schema', 'polygon', 'edge',
+  'axis-title', 'axis-label', 'axis-ticks', 'axis-line', 'axis-grid', 'legend-title',
+  'legend-item', 'legend-marker', 'legend-text', 'guide-text', 'guide-region',
+  'guide-line', 'guide-image', 'label',
+];
+
+const shapesEvtNamePrefix = ['onPoint', 'onArea', 'onLine', 'onPath', 'onInterval', 'onSchema',
+  'onPolygon', 'onEdge', 'onAxisTitle', 'onAxisLabel', 'onAxisTicks', 'onAxisLine', 'onAxisGrid',
+  'onLegendTitle', 'onLegendItem', 'onLegendMarker', 'onLegendText', 'onGuideText', 'onGuideRegion',
+  'onGuideLine', 'onGuideImage', 'onLabel',
+];
+
+const shapeEvents = [];
+for (let i = 0; i < shapes.length; i += 1) {
+  for (let j = 0; j < baseEventNames.length; j += 1) {
+    shapeEvents.push({
+      prop: `${shapesEvtNamePrefix[i]}${baseEventsPostfix[j]}`,
+      event: `${shapes[i]}:${baseEventNames[j]}`,
+    });
+  }
+}
+
+const chartEvents = chartItemEvents.concat(shapeEvents);
 
 function genBaseEvents() {
   return [
@@ -142,4 +206,5 @@ export default {
   updateBaseEvents,
   unbindEvents,
   unbindBaseEvents,
+  chartEvents,
 };

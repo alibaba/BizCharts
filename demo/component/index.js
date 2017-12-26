@@ -10,13 +10,13 @@ import Relation from './relation';
 import Facet from './facet';
 import Theme from './theme';
 import Map from './map';
+import Guage from './guage';
 
 export default {
   lineChart: {
-    Empty,
     Line,
-    Area,
     Bar,
+    Area,
     Point,
     Pie,
     Heatmap,
@@ -24,6 +24,7 @@ export default {
     Relation,
     Facet,
     Theme,
+    Guage,
     Map,
   },
 };

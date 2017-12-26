@@ -1,55 +1,53 @@
-/**
- * Facet Component
- */
 import invariant from 'invariant';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import Context from '../Context';
+import BaseComponent from '../Base';
 import { Util } from '../../shared';
-import G2 from '@antv/g2';
 
-export default class Facet extends Component {
+export default class Facet extends BaseComponent {
+  constructor(props) {
+    super(props, 'Facet');
 
-  static contextTypes = {
-    chart: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.instanceOf(G2.Chart),
-    ]),
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { type, ...others } = this.props;
-    const { type: nextType, ...nextOthers } = nextProps;
-
-    if (!Util.shallowEqual(others, nextOthers) || type !== nextType) {
-      this.context.chart.facet(nextType, nextOthers);
-    }
-  }
-
-  render() {
-    const { children, type, ...others } = this.props;
-    const { chart } = this.context;
-    let relChildren;
+    const { children } = props;
+    let relChildren = null;
 
     if (children) {
       invariant(Util.isFunction(children), '<Facet> only have one function child!');
 
       relChildren = [];
       let key = 0;
-      others.eachView = (view, facet) => {
+      this.eachView = (view, facet) => {
         let viewChild = children(view, facet);
         if (viewChild) {
+          key += 1;
           // 需要告诉 View 组件，无需创建 G2 view 示例，而使用此处的 view。
-          viewChild = React.cloneElement(viewChild, Object.assign({}, viewChild.props, { instance: view, key: key++ }));
+          viewChild = React.cloneElement(
+            viewChild,
+            Object.assign({}, viewChild.props, { instance: view, key })
+          );
           relChildren.push(viewChild);
         }
       };
+      // must 
     }
 
-    chart.facet(type, others);
-    if (relChildren) {
-      return <Context chart={chart}>{ relChildren }</Context>;
+    this.relChildren = relChildren;
+  }
+
+  componentWillMount() {
+    this.id = this.context.createId();
+    this.context.addElement(
+      this.name,
+      this.id,
+      this.eachView ? { eachView: this.eachView, ...this.props } : { ...this.props },
+      this.context.getParentInfo(),
+      this.context.getViewId()
+    );
+  }
+
+  render() {
+    if (this.relChildren) {
+      return <div>{ this.relChildren }</div>;
     }
+
     return null;
   }
-}
+};

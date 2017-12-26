@@ -42,6 +42,6 @@
     "class-methods-use-this" : "off",
     "no-restricted-syntax" : "off",
     "no-param-reassign" : "off",
-    "linebreak-style": "off"
+    "linebreak-style" : "off"
   }
 }

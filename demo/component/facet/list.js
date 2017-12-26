@@ -25,6 +25,7 @@ export default class List extends Component {
   render() {
     return (
       <Chart height={450} data={data} width={800} height={600} padding={[30, 80, 80, 80]} scale={scale}>
+        <Tooltip />
         <Legend />
         <Facet type='list' fields={['cut']} cols={3} padding={30} eachView={(view, facet)=>{
           view.point()
