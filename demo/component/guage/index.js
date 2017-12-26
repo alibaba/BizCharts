@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Basic from './basic';
 import Color from './color';
-// import GuideChart from './guide';
-// import ListFacet from './listFacet';
+import Text from './text';
 
 
 export default class GuageChart extends Component {
@@ -12,6 +11,7 @@ export default class GuageChart extends Component {
         <div className='guage-basic'>
           <Basic />
           <Color />
+          <Text />
         </div>
       </div>
     );

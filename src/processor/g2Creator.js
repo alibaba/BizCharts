@@ -118,7 +118,7 @@ export default {
   createAxis(chart, axisConfig) {
     if (axisConfig.g2Instance) { return; }
     const { name, visible, ...others } = axisConfig;
-    if (visible || !Object.prototype.hasOwnProperty.call(axisConfig, visible)) {
+    if (visible || !Object.prototype.hasOwnProperty.call(axisConfig, 'visible')) {
       axisConfig.g2Instance = chart.axis(name, others);
     } else {
       axisConfig.g2Instance = chart.axis(name, false);
