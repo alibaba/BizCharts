@@ -37,7 +37,7 @@
   - [slider](https://github.com/alibaba/BizCharts/tree/slider/plugin/slider)
 
 ## FAQ & Common Issues
-- [Got a problem? There's a way. :point_left:](/doc/faq/faq.md#ques)
+- [Got a problem? Check this out first. :point_left:](/doc/faq/faq.md#ques)
 - [No enough space for axis or get a broken axis?](/doc/faq/faq.md#axisSpace)
 - [How to customize the label of axis?](/doc/faq/faq.md#customLabel)
 - [How to display tooltips?](/doc/faq/faq.md#tooltipShow)
