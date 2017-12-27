@@ -28,17 +28,17 @@ const cols = {
 
 
 export default class Basic extends Component {
-  
+
   render() {
     return (
   <Chart height={window.innerHeight} data={data} scale={cols} padding={[ 20, 120, 95 ]} forceFit>
     <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">浏览人数：{pv}</span><br/><span style="padding-left: 16px">占比：{percent}</span><br/></li>'/>
     <Coord type='rect' transpose scale={[1,-1]} />
 		<Legend />
-    {data.map((obj) => {
-        return  (<Guide >
-      <Text 
-        top={true} 
+    {data.map((obj,index) => {
+        return  (<Guide key={index} >
+      <Text
+        top={true}
         position={{
         action: obj.action,
         percent: 'median'}}
@@ -59,7 +59,7 @@ export default class Basic extends Component {
         percent: parseInt(percent * 100) + '%',
         pv: pv
       };
-    }]} 
+    }]}
       >
     <Label content={['action*pv',(action, pv) => {
       return action + ' ' + pv;
