@@ -1,3 +1,7 @@
+# 3.1.0-beta.1 (12.22, 2017)
+Compatible with react16 version.
+The use of facet changes, see [facet api doc]( https://github.com/alibaba/BizCharts/blob/master/doc/api/facet.md).
+
 # 3.0.5 (12.13, 2017)
 Synchronization to g2 3.0.1 release version.
 
