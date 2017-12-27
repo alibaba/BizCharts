@@ -30,19 +30,22 @@ export default class Chart extends (React.PureComponent || React.Component) {
       this.chart = c.getG2Instance();
     }
   }
-  render() {
-    const { data, width, height, placeholder } = this.props;
+  hasViewSource = (data) => {
     let hasView = false;
     if (!hasSource(data)) {
       React.Children.map(this.props.children, function (child) {
-        if (typeof (child.type) === 'function' && child.type.name === 'View' && child.props.data && hasSource(child.props.data)) {
+        if (!hasView && typeof (child.type) === 'function' && child.type.name === 'View' && child.props.data && hasSource(child.props.data)) {
           hasView = true;
         }
       });
     }
+    return hasView;
+  }
+  render() {
+    const { data, width, height, placeholder } = this.props;
     return (<div>
       {
-        (hasSource(data) || hasView) ?
+        (hasSource(data) || this.hasViewSource(data)) ?
           <PureChart ref={this._refCallback} {...this.props} /> :
           <Empty width={width} height={height} placeholder={placeholder} />
       }
