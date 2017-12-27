@@ -99,6 +99,7 @@ export default class Color extends Component {
         <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
         <Axis name='value'
           zIndex={2}
+          line={null}
           label={{
             offset: -20,
             textStyle: {
@@ -113,7 +114,7 @@ export default class Color extends Component {
             strokeOpacity: 1
           }}
         />
-        <Axis name='1' visible={false} />
+        <Axis name='1' visible={false}/>
         <Guide>
           <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
             style={{ // 底灰色

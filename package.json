@@ -54,7 +54,7 @@
     "react-dom": ">15"
   },
   "dependencies": {
-    "@antv/g2": "3.0.3-beta.1",
+    "@antv/g2": "3.0.3",
     "invariant": "^2.2.2",
     "warning": "^3.0.0",
     "prop-types": "^15.6.0"

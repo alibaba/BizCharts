@@ -58,9 +58,10 @@ export default class Basic extends Component {
     return (
       <Chart height={window.innerHeight} data={data} scale={cols} padding={[ 0, 0, 200, 0 ]} forceFit>
         <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
-        <Axis name='1' visible={false} />
+        <Axis name='1' visible={false} line={null}/>
         <Axis name='value'
           zIndex={2}
+          line={null}
           label={{
             offset: -20,
                   formatter: val => {
@@ -81,6 +82,7 @@ export default class Basic extends Component {
           }
           }}
         />
+        <Axis name='1' visible={false} />
         <Guide>
           <Line start={[ 3, 0.905 ]} end={[ 3.0035, 0.85 ]}
             lineStyle={{
