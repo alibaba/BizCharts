@@ -6,7 +6,7 @@
     <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
     <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
   </head>
   <body>
       <div id="mountNode" ></div>
@@ -74,7 +74,7 @@
           this.state = {
             data: data,
             lineWidth: 25,
-          } 
+          }
         }
         componentDidMount() {
           const self = this;
@@ -93,6 +93,7 @@
           <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
           <Axis name='value'
             zIndex={2}
+            line={null}
             label={{
               offset: -20,
               textStyle: {
@@ -107,8 +108,9 @@
             strokeOpacity: 1
           }}
           />
+          <Axis name="1" visible ={false} />
         <Guide>
-          <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]} 
+          <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
             style={{ // 底灰色
             stroke: 'rgba(0, 0, 0, 0.09)',
             lineWidth
@@ -127,7 +129,7 @@
                             style={{ // 底灰色
                     stroke: color[2],
                       lineWidth
-                  }} />} 
+                  }} />}
               { val>=2 && val<4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[val, 0.965 ]}
       style={{ // 底灰色
           stroke: color[1],
@@ -137,7 +139,7 @@
       style={{ // 底灰色
           stroke: color[0],
           lineWidth
-      }} />}         
+      }} />}
           <Html  position={[ '50%', '95%' ]}
                 html={() => {return ('<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">'+ val * 10+'%</p></div>')}}
               />
@@ -148,7 +150,7 @@
             />
         </Chart>);
         }
-      } 
+      }
       ReactDOM.render((
         <Draw/>
       ), document.getElementById("mountNode"));
