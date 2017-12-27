@@ -32,7 +32,7 @@
         ReactDOM.render((
           <Chart height={400} data={data} scale={cols} forceFit>
             <Axis name="year" />
-            <Axis name="value" />
+            <Axis name="sales" />
             <Tooltip crosshairs={{type : "y"}}/>
             <Geom type="interval" position="year*sales" />
           </Chart>
