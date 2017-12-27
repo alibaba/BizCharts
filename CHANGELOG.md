@@ -1,3 +1,7 @@
+# 3.1.0-beta.2 (12.27, 2017)
+fix `<Axis visible={false}>` do not work.
+add placeholder property to handle data is null.
+
 # 3.1.0-beta.1 (12.22, 2017)
 Compatible with react16 version.
 The use of facet changes, see [facet api doc]( https://github.com/alibaba/BizCharts/blob/master/doc/api/facet.md).

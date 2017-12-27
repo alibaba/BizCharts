@@ -30,6 +30,7 @@ var config = {
     extensions: ['.js', '.jsx'],
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),
+    },
   },
 
   externals: {
@@ -44,7 +45,7 @@ var config = {
   plugins: [
     new LodashModuleReplacementPlugin({
       collections: true,
-      shorthands: true
+      shorthands: true,
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
