@@ -1,3 +1,7 @@
+# 3.1.0-beta.3 (12.28, 2017)
+upgrade g2 version to 3.0.4-beta.2.
+fixed resize and update padding in the same time, g2 crash.
+
 # 3.1.0-beta.2 (12.27, 2017)
 fix `<Axis visible={false}>` do not work.
 add placeholder property to handle data is null.

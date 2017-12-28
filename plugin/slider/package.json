@@ -50,7 +50,7 @@
     "react-addons-transition-group": "^15.0.0"
   },
   "dependencies": {
-    "@antv/g2-plugin-slider": "2.0.0"
+    "@antv/g2-plugin-slider": "2.0.1"
   },
   "devDependencies": {
     "@antv/g2": ">= 3.0.1",

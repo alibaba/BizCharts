@@ -71,7 +71,6 @@ function sliderNeedRebuild(props, nextProps) {
   for (let i = 0; i < SliderAttrs.length; i += 1) {
     const attr = SliderAttrs[i];
     if (!shallowEqual(props[attr], nextProps[attr])) {
-      console.log('need rebuild');
       return true;
     }
   }
