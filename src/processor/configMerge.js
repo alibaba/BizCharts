@@ -110,7 +110,8 @@ const iMerge = {
         nextConfig.chart.g2Instance = config.chart.g2Instance;
       }
       config.chart = nextConfig.chart;
-    } else if (clear) {
+    }
+    if (clear) {
       delete config.chart.g2Instance;
     }
   },
@@ -129,7 +130,8 @@ const iMerge = {
           nextAxises[id].g2Instance = axises[id].g2Instance;
         }
         axises[id] = nextAxises[id];
-      } else if (clear) {
+      }
+      if (clear) {
         delete axises[id].g2Instance;
       }
     }
@@ -143,7 +145,8 @@ const iMerge = {
         nextConfig.tooltip.g2Instance = config.tooltip.g2Instance;
       }
       config.tooltip = nextConfig.tooltip;
-    } else if (config.tooltip && clear) {
+    }
+    if (config.tooltip && clear) {
       delete config.tooltip.g2Instance;
     }
   },
@@ -154,7 +157,8 @@ const iMerge = {
         nextConfig.coord.g2Instance = config.coord.g2Instance;
       }
       config.coord = nextConfig.coord;
-    } else if (config.coord && clear) {
+    }
+    if (config.coord && clear) {
       delete config.coord.g2Instance;
     }
   },
@@ -168,7 +172,8 @@ const iMerge = {
           nextLegends[id].g2Instance = legends[id].g2Instance;
         }
         legends[id] = nextLegends[id];
-      } else if (clear) {
+      }
+      if (clear) {
         delete legends[id].g2Instance;
       }
     }
@@ -183,7 +188,8 @@ const iMerge = {
           nextGeoms[id].g2Instance = geoms[id].g2Instance;
         }
         geoms[id] = nextGeoms[id];
-      } else if (clear) {
+      }
+      if (clear) {
         delete geoms[id].g2Instance;
       }
     }
@@ -202,7 +208,8 @@ const iMerge = {
         } else {
           nextGuides[id].g2Instance = guides[id].g2Instance;
         }
-      } else if (clear) {
+      }
+      if (clear) {
         delete guides[id].g2Instance;
       }
     }
@@ -229,7 +236,8 @@ const iMerge = {
     for (const id in views) {
       if (nextViews && nextViews[id]) {
         this.mergeView(views[id], nextViews[id], clear);
-      } else if (clear) {
+      }
+      if (clear) {
         delete views[id].g2Instance;
       }
     }

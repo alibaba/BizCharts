@@ -1,3 +1,6 @@
+# 3.1.0-beta.4 (12.28, 2017)
+fixed update padding over and over again, geoms will be null.
+
 # 3.1.0-beta.3 (12.28, 2017)
 upgrade g2 version to 3.0.4-beta.2.
 fixed resize and update padding in the same time, g2 crash.
