@@ -1,5 +1,5 @@
 # Animate
-*Reference: [G2 Animate](https://antv.alipay.com/zh-cn/g2/3.x/api/animate.html)*
+*Reference: [G2 Animate](//antv.alipay.com/zh-cn/g2/3.x/api/animate.html)*
 
 BizCharts implements all the features of G2's animation.
 
@@ -35,7 +35,7 @@ Examples：
 ```
 
 ## How to implement `animate` in \<Geom />
-*Reference: [Geom animate](../api/geom.md#animate)*
+*Reference: [Geom animate](/doc/api/geom.md#animate)*
 
 <span id="animationType"></span>
 
@@ -94,7 +94,7 @@ The mechanism of animate: `shape.animate(props, duration, delay, easing, callbac
  */
 shape.animate(toProps, duration, delay = 0, easing, callback)
 ```
-For more detail about `easing` function, reference [d3.ease](https://github.com/d3/d3-ease)
+For more detail about `easing` function, reference [d3.ease](//github.com/d3/d3-ease)
 
 ### Examples
 ```jsx
