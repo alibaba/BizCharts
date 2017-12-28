@@ -1,6 +1,7 @@
 
 # Interaction 
 
+**Reference [G2 Interaction](//antv.alipay.com/zh-cn/g2/3.x/tutorial/interaction.html)**
 ## Built in interactions
 Including：
 - active : react to mouse hover event
@@ -35,7 +36,7 @@ Example:
 
 By default, only the `pie chart` support select mode.
 
-**Mostly, you can customize chart's interaction by combining built in interaction with chart's [events](../api/chart.md#event). Reference: [Map drill down](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/drill-down)**
+**Mostly, you can customize chart's interaction by combining built in interaction with chart's [events](/doc/api/chart.md#event). Reference: [Map drill down](//alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/drill-down)**
 
 
 

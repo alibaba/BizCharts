@@ -8,9 +8,9 @@
 - [Data](/doc/tutorial/data.md)
 - [DataSet](/doc/tutorial/dataset.md)
 - [Dataflow](/doc/tutorial/dataflow.md)
-- [Theme](/doc/tutorial/theme.md)
-- [Interaction](/doc/tutorial/interaction.md)
-- [Animation](/doc/tutorial/animate.md)
+- [Theme](/doc_en/tutorial/theme.md)
+- [Interaction](/doc_en/tutorial/interaction.md)
+- [Animation](/doc_en/tutorial/animate.md)
 
 ## API Documentation
 - [BizCharts](/doc/api/bizcharts.md)
@@ -37,8 +37,7 @@
   - [slider](https://github.com/alibaba/BizCharts/tree/slider/plugin/slider)
 
 ## FAQ & Common Issues
-- [Got a problem? Check this out first. :point_left:](/doc/faq/faq.md#ques)
-- [No enough space for axis or get a broken axis?](/doc/faq/faq.md#axisSpace)
-- [How to customize the label of axis?](/doc/faq/faq.md#customLabel)
-- [How to display tooltips?](/doc/faq/faq.md#tooltipShow)
-- [How to customize tooltips?](/doc/faq/faq.md#customTooltip)
+- [Got a problem? Check this out first. :point_left:](/doc_en/faq/faq.md#ques)
+- [No enough space for axis or get a broken axis?](/doc_en/faq/faq.md#axisSpace)
+- [How to customize the label of axis?](/doc_en/faq/faq.md#customLabel)
+- [How to display and customize tooltips?](/doc_en/faq/faq.md#tooltipShow)
