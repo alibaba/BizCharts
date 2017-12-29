@@ -24,6 +24,9 @@ export default {
     chart.legend(false);
     chart.tooltip(false);
     if (chartConfig.filter) {
+      chartConfig.filter.forEach((filterArg) => {
+        chart.filter(filterArg[0], filterArg[1]);
+      });
     }
     EventUtil.bindEvents(chart, EventUtil.chartEvents, config.chart);
     EventUtil.bindBaseEvents(chart, config.chart);
