@@ -1,3 +1,7 @@
+# 3.1.0-beta.6 (12.29, 2017)
+delete the no need dependence react-dom.
+fix https://github.com/alibaba/BizCharts/issues/67
+
 # 3.1.0-beta.4 (12.28, 2017)
 fixed update padding over and over again, geoms will be null.
 
