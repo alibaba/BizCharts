@@ -45,8 +45,9 @@ export default class Basic extends Component {
     }, 1000);
   }
   render() {
+    const style={fontSize: '12'}
     return (
-      <Chart height={400} data={this.state.data} scale={cols} forceFit>
+      <Chart height={400} data={this.state.data} scale={cols} forceFit className='hello world' style={style} >
       <Axis
       name="year"
       // visible={this.state.boolean}

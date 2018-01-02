@@ -40,8 +40,8 @@ export default class Chart extends (React.PureComponent || React.Component) {
     return hasViewSource;
   }
   render() {
-    const { data, width, height, placeholder } = this.props;
-    return (<div>
+    const { data, width, height, placeholder, className, style } = this.props;
+    return (<div className={className} style={style}>
       {
         (hasSource(data) || this.hasViewSource()) ?
           <PureChart ref={this._refCallback} {...this.props} /> :
