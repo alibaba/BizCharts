@@ -140,7 +140,17 @@ Array:[fieldString, callback]
 ``` jsx
 <Chart filter={['x', (val) => {return val > 20;}]}/>
 ```
-
+### 13、className   *String*
+设置图标最外层div的类名。
+``` jsx
+<Chart className="chart1" />
+```
+### 14、style   *Object*
+设置图标最外层div的样式。
+``` jsx
+const style={fontSize: '12'}
+<Chart style={style} />
+```
 
 ## 事件属性
 `<chart/>`组件提供了各种事件，方便用户扩展交互。基本的事件用法如下：
