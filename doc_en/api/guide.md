@@ -11,9 +11,9 @@ Guide components are used to annotate chart. Such as to annotate the text, speci
 ### Child Components
 [`<Line />`](#line) [`<Image />`](#image) [`<Text />`](#text) [`<Region />`](#region) [`<Html />`](#html) [`<Arc />`](#arc) 
 
-- Different auxiliary mark components support the configuration properties are not the same, the main difference is the difference of the coordinate position properties:
-  - In the Text, Html use `position`.
-  - In the Line, Region, Image, Arc use `start`、`end`.
+- Different configuration properties should be supported by the corresponding auxiliary mark components,  which differ in coordinate position properties.
+  - `position` is used in the `Text`,` Html`.
+  - `start`、`end` are used in the `Line`, `Region`, `Image`, `Arc`.
 
 
 **The description of position value**
