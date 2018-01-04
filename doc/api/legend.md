@@ -117,7 +117,7 @@
 用于图例 marker 的显示样式。
 可选项有: `'circle', 'square', 'bowtie', 'diamond', 'hexagon', 'triangle', 'triangle-down', 'hollowCircle', 'hollowSquare', 'hollowBowtie', 'hollowDiamond', 'hollowHexagon', 'hollowTriangle', 'hollowTriangle-down', 'cross', 'tick', 'plus', 'hyphen', 'line'`
 
-### 15、textStyle 	*Number*
+### 15、textStyle 	*Object*
 图例的背景样式配置。
 ```jsx
 {
