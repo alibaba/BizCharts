@@ -30,7 +30,7 @@ export default class PureChart extends Component {
     super(props);
     this.name = 'Chart';
     this.gId = 0;
-    this.id = this.gId;
+    this.id = this.createId();
     this.g2Processor = new Processor();
   }
 
@@ -46,7 +46,7 @@ export default class PureChart extends Component {
   }
 
   componentDidMount() {
-    this.cId = this.addElement(
+    this.addElement(
       this.name,
       this.id,
       {
@@ -61,7 +61,7 @@ export default class PureChart extends Component {
   componentDidUpdate() {
     this.updateElement(
       this.name,
-      this.cId,
+      this.id,
       {
         ...this.props,
         container: this.containerWrap,
