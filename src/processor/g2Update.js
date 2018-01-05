@@ -284,7 +284,7 @@ const iUpdate = {
        Because geoms property will cover the g2 view' inner geoms property.
     */
     const { scale, data, animate, axis } = props;
-    const { scale: nextScale, animate: nextAnimate, data: nextData, axis: nextAxis } 
+    const { scale: nextScale, animate: nextAnimate, data: nextData, axis: nextAxis }
       = nextProps;
 
     if (animate !== nextAnimate) {
