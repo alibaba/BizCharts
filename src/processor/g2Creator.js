@@ -255,7 +255,8 @@ export default {
       }
     }
     if (facetView) {
-      others.eachView = (view, facet) => {
+      configMerge.mergeView(facetView, true);
+      others.eachView = (view) => {
         this.facetView(view, facetView);
       };
       chart.facet(type, others);

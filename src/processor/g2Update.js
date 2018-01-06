@@ -336,6 +336,7 @@ const iUpdate = {
     const { type: nextType, ...nextOthers } = nextProps;
 
     if (type !== nextType || !Util.shallowEqual(others, nextOthers)) {
+      facetConfig.props = nextProps;
       g2Creator.facet(chart, config);
     }
   },

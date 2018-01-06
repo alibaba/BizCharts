@@ -47,6 +47,7 @@ const iDelete = {
   },
 
   deleteView(chart, config, id) {
+    if (!config.views[id].g2Instance) return;
     chart.removeView(config.views[id].g2Instance);
     delete config.views[id].g2Instance;
   },
