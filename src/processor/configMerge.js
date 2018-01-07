@@ -23,9 +23,9 @@ const deleteFuncMap = {
 };
 
 const iMerge = {
-  merge(config, nextConfig, deleteInfos, elementInfos, clear) {
+  merge(config, deleteInfos, elementInfos, clear) {
     this.mergeDelete(config, deleteInfos, elementInfos);
-    this.mergeUpdate(config, nextConfig, clear);
+    this.mergeUpdate(config, clear);
   },
 
   mergeDelete(config, deleteInfos, elementInfos) {
@@ -94,42 +94,35 @@ const iMerge = {
     delete config.views[id];
   },
 
-  mergeUpdate(config, nextConfig, clear) {
-    this.mergeChart(config, nextConfig, clear);
-    this.mergeAxises(config, nextConfig, clear);
-    this.mergeCoord(config, nextConfig, clear);
-    this.mergeGeoms(config.geoms, nextConfig.geoms, clear);
-    this.mergeLegends(config.legends, nextConfig.legends, clear);
-    this.mergeTooltip(config, nextConfig, clear);
-    this.mergeViews(config.views, nextConfig.views, clear);
+  mergeUpdate(config, clear) {
+    this.mergeChart(config, clear);
+    this.mergeAxises(config, clear);
+    this.mergeCoord(config, clear);
+    this.mergeGeoms(config.geoms, clear);
+    this.mergeLegends(config.legends, clear);
+    this.mergeTooltip(config, clear);
+    this.mergeViews(config.views, clear);
   },
 
-  mergeChart(config, nextConfig, clear) {
-    if (nextConfig.chart) {
-      if (!clear) {
-        nextConfig.chart.g2Instance = config.chart.g2Instance;
-      }
-      config.chart = nextConfig.chart;
+  mergeChart(config, clear) {
+    if (config.chart && config.chart.updateProps) {
+      config.chart.props = config.chart.updateProps;
     }
     if (clear) {
       delete config.chart.g2Instance;
     }
   },
 
-  mergeAxises(config, nextConfig, clear) {
+  mergeAxises(config, clear) {
     const axises = config.axises;
-    const nextAxises = nextConfig.axises;
 
-    if (axises == null || nextAxises == null) {
+    if (!axises == null) {
       return;
     }
 
     for (const id in axises) {
-      if (nextAxises[id]) {
-        if (!clear) {
-          nextAxises[id].g2Instance = axises[id].g2Instance;
-        }
-        axises[id] = nextAxises[id];
+      if (axises[id] && axises[id].updateProps) {
+        axises[id].props = axises[id].updateProps;
       }
       if (clear) {
         delete axises[id].g2Instance;
@@ -139,106 +132,90 @@ const iMerge = {
     return;
   },
 
-  mergeTooltip(config, nextConfig, clear) {
-    if (config.tooltip && nextConfig.tooltip) {
-      if (!clear) {
-        nextConfig.tooltip.g2Instance = config.tooltip.g2Instance;
-      }
-      config.tooltip = nextConfig.tooltip;
-    }
-    if (config.tooltip && clear) {
+  mergeTooltip(config, clear) {
+    if (!config.tooltip) return;
+    if (clear) {
       delete config.tooltip.g2Instance;
     }
-  },
 
-  mergeCoord(config, nextConfig, clear) {
-    if (config.coord && nextConfig.coord) {
-      if (!clear) {
-        nextConfig.coord.g2Instance = config.coord.g2Instance;
-      }
-      config.coord = nextConfig.coord;
-    }
-    if (config.coord && clear) {
-      delete config.coord.g2Instance;
+    if (config.tooltip.updateProps) {
+      config.tooltip.props = config.tooltip.updateProps;
     }
   },
 
-  mergeLegends(legends, nextLegends, clear) {
+  mergeCoord(config, clear) {
+    if (!config.coord) return;
+    if (clear) delete config.coord.g2Instance;
+    if (config.coord.updateProps) {
+      config.coord.props = config.coord.updateProps;
+    }
+  },
+
+  mergeLegends(legends, clear) {
     if (!legends) return;
 
     for (const id in legends) {
-      if (nextLegends && nextLegends[id]) {
-        if (!clear) {
-          nextLegends[id].g2Instance = legends[id].g2Instance;
+      if (legends[id]) {
+        const legendConfig = legends[id];
+        if (clear) {
+          delete legendConfig.g2Instance;
         }
-        legends[id] = nextLegends[id];
-      }
-      if (clear) {
-        delete legends[id].g2Instance;
+        if (legendConfig.updateProps) legendConfig.props = legendConfig.updateProps;
       }
     }
   },
 
-  mergeGeoms(geoms, nextGeoms, clear) {
+  mergeGeoms(geoms, clear) {
     if (geoms == null) return;
 
     for (const id in geoms) {
-      if (nextGeoms && nextGeoms[id]) {
-        if (!clear) {
-          nextGeoms[id].g2Instance = geoms[id].g2Instance;
+      if (geoms[id]) {
+        if (clear) {
+          delete geoms[id].g2Instance;
         }
-        geoms[id] = nextGeoms[id];
-      }
-      if (clear) {
-        delete geoms[id].g2Instance;
+        if (geoms[id].updateProps) geoms[id].props = geoms[id].updateProps;
       }
     }
   },
 
-  mergeGuide(guide, nextGuide, clear) {
-    if (guide == null || nextGuide == null) return;
+  mergeGuide(guide, clear) {
+    if (guide == null) return;
 
     const guides = guide.elements;
-    let nextGuides = nextGuide.elements;
-    if (nextGuides == null) nextGuides = {};
     for (const id in guides) {
-      if (nextGuides[id]) {
+      if (guides[id]) {
         if (clear) {
-          guides[id] = nextGuides[id];
-        } else {
-          nextGuides[id].g2Instance = guides[id].g2Instance;
+          delete guides[id].g2Instance;
+        }
+        if (guides[id].updateProps) {
+          guides[id].props = guides[id].updateProps;
         }
       }
-      if (clear) {
-        delete guides[id].g2Instance;
-      }
     }
   },
 
-  mergeView(view, nextView, clear) {
+  mergeView(view, clear) {
+    if (!view) return;
     // merge self
-    const nextViewProps = Util.without(nextView, notViewSelfProps);
-
-    Util.mix(view, nextViewProps);
-
-    this.mergeCoord(view, nextView, clear);
-    this.mergeAxises(view, nextView, clear);
-    this.mergeGeoms(view.geoms, nextView.geoms, clear);
-    this.mergeGuide(view.guide, nextView.guide, clear);
-    if (clear) {
+    if (clear && view.g2Instance) {
       delete view.g2Instance;
     }
+    if (view.updateProps) {
+      view.props = view.updateProps;
+    }
+
+    this.mergeCoord(view, clear);
+    this.mergeAxises(view, clear);
+    this.mergeGeoms(view.geoms, clear);
+    this.mergeGuide(view.guide, clear);
   },
 
-  mergeViews(views, nextViews, clear) {
+  mergeViews(views, clear) {
     if (views == null) return;
 
     for (const id in views) {
-      if (nextViews && nextViews[id]) {
-        this.mergeView(views[id], nextViews[id], clear);
-      }
-      if (clear) {
-        delete views[id].g2Instance;
+      if (views[id]) {
+        this.mergeView(views[id], clear);
       }
     }
   },

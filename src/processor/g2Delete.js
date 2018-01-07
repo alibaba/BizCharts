@@ -25,7 +25,7 @@ const reExecuteDeleteElements = {
 
 const iDelete = {
   deleteAxis(chart, config, id) {
-    const axisConfig = config.axises[id];
+    const axisConfig = config.axises[id].props;
     chart.axis(axisConfig.name, false);
   },
 
@@ -38,7 +38,7 @@ const iDelete = {
   },
 
   deleteLegend(chart, config, id) {
-    const legendConfig = config.legends[id];
+    const legendConfig = config.legends[id].props;
     chart.legend(...(legendConfig.name ? [legendConfig.name, false] : [false]));
   },
 
@@ -47,6 +47,7 @@ const iDelete = {
   },
 
   deleteView(chart, config, id) {
+    if (!config.views[id].g2Instance) return;
     chart.removeView(config.views[id].g2Instance);
     delete config.views[id].g2Instance;
   },

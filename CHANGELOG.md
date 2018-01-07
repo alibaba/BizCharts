@@ -1,3 +1,6 @@
+# 3.1.0-beta.6 (1.07, 2017)
+the release version which compate react16.
+
 # 3.1.0-beta.6 (12.29, 2017)
 delete the no need dependence react-dom.
 fix https://github.com/alibaba/BizCharts/issues/67

@@ -1,5 +1,3 @@
-import { Util } from '../shared';
-
 const addFuncMap = {
   Chart: 'addChart',
   Coord: 'addCoord',
@@ -19,22 +17,9 @@ const addFuncMap = {
   Facet: 'addFacet',
 };
 
-function mix(obj1, obj2) {
-  if (!obj1 && !obj2) {
-    return {};
-  }
-  if (!obj1) {
-    return { ...obj2 };
-  }
-  if (!obj2) {
-    return { ...obj1 };
-  }
-  return Util.mix(obj1, obj2);
-}
-
 const iAdd = {
-  addElement(name, config, props, id, viewId, parentInfo) {
-    this[addFuncMap[name]](config, props, id, viewId, parentInfo);
+  addElement(name, config, elemInfo) {
+    this[addFuncMap[name]](config, elemInfo, elemInfo.id, elemInfo.viewId, elemInfo.parentInfo);
   },
 
   getConfigContainer(viewContainer, vId) {
@@ -52,93 +37,105 @@ const iAdd = {
     return viewContainer;
   },
 
-  addUniqueElement(config, name, props, id, vId) {
+  addUniqueElement(config, name, elemInfo, id, vId) {
     const configContainer = this.getConfigContainer(config, vId);
 
     if (configContainer[name]) {
       // error
     }
-    configContainer[name] = { ...props };
+    configContainer[name] = elemInfo;
 
     return id;
   },
 
-  addChart(config, props, id) {
-    return this.addUniqueElement(config, 'chart', props, id, null);
+  addChart(config, elemInfo, id) {
+    return this.addUniqueElement(config, 'chart', elemInfo, id, null);
   },
 
-  addView(configContainer, props, id) {
+  addView(configContainer, elemInfo, id) {
     if (!configContainer.views) {
       configContainer.views = {};
     }
-    configContainer.views[id] = mix(configContainer.views[id], props);
+    configContainer.views[id] = elemInfo;
 
     return id;
   },
 
-  addAxis(config, props, id, vId) {
+  addAxis(config, elemInfo, id, vId) {
     const configContainer = this.getConfigContainer(config, vId);
 
     if (!configContainer.axises) {
       configContainer.axises = {};
     }
-    configContainer.axises[id] = { ...props };
+    configContainer.axises[id] = elemInfo;
 
     return id;
   },
 
-  addCoord(config, props, id, vId) {
-    return this.addUniqueElement(config, 'coord', props, id, vId);
+  addCoord(config, elemInfo, id, vId) {
+    return this.addUniqueElement(config, 'coord', elemInfo, id, vId);
   },
 
-  addGeom(config, props, id, vId) {
+  addGeom(config, elemInfo, id, vId, isLabel) {
     const configContainer = this.getConfigContainer(config, vId);
 
     if (!configContainer.geoms) {
       configContainer.geoms = {};
     }
 
-    configContainer.geoms[id] = mix(configContainer.geoms[id], props);
+    if (configContainer.geoms[id]) {
+      if (isLabel) {
+        configContainer.geoms[id].label = elemInfo.label;
+      } else {
+        if (!configContainer.geoms[id].label) {
+          console.log('geom label error');
+        }
+        elemInfo.label = configContainer.geoms[id].label;
+        configContainer.geoms[id] = elemInfo;
+      }
+    } else {
+      configContainer.geoms[id] = elemInfo;
+    }
 
     return id;
   },
 
-  addLabel(config, props, id, vId, parentInfo) {
+  addLabel(config, elemInfo, id, vId, parentInfo) {
     const configContainer = this.getConfigContainer(config, vId);
 
     if (!configContainer.geoms) {
       configContainer.geoms = {};
     }
-    this.addGeom(config, { label: { ...props } }, parentInfo.id, vId);
+    this.addGeom(config, { label: elemInfo }, parentInfo.id, vId, true);
 
     return id;
   },
 
-  addTooltip(config, props, id, vId) {
-    return this.addUniqueElement(config, 'tooltip', props, id, vId);
+  addTooltip(config, elemInfo, id, vId) {
+    return this.addUniqueElement(config, 'tooltip', elemInfo, id, vId);
   },
 
-  addFacet(config, props, id, vId) {
-    return this.addUniqueElement(config, 'facet', props, id, vId);
+  addFacet(config, elemInfo, id, vId) {
+    return this.addUniqueElement(config, 'facet', elemInfo, id, vId);
   },
 
-  addLegend(config, props, id, vId) {
+  addLegend(config, elemInfo, id, vId) {
     const configContainer = this.getConfigContainer(config, vId);
 
     if (!configContainer.legends) {
       configContainer.legends = {};
     }
 
-    configContainer.legends[id] = { ...props };
+    configContainer.legends[id] = elemInfo;
 
     return id;
   },
 
-  addGuide(config, props, id, vId) {
-    return this.addUniqueElement(config, 'guide', props, id, vId);
+  addGuide(config, elemInfo, id, vId) {
+    return this.addUniqueElement(config, 'guide', elemInfo, id, vId);
   },
 
-  addTypedGuide(config, name, props, id, vId, parentInfo) {
+  addTypedGuide(config, name, elemInfo, id, vId, parentInfo) {
     const configContainer = this.getConfigContainer(config, vId);
     let guide = configContainer.guide;
     if (!guide) {
@@ -149,7 +146,8 @@ const iAdd = {
       guide.elements = {};
     }
 
-    guide.elements[id] = { type: name, ...props };
+    elemInfo.type = name;
+    guide.elements[id] = elemInfo;
 
     return id;
   },

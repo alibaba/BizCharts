@@ -2,6 +2,7 @@ import G2 from '@antv/g2';
 import { Prop, Util } from '../shared';
 import common from './common';
 import EventUtil from './event';
+import configMerge from './configMerge';
 
 const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
 const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
@@ -9,35 +10,35 @@ const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 export default {
   createChart(config) {
     const chartConfig = config.chart;
-    const chart = new G2.Chart(chartConfig);
+    const chart = new G2.Chart(chartConfig.props);
     chartConfig.g2Instance = chart;
     return chart;
   },
 
   executeChartConfig(chart, config) {
     const chartConfig = config.chart;
+    const props = chartConfig.props;
     chart.coord('rect', {});
-    chart.source(chartConfig.data, chartConfig.scale);
-    if (!config.Facet || !chartConfig.axis) {
+    chart.source(props.data, props.scale);
+    if ((!config.facet && !props.axis) || (!config.facet || props.axis === false)) {
       chart.axis(false);
     }
     chart.legend(false);
     chart.tooltip(false);
-    if (chartConfig.filter) {
-      chartConfig.filter.forEach((filterArg) => {
+    if (props.filter) {
+      props.filter.forEach((filterArg) => {
         chart.filter(filterArg[0], filterArg[1]);
       });
     }
-    EventUtil.bindEvents(chart, EventUtil.chartEvents, config.chart);
-    EventUtil.bindBaseEvents(chart, config.chart);
+    EventUtil.bindEvents(chart, EventUtil.chartEvents, props);
+    EventUtil.bindBaseEvents(chart, props);
   },
 
   coord(chart, config) {
     const coordConfig = config.coord;
-
     if (!coordConfig || coordConfig.g2Instance) { return; }
 
-    const { type, ...others } = config.coord;
+    const { type, ...others } = coordConfig.props;
     const coordIns = chart.coord(
       type || 'rect',
       Util.without(others, COORD_FUNC_PROPS)
@@ -50,7 +51,7 @@ export default {
 
   createLabel(geom, labelConfig) {
     if (!labelConfig || labelConfig.g2Instance) { return; }
-    const { content, ...labelOthers } = labelConfig;
+    const { content, ...labelOthers } = labelConfig.props;
 
     if (content) {
       if (Util.isArray(content)) {
@@ -69,13 +70,14 @@ export default {
       return;
     }
 
-    const geom = chart[geomConfig.type || 'interval']();
+    const props = geomConfig.props;
+    const geom = chart[props.type || 'interval']();
 
-    if (geomConfig.adjust) {
-      geom.adjust(geomConfig.adjust);
+    if (props.adjust) {
+      geom.adjust(props.adjust);
     }
 
-    Prop.init(GEOM_FUNC_PROPS, geomConfig, (value, key) => {
+    Prop.init(GEOM_FUNC_PROPS, props, (value, key) => {
       geom[key](...value);
     });
 
@@ -103,9 +105,9 @@ export default {
       if (legends[id]) {
         const legendConfig = legends[id];
         if (legendConfig.g2Instance) { return; }
-        const { name, visible, ...cfg } = legendConfig;
+        const { name, visible, ...cfg } = legendConfig.props;
         let relVisible = visible;
-        if (!Object.prototype.hasOwnProperty.call(legendConfig, 'visible')) {
+        if (!Object.prototype.hasOwnProperty.call(legendConfig.props, 'visible')) {
           relVisible = true;
         }
         const arg = !relVisible ? relVisible : cfg;
@@ -118,13 +120,13 @@ export default {
     const tooltipConfig = config.tooltip;
 
     if (!tooltipConfig || tooltipConfig.g2Instance) { return; }
-    tooltipConfig.g2Instance = chart.tooltip({ ...tooltipConfig });
+    tooltipConfig.g2Instance = chart.tooltip({ ...tooltipConfig.props });
   },
 
   createAxis(chart, axisConfig) {
     if (axisConfig.g2Instance) { return; }
-    const { name, visible, ...others } = axisConfig;
-    if (visible || !Object.prototype.hasOwnProperty.call(axisConfig, 'visible')) {
+    const { name, visible, ...others } = axisConfig.props;
+    if (visible || !Object.prototype.hasOwnProperty.call(axisConfig.props, 'visible')) {
       axisConfig.g2Instance = chart.axis(name, others);
     } else {
       axisConfig.g2Instance = chart.axis(name, false);
@@ -135,7 +137,7 @@ export default {
     const axises = config.axises;
 
     for (const id in axises) {
-      if (Object.prototype.hasOwnProperty.call(axises, id)) {
+      if (axises[id]) {
         this.createAxis(chart, axises[id]);
       }
     }
@@ -145,13 +147,16 @@ export default {
     const views = config.views;
 
     for (const id in views) {
-      if (Object.prototype.hasOwnProperty.call(views, id)) {
+      if (views[id]) {
         this.createView(chart, views[id]);
       }
     }
   },
 
   createView(chart, viewConfig) {
+    if (viewConfig.parentInfo.name === 'Facet') {
+      return;
+    }
     if (viewConfig.g2Instance) {
       this.coord(viewConfig.g2Instance, viewConfig);
       this.axises(viewConfig.g2Instance, viewConfig);
@@ -163,7 +168,7 @@ export default {
        Others object must exclude geoms property.
        Because geoms property will cover the g2 view' inner geoms property.
     */
-    const { scale, data, instance, axis, geoms, ...others } = viewConfig;
+    const { scale, data, instance, axis, geoms, ...others } = viewConfig.props;
     let view;
     if (instance) {
       view = instance;
@@ -191,17 +196,39 @@ export default {
     this.guide(view, viewConfig.guide);
   },
 
+  facetView(view, viewConfig) {
+    const { scale, data, axis, geoms, ...others } = viewConfig.props;
+
+    if (data) {
+      view.source(data, scale);
+    }
+
+    if (scale) {
+      view.scale(scale);
+    }
+
+    if (axis === false) {
+      view.axis(false);
+    }
+
+    this.coord(view, viewConfig);
+    this.axises(view, viewConfig);
+    this.geoms(view, viewConfig);
+    this.guide(view, viewConfig.guide);
+    configMerge.mergeView(viewConfig, true);
+  },
+
   guide(chart, guide) {
     if (!guide) { return; }
 
     const guides = guide.elements;
 
     for (const id in guides) {
-      if (Object.prototype.hasOwnProperty.call(guides, id)) {
+      if (guides[id]) {
         const guideConfig = guides[id];
         if (!guideConfig.g2Instance) {
-          const { type, ...others } = guideConfig;
-          guideConfig.g2Instance = chart.guide()[type](others);
+          const { type, ...others } = guideConfig.props;
+          guideConfig.g2Instance = chart.guide()[guideConfig.type](others);
         }
       }
     }
@@ -212,8 +239,28 @@ export default {
 
     if (!facetConfig || facetConfig.g2Instance) { return; }
 
-    const { children, type, ...others } = facetConfig;
-    facetConfig.g2Instance = chart.facet(type, others);
+    const { children, type, ...others } = facetConfig.props;
+
+    if (!children) {
+      chart.facet(type, others);
+      return;
+    }
+    const views = config.views;
+    let facetView = null;
+    for (const id in views) {
+      if (views[id] && views[id].parentInfo.name === 'Facet' && views[id].parentInfo.id === facetConfig.id) {
+        // facet view
+        facetView = views[id];
+        break;
+      }
+    }
+    if (facetView) {
+      configMerge.mergeView(facetView, true);
+      others.eachView = (view) => {
+        this.facetView(view, facetView);
+      };
+      chart.facet(type, others);
+    }
   },
 
   synchronizeG2Add(chart, config) {
@@ -222,17 +269,17 @@ export default {
     this.legends(chart, config);
     this.tooltip(chart, config);
     this.geoms(chart, config);
+    this.facet(chart, config);
     this.views(chart, config);
     // this.synchronizeG2Views(chart, config);
     this.guide(chart, config.guide);
-    this.facet(chart, config);
   },
 
   synchronizeG2Views(chart, config) {
     const views = config.views;
 
     for (const id in views) {
-      if (Object.prototype.hasOwnProperty.call(views, id)) {
+      if (views[id]) {
         this.synchronizeG2View(views[id].g2Instance, views[id]);
       }
     }
@@ -245,7 +292,7 @@ export default {
     */
     view.clear();
     this.clearViewG2Instance(viewConfig);
-    const { scale, data, instance, axis, geoms, ...others } = viewConfig;
+    const { scale, data, instance, axis, geoms, ...others } = viewConfig.props;
 
     if (data) {
       view.source(data, scale);

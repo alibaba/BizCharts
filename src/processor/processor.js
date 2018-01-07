@@ -7,7 +7,6 @@ import g2Creator from './g2Creator';
 export default class Processor {
   constructor() {
     this.config = {};
-    this.updateConfig = {};
     this.elementInfos = {};
     this.idToName = {};
     this.added = false;
@@ -24,6 +23,7 @@ export default class Processor {
       viewId,
       parentInfo,
       name,
+      props: { ...props },
     };
     if (parentInfo && !this.elementInfos[parentInfo.id]) {
       this.elementInfos[parentInfo.id] = {
@@ -32,12 +32,12 @@ export default class Processor {
       };
     }
 
-    configAdd.addElement(name, this.config, props, id, viewId, parentInfo);
+    configAdd.addElement(name, this.config, this.elementInfos[id]);
   }
 
-  updateElement(name, id, props, parentInfo, viewId) {
+  updateElement(name, id, props) {
     this.updated = true;
-    configAdd.addElement(name, this.updateConfig, props, id, viewId, parentInfo);
+    this.elementInfos[id].updateProps = { ...props };
   }
 
   deleteElement(name, id) {
@@ -48,9 +48,9 @@ export default class Processor {
 
   createG2Instance() {
     const config = this.config;
-    const chart = g2Creator.createChart(config);
-    g2Creator.executeChartConfig(chart, config);
-    g2Creator.synchronizeG2Add(chart, config);
+    const chart = g2Creator.createChart(config, this.elementInfos);
+    g2Creator.executeChartConfig(chart, config, this.elementInfos);
+    g2Creator.synchronizeG2Add(chart, config, this.elementInfos);
 
     chart.render();
 
@@ -65,17 +65,23 @@ export default class Processor {
   }
 
   resetStates() {
+    const elems = this.elementInfos;
+    for (const id in elems) {
+      if (elems[id].updateProps) delete elems[id].updateProps;
+      if (this.deleteInfos[id]) {
+        delete elems[id];
+      }
+    }
     this.added = false;
     this.updated = false;
-    this.updateConfig = {};
     this.deleteInfos = {};
   }
 
   reExecuteChart() {
     this.chart.clear();
-    configMerge.merge(this.config, this.updateConfig, this.deleteInfos, this.elementInfos, true);
-    g2Creator.executeChartConfig(this.chart, this.config);
-    g2Creator.synchronizeG2Add(this.chart, this.config);
+    configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
+    g2Creator.executeChartConfig(this.chart, this.config, this.elementInfos);
+    g2Creator.synchronizeG2Add(this.chart, this.config, this.elementInfos);
     this.chart.repaint();
     this.resetStates();
     return this.chart;
@@ -83,15 +89,14 @@ export default class Processor {
 
   batchedUpdate() {
     if (this.chart == null) return null;
-    if (g2Update.needRebuildChart(this.config, this.updateConfig)) {
-      configMerge.merge(this.config, this.updateConfig, this.deleteInfos, this.elementInfos, true);
+    if (g2Update.needRebuildChart(this.config)) {
+      configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
       this.chart.destroy();
       this.chart = 'destroy';
-
       return this.createG2Instance();
     }
     if (g2Delete.needReExecute(this.deleteInfos, this.elementInfos)
-      || g2Update.needReExecute(this.config, this.updateConfig)
+      || g2Update.needReExecute(this.config)
     ) {
       this.reExecuteChart();
       return this.chart;
@@ -104,13 +109,11 @@ export default class Processor {
       g2Creator.synchronizeG2Add(this.chart, this.config);
     }
     if (this.updated) {
-      g2Update.synchronizeG2Update(this.chart, this.config, this.updateConfig);
+      g2Update.synchronizeG2Update(this.chart, this.config);
     }
-    if (this.added || this.updated) {
-      this.chart.repaint();
-    }
+    this.chart.repaint();
 
-    configMerge.mergeUpdate(this.config, this.updateConfig, false);
+    configMerge.mergeUpdate(this.config, false);
     this.resetStates();
 
     return this.chart;
