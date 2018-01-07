@@ -3,8 +3,8 @@
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
+    <script src="https://unpkg.com/bizcharts@3.1.0/umd/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.3/data-set.min.js"></script>
     <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -84,14 +84,9 @@
                   fill: '#666'
                 }
               }}>
-              {(view) => {
-                return (
-                  <View>        
-                    <Geom type='polygon' position="day*week*日期" style={{lineWidth: 1,stroke: '#fff'}} color={['涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7']} />
-                  </View>
-                )
-              }
-              }
+                <View>        
+                  <Geom type='polygon' position="day*week*日期" style={{lineWidth: 1,stroke: '#fff'}} color={['涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7']} />
+                </View>
               </Facet>
           </Chart>
         ), document.getElementById("mountNode"));

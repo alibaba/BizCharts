@@ -18,6 +18,10 @@ window.demoNav =[{
       title: '阶梯折线图',
       url: './demo-detail.html?code=demo/line/step'
     }, {
+      img: 'https://img.alicdn.com/tfs/TB1FLsTj8fH8KJjy1XbXXbLdXXa-860-367.png',
+      title: '渐变色折线图',
+      url: './demo-detail.html?code=demo/line/gradient'
+    }, {
       img: 'https://img.alicdn.com/tfs/TB1M81Na4rI8KJjy0FpXXb5hVXa-1600-856.png',
       title: '多条阶梯折线图',
       url: './demo-detail.html?code=demo/line/step-series'
@@ -282,7 +286,7 @@ window.demoNav =[{
       title: '基础雷达图（线）',
       url: './demo-detail.html?code=demo/radar/with-line'
     }]
-  }, 
+  },
   {
     title: '分面图',
     iconClass: 'iconfont icon-zidingyi',
@@ -368,7 +372,7 @@ window.demoNav =[{
       title: '径向紧凑树图',
       url: './demo-detail.html?code=demo/relation/radial-tidy-tree'
     }]
-  }, 
+  },
   {
     title: '其他图表',
     iconClass: 'iconfont icon-qita',
@@ -389,9 +393,13 @@ window.demoNav =[{
       title: 'Punch Card',
       url: './demo-detail.html?code=demo/other/punch-card'
     }, {
-      img: 'https://img.alicdn.com/tfs/TB15YDubcLJ8KJjy0FnXXcFDpXa-1600-856.png',
+      img: 'https://img.alicdn.com/tfs/TB1_4RnlwDD8KJjy0FdXXcjvXXa-800-428.png',
       title: '词云',
       url: './demo-detail.html?code=demo/other/word-cloud'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1tupwlDnI8KJjy0FfXXcdoVXa-800-428.png',
+      title: '带图片遮罩的词云',
+      url: './demo-detail.html?code=demo/other/word-cloud-mask'
     }, {
       img: 'https://img.alicdn.com/tfs/TB10VHjeb_I8KJjy1XaXXbsxpXa-800-428.png',
       title: 'Pizza Chart',
@@ -504,6 +512,10 @@ window.demoNav =[{
       img: 'https://img.alicdn.com/tfs/TB1i26leb_I8KJjy1XaXXbsxpXa-800-428.png',
       title: '圆角堆叠柱状图',
       url: './demo-detail.html?code=demo/other/rounded-stacked-column-chart'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1elFJkhrI8KJjy0FpXXb5hVXa-767-333.png',
+      title: '自定义柱状图',
+      url: './demo-detail.html?code=demo/other/custom-bar'
     }]
   }
 ]

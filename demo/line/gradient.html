@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://unpkg.com/bizcharts@3.1.0/umd/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.3/data-set.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        const data = [
+          { month: '2015-01-01', acc: 84.0 },
+          { month: '2015-02-01', acc: 14.9 },
+          { month: '2015-03-01', acc: 17.0 },
+          { month: '2015-04-01', acc: 20.2 },
+          { month: '2015-05-01', acc: 55.6 },
+          { month: '2015-06-01', acc: 56.7 },
+          { month: '2015-07-01', acc: 30.6 },
+          { month: '2015-08-01', acc: 63.2 },
+          { month: '2015-09-01', acc: 24.6 },
+          { month: '2015-10-01', acc: 14.0 },
+          { month: '2015-11-01', acc: 9.4 },
+          { month: '2015-12-01', acc: 6.3 }
+        ];
+
+        const cols = {
+          month: { alias: '月份' },
+          acc: { alias: '积累量' }
+        };
+
+        ReactDOM.render((
+          <Chart height={400} data={data} cols={cols} forceFit>
+            <Axis name="month" title={null} tickLine={null} labels={{custom:true, renderer:(val) => {return '<div style="white-space:nowrap;color:#999;">'+val.substr(5)+'</div>';}}} line={{ stroke: '#E6E6E6'}} />
+            <Axis name="acc" line={false} tickLine={null} grid={null} title={null} labels={{label:{fill:'#999'}}} />
+            <Tooltip />
+            <Geom type="line" position="month*acc" size={1} color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)" shape="smooth"
+              style={{
+                shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
+                shadowBlur: 60,
+                shadowOffsetY: 6
+              }}
+            />
+          </Chart>
+        ), document.getElementById('mountNode'));
+    </script>
+  </body>
+</html>

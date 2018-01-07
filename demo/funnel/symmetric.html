@@ -3,8 +3,8 @@
     <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.0.4/umd/BizCharts.min.js"> </script>
-    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.7.0/data-set.min.js"></script>
+    <script src="https://unpkg.com/bizcharts@3.1.0/umd/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.3/data-set.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
   </head>
@@ -34,36 +34,42 @@
         <Chart height={window.innerHeight} data={data} axis={false} padding={[ 30, 120, 95 ]} forceFit>
           <Tooltip showTitle={false} crosshairs={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">{value}</span></li>' />
           <Legend reversed={true} />
-          <Facet type='mirror' fields={[ 'site' ]} transpose={true} padding={0} >
-            {(view, facet) => {
-            return(
-              <View data={facet.data} key={(id++)}>
-              <Geom type='interval' position='action*visitor' color={['action', [ '#BAE7FF', '#69C0FF', '#40A9FF', '#1890FF', '#0050B3' ]]} shape='funnel' tooltip={['site*action*visitor', (site, action, visitor) => {
-                      return {
-                        name: site,
-                        value: action + ': ' + visitor
-                      };
-                    }]}
-                style={{lineWidth: 1,
-                      stroke: '#fff'}}/>
+          <Facet type='mirror' fields={[ 'site' ]} transpose={true} padding={0} 
+          eachView={(view, facet)=>{
+            view.interval()
+            .position('action*visitor')
+            .color('action', [ '#BAE7FF', '#69C0FF', '#40A9FF', '#1890FF', '#0050B3' ])
+            .shape('funnel')
+            .tooltip('site*action*visitor', (site, action, visitor) => {
+              return {
+                name: site,
+                value: action + ': ' + visitor
+              };
+            })
+            .style({
+              lineWidth: 1,
+              stroke: '#fff'
+            });
 
-              {data.map(obj => {
-                if (obj.site === facet.colValue) {
-                  return (<Guide key={id++}>
-                    <Text top={true} position={[obj.action, 'min']} content={obj.visitor} style={{fill: '#fff',
-                        fontSize: '12',
-                          textAlign: facet.colIndex ? 'start' : 'end',
-                            shadowBlur: 2,
-                              shadowColor: 'rgba(0, 0, 0, .45)'}}
-                      offsetX={facet.colIndex ? 10 : -10}/>
-                  </Guide>)
-                }
-              })}
-              </View>
-            );
-            }
-          }
-          </Facet>
+            data.map(obj => {
+              if (obj.site === facet.colValue) {
+                view.guide().text({
+                  top: true,
+                  position: [obj.action, 'min'],
+                  content: obj.visitor,
+                  style: {
+                    fill: '#fff',
+                    fontSize: '12',
+                    textAlign: facet.colIndex ? 'start' : 'end',
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(0, 0, 0, .45)'
+                  },
+                  offsetX: facet.colIndex ? 10 : -10
+                });
+              }
+            });
+          }}
+          />
         </Chart>
       ), document.getElementById("mountNode"));
     </script>
