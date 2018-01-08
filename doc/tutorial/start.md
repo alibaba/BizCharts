@@ -12,7 +12,7 @@ BizCharts 是一个基于G2封装的React图表库，具有G2、React的全部�
 
 ## 安装
 
-### 通过 tnpm 引入
+### 通过 npm 引入
 
 我们提供了 BizCharts npm 包，通过下面的命令即可完成安装
 
