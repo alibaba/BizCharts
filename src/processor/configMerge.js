@@ -1,8 +1,4 @@
 
-import { Util } from '../shared';
-
-const notViewSelfProps = ['axises', 'coord', 'geoms', 'guide', 'children'];
-
 const deleteFuncMap = {
   Chart: 'deleteChart',
   Coord: 'deleteCoord',
