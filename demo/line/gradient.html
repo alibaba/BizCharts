@@ -33,9 +33,9 @@
         };
 
         ReactDOM.render((
-          <Chart height={400} data={data} cols={cols} forceFit>
-            <Axis name="month" title={null} tickLine={null} labels={{custom:true, renderer:(val) => {return '<div style="white-space:nowrap;color:#999;">'+val.substr(5)+'</div>';}}} line={{ stroke: '#E6E6E6'}} />
-            <Axis name="acc" line={false} tickLine={null} grid={null} title={null} labels={{label:{fill:'#999'}}} />
+          <Chart height={400} data={data} scale={cols} forceFit>
+            <Axis name="month" title={null} tickLine={null} line={{ stroke: '#E6E6E6'}} />
+            <Axis name="acc" line={false} tickLine={null} grid={null} title={null} />
             <Tooltip />
             <Geom type="line" position="month*acc" size={1} color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)" shape="smooth"
               style={{
