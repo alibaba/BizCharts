@@ -1,3 +1,6 @@
+# 3.1.2 (1.18, 2017)
+- fix `<Label>` prop update.
+
 # 3.1.1 (1.18, 2017)
 - update g2 3.0.4-beta.4.
 - when data=null show g2 axis.
