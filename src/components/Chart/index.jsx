@@ -8,14 +8,10 @@ import PureChart from './purechart';
 import Empty from './empty';
 
 function hasSource(source) {
-  let flag;
+  let flag = true;
 
   if (source == null) {
     flag = false;
-  } else if (Util.isArray(source)) {
-    flag = source[0];
-  } else {
-    flag = true;
   }
 
   return !!flag;
@@ -43,9 +39,13 @@ export default class Chart extends (React.PureComponent || React.Component) {
     const { data, width, height, placeholder, className, style } = this.props;
     return (<div className={className} style={style}>
       {
-        (hasSource(data) || this.hasViewSource()) ?
+        (hasSource(data) || this.hasViewSource() || !(placeholder === true)) ?
           <PureChart ref={this._refCallback} {...this.props} /> :
-          <Empty width={width} height={height} placeholder={placeholder} />
+          <Empty
+            width={width}
+            height={height}
+            placeholder={placeholder === true ? undefined : placeholder}
+          />
       }
     </div>);
   }

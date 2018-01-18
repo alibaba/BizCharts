@@ -1,8 +1,4 @@
 
-import { Util } from '../shared';
-
-const notViewSelfProps = ['axises', 'coord', 'geoms', 'guide', 'children'];
-
 const deleteFuncMap = {
   Chart: 'deleteChart',
   Coord: 'deleteCoord',
@@ -73,7 +69,7 @@ const iMerge = {
   },
 
   deleteLabel(config, id, parentId) {
-    if (!config || !config.geoms) return;
+    if (!config || !config.geoms || !config.geoms[parentId]) return;
 
     delete config.geoms[parentId].label;
   },
