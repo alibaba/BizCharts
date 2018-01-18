@@ -212,7 +212,9 @@ const iUpdate = {
     }
     const geom = geomConfig.g2Instance;
     if (Util.shallowEqual(props, nextProps)) {
-      this.updateLabel(geom, props.label, nextProps.label);
+      if (geomConfig.label) {
+        this.updateLabel(geom, geomConfig.label.props, geomConfig.label.updateProps);
+      }
       return;
     }
     const { adjust, ...attrs } = props;
@@ -225,7 +227,9 @@ const iUpdate = {
       geom[key](...value);
     });
 
-    this.updateLabel(geom, props.label, nextProps.label);
+    if (geomConfig.label) {
+      this.updateLabel(geom, geomConfig.label.props, geomConfig.label.updateProps);
+    }
   },
 
   updateGeoms(chart, geoms) {
