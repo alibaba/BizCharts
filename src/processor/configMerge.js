@@ -69,7 +69,7 @@ const iMerge = {
   },
 
   deleteLabel(config, id, parentId) {
-    if (!config || !config.geoms) return;
+    if (!config || !config.geoms || !config.geoms[parentId]) return;
 
     delete config.geoms[parentId].label;
   },
