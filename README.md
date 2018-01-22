@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts)[![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
+![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts) [![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
 
 # BizCharts
 
@@ -83,6 +83,8 @@ const data = [...];
   - [Guide](./doc/api/guide.md)
   - [Facet](./doc/api/facet.md)
   - [View](./doc/api/view.md)
+- Plugin
+  - [Slider](//github.com/alibaba/BizCharts/blob/slider/plugin/slider/README.md)
 - others
   - [scale](./doc/api/scale.md)
   - [shape](./doc/api/shape.md)

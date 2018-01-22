@@ -68,7 +68,7 @@ tooltip 容器模板 ，注意一定要包含以下 class。
 
 <span id="itemTpl"></span>
 
-### 5、itemTpl 	* String *
+### 5、itemTpl 	*String*
 tooltip 每项记录的模版，这个属性可以格式化 tooltip 的显示内容。
 默认值:
 ```jsx
@@ -78,18 +78,42 @@ tooltip 每项记录的模版，这个属性可以格式化 tooltip 的显示内
   {name}: {value}
 </li>
 ```
+### 6、 g2-tooltip | g2-tooltip-title | g2-tooltip-list | g2-tooltip-list-item | g2-tooltip-marker  *Object*
+可以设置以上属性来自定义tooltip的样式
+```jsx
 
-### 6、inPlot 	* Boolean *
+    <Tooltip 
+      containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
+      itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>'
+      offset={50}
+      g2-tooltip={{
+        position: 'absolute',
+        visibility: 'hidden',
+        border : '1px solid #efefef',
+        backgroundColor: 'white',
+        color: '#000',
+        opacity: "0.8",
+        padding: '5px 15px',
+        'transition': 'top 200ms,left 200ms'
+      }}  
+      g2-tooltip-list={{
+        margin: '10px'
+      }}
+    />
+```
+预知详情如何，请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/cutomize-tooltip)
+
+### 7、inPlot 	* Boolean *
 是否将 tooltip 展示在图表区域内。
 
-### 7、follow 	* Boolean *
+### 8、follow 	* Boolean *
 tooltip 是否跟随鼠标移动。
 
-### 8、shared 	* Boolean *
+### 9、shared 	* Boolean *
 是否展示多条 tooltip。
 默认值:true，false 表示只展示单条 tooltip。
 
-### 9、position 	* 'top'|'bottom'|'left'|'right' *
+### 10、position 	* 'top'|'bottom'|'left'|'right' *
 tooltip 展示位置。
 
 ## 其他配置

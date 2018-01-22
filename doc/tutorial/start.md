@@ -64,7 +64,7 @@ const cols = {
 
 // 渲染图表
 ReactDOM.render((
-  <Chart width={600} height={400} source={data} scale={cols}>
+  <Chart width={600} height={400} data={data} scale={cols}>
       <Axis name="genre" />
       <Axis name="sold" />
       <Legend position="top" dy={-20} />

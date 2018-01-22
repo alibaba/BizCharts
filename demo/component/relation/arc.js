@@ -19,7 +19,7 @@ dv.transform({
 
 
 export default class Arc extends Component {
-  
+
   render() {
     return (
       <Chart  data={data} forceFit={true} height={window.innerHeight} >

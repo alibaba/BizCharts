@@ -94,7 +94,7 @@ Array:数据长度必须为2，第一个值代表 x 方向缩放比例，第二�
 
 ```jsx
 // 这里只显示部分核心代码
-<Chart width={600} height={400} source={val} scale={cols} padding={100}>
+<Chart width={600} height={400} data={val} scale={cols} padding={100}>
 	<Coord type='gauge' startAngle={-9/8 * Math.PI} endAngle={1/8 * Math.PI} />
 	<Axis name="value" />
 	<Geom type="point" position="value" />

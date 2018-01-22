@@ -1,0 +1,117 @@
+{
+  "name": "bizcharts-plugin-slider",
+  "version": "2.0.1",
+  "description": "A datazoom slider plugin for BizCharts based g2-plugin-slider. ",
+  "main": "umd/bizcharts-plugin-slider.min.js",
+  "browser": "umd/bizcharts-plugin-slider.min.js",
+  "module": "es6/index",
+  "jsnext:main": "es6/index",
+  "files": [
+    "*.md",
+    "demo",
+    "es6",
+    "lib",
+    "umd",
+    "src"
+  ],
+  "keywords": [
+    "datazoom",
+    "plugin",
+    "slider",
+    "bizcharts"
+  ],
+  "scripts": {
+    "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
+    "build-cjs": "rimraf lib && babel ./src -d lib --plugins=transform-es2015-modules-commonjs",
+    "build-es6": "rimraf es6 && babel ./src -d es6",
+    "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx build/bizcharts-plugin-slider.js",
+    "build-min": "cross-env NODE_ENV=production webpack src/index.jsx build/bizcharts-plugin-slider.min.js",
+    "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
+    "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
+    "lint": "eslint src",
+    "autofix": "eslint src --fix",
+    "bundle-analyse": "cross-env NODE_ENV=analyse webpack src/index.jsx build/bizcharts-plugin-slider.js"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alibaba/BizCharts.git"
+  },
+  "author": "bizcharts group",
+  "bugs": {
+    "url": "https://github.com/alibaba/BizCharts/issues"
+  },
+  "homepage": "https://alibaba.github.io/BizCharts/",
+  "peerDependencies": {
+    "react": ">15 <16",
+    "react-dom": ">15 <16",
+    "react-addons-transition-group": "^15.0.0"
+  },
+  "dependencies": {
+    "@antv/g2-plugin-slider": "2.0.1"
+  },
+  "devDependencies": {
+    "@antv/g2": ">= 3.0.1",
+    "@antv/data-set": ">= 0.7.0",
+    "bizcharts": "3.0.4",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-istanbul": "3.0.0",
+    "babel-plugin-lodash": "^3.2.10",
+    "babel-plugin-add-module-exports": "~0.1.2",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-plugin-transform-function-bind": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
+    "babel-plugin-transform-object-assign": "~6.5.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
+    "babel-eslint": "6.1.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "~6.5.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.2",
+    "cross-env": "^3.1.4",
+    "enzyme": "^2.6.0",
+    "escope": "^3.6.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
+    "eslint-plugin-react": "^6.4.1",
+    "eslint-config-ais": "0.0.16",
+    "estraverse-fb": "^1.3.1",
+    "json-loader": "^0.5.4",
+    "karma": "^1.3.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.0.0",
+    "karma-coveralls": "^1.1.2",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.1",
+    "lodash-webpack-plugin": "^0.10.5",
+    "mocha": "^3.1.0",
+    "pre-commit": "^1.1.3",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "react-addons-test-utils": "^15.4.1",
+    "react-hot-loader": "^1.3.0",
+    "react-router": "^3.0.1",
+    "rimraf": "^2.5.3",
+    "sinon": "^1.17.0",
+    "webpack": "^2.2.0",
+    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-dev-server": "^2.2.0"
+  },
+  "license": "MIT",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  }
+}

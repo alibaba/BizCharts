@@ -86,15 +86,24 @@ intervalSymmetric | 对称柱状图
 areaStack | 层叠区域图
 schemaDodge | 分组箱型图
 
-### 3、adjust    * Object *
-数据调整配置。
-什么是数据调整，有哪些数据调整方式，及为什么要有数据调整，详见[几何标记中的adjust](geom.md#adjust)
+### 2、adjust    * Object *
+声明几何标记对象的数据调整方式，可用于绘制层叠图、扰动图、分组图等。支持单一的数据调整方式也支持各种数据调整方式的组合。
+支持的调整类型包括： 'stack', 'dodge', 'jitter', 'symmetric'。
+
 ```jsx
 <Geom
-  type="point"
-  adjust={{
-    type:[ 'stack','symmetric' ]
-  }}
+  type= "point"
+  adjust= {'stack'}
+  // or
+  adjust= {['dodge', 'stack']}
+  // or
+  adjust= {[
+    {
+      type: 'dodge',
+      marginRatio: 0,
+      dodgeBy: 'xx',
+    }
+  ]}
 />
 ```
 
@@ -120,7 +129,7 @@ schemaDodge | 分组箱型图
 
 <span id="color"></span>
 
-### 4、color    * String *
+### 4、color    * String | Array *
 颜色属性的映射；用于确定由数据中的哪个字段来确定几何图形的颜色。
 
 color 支持的映射值如下：
@@ -250,7 +259,7 @@ size 支持映射值如下：
 //代码示例
 <Geom opacity={0.2}/>
 ```
-- ['field', callback)]，使用回调函数获取透明度。
+- ['field', callback]，使用回调函数获取透明度。
 ```jsx
 //代码示例
 <Geom opacity={['count', (count)=>{
@@ -286,7 +295,7 @@ size 支持映射值如下：
 ### 9、tooltip    * Boolean | String | Array *
 控制单个 <Geom/> 上 tooltip 的显示数据。
 - Boolean 该几何标记是否需要显示 tooltip，默认值 false；
-- String 格式为 a*b*c，该几何标记上 tooltip 需要显示的数据字段，每个地段一行
+- String 格式为 a*b*c，该几何标记上 tooltip 需要显示的数据字段，每个地段将会显示为一行。
 - Array 格式为 [a*b*c, callback],该几何标记上 tooltip 需要显示的数据字段,同时可以在 callback 中调整数据的显示格式。
 ```jsx
 <Geom

@@ -3,22 +3,15 @@
 
 图表组件，内部生成了一个 G2 chart 实例，同时控制着其他子组件的加载和更新。
 
-## 使用说明
-
-BizCharts中其他组件都必须包裹在 `<Chart />` 组件内。
-可以成为 `<Chart>` 的孩子组件有：
+## 子组件
 - [`<Coord/>`](coord.md) 坐标系组件
 - [`<Axis/>`](axis.md) 坐标轴组件
 - [`<Geom/>`](geom.md) 几何标记组件
 - [`<Legend/>`](legend.md) 图例组件
-- [`<Tooltip/>`](axis.md) 提示框组件
+- [`<Tooltip/>`](tooltip.md) 提示框组件
 - [`<Guide/>`](guide.md) 辅助标记组件
 - [`<Facet/>`](facet.md) 分面组件
 - [`<View/>`](view.md) 视图组件
-
-
-## 代码示例
-
 ```jsx
 <Chart height={400} data={dv} scale={cols} forceFit>
   <Axis name="month" />
@@ -31,13 +24,10 @@ BizCharts中其他组件都必须包裹在 `<Chart />` 组件内。
 
 [在线编辑](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/line/series)
 
-这里指定了一个 `<Chart />`，并添加了轴 `<Axis />` 和 几何图形 `<Geom />`，就绘制出了一个简单的折线图。
-
 ## 图表布局
-
-下图展示了图表布局：
 ![e9d103b3-1707-446e-b5fe-b535f7048c8b.png](https://img.alicdn.com/tfs/TB1G7_0bOqAXuNjy1XdXXaYcVXa-1148-542.png)
 ``有时候坐标轴、图例等绘图区域外的组件显示不全时，可以通过调整图表各个方向的 padding 来调整最终效果``
+
 ## 属性
 ### 1、forceFit		* Boolean *
 设置图表的宽度是否自适应，设置为 true，则图表 chart 会继承父元素的宽度，用户设置的 width 则不生效。
@@ -140,7 +130,17 @@ Array:[fieldString, callback]
 ``` jsx
 <Chart filter={['x', (val) => {return val > 20;}]}/>
 ```
-
+### 13、className   *String*
+设置图标最外层div的类名。
+``` jsx
+<Chart className="chart1" />
+```
+### 14、style   *Object*
+设置图标最外层div的样式。
+``` jsx
+const style={fontSize: '12'}
+<Chart style={style} />
+```
 
 ## 事件属性
 `<chart/>`组件提供了各种事件，方便用户扩展交互。基本的事件用法如下：

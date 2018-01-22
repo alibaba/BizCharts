@@ -1,0 +1,46 @@
+{
+  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "globals": {
+    "it": true,
+    "describe": true,
+    "require": true,
+    "process": true,
+    "before": true,
+    "after" : true,
+    "sinon": true,
+    "expect" : true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "env":{
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    // 低版本 nodejs 需要在 strict 模式下支持 es6 语法
+    "strict": "off",
+    // 经常需要打印东西
+    "no-console" : "off",
+    // 不希望参数使用解构,低版本 nodejs 不支持
+    "prefer-spread" : "off",
+    // 会有很多地方需要直接使用 arguments
+    "prefer-rest-params": "off",
+    // 有动态引入的需求
+    "import/no-dynamic-require": "off",
+    // 有些函数对外需要暴露 generator 类型函数,但里面确实只有同步代码
+    "require-yield": "off",
+    // 一些正则表达式需要用到
+    "no-useless-escape": "off",
+    // 感觉这样写简洁一些
+    "no-mixed-operators" : "warn",
+    "no-lonely-if" : "off",
+    "class-methods-use-this" : "off",
+    "no-restricted-syntax" : "off",
+    "no-param-reassign" : "off"
+  }
+}

@@ -1,8 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-console.log(__dirname);
-
 module.exports = {
   context: __dirname,
   devtool: '#inline-source-map',

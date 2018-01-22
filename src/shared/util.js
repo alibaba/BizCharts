@@ -62,4 +62,6 @@ export default Util.mix({}, Util, {
     });
     return ret;
   },
+
+  length,
 });
