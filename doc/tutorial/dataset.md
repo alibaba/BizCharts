@@ -113,9 +113,9 @@ callback(row) {
 ds.setState('year', '2012');
 ```
 
-####注意：
-    *在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 watchingStates 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
-    *所有引用了 DataSet 管理的 DataView 的图表都会受自动刷新，不需要手工刷新。
+#### 注意：
+* 在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 watchingStates 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
+* 所有引用了 DataSet 管理的 DataView 的图表都会受自动刷新，不需要手工刷新。
 
 ### 图表联动示例
 
