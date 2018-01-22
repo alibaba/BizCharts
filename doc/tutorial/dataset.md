@@ -86,33 +86,32 @@ DataSet 主要完成了以下功能：
     3.创建图表，引用前面创建 DataView
     4.改变状态量，所有 DataView 更新
 
-    ```js
-    // step1 创建 dataset 指定状态量
-    const ds = new DataSet({
-    state: {
-        year: '2010'
-    }
-    });
+```js
+// step1 创建 dataset 指定状态量
+const ds = new DataSet({
+state: {
+    year: '2010'
+}
+});
 
-    // step2 创建 DataView
-    const dv = ds.createView().source(data);
+// step2 创建 DataView
+const dv = ds.createView().source(data);
 
-    dv.transform({
-    type: 'filter',
-    callback(row) {
-        return row.year === ds.state.year;
-    }
-    });
+dv.transform({
+type: 'filter',
+callback(row) {
+    return row.year === ds.state.year;
+}
+});
 
 
-    // step3 引用 DataView
-    <Chart data={dv}>
-    </Chart>
+// step3 引用 DataView
+<Chart data={dv}>
+</Chart>
 
-    // step4 更新状态量
-    ds.setState('year', '2012');
-
-    ```
+// step4 更新状态量
+ds.setState('year', '2012');
+```
 
 ####注意：
     *在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 watchingStates 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
