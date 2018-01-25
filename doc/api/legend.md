@@ -72,7 +72,7 @@
 默认值:true。
 
 ### 3、position		*‘top’|‘left’|‘right’|‘bottom’*
-该图显示位置。
+该图例显示位置。
 默认值:'right'。
 
 ### 4、title		*Boolean*
