@@ -156,7 +156,7 @@ clickable 为 true 时生效，图例的选中模式。
   <!-- 图例标题 -->
   <h4 class="g2-legend-title"></h4>
   <!-- 图例项列表容器 -->
-  <ul class="g2-legend-itemlist" style="list-style-type:none;margin:0;padding:0;"></ul>
+  <ul class="g2-legend-item-list" style="list-style-type:none;margin:0;padding:0;"></ul>
 </div>
 ```
 ### 3、itemTpl *String | Function*
