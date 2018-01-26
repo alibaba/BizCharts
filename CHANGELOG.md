@@ -1,4 +1,11 @@
-# 3.1.0-beta.6 (1.07, 2017)
+# 3.1.2 (1.18, 2017)
+- fix `<Label>` prop update.
+
+# 3.1.1 (1.18, 2017)
+- update g2 3.0.4-beta.4.
+- when data=null show g2 axis.
+
+# 3.1.0 (1.07, 2017)
 the release version which compate react16.
 
 # 3.1.0-beta.6 (12.29, 2017)

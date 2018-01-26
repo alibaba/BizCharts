@@ -8,7 +8,6 @@ export default class Processor {
   constructor() {
     this.config = {};
     this.elementInfos = {};
-    this.idToName = {};
     this.added = false;
     this.initedG2 = false;
     this.updated = false;
