@@ -159,7 +159,7 @@ The specified template for custom legend.
   <!-- legeng title -->
   <h4 class="g2-legend-title"></h4>
   <!-- legeng container -->
-  <ul class="g2-legend-itemlist" style="list-style-type:none;margin:0;padding:0;"></ul>
+  <ul class="g2-legend-item-list" style="list-style-type:none;margin:0;padding:0;"></ul>
 </div>
 ```
 ### 3、itemTpl *String | Function*
