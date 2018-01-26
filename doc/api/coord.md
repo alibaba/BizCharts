@@ -45,10 +45,13 @@ Array:数据长度必须为2，第一个值代表 x 方向缩放比例，第二�
 ```
 ![image](https://zos.alipayobjects.com/rmsportal/bAISlaEvIUpqIFVBiXKo.gif)
 
-### 4、reflect 	  * 'x' | 'y' *
+### 4、reflect 	  * 'x' | 'y' | 'xy' *
 镜像, 沿 x 方向镜像或者沿 y 轴方向映射。
 ![image](https://zos.alipayobjects.com/skylark/3e02d865-fcfc-4afd-9ffa-66a1299b31b5/attach/2378/4225fd7483f54155/image.png)
 
+```jsx
+<Coord reflect="xy" />
+```
 <span id="rect"></span>
 ## 直角坐标系（rect）
 无额外配置参数。
