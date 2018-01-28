@@ -59,7 +59,7 @@ const data = [...];
 ```
 
 ## Document
-### totorial
+### tutorial
 - [quick start](doc/tutorial/start.md)
 - [chart introduce](./doc/tutorial/chart.md)
 - [chart type](./doc/tutorial/chartType.md)
