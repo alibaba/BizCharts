@@ -53,10 +53,11 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.0.4-beta.4",
+    "@antv/g2": "3.0.4",
     "invariant": "^2.2.2",
     "warning": "^3.0.0",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "core-js": "2.5.3",
   },
   "devDependencies": {
     "@antv/data-set": "0.6.2",
@@ -112,7 +113,8 @@
     "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.2.0",
-    "interface-es6": "1.0.1"
+    "interface-es6": "1.0.1",
+    "core-js": "2.5.3",
   },
   "license": "MIT",
   "directories": {
