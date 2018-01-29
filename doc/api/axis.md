@@ -86,7 +86,7 @@
 
 ```jsx
 const scale = {
-  scales:{
+  sales:{
     alias:'标题名称'
   }
 };
