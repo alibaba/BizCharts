@@ -126,9 +126,9 @@ padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
 
 ### 12、filter   *Array*
 过滤数据，如果存在对应的图例，则过滤掉的字段置灰。
-Array:[fieldString, callback]
+Array:[[fieldString1, callback1], [fieldString2, callback2]]
 ``` jsx
-<Chart filter={['x', (val) => {return val > 20;}]}/>
+<Chart filter={[['x', (val) => {return val > 20;}]]}/>
 ```
 ### 13、className   *String*
 设置图标最外层div的类名。
