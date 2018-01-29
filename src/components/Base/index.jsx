@@ -21,10 +21,8 @@ class BaseComponent extends Component {
   }
 
   constructor(props, name) {
-    console.log("add :", name);
     super(props);
     this.name = name;
-    console.log("end :", name);
   }
 
   getChildContext() {

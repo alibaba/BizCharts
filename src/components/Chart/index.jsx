@@ -23,25 +23,6 @@ export default class Chart extends (React.PureComponent || React.Component) {
   getG2Instance() {
     return this.chart;
   }
-  static childContextTypes = {
-    addElement: PropTypes.func,
-    updateElement: PropTypes.func,
-    deleteElement: PropTypes.func,
-    createId: PropTypes.func,
-    getParentInfo: PropTypes.func,
-    getViewId: PropTypes.func,
-  };
-
-  getChildContext() {
-    return {
-      addElement: ()=>{console.log("aaa")},
-      updateElement: ()=>{console.log("bbb")},
-      deleteElement: ()=>{console.log("ccc")},
-      createId: ()=>{console.log("ddd")},
-      getParentInfo: ()=>{console.log("eee")},
-      getViewId: ()=>{console.log("fff")},
-    };
-  }
 
   _refCallback = (c) => {
     if (c) {
