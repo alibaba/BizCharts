@@ -100,8 +100,8 @@ schemaDodge | 分组箱型图
   adjust= {[
     {
       type: 'dodge',
-      marginRatio: 0,
-      dodgeBy: 'xx',
+      marginRatio: 0, // 数值范围为 0 至 1，用于调整分组中各个柱子的间距
+      dodgeBy: 'xx', // 声明按照 xx 字段进行分组，一般不需要声明
     }
   ]}
 />
