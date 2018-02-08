@@ -1,17 +1,17 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
-    <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
-    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.1.0/umd/BizCharts.min.js"> </script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/BizCharts.min.js"> </script>
     <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.5/data-set.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
     
   </head>
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-      const { Chart, Axis, Geom, Tooltip, Coord } = window.BizCharts;
+      const { Chart, Axis, Geom, Tooltip, Coord, Legend } = window.BizCharts;
       const data = [
         { label: 'Monday', series1: 2800, series2: 2260 },
         { label: 'Tuesday', series1: 1800, series2: 1300 },
@@ -30,6 +30,7 @@
       
       ReactDOM.render((
         <Chart height={400} data={dv} forceFit>
+          <Legend />
           <Coord transpose scale={[1,-1]}/>
           <Axis name="label" label={{offset: 12}} />
           <Axis name="value" position={'right'} />
