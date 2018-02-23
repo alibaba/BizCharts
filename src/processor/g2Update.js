@@ -30,10 +30,16 @@ const iUpdate = {
 
     if (geoms == null) return false;
 
-    return Object.keys(geoms).find((id) => {
-      if (!geoms[id].props || !geoms[id].updateProps) return false;
-      return geoms[id].props.type !== geoms[id].updateProps.type;
-    });
+    for (const id in geoms) {
+      if (geoms[id].props && geoms[id].updateProps
+        && geoms[id].props.type !== geoms[id].updateProps.type
+      ) return true;
+    }
+    return false;
+    // return Object.keys(geoms).find((id) => {
+    //   if (!geoms[id].props || !geoms[id].updateProps) return false;
+    //   return geoms[id].props.type !== geoms[id].updateProps.type;
+    // });
   },
 
   synchronizeG2Update(chart, config) {

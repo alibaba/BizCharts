@@ -1,3 +1,11 @@
+# 3.1.3-beta.2 (2.1, 2018)
+- delete array.prototype find, and use for in to find
+- update g2 3.0.5-beta.1
+
+# 3.1.3-beta.1 (1.29, 2018)
+- Compatible with ie10&9
+- update g2 3.0.4
+
 # 3.1.2 (1.18, 2017)
 - fix `<Label>` prop update.
 

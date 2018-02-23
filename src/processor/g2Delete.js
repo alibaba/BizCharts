@@ -75,9 +75,15 @@ const iDelete = {
   },
 
   needReExecute(deleteInfos, elementInfos) {
-    return Object.keys(deleteInfos).find((id) => {
-      return reExecuteDeleteElements[elementInfos[id].name] && !elementInfos[id].viewId;
-    });
+    for (const id in deleteInfos) {
+      if (reExecuteDeleteElements[elementInfos[id].name] && !elementInfos[id].viewId) {
+        return true;
+      }
+    }
+    return false;
+    // return Object.keys(deleteInfos).find((id) => {
+    //   return reExecuteDeleteElements[elementInfos[id].name] && !elementInfos[id].viewId;
+    // });
   },
 
   synchronizeG2Delete(chart, config, deleteInfos, elementInfos) {

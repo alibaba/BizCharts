@@ -126,4 +126,5 @@ export default class PureChart extends Component {
   render() {
     return <div ref={this.refHandle}>{this.props.children}</div>;
   }
-}
+};
+

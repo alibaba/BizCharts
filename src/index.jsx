@@ -2,8 +2,6 @@ import G2, { Shape, PathUtil, Animate } from '@antv/g2';
 import Util from './shared/util';
 import Themes from './themes';
 import * as Components from './components';
-// import * as Com16 from './com16';
-
 
 const BizCharts = Util.mix(Components, {
   G2,

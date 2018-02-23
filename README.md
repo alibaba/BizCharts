@@ -23,7 +23,7 @@ $ npm install bizcharts
 
 ### umd
 ```html
- <script src="https://unpkg.com/alibaba/BizCharts/umd/BizCharts.min.js"></script>
+ <script src="https://unpkg.com/bizcharts@${version}/umd/BizCharts.min.js"></script>
 ```
 
 ### dev build
@@ -59,7 +59,7 @@ const data = [...];
 ```
 
 ## Document
-### totorial
+### tutorial
 - [quick start](doc/tutorial/start.md)
 - [chart introduce](./doc/tutorial/chart.md)
 - [chart type](./doc/tutorial/chartType.md)
