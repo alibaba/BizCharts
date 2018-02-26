@@ -1,30 +1,20 @@
 
 # Axis
 
-坐标轴组件。
-
-## 坐标轴组成
-- 标题 title
-- 坐标轴线 line
-- 刻度文本 label
-- 刻度线 tickLine
-- 次刻度线 subTickLine
-- 网格线 grid
-
-![image | center](https://zos.alipayobjects.com/skylark/89e9966f-3bd1-4ab1-a134-e3e4cb71867a/attach/3597/ded46c0aecb0e73a/image.png "")
-
-通常的图表都有 x 轴和 y 轴，默认情况下，x 轴显示在图表的底部，y 轴显示在左侧（多个y轴时可以是显示在左右两侧）。通过为坐标轴配置 position 属性可以改变坐标轴的显示位置。
-
->坐标轴上的所有的配置属性都是围绕在坐标轴各个组成上的。
-
+坐标轴配置，BizCharts中将Axis抽离为一个单独的组件，不使用Axis组件则默认不显示所有坐标轴及相关的信息。
 
 ## 使用说明
+### parent components
+- `<Chart />`
+- `<View />`
 
-* `<Axis />` 坐标轴组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Axis />` 组件下不能嵌套其他图表组件。
+### child components
+- none
 
-* BizCharts中将Axis抽离为一个单独的组件，不使用Axis组件则默认不显示所有坐标轴及相关的信息，如下所示：
+g2 `chart.axis()` 方法使用：https://antv.alipay.com/zh-cn/g2/3.x/api/chart.html#_axis
+### 注意事项
 
-```html
+```html 
 // 不显示坐标轴
 <Chart width={600} height={400} data={data}>
   <Geom type="interval" position="genre*sold" color="genre" />
@@ -41,7 +31,6 @@
 ```
 * 一旦使用`<Axis/>`组件，那么所有的坐标轴都会显示，如若需要隐藏某一个坐标轴及相关信息，务必将visible参数并置为false，如下所示：
 
-
 ```html
 // 只显示其中一条坐标轴
 <Chart width={600} height={400} data={data}>
@@ -54,10 +43,14 @@
 ## 属性
 ### 1、name		* String *
 当前坐标轴对应数据源中的字段名(必填)
-
+```jsx
+  <Axis name="sold" />
+```
 ### 2、visible 	* Boolean *
-当前坐标轴是否需要可见
-
+当前坐标轴是否需要可见，默认值true。
+```jsx
+  <Axis name="genre" visible={false} />
+```
 ### 3、position 	*'top'|'bottom'|'left'|'right'*
 当前坐标轴的摆放位置。
 
@@ -67,8 +60,8 @@
 - 样式配置
 
 ```javascript
-{
-  autoRotate: {Boolean} // 是否需要自动旋转，默认为 true
+const axisConfig = {
+  autoRotate: {Boolean}, // 是否需要自动旋转，默认为 true
   offset: {Number}, // 设置标题 title 距离坐标轴线的距离
   textStyle: {
 	fontSize: '12',
