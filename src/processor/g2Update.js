@@ -32,7 +32,12 @@ const iUpdate = {
 
     for (const id in geoms) {
       if (geoms[id].props && geoms[id].updateProps
-        && geoms[id].props.type !== geoms[id].updateProps.type
+        &&
+        (geoms[id].props.type !== geoms[id].updateProps.type
+         || (geoms[id].props.color && !geoms[id].updateProps.color)
+         || (geoms[id].props.size && !geoms[id].updateProps.size)
+         || (geoms[id].props.shape && !geoms[id].updateProps.shape)
+        )
       ) return true;
     }
     return false;
