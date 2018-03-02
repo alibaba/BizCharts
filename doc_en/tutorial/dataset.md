@@ -6,8 +6,8 @@ BizCharts support for data consistent with the G2, Generic support independent D
 
 ## Glossary
 
-| Glossary | description |
-| -------- | -------- | -------- |
+| Glossary | Description |
+| -------- | -------- |
 | DataSet | A collection of data |
 | DataView | A single data view, there are two general types of data (similar to a database table), tree data, map data and geographic information data types |
 | state | Variables that control the state of the data flowing inside the dataset |

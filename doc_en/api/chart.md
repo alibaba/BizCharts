@@ -84,6 +84,9 @@ The padding of the chart.
 padding={[ 20, 30, 20, 30]}
 padding={20}
 padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
+padding='auto'
+padding={[20, 'auto', 30, 'auto']} // Automatic calculation chart's padding which include legend、axis's width and height.
+padding={['20%', '30%']}
 ```
 
 ### 8、animate		* Boolean *
