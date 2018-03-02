@@ -1,3 +1,7 @@
+# 3.1.3-beta.2 (3.2, 2018)
+- fix issue 184, 99, 174, 164
+- update g2 3.0.5-beta.4
+
 # 3.1.3-beta.2 (2.1, 2018)
 - delete array.prototype find, and use for in to find
 - update g2 3.0.5-beta.1
