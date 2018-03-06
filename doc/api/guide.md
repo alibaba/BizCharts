@@ -87,7 +87,7 @@
 ```
 
 ### 1、top 	*Boolean*
-指定 giude 是否绘制在 canvas 最上层。
+指定 guide 是否绘制在 canvas 最上层。
 默认值:false, 即绘制在最下层。
 
 ### 2、start 	*Object | Function | Array*
