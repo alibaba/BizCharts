@@ -1,3 +1,6 @@
+# 3.1.4-beta.2(3.6, 2018)
+- fix node-env development do not use prop-types as external lib.
+
 # 3.1.4-beta.1(3.6, 2018)
 - bizcharts/umd do not use prop-types as external lib.
 
