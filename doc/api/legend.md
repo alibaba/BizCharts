@@ -224,7 +224,7 @@ demo详情，请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.h
 />
 ```
 
-## [示例](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/bar/grouped-column)
+## [示例](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/double-axes)
 
 
 ```html
