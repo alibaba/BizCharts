@@ -1,3 +1,6 @@
+# 3.1.4(3.6, 2018)
+- bizcharts/umd do not use prop-types as external lib.
+
 # 3.1.3(3.2, 2018)
 - fix issue 184, 99, 174, 164
 - update g2 3.0.5-beta.4

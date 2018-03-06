@@ -63,7 +63,10 @@ if (env === 'analyse') {
   config.plugins.push(
     new BundleAnalyzerPlugin()
   );
+  // umd do not use prop-types as external lib.
+  delete config.externals['prop-types'];
 }
+
 
 if (env === 'production') {
   config.plugins.push(
@@ -80,6 +83,8 @@ if (env === 'production') {
       sourceMap: false,
     })
   );
+  // umd do not use prop-types as external lib.
+  delete config.externals['prop-types'];
 }
 
 module.exports = config;
