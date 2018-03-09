@@ -93,7 +93,7 @@ var scale = {
 ```
 
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
@@ -160,7 +160,7 @@ var scale = {
 ** 此处必须指定 'cat' 类型，values 的值必须按照索引跟枚举类型一一对应。**
 
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
@@ -184,7 +184,7 @@ log 度量是 linear 的子类，支持所有通用的属性和 linear 度量的
 ```
 
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
@@ -218,7 +218,7 @@ pow 类型的度量也是 linear 类型的一个子类，除了支持所有通�
 }
 ```
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
@@ -258,7 +258,7 @@ pow 类型的度量也是 linear 类型的一个子类，除了支持所有通�
 还有一种离散事件类型，参见[timeCat](#timeCat)
 
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
@@ -287,7 +287,7 @@ timeCat 是 cat 度量的子类，除了支持所有通用的属性和 [cat](#ca
 ```
 
 | 属性名 | 说明 | 值类型 |
-| :- | :- |
+| :- | :- | :- |
 | type | scale类型。 | String |
 | formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
 | range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
