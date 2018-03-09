@@ -6,6 +6,8 @@ import React from 'react';
 import Util from '../../shared/util';
 import PureChart from './purechart';
 import Empty from './empty';
+import PropTypes from 'prop-types';
+
 
 function hasSource(source) {
   let flag = true;
@@ -21,6 +23,7 @@ export default class Chart extends (React.PureComponent || React.Component) {
   getG2Instance() {
     return this.chart;
   }
+
   _refCallback = (c) => {
     if (c) {
       this.chart = c.getG2Instance();

@@ -37,11 +37,12 @@ class BaseComponent extends Component {
   }
 
   componentWillMount() {
-    this.id = this.context.createId();
-    this.context.addElement(
+    const context = this.context;
+    this.id = context.createId();
+    context.addElement(
       this.name, this.id, this.props,
-      this.context.getParentInfo(),
-      this.context.getViewId()
+      context.getParentInfo(),
+      context.getViewId()
     );
   }
 
@@ -81,8 +82,37 @@ class BaseComponent extends Component {
 
 function generateBaseTypedComponent(name) {
   class TypedComponent extends BaseComponent {
+    static contextTypes = {
+      addElement: PropTypes.func,
+      updateElement: PropTypes.func,
+      deleteElement: PropTypes.func,
+      createId: PropTypes.func,
+      getParentInfo: PropTypes.func,
+      getViewId: PropTypes.func,
+    }
+
+    static childContextTypes = {
+      addElement: PropTypes.func,
+      updateElement: PropTypes.func,
+      deleteElement: PropTypes.func,
+      createId: PropTypes.func,
+      getParentInfo: PropTypes.func,
+      getViewId: PropTypes.func,
+    }
+
     constructor(props) {
       super(props, name);
+    }
+
+    getChildContext() {
+      return {
+        addElement: this.context.addElement,
+        updateElement: this.context.updateElement,
+        deleteElement: this.context.deleteElement,
+        createId: this.context.createId,
+        getParentInfo: this.getParentInfo,
+        getViewId: this.context.getViewId,
+      };
     }
   }
 

@@ -1,27 +1,28 @@
 
-# Geom 几何标记
+# Geom
 
-几何标记组件。
+Geometry Component.
 
 
-## 什么是几何标记
+## What's geometry?
 
-即我们所说的点、线、面这些几何图形。BizCharts 中并没有特定的图表类型（柱状图、散点图、折线图等）的概念，用户可以单独绘制某一种类型的图表，如饼图，也可以绘制混合图表，比如折线图和柱状图的组合。
+In general, point, line, face all belong to geometry. There's no specified chart type (like Bar, Scatter, Line etc) in BizCharts, users can draw pie individually, also can draw several mixed charts together, like combination Line and Bar.
 
-BizCharts 生成的图表的类型，是由几何标记和坐标系共同决定的。可以通过下图直观得理解什么是几何标记：
+The type of Charts, which produced by BizCharts, is specified by geometry and coordination together. We can know what geometry means accroding to graphics below:
 <img src="https://gw.alipayobjects.com/zos/rmsportal/ffXoDNzwnXNHoaxtjbfY.png" style="width: 75%">
 
 
-## 几何标记和图表类型
-虽然 BizCharts 没有特定的图表类型概念，**但是仍基本支持所有传统图表类型的绘制**。
+## Geometry and Chart Type
 
-下表展示了 BizCharts 中的 geom 几何标记类型和传统图表的对应关系，更多的图表详见 BizCharts 官网的 [demo](https://alibaba.github.io/BizCharts/demo.html)。
+Even if there's no specific chart type in BizCharts, **it also supports to render all traditional chart**.
 
-geom 类型| 图表类型 | 备注
+You can get the corresponding relations between traditional charts and graphical marks in table as below: [More Details](https://alibaba.github.io/BizCharts/demo.html)
+
+geom type | chart type | notes
 -------- | -------- | --------
-point| 点图、折线图中的点| 点的形状有很多，也可以使用图片代表点[气泡图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/point/bubble)，同时点也可以在不同坐标系下显示，所以可以扩展出非常多的图表类型。
-path| [路径图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/path)，地图上的路径 | 路径图是无序的线图。
-line| 折线图、曲线图、[阶梯线图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/line/step)| 在极坐标系下可以转换成雷达图。
+point| scatter chart, point in line chart| There're so many types of point, also you can use pictures to replace it.[bubble](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/point/bubble).What's more, point can be shown in different coordinates, thus can extend so many new chart type.
+path| [path](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/path),path in map | path is one kind of linechart which is disorder.
+line| linechart, [阶梯线图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/line/step)| line chart can be transformed radar chart in polar coordinate.
 area| 区域图（面积图）、层叠区域图、[区间区域图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/area/range)|极坐标系下可用于绘制雷达区域图。
 interval| 柱状图、直方图、南丁格尔玫瑰图、饼图、条形环图（玉缺图）、漏斗图等| 通过坐标系的转置、变化，可以生成各种常见的图表类型；所有的图表都可以进行层叠、分组。
 polygon|[色块图（像素图）](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/heatmap/heatmap)、[热力图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/heatmap/image)、[地图](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/map/china)| 多个点可以构成多边形。
@@ -29,11 +30,11 @@ schema| k 线图，箱型图 | 自定义的图表类型。
 edge| 树图、流程图、关系图 | 与点一起构建关系图。
 heatmap| 热力图 | --
 
-## 使用说明
-* `<Geom />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Geom />` 组件下只能嵌套其 [`<Label />`](label.md) 组件。
+## Instructions
+* `<Geom />` only can be nested in [`<Chart />`](chart.md) or [`<View />`](view.md)，and only `<Label />` can be nested in `<Geom />`.
 
-## 属性
-### 图形属性
+## Properties
+### Graphics Properties
 数据可视化是将数据编码到几何图形的视觉属性的过程，可以被编码数据的属性被称为图形属性。因此几何标记中有两种类型的属性，图形属性和非图形属性。
 
 图形属性有：
@@ -43,27 +44,27 @@ heatmap| 热力图 | --
 4. [shape](#shape)：形状，几何标记的形状决定了某个具体图表类型的表现形式，例如点图，可以使用圆点、三角形、图片表示；线图可以有折线、曲线、点线等表现形式；
 5. [opacity](#opacity)：透明度，图形的透明度，这个属性从某种意义上来说可以使用颜色代替，需要使用 'rgba' 的形式，所以在 G2 中我们独立出来。
 
-不同的几何标记拥有自己的图形属性，下表列出了各个 geom 几何标记对各个图形属性的支持情况：
+Diiferent geometry has its own properties, as below:
 
-几何标记 | [position](#position) | [color](#color) | [size](#size) | [shape](#shape) | [opacity](#opacity)
+Geometry | [position](#position) | [color](#color) | [size](#size) | [shape](#shape) | [opacity](#opacity)
 -------|---------|-----|---|---|---
-point |支持|支持|支持|支持|支持
-path、line |支持|支持|支持|支持|支持
-area|支持|支持|*不支持*|支持|支持
-interval|支持|支持|支持|支持|支持
-polygon|支持|支持|*不支持*|支持|支持
-edge|支持|支持|支持|支持|支持
-schema|支持|支持|支持|支持|支持
-contour |支持|支持|支持|*不支持*|支持
-heatmap |支持|支持|支持|*不支持*|*不支持*
+point |✔️|✔️|✔️|✔️|✔️
+path、line |✔️|✔️|✔️|✔️|✔️
+area|✔️|✔️|not support|✔️|✔️
+interval|✔️|✔️|✔️|✔️|✔️
+polygon|✔️|✔️|not support|✔️|✔️
+edge|✔️|✔️|✔️|✔️|✔️
+schema|✔️|✔️|✔️|✔️|✔️
+contour |✔️|✔️|✔️|not support|✔️
+heatmap |✔️|✔️|✔️|not support|not support
 
 
 ### 1、type    * String *
-几何标记类型，目前 BizCharts 支持的几何标记类型如下：
+Type of graphical marks:
 
-geom 类型 | 描述
+geom type | descriptions
 --- | ---
-point | 点，用于绘制各种点图。
+point | point is used for scatter chart.
 path | 路径，无序的点连接而成的一条线，常用于路径图的绘制。
 line | 线，点按照 x 轴连接成一条线，构成线图。
 area | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
@@ -75,7 +76,7 @@ heatmap | 用于**热力图**的绘制。
 
 同时 BizCharts 默认提供了如下 8 中几何标记和[数据调整](geom.md#adjust)的组合类型。
 
-geom 类型 | 描述
+geom type | descriptions
 --- | ---
 pointStack | 层叠点图
 pointJitter | 扰动点图
@@ -87,8 +88,7 @@ areaStack | 层叠区域图
 schemaDodge | 分组箱型图
 
 ### 2、adjust    * Object *
-声明几何标记对象的数据调整方式，可用于绘制层叠图、扰动图、分组图等。支持单一的数据调整方式也支持各种数据调整方式的组合。
-支持的调整类型包括： 'stack', 'dodge', 'jitter', 'symmetric'。
+Define the adjust type of graphical marks, BizCharts supports single and combination mode to use adjust, including 'stack', 'dodge', 'jitter', 'symmetric'.
 
 ```jsx
 <Geom
@@ -100,8 +100,8 @@ schemaDodge | 分组箱型图
   adjust= {[
     {
       type: 'dodge',
-      marginRatio: 0, // 数值范围为 0 至 1，用于调整分组中各个柱子的间距
-      dodgeBy: 'xx', // 声明按照 xx 字段进行分组，一般不需要声明
+      marginRatio: 0,
+      dodgeBy: 'xx',
     }
   ]}
 />
@@ -213,55 +213,46 @@ shape 支持的映射值如下：
 <span id="size"></span>
 
 ### 6、size    * String | Array | Number *
-对于不同的几何标记含义不完全一致：
+To different graphical marks, size has different meanings:
 
-- 对于 point 点来说，size 对应着点的半径；
-- 对于 line 线来说，size 对应着线的粗细；
-- 对于 interval 柱状图来说，size 对应着柱子的宽度。
+- to point, size means the radius of point.
+- to line, size is the width of line.
+- to bar, size is the width of bar.
 
-size 支持映射值如下：
-- 'field'，指定映射到 size 的字段，使用内置的默认大小范围为 [1, 10]；
+- field, default range is `[1, 10]`.
 ```jsx
-//代码示例
 <Geom size='count'/>
 ```
-- ['field', [ min, max ]]，指定映射到 size 字段外，还提供了 size 的最大值和最小值范围；
+- ['field', [ min, max ]], you can set the size range as below:
 ```jsx
-//代码示例
 <Geom size={['count', [1, 10]]}/>
 ```
-- ['fields', callback)]，使用回调函数映射 size，用于个性化的 size 定制，可以使用多个字段进行映射；
+- ['fields', callback)], support callback to satisfy custom requirements.
 ```jsx
-//代码示例
 <Geom size={['count', (count)=>{
   if(count > 1000)
     return 10;
   else return 1;
 }]}/>
 ```
-- Number，直接指定像素大小。
+- Number
 ```jsx
-//代码示例
 <Geom size={3}/>
 ```
 
 <span id="opacity"></span>
 
 ### 7、opacity    * String | Array | Number *
-透明度在视觉编码过程中，只能进行定量（连续）数据的映射，作为颜色的一个补充使用，所以提供以下方式：
-- 'field'，指定透明度映射的字段，透明度默认的范围为 [0, 1]；
+- field, default range is `[0, 1]`
 ```jsx
-//代码示例
 <Geom opacity='count'/>
 ```
-- float，直接指定透明度常量；
+- float
 ```jsx
-//代码示例
 <Geom opacity={0.2}/>
 ```
-- ['field', callback]，使用回调函数获取透明度。
+- ['field', callback], support callback to set opacity manually
 ```jsx
-//代码示例
 <Geom opacity={['count', (count)=>{
   if(count > 1000)
     return 0.6;
@@ -270,16 +261,16 @@ size 支持映射值如下：
 ```
 
 ### 8、style    * Object | Array *
-配置几何图形的样式。
-当 style 的值是 Object 时，该 Object 中只能设置固定样式。
-当 style 的值是 Array 时，可以通过回调函数根据具体的数据去动态配置样式。
+
+The style of shape. This property supports callback.
+
 ```jsx
 //代码示例
 <Geom
   style={{
     lineWidth:1
   }}
-  //或者
+  // or
   style={['sales*city', {
     lineWidth:1,
 	stroke:(sales, city)=>{
@@ -293,10 +284,11 @@ size 支持映射值如下：
 <span id="tooltip"></span>
 
 ### 9、tooltip    * Boolean | String | Array *
-控制单个 <Geom/> 上 tooltip 的显示数据。
-- Boolean 该几何标记是否需要显示 tooltip，默认值 false；
-- String 格式为 a*b*c，该几何标记上 tooltip 需要显示的数据字段，每个地段将会显示为一行。
-- Array 格式为 [a*b*c, callback],该几何标记上 tooltip 需要显示的数据字段,同时可以在 callback 中调整数据的显示格式。
+
+- Boolean DEFAULT: false, whether enable the tooltip for shape.
+- String format is 'a*b*c', each item will show in one line.
+- Array format is [a*b*c, callback]
+
 ```jsx
 <Geom
   tooltip={['sales*city', (sales, city)=>{
@@ -309,23 +301,21 @@ size 支持映射值如下：
 ```
 
 ### 10、select    * Boolean | Array *
-开启、关闭以及设置 shape 对于鼠标 click 事件的响应效果。BizCharts 默认仅为饼图开启了选中效果。
+Enable/Disable the click event for shape. Only pie chart enable select mode by default.
 
-- Boolean，是否打开 对于鼠标 click 事件的响应效果。
-- Array，[Boolean, configObject]。
 ```jsx
 <Geom
   select={[true, {
-    mode: 'single' || 'multiple', // 选中模式，单选、多选
-	style: { }, // 选中后 shape 的样式
-	cancelable: true | false, // 选中之后是否允许取消选中，默认允许取消选中
-	animate: true | false // 选中是否执行动画，默认执行动画
+    mode: 'single' || 'multiple',
+    style: { },
+    cancelable: true | false,
+    animate: true | false
   }]}
 />
 ```
 
 ### 11、Active    * Boolean *
-图形激活交互开关。
+Enable/Disable the hover event for shape. 
 
 ### 12、animate    * Object *
-定义几何标记上的动画效果，具体配置参数及使用参见[animate文档](../tutorial/animate.md)
+[See more details about animate](../tutorial/animate.md)

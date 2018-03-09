@@ -76,13 +76,19 @@ scale={{
 
 ### 7、padding		* Object／Number／Array *
 图表内边距。
-有如下三种配置格式。
+有如下配置格式。
 ```jsx
 //有时候坐标轴、图例等绘图区域外的组件显示不全时，可以通过调整图表各个方向的 padding 来调整最终效果
 padding={[ 20, 30, 20, 30]}
 padding={20}
 padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
+padding='auto'
+padding={[20, 'auto', 30, 'auto']}
 ```
+
+- 另外也支持设置百分比，如 padding: [ '20%', '30%' ]，该百分比相对于整个图表的宽高。
+- padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+- padding 中存在 'auto'，时会自动计算边框，目前仅考虑 axis 和 legend 占用的边框。
 
 ### 8、animate		* Boolean *
 是否执行动画。
@@ -126,9 +132,9 @@ padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
 
 ### 12、filter   *Array*
 过滤数据，如果存在对应的图例，则过滤掉的字段置灰。
-Array:[fieldString, callback]
+Array:[[fieldString1, callback1], [fieldString2, callback2]]
 ``` jsx
-<Chart filter={['x', (val) => {return val > 20;}]}/>
+<Chart filter={[['x', (val) => {return val > 20;}]]}/>
 ```
 ### 13、className   *String*
 设置图标最外层div的类名。

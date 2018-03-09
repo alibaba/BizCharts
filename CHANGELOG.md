@@ -1,3 +1,21 @@
+# 3.1.4-beta.2(3.6, 2018)
+- fix node-env development do not use prop-types as external lib.
+
+# 3.1.4-beta.1(3.6, 2018)
+- bizcharts/umd do not use prop-types as external lib.
+
+# 3.1.3(3.2, 2018)
+- fix issue 184, 99, 174, 164
+- update g2 3.0.5-beta.4
+
+# 3.1.3-beta.2 (2.1, 2018)
+- delete array.prototype find, and use for in to find
+- update g2 3.0.5-beta.1
+
+# 3.1.3-beta.1 (1.29, 2018)
+- Compatible with ie10&9
+- update g2 3.0.4
+
 # 3.1.2 (1.18, 2017)
 - fix `<Label>` prop update.
 

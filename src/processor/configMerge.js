@@ -168,6 +168,9 @@ const iMerge = {
       if (geoms[id]) {
         if (clear) {
           delete geoms[id].g2Instance;
+          if (geoms[id].label && geoms[id].label.g2Instance) {
+            delete geoms[id].label.g2Instance;
+          }
         }
         if (geoms[id].updateProps) geoms[id].props = geoms[id].updateProps;
       }
