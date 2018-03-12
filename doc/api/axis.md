@@ -61,8 +61,14 @@
 ### 3、position 	*'top'|'bottom'|'left'|'right'*
 当前坐标轴的摆放位置。
 
-### 4、title 	*Object*
-当前坐标轴标题的样式配置。
+### 4、title 	*Object | Boolean | null*
+当前坐标轴标题是否需要显示,及其样式配置。
+
+- 是否显示
+轴的 title 是默认不显示的, 即 ``title=null``，如果需要显示需要将此属性配置为 true。
+```
+  <Axis title />
+```
 
 - 样式配置
 
