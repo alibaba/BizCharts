@@ -3,6 +3,9 @@ import configMerge from './configMerge';
 import g2Update from './g2Update';
 import g2Delete from './g2Delete';
 import g2Creator from './g2Creator';
+import { Util } from '../shared';
+import prop from '../shared/prop';
+
 
 export default class Processor {
   constructor() {
@@ -11,7 +14,24 @@ export default class Processor {
     this.added = false;
     this.initedG2 = false;
     this.updated = false;
+    this.deleted = false;
     this.deleteInfos = {};
+  }
+
+  calUpdateFlag(name, id) {
+    const { children, ...props } = this.elementInfos[id].props;
+    const { children: nextChildren, ...nextProps } = this.elementInfos[id].updateProps;
+    if (name === 'Chart') {
+      const { data, ...otherProps } = props;
+      const { data: nextData, ...nextOtherProps } = nextProps;
+      if (data !== nextData || !Util.isEqual(otherProps, nextOtherProps)) {
+        this.updated = true;
+      }
+    } else {
+      if (!Util.isEqual(props, nextProps)) {
+        this.updated = true;
+      }
+    }
   }
 
   addElement(name, id, props, parentInfo, viewId) {
@@ -35,14 +55,15 @@ export default class Processor {
   }
 
   updateElement(name, id, props) {
-    this.updated = true;
     this.elementInfos[id].updateProps = { ...props };
+    this.calUpdateFlag(name, id);
   }
 
   deleteElement(name, id) {
     if (!this.chart) return;
 
     this.deleteInfos[id] = id;
+    this.deleted = true;
   }
 
   createG2Instance() {
@@ -55,6 +76,7 @@ export default class Processor {
 
     this.chart = chart;
     this.initedG2 = true;
+    this.resetStates();
     return chart;
   }
 
@@ -101,8 +123,10 @@ export default class Processor {
       return this.chart;
     }
 
-    g2Delete.synchronizeG2Delete(this.chart, this.config, this.deleteInfos, this.elementInfos);
-    configMerge.mergeDelete(this.config, this.deleteInfos, this.elementInfos);
+    if (this.deleted) {
+      g2Delete.synchronizeG2Delete(this.chart, this.config, this.deleteInfos, this.elementInfos);
+      configMerge.mergeDelete(this.config, this.deleteInfos, this.elementInfos);
+    }
 
     if (this.added) {
       g2Creator.synchronizeG2Add(this.chart, this.config);
@@ -110,7 +134,10 @@ export default class Processor {
     if (this.updated) {
       g2Update.synchronizeG2Update(this.chart, this.config);
     }
-    this.chart.repaint();
+    if (this.added || this.deleted || this.updated) {
+      this.chart.repaint();
+      console.log('repaint repaint repaint');
+    }
 
     configMerge.mergeUpdate(this.config, false);
     this.resetStates();
