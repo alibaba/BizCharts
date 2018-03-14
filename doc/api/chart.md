@@ -30,66 +30,68 @@
 
 ## 属性
 ### 1、forceFit		* Boolean *
-设置图表的宽度是否自适应，设置为 true，则图表 chart 会继承父元素的宽度，用户设置的 width 则不生效。
-默认值: false
+图表的宽度自适应开关，默认为 false，设置为 true 时表示自动取 dom（实例容器）的宽度。
 
 ### 2、width		* Number *
 指定图表的宽度，默认单位为 'px'，当 *forceFit: true* 是宽度不生效。
 
 ### 3、height		* Number(必填) *
-指定图表的高度，默认单位为 'px'。
+指定图表的高度，单位为 'px'。
+
+> 宽和高未指定时，默认为 500px
 
 <span id="data"></span>
 
 ### 4、data	* Array/DataSet *
-图表数据源，是一个包含 JSON 对象的数组或者 DataView 对象。
+设置图表的数据源，`data` 是一个包含 JSON 对象的数组或者 DataSet.View 对象。
 具体参见 [数据](../tutorial/data.md)
 
 <span id="scale"></span>
 
 ### 5、scale		* Object *
-> (fieldName: string, scaleConfig: object) | (scaleConfig: object)
-图表数据源相关的比例尺信息，*scaleConfig* 可配置属性如下。
+配置数据比例尺，该配置会影响数据在图表中的展示方式。
 ```jsx
-scale={{
-  fieldName:'sales',
-  //scaleConfig
-  {
-	type: 'identity' | 'linear' | 'cat' | 'time' | 'timeCat' | 'log' | 'pow', // 指定数据类型
-	alias: string, // 数据字段的别名
-	formatter: function, // 格式化文本内容
-	range: array, // 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
-	tickCount: number, // 设置坐标轴上刻度点的个数
-	ticks: array, // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示
-	sync: boolean // 当 chart 存在不同数据源的 view 时，用于统一相同数据属性的值域范围
+const scale = {
+  'sales': {
+    type: 'identity' | 'linear' | 'cat' | 'time' | 'timeCat' | 'log' | 'pow', // 指定数据类型
+    alias: string, // 数据字段的别名
+    formatter: () => {}, // 格式化文本内容
+    range: array, // 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+    tickCount: number, // 设置坐标轴上刻度点的个数
+    ticks: array, // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示
+    sync: boolean // 当 chart 存在不同数据源的 view 时，用于统一相同数据属性的值域范围
   }
-}}
+};
+<Chart data={data} scale={scale} />
 ```
-
-!注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.md);
+> !注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.md);
 
 ### 6、placeholder		* string *
-图表source为空时显示的内容。
+图表source为空时显示的内容，未设置该属性时为G2 默认样式。`<Chart placeholder />` 则为Bizcharts 定义的无数据提示。
 默认值:  `<div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>` ;会在图表区域的中间显示 "暂无数据" 。
 
 <span id="padding"></span>
 
-### 7、padding		* Object／Number／Array *
+### 7、padding		* Object | Number | Array *
 图表内边距。
 有如下三种配置格式。
 ```jsx
 //有时候坐标轴、图例等绘图区域外的组件显示不全时，可以通过调整图表各个方向的 padding 来调整最终效果
-padding={[ 20, 30, 20, 30]}
-padding={20}
-padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
+<Chart padding={[ 20, 30, 20, 30]} />
+<Chart padding={20} />
+<Chart padding={{ top: 20, right: 30, bottom: 20, left: 30 }} />
+<Chart padding="auto" />
+<Chart padding={[20, 'auto', 30, 'auto']} />
+<Chart padding={['20%', '30%']} />
 ```
+- padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+- padding 中存在 'auto'，时会自动计算边框，目前仅考虑 axis 和 legend 占用的边框。
 
 ### 8、animate		* Boolean *
-是否执行动画。
-默认值: true
+图表动画开关，默认为 true，即开启动画。
 
 ### 9、background		* Object *
-图表背景样式设置。
+设置图表整体的边框和背景样式，是一个对象，包含如下属性：
 ```javascript
 //可配置样式有
 {
@@ -104,7 +106,7 @@ padding={{ top: 20, right: 30, bottom: 20, left: 30 }}
 ```
 
 ### 10、plotBackground		* Object *
-图表背景样式设置。
+图表绘图区域的边框和背景样式，是一个对象，包含如下属性：
 ```javascript
 //可配置样式有
 {
@@ -131,12 +133,12 @@ Array:[[fieldString1, callback1], [fieldString2, callback2]]
 <Chart filter={[['x', (val) => {return val > 20;}]]}/>
 ```
 ### 13、className   *String*
-设置图标最外层div的类名。
+设置图表最外层div的类名。
 ``` jsx
 <Chart className="chart1" />
 ```
 ### 14、style   *Object*
-设置图标最外层div的样式。
+设置图表最外层div的样式。
 ``` jsx
 const style={fontSize: '12'}
 <Chart style={style} />
@@ -363,3 +365,4 @@ Mouseenter, Mousemove, Mouseleave, Click, Dblclick, Mousedown, Mouseup, Touchsta
 <Chart onPointMouseenter={function(ev){//some code}}/>
 ```
 
+> [在线DEMO](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/line/series)

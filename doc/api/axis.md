@@ -54,13 +54,13 @@ g2 `chart.axis()` 方法使用：https://antv.alipay.com/zh-cn/g2/3.x/api/chart.
 ### 3、position 	*'top'|'bottom'|'left'|'right'*
 当前坐标轴的摆放位置。
 
-### 4、title 	*Object*
-当前坐标轴标题的样式配置。
+### 4、title 	*Object | null*
+设置坐标轴标题的显示样式。如果该属性值为 null 则表示不展示坐标轴标题。
 
-- 样式配置
+通过 `title={true}` 渲染坐标轴标题。通过以下配置对标题进行个性化配置：参考[绘图属性](./graphic.md)
 
 ```javascript
-const axisConfig = {
+const title = {
   autoRotate: {Boolean}, // 是否需要自动旋转，默认为 true
   offset: {Number}, // 设置标题 title 距离坐标轴线的距离
   textStyle: {
@@ -73,9 +73,7 @@ const axisConfig = {
   position: 'start' || 'center' || 'end', // 标题的位置，**新增**
 }
 ```
-
-- title显示文本配置
-当需要配置坐标轴标题文本时，在该轴的 scale 中设置 alias 属性，如下所示，更多 scale 设置请查看 scale。
+提示：当需要配置坐标轴标题文本时，在该轴的 scale 中设置 alias 属性，如下所示，更多 scale 设置请查看 scale。
 
 ```jsx
 const scale = {
@@ -84,11 +82,13 @@ const scale = {
   }
 };
 
-<Chart scale={scale} />
+<Chart scale={scale} >
+  <Axis name="sold" title={title}/>
+</Chart>
 ```
 
-### 5、line 	*Object*
-当前坐标轴轴线的样式配置。
+### 5、line 	*Object | null*
+设置坐标轴线的样式，包括线的颜色、粗细等。如果该属性值为 null 则表示不展示坐标轴线。样式设置细节参考[绘图属性](./graphic.md)
 
 ```javascript
 //可配置样式
@@ -100,79 +100,98 @@ const scale = {
 }
 ```
 
-### 6、tickLine 	*Object*
-当前坐标轴刻度线的样式配置。
+### 6、tickLine 	*Object | null*
+设置坐标轴的刻度线。如果该属性值为 null 则表示不展示。
 
 ```javascript
 //可配置样式
-{
+const tickLine = {
   lineWidth: 1, // 刻度线宽
   stroke: '#ccc', // 刻度线的颜色
   length: 5, // 刻度线的长度, **原来的属性为 line**,可以通过将值设置为负数来改变其在轴上的方向
 }
 ```
 
-- 刻度线个数、范围、内容可以通过该轴的 scale 配置，如下所示，更多 scale 配置请查看 scale。
+提示：刻度线个数、范围、内容可以通过该轴的 scale 配置，如下所示，更多 scale 配置请查看 scale。
 
 ```jsx
 const scale = {
   sales:{
-    min:0,//定义数值范围的最小值
-	max:10000,//定义数值范围的最大值
-    ticks:[100, 1000, 2000, 3000],//用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
-	tickInterval:1000,//用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
-	tickCount:10,//定义坐标轴刻度线的条数，默认为 5
+    min: 0, // 定义数值范围的最小值
+    max: 10000, // 定义数值范围的最大值
+    ticks: [100, 1000, 2000, 3000], // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
+    tickInterval: 1000, // 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
+    tickCount: 10, // 定义坐标轴刻度线的条数，默认为 5
   }
 };
 
-<Chart scale={scale} />
+<Chart scale={scale} >
+  <Axis name="sold" tickLine={tickLine}/>
+</Chart>
 ```
-
 <span id="label"></span>
 
-### 7、label 	*Object*
-当前坐标轴刻度文本的样式配置。
-可配置值有:
+### 7、label 	*Object | null*
+设置坐标轴文本的样式。如果该属性值为 null 则表示不展示坐标轴文本。
 
 ```javascript
-{
-  offset: {Number}, // 设置坐标轴文本 label 距离坐标轴线的距离
+const label = {
+  offset: {number}, // 数值，设置坐标轴文本 label 距离坐标轴线的距离
+  // 设置文本的显示样式，还可以是个回调函数，回调函数的参数为该坐标轴对应字段的数值
   textStyle: {
-  textAlign: 'center', // 文本对齐方向，可取值为： start middle end
-  fill: '#404040', // 文本的颜色
-  fontSize: '12', // 文本大小
-  fontWeight: 'bold', // 文本粗细
-  rotate: 30,
-  textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
-  } || {Function}, // 支持回调
-  autoRotate: {Boolean} // 是否需要自动旋转，默认为 true
-  formatter: {Function}, // 回调函数，用于格式化坐标轴上显示的文本信息
-  htmlTemplate: {Function}, // 使用 html 自定义 label
+    textAlign: 'center', // 文本对齐方向，可取值为： start center end
+    fill: '#404040', // 文本的颜色
+    fontSize: '12', // 文本大小
+    fontWeight: 'bold', // 文本粗细
+    rotate: 30, 
+    textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+  } | (text) => {
+    // text: 坐标轴对应字段的数值
+  }, 
+  autoRotate: {boolean}, // 文本是否需要自动旋转，默认为 true
+  /**
+   * 用于格式化坐标轴上显示的文本信息的回调函数
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回格式化后的文本值
+   */
+  formatter(text, item, index) {},
+  /**
+   * 使用 html 渲染文本
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回 html 字符串
+   */
+  htmlTemplate(text, item, index) {}
 }
 ```
 
-- label显示文本等配置也可以通过该轴的 scale 配置，如下所示，更多 scale 配置请查看 scale。
+提示：label显示文本等配置也可以通过该轴的 scale 配置，如下所示，更多 scale 配置请查看 scale。
 
 ```jsx
 const scale = {
-  sales:{
-    min:0,//定义数值范围的最小值
-	max:10000,//定义数值范围的最大值
-    ticks:[100, 1000, 2000, 3000],//用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
-	tickInterval:1000,//用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
-	tickCount:10,//定义坐标轴刻度线的条数，默认为 5
+  sales: {
+    min:0, // 定义数值范围的最小值
+    max:10000, // 定义数值范围的最大值
+    ticks:[100, 1000, 2000, 3000], // 用于指定坐标轴上刻度点的文本信息（label），当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
+    tickInterval: 1000, // 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
+    tickCount: 10, // 定义坐标轴刻度线的条数，默认为 5
   }
 };
 
-<Chart scale={scale} />
+<Chart scale={scale} >
+  <Axis name="sold" label={label}/>
+</Chart>
 ```
 
 ### 8、grid 	* Object | null*
-当前坐标轴网格线的样式配置。当 `grid={null}` 时，则不现实网格线。
-
+设置坐标轴网格线的样式，网格线与坐标轴线垂直。如果该属性值为 null 则表示不展示。
+更多参考[绘图属性](./graphic.md)
 ```javascript
 //可配置样式
-{
+const grid = {
   align: 'center', // 网格顶点从两个刻度中间开始
   type: 'line' || 'polygon', // 网格的类型
   lineStyle: {
@@ -186,15 +205,19 @@ const scale = {
 
 ### 9、subTickCount 	*Number*
 当前坐标轴次刻度线个数。
+```javascript
+<Axis subTickCount={2} />// 设置次刻度线的个数，数值类型
+```
 
 ### 10、subTickLine 	*Object*
 当前坐标轴次刻度线样式配置。
 ```javascript
 //可配置样式
-{
-  lineWidth: 1, // 子刻度线宽
-  stroke: '#ddd', // 子刻度线颜色
-  length: 3, // 自刻度线的长度
+const subTickLine = {
+  lineWidth: 1, // 次刻度线宽
+  stroke: '#ddd', // 次刻度线颜色
+  strokeOpacity: 0.5, // 次刻度线颜色的透明度
+  length: 3 // 次刻度线的长度，可以为负值（表示反方向渲染）
 }
 ```
 
@@ -208,7 +231,7 @@ const scale = {
   sales:{
     type:"linear",
     min:0,
-	max:1000,
+    max:1000,
   },
 }
 <Chart scale={scale}>

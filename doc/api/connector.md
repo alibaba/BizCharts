@@ -1,13 +1,11 @@
-
 # Connector 数据接入
-*文档转自G2*
 
 一个数据视图（DataSet.View）实例在接入数据时就会用到 Connector，其语法如下：
 
 ```js
 dv.source(data, {
-    type: connectorName,
-    ...otherOptions
+  type: connectorName,
+  ...otherOptions
 });
 ```
 
@@ -21,17 +19,17 @@ const testCSV = `Expt,Run,Speed
  1,4,1070`;
 
 const dv = new DataSet.View().source(testCSV, {
-    type: 'csv'
+  type: 'csv'
 });
 
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "1", Speed: "850"}
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "1", Speed: "850"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 ```
@@ -62,8 +60,8 @@ dv.rows = deepClone(ds.getView(otherDv).rows);
 
 ```js
 dv.source(dsvStr, {
-	type: 'dsv',   // 指定使用dsv connector
-	delimiter: '|' // 指定分隔符
+  type: 'dsv',   // 指定使用dsv connector
+  delimiter: '|' // 指定分隔符
 })
 ```
 
@@ -73,8 +71,8 @@ dv.source(dsvStr, {
 
 ```js
 dv.source(csvStr, {
-	type: 'csv',   // 指定使用dsv connector
-	delimiter: ',' // 指定分隔符
+  type: 'csv',   // 指定使用dsv connector
+  delimiter: ',' // 指定分隔符
 })
 ```
 
@@ -84,7 +82,7 @@ dv.source(csvStr, {
 
 ```js
 dv.source(tsvStr, {
-	type: 'tsv' // 指定使用tsv connector
+  type: 'tsv' // 指定使用tsv connector
 })
 ```
 
@@ -94,11 +92,11 @@ dv.source(tsvStr, {
 
 ```js
 dv.source(geojsonData, {
-    type: 'GeoJSON', // 别名 geo / geojson
+  type: 'GeoJSON', // 别名 geo / geojson
 })
 ```
 
-> dv.dataType会被更改为'geo'，从而dv可以执行一些Geo相关的实例方法。
+> dv.dataType 会被更改为 'geo'，从而 dv 可以执行一些 Geo 相关的实例方法。
 
 ## TopoJSON
 
@@ -106,12 +104,12 @@ dv.source(geojsonData, {
 
 ```js
 dv.source(topojsonData, {
-    type: 'TopoJSON', // 别名 topojson
-    object: 'xxx'     // TopoJSON相当于多个GeoJSON合并起来做了压缩，其中每一个object都相当于一份GeoJSON数据，指定object就是从中提取一份Geo数据
+  type: 'TopoJSON', // 别名 topojson
+  object: 'xxx'     // TopoJSON 相当于多个 GeoJSON 合并起来做了压缩，其中每一个 object 都相当于一份 GeoJSON 数据，指定 object 就是从中提取一份 Geo 数据
 })
 ```
 
-> dv.dataType会被更改为'geo'，从而dv可以执行一些Geo相关的实例方法。
+> dv.dataType 会被更改为 'geo'，从而 dv 可以执行一些 Geo 相关的实例方法。
 
 ## hierarchy
 
@@ -119,14 +117,14 @@ dv.source(topojsonData, {
 
 ```js
 dv.source(tree, {
-    type: 'hierarchy',        // 别名 tree
-    children: d => d.children // 可选，函数，返回子树
+  type: 'hierarchy',        // 别名 tree
+  children: d => d.children // 可选，函数，返回子树
 })
 ```
 
-> dv.dataType会被变更为'hierarchy'，从而dv可以执行一些树形结构相关的实例方法和Transform。
+> dv.dataType 会被变更为 'hierarchy' ，从而 dv 可以执行一些树形结构相关的实例方法和 Transform。
 
-> dv.root为根节点
+> dv.root 为根节点
 
 ## graph
 
@@ -134,10 +132,10 @@ dv.source(tree, {
 
 ```js
 dv.source(graph, {
-    type: 'graph',
-	nodes: d => d.nodes, // 节点集对应字段
-	edges: d => d.edges  // 边集对应字段
+  type: 'graph',
+  nodes: d => d.nodes, // 节点集对应字段
+  edges: d => d.edges  // 边集对应字段
 })
 ```
 
-> dv.dataType会被变更为'graph'，从而dv可以执行图相关的实例方法和Transform。
+> dv.dataType 会被变更为 'graph'，从而 dv 可以执行图相关的实例方法和 Transform。
