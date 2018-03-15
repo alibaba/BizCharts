@@ -45,6 +45,6 @@
     "linebreak-style" : "off",
     "arrow-body-style" : "off",
     "no-unused-vars" : "warn",
-    "guard-for-in" : "warn"
+    "guard-for-in" : "off"
   }
 }
