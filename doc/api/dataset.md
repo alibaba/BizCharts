@@ -1,4 +1,3 @@
-
 # DataSet
 
 全局命名空间 `DataSet`，同时也是数据集类的构造函数。
@@ -33,9 +32,9 @@
 
 ```js
 const ds = new DataSet({
-    state: { // 指定初始化状态量
-        foo: 'bar'
-    }
+  state: { // 指定初始化状态量
+    foo: 'bar'
+  }
 });
 ```
 
@@ -66,9 +65,13 @@ const ds = new DataSet({
 const dv0 = ds.createView();
 const dv1 = ds.createView('foo');
 const dv2 = ds.createView('bar', {
-    watchingStates: [ 'fakeState' ]
+  watchingStates: [ 'fakeState' ]
 });
 ```
+
+##### options.watchingStates
+
+创建数据视图实例时，传入的 `watchingStates` 是用于指定该数据视图监听的 `states` 状态量的。默认监听所有状态量（也就是任何状态量变更都会导致数据视图重新计算），如果指定为空数组 `[]`，则不监听任何状态量，如果指定为非空数组，则只监听数组元素对应的状态量变更。
 
 #### ds.getView()
 
@@ -131,7 +134,7 @@ ds.setState('foo', 'bar');
 
 ```js
 ds.on('statechange', (name, value) => {
-    console.log(`state ${name}'s value has been changed to ${value}!`)
+  console.log(`state ${name}'s value has been changed to ${value}!`)
 });
 ```
 
@@ -166,7 +169,7 @@ ds.on('statechange', (name, value) => {
 ```js
 const dv0 = new DataSet.View();
 const dv1 = new DataSet.View(ds, {
-    watchingStates: [ 'foo' ] // 监听 `foo` 状态量变化，默认监听 ds 上的所有状态量
+  watchingStates: [ 'foo' ] // 监听 `foo` 状态量变化，默认监听 ds 上的所有状态量
 });
 ```
 
@@ -205,20 +208,19 @@ const dv1 = new DataSet.View(ds, {
 
 `data` 是原始数据，可能是字符串，也可能是数组、对象，或者另一个数据视图实例。`options` 里指定了载入数据使用的 `connector` 和载入时使用的配置项。
 
-详细文档见 [Connector API](connector.md)
+详细文档见 [Connector API](./connector.html)
 
 #### dv.transform()
 
 `dv.transform(options)` 执行数据处理数据。执行完这个函数后，transform会被
-`options` 里指定了处理数据使用的 `transform` 和数据处理的配置项。
 
 | 参数 | 类型 | 是否可选 |
 | ---- | ---- | ---- |
 | options | Object | 否 |
 
+`options` 里指定了处理数据使用的 `transform` 和数据处理的配置项。
 
-
-详细文档见 [Transform API](transform.md)
+详细文档见 [Transform API](./transform.html)
 
 ## 方法 Functions
 
@@ -236,15 +238,15 @@ const dv1 = new DataSet.View(ds, {
 ```js
 const _ = require('lodash');
 const {
-    csvParse
+  csvParse
 } = require('d3-dsv');
 
 DataSet.registerConnector('csv', (data, options = {}) => {
-    const delimiter = options.delimiter || ',';
-    if (!isString(delimiter)) {
-        throw new TypeError('Invalid delimiter: must be a string!');
-    }
-    return dsvFormat(delimiter).parse(str);
+  const delimiter = options.delimiter || ',';
+  if (!isString(delimiter)) {
+    throw new TypeError('Invalid delimiter: must be a string!');
+  }
+  return dsvFormat(delimiter).parse(str);
 });
 
 const testCSV = `Expt,Run,Speed
@@ -254,17 +256,17 @@ const testCSV = `Expt,Run,Speed
  1,4,1070`;
 
 const dv = new DataSet.View().source(testCSV, {
-    type: 'csv'
+  type: 'csv'
 });
 
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "1", Speed: "850"}
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "1", Speed: "850"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 ```
@@ -291,23 +293,23 @@ console.log(dv.rows);
 ```js
 // 承接上述 Connector 的代码
 DataSet.registerTransform('filter', (dv, options = {}) => {
-    dv.rows = dv.rows.filter(options.callback || (row => !!row));
+  dv.rows = dv.rows.filter(options.callback || (row => !!row));
 });
 
 dv.transform({
-    type: 'filter',
-    callback(row) {
-        return row.Run !== "1";
-    }
+  type: 'filter',
+  callback(row) {
+    return row.Run !== "1";
+  }
 })
 
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 ```

@@ -4,8 +4,6 @@ import g2Update from './g2Update';
 import g2Delete from './g2Delete';
 import g2Creator from './g2Creator';
 import { Util } from '../shared';
-import prop from '../shared/prop';
-
 
 export default class Processor {
   constructor() {
@@ -19,8 +17,10 @@ export default class Processor {
   }
 
   calUpdateFlag(name, id) {
+    /* eslint-disable  no-unused-vars */
     const { children, ...props } = this.elementInfos[id].props;
     const { children: nextChildren, ...nextProps } = this.elementInfos[id].updateProps;
+    /* eslint-enable */
     if (name === 'Chart') {
       const { data, ...otherProps } = props;
       const { data: nextData, ...nextOtherProps } = nextProps;
@@ -136,7 +136,6 @@ export default class Processor {
     }
     if (this.added || this.deleted || this.updated) {
       this.chart.repaint();
-      console.log('repaint repaint repaint');
     }
 
     configMerge.mergeUpdate(this.config, false);
