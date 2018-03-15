@@ -158,6 +158,11 @@ export default {
       return;
     }
     if (viewConfig.g2Instance) {
+      if (viewConfig.filter) {
+        viewConfig.filter.forEach((filterArg) => {
+          viewConfig.g2Instance.filter(filterArg[0], filterArg[1]);
+        });
+      }
       this.coord(viewConfig.g2Instance, viewConfig);
       this.axises(viewConfig.g2Instance, viewConfig);
       this.geoms(viewConfig.g2Instance, viewConfig);
@@ -169,7 +174,7 @@ export default {
        Because geoms property will cover the g2 view' inner geoms property.
     */
     /* eslint-disable  no-unused-vars */
-    const { scale, data, instance, axis, geoms, ...others } = viewConfig.props;
+    const { scale, data, instance, axis, filter, geoms, ...others } = viewConfig.props;
     /* eslint-enable */
     let view;
     if (instance) {
@@ -184,6 +189,12 @@ export default {
 
     if (scale) {
       view.scale(scale);
+    }
+
+    if (filter) {
+      filter.forEach((filterArg) => {
+        view.filter(filterArg[0], filterArg[1]);
+      });
     }
 
     if (!(axis === true || instance)) {

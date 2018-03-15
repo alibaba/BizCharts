@@ -92,67 +92,18 @@ var scale = {
 }
 ```
 
-<span id="log"> </span>
-
-### log
-
-连续非线性的 log 类型度量，该度量会将 [1, 10, 100, 1000] 先转换成 [0, 1, 2, 3] 然后再进行归一化操作。log 类型的数据可以将非常大范围的数据映射到一个均匀的范围内。
-
-log 度量是 linear 的子类，支持所有通用的属性和 linear 度量的属性，特有的属性如下：
-
-```jsx
-{
-  base: number, // log 的基数，默认是 2
-}
-```
-
-#### log 度量的使用场景
-
-对于以下场景，建议将数据的度量类型指定为 log 类型：
-
-1. 散点图中数据的分布非常广，同时数据分散在几个区间内是，例如分布在 0 - 100， 10000 - 100000，1千万 - 1亿内，这时候适合使用 log 度量；
-2. 热力图中数据分布不均匀时也会出现只有非常高的数据点附近才有颜色，此时需要使用 log 度量，对数据进行 log 处理。
-
-<span id="pow"> </span>
-
-### pow
-
-连续非线性的 pow 类型度量，该度量将 [2, 4, 8, 16, 32] 先转换成 [1, 2, 3, 4, 5] 然后再进行归一化操作。
-
-pow 类型的度量也是 linear 类型的一个子类，除了支持所有通用的属性和 linear 度量的属性外也有自己的属性：
-
-```jsx
-{
-  exponent: number, // 指数，默认是 2
-}
-```
-
-<span id="time"> </span>
-
-### time
-
-连续的时间类型，是一种特殊的连续性数据。time 类型的度量也是 linear 的子类，除了支持所有通用的属性和 linear 度量的属性外，还有自己特殊的属性：
-
-```jsx
-{
-  mask: string, // 指定时间的显示格式，默认：'YYYY-MM-DD'
-}
-```
-
-格式化日期时mask的占位符：
- * y: year
- * m: month
- * d: date
- * H: hour
- * M: minute
- * s: second
-
-图表库会自动识别如下形式的时间格式，当用户需要生成 time 类型的度量时，建议将原始时间数据转换为如下形式：
-
-1. 时间戳，如 1436237115500；// new Date().getTime
-2. 时间字符串： '2015-03-01'，'2015-03-01 12:01:40'，'2015/01/05'，'2015-03-01T16:00:00.000Z'。
-
-还有一种离散事件类型，参见[timeCat](#timeCat)
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| nice | 默认为 true，用于优化数值范围，使绘制的坐标轴刻度线均匀分布。例如原始数据的范围为 [3, 97]，如果 nice 为 true，那么就会将数值范围调整为 [0, 100]| Boolean |
+| min | 定义数值范围的最小值 | Number/Float |
+| max | 定义数值范围的最大值 | Number/Float |
+| tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。 | Number/Float |
 
 <span id="cat"></span>
 
@@ -206,7 +157,122 @@ var scale = {
 <Chart scale={scale}/>
 ```
 
-** 此处必须指定 'cat' 类型，values 的值必须按照索引跟枚举类型一一对应。**
+**此处必须指定 'cat' 类型，values 的值必须按照索引跟枚举类型一一对应。**
+
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| values | 具体的分类的值，一般用于指定具体的顺序和枚举的对应关系 | Array |
+
+<span id="log"> </span>
+
+### log
+
+连续非线性的 log 类型度量，该度量会将 [1, 10, 100, 1000] 先转换成 [0, 1, 2, 3] 然后再进行归一化操作。log 类型的数据可以将非常大范围的数据映射到一个均匀的范围内。
+
+log 度量是 linear 的子类，支持所有通用的属性和 linear 度量的属性，特有的属性如下：
+
+```jsx
+{
+  base: number, // log 的基数，默认是 2
+}
+```
+
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| nice | 是否将 ticks 进行优化，变更数据的最小值、最大值，使得每个 tick 都是用户易于理解的数据 | Boolean |
+| min | 定义数值范围的最小值 | Number/Float |
+| max | 定义数值范围的最大值 | Number/Float |
+| tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。 | Number/Float |
+| base | Log 的基数，默认是2 | Number/Float |
+
+#### log 度量的使用场景
+
+对于以下场景，建议将数据的度量类型指定为 log 类型：
+
+1. 散点图中数据的分布非常广，同时数据分散在几个区间内是，例如分布在 0 - 100， 10000 - 100000，1千万 - 1亿内，这时候适合使用 log 度量；
+2. 热力图中数据分布不均匀时也会出现只有非常高的数据点附近才有颜色，此时需要使用 log 度量，对数据进行 log 处理。
+
+<span id="pow"> </span>
+
+### pow
+
+连续非线性的 pow 类型度量，该度量将 [2, 4, 8, 16, 32] 先转换成 [1, 2, 3, 4, 5] 然后再进行归一化操作。
+
+pow 类型的度量也是 linear 类型的一个子类，除了支持所有通用的属性和 linear 度量的属性外也有自己的属性：
+
+```jsx
+{
+  exponent: number, // 指数，默认是 2
+}
+```
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| nice | 是否将 ticks 进行优化，变更数据的最小值、最大值，使得每个 tick 都是用户易于理解的数据。 | Boolean |
+| min | 定义数值范围的最小值 | Number/Float |
+| max | 定义数值范围的最大值 | Number/Float |
+| tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。 | Number/Float |
+| exponent | 指数，默认 2 | Number |
+
+
+<span id="time"> </span>
+
+### time
+是 linear 度量的一种，连续的时间度量类型，默认会对数据做排序。
+
+| 属性名 | 说明 |
+| :- | :- |
+|nice |	是否将 ticks 进行优化，变更数据的最小值、最大值，使得每个 tick 都是用户易于理解的数据|
+|min|	最小值|
+|max	|最大值|
+|mask	|数据的格式化格式 默认：'yyyy-mm-dd',|
+|tickCount|	坐标点的个数，默认是 5，但不一定是准确值。|
+|tickInterval|	用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，time 类型需要转换成时间戳，tickCount 和 tickInterval 不可以同时声明。|
+|alias|	别名|
+|range	|输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。|
+|formatter	|回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。|
+|ticks|	用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。|
+
+> 说明：mask 的占位符标准同 [moment](https://momentjs.com/docs/#/displaying/format/);
+
+目前 G2 会自动识别如下形式的时间格式，当用户需要生成 time 类型的度量时，建议将原始时间数据转换为如下形式：
+
+1. 时间戳，如 1436237115500；
+2. 时间字符串： '2015-03-01'，'2015-03-01 12:01:40'，'2015/01/05'，'2015-03-01T16:00:00.000Z'。
+
+还有一种离散事件类型，参见[timeCat](#timeCat)
+
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| nice | 是否将 ticks 进行优化，变更数据的最小值、最大值，使得每个 tick 都是用户易于理解的数据。 | Boolean |
+| min | 定义数值范围的最小值 | Number/Float |
+| max | 定义数值范围的最大值 | Number/Float |
+| tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，time 类型需要转换成时间戳，tickCount 和 tickInterval 不可以同时声明。 | Time |
+| mask | 数据的格式化格式 默认：'yyyy-mm-dd' | String |
+
 
 <span id="timeCat"> </span>
 
@@ -221,4 +287,16 @@ timeCat 是 cat 度量的子类，除了支持所有通用的属性和 [cat](#ca
   mask: string, // 指定时间的显示格式，默认：'YYYY-MM-DD'
 }
 ```
+
+| 属性名 | 说明 | 值类型 |
+| :- | :- | :- |
+| type | scale类型。 | String |
+| formatter | 用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。| Function |
+| range | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。| Array |
+| alias | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。| String |
+| tickCount | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。| Number |
+| ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。| Array |
+| nice | 是否将 ticks 进行优化，变更数据的最小值、最大值，使得每个 tick 都是用户易于理解的数据。 | Boolean |
+| mask | 数据的格式化格式 默认：'yyyy-mm-dd' | String |
+
 

@@ -74,7 +74,7 @@ const scale = {
 
 ### 7、padding		* Object | Number | Array *
 图表内边距。
-有如下三种配置格式。
+有如下配置格式。
 ```jsx
 //有时候坐标轴、图例等绘图区域外的组件显示不全时，可以通过调整图表各个方向的 padding 来调整最终效果
 <Chart padding={[ 20, 30, 20, 30]} />
@@ -84,6 +84,10 @@ const scale = {
 <Chart padding={[20, 'auto', 30, 'auto']} />
 <Chart padding={['20%', '30%']} />
 ```
+- padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+- padding 中存在 'auto'，时会自动计算边框，目前仅考虑 axis 和 legend 占用的边框。
+
+- 另外也支持设置百分比，如 padding: [ '20%', '30%' ]，该百分比相对于整个图表的宽高。
 - padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 - padding 中存在 'auto'，时会自动计算边框，目前仅考虑 axis 和 legend 占用的边框。
 

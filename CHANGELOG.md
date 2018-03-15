@@ -1,3 +1,17 @@
+# 3.1.4-beta.3(3.12, 2018)
+- update g2 3.0.5-beta.4
+- when props change nothing, bizcharts will not repaint chart.
+
+# 3.1.4-beta.2(3.6, 2018)
+- fix node-env development do not use prop-types as external lib.
+
+# 3.1.4-beta.1(3.6, 2018)
+- bizcharts/umd do not use prop-types as external lib.
+
+# 3.1.3(3.2, 2018)
+- fix issue 184, 99, 174, 164
+- update g2 3.0.5-beta.4
+
 # 3.1.3-beta.2 (2.1, 2018)
 - delete array.prototype find, and use for in to find
 - update g2 3.0.5-beta.1

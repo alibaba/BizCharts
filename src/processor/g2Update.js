@@ -32,7 +32,12 @@ const iUpdate = {
 
     for (const id in geoms) {
       if (geoms[id].props && geoms[id].updateProps
-        && geoms[id].props.type !== geoms[id].updateProps.type
+        &&
+        (geoms[id].props.type !== geoms[id].updateProps.type
+         || (geoms[id].props.color && !geoms[id].updateProps.color)
+         || (geoms[id].props.size && !geoms[id].updateProps.size)
+         || (geoms[id].props.shape && !geoms[id].updateProps.shape)
+        )
       ) return true;
     }
     return false;
@@ -293,8 +298,9 @@ const iUpdate = {
        Others object must exclude geoms property.
        Because geoms property will cover the g2 view' inner geoms property.
     */
-    const { scale, data, animate, axis } = props;
-    const { scale: nextScale, animate: nextAnimate, data: nextData, axis: nextAxis }
+    const { scale, data, animate, axis, filter } = props;
+    const { scale: nextScale, animate: nextAnimate, data: nextData,
+      axis: nextAxis, filter: nextFilter }
       = nextProps;
 
     if (animate !== nextAnimate) {
@@ -307,6 +313,12 @@ const iUpdate = {
 
     if (!Util.shallowEqual(scale, nextScale)) {
       view.scale(nextScale);
+    }
+
+    if (!Util.shallowEqual(filter, nextFilter)) {
+      nextFilter.forEach((filterArg) => {
+        view.filter(filterArg[0], filterArg[1]);
+      });
     }
 
     if (axis !== nextAxis) {

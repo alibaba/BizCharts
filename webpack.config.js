@@ -40,6 +40,12 @@ var config = {
       commonjs: 'react',
       amd: 'react',
     },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'prop-types',
+      root: 'PropTypes',
+    },
   },
 
   plugins: [
@@ -57,6 +63,11 @@ if (env === 'analyse') {
   config.plugins.push(
     new BundleAnalyzerPlugin()
   );
+}
+
+if (env === 'development' || env === 'production') {
+  // umd do not use prop-types as external lib.
+  delete config.externals['prop-types'];
 }
 
 if (env === 'production') {

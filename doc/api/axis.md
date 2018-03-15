@@ -54,8 +54,14 @@ g2 `chart.axis()` 方法使用：https://antv.alipay.com/zh-cn/g2/3.x/api/chart.
 ### 3、position 	*'top'|'bottom'|'left'|'right'*
 当前坐标轴的摆放位置。
 
-### 4、title 	*Object | null*
-设置坐标轴标题的显示样式。如果该属性值为 null 则表示不展示坐标轴标题。
+### 4、title 	*Object | Boolean | null*
+当前坐标轴标题是否需要显示,及其样式配置。
+
+- 是否显示
+轴的 title 是默认不显示的, 即 ``title=null``，如果需要显示需要将此属性配置为 true。
+```
+  <Axis title />
+```
 
 通过 `title={true}` 渲染坐标轴标题。通过以下配置对标题进行个性化配置：参考[绘图属性](./graphic.md)
 
@@ -77,7 +83,7 @@ const title = {
 
 ```jsx
 const scale = {
-  sales:{
+  sales:{
     alias:'标题名称'
   }
 };
