@@ -6,7 +6,7 @@
 // Last module patch version validated against: 3.1.0
 
 /// <reference types="react" />
-/// <reference path="../node_modules/@antv/g2/src/index.d.ts" />
+import * as G2 from '@antv/g2/src';
 
 declare module "bizcharts" {
   export import G2 = _BizCharts.G2;
