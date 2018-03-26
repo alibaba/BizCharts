@@ -11,6 +11,8 @@ import Facet from './facet';
 import Theme from './theme';
 import Map from './map';
 import Guage from './guage';
+import Slider from './slider';
+
 
 export default {
   lineChart: {
@@ -26,5 +28,6 @@ export default {
     Theme,
     Guage,
     Map,
+    Slider
   },
 };
