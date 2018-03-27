@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import components from '../component/index';
 
 export default class App extends Component {
-  static propTypes: {
+  static propTypes = {
     params: PropTypes.object,
     location: PropTypes.object,
   }
