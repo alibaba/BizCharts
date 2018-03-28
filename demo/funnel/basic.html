@@ -40,8 +40,9 @@
           <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">浏览人数：{pv}</span><br/><span style="padding-left: 16px">占比：{percent}</span><br/></li>'/>
           <Coord type='rect' transpose scale={[1,-1]} />
           <Legend />
+          <Guide >
           {data.map((obj) => {
-              return  (<Guide >
+              return  (
             <Text 
               top={true} 
               position={{
@@ -55,8 +56,9 @@
               shadowBlur: 2,
               shadowColor: 'rgba(0, 0, 0, .45)'}}
             />
-            </Guide>)
+            )
           })}
+          </Guide>
           <Geom type="intervalSymmetric" position="action*percent" shape='funnel' color={['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]]}
           tooltip={['action*pv*percent', (action, pv, percent) => {
             return {
