@@ -40,7 +40,7 @@ g2 `chart.axis()` 方法使用：https://antv.alipay.com/zh-cn/g2/3.x/api/chart.
 </Chart>
 ```
 
-## 属性
+## API
 ### 1、name		* String *
 当前坐标轴对应数据源中的字段名(必填)
 ```jsx

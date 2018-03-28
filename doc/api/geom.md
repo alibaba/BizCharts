@@ -36,7 +36,7 @@ heatmap| 热力图 | --
 ## 子组件
 - [`<Label />`](label.md)
 
-## 属性
+# API
 > 更多[图形属性](graphic.md)
 ### 1、type    * String *
 几何标记类型，目前 BizCharts 支持的几何标记类型如下：

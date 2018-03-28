@@ -1,63 +1,61 @@
-
-## Tooltip
+# Tooltip
 
 提示信息(tooltip)组件，是指当鼠标悬停在图表上的某点时，以提示框的形式展示该点的数据，比如该点的值，数据单位等。
 <img src="https://gw.alipayobjects.com/zos/rmsportal/VLNhkKRALafPtDCIZFqA.png" width="415px">
 
 ## 使用说明
-- `<Tooltip />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时` <Tooltip /> `组件下不能嵌套其他图表组件。
+- `<Tooltip />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 或 [`<View />`](view.md) 组件的子组件，同时` <Tooltip /> `组件下不能嵌套其他图表组件。
 
-- BizCharts 中将 Tooltip 抽离为一个单独的组件，不使用 Tooltip 组件则默认不显示所有提示信息，如下所示：
+- BizCharts 当且仅当`<Tooltip />`存在时图表才展示tooltip，如下所示：
 
-```html
-// 不显示提示信息
+```jsx
 <Chart width={600} height={400} data={data}>
+  <Tooltip /> // 开启图表tooltip功能
   <Geom type="bar" position="genre*sold" color="genre" />
 </Chart>
 ```
 
-- 显示 Tooltip：
-
-```html
-<Chart width={600} height={400} data={data}>
-  <Tooltip />
-  <Geom type="bar" position="genre*sold" color="genre" />
-</Chart>
-```
 ## Tooltip 组成
 ![](https://zos.alipayobjects.com/skylark/750725d4-2e58-4420-b886-4abe1c0335c2/attach/2378/ad8fe2daa557ad62/image.png)
 
-## 属性
+# API
 > BizCharts 将 G2 中 *chart.tooltip(option)* 中 option 上最顶层的配置属性平坦到了 <Tooltip /> 组件属性上。
 
 ### 1、showTitle 	* Boolean *
-是否展示 title。
-默认值:true。
+是否展示提示信息的标题，默认为 true，即展示，通过设置为 false 来隐藏标题。
 
 ### 2、crosshairs 	* Object *
-是否展示 crosshairs。
+
+是一个对象类型，用于设置 tooltip 的辅助线或者辅助框。
+
+  默认我们为 geom 为 ‘line’, ‘area’, ‘path’, ‘areaStack’ 开启了垂直辅助线；geom 为‘interval’ 默认会展示矩形背景框。如下图所示：
+
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/rCwHiXNfIVepGgMWKqdf.png" style="width: 100%;max-width:600px;">
+
+  该属性可支持的配置如下：
 ```jsx
 //可配置值
 //geom为 'line', 'area', 'path', 'areaStack 时默认会展示垂直辅助线
 //geom为 'interval' 默认会展示矩形背景框
-{
+<Tooltip crosshairs={{
   //rect: 矩形框,x: 水平辅助线,y: 垂直辅助线,cross: 十字辅助线。
   type: 'rect' || 'x' || 'y' || 'cross',
   style: {
     lineWidth:2,
-	stroke:"#ff0000",
+	  stroke:"#ff0000",
   }
-}
+}}/> 
+
 ```
 
 ### 3、offset 	* Number *
-tooltip 距离鼠标的偏移量。
+  设置 tooltip 距离鼠标的偏移量。
 
 <span id="containerTpl"></span>
-
 ### 4、containerTpl 	* String *
-tooltip 容器模板 ，注意一定要包含以下 class。
-```jsx
+
+tooltip 默认的容器模板，默认值如下：
+```html
 <div class="g2-tooltip">
   <!-- tooltip 标题 -->
   <div class="g2-tooltip-title" style="margin:10px 0;"></div>
@@ -65,6 +63,7 @@ tooltip 容器模板 ，注意一定要包含以下 class。
   <ul class="g2-tooltip-list"></ul>
 </div>
 ```
+> 如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
 <span id="itemTpl"></span>
 
@@ -78,6 +77,8 @@ tooltip 每项记录的模版，这个属性可以格式化 tooltip 的显示内
   {name}: {value}
 </li>
 ```
+> 如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
+
 ### 6、 g2-tooltip | g2-tooltip-title | g2-tooltip-list | g2-tooltip-list-item | g2-tooltip-marker  *Object*
 可以设置以上属性来自定义tooltip的样式
 ```jsx
@@ -104,17 +105,34 @@ tooltip 每项记录的模版，这个属性可以格式化 tooltip 的显示内
 预知详情如何，请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/cutomize-tooltip)
 
 ### 7、inPlot 	* Boolean *
-是否将 tooltip 展示在图表区域内。
+设置是否将 tooltip 限定在绘图区域内，默认为 true，即限定在绘图区域内。
 
 ### 8、follow 	* Boolean *
-tooltip 是否跟随鼠标移动。
+设置 tooltip 是否跟随鼠标移动。默认为 true，即跟随。
 
 ### 9、shared 	* Boolean *
 是否展示多条 tooltip。
 默认值:true，false 表示只展示单条 tooltip。
 
 ### 10、position 	* 'top'|'bottom'|'left'|'right' *
-tooltip 展示位置。
+  该属性设置之后，就会在固定位置展示 tooltip，可设置的值为：`left`、`right`、`top`、`bottom`。
+
+
+### 11. triggerOn * String:['mousemove'|'click'|'none'] *
+tooltip 的触发方式，可配置的值为：'mousemove'、'click'、'none'，默认为 `mousemove`。 
+
+  * 'mousemove': 鼠标移动触发；
+  * 'click': 鼠标点击出发；
+  * 'none': 不触发 tooltip，用户通过 `chart.showTooltip()` 和 `chart.hideTooltip()` 来控制 tooltip 的显示和隐藏。
+
+### 12、 title * string *
+
+设置 tooltip 的标题展示的数据字段，设置该字段后，该标题即会展示该字段对应的数值。`showTitle` 为 false 时，该设置不生效。
+
+### 13、 enterable * boolean *
+
+用于控制是否允许鼠标进入 tooltip，默认为 false，即不允许进入。
+
 
 ## 其他配置
 
