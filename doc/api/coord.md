@@ -25,7 +25,7 @@
 - 极坐标默认的起始角度和结束角度如下图所示：
 <img src="https://zos.alipayobjects.com/skylark/85950a42-9579-44cb-b656-8dd28c9a014a/attach/2378/d648679184c6977c/image.png" width="214px">
 
-## 通用属性
+# API
 <span id="type"></span>
 ### 1、type 	* String *
 坐标系类型;不同类型的坐标系所支持的配置属性也不一样。具体见各类型属性说明。

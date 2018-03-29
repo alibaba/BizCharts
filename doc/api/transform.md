@@ -1,12 +1,11 @@
 # Transform 数据转换
-*文档转自G2*
 
 一个数据视图（DataSet.View）通过 Transform 来进行数据转换操作，其语法如下：
 
 ```js
 dv.transform({
-    type: connectorName,
-    ...otherOptions
+  type: connectorName,
+  ...otherOptions
 });
 ```
 
@@ -20,32 +19,32 @@ const testCSV = `Expt,Run,Speed
  1,4,1070`;
 
 const dv = new DataSet.View().source(testCSV, {
-    type: 'csv'
+  type: 'csv'
 });
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "1", Speed: "850"}
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "1", Speed: "850"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 
 dv.transform({
-    type: 'filter',
-    callback(row) {
-        return row.Run !== "1";
-    }
+  type: 'filter',
+  callback(row) {
+    return row.Run !== "1";
+  }
 });
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 
@@ -63,10 +62,10 @@ console.log(dv.rows);
 
 ```js
 dv.transform({
-    type: 'filter',
-    callback(row) { // 判断某一行是否保留，默认返回true
-        return row.year > 1998;
-    }
+  type: 'filter',
+  callback(row) { // 判断某一行是否保留，默认返回true
+    return row.year > 1998;
+  }
 });
 ```
 
@@ -76,11 +75,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'map',
-    callback(row) { // 加工数据后返回新的一行，默认返回行数据本身
-        row.newCol = row.xxx + row.yyy;
-        return row;
-    }
+  type: 'map',
+  callback(row) { // 加工数据后返回新的一行，默认返回行数据本身
+    row.newCol = row.xxx + row.yyy;
+    return row;
+  }
 });
 ```
 
@@ -91,8 +90,8 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'pick',
-    fields: [ 'xxx', 'yyy' ] // 决定保留哪些字段，如果不传，则返回所有字段
+  type: 'pick',
+  fields: [ 'xxx', 'yyy' ] // 决定保留哪些字段，如果不传，则返回所有字段
 });
 ```
 
@@ -104,10 +103,10 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'rename',
-    map: {
-        xxx: 'yyy' // row.xxx 会被替换成 row.yyy
-    }
+  type: 'rename',
+  map: {
+    xxx: 'yyy' // row.xxx 会被替换成 row.yyy
+  }
 });
 ```
 
@@ -117,7 +116,7 @@ dv.transform({
 
 ```js
 dv.transform({ // 把数据行逆序排列
-    type: 'reverse',
+  type: 'reverse',
 });
 ```
 
@@ -127,10 +126,10 @@ dv.transform({ // 把数据行逆序排列
 
 ```js
 dv.transform({
-    type: 'sort',
-    callback(a, b) { // 排序依据，和原生js的排序callback一致
-        return a.year - b.year;
-    }
+  type: 'sort',
+  callback(a, b) { // 排序依据，和原生js的排序callback一致
+    return a.year - b.year;
+  }
 });
 ```
 
@@ -142,9 +141,9 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'sort-by',
-    fields: [ 'year' ], // 根据指定的字段集进行排序，与lodash的sortBy行为一致
-    order: 'DESC'        // 默认为 ASC，DESC 则为逆序
+  type: 'sort-by',
+  fields: [ 'year' ], // 根据指定的字段集进行排序，与lodash的sortBy行为一致
+  order: 'DESC'        // 默认为 ASC，DESC 则为逆序
 })
 ```
 
@@ -154,10 +153,10 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'subset',
-    startRowIndex: 1,  // 保留行的起始索引
-    endRowIndex: 2,    // 保留行的结束索引
-    fields: [ 'year' ] // 保留字段集
+  type: 'subset',
+  startRowIndex: 1,  // 保留行的起始索引
+  endRowIndex: 2,    // 保留行的结束索引
+  fields: [ 'year' ] // 保留字段集
 })
 ```
 
@@ -169,9 +168,9 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'partition',
-	groupBy: [ 'year' ], // 以year字段进行分组
-	orderBy: [ 'month' ] // 以month字段进行排序
+  type: 'partition',
+  groupBy: [ 'year' ], // 以year字段进行分组
+  orderBy: [ 'month' ] // 以month字段进行排序
 });
 ```
 
@@ -191,34 +190,34 @@ dv.transform({
 
 ```js
 const data = [
-    { a: 0, b: 0 },
-    { a: 0, b: 1 },
-    { a: 0, b: 2 },
-    { a: 1, b: 1 },
-    { a: 1, b: 2 },
-    { a: 1, b: 3 },
-    { a: 2, b: 0 }
+  { a: 0, b: 0 },
+  { a: 0, b: 1 },
+  { a: 0, b: 2 },
+  { a: 1, b: 1 },
+  { a: 1, b: 2 },
+  { a: 1, b: 3 },
+  { a: 2, b: 0 }
 ];
 const dv = new DataSet.View().source(data)
-    .transform({
-        type: 'fill-rows',
-        groupBy: [ 'a' ],
-        orderBy: [ 'b' ],
-        fillBy: 'group' // 默认为 group，可选值：order
-    });
+  .transform({
+    type: 'fill-rows',
+    groupBy: [ 'a' ],
+    orderBy: [ 'b' ],
+    fillBy: 'group' // 默认为 group，可选值：order
+  });
 console.log(dv.rows);
 /*
  * dv.rows 变为:
  * [
- *     { a: 0, b: 0 }, // 分组1 作为第一个序列字段最全（b）的组，被选为基准
- *     { a: 0, b: 1 },
- *     { a: 0, b: 2 },
- *     { a: 1, b: 1 }, // 分组2 序列字段个数和基准组一致，所以不补充数据
- *     { a: 1, b: 2 },
- *     { a: 1, b: 3 },
- *     { a: 2, b: 0 }, // 分组3 缺省数据，根据基准组进行数据补全
- *     { a: 2, b: 1 }, // 这行数据被补充
- *     { a: 2, b: 2 }, // 这行数据被补充
+ *   { a: 0, b: 0 }, // 分组1 作为第一个序列字段最全（b）的组，被选为基准
+ *   { a: 0, b: 1 },
+ *   { a: 0, b: 2 },
+ *   { a: 1, b: 1 }, // 分组2 序列字段个数和基准组一致，所以不补充数据
+ *   { a: 1, b: 2 },
+ *   { a: 1, b: 3 },
+ *   { a: 2, b: 0 }, // 分组3 缺省数据，根据基准组进行数据补全
+ *   { a: 2, b: 1 }, // 这行数据被补充
+ *   { a: 2, b: 2 }, // 这行数据被补充
  * ]
  */
 ```
@@ -228,28 +227,28 @@ console.log(dv.rows);
 ```js
 // 使用和上例同样的数据
 const dv = new DataSet.View().source(data)
-    .transform({
-        type: 'fill-rows',
-        groupBy: [ 'a' ],
-        orderBy: [ 'b' ],
-        fillBy: 'order' // 默认为 group，可选值：order
-    });
+  .transform({
+    type: 'fill-rows',
+    groupBy: [ 'a' ],
+    orderBy: [ 'b' ],
+    fillBy: 'order' // 默认为 group，可选值：order
+  });
 console.log(dv.rows);
 /*
  * dv.rows 变为:
  * [
- *     { a: 0, b: 0 }, // 分组1
- *     { a: 0, b: 1 },
- *     { a: 0, b: 2 },
- *     { a: 0, b: 3 }, // 分组1 补充了这行数据，因为全量的序列字段（b）有这个值
- *     { a: 1, b: 0 }, // 分组2 补充了这行数据，因为全量的序列字段（b）有这个值
- *     { a: 1, b: 1 },
- *     { a: 1, b: 2 },
- *     { a: 1, b: 3 },
- *     { a: 2, b: 0 }, // 分组3 缺省数据，根据基准组进行数据补全
- *     { a: 2, b: 1 }, // 这行数据被补充
- *     { a: 2, b: 2 }, // 这行数据被补充
- *     { a: 2, b: 3 }, // 这行数据被补充
+ *   { a: 0, b: 0 }, // 分组1
+ *   { a: 0, b: 1 },
+ *   { a: 0, b: 2 },
+ *   { a: 0, b: 3 }, // 分组1 补充了这行数据，因为全量的序列字段（b）有这个值
+ *   { a: 1, b: 0 }, // 分组2 补充了这行数据，因为全量的序列字段（b）有这个值
+ *   { a: 1, b: 1 },
+ *   { a: 1, b: 2 },
+ *   { a: 1, b: 3 },
+ *   { a: 2, b: 0 }, // 分组3 缺省数据，根据基准组进行数据补全
+ *   { a: 2, b: 1 }, // 这行数据被补充
+ *   { a: 2, b: 2 }, // 这行数据被补充
+ *   { a: 2, b: 3 }, // 这行数据被补充
  * ]
  */
 ```
@@ -262,37 +261,37 @@ console.log(dv.rows);
 
 ```js
 const data = [
-    { x: 0, y: 1 },
-    { x: 0, y: 2 },
-    { x: 0, y: 3 },
-    { x: 0 },
-    { x: 1, y: 5 },
-    { x: 1, y: 6 },
-    { x: 1, y: 7 },
-    { x: 1 },
-    { x: 1, y: 9 },
-    { x: 2 }
+  { x: 0, y: 1 },
+  { x: 0, y: 2 },
+  { x: 0, y: 3 },
+  { x: 0 },
+  { x: 1, y: 5 },
+  { x: 1, y: 6 },
+  { x: 1, y: 7 },
+  { x: 1 },
+  { x: 1, y: 9 },
+  { x: 2 }
 ];
 const dv = new DataSet.View().source(data)
-    .transform({
-        type: 'impute',
-        field: 'y',       // 待补全字段
-        groupBy: [ 'x' ], // 分组字段集（传空则不分组）
-        method: 'max'     // 补全字段值时执行的规则
-    });
+  .transform({
+    type: 'impute',
+    field: 'y',       // 待补全字段
+    groupBy: [ 'x' ], // 分组字段集（传空则不分组）
+    method: 'max'     // 补全字段值时执行的规则
+  });
 /*
  dv.rows 变为
 [
-    { x: 0, y: 1 },
-    { x: 0, y: 2 },
-    { x: 0, y: 3 },
-    { x: 0, y: 3 },
-    { x: 1, y: 5 },
-    { x: 1, y: 6 },
-    { x: 1, y: 7 },
-    { x: 1, y: 7 },
-    { x: 1, y: 9 },
-    { x: 2, y: 9 }
+  { x: 0, y: 1 },
+  { x: 0, y: 2 },
+  { x: 0, y: 3 },
+  { x: 0, y: 3 },
+  { x: 1, y: 5 },
+  { x: 1, y: 6 },
+  { x: 1, y: 7 },
+  { x: 1, y: 7 },
+  { x: 1, y: 9 },
+  { x: 2, y: 9 }
 ]
  */
 ```
@@ -303,11 +302,11 @@ const dv = new DataSet.View().source(data)
 
 ```js
 dv.transform({
-    type: 'impute',
-    field: 'y',       // 待补全字段
-    groupBy: [ 'x' ], // 分组字段集（传空则不分组）
-    method: 'value',  // 补全常量
-	value: 10         // 补全的常量为10
+  type: 'impute',
+  field: 'y',       // 待补全字段
+  groupBy: [ 'x' ], // 分组字段集（传空则不分组）
+  method: 'value',  // 补全常量
+  value: 10         // 补全的常量为10
 });
 ```
 
@@ -319,25 +318,25 @@ dv.transform({
 
 ```js
 const data = [
-    { country: "USA", gold: 10, silver: 20 },
-    { country: "Canada", gold: 7, silver: 26 }
+  { country: "USA", gold: 10, silver: 20 },
+  { country: "Canada", gold: 7, silver: 26 }
 ];
 const dv = ds.createView()
-    .source(data)
-    .transform({
-        type: 'fold',
-        fields: [ 'gold', 'silver' ], // 展开字段集
-        key: 'key',                   // key字段
-        value: 'value',               // value字段
-        retains: [ 'country' ]        // 保留字段集，默认为除 fields 以外的所有字段
-    });
+  .source(data)
+  .transform({
+    type: 'fold',
+    fields: [ 'gold', 'silver' ], // 展开字段集
+    key: 'key',                   // key字段
+    value: 'value',               // value字段
+    retains: [ 'country' ]        // 保留字段集，默认为除 fields 以外的所有字段
+  });
 /*
  dv.rows 变为
 [
-    { key: gold, value: 10, country: "USA" },
-    { key: silver, value: 20, country: "USA" },
-    { key: gold, value: 7, country: "Canada" },
-    { key: silver, value: 26, country: "Canada" }
+  { key: gold, value: 10, country: "USA" },
+  { key: silver, value: 20, country: "USA" },
+  { key: gold, value: 7, country: "Canada" },
+  { key: silver, value: 26, country: "Canada" }
 ]
  */
 ```
@@ -354,11 +353,11 @@ const dv = ds.createView()
 
 ```js
 dv.transform({
-    type: 'percent',
-    field: 'sold',           // 统计销量
-    dimension: 'year',       // 每年的占比
-    groupBy: [ 'category' ], // 以不同产品类别为分组
-    as: 'percent'            // 结果存储在 percent 字段
+  type: 'percent',
+  field: 'sold',           // 统计销量
+  dimension: 'year',       // 每年的占比
+  groupBy: [ 'category' ], // 以不同产品类别为分组
+  as: 'percent'            // 结果存储在 percent 字段
 });
 ```
 
@@ -370,11 +369,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'proportion',
-    field: 'id',             // 统计条数
-    dimension: 'year',       // 每年的占比
-    groupBy: [ 'category' ], // 以不同产品类别为分组
-    as: 'proportion'         // 结果存储在proportion字段
+  type: 'proportion',
+  field: 'id',             // 统计条数
+  dimension: 'year',       // 每年的占比
+  groupBy: [ 'category' ], // 以不同产品类别为分组
+  as: 'proportion'         // 结果存储在proportion字段
 });
 ```
 
@@ -388,11 +387,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'aggregate', // 别名summary
-    fields: [],        // 统计字段集
-    operations: [],    // 统计操作集
-    as: [],            // 存储字段集
-    groupBy: []        // 分组字段集
+  type: 'aggregate', // 别名summary
+  fields: [],        // 统计字段集
+  operations: [],    // 统计操作集
+  as: [],            // 存储字段集
+  groupBy: []        // 分组字段集
 })
 ```
 
@@ -420,12 +419,12 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'regression',
-    method: 'linear',     // 回归算法类型
-    fields: [ 'x', 'y' ], // 统计字段
-    bandwidth: 0.1,       // 步长
-    extent: [ 0, 4 ],     // 结果集里，x的数值范围
-    as: [ 'x', 'y' ]      // 结果字段
+  type: 'regression',
+  method: 'linear',     // 回归算法类型
+  fields: [ 'x', 'y' ], // 统计字段
+  bandwidth: 0.1,       // 步长
+  extent: [ 0, 4 ],     // 结果集里，x的数值范围
+  as: [ 'x', 'y' ]      // 结果字段
 });
 ```
 
@@ -449,13 +448,13 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'bin.histogram',
-    field: 'a',             // 对应数轴上的一个点
-    bins: 30,               // 分箱个数
-    binWidth: 10,           // 分箱步长（会覆盖bins选项）
-	offset: 0,              // 分箱偏移量
-	groupBy: [],            // 分组（用于层叠直方图）
-    as: [ 'x', 'count' ],   // x 为数组，存储了某个分箱的上下限 [x0, x1]
+  type: 'bin.histogram',
+  field: 'a',             // 对应数轴上的一个点
+  bins: 30,               // 分箱个数
+  binWidth: 10,           // 分箱步长（会覆盖bins选项）
+  offset: 0,              // 分箱偏移量
+  groupBy: [],            // 分组（用于层叠直方图）
+  as: [ 'x', 'count' ],   // x 为数组，存储了某个分箱的上下限 [x0, x1]
 });
 ```
 
@@ -467,12 +466,12 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'bin.quantile',
-    field: 'y',    // 计算分为值的字段
-    as: '_bin',    // 保存分为值的数组字段
-    groupBy: [],   // 分组
-    fraction: 4,   // 可选，默认四分位
-    p: [0.5, 0.3]  // 可选，p参数列表，与 fraction 二选一
+  type: 'bin.quantile',
+  field: 'y',    // 计算分为值的字段
+  as: '_bin',    // 保存分为值的数组字段
+  groupBy: [],   // 分组
+  fraction: 4,   // 可选，默认四分位
+  p: [ 0.5, 0.3 ]  // 可选，p参数列表，与 fraction 二选一
 });
 ```
 
@@ -486,13 +485,13 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'bin.hexagon',
-    fields: [ 'a', 'b' ],      // 对应坐标轴上的一个点
-    bins: [ 30, 30 ],          // 两个方向上的分箱个数
-	binWidth: [ 10, 1000 ],    // 两个方向上的分箱步长（会覆盖bins的配置）
-	offset: [ 0, 0 ],          // 两个方向上的分箱偏移量
-	sizeByCount: false,        // 是否根据分箱个数调整分箱大小（六边形的半径）
-    as: [ 'x', 'y', 'count' ], // 这个点落在的六边形的顶点坐标集，以及每个分箱内的数据条数
+  type: 'bin.hexagon',
+  fields: [ 'a', 'b' ],      // 对应坐标轴上的一个点
+  bins: [ 30, 30 ],          // 两个方向上的分箱个数
+  binWidth: [ 10, 1000 ],    // 两个方向上的分箱步长（会覆盖bins的配置）
+  offset: [ 0, 0 ],          // 两个方向上的分箱偏移量
+  sizeByCount: false,        // 是否根据分箱个数调整分箱大小（六边形的半径）
+  as: [ 'x', 'y', 'count' ], // 这个点落在的六边形的顶点坐标集，以及每个分箱内的数据条数
                                // x: [ x0, x1, x2, x3, x4, x5 ], y: [ y0, y1, y2, y3, y4, y5 ]
                                // count: Number
 });
@@ -516,13 +515,13 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'bin.rectangle',
-    fields: ['a', 'b'],        // 对应坐标轴上的一个点
-    bins: [ 30, 30 ],          // 两个方向上的分箱个数
-    binsWidth: [ 10, 10 ],     // 两个方向上的分箱步长（会覆盖bins配置）
-	offset: [ 0, 0 ],          // 两个方向上的分箱偏移量
-	sizeByCount: false,        // 是否根据分箱个数调整分箱大小
-    as: [ 'x', 'y', 'count' ], // 这个点落在的六边形的顶点坐标集
+  type: 'bin.rectangle',
+  fields: [ 'a', 'b' ],        // 对应坐标轴上的一个点
+  bins: [ 30, 30 ],          // 两个方向上的分箱个数
+  binsWidth: [ 10, 10 ],     // 两个方向上的分箱步长（会覆盖bins配置）
+  offset: [ 0, 0 ],          // 两个方向上的分箱偏移量
+  sizeByCount: false,        // 是否根据分箱个数调整分箱大小
+  as: [ 'x', 'y', 'count' ], // 这个点落在的六边形的顶点坐标集
                                // x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]
                                // count: Number
 });
@@ -544,12 +543,12 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'kernel-smooth.regression',
-    fields: [ 'x', 'y' ],             // 必填，1 或 2 字段
-    method: 'gaussian',               // 采用的核函数类型。也可以指定为自定义的函数
-    extent: [ min(x), max(x) ],       // 数值范围，默认为 x 字段的数值范围
-    bandwidth: 0.4,                   // 步长，默认采用 silverman 的算法计算
-    as: [ 'x', 'y' ],                 // 结果字段，单字段时，y 为 x 值对应的概率
+  type: 'kernel-smooth.regression',
+  fields: [ 'x', 'y' ],             // 必填，1 或 2 字段
+  method: 'gaussian',               // 采用的核函数类型。也可以指定为自定义的函数
+  extent: [ min(x), max(x) ],       // 数值范围，默认为 x 字段的数值范围
+  bandwidth: 0.4,                   // 步长，默认采用 silverman 的算法计算
+  as: [ 'x', 'y' ],                 // 结果字段，单字段时，y 为 x 值对应的概率
 });
 ```
 
@@ -572,12 +571,12 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'kernel-smooth.density',
-    fields: [ 'x', 'y' ],                            // 必填
-    method: 'gaussian',                              // 采用的核函数类型。也可以指定为自定义的函数
-    extent: [[ min(x), max(x) ], [ min(y), max(y)]], // 数值范围，默认为 x 以及 y 字段各自的数值范围
-    bandwidth: 0.4,                                  // 步长，默认采用 silverman 的算法计算
-    as: [ 'x', 'y' ],                                // 结果字段，单字段时，y 为 x 值对应的概率
+  type: 'kernel-smooth.density',
+  fields: [ 'x', 'y' ],                            // 必填
+  method: 'gaussian',                              // 采用的核函数类型。也可以指定为自定义的函数
+  extent: [ [ min(x), max(x) ], [ min(y), max(y)] ], // 数值范围，默认为 x 以及 y 字段各自的数值范围
+  bandwidth: 0.4,                                  // 步长，默认采用 silverman 的算法计算
+  as: [ 'x', 'y' ],                                // 结果字段，单字段时，y 为 x 值对应的概率
 });
 ```
 
@@ -597,21 +596,21 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'hierarchy.treemap',
-    field: 'value',
-    tile: 'treemapSquarify',     // 布局类型
-    size: [ 1, 1 ],              // width, height
-    round: false,
-    // ratio: 1.618033988749895, // golden ratio
-    padding: 0,                  // 各种 padding 配置
-    paddingInner: 0,
-    paddingOuter: 0,
-    paddingTop: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    as: [ 'x', 'y' ],            // 矩形的顶点集
-                                 // x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]
+  type: 'hierarchy.treemap',
+  field: 'value',
+  tile: 'treemapSquarify',     // 布局类型
+  size: [ 1, 1 ],              // width, height
+  round: false,
+  // ratio: 1.618033988749895, // golden ratio
+  padding: 0,                  // 各种 padding 配置
+  paddingInner: 0,
+  paddingOuter: 0,
+  paddingTop: 0,
+  paddingRight: 0,
+  paddingBottom: 0,
+  paddingLeft: 0,
+  as: [ 'x', 'y' ]             // 矩形的顶点集
+                               // x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]
 });
 ```
 
@@ -634,14 +633,14 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'hierarchy.partition',
-    field: 'value',
-    size: [ 1, 1 ],              // width, height
-    round: false,
-    // ratio: 1.618033988749895, // golden ratio
-    padding: 0,                  // 各种 padding 配置
-    as: [ 'x', 'y' ],            // 矩形的顶点集
-                                 // x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]
+  type: 'hierarchy.partition',
+  field: 'value',
+  size: [ 1, 1 ],              // width, height
+  round: false,
+  // ratio: 1.618033988749895, // golden ratio
+  padding: 0,                  // 各种 padding 配置
+  as: [ 'x', 'y' ],            // 矩形的顶点集
+                               // x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]
 });
 ```
 
@@ -657,17 +656,17 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'diagram.arc',
-    y: 0,
-    thickness: 0.05,                   // 节点高度，区间 (0, 1)
-    weight: false,                     // 是否带权重，无权重为弧长链接图，带权重为和弦图
-    marginRatio: 0.1,                  // 空隙比例，区间[0, 1)
-    id: node => node.id,               // 获取节点id
-    source: edge => edge.source,       // 获取边起始点id
-    target: edge => edge.target,       // 获取边结束点id
-    sourceWeight: edge => edge.value,  // 获取边起始点权重
-    targetWeight: edge => edge.value1, // 获取边结束点权重
-    sortBy: null,                      // 排序，可以按照id，权重（'weight'）或者边数量（'frequency'）排序，也可以自定排序函数
+  type: 'diagram.arc',
+  y: 0,
+  thickness: 0.05,                   // 节点高度，区间 (0, 1)
+  weight: false,                     // 是否带权重，无权重为弧长链接图，带权重为和弦图
+  marginRatio: 0.1,                  // 空隙比例，区间[0, 1)
+  id: node => node.id,               // 获取节点id
+  source: edge => edge.source,       // 获取边起始点id
+  target: edge => edge.target,       // 获取边结束点id
+  sourceWeight: edge => edge.value,  // 获取边起始点权重
+  targetWeight: edge => edge.value1, // 获取边结束点权重
+  sortBy: null,                      // 排序，可以按照id，权重（'weight'）或者边数量（'frequency'）排序，也可以自定排序函数
 });
 ```
 
@@ -689,13 +688,13 @@ edgeView.source(dv.edges);
 
 ```js
 dv.transform({
-    type: 'diagram.sankey',
-	value: node => node.value,    // 权重
-	source: edge => edge.source,  // 边起点id
-    target: edge => edge.target,  // 边终点id
-    nodeAlign: 'sankeyJustify',   // sankeyLeft / sankeyRight / sankeyCenter
-    nodeWidth: 0.02,              // 节点宽，范围：(0, 1)
-    nodePadding: 0.02,            // 节点上下间距，范围：(0, 1)
+  type: 'diagram.sankey',
+  value: node => node.value,    // 权重
+  source: edge => edge.source,  // 边起点id
+  target: edge => edge.target,  // 边终点id
+  nodeAlign: 'sankeyJustify',   // sankeyLeft / sankeyRight / sankeyCenter
+  nodeWidth: 0.02,              // 节点宽，范围：(0, 1)
+  nodePadding: 0.02,            // 节点上下间距，范围：(0, 1)
 });
 ```
 
@@ -711,12 +710,12 @@ voronoi 图
 
 ```js
 dv.transform({
-    type: 'diagram.voronoi',
-    fields: ['field0', 'field1'], // 对应坐标轴上的一个点
-    extend: [[x0, y0], [x1, y1]], // 范围
-    size: [width, height],        // 范围
-    as: [ 'x', 'y' ],             // 每个点包围多边形的顶点集
-                                  // x: [ x0, x1, x2, ... ], y: [ y0, y1, y2, ... ]
+  type: 'diagram.voronoi',
+  fields: [ 'field0', 'field1' ], // 对应坐标轴上的一个点
+  extend: [ [ x0, y0 ], [ x1, y1 ] ], // 范围
+  size: [ width, height ],        // 范围
+  as: [ 'x', 'y' ],             // 每个点包围多边形的顶点集
+                                // x: [ x0, x1, x2, ... ], y: [ y0, y1, y2, ... ]
 })
 ```
 
@@ -728,11 +727,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'geo.projection',
-    projection: 'geoAiry',                        // 指定映射类型
-    as: [ 'x', 'y', 'centroid_x', 'centroid_y' ], // x，y是对应多边形的顶点集
-                                                  // centroid_x是中心点的x坐标
-                                                  // centroid_y是中心点y坐标
+  type: 'geo.projection',
+  projection: 'geoAiry',                        // 指定映射类型
+  as: [ 'x', 'y', 'centroid_x', 'centroid_y' ], // x，y是对应多边形的顶点集
+                                                // centroid_x是中心点的x坐标
+                                                // centroid_y是中心点y坐标
 });
 ```
 
@@ -742,11 +741,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'geo.centroid',
-    field: 'name',                        // 标注地名的字段
-    geoDataView: geoDataView,             // 使用的geo数据来源，可以是DataView实例，也可以是DataView实例的name
-    as: [ '_centroid_x', '_centroid_y' ], // _centroid_x是中心点的x坐标
-                                          // _centroid_y是中心点y坐标
+  type: 'geo.centroid',
+  field: 'name',                        // 标注地名的字段
+  geoDataView: geoDataView,             // 使用的geo数据来源，可以是DataView实例，也可以是DataView实例的name
+  as: [ '_centroid_x', '_centroid_y' ], // _centroid_x是中心点的x坐标
+                                        // _centroid_y是中心点y坐标
 });
 ```
 
@@ -756,11 +755,11 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'geo.region',
-    field: 'name',            // 标注地名的字段
-    geoDataView: geoDataView, // 使用的geo数据来源，可以是DataView实例，也可以是DataView实例的name
-    as: [ '_x', '_y' ],       // 多边形的顶点集
-                              // _x: [ x0, x1, x2, ... ], _y: [ y0, y1, y2, ... ]
+  type: 'geo.region',
+  field: 'name',            // 标注地名的字段
+  geoDataView: geoDataView, // 使用的geo数据来源，可以是DataView实例，也可以是DataView实例的name
+  as: [ '_x', '_y' ],       // 多边形的顶点集
+                            // _x: [ x0, x1, x2, ... ], _y: [ y0, y1, y2, ... ]
 });
 ```
 
@@ -774,16 +773,16 @@ dv.transform({
 
 ```js
 dv.transform({
-    type: 'tag-cloud',
-    fields: [ 'text', 'value' ],    // 参与标签云layout的字段集
-    font: 'serif',                  // 标签字体
-    size: [ 500, 500 ],             // 画布size，[ width, height ]
-    padding: 0,
-    spiral: 'archimedean',          // 标签螺旋排布规律函数 'archimedean' || 'rectangular' || {function}
-    fontSize(d) { return d.value }, // 计算标签字体大小的回调函数，d为一行数据
-    text(d) { return d.text },      // 生成标签文本的回调函数，d为一行数据
-    timeInterval: Infinity,         // 最大迭代时间
-	imageMask: {Image},             // Image的实例，必须是loaded状态
+  type: 'tag-cloud',
+  fields: [ 'text', 'value' ],    // 参与标签云layout的字段集
+  font: 'serif',                  // 标签字体
+  size: [ 500, 500 ],             // 画布size，[ width, height ]
+  padding: 0,
+  spiral: 'archimedean',          // 标签螺旋排布规律函数 'archimedean' || 'rectangular' || {function}
+  fontSize(d) { return d.value }, // 计算标签字体大小的回调函数，d为一行数据
+  text(d) { return d.text },      // 生成标签文本的回调函数，d为一行数据
+  timeInterval: Infinity,         // 最大迭代时间
+  imageMask: {Image},             // Image的实例，必须是loaded状态
 })
 ```
 
@@ -794,9 +793,9 @@ const imageMask = new Image()
 imageMask.crossOrigin = ''
 imageMask.src = 'https://zos.alipayobjects.com/rmsportal/EEFqYWuloqIHRnh.jpg'
 imageMask.onload = () => {
-    dv.transform({
-        type: 'tag-cloud',
-        imageMask
-    });
+  dv.transform({
+    type: 'tag-cloud',
+    imageMask
+  });
 };
 ```
