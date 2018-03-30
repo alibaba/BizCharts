@@ -1,4 +1,7 @@
 # 3.1.4-beta.4(3.26, 2018)
+- add types in package.json.
+
+# 3.1.4-beta.4(3.26, 2018)
 - update g2 3.0.5-beta.5
 - fix types g2 ts.index path.
 - delete no need console logs.
