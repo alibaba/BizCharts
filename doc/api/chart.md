@@ -369,4 +369,4 @@ Mouseenter, Mousemove, Mouseleave, Click, Dblclick, Mousedown, Mouseup, Touchsta
 <Chart onPointMouseenter={function(ev){//some code}}/>
 ```
 
-> [在线DEMO](https://alibaba.github.io/BizCharts/demo-detail.html?code=/demo/line/series)
+> [在线DEMO](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/line/series)
