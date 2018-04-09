@@ -5,50 +5,13 @@
 
 // Last module patch version validated against: 3.1.0
 
-/// <reference types="react" />
+import * as React from "react";
 import * as G2 from '@antv/g2/src';
 
-declare module "bizcharts" {
-  export import G2 = _BizCharts.G2;
-  export import Util = _BizCharts.Util;
-  export import Shape = _BizCharts.Shape;
-  export import Animate = _BizCharts.Animate;
-  export import PathUtil = _BizCharts.PathUtil;
-  export import track = _BizCharts.track;
-  export import setTheme = _BizCharts.setTheme;
-  export import AlignXType = _BizCharts.AlignXType;
-  export import AlignYType = _BizCharts.AlignYType;
-  export import Axis = _BizCharts.Axis;
-  export import AxisProps = _BizCharts.AxisProps;
-  export import Base = _BizCharts.Base;
-  export import BaseProps = _BizCharts.BaseProps;
-  export import Chart = _BizCharts.Chart;
-  export import ChartProps = _BizCharts.ChartProps;
-  export import Coord = _BizCharts.Coord;
-  export import CoordProps = _BizCharts.CoordProps;
-  export import CoordType = _BizCharts.CoordType;
-  export import CrosshairsType = _BizCharts.CrosshairsType;
-  export import Facet = _BizCharts.Facet;
-  export import FacetProps = _BizCharts.FacetProps;
-  export import FacetType = _BizCharts.FacetType;
-  export import Geom = _BizCharts.Geom;
-  export import GeomProps = _BizCharts.GeomProps;
-  export import GeomType = _BizCharts.GeomType;
-  export import Guide = _BizCharts.Guide;
-  export import GuideProps = _BizCharts.GuideProps;
-  export import Label = _BizCharts.Label;
-  export import LabelProps = _BizCharts.LabelProps;
-  export import Legend = _BizCharts.Legend;
-  export import LegendProps = _BizCharts.LegendProps;
-  export import MarkerType = _BizCharts.MarkerType;
-  export import PositionType = _BizCharts.PositionType;
-  export import Tooltip = _BizCharts.Tooltip;
-  export import TooltipProps = _BizCharts.TooltipProps;
-  export import View = _BizCharts.View;
-  export import ViewProps = _BizCharts.ViewProps;
-}
+export = bizcharts;
+export as namespace bizcharts;
 
-declare namespace _BizCharts{
+declare namespace bizcharts{
   /**
    * origin G2 
    **/
@@ -86,16 +49,6 @@ declare namespace _BizCharts{
    * PathUtil
    */
   export interface PathUtil extends G2.PathUtil{}
-
-  /**
-   * track
-   */
-  export function track(enable: boolean): void;
-
-  /**
-   * setTheme
-   */
-  export function setTheme(theme: object | string): void;
 
   // some config type
   export let AxisTile: G2.AxisTile;
@@ -419,5 +372,6 @@ declare namespace _BizCharts{
     getViewId?(): string | number
   }
 }
+
 
 
