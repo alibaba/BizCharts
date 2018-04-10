@@ -1,18 +1,20 @@
 {
   "name": "bizcharts",
-  "version": "3.1.4-beta.4",
+  "version": "3.1.4",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
   "module": "es6/index",
   "jsnext:main": "es6/index",
+  "types": "typings/index.d.ts",
   "files": [
     "*.md",
     "demo",
     "es6",
     "lib",
     "umd",
-    "src"
+    "src",
+    "typings"
   ],
   "keywords": [
     "visualization",

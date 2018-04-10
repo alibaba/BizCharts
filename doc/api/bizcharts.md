@@ -2,6 +2,7 @@
 # BizCharts
 全局命名空间 BizCharts 包含：
 
+# API
 ## 1、Component 组件
 
 ### Chart
