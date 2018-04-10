@@ -33,7 +33,7 @@ export default class Basic extends Component {
     <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">浏览人数：{pv}</span><br/><span style="padding-left: 16px">占比：{percent}</span><br/></li>'/>
     <Coord type='rect' transpose scale={[1,-1]} />
 		<Legend />
-    <Guide key={index} >
+    <Guide>
       {data.map((obj,index) => {
         return  (<Text
           top={true}
