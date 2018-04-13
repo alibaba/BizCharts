@@ -140,6 +140,7 @@ declare namespace bizcharts{
   }
 
   export interface CoordProps extends React.Props<any> {
+    transpose?: boolean,
     type?: CoordType,
     rotate?: number,
     scale?: [number, number],
