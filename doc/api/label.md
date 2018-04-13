@@ -10,27 +10,26 @@
 </Geom>
 ```
 
-## 属性
+## API
 ### 1、content 	* String | Array:[String, Function] *
 指定 label 上显示的文本内容，可以是数据纬度，也可以自定义。
 使用示例:
 ```jsx
-<Label
-  content="常量字符串"
-  //或者
-  content="sales*date"
-  //或者
-  content={["sales*date", (sales, date)=>{
+<Label content="常量字符串" />
+// 使用数据
+<Label content="sales*date"/>
+// 使用回调函数
+<Label content={["sales*date", (sales, date)=>{
     return `${data}:${sales}`;
   }]}
 />
 ```
 ### 2、labelLine     * Object *
-文本距离几何线的配置，如果值为 false，表示不展示文本线。
-默认不展示。
+文本距离几何线的配置，如果值为 false，表示不展示文本线。默认不展示。
 使用示例:
 ```jsx
 <Label
+  content="some label"
   labelLine={{
     lineWidth: 1, // 线的粗细
     stroke: '#ff8800', // 线的颜色
@@ -39,12 +38,11 @@
 />
 ```
 
-### 3、offset  	* Number *
+### 3、offset   * Number *
 设置文本距离几何图形的的距离
 
-### 4、textStyle  	* Object *
-文本的图形样式。
-可配置样式值有：
+### 4、textStyle   * Object *
+文本的图形样式。其他样式请参考[绘图属性](./graphic.md)
  ```jsx
 <Label
   content='sales'

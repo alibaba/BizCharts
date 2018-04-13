@@ -5,42 +5,13 @@
 
 // Last module patch version validated against: 3.1.0
 
-/// <reference types="react" />
-/// <reference path="../node_modules/@antv/g2/src/index.d.ts" />
+import * as React from "react";
+import * as G2 from '@antv/g2/src';
 
-declare module "bizcharts" {
-  export import G2 = _BizCharts.G2;
-  export import Util = _BizCharts.Util;
-  export import Shape = _BizCharts.Shape;
-  export import Animate = _BizCharts.Animate;
-  export import PathUtil = _BizCharts.PathUtil;
-  export import track = _BizCharts.track;
-  export import setTheme = _BizCharts.setTheme;
-  export import Axis = _BizCharts.Axis;
-  export import AxisProps = _BizCharts.AxisProps;
-  export import Base = _BizCharts.Base;
-  export import BaseProps = _BizCharts.BaseProps;
-  export import Chart = _BizCharts.Chart;
-  export import ChartProps = _BizCharts.ChartProps;
-  export import Coord = _BizCharts.Coord;
-  export import CoordProps = _BizCharts.ChartProps;
-  export import Facet = _BizCharts.Facet;
-  export import FacetProps = _BizCharts.FacetProps;
-  export import Geom = _BizCharts.Geom;
-  export import GeomProps = _BizCharts.GeomProps;
-  export import Guide = _BizCharts.Guide;
-  export import GuideProps = _BizCharts.GuideProps;
-  export import Label = _BizCharts.Label;
-  export import LabelProps = _BizCharts.LabelProps;
-  export import Legend = _BizCharts.Legend;
-  export import LegendProps = _BizCharts.LabelProps;
-  export import Tooltip = _BizCharts.Tooltip;
-  export import TooltipProps = _BizCharts.TooltipProps;
-  export import View = _BizCharts.View;
-  export import ViewProps = _BizCharts.ViewProps;
-}
+export = bizcharts;
+export as namespace bizcharts;
 
-declare namespace _BizCharts{
+declare namespace bizcharts{
   /**
    * origin G2 
    **/
@@ -79,27 +50,24 @@ declare namespace _BizCharts{
    */
   export interface PathUtil extends G2.PathUtil{}
 
-  /**
-   * track
-   */
-  export function track(enable: boolean): void;
-
-  /**
-   * setTheme
-   */
-  export function setTheme(theme: object | string): void;
-
   // some config type
   export let AxisTile: G2.AxisTile;
+  export type AlignXType = 'left' | 'middle' | 'right';
+  export type AlignYType = 'top' | 'middle' | 'bottom';
+  export type CoordType = 'rect' | 'polar' | 'theta' | 'helix';
+  export type CrosshairsType = 'rect' | 'x' | 'y' | 'cross';
+  export type FacetType = 'rect' | 'list' | 'circle' | 'tree' | 'mirror' | 'matrix';
   export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'areaStack' | 'schemaDodge';
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
+  export type PositionType = 'top' | 'bottom' | 'left' | 'right';
+  
   /**
    * components
    */
   export interface AxisProps extends React.Props<any> {
     name?: string;
     visible?: boolean;
-    position?: 'top' | 'bottom' | 'left' | 'right';
+    position?: PositionType;
     title?: object;
     line?: G2.Styles.line;
     tickLine?: G2.Styles.tickLine;
@@ -130,10 +98,7 @@ declare namespace _BizCharts{
     animate?: boolean;
     pixelRatio?: number;
     data?: any;
-    scale?: {
-      fieldName: string;
-      scaleConnfig: any;
-    };
+    scale?: any;
     placeholder?: JSX.Element | string;
     filter?: Array<any>;
     className?: string;
@@ -172,8 +137,9 @@ declare namespace _BizCharts{
   }
 
   export interface CoordProps extends React.Props<any> {
-    type?: 'rect' | 'polar' | 'theta' | 'helix',
-    rotate?: 'number',
+    transpose?: boolean,
+    type?: CoordType,
+    rotate?: number,
     scale?: [number, number],
     reflect?: 'x' | 'y',
     radius?: number,
@@ -183,7 +149,7 @@ declare namespace _BizCharts{
   }
 
   export interface FacetProps extends React.Props<any> {
-    type?:  'rect' | 'list' | 'circle' | 'tree' | 'mirror' | 'matrix';
+    type?: FacetType;
     fields?: string | any[];
     margin?: number | number[];
     padding?: number | number[];
@@ -234,7 +200,7 @@ declare namespace _BizCharts{
   export interface LegendProps extends React.Props<any> {
     name?: string;
     visible?: string;
-    position?: 'top' | 'left' | 'right' | 'bottom';
+    position?: PositionType;
     title?: boolean;
     offsetX?: number;
     offsetY?: number;
@@ -274,7 +240,7 @@ declare namespace _BizCharts{
   export interface TooltipProps extends React.Props<any> {
     showTitle?: boolean;
     crosshairs?: {
-      type?: 'rect' | 'x' | 'y' | 'cross';
+      type?: CrosshairsType;
       style?: G2.Styles.background | G2.Styles.line;
     };
     offset?: number;
@@ -288,7 +254,7 @@ declare namespace _BizCharts{
     inPlot?: boolean;
     follow?: boolean;
     shared?: boolean;
-    position?: 'top' | 'bottom' | 'left' | 'right';
+    position?: PositionType;
 
   }
 
@@ -368,8 +334,8 @@ declare namespace _BizCharts{
 
     interface HtmlProps {
       position?: object | any[] | ((xScale?: any, yScale?: any) => any);
-      alignX?: 'left' | 'middle' | 'right';
-      alignY?: 'top' | 'middle' | 'bottom';
+      alignX?: AlignXType;
+      alignY?: AlignYType;
       html?: string;
       zIndex?: number;
       offsetX?: number;
@@ -404,5 +370,6 @@ declare namespace _BizCharts{
     getViewId?(): string | number
   }
 }
+
 
 

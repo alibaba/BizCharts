@@ -26,32 +26,30 @@ const cols = {
   }
 }
 
-
 export default class Basic extends Component {
-
   render() {
     return (
   <Chart height={window.innerHeight} data={data} scale={cols} padding={[ 20, 120, 95 ]} forceFit>
     <Tooltip showTitle={false} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/><span style="padding-left: 16px">浏览人数：{pv}</span><br/><span style="padding-left: 16px">占比：{percent}</span><br/></li>'/>
     <Coord type='rect' transpose scale={[1,-1]} />
 		<Legend />
-    {data.map((obj,index) => {
-        return  (<Guide key={index} >
-      <Text
-        top={true}
-        position={{
-        action: obj.action,
-        percent: 'median'}}
-      	content={parseInt(obj.percent * 100) + '%'}
-        style={{
-        fill: '#fff',
-        fontSize: '12',
-        textAlign: 'center',
-        shadowBlur: 2,
-        shadowColor: 'rgba(0, 0, 0, .45)'}}
-      />
-      </Guide>)
-    })}
+    <Guide>
+      {data.map((obj,index) => {
+        return  (<Text
+          top={true}
+          position={{
+          action: obj.action,
+          percent: 'median'}}
+        	content={parseInt(obj.percent * 100) + '%'}
+          style={{
+          fill: '#fff',
+          fontSize: '12',
+          textAlign: 'center',
+          shadowBlur: 2,
+          shadowColor: 'rgba(0, 0, 0, .45)'}}
+        />)
+      })}
+    </Guide>
     <Geom type="intervalSymmetric" position="action*percent" shape='funnel' color={['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]]}
      tooltip={['action*pv*percent', (action, pv, percent) => {
       return {

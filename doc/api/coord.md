@@ -4,9 +4,14 @@
 坐标系组件。
 坐标系是将两种位置标度结合在一起组成的 2 维定位系统，描述了数据是如何映射到图形所在的平面。BizCharts 将坐标系抽象为组件，并且包含两种类型坐标系极坐标系（polar、theta、helix 均属于极坐标）和笛卡尔坐标系，目前所有的坐标系均是 2 维的。
 
-## 使用说明
-- `<Coord />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 <Coord /> 组件下不能嵌套其他图表组件。
+## Parent Component
+- [`<Chart />`](chart.md)
+- [`<View />`](view.md)
 
+## Child Component
+ <Coord /> 组件下不能嵌套其他图表组件。
+
+## 使用说明
 - Coord组件用来描述图表中各元素绘制时所处的坐标系，一般一个图表中只存在一个坐标系；但是[`<View />`](view.md)中可以有独立坐标系存在；若没有特别说明，则默认当前图表的坐标系为**直角坐标系（rect）**。
 
 - 默认采用笛卡尔坐标系，若要改变坐标系可以通过[type](#type)属性改变。
@@ -20,7 +25,7 @@
 - 极坐标默认的起始角度和结束角度如下图所示：
 <img src="https://zos.alipayobjects.com/skylark/85950a42-9579-44cb-b656-8dd28c9a014a/attach/2378/d648679184c6977c/image.png" width="214px">
 
-## 通用属性
+# API
 <span id="type"></span>
 ### 1、type 	* String *
 坐标系类型;不同类型的坐标系所支持的配置属性也不一样。具体见各类型属性说明。
@@ -29,24 +34,26 @@ BizCharts 中支持的坐标系有：
 
 | 类型 | 说明 |
 |  :--  |  :--  |
-| [rect](#rect) | 直角坐标系；目前仅支持二维，由 x, y 两个互相垂直的坐标轴构成。|
-| [polar](#polar) | 极坐标系；由角度和半径 2 个维度构成。|
-| [theta](#theta) | 一种特殊的极坐标系，半径长度固定，仅仅将数据映射到角度，常用于饼图的绘制。|
+| [rect](#rect) | 默认类型，直角坐标系，由 x, y 两个垂直的维度构成。 |
+| [polar](#polar) | 极坐标系，由角度和半径 2 个维度构成。|
+| [theta](#theta) | 一种半径固定的极坐标系，常用于饼图。 |
 | [helix](#helix) | 螺旋坐标系，基于阿基米德螺旋线。|
 
 ### 2、rotate 	  * Number *
-旋转，默认按照坐标系中心旋转。
+坐标系旋转，angle 表示旋转的度数，单位为角度。
 
 ### 3、scale 	  * Array *
 放大、缩小，默认按照坐标系中心放大、缩小。
-Array:数据长度必须为2，第一个值代表 x 方向缩放比例，第二个值代表 y 方向缩放比例。
+参数为长度2的数组，第一个值代表 x 方向缩放比例，第二个值代表 y 方向缩放比例。
 ```jsx
 <Coord scale={[0.7, 1.2]} />
 ```
 ![image](https://zos.alipayobjects.com/rmsportal/bAISlaEvIUpqIFVBiXKo.gif)
 
-### 4、reflect 	  * 'x' | 'y' *
-镜像, 沿 x 方向镜像或者沿 y 轴方向映射。
+// todo: !!!!
+### 4、reflect 	  * 'x' | 'y' | Array*
+镜像, 沿 x 方向镜像或者沿 y 轴方向映射。默认值为：'y'.
+如果参赛是个数组，将依次调用.例如['x', 'y'] 则先执行x方向翻转`reflect('x')` 再执行y方向翻转`reflect('y')`,以此类推。
 ![image](https://zos.alipayobjects.com/skylark/3e02d865-fcfc-4afd-9ffa-66a1299b31b5/attach/2378/4225fd7483f54155/image.png)
 
 <span id="rect"></span>

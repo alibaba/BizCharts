@@ -1,7 +1,7 @@
 
 # Geom 几何标记
 
-几何标记组件。
+几何标记对象，决定创建图表的类型，具体的概念介绍请参见 。
 
 
 ## 什么是几何标记
@@ -29,62 +29,42 @@ schema| k 线图，箱型图 | 自定义的图表类型。
 edge| 树图、流程图、关系图 | 与点一起构建关系图。
 heatmap| 热力图 | --
 
-## 使用说明
-* `<Geom />` 坐标系组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Geom />` 组件下只能嵌套其 [`<Label />`](label.md) 组件。
+## 父组件
+- [`<Chart />`](chart.md)
+- [`<View />`](view.md)
 
-## 属性
-### 图形属性
-数据可视化是将数据编码到几何图形的视觉属性的过程，可以被编码数据的属性被称为图形属性。因此几何标记中有两种类型的属性，图形属性和非图形属性。
+## 子组件
+- [`<Label />`](label.md)
 
-图形属性有：
-1. [position](#position)：位置，二维坐标系内映射至 x 轴、y 轴；
-2. [color](#color)：颜色，包含了色调、饱和度和亮度；
-3. [size](#size)：大小，不同的几何标记对大小的定义有差异；
-4. [shape](#shape)：形状，几何标记的形状决定了某个具体图表类型的表现形式，例如点图，可以使用圆点、三角形、图片表示；线图可以有折线、曲线、点线等表现形式；
-5. [opacity](#opacity)：透明度，图形的透明度，这个属性从某种意义上来说可以使用颜色代替，需要使用 'rgba' 的形式，所以在 G2 中我们独立出来。
-
-不同的几何标记拥有自己的图形属性，下表列出了各个 geom 几何标记对各个图形属性的支持情况：
-
-几何标记 | [position](#position) | [color](#color) | [size](#size) | [shape](#shape) | [opacity](#opacity)
--------|---------|-----|---|---|---
-point |支持|支持|支持|支持|支持
-path、line |支持|支持|支持|支持|支持
-area|支持|支持|*不支持*|支持|支持
-interval|支持|支持|支持|支持|支持
-polygon|支持|支持|*不支持*|支持|支持
-edge|支持|支持|支持|支持|支持
-schema|支持|支持|支持|支持|支持
-contour |支持|支持|支持|*不支持*|支持
-heatmap |支持|支持|支持|*不支持*|*不支持*
-
-
+# API
+> 更多[图形属性](graphic.md)
 ### 1、type    * String *
 几何标记类型，目前 BizCharts 支持的几何标记类型如下：
 
-geom 类型 | 描述
+type | 说明
 --- | ---
-point | 点，用于绘制各种点图。
-path | 路径，无序的点连接而成的一条线，常用于路径图的绘制。
-line | 线，点按照 x 轴连接成一条线，构成线图。
-area | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
-interval | 使用矩形或者弧形，用面积来表示大小关系的图形，一般构成柱状图、饼图等图表。
-polygon | 多边形，可以用于构建色块图、地图等图表类型。
-edge | 两个点之间的链接，用于构建树图和关系图中的边、流程图中的连接线。
-schema | 自定义图形，用于构建箱型图（或者称箱须图）、蜡烛图（或者称 K 线图、股票图）等图表。
-heatmap | 用于**热力图**的绘制。
+`point` | 点，用于点图的构建。
+`path` | 路径，无序的点连接而成的一条线。
+`line` | 线，点按照 x 轴连接成一条线，构成线图。
+`area` | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
+`interval` | 使用矩形或者弧形，用面积来表示大小关系的图形，一般构成柱状图、饼图等图表。
+`polygon` | 多边形，可以用于构建热力图、地图等图表类型。
+`schema` | k线图，箱型图。
+`edge` | 树图、流程图、关系图。
+`heatmap` | 热力图。
 
 同时 BizCharts 默认提供了如下 8 中几何标记和[数据调整](geom.md#adjust)的组合类型。
 
-geom 类型 | 描述
+type | 描述
 --- | ---
-pointStack | 层叠点图
-pointJitter | 扰动点图
-pointDodge | 分组点图
-intervalStack | 层叠柱状图
-intervalDodge | 分组柱状图
-intervalSymmetric | 对称柱状图
-areaStack | 层叠区域图
-schemaDodge | 分组箱型图
+`pointStack` | 层叠点图
+`pointJitter` | 扰动点图
+`pointDodge` | 分组点图
+`intervalStack` | 层叠柱状图
+`intervalDodge` | 分组柱状图
+`intervalSymmetric` | 对称柱状图
+`areaStack` | 层叠区域图
+`schemaDodge` | 分组箱型图
 
 ### 2、adjust    * Object *
 声明几何标记对象的数据调整方式，可用于绘制层叠图、扰动图、分组图等。支持单一的数据调整方式也支持各种数据调整方式的组合。
@@ -113,24 +93,23 @@ schemaDodge | 分组箱型图
 位置属性的映射；用于确定由数据中的哪几个字段来确定数据在平面坐标系的位置。通俗地解释，即确定 x 轴和 y 轴的数据字段。它是唯一一个可以用于编码分类又可用于编码定序或者定量的数据属性。
 
 ```jsx
-//以下面的语句为例，在 position 属性上，映射了两个属性： cut 和 price，分别表示将 cut 数据值映射至 x 轴坐标点，price 数据值映射至 y 轴坐标点。
-<Geom
-  position="cut*price"
-/>
+<Geom position="x*y" />
+<Geom position={['x', 'y']} />
 ```
+使用 `*` 连接，position 属性会对多个字段进行数据的映射，如：cut*price，x*y 等，用于二维坐标系图表的绘制。
 
-下面是对 '*' 连接符的解释：
+以 chart.point().position('x*y') 为例，point 代表图形，即最后需要生成点图，而 position 代表位置，position('x*y') 代表数据在图形中的位置由 x 和 y 这两个维度的变量决定，x * y 的数据处理结果可以理解为：
 
-以 *chart.point().position('x*y')* 为例，point 代表图形，即最后需要生成点图，而 position 代表位置, position('x*y') 代表数据在图形中的位置由 x 和 y 这两个维度的变量决定，x * y 的数据处理结果可以理解为：
-
-<img src="https://gw.alipayobjects.com/zos/rmsportal/EcuDeyeTOsztVOuxmZPe.png" width="50%">
+![image](https://gw.alipayobjects.com/zos/rmsportal/EcuDeyeTOsztVOuxmZPe.png)
 
 (x1, y1) 这样的数值对，最后就会被转换为画布上对应的坐标点。
+
+另外，也可以以数组格式传入：`chart.geom().position([ 'fieldA', 'fieldB' ])`
 
 <span id="color"></span>
 
 ### 4、color    * String | Array *
-颜色属性的映射；用于确定由数据中的哪个字段来确定几何图形的颜色。
+将数据值映射到图形的颜色上的方法。
 
 color 支持的映射值如下：
 - *'field'*，field 为数据字段名，内部会使用主题中的默认颜色进行数据值到颜色值的映射；
@@ -173,9 +152,7 @@ color 支持的映射值如下：
 <span id="shape"></span>
 
 ### 5、shape    * String | Array*
-几何图形形状，不同的 geom 有不同的 shape（图形形状）。
-shape 这个视觉通道受其他几个视觉通道影响，比如：interval 几何标记的 shape 可以是填充的矩形 rect 也可是空心的边框矩形，这个就决定了是将 color 映射到填充色上还是映射到边框颜色上。
-
+将数据值映射到图形的形状上的方法。
 
 shape 支持的映射值如下：
 - 'field'，将指定的字段映射到内置的 shapes 数组中；
@@ -248,21 +225,13 @@ size 支持映射值如下：
 <span id="opacity"></span>
 
 ### 7、opacity    * String | Array | Number *
-透明度在视觉编码过程中，只能进行定量（连续）数据的映射，作为颜色的一个补充使用，所以提供以下方式：
-- 'field'，指定透明度映射的字段，透明度默认的范围为 [0, 1]；
+将数据值映射到图形的透明度上的方法。
+
 ```jsx
 //代码示例
-<Geom opacity='count'/>
-```
-- float，直接指定透明度常量；
-```jsx
-//代码示例
-<Geom opacity={0.2}/>
-```
-- ['field', callback]，使用回调函数获取透明度。
-```jsx
-//代码示例
-<Geom opacity={['count', (count)=>{
+<Geom opacity='field'/> // 使用字段映射到透明度
+<Geom opacity={0.2}/> // 常量，但是数值范围为 0 - 1
+<Geom opacity={['count', (count)=>{ // 回调函数
   if(count > 1000)
     return 0.6;
   return 0.1;
@@ -293,11 +262,12 @@ size 支持映射值如下：
 <span id="tooltip"></span>
 
 ### 9、tooltip    * Boolean | String | Array *
-控制单个 <Geom/> 上 tooltip 的显示数据。
+将数据值映射到 Tooltip 上。
 - Boolean 该几何标记是否需要显示 tooltip，默认值 false；
 - String 格式为 a*b*c，该几何标记上 tooltip 需要显示的数据字段，每个地段将会显示为一行。
 - Array 格式为 [a*b*c, callback],该几何标记上 tooltip 需要显示的数据字段,同时可以在 callback 中调整数据的显示格式。
 ```jsx
+<Geom tooltip={false} />
 <Geom
   tooltip={['sales*city', (sales, city)=>{
     return {

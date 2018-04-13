@@ -1,3 +1,6 @@
+# 2.0.3 (04.10, 2018)
+fix issue-210
+
 # 2.0.1 (12.28, 2017)
 upgrade g2-plugin-slider version 2.0.1.
 

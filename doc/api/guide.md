@@ -1,20 +1,20 @@
 
 # Guide
-辅助元素组件，主要用于在图表上标识额外的标记注解。
+用于绘制图表的辅助元素。
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png" width="500px">
 
 ## 使用说明
-- `<Guide />` 组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 组件的孩子，同时 `<Guide />` 组件下只能嵌套以下其他图表组件。
+- `<Guide />` 组件只可以作为 [`<Chart />`](chart.md) 组件 或者 [`<View />`](view.md) 的子组件，同时 `<Guide />` 组件下只能嵌套以下Guide子组件。
 
 | 组件 | 说明 | 属性 |
 | :- | :-| :- |
-| Line |辅助线（可带文本），例如表示平均值或者预期分布的直线。| [参见Line](#line) |
-| Image | 辅助图片，在图表上添加辅助图片。| [参见Image](#image) |
-| Text | 辅助文本，指定位置添加文本说明。| [参见Text](#text) |
-| Region | 辅助框，框选一段图区，设置背景、边框等。| [参见Region](#region) |
-| Html | 辅助 html，指定位置添加自定义 html，显示自定义信息。| [参见Html](#html) |
-| Arc | 辅助弧线。| [参见Arc](#arc) |
+| Guide.Line |辅助线（可带文本），例如表示平均值或者预期分布的直线。| [参见Line](#line) |
+| Guide.Image | 辅助图片，在图表上添加辅助图片。| [参见Image](#image) |
+| Guide.Text | 辅助文本，指定位置添加文本说明。| [参见Text](#text) |
+| Guide.Region | 辅助框，框选一段图区，设置背景、边框等。| [参见Region](#region) |
+| Guide.Html | 辅助 html，指定位置添加自定义 html，显示自定义信息。| [参见Html](#html) |
+| Guide.Arc | 辅助弧线。| [参见Arc](#arc) |
 
 
 - 不同辅助标记组件所支持的配置属性也不一样，主要差异为坐标位置属性差异:
@@ -56,8 +56,10 @@
 ```
 [demo链接](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bullet-graph)
 
-## Guide 组件属性
-`<Guide>` 组件主要是用来管理他下面孩子组件的渲染、属性更新的，本身并没有属性需要配置。
+# API
+
+## Guide
+`<Guide>` 本身并没有属性需要配置，该组件作为一个管理标签，用来管理其子组件的渲染与更新。任意Guide更新会导致这这组内的其他Guide重绘。
 
 <span id = "line"></span>
 
@@ -87,15 +89,14 @@
 ```
 
 ### 1、top 	*Boolean*
-指定 guide 是否绘制在 canvas 最上层。
-默认值:false, 即绘制在最下层。
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
 
 ### 2、start 	*Object | Function | Array*
 指定辅助线的起始位置，该值的类型如下：
 
 - object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
 
- - array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
+- array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
   - x，y 都是原始数据 [ '2010-01-01', 200 ];
   - x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
   - x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
@@ -164,12 +165,16 @@
  - x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
  - x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%'] 使得辅助元素居中
 - function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-
+```jsx
+<Guide>
+  <Text position={(xScale, yScale) => [x, y]} > // 返回位置信息
+</Guide>
+```
 ### 3、content 	*String*
-显示文本内容。
+辅助文本的显示内容。
 
 ### 4、style 	* Object *
-辅助线样式配置。
+用于设置辅助文本的显示样式。
 
 ### 5、offsetX 	* Number *
 x 方向的偏移量。
@@ -315,7 +320,7 @@ html 层级。
 ### 3、alignX 	*'left' | 'middle' | 'right'*
 html 的水平对齐方式，可取值为： left、middle、right，默认值为 middle。
 
-### 4、alignY 	*top' | 'middle' | 'bottom'*
+### 4、alignY 	*'top' | 'middle' | 'bottom'*
 html 的垂直对齐方式，可取值为： top、middle、bottom，默认值为 middle。
 
 ### 5、offsetX 	*Number*

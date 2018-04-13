@@ -1,3 +1,18 @@
+# 3.1.5(4.10, 2018)
+- fix issue 244\249\210
+
+# 3.1.4(3.26, 2018)
+- add types in package.json.
+
+# 3.1.4-beta.4(3.26, 2018)
+- update g2 3.0.5-beta.5
+- fix types g2 ts.index path.
+- delete no need console logs.
+
+# 3.1.4-beta.3(3.12, 2018)
+- update g2 3.0.5-beta.4
+- when props change nothing, bizcharts will not repaint chart.
+
 # 3.1.4-beta.2(3.6, 2018)
 - fix node-env development do not use prop-types as external lib.
 

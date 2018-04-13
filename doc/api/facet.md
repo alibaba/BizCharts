@@ -49,7 +49,7 @@
 </Facet>
 ```
 
-## 属性
+# API
 >以下是 `<Facet/>` 组件的通用属性，不同的类型可配置的属性有略微差别，具体见各个类型的分面说明。
 
 ### 1、type 	* 'rect' | 'list' | 'circle' | 'tree' | 'mirror' *
@@ -67,20 +67,17 @@
 ### 2、fields 	* String | Array *
 设定数据划分的维度，是数据的字段名，包含多个维度时使用数组传入。不同 `type` 的分面可传入字段个数不同，详见[分面类型说明](#facetType)。
 
-### 3、margin 	* Number *
-各个分面之间的距离，同 CSS 盒模型中的 margin。
+### 3、padding 	* Number *
+设置每个 view 之间的间距。`padding` 是view 的内部边距，所以不会影响布局。
 
-### 4、padding 	* Number *
-每个view 之间的间距。
+### 4、showTitle 	* Boolean *
+是否显示分面的标题，默认为 true，即展示。
 
-### 5、showTitle 	* Boolean *
-是否显示标题。
+### 5、autoSetAxis 	* Boolean *
+是否自动设置坐标轴的文本，避免重复和遮挡，默认为 true，即自动设置。
 
-### 6、autoSetAxis 	* Boolean *
-自动设置坐标轴的文本，避免重复和遮挡。
-
-### 7、colTitle 	* Object *
-列标题样式配置。
+### 6、colTitle 	* Object | null *
+分面列标题设置，可设置属性如下，如果属性值为 null，表示不展示列标题。
 ```jsx
 <Facet
   rowTitle={{
@@ -93,8 +90,8 @@
 />
 ```
 
-### 8、rowTitle 	* Object *
-行标题样式配置。
+### 7、rowTitle 	* Object | null *
+分面行标题设置，可设置属性如下，如果属性值为 null，表示不展示列标题
 ```jsx
 <Facet
   rowTitle={{
@@ -107,7 +104,7 @@
 />
 ```
 
-### 9、eachView 	* Function *
+### 8、eachView 	* Function *
 facet 中每个 view 的配置。该属性比较特殊，可以直接等于一个函数，或者作为一个返回 View 的匿名函数嵌套在 `<Facet> Function <Facet>` 组件中使用。
 代码如下，也可参见[使用说明](#shuoming)。
 ```jsx
@@ -115,6 +112,8 @@ facet 中每个 view 的配置。该属性比较特殊，可以直接等于一�
   view.point().position('carat*price');
 }}／>
 ```
+
+!注意：`showTitle` 和 `autoSetAxis` 用于控制分面的默认行为；`colTitle` 和 `rowTitle` 是通过 `chart.guild().text()` 来实现的，所以所有 `chart.guild().text()` 的参数都生效。
 
 <span id="facetType"></span>
 # [分面类型](#facetType)

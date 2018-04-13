@@ -2,6 +2,7 @@
 # BizCharts
 全局命名空间 BizCharts 包含：
 
+# API
 ## 1、Component 组件
 
 ### Chart
@@ -92,4 +93,7 @@ const Util = {
   ...
 };
 ```
+
+## 9、[绘图属性](./graphic.md)
+
 
