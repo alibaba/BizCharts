@@ -1,0 +1,97 @@
+<html>
+<head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>  
+  </head>
+  <body>
+      <div id="mountNode"></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      $.getJSON('/BizCharts/public/data/cars.json', data => {
+      let chart;
+      let view2;
+      class RenderChart extends React.Component {
+        componentDidMount() {
+          new Brush({
+                    canvas: chart.get('canvas'),
+                    dragable: true,
+                    onBrushstart(ev) {
+                        const {x, y} = ev;
+                        const views = chart.getViewsByPoint({x, y});
+                        if (views.length > 1) {
+                            this.chart = views[1];
+                            const coord = views[1].get('coord');
+                            this.plot = {
+                                start: coord.start,
+                                end: coord.end
+                            };
+                            this.xScale = views[1].getXScale();
+                            this.yScale = views[1].getYScales()[0];
+                        }
+                    },
+                    onBrushmove(ev) {
+                        const views = chart.get('views');
+                        const {data} = ev;
+                        views[1].filterShape(obj => {
+                            return data.indexOf(obj) > -1;
+                        });
+                    },
+                    onDragmove(ev) {
+                        const views = chart.get('views');
+                        const {data} = ev;
+                        views[1].filterShape(obj => {
+                            return data.indexOf(obj) > -1;
+                        });
+                    }
+                });
+        }
+        render() {
+          return (
+            <div>
+              <Chart 
+              height={window.innerHeight} 
+              onGetG2Instance={g2Chart => {
+                chart = g2Chart;
+              }} 
+              forceFit
+            >
+            <Tooltip />
+            <View 
+            end ={{
+                x: 0.45,
+                y: 1
+            }}
+            data={data}
+            >
+              <Axis />
+              <Tooltip visible={false} />
+              <Geom type="point" position="Horsepower*Miles_per_Gallon" />
+            </View>
+            <View 
+            start={ {
+                x: 0.55,
+                y: 0
+            }}
+            data={data}
+            >
+              <Axis />
+              <Geom type="point" position="Acceleration*Displacement" />
+            </View>
+            </Chart>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render((
+        <RenderChart />
+      ), document.getElementById("mountNode"));
+    });
+    </script>
+</body>
+</html>

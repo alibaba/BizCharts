@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>  
+  </head>
+  <body>
+      <div id="toolbar" style="text-align: center;">
+          <button id="XY">矩形选择</button>
+          <button id="X">横向选择</button>
+          <button id="Y">纵向选择</button>
+          <button id="POLYGON">圈选</button>
+          <button id="clear">清除选择</button>
+      </div>
+      <div id="canvas"></div>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, G2, Tooltip, Facet, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const Util = G2.Util;
+      $.getJSON('/BizCharts/public/data/iris.json', data => {
+       const scale = {
+        Species: {
+                sync: true
+            }
+        }
+      let chart;
+      let brush;
+        function setBrushType(type) {
+            if (!brush) {
+                brush = new Brush({
+                    canvas: chart.get('canvas'),
+                    dragable: true,
+                    type,
+                    onBrushstart(ev) {
+                        chart.hideTooltip();
+                        const {x, y} = ev;
+                        const views = chart.getViewsByPoint({x, y});
+                        if (views.length > 1) {
+                            this.chart = views[1];
+                            const coord = views[1].get('coord');
+                            this.plot = {
+                                start: coord.start,
+                                end: coord.end
+                            };
+                            this.xScale = views[1].getXScale();
+                            this.yScale = views[1].getYScales()[0];
+                        }
+                    },
+                    onBrushmove(ev) {
+                        chart.hideTooltip();
+
+                        const {data} = ev;
+                        chart.eachShape((record, shape) => {
+                            if (!shape.get('_originAttrs')) {
+                                shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
+                            }
+                            if (data.indexOf(record) === -1) {
+                                shape.attr('fill', '#ccc');
+                            } else {
+                                const originAttrs = shape.get('_originAttrs');
+                                shape.__attrs = Util.cloneDeep(originAttrs);
+                            }
+                        });
+                    },
+                    onDragmove(ev) {
+                        chart.hideTooltip();
+
+                        const {data} = ev;
+                        chart.eachShape((record, shape) => {
+                            if (!shape.get('_originAttrs')) {
+                                shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
+                            }
+                            if (data.indexOf(record) === -1) {
+                                shape.attr('fill', '#ccc');
+                            } else {
+                                const originAttrs = shape.get('_originAttrs');
+                                shape.__attrs = Util.cloneDeep(originAttrs);
+                            }
+                        });
+                    }
+                });
+            } else {
+                if (type === 'clear') {
+                    brush.container.clear();
+                    // brush.canvas.draw();
+                } else {
+                    brush.setType(type);
+
+                }
+            }
+        }
+      class RenderChart extends React.Component {
+        componentDidMount() {
+            $('#XY').click(() => {
+                setBrushType('XY');
+            });
+            $('#Y').click(() => {
+                setBrushType('Y');
+            });
+            $('#X').click(() => {
+                setBrushType('X');
+            });
+            $('#POLYGON').click(() => {
+                setBrushType('POLYGON');
+            });
+            $('#clear').click(() => {
+                setBrushType('clear');
+                chart.eachShape((record, shape) => {
+                    if (shape.get('_originAttrs')) {
+                        const originAttrs = shape.get('_originAttrs');
+                        shape.__attrs = Util.cloneDeep(originAttrs);
+                    }
+                });
+            });
+        }
+
+        render() {
+          return (
+            <div>
+              <Chart 
+              height={window.innerHeight} 
+              data={data} 
+              scale={scale} 
+              onGetG2Instance={g2Chart => {
+              g2Chart.animate(false);
+                chart = g2Chart;
+              }} 
+              forceFit
+            >
+              <Axis name="rain" grid={null} />
+              <Axis name="flow" title />
+              <Tooltip />
+              <Legend 
+              hoverable={false}
+              />
+              <Facet 
+              type="matrix" 
+              fields={['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']}
+              eachView= {(view, facet) => {
+                view.axis(facet.colField, {
+                    label: null,
+                    line: {
+                        lineWidth: 1,
+                        stroke: '#000'
+                    },
+                    tickLine: {
+                        lineWidth: 1,
+                        stroke: '#000',
+                        length: 4
+                    }
+                });
+                view.axis(facet.rowField, {
+                    label: null,
+                    line: {
+                        lineWidth: 1,
+                        stroke: '#000'
+                    },
+                    tickLine: {
+                        lineWidth: 1,
+                        stroke: '#000',
+                        length: 4
+                    }
+                });
+                if (facet.rowIndex === facet.colIndex) {
+                    view.point()
+                        .position(facet.colField + '*' + facet.colField)
+                        .color('Species', ['#880000', '#008800', '#000088'])
+                        .opacity(0.5)
+                        .shape('circle')
+                        .size(3)
+                        .active(false);
+                } else {
+                    view.point()
+                        .position([facet.colField, facet.rowField])
+                        .color('Species', ['#880000', '#008800', '#000088'])
+                        .opacity(0.5)
+                        .shape('circle')
+                        .size(3)
+                        .active(false);
+                }
+                if ([0, 1, 2, 3].indexOf(facet.rowIndex) > -1 && facet.colIndex === 0) {
+                    view.guide().text({
+                        position: [3.7, 'median'],
+                        content: facet.rowValue,
+                        style: {
+                            rotate: -90,
+                            fontSize: 12,
+                            fill: '#999',
+                            textAlign: 'center'
+                        }
+                    });
+                }
+                if ([0, 1, 2, 3].indexOf(facet.colIndex) > -1 && facet.rowIndex === 3) {
+                    view.guide().text({
+                        position: ['median', 'min'],
+                        content: facet.colValue,
+                        style: {
+                            fontSize: 12,
+                            fill: '#999',
+                            textAlign: 'center'
+                        },
+                        offsetY: 20
+                    });
+                }
+            }}
+              >
+              </Facet>
+            </Chart>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render((
+        <RenderChart />
+      ), document.getElementById("mountNode"));
+    });
+    </script>
+  </body>
+</html>

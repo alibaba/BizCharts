@@ -1,0 +1,66 @@
+<html>
+<head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/bizcharts-plugin-slider.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>  
+  </head>
+  <body>
+      <div id="mountNode"><div><div><div style="position:relative;"><canvas id="canvas_1" width="866" height="550" style="width: 866px; height: 550px;"></canvas><div class="g2-tooltip" style="position: absolute; visibility: hidden; white-space: nowrap; z-index: 8; transition: visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1), left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(0, 0, 0, 0.65); border-radius: 4px; color: rgb(255, 255, 255); font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, SimSun, sans-serif; line-height: 20px; padding: 10px 10px 6px;"><div class="g2-tooltip-title"></div><ul class="g2-tooltip-list"></ul></div></div></div></div></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      var data = [
+        { "year": "1986", "ACME": 162, "Compitor": 42 },
+        { "year": "1987", "ACME": 134, "Compitor": 54 },
+        { "year": "1988", "ACME": 116, "Compitor": 26 },
+        { "year": "1989", "ACME": 122, "Compitor": 32 },
+        { "year": "1990", "ACME": 178, "Compitor": 68 },
+        { "year": "1991", "ACME": 144, "Compitor": 54 },
+        { "year": "1992", "ACME": 125, "Compitor": 35 },
+        { "year": "1993", "ACME": 176, "Compitor": 66 },
+        { "year": "1994", "ACME": 156 },
+        { "year": "1995", "ACME": 195 },
+        { "year": "1996", "ACME": 215 },
+        { "year": "1997", "ACME": 176, "Compitor": 36 },
+        { "year": "1998", "ACME": 167, "Compitor": 47 },
+        { "year": "1999", "ACME": 142 },
+        { "year": "2000", "ACME": 117 },
+        { "year": "2001", "ACME": 113, "Compitor": 23 },
+        { "year": "2002", "ACME": 132 },
+        { "year": "2003", "ACME": 146, "Compitor": 46 },
+        { "year": "2004", "ACME": 169, "Compitor": 59 },
+        { "year": "2005", "ACME": 184, "Compitor": 44 }
+      ];
+      var dv = new DataSet.View().source(data);
+      dv.transform({
+        type: 'fold',
+        fields: ['ACME', 'Compitor'],
+        key: 'type',
+        value: 'value',
+      });
+      const scale = {
+        value: {
+          alias: 'The Share Price in Dollars',
+          formatter: function (val) {
+            return '$' + val;
+          }
+        },
+        year: {
+          range: [0, 1]
+        }
+      }
+      ReactDOM.render((
+        <Chart height={window.innerHeight} data={dv} padding={'auto'} scale={scale} forceFit>
+          <Tooltip crosshairs />
+          <Axis />
+          <Legend />
+          <Geom type="area" position="year*value" color="type" shape='smooth' />
+          <Geom type="line" position="year*value" color="type" shape='smooth'  size={2} />
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+</body>
+</html>

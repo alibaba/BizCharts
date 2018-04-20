@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/bizcharts-plugin-slider.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
+        const data = [
+                {type: '分类一', value: 27},
+                {type: '分类二', value: 25},
+                {type: '分类三', value: 18},
+                {type: '分类四', value: 15},
+                {type: '分类五', value: 10},
+                {type: 'Other', value: 5}
+            ];
+        class SliderChart extends React.Component {
+          render() {
+            return (
+                <Chart height={window.innerHeight} data={data} forceFit padding={[40,0]}>
+                    <Coord type="theta" startAngle={Math.PI} endAngle={Math.PI * (3 / 2)}/>
+                    <Tooltip />
+                    <Geom type="intervalStack" position="value" color="type">
+                        <Label content="type" />
+                    </Geom>
+                </Chart>
+            );
+          }
+        }
+        ReactDOM.render((
+          <SliderChart />
+        ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>
