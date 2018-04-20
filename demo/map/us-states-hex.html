@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, G2 } = window.BizCharts;
+      $.getJSON('/BizCharts/public/data/us-states.hex.json', data => {
+        const dv = new DataSet.View().source(data, {
+            type: 'hex',
+            width: 100,
+            height: 100,
+        });
+        const scale = {
+            x: {
+                nice: false,
+                sync: true
+            },
+            y: {
+                nice: false,
+                sync: true
+            }
+        }
+        ReactDOM.render((
+              <Chart height={window.innerHeight} scale={scale} padding={window.innerHeight / 24}  forceFit>
+                <Coord reflect />
+                <Legend visible={false} />
+                <Axis visible={false} />
+                <Tooltip 
+                    showTitle={false} 
+                    />
+                <View data={dv._gridRows}>
+                  <Geom type='polygon' tooltip='key' position='x*y' color='grey' opacity={0.5} style={{lineWidth: 1,stroke: 'white'}}/>
+                </View>
+                <View data={dv} >
+                  <Geom type='polygon' position='x*y' style={{lineWidth: 5,stroke: 'white'}} color={G2.Global.colors[1]} tooltip='capital'>
+                    <Label content='key' offset={0} textStyle={{fontSize:window.innerHeight / 18, fontWeight: 500}}/>
+                  </Geom>
+                </View>
+            </Chart>
+          ), document.getElementById("mountNode"));
+    });
+    </script>
+  </body>
+</html>

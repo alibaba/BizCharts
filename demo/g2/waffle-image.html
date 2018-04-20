@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+          const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, G2 } = window.BizCharts;
+          const data = [
+                {name: 'Internet Explorer', value: 26},
+                {name: 'Chrome', value: 40},
+                {name: 'Firefox', value: 30},
+                {name: 'Safari', value: 24},
+                {name: 'Opera', value: 15},
+                {name: 'Undetectable', value: 8}
+            ];
+            const imageMap = {
+                'Internet Explorer': 'https://gw.alipayobjects.com/zos/rmsportal/eOYRaLPOmkieVvjyjTzM.png',
+                Chrome: 'https://gw.alipayobjects.com/zos/rmsportal/dWJWRLWfpOEbwCyxmZwu.png',
+                Firefox: 'https://gw.alipayobjects.com/zos/rmsportal/ZEPeDluKmAoTioCABBTc.png',
+                Safari: 'https://gw.alipayobjects.com/zos/rmsportal/eZYhlLzqWLAYwOHQAXmc.png',
+                Opera: 'https://gw.alipayobjects.com/zos/rmsportal/vXiGOWCGZNKuVVpVYQAw.png',
+                Undetectable: 'https://gw.alipayobjects.com/zos/rmsportal/NjApYXminrnhBgOXyuaK.png'
+            };
+            const dv = new DataSet.View().source(data)
+                .transform({
+                    type: 'waffle',
+                    rows: 10,
+                });
+
+          ReactDOM.render((
+          <Chart height={window.innerHeight} padding={20} forceFit data={dv}>
+            <Geom
+            type="point"
+            position="x*y"
+            color="name"
+            shape={['name', name => ['image', imageMap[name]]]}
+            size={(window.innerWidth - 40) / 20} />
+          </Chart>
+          ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

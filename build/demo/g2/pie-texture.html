@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/bizcharts-plugin-slider.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
+        var data = [
+            { sex: '男', sold: 0.45 },
+            { sex: '女', sold: 0.55 }
+        ];
+
+        class SliderChart extends React.Component {
+          render() {
+            return (
+                <Chart height={window.innerHeight} data={data} forceFit >
+                    <Coord type="theta" radius={0.8} />
+                    <Tooltip showTitle={false} />
+                    <Geom type="intervalStack" position="sold" style={['sex', {
+                        fill: function(sex) {
+                            if (sex === '男') {
+                                return 'p(a)https://gw.alipayobjects.com/zos/rmsportal/nASTPWDPJDMgkDRlAUmw.jpeg';
+                            }
+                            return 'p(a)https://gw.alipayobjects.com/zos/rmsportal/ziMWHpHSTlTzURSzCarw.jpeg';
+                        }
+                      }]} >
+                      <Label content="sex" />
+                    </Geom>
+                </Chart>
+            );
+          }
+        }
+        ReactDOM.render((
+          <SliderChart />
+        ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

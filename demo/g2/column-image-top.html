@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      var data = [
+          {"name":"John","vote":35654},
+          {"name":"Damon","vote":65456},
+          {"name":"Patrick","vote":45724},
+          {"name":"Mark","vote":13654}
+      ];
+      var imageMap = {
+          'John': 'https://zos.alipayobjects.com/rmsportal/mYhpaYHyHhjYcQf.png',
+          'Damon': 'https://zos.alipayobjects.com/rmsportal/JBxkqlzhrlkGlLW.png',
+          'Patrick': 'https://zos.alipayobjects.com/rmsportal/zlkGnEMgOawcyeX.png',
+          'Mark': 'https://zos.alipayobjects.com/rmsportal/KzCdIdkwsXdtWkg.png'
+      };
+      const scale = {
+        vote: {
+            min: 0
+        }
+      }
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} padding={[ 60, 20, 40, 60 ]} scale={scale} forceFit>
+          <Axis name="vote" labels={null} title={null}  line={null} tickLine={null} />
+          <Geom type='interval' position="name*vote" color={['name', ['#7f8da9', '#fec514', '#db4c3c', '#daf0fd']]} />
+          <Tooltip />
+          <Geom type='point' position="name*vote" size={60} shape={['name', function (name) {
+            return ['image', imageMap[name]];
+          }]} />
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

@@ -1,4 +1,221 @@
-window.demoNav = [{
+window.demoNav = [
+  {
+    title: '概览',
+    iconClass: 'iconfont icon-lvzhou_gailan-copy',
+    list: [{
+      img: 'https://img.alicdn.com/tfs/TB16vnLlrGYBuNjy0FoXXciBFXa-800-428.png',
+      title: '地平线图',
+      url: './demo-detail.html?code=demo/g2/area-horizon-graph'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1KtZHlr9YBuNjy0FgXXcxcXXa-800-428.png',
+      title: '大规模区域图',
+      url: './demo-detail.html?code=demo/g2/area-large'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1BjoalAyWBuNjy0FpXXassXXa-800-428.png',
+      title: '区域图（存在空值）',
+      url: './demo-detail.html?code=demo/g2/area-null'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1cOMulv5TBuNjSspmXXaDRVXa-800-428.png',
+      title: '雨量流量关系图',
+      url: './demo-detail.html?code=demo/g2/area-rainfall'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1C_2tlrSYBuNjSspiXXXNzpXa-800-428.png',
+      title: '范围区域图与线图',
+      url: './demo-detail.html?code=demo/g2/area-range-line'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1s4mzlTtYBeNjy1XdXXXXyVXa-800-428.png',
+      title: '柱状图-diverging',
+      url: './demo-detail.html?code=demo/g2/bar-diverge'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1ythnlTlYBeNjSszcXXbwhFXa-800-428.png',
+      title: 'g2-brush 结合 DataSet',
+      url: './demo-detail.html?code=demo/g2/brush-ds-state'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1E0UqlAyWBuNjy0FpXXassXXa-800-428.png',
+      title: 'g2-brush 过滤图形',
+      url: './demo-detail.html?code=demo/g2/brush-filter-shape'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1HgbNluuSBuNjSsplXXbe8pXa-800-428.png',
+      title: 'g2-brush 高亮图形',
+      url: './demo-detail.html?code=demo/g2/brush-highlight'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1omsjlpOWBuNjy0FiXXXFxVXa-800-428.png',
+      title: 'g2-brush 柱状图',
+      url: './demo-detail.html?code=demo/g2/brush-interval'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1AVozluOSBuNjy0FdXXbDnVXa-800-428.png',
+      title: 'g2-brush 折线图',
+      url: './demo-detail.html?code=demo/g2/brush-line'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1.TZWluuSBuNjy1XcXXcYjFXa-800-428.png',
+      title: 'g2-brush 多边形',
+      url: './demo-detail.html?code=demo/g2/brush-polygon'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1k1uOelfH8KJjy1XbXXbLdXXa-800-428.png',
+      title: '气泡图-自定义 shape',
+      url: './demo-detail.html?code=demo/g2/bubble-image'
+    },  {
+      img: 'https://img.alicdn.com/tfs/TB1lfe9ehrI8KJjy0FpXXb5hVXa-800-428.png',
+      title: '带文本的气泡图',
+      url: './demo-detail.html?code=demo/g2/bubble-text'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB13VYrbb_I8KJjy1XaXXbsxpXa-1600-856.png',
+      title: '时间序列气泡图',
+      url: './demo-detail.html?code=demo/g2/bubble'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1y8fpecLJ8KJjy0FnXXcFDpXa-800-428.png',
+      title: '日常作息可视化',
+      url: './demo-detail.html?code=demo/g2/clock'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1wDj4lrGYBuNjy0FoXXciBFXa-800-428.png',
+      title: '柱状图带更新动效',
+      url: './demo-detail.html?code=demo/g2/column-animated'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1sLCQegvD8KJjSsplXXaIEFXa-800-428.png',
+      title: '分组层叠柱状图',
+      url: './demo-detail.html?code=demo/g2/clustered-stacked'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB121cUlrSYBuNjSspfXXcZCpXa-800-428.png',
+      title: '自定义柱状图',
+      url: './demo-detail.html?code=demo/g2/column-image-top'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1RnMelAOWBuNjSsppXXXPgpXa-800-428.png',
+      title: '带标识的柱状图',
+      url: './demo-detail.html?code=demo/g2/column-marked'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1sqAmbOqAXuNjy1XdXXaYcVXa-800-428.png',
+      title: '圆角柱状图',
+      url: './demo-detail.html?code=demo/g2/column-rounded'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1.Qi7elTH8KJjy0FiXXcRsXXa-800-428.png',
+      title: '个性化 tooltip',
+      url: './demo-detail.html?code=demo/g2/cutomize-tooltip'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB14VTrbb_I8KJjy1XaXXbsxpXa-1600-856.png',
+      title: '双环图',
+      url: './demo-detail.html?code=demo/g2/compare-donut'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1rQdhXH9YBuNjy0FgXXcxcXXa-800-428.png',
+      title: '双轴图标',
+      url: './demo-detail.html?code=demo/g2/double-axes'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB11TIolpOWBuNjy0FiXXXFxVXa-800-428.png',
+      title: '地理映射',
+      url: './demo-detail.html?code=demo/g2/geo-projection'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1Fnr7lrGYBuNjy0FoXXciBFXa-800-428.png',
+      title: '六边形大小分箱图',
+      url: './demo-detail.html?code=demo/g2/hexbin-size'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1TkZsluSSBuNjy0FlXXbBpVXa-800-428.png',
+      title: '带虚线部分的折线图',
+      url: './demo-detail.html?code=demo/g2/line-of-dashed'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB161nkef6H8KJjSspmXXb2WXXa-800-428.png',
+      title: '雨量流量对比',
+      url: './demo-detail.html?code=demo/g2/line-rain-and-flow'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1KVfPlrSYBuNjSspiXXXNzpXa-800-428.png',
+      title: '实时更新数据的折线图',
+      url: './demo-detail.html?code=demo/g2/line-realtime'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB19t6hdiOYBuNjSsD4XXbSkFXa-800-428.png',
+      title: '北京市2010至2015年空气质量指数',
+      url: './demo-detail.html?code=demo/g2/peking-aqi'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB13x.mmVOWBuNjy0FiXXXFxVXa-800-428.png',
+      title: '符号地图',
+      url: './demo-detail.html?code=demo/g2/map-symbol'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1s_0mXGmWBuNjy1XaXXXCbXXa-800-428.png',
+      title: '华夫图',
+      url: './demo-detail.html?code=demo/g2/waffle-grouped'
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1dScvm7yWBuNjy0FpXXassXXa-800-428.png',
+      title: '饼图-柱状图',
+      url: './demo-detail.html?code=demo/g2/pie-column'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1Mru7em_I8KJjy0FoXXaFnVXa-800-428.png',
+      title: '个性化标签饼图',
+      url: './demo-detail.html?code=demo/g2/custome-label-pie'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1CSgFluOSBuNjy0FdXXbDnVXa-800-428.png',
+      title: '多环图',
+      url: './demo-detail.html?code=demo/g2/pie-multi-donuts'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1S3Mtlv9TBuNjy1zbXXXpepXa-800-428.png',
+      title: '饼图-花瓣图',
+      url: './demo-detail.html?code=demo/g2/pie-platelets'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1fcUWlASWBuNjSszdXXbeSpXa-800-428.png',
+      title: '饼图-限定角度范围',
+      url: './demo-detail.html?code=demo/g2/pie-ranged'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1.4I6lr9YBuNjy0FgXXcxcXXa-800-428.png',
+      title: '饼图-半径大小',
+      url: './demo-detail.html?code=demo/g2/pie-size'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1.13elpGWBuNjy0FbXXb4sXXa-800-428.png',
+      title: '饼图-分割空白',
+      url: './demo-detail.html?code=demo/g2/pie-slice'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1iq7PluuSBuNjy1XcXXcYjFXa-800-428.png',
+      title: '饼图-分割空白',
+      url: './demo-detail.html?code=demo/g2/pie-texture'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1qXMHluySBuNjy1zdXXXPxFXa-800-428.png',
+      title: '饼图-三角',
+      url: './demo-detail.html?code=demo/g2/pie-triangle'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB19blUlStYBeNjSspaXXaOOFXa-800-428.png',
+      title: '矩形大小分箱图',
+      url: './demo-detail.html?code=demo/g2/rectbin-size'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1uaLVlAKWBuNjy1zjXXcOypXa-800-428.png',
+      title: '玫瑰图-限定角度范围',
+      url: './demo-detail.html?code=demo/g2/rose-ranged'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1zVeOelfH8KJjy1XbXXbLdXXa-800-428.png',
+      title: '桑基图布局',
+      url: './demo-detail.html?code=demo/g2/sankey-layouts'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1CdVVlStYBeNjSspaXXaOOFXa-800-428.png',
+      title: '迷你图',
+      url: './demo-detail.html?code=demo/g2/sparklines'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1W2Uwlv9TBuNjy1zbXXXpepXa-800-428.png',
+      title: '单元测试覆盖率可视化',
+      url: './demo-detail.html?code=demo/g2/test-case'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1NqoglpuWBuNjSszbXXcS7FXa-800-428.png',
+      title: '紧凑树布局',
+      url: './demo-detail.html?code=demo/g2/tree-compact-box'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1HbsJluySBuNjy1zdXXXPxFXa-800-428.png',
+      title: '生态树布局',
+      url: './demo-detail.html?code=demo/g2/tree-dendrogram'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1qFUllA9WBuNjSspeXXaz5VXa-800-428.png',
+      title: '缩进树布局',
+      url: './demo-detail.html?code=demo/g2/tree-indented'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1_Ls8lr9YBuNjy0FgXXcxcXXa-800-428.png',
+      title: '空心维恩图',
+      url: './demo-detail.html?code=demo/g2/venn-hollow'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1WegllA9WBuNjSspeXXaz5VXa-800-428.png',
+      title: '极坐标 voronoi 图',
+      url: './demo-detail.html?code=demo/g2/voronoi-polar'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1FMsJluySBuNjy1zdXXXPxFXa-800-428.png',
+      title: '图片华夫图',
+      url: './demo-detail.html?code=demo/g2/waffle-image'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1Hr3Dlx1YBuNjy1zcXXbNcXXa-800-428.png',
+      title: '符号华夫图',
+      url: './demo-detail.html?code=demo/g2/waffle-path'
+    },]
+  },{
     title: '折线图',
     iconClass: 'iconfont icon-zhexiantu',
     list: [{
@@ -230,7 +447,7 @@ window.demoNav = [{
       title: '仪表盘（文字）',
       url: './demo-detail.html?code=demo/guage/text'
     }, {
-      img: 'https://img.alicdn.com/tfs/TB112DpbfDH8KJjy1XcXXcpdXXa-1600-856.png',
+      img: 'https://img.alicdn.com/tfs/TB1hO_bhntYBeNjy1XdXXXXyVXa-800-428.png',
       title: '仪表盘（多色）',
       url: './demo-detail.html?code=demo/guage/color'
     }, {
@@ -273,6 +490,10 @@ window.demoNav = [{
       img: 'https://img.alicdn.com/tfs/TB1Rbo_g8fH8KJjy1XbXXbLdXXa-800-428.png',
       title: '中国地图-省市下钻',
       url: './demo-detail.html?code=demo/map/drill-down'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1qh7NgYGYBuNjy0FoXXciBFXa-800-428.png',
+      title: '美国地图六边形分割',
+      url: './demo-detail.html?code=demo/map/us-status-hex'
     }]
   }, {
     title: '雷达图',
@@ -371,6 +592,10 @@ window.demoNav = [{
       img: 'https://img.alicdn.com/tfs/TB1mYdHhhrI8KJjy0FpXXb5hVXa-800-428.png',
       title: '径向紧凑树图',
       url: './demo-detail.html?code=demo/relation/radial-tidy-tree'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB1Kyc7gVOWBuNjy0FiXXXFxVXa-800-428.png',
+      title: 'Circle Packing',
+      url: './demo-detail.html?code=demo/relation/circle-packing'
     }]
   },
   {
@@ -528,6 +753,10 @@ window.demoNav = [{
       img: 'https://img.alicdn.com/tfs/TB1s_0mXGmWBuNjy1XaXXXCbXXa-800-428.png',
       title: '华夫图',
       url: './demo-detail.html?code=demo/other/waffle'
+    }, {
+      img: 'https://img.alicdn.com/tfs/TB18cNwhhSYBuNjSspjXXX73VXa-800-428.png',
+      title: '韦恩图',
+      url: './demo-detail.html?code=demo/other/venn'
     }]
   }
 ]

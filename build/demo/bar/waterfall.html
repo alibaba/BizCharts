@@ -1,17 +1,17 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@15.6.2/dist/react.min.js"></script>
-    <script src="https://unpkg.com/react-dom@15.6.2/dist/react-dom.min.js"></script>
-    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.5/data-set.min.js"></script>
-    <script src="https://unpkg.com/bizcharts@3.1.0/umd/BizCharts.min.js"> </script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    
     
   </head>
   <body>
       <div id="mountNode" ></div>
       <script type="text/babel">
-        const { Chart, Axis, Geom, Tooltip, Util, Shape } = window.BizCharts;
+        const { Chart, Axis, Geom, Tooltip, Util, Shape, Legend } = window.BizCharts;
 
         function getRectPath(points) {
           const path = [];
@@ -94,6 +94,14 @@
         }
         ReactDOM.render((
           <Chart height={400} data={data} forceFit>
+            <Legend 
+              custom={true}
+              clickable={false}
+              items={[
+                { value: '各项花销', marker: {symbol: 'square', fill: '#1890FF', radius: 5}},
+                { value: '总费cd用', marker: {symbol: 'square', fill: '#8c8c8c', radius: 5}}
+              ]}
+            />
             <Axis name="type" />
             <Axis name="money" />
             <Tooltip />

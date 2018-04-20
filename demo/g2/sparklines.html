@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <style>
+        table {
+            width: 100%;
+        }
+        .c0-container {
+            width: 85%;
+        }
+        .c1-container {
+            width: 14.28%;
+        }
+        .label {
+            font-weight: 600;
+            padding: 0 1em;
+            text-align: right;
+        }
+    </style>
+    <h2>CLIMATE CONTROL HISTORY</h2>
+    <table>
+        <tr>
+            <td class="c0-container"><div id="c00"></div></td>
+            <td class="label">980mb</td>
+        </tr>
+        <tr>
+            <td class="c0-container"><div id="c01"></div></td>
+            <td class="label">21°C</td>
+        </tr>
+        <tr>
+            <td class="c0-container"><div id="c02"></div></td>
+            <td class="label">32%</td>
+        </tr>
+    </table>
+    <h2>CONDITIONER WORKING TIME</h2>
+    <table>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+        <tr>
+            <td class="c1-container"><div id="c10"></div></td>
+            <td class="c1-container"><div id="c11"></div></td>
+            <td class="c1-container"><div id="c12"></div></td>
+            <td class="c1-container"><div id="c13"></div></td>
+            <td class="c1-container"><div id="c14"></div></td>
+            <td class="c1-container"><div id="c15"></div></td>
+            <td class="c1-container"><div id="c16"></div></td>
+        </tr>
+    </table>
+      <script type="text/babel">
+          const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, G2 } = window.BizCharts;
+          var plotHeight = (window.innerHeight - 180) / 4;
+          var c0Types = [ 'line', 'interval', 'area' ];
+          var c0Data = [
+              [
+                  936, 968, 1025, 999, 998, 1014, 1017, 1010, 1010, 1007,
+                  1004, 988, 990, 988, 987, 995, 946, 954, 991, 984,
+                  974, 956, 986, 936, 955, 1021, 1013, 1005, 958, 953,
+                  952, 940, 937, 980, 966, 965, 928, 916, 910, 980
+              ],
+              [
+                  16, 17, 18, 19, 20, 21, 21, 22, 23, 22,
+                  20, 18, 17, 17, 16, 16, 17, 18, 19, 20,
+                  21, 22, 23, 25, 24, 24, 22, 22, 23, 22,
+                  22, 21, 16, 15, 15, 16, 19, 20, 20, 21
+              ],
+              [
+                  71, 70, 69, 68, 65, 60, 55, 55, 50, 52,
+                  73, 72, 72, 71, 68, 63, 57, 58, 53, 55,
+                  63, 59, 61, 64, 58, 53, 48, 48, 45, 45,
+                  63, 64, 63, 67, 58, 56, 53, 59, 51, 54
+              ]
+          ];
+          var c1Data = [
+              [14, 10],
+              [8, 16],
+              [8, 16],
+              [12, 12],
+              [6, 18],
+              [1, 23],
+              [5, 19]
+          ];
+          c0Data.forEach(function (values, index) {
+            var data = values.map(function (value, i) {
+                return {
+                    x: '' + i,
+                    y: value
+                };
+            });
+          ReactDOM.render((
+              <Chart height={plotHeight} data={data} padding={0} forceFit >
+                <Tooltip showTitle={false} />
+                <Geom type={c0Types[index]} position="x*y"  />
+            </Chart>
+          ), document.getElementById(`c0${index}`));
+          });
+          c1Data.forEach(function (values, index) {
+              var data = values.map(function (value, i) {
+                  return {
+                      x: i,
+                      y: value
+                  };
+              });
+              var dv = new DataSet.View().source(data);
+              dv.transform({
+                  type: 'percent',
+                  field: 'y',
+                  dimension: 'x',
+                  as: 'percent'
+              });
+            ReactDOM.render((
+              <Chart height={plotHeight} data={dv} padding={0} forceFit >
+                <Tooltip showTitle={false} />
+                <Coord  type="theta" />
+                <Geom type="intervalStack" position="percent" color="x" />
+              </Chart>
+            ), document.getElementById(`c1${index}`));
+          });
+    </script>
+  </body>
+</html>

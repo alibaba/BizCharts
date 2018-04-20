@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+
+      $.getJSON('/BizCharts/public/data/flare.json', data => {
+
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        var dv = new DataSet.View().source(data, {
+            type: 'hierarchy',
+            pureData: true
+        });
+        dv.transform({
+            type: 'hierarchy.indented', // this layout algorithm needs to use pure data
+            direction: 'LR',
+            getHGap() {
+                return 10;
+            },
+            getVGap() {
+                return 10;
+            },
+            getHeight() {
+                return 18;
+            },
+            getWidth(d) {
+                return 18 * d.name.length;
+            }
+        });
+
+        ReactDOM.render(
+          <Chart forceFit={true} height={window.innerHeight} padding={[10, 60, 0, 20]} >
+            <Coord reflect="y" />
+            <Tooltip />
+            <View 
+            data={dv.getAllLinks().map(link => ({
+                x: [link.source.x, link.target.x],
+                y: [link.source.y, link.target.y],
+                source: link.source.id,
+                target: link.target.id
+            }))}
+            >
+              <Geom type='edge' position='x*y' shape='smooth' color='grey' opacity={0.5} tooltip='source*target'
+              />
+            </View>
+            <View 
+            data={dv.getAllNodes().map(node => ({
+                hasChildren: !!(node.children && node.children.length),
+                name: node.data.name,
+                value: node.value,
+                depth: node.depth,
+                side: node.side || 'root',
+                x: node.x,
+                y: node.y
+            }))}
+            >
+              <Geom type='point' position='x*y' color='hasChildren' >
+                <Label 
+                content="name" 
+                textStyle={(text, item) => {
+                    var textAlign;
+                    if (item.point.side === 'left') {
+                        textAlign = item.point.hasChildren ? 'left' : 'right';
+                    } else {
+                        textAlign = item.point.hasChildren ? 'right' : 'left';
+                    }
+                    return {
+                        fill: 'grey',
+                        fontSize: 9,
+                        textBaseline: 'middle',
+                        textAlign: textAlign
+                    }}}
+                offset={0}
+                />
+              </Geom>  
+            </View>
+          </Chart>, document.getElementById('c1')
+        );
+      })
+    </script>
+  </body>
+</html>
