@@ -280,7 +280,7 @@ declare namespace bizcharts{
   }
   export class Chart extends React.Component<ChartProps>{
     getG2Instance?(): G2.Chart;
-    _refCallback?(c: G2.Chart);
+    _refCallback?(c: G2.Chart): void;
     hasViewSource?(): boolean;
   }
   export class Axis extends Base<AxisProps> {}
