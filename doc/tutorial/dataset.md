@@ -226,4 +226,4 @@ dvForAll.transform({
 ```
 详情信息请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bar-change-pie)
 
-**注意：** 数据源路径为`/BizCharts/public/data/population-by-age.csv`
+**注意：** 数据源路径为`/BizCharts/public/data/population-by-age.json`
