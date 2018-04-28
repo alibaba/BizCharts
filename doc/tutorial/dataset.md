@@ -151,7 +151,7 @@ const ds = new DataSet({
  * 直接用 const dv = new DataSet.View();
  * 本例需要用状态量在不同的数据视图实例之间通信，所以需要有一个 DataSet 实例管理状态量
  */
-$.getJSON('/assets/data/population-by-age.csv', data => {
+$.getJSON('/BizCharts/public/data/population-by-age.csv', data => {
     const dvForAll = ds
         .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
         .source(data, {
@@ -225,3 +225,5 @@ dvForAll.transform({
 </Chart>
 ```
 详情信息请[点击这里](https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/other/bar-change-pie)
+
+**注意：** 数据源路径为`/BizCharts/public/data/population-by-age.json`

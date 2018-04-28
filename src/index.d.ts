@@ -98,10 +98,7 @@ declare namespace bizcharts{
     animate?: boolean;
     pixelRatio?: number;
     data?: any;
-    scale?: {
-      fieldName: string;
-      scaleConnfig: any;
-    };
+    scale?: any;
     placeholder?: JSX.Element | string;
     filter?: Array<any>;
     className?: string;
