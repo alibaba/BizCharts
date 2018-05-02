@@ -1,3 +1,8 @@
+# 3.1.6(5.2, 2018)
+- up g2 version
+- fix ts issue
+- fix package browser module
+
 # 3.1.5(4.10, 2018)
 - fix issue 244\249\210
 
