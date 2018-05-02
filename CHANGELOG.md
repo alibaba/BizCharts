@@ -1,3 +1,6 @@
+# 3.1.7(5.2, 2018)
+- fix main Entrance
+
 # 3.1.6(5.2, 2018)
 - up g2 version
 - fix ts issue
