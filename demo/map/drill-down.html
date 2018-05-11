@@ -105,30 +105,30 @@
             function renderAreaPolygons(areaNode) {
                 var node = _.cloneDeep(areaNode);
                 districtExplorer.clearFeaturePolygons();
-                districtExplorer.renderSubFeatures(node, function(feature, i) {
-                    var fillColor = colors[i % colors.length];
-                    var strokeColor = colors[colors.length - 1 - i % colors.length];
-  
-                    return {
+                districtExplorer.renderSubFeatures(node, function (feature, i) {
+                var fillColor = colors[i % colors.length];
+                var strokeColor = colors[colors.length - 1 - i % colors.length];
+
+                return {
                     cursor: 'default',
                     bubble: true,
                     strokeColor: strokeColor, //线颜色
                     strokeOpacity: 1, //线透明度
                     strokeWeight: 1, //线宽
                     fillColor: fillColor, //填充色
-                    fillOpacity: 0.35, //填充透明度
-                    };
+                    fillOpacity: 0.35 //填充透明度
+                };
                 });
-  
+
                 //绘制父区域
                 districtExplorer.renderParentFeature(node, {
-                    cursor: 'default',
-                    bubble: true,
-                    strokeColor: 'black', //线颜色
-                    strokeOpacity: 1, //线透明度
-                    strokeWeight: 1, //线宽
-                    fillColor: null, //填充色
-                    fillOpacity: 0.35, //填充透明度
+                cursor: 'default',
+                bubble: true,
+                strokeColor: 'black', //线颜色
+                strokeOpacity: 1, //线透明度
+                strokeWeight: 1, //线宽
+                fillColor: null, //填充色
+                fillOpacity: 0.35 //填充透明度
                 });
             }
 
