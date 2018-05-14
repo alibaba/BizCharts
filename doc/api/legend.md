@@ -131,24 +131,24 @@
 
 | type | shape |
 |------|-------|
-| circle  | ![image | center](https://antv.alipay.com/assets/image/g2/tutorial/circle.png)|
-|square  |![image | center](https://antv.alipay.com/assets/image/g2/tutorial/square.png)|
-|bowtie  |![image | center](https://antv.alipay.com/assets/image/g2/tutorial/bowtie.png)|
-|diamond |![image | center](https://antv.alipay.com/assets/image/g2/tutorial/diamond.png)|
-|hexagon |![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hexagon.png)|
-|triangle|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/triangle.png)|
-|triangle-down|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/triangle-down.png)|
-|tick|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/tick.png)|
-|plus|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/plus.png)|
-|hyphen|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hyphen.png)|
-|line|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/line.png)|
-|hollowCircle|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowCircle.png)|
-|hollowSquare|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowSquare.png)|
-|hollowBowtie|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowBowtie.png)|
-|hollowDiamond|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowDiamond.png)|
-|hollowHexagon|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowHexagon.png)|
-|hollowTriangle|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowTriangle.png)|
-|hollowTriangle-down|![image | center](https://antv.alipay.com/assets/image/g2/tutorial/hollowTriangle-down.png)|
+| circle  | ![](https://antv.alipay.com/assets/image/g2/tutorial/circle.png)|
+|square  |![](https://antv.alipay.com/assets/image/g2/tutorial/square.png)|
+|bowtie  |![](https://antv.alipay.com/assets/image/g2/tutorial/bowtie.png)|
+|diamond |![](https://antv.alipay.com/assets/image/g2/tutorial/diamond.png)|
+|hexagon |![](https://antv.alipay.com/assets/image/g2/tutorial/hexagon.png)|
+|triangle|![](https://antv.alipay.com/assets/image/g2/tutorial/triangle.png)|
+|triangle-down|![](https://antv.alipay.com/assets/image/g2/tutorial/triangle-down.png)|
+|tick|![](https://antv.alipay.com/assets/image/g2/tutorial/tick.png)|
+|plus|![](https://antv.alipay.com/assets/image/g2/tutorial/plus.png)|
+|hyphen|![](https://antv.alipay.com/assets/image/g2/tutorial/hyphen.png)|
+|line|![](https://antv.alipay.com/assets/image/g2/tutorial/line.png)|
+|hollowCircle|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowCircle.png)|
+|hollowSquare|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowSquare.png)|
+|hollowBowtie|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowBowtie.png)|
+|hollowDiamond|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowDiamond.png)|
+|hollowHexagon|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowHexagon.png)|
+|hollowTriangle|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowTriangle.png)|
+|hollowTriangle-down|![](https://antv.alipay.com/assets/image/g2/tutorial/hollowTriangle-down.png)|
 
 ### 15、textStyle 	*Object*
 图例的背景样式配置。参考[绘图属性](./graphic.md)Text的样式
