@@ -4,8 +4,9 @@
 <span id="ques"></span>
 
 ## 有问题怎么办
-建议将所有问题相关的教程、api文档及相关的 demo 都看一遍，如果还有问题，欢迎提 issue。
-[issue](https://github.com/alibaba/BizCharts/issues)
+建议将所有问题相关的教程、api文档及相关的 demo 都看一遍，如果还有问题，欢迎提 [issue](https://github.com/alibaba/BizCharts/issues)
+
+issue 中请务必提供可复现的链接，方便排查问题。链接可以在 Codepen 中 fork [Bizcharts codepen template](https://codepen.io/leslie2014/pen/xjJGER) 后生成。
 
 <span id="axisSpace"></span>
 
