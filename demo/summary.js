@@ -214,7 +214,11 @@ window.demoNav = [
       img: 'https://img.alicdn.com/tfs/TB1Hr3Dlx1YBuNjy1zcXXbNcXXa-800-428.png',
       title: '符号华夫图',
       url: './demo-detail.html?code=demo/g2/waffle-path'
-    },]
+    },{
+      img: 'https://img.alicdn.com/tfs/TB1AL3.rqmWBuNjy1XaXXXCbXXa-1486-800.png',
+      title: '渐变折线图',
+      url: './demo-detail.html?code=demo/g2/gradient-color-line'
+    }]
   },{
     title: '折线图',
     iconClass: 'iconfont icon-zhexiantu',
