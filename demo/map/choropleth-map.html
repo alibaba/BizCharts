@@ -1,5 +1,5 @@
 <html>
-  <head>
+<head>
     <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
     <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
     <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
@@ -10,15 +10,17 @@
     
   </head>
   <body>
-      <div id="mountNode" ></div>
+      <div id="mountNode"></div>
       <script type="text/babel">
       const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
       const cols = {
         longitude: {
-          sync: true
+          sync: true,
+          range:[0, 1]
         },
         latitude: {
-          sync: true
+          sync: true,
+          range: [0, 1]
         },
       }
       $.getJSON('/BizCharts/public/data/world.geo.json',function(mapData) {
@@ -67,8 +69,52 @@
             return obj;
           }
         });
-        ReactDOM.render((
-              <Chart height={window.innerHeight} data scale={cols} padding={[55, 20]} forceFit>
+        
+        
+        const xRange = worldMap.range('longitude');
+        const yRange = worldMap.range('latitude');
+          
+        const ratio = (xRange[1] - xRange[0]) / (yRange[1] - yRange[0]);          
+        const h = window.innerHeight;
+        const w = h * ratio;
+          
+
+        class App extends React.Component {
+          
+          constructor() {
+            super();
+            this.state = {
+              width: 800,
+              height: (800 - 80)/ratio,
+              cols: {
+                longitude: {
+                  sync: true,
+                  range:[0, 1]
+                },
+                latitude: {
+                  sync: true,
+                  range: [0, 1]
+                }
+              }
+            };
+          }
+          
+          componentDidMount() {
+            const self = this;
+            window.onresize=function() {
+              const nw = parseInt(window.getComputedStyle(document.getElementById("mountNode"), null)['width']);
+              const nh = (nw - 80) / ratio;
+              // 80 是 左边的 padding
+              self.setState({
+                width: nw,
+                height: nh
+              })
+            }
+
+          }
+
+          render() {
+           return <Chart height={this.state.height}  width={this.state.width} data scale={this.state.cols} padding={[0, 0, 0, 80]}>
                 <Tooltip showTitle={false} />
                 <Legend name='trend' position='left' />
                 <View data={worldMap} >
@@ -84,9 +130,13 @@
                 </Geom>
                 </View>
               <Geom type='polygon' position="x*y" style={{lineWidth: 1,stroke: '#fff'}} color={['count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ]]} />
-            </Chart>
-          ), document.getElementById("mountNode"));
+            </Chart> 
+          }
+        }
+          
+        ReactDOM.render(<App/>, document.getElementById("mountNode"));
       });
     </script>
-  </body>
+
+</body>
 </html>
