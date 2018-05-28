@@ -69,6 +69,8 @@ const data = [...];
 - [theme](./doc/tutorial/theme.md)
 - [interaction](./doc/tutorial/interaction.md)
 - [animation](./doc/tutorial/animate.md)
+- [load according need](/doc/tutorial/needload.md)
+
 
 ### api
 - [BizCharts](./doc/api/bizcharts.md)
