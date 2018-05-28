@@ -1,9 +1,8 @@
 import G2, { Shape, PathUtil, Animate } from '@antv/g2/lib/core';
 import Util from './shared/util';
 import Themes from './themes';
-import * as components from './components';
 
-const BizCharts = Util.mix(components, {
+const BizCharts = {
   G2,
   Util,
   Shape,
@@ -21,7 +20,7 @@ const BizCharts = Util.mix(components, {
 
     G2.Global.setTheme(themeObj);
   },
-});
+};
 
 exports.default = BizCharts;
 module.exports = BizCharts;

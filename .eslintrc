@@ -45,6 +45,7 @@
     "linebreak-style" : "off",
     "arrow-body-style" : "off",
     "no-unused-vars" : "warn",
-    "guard-for-in" : "off"
+    "guard-for-in" : "off",
+    "react/no-unused-prop-types": "off"
   }
 }

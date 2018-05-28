@@ -1,4 +1,4 @@
-import G2 from '@antv/g2';
+import * as G2 from '@antv/g2/lib/core';
 import { Prop, Util } from '../shared';
 import common from './common';
 import EventUtil from './event';
