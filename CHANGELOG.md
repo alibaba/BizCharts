@@ -1,3 +1,7 @@
+# 3.1.8(5.28, 2018)
+- according to the need load resources
+- fix #204 #318 #327
+
 # 3.1.7(5.2, 2018)
 - fix main Entrance
 
