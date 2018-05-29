@@ -38,12 +38,15 @@
           <Chart forceFit={true}  data={[1]} height={window.innerHeight} scale={scale} padding={[ 40, 80 ]} >
             <Tooltip showTitle={false} />
             <View data={dv.edges}>
-              <Geom type='edge' position='x*y' shape='arc' color='#bbb' opacity={0.6} tooltip={'target*source*value', (target, source, value) => {
-                return {
-                  name: source.name + ' to ' + target.name + '</span>',
-                  value
-                };
-              }} 
+              <Geom type='edge' position='x*y' shape='arc' color='#bbb' opacity={0.6} 
+                tooltip={
+                  ['target*source*value', (target, source, value) => {
+                    return {
+                      name: source.name + ' to ' + target.name + '</span>',
+                      value
+                    };
+                  }]
+                }
               />
             </View>
             <View data={dv.nodes}>
