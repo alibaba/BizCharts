@@ -103,7 +103,7 @@ const iUpdate = {
     warning(name === nextName, '`name` propertry should not be changed in `<Axis />`');
 
     if (visible !== nextVisible) {
-      if (!nextVisible) {
+      if (nextVisible === false){
         chart.axis(name, false);
         return;
       }
