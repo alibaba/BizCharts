@@ -103,10 +103,7 @@ const iUpdate = {
     warning(name === nextName, '`name` propertry should not be changed in `<Axis />`');
 
     if (visible !== nextVisible) {
-      if (!nextVisible) {
-        chart.axis(name, false);
-        return;
-      }
+      chart.axis(name, !!nextVisible);
     }
 
     // todo others have g2Instance
