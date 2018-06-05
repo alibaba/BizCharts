@@ -60,7 +60,7 @@ BizCharts 中支持的坐标系有：
 无额外配置参数。
 
 ## 极坐标系（polar/theta/clock/gauge）
-![5.png](http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/skylark/attach/3597/0cb53952e5516d94/5.png)
+![5.png](https://img.alicdn.com/tfs/TB1nBh1vHSYBuNjSspiXXXNzpXa-1200-280.png)
 
 <span id="polar"></span>
 <span id="theta"></span>
