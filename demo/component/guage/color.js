@@ -1,27 +1,9 @@
-import React,  { Component } from 'react';
-import { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } from 'bizcharts';
 import DataSet from '@antv/data-set';
-import { setTimeout } from 'timers';
+import { Axis, Chart, Coord, Geom, Guide, Shape } from 'bizcharts';
+import React, { Component } from 'react';
 
 const { DataView } = DataSet;
 const { Text, Html, Arc } = Guide;
-
-function creatData(d) {
-  const data = [];
-  let val = Math.random() * 6;
-  val = val.toFixed(1);
-  if (!d) {
-    data.push({value: val * 1});
-  } else {
-    data.push({value: d});
-  }
-  
-  return data;
-}
-
-const data1 =creatData(4.5);
-const data2 = creatData(0.1);
-
 
 // 自定义Shape 部分
 Shape.registerShape('point', 'pointer', {
@@ -71,95 +53,92 @@ export default class Color extends Component {
   constructor() {
     super();
     this.state = {
-      data: creatData(),
+      data: 2.5,
       lineWidth: 25,
-    } 
+    }
   }
-  componentDidMount() {
-    const self = this;
-    setInterval(function(){
-      const data=creatData();
-      // let data;
-      // if (self.state.data == data1) {
-      //   data = data2;
-      // } else {
-      //   data = data1;
-      // }
-      self.setState({
-        data:data
-      })
-    }, 1000);
-  }
+
+  handleChange = evt => {
+    this.setState({
+      data: (evt.target.value - 0).toFixed(2) - 0
+    });
+  };
 
   render() {
     const { data, lineWidth } = this.state;
-    const val = data[0].value;
+    const val = data;
+
     return (
-      <Chart height={window.innerHeight} data={this.state.data} scale={cols} padding={[ 0, 0, 200, 0 ]} forceFit>
-        <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
-        <Axis name='value'
-          zIndex={2}
-          line={null}
-          label={{
-            offset: -20,
-            textStyle: {
-            fontSize: 18,
-            fill: '#CBCBCB',
-            textAlign: 'center',
-            textBaseline: 'middle'
-          }}}
-          tickLine={{
-            length: -24,
-            stroke: '#fff',
-            strokeOpacity: 1
-          }}
-        />
-        <Axis name='1' visible={false}/>
-        <Guide>
-          <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
-            style={{ // 底灰色
-            stroke: 'rgba(0, 0, 0, 0.09)',
-            lineWidth
-          }} />
-          { val>=2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[val, 0.965 ]}
-            style={{ // 底灰色
-              stroke: color[0],
-                lineWidth
-            }} />}
-          { val>=4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[4, 0.965 ]}
-                        style={{ // 底灰色
-                stroke: color[1],
-                  lineWidth
-              }} />}
-          { val>=4 && val<6 && <Arc zIndex={1} start={[ 4, 0.965 ]} end={[val, 0.965 ]}
-                        style={{ // 底灰色
-                stroke: color[2],
-                  lineWidth
-              }} />} 
-          { val>=2 && val<4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[val, 0.965 ]}
-              style={{ // 底灰色
-                  stroke: color[1],
-                  lineWidth
-              }} />}
-          { val<2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[val, 0.965 ]}
-              style={{ // 底灰色
-                  stroke: color[0],
-                  lineWidth
-              }} />}         
-          <Html  
-            position={[ '50%', '95%' ]}
-            html={() => {return ('<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">'+ val * 10+'%</p></div>')}}
+      <div>
+        <div style={{ textAlign: 'center' }}>
+          <input type="range" min="0" max="6" step="0.01" value={data} onChange={this.handleChange} />
+        </div>
+        <Chart height={window.innerHeight} data={[{ value: data }]} scale={cols} padding={[ 0, 0, 200, 0 ]} forceFit>
+          <Coord type='polar' startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
+          <Axis name='value'
+            zIndex={2}
+            line={null}
+            label={{
+              offset: -20,
+              textStyle: {
+              fontSize: 18,
+              fill: '#CBCBCB',
+              textAlign: 'center',
+              textBaseline: 'middle'
+            }}}
+            tickLine={{
+              length: -24,
+              stroke: '#fff',
+              strokeOpacity: 1
+            }}
           />
-        </Guide>
-        <Geom 
-          type="point" 
-          position="value*1" 
-          shape='pointer' 
-          color='#1890FF'
-          active={false}
-          style={{stroke: '#fff',lineWidth: 1}}
-        />
-      </Chart>
+          <Axis name='1' visible={false}/>
+          <Guide>
+            <Arc zIndex={0} start={[ 0, 0.965 ]} end={[ 6, 0.965 ]}
+              style={{ // 底灰色
+              stroke: 'rgba(0, 0, 0, 0.09)',
+              lineWidth
+            }} />
+            { val>=2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[val, 0.965 ]}
+              style={{ // 底灰色
+                stroke: color[0],
+                  lineWidth
+              }} />}
+            { val>=4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[4, 0.965 ]}
+                          style={{ // 底灰色
+                  stroke: color[1],
+                    lineWidth
+                }} />}
+            { val>=4 && val<=6 && <Arc zIndex={1} start={[ 4, 0.965 ]} end={[val, 0.965 ]}
+                          style={{ // 底灰色
+                  stroke: color[2],
+                    lineWidth
+                }} />}
+            { val>=2 && val<4 && <Arc zIndex={1} start={[ 2, 0.965 ]} end={[val, 0.965 ]}
+                style={{ // 底灰色
+                    stroke: color[1],
+                    lineWidth
+                }} />}
+            { val<2 && <Arc zIndex={1} start={[ 0, 0.965 ]} end={[val, 0.965 ]}
+                style={{ // 底灰色
+                    stroke: color[0],
+                    lineWidth
+                }} />}
+            <Html
+              position={[ '50%', '95%' ]}
+              html={() => {return ('<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">'+ ((val * 10).toFixed(2) - 0)+'%</p></div>')}}
+            />
+          </Guide>
+          <Geom
+            type="point"
+            position="value*1"
+            shape='pointer'
+            color='#1890FF'
+            active={false}
+            style={{stroke: '#fff',lineWidth: 1}}
+          />
+        </Chart>
+      </div>
     );
   }
-} 
+}
