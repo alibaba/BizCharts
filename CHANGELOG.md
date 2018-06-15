@@ -1,3 +1,8 @@
+# 3.1.9(6.15, 2018)
+- fix 370, 365, 312
+- update to g2 3.2.0-beta.1
+- support render chart as svg
+
 # 3.1.8(5.28, 2018)
 - according to the need load resources
 - fix #204 #318 #327
