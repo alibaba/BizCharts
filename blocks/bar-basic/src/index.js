@@ -18,6 +18,7 @@ import DataSet from "@antv/data-set";
 
 class Basic extends React.Component {
   render() {
+    // Sample data
     const data = [
       {
         country: "中国",
