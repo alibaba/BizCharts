@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Axis, Geom, Tooltip, Coord } = window.BizCharts;
+      const data = [
+        { country: '中国', population: 131744 },
+        { country: '印度', population: 104970 },
+        { country: '美国', population: 29034 },
+        { country: '印尼', population: 23489 },
+        { country: '巴西', population: 18203 }
+      ];
+      const ds = new DataSet();
+      const dv = ds.createView().source(data);
+      dv.source(data)
+        .transform({
+          type: 'sort',
+          callback(a, b) { // 排序依据，和原生js的排序callback一致
+            return a.population - b.population > 0;
+          }
+        });      
+        ReactDOM.render((
+          <Chart height={400} data={dv} forceFit>
+            <Coord transpose />
+            <Axis name="country" label={{offset: 12}} />
+            <Axis name="population" />
+            <Tooltip />
+            <Geom type="interval" position="country*population" />
+          </Chart>
+        ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

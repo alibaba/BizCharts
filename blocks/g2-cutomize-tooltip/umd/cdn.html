@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <style> 
+      .g2-tooltip-list td {
+        border: 1px solid #cdcdcd;
+        padding: 5px 8px;
+      }
+    </style>  
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const data = [
+        {"month": '一月', "tem":7, "city": "tokyo" },
+        {"month": '二月', "tem":6.9, "city": "tokyo" },
+        {"month": '三月', "tem":9.5, "city": "tokyo" },
+        {"month": '四月', "tem":14.5, "city": "tokyo" },
+        {"month": '五月', "tem":18.2, "city": "tokyo" },
+        {"month": '六月', "tem":21.5, "city": "tokyo" },
+        {"month": '七月', "tem":25.2, "city": "tokyo" },
+        {"month": '八月', "tem":26.5, "city": "tokyo" },
+        {"month": '九月' , "tem":23.3, "city": "tokyo" },
+        {"month": '十月', "tem":18.3, "city": "tokyo" },
+        {"month": '十一月', "tem":13.9, "city": "tokyo" }
+      ];
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} forceFit >
+          <Axis name="month" />
+          <Axis name="tem" />
+          <Tooltip 
+            containerTpl='<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
+            itemTpl='<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>'
+            offset={50}
+            g2-tooltip={{
+            position: 'absolute',
+            visibility: 'hidden',
+            border : '1px solid #efefef',
+            backgroundColor: 'white',
+            color: '#000',
+            opacity: "0.8",
+            padding: '5px 15px',
+            'transition': 'top 200ms,left 200ms'
+          }}  g2-tooltip-list={{
+            margin: '10px'
+          }}
+            />
+          <Geom type='line' position='month*tem' />
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

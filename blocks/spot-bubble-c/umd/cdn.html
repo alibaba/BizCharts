@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+
+
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    
+
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+      <div id="c1" ></div>
+      <script type="text/babel">
+
+        $.getJSON('/BizCharts/public/data/diamond.json', data => {
+
+          console.log(data);
+        });
+        const { Chart, Axis, Geom, Tooltip } = window.BizCharts;
+  
+        const data = [
+          { country: 'Asia', year: '1750', value: 502 },
+          { country: 'Asia', year: '1800', value: 635 },
+          { country: 'Asia', year: '1850', value: 809 },
+          { country: 'Asia', year: '1900', value: 947 },
+          { country: 'Asia', year: '1950', value: 1402 },
+          { country: 'Asia', year: '1999', value: 3634 },
+          { country: 'Asia', year: '2050', value: 5268 },
+          { country: 'Africa', year: '1750', value: 106 },
+          { country: 'Africa', year: '1800', value: 107 },
+          { country: 'Africa', year: '1850', value: 111 },
+          { country: 'Africa', year: '1900', value: 133 },
+          { country: 'Africa', year: '1950', value: 221 },
+          { country: 'Africa', year: '1999', value: 767 },
+          { country: 'Africa', year: '2050', value: 1766 },
+          { country: 'Europe', year: '1750', value: 163 },
+          { country: 'Europe', year: '1800', value: 203 },
+          { country: 'Europe', year: '1850', value: 276 },
+          { country: 'Europe', year: '1900', value: 408 },
+          { country: 'Europe', year: '1950', value: 547 },
+          { country: 'Europe', year: '1999', value: 729 },
+          { country: 'Europe', year: '2050', value: 628 },
+          { country: 'Oceania', year: '1750', value: 200 },
+          { country: 'Oceania', year: '1800', value: 200 },
+          { country: 'Oceania', year: '1850', value: 200 },
+          { country: 'Oceania', year: '1900', value: 300 },
+          { country: 'Oceania', year: '1950', value: 230 },
+          { country: 'Oceania', year: '1999', value: 300 },
+          { country: 'Oceania', year: '2050', value: 460 },
+        ];
+
+        const ds = new DataSet();
+        const dv = ds.createView('tt');
+        dv.source(data);
+        dv.transform({
+          type:'percent',
+          field:'value',
+          dimension:'year',
+          groupBy: [ 'country' ],
+          as:'percent',
+        });
+
+        console.log(dv);
+
+        const cols = {
+          year: { type: 'linear', tickInterval: 25 },
+          'percent': {
+            formatter(value) {
+              value = value || 0;
+              value *= 100;
+              return parseInt(value);
+            },
+            alias: 'percent(%)'
+          },
+        };
+      ReactDOM.render(
+      <Chart height={450} data={dv} scals={cols} forceFit>
+          <Axis name="year" />
+          <Axis name="percent" />
+          <Tooltip />
+          <Geom type="area" adjustType="stack" position={'year*percent'}  color={['country', ['#ffd54f', '#ef6c00', '#1976d2', '#64b5f6']]} />
+        </Chart>, document.getElementById('c1'));
+    </script>
+  </body>
+</html>

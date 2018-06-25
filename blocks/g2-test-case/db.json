@@ -1,0 +1,31 @@
+{
+  "name": "@bizcharts/g2-test-case",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/g2-test-case",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1mAgfxgmTBuNjy1XbXXaMrVXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T14:25:28.370Z",
+  "updateTime": "2018-06-19T03:56:24.415Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

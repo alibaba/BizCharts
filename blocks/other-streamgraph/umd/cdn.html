@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        const {Text, Line} = Guide;
+        $.getJSON('/BizCharts/public/data/baby-names.json', (data) => {
+          const { DataView } = DataSet;
+          const dv = new DataView().source(data)
+          .transform({
+            type: 'fill-rows',
+            groupBy: [ 'name' ],
+            orderBy: [ 'year' ]
+          })
+          .transform({
+            type: 'impute',
+            field: 'n',
+            method: 'value',
+            value: 0
+          })
+          .transform({
+            type: 'aggregate',
+            fields: [ 'n' ],
+            operations: [ 'sum' ],
+            groupBy: [ 'year', 'name' ],
+            orderBy: [ 'year' ],
+            as: [ 'count' ]
+          });
+          const cols = {
+            year: {
+              tickInterval: 10,
+              nice: false
+            },
+            count: {
+              nice: false
+            }
+          }
+          ReactDOM.render((
+              <Chart height={window.innerHeight} data={dv} padding={[0, 140, 60, 50]} plotBackground={{stroke: '#ccc'}} forceFit >
+              <Axis name="year" line={null} />
+              <Axis name="count" line={null} tickLine={{
+                    length: 8
+                  }}
+                  subTickCount={10}
+                  subTickLine={{
+                    lineWidth: 1, // 子刻度线宽
+                    stroke: '#ddd', // 子刻度线颜色
+                    length: 5
+                  }}
+                  grid= {null}/>
+              <Legend position="right" useHtml={true} title={{
+                    text: '图例可滚动'
+                  }} g2-legend-marker={{
+                    borderRadius: 'none'
+                  }} g2-legend-title={{
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    margin: 0,
+                    color: '#ff8800'
+                  }}/>
+              <Tooltip shared={false} crosshairs={false} inPlot={false} />
+              <Geom type='area' position='year*count' color='name' adjust={['stack', 'symmetric']} shape="smooth" opacity={1}/>
+            </Chart>
+          ), document.getElementById("mountNode"));
+        });
+    </script>
+  </body>
+</html>

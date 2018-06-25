@@ -1,0 +1,34 @@
+{
+  "name": "@bizcharts/other-bubble",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/other-bubble",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "other",
+    "其他图表"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1JivfxDtYBeNjy1XdXXXXyVXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T14:54:18.951Z",
+  "updateTime": "2018-06-19T03:58:24.120Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

@@ -1,0 +1,52 @@
+{
+  "code": "200",
+  "data": [
+    {
+      "when": "14:58",
+      "city": "上海",
+      "timespanH": 0,
+      "timespanM": 3,
+      "timespanS": 16,
+      "errorCount": 44,
+      "totalCount": 4343,
+      "obj": "TYU-BGG-J"
+    }, {
+      "when": "14:58",
+      "city": "杭州",
+      "timespanH": 0,
+      "timespanM": 3,
+      "timespanS": 16,
+      "errorCount": 66,
+      "totalCount": 5555,
+      "obj": "TYU-BGG-J"
+    }, {
+      "when": "14:58",
+      "city": "深圳",
+      "timespanH": 0,
+      "timespanM": 3,
+      "timespanS": 16,
+      "errorCount": 34,
+      "totalCount": 7777,
+      "obj": "TYU-BGG-J"
+    }, {
+      "when": "14:58",
+      "city": "深圳",
+      "timespanH": 0,
+      "timespanM": 3,
+      "timespanS": 16,
+      "errorCount": 34,
+      "totalCount": 7777,
+      "obj": "TYU-BGG-J"
+    }, {
+      "when": "14:58",
+      "city": "深圳",
+      "timespanH": 0,
+      "timespanM": 3,
+      "timespanS": 16,
+      "errorCount": 34,
+      "totalCount": 7777,
+      "obj": "TYU-BGG-J"
+    }
+  ],
+  "msg": "成功"
+}

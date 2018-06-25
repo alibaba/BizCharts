@@ -1,0 +1,49 @@
+{
+  "name": "@bizcharts/scaffold-screen-visual",
+  "title": "可视化大屏",
+  "description": "visual screen",
+  "homepage": "https://g.alicdn.com/bizcharts-material/scaffold-screen-demo/0.0.6/index.html",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/scaffold-screen-visual",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "screenshot": "https://img.alicdn.com/tfs/TB1oi.my1uSBuNjy1XcXXcYjFXa-2840-1596.png",
+  "features": {
+    "participle": {}
+  },
+  "dependencies": {
+    "@icedesign/base": "^0.2.2",
+    "bizcharts": "^3.1.7",
+    "moment": "^2.22.2",
+    "prop-types": "^15.5.8",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "eslint": "^4.19.1",
+    "eslint-config-ali": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
+    "ice-scripts": "^1.5.4",
+    "lint-staged": "^7.1.2"
+  },
+  "publishTime": "2018-06-20T03:04:35.416Z",
+  "updateTime": "2018-06-20T13:39:26.912Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "type": "react",
+  "author": "雷蜜"
+}

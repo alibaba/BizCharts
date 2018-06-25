@@ -1,0 +1,47 @@
+{
+  "name": "@bizcharts/scaffold-cira-crowd",
+  "title": "人群画像分析",
+  "description": "人群画像分析",
+  "homepage": "https://g.alicdn.com/bizcharts-material/scaffold-cira-crowd/0.0.6/index.html",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/scaffold-cira-crowd",
+    "version": "0.0.6",
+    "sourceCodeDirectory": "src/"
+  },
+  "screenshot": "https://img.alicdn.com/tfs/TB1Akbqy3mTBuNjy1XbXXaMrVXa-2840-1596.png",
+  "features": {
+    "participle": {}
+  },
+  "dependencies": {
+    "@icedesign/base": "^0.2.2",
+    "prop-types": "^15.5.8",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "bizcharts": "^3.1.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-ali": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
+    "ice-scripts": "^1.5.4",
+    "lint-staged": "^7.1.2"
+  },
+  "publishTime": "2018-06-19T06:20:55.894Z",
+  "updateTime": "2018-06-20T13:41:50.372Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "type": "react",
+  "author": "雷蜜"
+}

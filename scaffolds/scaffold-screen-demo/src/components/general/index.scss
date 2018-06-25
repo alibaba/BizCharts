@@ -1,0 +1,34 @@
+.table-container {
+  display: flex;
+  margin-bottom: 60px;
+  .table-detial{
+    border-left: 1.5px solid #6a7088;
+    display: flex;
+    flex-direction: column;
+    margin-right: 75px;
+    .desc-name {
+      font-size: 16px;
+      color: #6a7088;
+      padding-left: 10px;
+    }
+    .desc-num {
+      font-size: 30px;
+      color: #fff;
+      padding-left: 10px;
+    }
+  }
+}
+@media screen and (max-width: 1490px) {
+  .table-container {
+    margin-bottom: 50px;
+    .table-detial {
+      margin-right: 40px;
+      .desc-name {
+        font-size: 12px;
+      }
+      .desc-num {
+        font-size: 24px;
+      }
+    }
+  }
+}

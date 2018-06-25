@@ -1,0 +1,248 @@
+{
+  "age": [
+    {"key": "<18", "value": 5},
+    {"key": "18-24", "value": 23},
+    {"key": "25-29", "value": 30},
+    {"key": "30-34", "value": 11},
+    {"key": "35-39", "value": 8},
+    {"key": "40-49", "value": 13},
+    {"key": ">=50", "value": 3}
+  ],
+  "sex": [
+    {"key": "男", "value": 34},
+    {"key": "女", "value": 66}
+  ],
+  "star": [
+    {
+      "cate": "天秤座",
+      "size": 10,
+      "img": "//img.alicdn.com/tfs/TB1xCjuweSSBuNjy0FlXXbBpVXa-200-200.png",
+      "bg": "#5d91fb"
+    },
+    {
+      "cate": "射手座",
+      "size": 8,
+      "img": "//img.alicdn.com/tfs/TB1JfuHwgmTBuNjy1XbXXaMrVXa-200-200.png",
+      "bg": "#7bc8a7"
+    },
+    {
+      "cate": "白羊座",
+      "size": 9,
+      "img": "//img.alicdn.com/tfs/TB1lSjuweSSBuNjy0FlXXbBpVXa-200-200.png",
+      "bg": "#d881ae"
+    },
+    {
+      "cate": "水瓶座",
+      "size": 8,
+      "img": "//img.alicdn.com/tfs/TB1yCjuweSSBuNjy0FlXXbBpVXa-200-200.png",
+      "bg": "#ebc04c"
+    },
+    {
+      "cate": "天蝎座",
+      "size": 8,
+      "img": "//img.alicdn.com/tfs/TB1SPExwf1TBuNjy0FjXXajyXXa-201-200.png",
+      "bg": "#b5a8e1"
+    },
+    {
+      "cate": "双子座",
+      "size": 6,
+      "img": "//img.alicdn.com/tfs/TB1uSjuweSSBuNjy0FlXXbBpVXa-200-200.png",
+      "bg": "#c8536f"
+    },
+    {
+      "cate": "双鱼座",
+      "size": 7,
+      "img": "//img.alicdn.com/tfs/TB1dev8whGYBuNjy0FnXXX5lpXa-200-200.png",
+      "bg": "#f2da93"
+    },
+    {
+      "cate": "狮子座",
+      "size": 4,
+      "img": "//img.alicdn.com/tfs/TB1dKv8whGYBuNjy0FnXXX5lpXa-200-200.png",
+      "bg": "#df8e58"
+    },
+    {
+      "cate": "金牛座",
+      "size": 4,
+      "img": "//img.alicdn.com/tfs/TB17ur8whGYBuNjy0FnXXX5lpXa-200-200.png",
+      "bg": "#908cda"
+    },
+    {
+      "cate": "巨蟹座",
+      "size": 9,
+      "img": "//img.alicdn.com/tfs/TB1_er8whGYBuNjy0FnXXX5lpXa-200-200.png",
+      "bg": "#9580db"
+    },
+    {
+      "cate": "处女座",
+      "size": 6,
+      "img": "//img.alicdn.com/tfs/TB18Kr8whGYBuNjy0FnXXX5lpXa-200-200.png",
+      "bg": "#cfe7d1"
+    },
+    {
+      "cate": "摩羯座",
+      "size": 7,
+      "img": "//img.alicdn.com/tfs/TB1nCjuweSSBuNjy0FlXXbBpVXa-200-200.png",
+      "bg": "#93a2ee"
+    }
+  ],
+  "hobby": [
+    {"key": "看电影", "value": 34},
+    {"key": "购物", "value": 10},
+    {"key": "睡觉", "value": 55},
+    {"key": "玩游戏", "value": 102},
+    {"key": "LOL", "value": 62},
+    {"key": "吃鸡", "value": 41},
+    {"key": "烘培", "value": 10},
+    {"key": "手工艺", "value": 15},
+    {"key": "旅游", "value": 62},
+    {"key": "画画", "value": 75},
+    {"key": "唱歌", "value": 90},
+    {"key": "跳舞", "value": 113}
+  ],
+  "city": [
+    {"key": "1线", "value": 34},
+    {"key": "2线", "value": 66},
+    {"key": "3线", "value": 66},
+    {"key": "4线", "value": 66},
+    {"key": "5线", "value": 66},
+    {"key": "6线", "value": 66},
+    {"key": "7线", "value": 66}
+  ],
+  "level": [
+    {"key": "恋爱期", "value": 50, "percent": 17.85},
+    {"key": "备婚期", "value": 20, "percent": 7.14},
+    {"key": "已婚期", "value": 70, "percent": 25},
+    {"key": "育婴期", "value": 48, "percent": 17.14},
+    {"key": "已育期", "value": 40, "percent": 14.28},
+    {"key": "敬孝期", "value": 52, "percent": 18.57}
+  ],
+  "finish": [
+    {"key": "是", "value": 70.12},
+    {"key": "否", "value": 29.88}
+  ],
+  "house": [
+    {"key": "是", "value": 64.5},
+    {"key": "否", "value": 35.5}
+  ],
+  "car": [
+    {"key": "有车", "value": 49.32},
+    {"key": "无车", "value": 51.68}
+  ],
+  "babyage": [
+    {"key": "<18", "value": 5},
+    {"key": "18-24", "value": 23},
+    {"key": "25-29", "value": 30},
+    {"key": "30-34", "value": 11},
+    {"key": "35-39", "value": 8},
+    {"key": "40-49", "value": 13},
+    {"key": ">=50", "value": 3}
+  ],
+  "pet": [
+    {"key": "是", "value": 16.3},
+    {"key": "否", "value": 83.7}
+  ],
+  "student": [
+    {"key": "是", "value": 1},
+    {"key": "否", "value": 99}
+  ],
+  "education": [
+    {"key": "专科", "value": 43},
+    {"key": "本科", "value": 44},
+    {"key": "初高中", "value": 0},
+    {"key": "硕士", "value": 10},
+    {"key": "博士", "value": 3}
+  ],
+  "occupation": [
+    {"key": "公司职员", "value": 45, "percent": 45},
+    {"key": "个体经营/服务人员", "value": 20, "percent": 20},
+    {"key": "教职工", "value": 12, "percent": 12},
+    {"key": "公务员", "value": 10, "percent": 10},
+    {"key": "其他", "value": 10, "percent": 10},
+    {"key": "工人", "value": 3, "percent": 3},
+    {"key": "媒体从业者", "value": 0, "percent": 0},
+    {"key": "科研人员", "value": 0, "percent": 0},
+    {"key": "医务人员", "value": 0, "percent": 0},
+    {"key": "金融从业者", "value": 0, "percent": 0},
+    {"key": "学生", "value": 0, "percent": 0}
+  ],
+  "brand": [
+    {"key": "美特斯邦威", "value": 5},
+    {"key": "ONLY", "value": 23},
+    {"key": "森马", "value": 30},
+    {"key": "UNIQLO", "value": 11},
+    {"key": "Zara", "value": 8},
+    {"key": "LEE", "value": 13},
+    {"key": "Nike", "value": 3}
+  ],
+  "buyerstar": [
+    {"key": "<1星级", "value": 5, "percent": 0},
+    {"key": "1星级", "value": 6, "percent": 0},
+    {"key": "2星级", "value": 2, "percent": 0},
+    {"key": "3星级", "value": 1, "percent": 0},
+    {"key": "4星级", "value": 4, "percent": 0},
+    {"key": "5星级", "value": 11, "percent": 0},
+    {"key": "1钻", "value": 10, "percent": 11},
+    {"key": "2钻", "value": 25, "percent": 22},
+    {"key": "3钻", "value": 45, "percent": 44},
+    {"key": "4钻", "value": 32, "percent": 11},
+    {"key": "5钻", "value": 6, "percent": 11}
+  ],
+  "tblevel": [
+    {"key": "V0", "value": 10, "percent": 10},
+    {"key": "V1", "value": 11, "percent": 11},
+    {"key": "V2", "value": 30, "percent": 30},
+    {"key": "V3", "value": 43, "percent": 43},
+    {"key": "V4", "value": 20, "percent": 20},
+    {"key": "V5", "value": 16, "percent": 16},
+    {"key": "V6", "value": 3, "percent": 3}
+  ],
+  "tmlevel": [
+    {"key": "T0", "value": 10, "percent": 10},
+    {"key": "T1", "value": 11, "percent": 11},
+    {"key": "T2", "value": 30, "percent": 30},
+    {"key": "T3", "value": 43, "percent": 43},
+    {"key": "T4", "value": 20, "percent": 20}
+  ],
+  "highlevel": [
+    {"key": "<18", "value": 5},
+    {"key": "18-24", "value": 23},
+    {"key": "25-29", "value": 30},
+    {"key": "30-34", "value": 11},
+    {"key": "35-39", "value": 8},
+    {"key": "40-49", "value": 13},
+    {"key": ">=50", "value": 3}
+  ],
+  "consumelevel": [
+    {"key": "<1万", "value": 10},
+    {"key": "1万-2万", "value": 10},
+    {"key": "2万-4万", "value": 11},
+    {"key": "4万-6万", "value": 11},
+    {"key": "6万-8万", "value": 30},
+    {"key": "8万-10万", "value": 43},
+    {"key": ">10万", "value": 20}
+  ],
+  "accecption": [
+    {"key": "<100", "value": 10, "percent": 10},
+    {"key": "100-500", "value": 11, "percent": 11},
+    {"key": "500-700", "value": 30, "percent": 30},
+    {"key": "700-1000", "value": 43, "percent": 43},
+    {"key": ">1000", "value": 20, "percent": 20}
+  ],
+  "buy": [
+    {"key": "<5次", "value": 10, "percent": 10},
+    {"key": "5次-10次", "value": 11, "percent": 11},
+    {"key": "10次-15次", "value": 30, "percent": 30},
+    {"key": "15次-20次", "value": 43, "percent": 43},
+    {"key": ">20次", "value": 20, "percent": 20}
+  ],
+  "consume": [
+    {"key": "<1万", "value": 10, "percent": 10},
+    {"key": "1万-2万", "value": 10, "percent": 10},
+    {"key": "2万-4万", "value": 11, "percent": 11},
+    {"key": "4万-6万", "value": 11, "percent": 11},
+    {"key": "6万-8万", "value": 30, "percent": 30},
+    {"key": "8万-10万", "value": 43, "percent": 43},
+    {"key": ">10万", "value": 20, "percent": 20}
+  ]
+}

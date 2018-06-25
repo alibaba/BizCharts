@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+
+      $.getJSON('/BizCharts/public/data/relationship-with-weight.json', data => {
+
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label } = window.BizCharts;
+
+        const ds = new DataSet();
+        const dv = ds.createView().source(data, {
+          type: 'graph',
+          edges: d => d.links
+        });
+        dv.transform({
+          type: 'diagram.arc',
+          marginRatio: 0.5,
+          // sortBy: 'frequency' // id, weight, frequency, {function}
+        });
+
+        ReactDOM.render(
+          <Chart  data={data} forceFit={true} height={window.innerHeight} >
+            <Tooltip showTitle={false} />
+            <View data={dv.edges} axis={false}>
+              <Geom type='edge' position='x*y' shape='arc' color='source' opacity={0.5} tooltip={'source*target'} />
+            </View>
+            <View data={dv.nodes} axis={false}>
+              <Geom type='point' position='x*y' shape='circle' size='value' color='id' opacity={0.5} style={{stroke:'grey'}} >
+                <Label content='name' offset={-10} textStyle={{textAlign:'left', rotate:90, fill:'black'}} />
+              </Geom>
+            </View>
+          </Chart>, document.getElementById('c1')
+        );
+
+      })
+    </script>
+  </body>
+</html>

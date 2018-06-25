@@ -1,0 +1,65 @@
+{
+  "name": "@bizcharts/bar-stacked-column",
+  "version": "0.0.7",
+  "description": "Bizhcarts basic charts",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "compile": "babel src -d lib",
+    "lint": "eslint src/ --ext '.js,.jsx' --fix",
+    "build": "NODE_ENV=production webpack --production"
+  },
+  "keywords": [
+    "bizcharts"
+  ],
+  "author": {
+    "name": "昔夜",
+    "email": "xiye.hjj@alibaba-inc.com"
+  },
+  "previewUrl": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-ali": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
+    "lint-staged": "^7.1.2",
+    "react": "^16.3.2 || ^15.0.0",
+    "react-dom": "^16.3.2 || ^15.0.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2 || ^15.0.0",
+    "react-dom": "^16.3.2 || ^15.0.0"
+  },
+  "dependencies": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "repository": "https://registry.npm.org/",
+  "blockConfig": {
+    "name": "@bizcharts/bar-stacked-column",
+    "title": "Bizcharts基础图表",
+    "categories": [
+      "图表",
+      "可视化",
+      "bizcharts",
+      "基础图表",
+      "bar",
+      "柱状图"
+    ],
+    "screenshot": "https://img.alicdn.com/tfs/TB1jRAUxeSSBuNjy0FlXXbBpVXa-1608-848.png"
+  },
+  "title": "Bizcharts基础图表"
+}

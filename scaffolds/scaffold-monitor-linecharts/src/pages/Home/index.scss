@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Tahoma, Arial;
+}
+ul{
+  list-style: none;
+}
+body{
+  width: 1980px;
+}
+
+.body-bg-star {
+  position: relative;
+  width: 1980;
+  height: 1080px;
+  overflow: hidden;
+  background: url(https://img.alicdn.com/tfs/TB1XQt8blfH8KJjy1XbXXbLdXXa-1920-1080.png) no-repeat #12162C;
+}
+
+// 灯光
+
+@keyframes higthLightPulseLinear {
+  from { background: rgba(207,0,0,.0)  }
+  50% { background: linear-gradient(rgba(207,0,0,.1), rgba(207,0,0,.0)); }
+  to { background: rgba(207,0,0,.0) }
+}
+@keyframes higthLightPulseRadial {
+  from { background: rgba(207,0,0,.05)  }
+  33% { background: -webkit-radial-gradient(960px 120px, rgba(192, 71, 71, 0.3),rgba(192, 71, 71, 0.14) 20%,rgba(192, 71, 71, .21) 30%, rgba(207,0,0,.0)); }
+  43% { background: -webkit-radial-gradient(960px 120px, rgba(192, 71, 71, .1), rgba(207,0,0,.0)); }
+  50% { background: -webkit-radial-gradient(960px 120px, rgba(207, 81, 81, 0.3),rgba(192, 71, 71, .2) 20%,rgba(192, 71, 71, .21) 30%, rgba(207,0,0,.0)); }
+  58% { background: rgba(207,0,0,.05) }
+  to { background: rgba(207,0,0,.05) }
+}
+@keyframes higthLightPulseRadial2 {
+  from { background: rgba(207,0,0,0)  }
+  33% { background: -webkit-radial-gradient(0px 0px, rgba(207,0,0, .2),rgba(207,0,0, .08) 8%,rgba(207,0,0, .09) 10%, rgba(207,0,0,.0) 15%, rgba(207,0,0,.0)); }
+  43% { background: -webkit-radial-gradient(0px 0px, rgba(207,0,0, .05), rgba(207,0,0,0) 20%, rgba(207,0,0,0)); }
+  50% { background: -webkit-radial-gradient(0px 0px, rgba(207,0,0, .2),rgba(207,0,0, .08) 8%,rgba(207,0,0, .09) 10%, rgba(207,0,0,.0) 15%,  rgba(207,0,0,.0)); }
+  58% { background: rgba(207,0,0,0) }
+  to { background: rgba(207,0,0,0) }
+}
+@keyframes higthLightPulseRadial3 {
+  from { background: rgba(207,0,0,0)  }
+  33% { background: -webkit-radial-gradient(1920px 0px, rgba(207,0,0, .2),rgba(207,0,0, .08) 8%,rgba(207,0,0, .09) 10%, rgba(207,0,0,.0) 15%, rgba(207,0,0,.0)); }
+  43% { background: -webkit-radial-gradient(1920px 0px, rgba(207,0,0, .05), rgba(207,0,0,0) 20%, rgba(207,0,0,0)); }
+  50% { background: -webkit-radial-gradient(1920px 0px, rgba(207,0,0, .2),rgba(207,0,0, .08) 8%,rgba(207,0,0, .09) 10%, rgba(207,0,0,.0) 15%,  rgba(207,0,0,.0)); }
+  58% { background: rgba(207,0,0,0) }
+  to { background: rgba(207,0,0,0) }
+}
+.scene-light1, .scene-light2, .scene-light3 {
+  position: fixed;
+  z-index: 200;
+  top: -100px;
+  left: 0;
+  width: 2300px;
+  height: 1180px;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+.scene-light1{
+  animation-name: higthLightPulseRadial;
+}
+.scene-light2{
+  width: 1920px;
+  animation-name: higthLightPulseRadial2;
+}
+.scene-light3{
+  width: 1920px;
+  animation-name: higthLightPulseRadial3;
+}

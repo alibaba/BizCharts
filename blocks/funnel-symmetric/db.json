@@ -1,0 +1,33 @@
+{
+  "name": "@bizcharts/funnel-symmetric",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/funnel-symmetric",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "funnel",
+    "漏斗图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1Z0ttxr9YBuNjy0FgXXcxcXXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T13:41:42.622Z",
+  "updateTime": "2018-06-19T03:40:39.726Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

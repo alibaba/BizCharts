@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      $.getJSON('/BizCharts/public/data/scatter.json', function(data){
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} forceFit>
+            <Tooltip showTitle={false} crosshairs={{type:'cross'}} itemTpl='<li data-index={index} style="margin-bottom:4px;"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}<br/>{value}</li>'/>
+            <Axis name='height' />
+            <Axis name='weight' />
+          <Geom type='point' position="height*weight" opacity={0.65} shape="circle" size={4} tooltip={['gender*height*weight', (gender, height, weight) => {
+            return {
+              name: gender,
+              value: height + '(cm), ' + weight + '(kg)'
+            };
+          }]} />
+        </Chart>
+      ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "@bizcharts/bar-basic-column",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/bar-basic-column",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "bar",
+    "柱状图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1SuJ1xv1TBuNjy0FjXXajyXXa-1608-848.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T13:09:34.870Z",
+  "updateTime": "2018-06-19T03:36:02.515Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

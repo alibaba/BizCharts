@@ -1,0 +1,92 @@
+
+// warning-box
+.warnings{
+  position: absolute;
+  bottom: 300px;
+  left: 50px;
+  width: 100%;
+  .com-warning-box{
+    position: absolute;
+    width: 450px;
+    height: 280px;
+    background: #1C213C;
+    margin-right: 20px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  
+    .city{
+      width: 120px;
+      height: 280px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      &:after{
+        content:'';
+        height: 280px;
+        bottom: 0;
+        background: url(https://img.alicdn.com/tfs/TB1tQCImGagSKJjy0FgXXcRqFXa-2-330.png);
+        width: 1px;
+        position: absolute;
+        right: 0;
+      }
+        .ver{
+          width: 24px;
+          margin: 0 auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          font-size: 32px;
+          font-weight: normal;
+          -webkit-transform: translateX(-50%) translateY(-50%);
+        }
+    }
+    .right{
+      width: 325px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      .title{
+        background: url(https://img.alicdn.com/tfs/TB1qbYFqMMPMeJjy1XdXXasrXXa-205-50.png);
+        height: 50px;
+        width: 205px;
+        font-size: 24px;
+        line-height: 50px;
+        margin: 25px auto 25px 40px;;
+        color: #8A8C97;
+        .time{
+          color: #fff;
+          margin-right: 10px;
+        }
+      }
+      .message{
+        li{
+          line-height: 50px;
+          text-align: left;
+          margin-left: 40px;
+          .name{
+            font-size: 20px;
+            color: #8A8C97;
+            display: inline-block;
+            width: 80px;
+            font-weight: 'Regular';
+          }
+          .value{
+            color: #fff;
+            font-size: 22px;
+            line-height: 22px;
+          }
+          .small {
+            font-size: 20px;
+          }
+          .impot {
+            font-size: 32px;
+            margin: 0 4px;
+          }
+        }
+      }
+    }
+  }
+}
+

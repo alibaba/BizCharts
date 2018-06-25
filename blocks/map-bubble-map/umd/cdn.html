@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+    <style>
+    ::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}
+    </style>
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <p style="position:absolute;bottom: 0;right: 0;font-size: 10px; -webkit-transform: scale(0.83);-webkit-transform-origin: 0% 50%;color:#545454">数据来源于<br/> https://github.com/react-d3/react-d3-map-bubble</p>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const cols = {
+            x: { sync: true, nice: false },
+            y: { sync: true, nice: false }
+          }
+      $.getJSON('/BizCharts/public/data/world.geo.json',mapData => {
+        $.getJSON('/BizCharts/public/data/earthquake.json', data => {
+          // data set
+        const ds = new DataSet();
+
+        // draw the map
+        const dv = ds.createView('back')
+          .source(mapData, {
+            type: 'GeoJSON'
+          })
+          .transform({
+            type: 'geo.projection',
+            projection: 'geoMercator',
+            as: [ 'x', 'y', 'centroidX', 'centroidY' ]
+          });
+          // draw the bubble plot
+          const userData = ds.createView().source(data);
+          userData.transform({
+            type: 'map',
+            callback: obj => {
+              const projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+              obj.x = projectedCoord[0];
+              obj.y = projectedCoord[1];
+              obj.deaths = obj.deaths * 1;
+              obj.magnitude = obj.magnitude * 1;
+              return obj;
+            }
+          });
+        ReactDOM.render((
+              <Chart height={window.innerHeight} data scale={cols} padding={[0, 20, 40]} forceFit>
+                <Coord reflect />
+                <Legend visible={false} />
+                <Axis visible={false} />
+                <Tooltip 
+                    showTitle={false} 
+                    containerTpl='<div class="g2-tooltip" style="color:transparent !important;border: 1px solid rgb(51, 51, 51);"><table class="g2-tooltip-list"></table></div>'
+                    itemTpl='<tr data-index={index}><td style="padding: 5px; background-color:#545454">{name}</td><td style="padding: 5px; background-color:#fff;color: #000">{value}</td></tr>'
+                    g2-tooltip={{
+                      borderRadius: '2px',
+                      backgroundColor: '#DDDDDD',
+                      padding: 0,
+                      border: '1px solid #333'
+                    }}
+                    />
+                <View data={dv}>
+                  <Geom type='polygon'tooltip={false} position='x*y' style={{fill: '#ddd',lineWidth: 0.5,stroke: '#fff',fillOpacity: 0.85}}/>
+                </View>
+                <View data={userData} >
+                  <Geom type='point' position='x*y' size={['deaths', [2, 30]]} shape='circle' opacity={0.45} color="#FF2F29" tooltip="date*location*lat*lng*deaths*magnitude">
+                  </Geom>
+                </View>
+            </Chart>
+          ), document.getElementById("mountNode"));
+        });
+      });
+    </script>
+  </body>
+</html>

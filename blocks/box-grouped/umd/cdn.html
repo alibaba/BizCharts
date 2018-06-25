@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, G2 } = window.BizCharts;
+      $.getJSON('/BizCharts/public/data/iris.json', function(data) {
+        const { DataView } = DataSet;
+        const dv = new DataView().source(data);
+        dv.transform({
+          type: 'fold',
+          fields: [ 'SepalLength','SepalWidth','PetalLength','PetalWidth' ], // 展开字段集
+          key: 'type',
+          value: 'value'
+        }).transform({
+          type: 'bin.quantile',
+          field: 'value',    // 计算分为值的字段
+          as: '_bin',    // 保存分为值的数组字段
+          groupBy: [ 'Species', 'type' ],
+        });
+        const colorMap = {
+          'I. setosa': G2.Global.colors[0],
+          'I. versicolor': G2.Global.colors[1],
+          'I. virginica': G2.Global.colors[2]
+        };
+      ReactDOM.render((
+        <Chart height={window.innerHeight} data={dv} padding={[ 20, 120, 95 ]} forceFit>
+          <Tooltip crosshairs={{type:'rect'}} />
+          <Legend marker='circle' />
+          <Geom type="schema" position="type*_bin" shape='box' color={['Species', val => {
+            return colorMap[val];
+          }]}
+          style={['Species', {
+            stroke: 'rgba(0, 0, 0, 0.45)',
+            fill: val => {
+              return colorMap[val];
+            },
+            fillOpacity: 0.3
+          }]}
+          adjust='dodge' 
+            />
+
+        </Chart>
+      ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

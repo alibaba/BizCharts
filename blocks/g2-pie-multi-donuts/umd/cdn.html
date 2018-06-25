@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script src="https://unpkg.com/bizcharts-plugin-slider@2.0.0/umd/bizcharts-plugin-slider.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet } = window.BizCharts;
+        $.getJSON('/BizCharts/public/data/population-by-age.json', data => {
+          const dv = new DataSet.View().source(data);
+          dv.transform({
+                  type: 'fold',
+                  fields: ['小于5岁', '5至13岁', '14至17岁'], // 展开字段集
+                  key: 'age',
+                  value: 'count'
+              })
+              .transform({
+                  type: 'percent',
+                  field: 'count',
+                  dimension: 'age',
+                  groupBy: ['state'],
+                  as: ['percent']
+              });
+        class SliderChart extends React.Component {
+          render() {
+            return (
+                <Chart height={window.innerHeight} data={dv} forceFit padding={0}>
+                  <Tooltip />
+                  <Facet type="list" cols={9} fields={[ 'state' ]} showTitle={false} padding={0} eachView={(view, facet) => {
+                    view.coord('theta', {
+                        radius: 0.8,
+                        innerRadius: 0.6
+                    });
+                    view.intervalStack()
+                        .position('percent')
+                        .color('age');
+                    view.guide().html({
+                        position: ['50%', '50%'],
+                        html: '<div style="color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;">' + facet.data[0].state + '</div>',
+                        alignX: 'middle',
+                        alignY: 'middle'
+                    });
+                  }}/>
+                </Chart>
+            );
+          }
+        }
+        ReactDOM.render((
+          <SliderChart />
+        ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

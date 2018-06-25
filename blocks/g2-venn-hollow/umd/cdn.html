@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        var sets = [
+            {sets: ['A'], size: 12, label: 'A'},
+            {sets: ['B'], size: 12, label: 'B'},
+            {sets: ['C'], size: 12, label: 'C'},
+            {sets: ['A', 'B'], size: 2, label: 'A&B'},
+            {sets: ['A', 'C'], size: 2, label: 'A&C'},
+            {sets: ['B', 'C'], size: 2, label: 'B&C'},
+            {sets: ['A', 'B', 'C'], size: 1},
+        ];
+        class SliderChart extends React.Component {
+          render() {
+            return (
+                <Chart height={window.innerHeight} data={sets} padding={10} forceFit >
+                  <Geom 
+                  type="venn" 
+                  color='id' 
+                  active={false}
+                  shape="hollow" 
+                  size='size'
+                  shape='hollow'
+                  style={{lineWidth: 10,
+                    padding: 10,
+                    textStyle: {
+                        fontSize: 32
+                    }}}
+                  >
+                    <Label content="sets" />
+                  </Geom>
+                </Chart>
+            );
+          }
+        }
+        ReactDOM.render((
+          <SliderChart />
+        ), document.getElementById("c1"));
+    </script>
+  </body>
+</html>

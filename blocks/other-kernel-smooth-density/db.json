@@ -1,0 +1,36 @@
+{
+  "name": "@bizcharts/other-kernel-smooth-density",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/other-kernel-smooth-density",
+    "version": "0.0.9",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "other",
+    "其他图表",
+    "other",
+    "其他图表"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1cIXoxuuSBuNjy1XcXXcYjFXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T15:06:26.629Z",
+  "updateTime": "2018-06-19T04:00:30.459Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

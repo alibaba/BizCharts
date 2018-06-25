@@ -1,0 +1,34 @@
+{
+  "name": "@bizcharts/relation-arc-polar",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/relation-arc-polar",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "relation",
+    "关系图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1_LLmxDtYBeNjy1XdXXXXyVXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T15:41:51.816Z",
+  "updateTime": "2018-06-19T03:47:50.734Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

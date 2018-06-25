@@ -1,0 +1,39 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  height: 440px;
+  background-color: #fff;
+  margin: 15px 0;
+  .header {
+    height: 40px;
+    border-bottom: 1px solid #dcdee3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    .operations {
+      display: flex;
+      flex-direction: row;
+      .icon {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        margin-left: 10px;
+        border: 1px solid #dcdee3;
+        background-color: rgb(250, 250, 250);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  .content {
+    flex: 1;
+  }
+}

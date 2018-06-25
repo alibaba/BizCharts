@@ -1,0 +1,115 @@
+<html>
+<head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
+  </head>
+  <body>
+      <div id="mountNode"><div><div><div style="position:relative;"><canvas id="canvas_1" width="583" height="400" style="width: 583px; height: 400px;"></canvas><div class="g2-tooltip" style="position: absolute; visibility: hidden; white-space: nowrap; z-index: 8; transition: visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1), left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(0, 0, 0, 0.65); border-radius: 4px; color: rgb(255, 255, 255); font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, SimSun, sans-serif; line-height: 20px; padding: 10px 10px 6px;"><div class="g2-tooltip-title"></div><ul class="g2-tooltip-list"></ul></div></div></div></div></div>
+      <script type="text/babel">
+          const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Shape, Facet, G2 } = window.BizCharts;
+          function mathematics(values) {
+            let minX = 0;
+            let maxX = 0;
+            let min = Infinity;
+            let max = -Infinity;
+            let avg = 0;
+            for (const index in values) {
+              const item = values[index];
+              maxX = item > max ? index : maxX;
+              minX = item < min ? index : minX;
+              max = item > max ? item : max;
+              min = item < min ? item : min;
+              avg += item;
+            }
+            avg /= values.length;
+
+            return {
+              min: { x: minX, value: min },
+              max: { x: maxX, value: max },
+              avg,
+            };
+          }
+
+          function getInterval(values, key, interval) {
+            const num = Math.floor(values.length / interval);
+            const ticks = [];
+            for (let i = 0; i <= interval; i += 1) {
+              if (i * num >= values.length) {
+                ticks.push(values[values.length - 1][key]);
+              } else {
+                ticks.push(values[num * i][key]);
+              }
+            }
+
+            return ticks;
+          }
+        
+          function normalize(min, max, avg) {
+            const percent = (avg - min) / (max - min);
+            return percent.toFixed(2);
+          }
+        
+          const newValues = [];
+          const data = [];
+          for (let i = 0; i < 50; i += 1) {
+            const val = 90 + (10 * Math.random());
+            data.push({
+              time: (1000 * i) + 1519833600000,
+              sold: val,
+            });
+            newValues.push(val);
+          }
+                              
+        const math = mathematics(newValues);
+        const percent = normalize(math.min.value, math.max.value, math.avg);
+        const cols = {
+          time: {
+            // 需要自己计算合理的ticks分隔，不然会出现数据空白的现象
+            ticks: getInterval(data, 'time', 10),
+          }
+        };
+        
+          ReactDOM.render((
+            <Chart
+              forceFit
+              height={400}
+              data={data}
+              scale={cols}
+              padding={['auto', 120, 'auto', 'auto']}
+            >
+              <Axis
+                name="time"
+                title={null}
+              />
+              <Axis
+                name="sold"
+                title={null}
+                label={{
+                  formatter: val => `${val}%`
+                }}
+              />
+              <Tooltip />
+              <Geom
+                type="line"
+                position="time*sold"
+                color={`l (270) 0:rgba(255,0,0,1) ${percent}:rgba(206,241,141,1) 1:rgba(47,194,91,1)`}
+                tooltip={['time*sold', (time, sold) => ({
+                  title: moment(time).format('mm:ss'),
+                  name: 'Success Rate',
+                  value: `${sold.toFixed(2)}%`
+                })]}
+                select={[true, {
+                  mode: 'single',
+                }]}
+              />
+            </Chart>
+          ), document.getElementById("mountNode"));
+    </script>
+</body>
+</html>

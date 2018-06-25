@@ -1,0 +1,28 @@
+.upper-container{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.charts-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  background-color: #fafafa;
+}
+.charts-des{
+  background-color: #fafafa;
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  padding-left: 30px;
+}
+
+.chart-panel {
+  width: 30%;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20;
+}
+
+.detail-chart{
+  padding-bottom: 20px;
+}

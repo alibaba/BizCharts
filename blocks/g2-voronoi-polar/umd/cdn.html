@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+        const { Chart, Axis, Geom, Tooltip, Facet, View, Legend, Label, Coord } = window.BizCharts;
+        $.getJSON('/BizCharts/public/data/voronoi.json', data => {
+          const ds = new DataSet();
+          const dv = ds.createView().source(data);
+          dv.transform({
+            type: 'diagram.voronoi',
+            fields: [ 'x', 'y' ],
+            size: [ 800, 600 ],
+            as: [ '_x', '_y' ]
+          });
+        class SliderChart extends React.Component {
+          render() {
+            return (
+                <Chart height={window.innerHeight} data={dv} padding={0} forceFit >
+                  <Tooltip showTitle={false} />
+                  <Coord type="polar" />
+                  <Geom 
+                  type="polygon" 
+                  position="_x*_y" 
+                  color='value' 
+                  >
+                    <Label 
+                    content="value" 
+                    offset={0}
+                    textStyle={
+                      {
+                      fill: '#fff',
+                      fontSize: '12',
+                      textAlign: 'center',
+                      shadowBlur: 2,
+                      shadowColor: 'rgba(0, 0, 0, .45)'
+                      }
+                    }
+                    />
+                  </Geom>
+                </Chart>
+            );
+          }
+        }
+        ReactDOM.render((
+          <SliderChart />
+        ), document.getElementById("c1"));
+      });
+    </script>
+  </body>
+</html>

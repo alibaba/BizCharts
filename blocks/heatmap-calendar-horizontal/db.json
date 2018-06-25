@@ -1,0 +1,33 @@
+{
+  "name": "@bizcharts/heatmap-calendar-horizontal",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/heatmap-calendar-horizontal",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "heatmap",
+    "热力图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1bRAhxgmTBuNjy1XbXXaMrVXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T14:38:12.165Z",
+  "updateTime": "2018-06-19T03:42:52.743Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

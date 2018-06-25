@@ -1,0 +1,32 @@
+{
+  "name": "@bizcharts/diagram-voronoi",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/diagram-voronoi",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1xiD9xgmTBuNjy1XbXXaMrVXa-1608-1248.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T13:30:34.960Z",
+  "updateTime": "2018-06-19T03:39:56.409Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

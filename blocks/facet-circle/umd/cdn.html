@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+
+  $.getJSON('/BizCharts/public/data/diamond.json', data => {
+    const { Chart, Axis, Geom, Tooltip, Facet, View, Coord } = window.BizCharts;
+    const DataView = DataSet.DataView;
+    const scale = {
+      mean: {
+        sync: true
+      },
+      cut: {
+        sync: true
+      }
+    };
+
+    ReactDOM.render(
+      <Chart height={450} data={data} width={800} height={600} padding={[30, 80, 80, 80]} axis={false} scale={scale}>
+        <Coord type='polar' />
+        <Facet type='circle' fields={['clarity']} eachView={(view, facet)=>{
+          var data = facet.data;
+          var dv = new DataView();
+          dv.source(data).transform({
+            type: 'aggregate',
+            fields: [ 'price' ],
+            operations: [ 'mean' ],
+            as: [ 'mean' ],
+            groupBy: [ 'cut' ]
+          });
+          view.source(dv);
+          view.interval().position('cut*mean').color('cut');
+        }}>
+        </Facet>
+      </Chart>, document.getElementById('c1'));
+    
+    });
+    
+    </script>
+  </body>
+</html>

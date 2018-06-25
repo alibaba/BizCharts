@@ -1,0 +1,127 @@
+.chart-wrapper{
+  height: 60%;
+  background: #10192E;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  border-radius: 10px;
+  margin: 10px 50px 0 50px;
+  padding: 20px;
+  // box-sizing: border-box;
+  // border-top: 1px solid transparent;
+  // border-bottom: 0;
+  // border-left: 0;
+  // background-clip:padding-box,border-box;
+  // background-origin:padding-box,border-box;
+  // background-image:linear-gradient(90deg,#10192E,#10192E),linear-gradient(90deg,#7CC1FF,#807BFF);
+  z-index: 100;
+  position: relative;
+
+  .legend{
+    height: 50px;
+    width: 510px;
+    z-index: 300;
+    box-shadow: inset 0  1px 1px rgba(0,0,0, .2);
+    background: rgba(0,0,0, .2);
+    line-height: 50px;
+    color: #878B95;
+    font-size: 24px;
+    font-weight: 300;
+    border-radius: 25px;
+    li{
+      display: inline;
+      margin-right: 40px;
+      &:first-child{
+        margin-left: 50px;
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+    .color{
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+      margin-right: 10px;
+    }
+  }
+
+  .axis{
+    position: absolute;
+    bottom: 62px;
+    left: 5%;
+    height: 1px;
+    width: 95%;
+    .line{
+      position: relative;
+      width: 100%;
+      border-top: 2px solid #2f3651;
+    }
+    .tick{
+      position: absolute;
+      top: 15px;
+      color: rgba(255,255,255,.5);
+      font-size: 22px;
+      font-weight: 200;
+      .text{
+        margin-left: -25px;
+      }
+      .tickLine{
+        position: absolute;
+        top: -54px;
+        left: -1px;
+        width: 2px;
+        height: 40px;
+        background-image:linear-gradient(to top,rgba(255,255,255,.1),rgba(255,255,255,0));
+      }
+    }
+  }
+
+}
+
+.error2-tip{
+  width: 180px;height: 150px;color: #fff;position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 1px;
+    width: 182px;
+    z-index: 100;
+  }
+  .title{
+    position: absolute;
+    top: 4px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 100;
+    padding-left: 5px;
+    z-index: 101;
+  }
+  .text{
+    color: #fff;
+    position: absolute;
+    top: 24px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    z-index: 102;
+  }
+  .line{
+    position: absolute;
+    bottom: 0;
+    left: 88.5px;
+    width: 1px;
+    height: 80px;
+    background: #fff;
+  }
+  .point{
+    position: absolute;
+    bottom: 50px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: #fff;
+
+  }
+}

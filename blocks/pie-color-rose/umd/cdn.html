@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        const data = [
+        {year: '2001', population: 41.8 },
+        {year: '2002', population: 38 },
+        {year: '2003', population: 33.7 },
+        {year: '2004', population: 30.7 },
+        {year: '2005', population: 25.8 },
+        {year: '2006', population: 31.7 },
+        {year: '2007', population: 33 },
+        {year: '2008', population: 46 },
+        {year: '2009', population: 38.3 },
+        {year: '2010', population: 28 },
+        {year: '2011', population: 42.5 },
+        {year: '2012', population: 30.3 }
+      ];
+
+      ReactDOM.render((
+        <Chart height={window.innerHeight} data={data} padding='auto' forceFit>
+          <Coord type='polar' />
+          <Tooltip />
+          <Legend 
+            position= 'right'
+            offsetY={-window.innerHeight / 2 + 180}
+            offsetX={-160} />
+          <Geom
+            type="interval"
+            color="year"
+            position="year*population"
+            style={{lineWidth: 1,stroke: '#fff'}}
+            >
+          </Geom>
+        </Chart>
+      ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

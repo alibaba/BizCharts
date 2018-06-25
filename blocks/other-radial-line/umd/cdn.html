@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        const {Text} = Guide;
+        const data = [
+          {"term":"Zombieland","count":9},
+          {"term":"Wieners","count":8},
+          {"term":"Toy Story","count":8},
+          {"term":"trashkannon","count":7},
+          {"term":"the GROWLERS","count":6},
+          {"term":"mudweiser","count":6},
+          {"term":"ThunderCats","count":4},
+          {"term":"The Taqwacores - Motion Picture","count":4},
+          {"term":"The Shawshank Redemption","count":2},
+          {"term":"The Olivia Experiment","count":1}
+        ];
+        const cols = {
+          count: {
+            max: 12
+          }
+        }
+        ReactDOM.render((
+            <Chart height={window.innerHeight} data={data} scale={cols} forceFit padding={[ 20, 80 ]}>
+            <Coord type="theta" innerRadius={0.2} endAngle={Math.PI} />
+            <Tooltip />
+            <Geom type='interval' position='term*count' color='#8543e0' shape='line' />
+                <Geom type='point' position='term*count' color='#8543e0' shape='circle' />
+            <Guide >
+              <Text position={[ '50%', '50%']} content='Music' style={{textAlign: 'center',
+              fontSize: 24,
+              fill: '#8543e0'}}/>
+              
+              { data.map(obj=>{
+                        return (<Text position={[ obj.term, 0 ]} content={obj.term + ' '} style={{
+                            textAlign: 'right'
+                          }}/>
+                        )})}
+            </Guide>
+          </Chart>
+        ), document.getElementById("mountNode"));
+    </script>
+  </body>
+</html>

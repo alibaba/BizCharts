@@ -1,0 +1,19 @@
+.title-top-container{
+  background:#242536;
+  box-shadow:inset 4px 0 10px 0 rgba(0,0,0,0.50);
+  display: flex;
+  align-items: baseline;
+  padding: 20px 30px;
+  .title-top-logo{
+    height: 35px;
+    margin-right: 10px;
+  }
+  .title-top-text{
+    font-size:36px;
+    color:#abb9c8;
+  }
+  .title-top-time{
+    font-size:18px;
+    color:#6a7088;
+  }
+}

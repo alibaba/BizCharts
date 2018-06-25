@@ -1,0 +1,66 @@
+{
+  "name": "@bizcharts/scaffold-monitor-linecharts",
+  "version": "0.0.3",
+  "description": "基于bizcharts的监控预警大屏-折线图",
+  "author": {
+    "name": "以昕",
+    "email": "huanian.chn@alibaba-inc.com"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "bizcharts"
+  ],
+  "dependencies": {
+    "@icedesign/base": "^0.2.2",
+    "bizcharts": "^3.1.7",
+    "d3-scale": "^2.0.0",
+    "ice-scripts": "^1.5.4",
+    "prop-types": "^15.5.8",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-ali": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
+    "lint-staged": "^7.1.2"
+  },
+  "scripts": {
+    "start": "ice dev",
+    "build": "ice build",
+    "lint": "eslint src/ --ext '.js,.jsx' --fix"
+  },
+  "previewUrl": "",
+  "buildConfig": {
+    "theme": "",
+    "entry": "src/index.js"
+  },
+  "scaffoldConfig": {
+    "name": "@bizcharts/scaffold-monitor-linecharts",
+    "title": "监控预警大屏-折线图"
+  },
+  "preveiwUrl": "https://g.alicdn.com/bizcharts-material/scaffold-monitor-linecharts/0.0.2/index.html"
+}

@@ -1,0 +1,26 @@
+.tabs {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+  border-bottom: 1px solid #dcdee3;
+  .tab {
+    font-weight: bold;
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      color: #5584ff;
+    }
+    .underline {
+      position: absolute;
+      bottom: -11px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #5584ff;
+    }
+  }
+  .selected {
+    color: #5584ff;
+  }
+}

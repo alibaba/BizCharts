@@ -1,0 +1,63 @@
+{
+  "name": "@bizcharts/scaffold-ad-analysis",
+  "title": "Bizcharts广告数据首页",
+  "description": "ad analysis portal page base on bizcharts lib",
+  "homepage": "https://g.alicdn.com/bizcharts-material/scaffold-ad/0.0.5/index.html",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/scaffold-ad-analysis",
+    "version": "0.0.6",
+    "sourceCodeDirectory": ""
+  },
+  "screenshot": "https://img.alicdn.com/tfs/TB1F_f2yVOWBuNjy0FiXXXFxVXa-2840-1596.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-15T08:37:43.894Z",
+  "updateTime": "2018-06-20T13:00:56.722Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "prop-types": "^15.5.8",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜",
+  "dependencies": {
+    "@icedesign/base": "^0.2.2",
+    "bizcharts": "^3.1.7",
+    "prop-types": "^15.5.8",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-ali": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.8",
+    "ice-scripts": "^1.5.4",
+    "lint-staged": "^7.1.2",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  }
+}

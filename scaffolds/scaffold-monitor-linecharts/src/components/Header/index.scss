@@ -1,0 +1,30 @@
+.page-header-warp{
+  text-align: center;
+}
+.page-header{
+  margin: auto;
+  min-width: 200px;
+  position: relative;
+  text-align: center;
+  height: 86px;
+  display: inline-block;
+  line-height: 86px;
+  font-size: 24px;
+  color: #D8D8D8;
+  padding: 0 30px;
+  z-index: 1;
+  
+  &::before {
+    content: ''; /* To generate the box */ 
+    position: absolute; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: inset 0 0 5px 5px rgba(0,0,0,.1);
+    border-radius: 20px;
+    background: radial-gradient(#273D68, #12143B);
+    transform: perspective(50px) rotateX(-5deg);
+  }
+}

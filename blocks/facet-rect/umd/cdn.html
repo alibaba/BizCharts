@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+	  <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+
+  </head>
+  <body>
+
+   <div id="c1" ></div>
+   <script type="text/babel">
+
+  $.getJSON('/BizCharts/public/data/diamond.json', data => {
+    const { Chart, Axis, Geom, Tooltip, Facet, View } = window.BizCharts;
+    const scale = {
+      carat: {
+        sync: true
+      },
+      price: {
+        sync: true,
+        tickCount: 3
+      },
+      cut: {
+        sync: true
+      }
+    };
+
+    ReactDOM.render(
+      <Chart height={450} data={data} width={800} height={600} padding={[30, 80, 80, 80]} scale={scale}>
+        <Facet type='rect' fields={['cut', 'clarity']} eachView={(view, facet)=>{
+          view.point()
+          .position('carat*price')
+          .color('cut')
+          .shape('circle')
+          .opacity(0.3)
+          .size(3); 
+        }}>
+        </Facet>
+      </Chart>, document.getElementById('c1'));
+    
+    });
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "@bizcharts/facet-tree",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/facet-tree",
+    "version": "0.0.8",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "facet",
+    "分面图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1kKnAxr9YBuNjy0FgXXcxcXXa-1600-982.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T13:38:14.824Z",
+  "updateTime": "2018-06-19T03:42:05.843Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

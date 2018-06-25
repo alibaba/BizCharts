@@ -1,0 +1,20 @@
+*{padding: 0; margin: 0}
+
+@font-face {
+    font-family: 'bold-volumn-number';
+    src: url('//g.alicdn.com/datamap/assets/0.0.6/fonts/DIN_Alternate_Bold.eot'); /* IE9 Compat Modes */
+    src: url('//g.alicdn.com/datamap/assets/0.0.6/fonts/DIN_Alternate_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('//g.alicdn.com/datamap/assets/0.0.6/fonts/DIN_Alternate_Bold.woff') format('woff'), /* Modern Browsers */
+         url('//g.alicdn.com/datamap/assets/0.0.6/fonts/DIN_Alternate_Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('//g.alicdn.com/datamap/assets/0.0.6/fonts/DIN_Alternate_Bold.svg') format('svg'); /* Legacy iOS */
+}
+
+html {
+  min-width: 1200px;
+  overflow-x: auto;
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+html,body,#container{
+  height: 100%;background:#1e1f2f;
+}

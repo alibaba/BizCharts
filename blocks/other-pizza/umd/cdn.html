@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      $.getJSON('/BizCharts/public/data/diamond.json', (data) => {
+      data.forEach(obj => {
+        obj.type = '1';
+      });
+      const cols = {
+        type: {
+          range: [0, 1]
+        }
+      }
+      ReactDOM.render((
+          <Chart height={window.innerHeight} data={data} padding={[40, 100, 80, 80]} scale={cols} forceFit>
+          <Coord type="polar" />
+          <Axis name="clarity"
+              grid={{
+            align: 'center',
+            lineStyle: {
+              lineDash: [0, 0]
+            }
+          }}
+            />
+          <Tooltip showTitle={false} />
+          <Geom type='pointJitter' position="clarity*type" color="clarity" shape='circle' opacity={0.65} />
+        </Chart>
+      ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

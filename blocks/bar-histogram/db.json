@@ -1,0 +1,34 @@
+{
+  "name": "@bizcharts/bar-histogram",
+  "title": "Bizcharts基础图表",
+  "description": "Bizhcarts basic charts",
+  "source": {
+    "type": "npm",
+    "npm": "@bizcharts/bar-histogram",
+    "version": "0.0.7",
+    "sourceCodeDirectory": "src/"
+  },
+  "categories": [
+    "图表",
+    "可视化",
+    "bizcharts",
+    "基础图表",
+    "bar",
+    "柱状图"
+  ],
+  "screenshot": "https://img.alicdn.com/tfs/TB1csugxqmWBuNjy1XaXXXCbXXa-1608-848.png",
+  "features": {
+    "participle": {}
+  },
+  "publishTime": "2018-06-12T13:13:22.208Z",
+  "updateTime": "2018-06-19T03:37:08.160Z",
+  "participle": [
+    "bizcharts"
+  ],
+  "components": {
+    "@antv/data-set": "^0.8.9",
+    "bizcharts": "^3.1.7"
+  },
+  "type": "react",
+  "author": "昔夜"
+}

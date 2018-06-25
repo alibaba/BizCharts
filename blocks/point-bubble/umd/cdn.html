@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+        const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+        const colorMap = {
+          'Asia': BizCharts.G2.Global.colors[0],
+          'Americas': BizCharts.G2.Global.colors[1],
+          'Europe': BizCharts.G2.Global.colors[2],
+          'Oceania': BizCharts.G2.Global.colors[3]
+        };
+        $.getJSON('/BizCharts/public/data/bubble.json', function(data){
+          const cols={
+            LifeExpectancy: {
+              alias: '人均寿命（年）'
+            },
+            Population: {
+              type: 'pow',
+              alias: '人口总数'
+            },
+            GDP: {
+              alias: '人均国内生产总值($)'
+            },
+            Country: {
+              alias: '国家/地区'
+            }
+          }
+        ReactDOM.render((
+            <Chart height={window.innerHeight} data={data} scale={cols} forceFit>
+              <Tooltip showTitle={false} />
+              <Axis name='GDP' label={{
+                formatter: (value) => {
+                  return (value / 1000).toFixed(0) + 'k';
+                } // 格式化坐标轴的显示
+              }} />
+              <Axis name='LifeExpectancy'/>
+              <Legend reversed />
+            <Geom type='point' position="GDP*LifeExpectancy" color={['continent', val => {
+          return colorMap[val];
+        }]} tooltip='Country*Population*GDP*LifeExpectancy' opacity={0.65} shape="circle" size={['Population', [ 4, 65 ]]} style={['continent', {
+          lineWidth: 1,
+          strokeOpacity: 1,
+          fillOpacity: 0.3,
+          opacity: 0.65,
+          stroke: val => {
+            return colorMap[val];
+          }
+        }]}/>
+          </Chart>
+        ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

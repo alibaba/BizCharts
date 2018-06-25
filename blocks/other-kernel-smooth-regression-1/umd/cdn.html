@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const {Text, Line} = Guide;
+      $.getJSON('/BizCharts/public/data/diamond.json', (data) => {
+        const cols = {
+        x: {
+          alias: 'depth',
+          min: 50,
+          max: 70,
+          sync: true,
+        },
+        y: {
+          alias: '概率密度分布',
+          sync: true
+        }
+      }
+      ReactDOM.render((
+        <Chart height={window.innerHeight} data={data} axis={false} scale={cols} forceFit >
+          <Tooltip />
+          {[
+            'boxcar',
+            'cosine',
+            'epanechnikov',
+            'gaussian',
+            'quartic',
+            'triangular',
+            'tricube',
+            'triweight',
+            'uniform'
+              ].map((method, i) => {
+            const dv = new DataSet.View().source(data);
+            dv.transform({
+              type: 'kernel-smooth.regression',
+              method,
+              field: 'depth',
+              extent: [ 50, 70 ]
+            });
+            if( i == 0 )
+              return (<View data={dv}>
+              <Axis name="x" />
+              <Axis name="y" />
+              <Geom type="line" position='x*y' color={G2.Global.colors_16[i]}/>
+            </View>);
+            else return (<View data={dv}>
+              <Geom type="line" position='x*y' color={G2.Global.colors_16[i]}/>
+            </View>);
+          })}
+          
+        </Chart>
+      ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>

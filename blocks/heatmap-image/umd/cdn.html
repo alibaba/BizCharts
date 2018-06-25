@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.5/BizCharts.min.js"> </script>
+    <script type="text/javascript" src="//gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <div id="mountNode" ></div>
+      <script type="text/babel">
+      const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
+      const { Image } = Guide;
+      $.getJSON('/BizCharts/public/data/heatmap.json',function(data) {
+        ReactDOM.render((
+          <Chart height={window.innerHeight} padding={[ 0, 30, 60, 30 ]} data={data} forceFit>
+            <Tooltip showTitle={false}/>
+            <Legend offset={10} />
+            <Geom type='heatmap' position="g*l" color={['tmp', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2']} />
+            <Guide >
+              <Image start={[ 'min', 'max' ]} end={[ 'max', 'min' ]} src='https://gw.alipayobjects.com/zos/rmsportal/NeUTMwKtPcPxIFNTWZOZ.png' />  
+            </Guide>
+          </Chart>
+          ), document.getElementById("mountNode"));
+      });
+    </script>
+  </body>
+</html>
