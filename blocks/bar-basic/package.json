@@ -1,6 +1,6 @@
 {
   "name": "@bizcharts/bar-basic",
-  "version": "0.0.7",
+  "version": "1.0.1",
   "description": "Bizhcarts basic charts",
   "main": "lib/index.js",
   "scripts": {
@@ -19,13 +19,13 @@
   "previewUrl": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-ali": "^3.1.0",
     "eslint-plugin-import": "^2.12.0",
