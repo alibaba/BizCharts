@@ -314,8 +314,8 @@ Enable/Disable the click event for shape. Only pie chart enable select mode by d
 />
 ```
 
-### 11、Active    * Boolean *
-Enable/Disable the hover event for shape. 
+### 11、active    * Boolean *
+Enable/Disable the hover event for shape.
 
 ### 12、animate    * Object *
 [See more details about animate](../tutorial/animate.md)

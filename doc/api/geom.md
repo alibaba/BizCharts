@@ -294,7 +294,7 @@ size 支持映射值如下：
 />
 ```
 
-### 11、Active    * Boolean *
+### 11、active    * Boolean *
 图形激活交互开关。
 
 ### 12、animate    * Object *
