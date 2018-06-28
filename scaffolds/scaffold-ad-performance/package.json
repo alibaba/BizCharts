@@ -1,6 +1,6 @@
 {
   "name": "@bizcharts/scaffold-ad-performance",
-  "version": "0.0.6",
+  "version": "1.0.2",
   "description": "基于BizCharts的电视广告分析大屏",
   "author": {
     "name": "hm.hm",
@@ -22,12 +22,12 @@
   ],
   "dependencies": {
     "@icedesign/base": "^0.2.2",
+    "bizcharts": "^3.1.7",
     "prop-types": "^15.5.8",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "bizcharts": "^3.1.7"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
