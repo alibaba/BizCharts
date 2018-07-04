@@ -28,27 +28,27 @@ declare namespace bizcharts{
     G: any;
     track: (enable: boolean) => void;
   }
-  export let G2: G2;
+  export const G2: G2;
 
   /**
    * Util
    */
-  export interface Util extends G2.Util{}
+  export const Util: G2.Util
 
   /**
    * shape
    */
-  export interface Shape extends G2.Shape{}
+  export const Shape: G2.Shape
 
   /**
    * Animate
    */
-  export interface Animate extends G2.Animate{}
+  export const Animate: G2.Animate
 
   /**
    * PathUtil
    */
-  export interface PathUtil extends G2.PathUtil{}
+  export const PathUtil: G2.PathUtil
 
   // some config type
   export let AxisTile: G2.AxisTile;
@@ -360,7 +360,6 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Text extends Base<TextProps> {}
-
 
   }
   export class Label extends Base<LabelProps> {}
