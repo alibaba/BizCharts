@@ -13,7 +13,7 @@ export as namespace bizcharts;
 
 declare namespace bizcharts{
   /**
-   * origin G2 
+   * origin G2
    **/
   type G2 = {
     version: string;
@@ -58,9 +58,10 @@ declare namespace bizcharts{
   export type CrosshairsType = 'rect' | 'x' | 'y' | 'cross';
   export type FacetType = 'rect' | 'list' | 'circle' | 'tree' | 'mirror' | 'matrix';
   export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'areaStack' | 'schemaDodge';
+  export type GeomAdjustType = 'stack' | 'dodge' | 'jitter' | 'symmetric';
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
-  
+
   /**
    * components
    */
@@ -169,7 +170,7 @@ declare namespace bizcharts{
   export interface GeomProps extends React.Props<any> {
     type?: GeomType;
     adjust?: string | string[] | {
-      type?: GeomType;
+      type?: GeomAdjustType;
       marginRatio?: number;
       dodgeBy?: string;
     }[];
@@ -219,7 +220,7 @@ declare namespace bizcharts{
     onHover?: (ev: MouseEvent) => void;
     onClick?: (ev: MouseEvent) => void;
     useHtml?: boolean;
-    container?: string; // useHtml 为true时生效 
+    container?: string; // useHtml 为true时生效
     containerTpl?: string;
     itemTpl?: string | ((param1?: string, param2?: string, param3?: boolean, index?: number) => string);
     'g2-legend'?: React.CSSProperties;
@@ -341,7 +342,7 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Html extends Base<HtmlProps> {}
-    
+
     interface ArcProps {
       top?: boolean;
       start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
@@ -349,7 +350,7 @@ declare namespace bizcharts{
       style?: any;
     }
     export class Arc extends Base<ArcProps> {}
-    
+
     interface TextProps {
       top?: boolean;
       position?: object | any[] | ((xScale?: any, yScale?: any) => any);
@@ -359,7 +360,7 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Text extends Base<TextProps> {}
-    
+
 
   }
   export class Label extends Base<LabelProps> {}
@@ -369,6 +370,3 @@ declare namespace bizcharts{
     getViewId?(): string | number
   }
 }
-
-
-
