@@ -14,7 +14,7 @@ Coordinate component.
 It was used to control Chart or View 's coordinate。
 Detail: [Coord api](coord.md)
 
-### Aixs
+### Axis
 Coordinate's axis component.
 It was uesed to control Chart or View 's coordinate axis。
 Detail: [Axis api](axis.md)
