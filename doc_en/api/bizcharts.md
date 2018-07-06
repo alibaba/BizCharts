@@ -16,12 +16,12 @@ Detail: [Coord api](coord.md)
 
 ### Axis
 Coordinate's axis component.
-It was uesed to control Chart or View 's coordinate axis。
+It was used to control Chart or View 's coordinate axis。
 Detail: [Axis api](axis.md)
 
 ### Geom
 Geometry mark, the Geom and Coord are determines the type of chart.
-Detail: [Geom api](geom.md)。
+Detail: [Geom api](geom.md).
 
 ### Label
 Geometry mark's Label Component.
@@ -36,7 +36,7 @@ A container component to control chart's guids(Guide.Text Guide.Line ...) update
 Detail: [Guide api](guide.md)
 
 ### Facet
-Facet component。
+Facet component.
 Detail: [Facet api](facet.md)
 
 ### View
@@ -49,15 +49,15 @@ Detail: [G2](//antv.alipay.com/zh-cn/g2/3.x/index.html)
 
 ## 3、Animate
 It's used to register custom animation.
-Detail: [动画教程](../tutorial/animate.md)。
+Detail: [动画教程](../tutorial/animate.md).
 
 ## 4、Shape
 Chart's shapes, it's uesed to register custom shape.
-Detail [Shape api](shape.md)。
+Detail [Shape api](shape.md).
 
 ## 5、setTheme
 It's used to change theme.
-Defail [theme tutorial](../tutorial/theme.md)。
+Defail [theme tutorial](../tutorial/theme.md).
 
 ## 6、track
 It's used to monitor the usage of G2 version by G2, If you dont's want use to know it please set false.
