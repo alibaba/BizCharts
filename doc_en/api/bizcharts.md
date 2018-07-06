@@ -11,12 +11,12 @@ Detail: [Chart api](chart.md)
 
 ### Coord
 Coordinate component.
-It was used to control Chart or View 's coordinate。
+It was used to control Chart or View 's coordinate.
 Detail: [Coord api](coord.md)
 
 ### Axis
 Coordinate's axis component.
-It was used to control Chart or View 's coordinate axis。
+It was used to control Chart or View 's coordinate axis.
 Detail: [Axis api](axis.md)
 
 ### Geom
@@ -73,18 +73,18 @@ From G2, it's used to
 | ---- | ---- | ---- |
 | `getBoundingClientRect(node)` | `node`:HTMLElement，dom element | return the element's position in page. Data format: `{top: , bottom: , left: , right}` |
 | `getStyle(dom, name)` | `dom`:HTMLElement，DOM element；`name`:String, style name | return the element's name style value. |
-| `modifyCSS(dom, css)` | `dom`:HTMLElement，DOM element; `css`:Object，style | change the element's css style, then return the final style after changed。 |
+| `modifyCSS(dom, css)` | `dom`:HTMLElement，DOM element; `css`:Object，style | change the element's css style, then return the final style after changed. |
 | `createDom(str)` | `str`:String，Dom string | Create an dom element and return it. |
-| `getRatio()` | -- | returns the screen pixel resolution。 |
+| `getRatio()` | -- | returns the screen pixel resolution. |
 | `getWidth(el)` | `el`:HTMLElement，dom element| return dom element's width, not contain padding border |
 | `getHeight(el)` | `e`l:HTMLElement，dom element| return dom element's height, not contain padding border |
 | `getOuterWidth(el)` | `el`:HTMLElement，dom element| return dom element's width, contain padding border |
 | `getOuterHeight(el)` | `el`:HTMLElement，dom element| return dom element's height, contain padding border |
 | `addEventListener(target, eventType, callback)` | `target`:HTMLElement，DOM element；`eventType`:String, event name；`callback`:Function | Add event listener. |
-| `requestAnimationFrame(fn)` | `fn`:Function, callback function  | 。
+| `requestAnimationFrame(fn)` | `fn`:Function, callback function  | .
 
 ## 8、Util
-Util function, most come from lodash。
+Util function, most come from lodash.
 ```js
 // example
 const Util = {
