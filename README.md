@@ -2,7 +2,7 @@
 
 # BizCharts
 
-BizCharts: a powerful data visualization library based [G2](https://antv.alipay.com/) React。
+BizCharts: a powerful data visualization library based on [G2](https://antv.alipay.com/) React。
 
 [More details about BizCharts](https://alibaba.github.io/BizCharts/)
 
