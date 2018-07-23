@@ -1,5 +1,5 @@
 # 3.2.0
-- update to g2 3.2.4
+- update to g2 3.2.5
 
 # 3.1.10(6.15, 2018)
 - reset g2 to 3.1.2
