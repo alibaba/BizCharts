@@ -3,6 +3,9 @@ import Util from './shared/util';
 import Themes from './themes';
 import * as components from './components';
 
+
+G2.Global.trackingInfo = { product: 'bizcharts', product_version: '3.2.7' };
+
 const BizCharts = Util.mix(components, {
   G2,
   Util,
