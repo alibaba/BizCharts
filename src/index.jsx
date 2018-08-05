@@ -4,7 +4,7 @@ import Themes from './themes';
 import * as components from './components';
 
 
-G2.Global.trackingInfo = { product: 'bizcharts', product_version: '3.2.7' };
+G2.Global.trackingInfo = { bizcharts: '3.2.1-beta.1' };
 
 const BizCharts = Util.mix(components, {
   G2,
