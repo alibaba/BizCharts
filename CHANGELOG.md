@@ -1,6 +1,6 @@
 # 3.2.1-beta.1
 - add RegionFilter, DataMarker, DataRegion components
-
+- add Guide Map demos
 
 # 3.2.1-beta.1
 - update to g2 3.2.7-beta.5
