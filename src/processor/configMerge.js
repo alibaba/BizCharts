@@ -15,6 +15,9 @@ const deleteFuncMap = {
   GuideRegion: 'deleteTypedGuide',
   GuideHtml: 'deleteTypedGuide',
   GuideArc: 'deleteTypedGuide',
+  GuideRegionFilter: 'deleteTypedGuide',
+  GuideDataMarker: 'deleteTypedGuide',
+  GuideDataRegion: 'deleteTypedGuide',
   Facet: 'deleteFacet',
 };
 

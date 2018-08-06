@@ -1,4 +1,8 @@
 # 3.2.1-beta.1
+- add RegionFilter, DataMarker, DataRegion components
+
+
+# 3.2.1-beta.1
 - update to g2 3.2.7-beta.5
 - support svg render for chart
 - add bizcharts track info
