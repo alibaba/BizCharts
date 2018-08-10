@@ -98,7 +98,7 @@ export default class RegionFilter2 extends Component {
           />
           <DataMarker
           position={[1753, 87]}
-          content='1755 年在印度周边建立诸多殖民\n地与附属国，垄断出口贸易，导致\n出品总额激增。'
+          content={'1755 年在印度周边建立诸多殖民\n地与附属国，垄断出口贸易，导致\n出品总额激增。'}
           lineLength={50}
           direction='downward'
           style={{
