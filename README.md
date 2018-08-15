@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts) [![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
 
-# BizCharts
+# (BizCharts)[http://bizcharts.net/index]
 
 BizCharts: a powerful data visualization library based [G2](https://antv.alipay.com/) React。
 
