@@ -11,7 +11,7 @@ BizCharts: a powerful data visualization library based [G2](https://antv.alipay.
 - strong expansion capability
 - support most data visualization charts
 
-[see more demos](https://alibaba.github.io/BizCharts/demo.html)
+[see more demos](//bizcharts.net/products/bizCharts/demo)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
 ## Installation
@@ -60,37 +60,37 @@ const data = [...];
 
 ## Document
 ### tutorial
-- [quick start](doc/tutorial/start.md)
-- [chart introduce](./doc/tutorial/chart.md)
-- [chart type](./doc/tutorial/chartType.md)
-- [data](./doc/tutorial/data.md)
-- [DataSet](./doc/tutorial/dataset.md)
-- [dataflow](./doc/tutorial/dataflow.md)
-- [theme](./doc/tutorial/theme.md)
-- [interaction](./doc/tutorial/interaction.md)
-- [animation](./doc/tutorial/animate.md)
+- [quick start](//bizcharts.net/products/bizCharts/docs/start)
+- [chart introduce](//bizcharts.net/products/bizCharts/docs/chart)
+- [chart type](//bizcharts.net/products/bizCharts/docs/chartType)
+- [data](//bizcharts.net/products/bizCharts/docs/data)
+- [DataSet](//bizcharts.net/products/bizCharts/docs/dataset)
+- [dataflow](//bizcharts.net/products/bizCharts/docs/dataflow)
+- [theme](//bizcharts.net/products/bizCharts/docs/theme)
+- [interaction](//bizcharts.net/products/bizCharts/docs/interaction)
+- [animation](//bizcharts.net/products/bizCharts/docs/animate)
 
 ### api
-- [BizCharts](./doc/api/bizcharts.md)
+- [BizCharts](//bizcharts.net/products/bizCharts/api/bizcharts)
 - components
-  - [Chart](./doc/api/chart.md)
-  - [Coord](./doc/api/coord.md)
-  - [Axis](./doc/api/axis.md)
-  - [Geom](./doc/api/geom.md)
-  - [Label](./doc/api/label.md)
-  - [Legend](./doc/api/legend.md)
-  - [Tooltip](./doc/api/tooltip.md)
-  - [Guide](./doc/api/guide.md)
-  - [Facet](./doc/api/facet.md)
-  - [View](./doc/api/view.md)
+  - [Chart](//bizcharts.net/products/bizCharts/api/chart)
+  - [Coord](//bizcharts.net/products/bizCharts/api/coord)
+  - [Axis](//bizcharts.net/products/bizCharts/api/axis)
+  - [Geom](//bizcharts.net/products/bizCharts/api/geom)
+  - [Label](//bizcharts.net/products/bizCharts/api/label)
+  - [Legend](//bizcharts.net/products/bizCharts/api/legend)
+  - [Tooltip](//bizcharts.net/products/bizCharts/api/tooltip)
+  - [Guide](//bizcharts.net/products/bizCharts/api/guide)
+  - [Facet](//bizcharts.net/products/bizCharts/api/facet)
+  - [View](//bizcharts.net/products/bizCharts/api/view)
 - Plugin
-  - [Slider](//github.com/alibaba/BizCharts/blob/slider/plugin/slider/README.md)
+  - [Slider](//bizcharts.net/products/bizCharts/api/sliderPlugin)
 - others
-  - [scale](./doc/api/scale.md)
-  - [shape](./doc/api/shape.md)
-  - [dataset](./doc/api/dataset.md)
-  - [connector](./doc/api/connector.md)
-  - [transform](./doc/api/transform.md)
-  - [theme](./doc/api/theme.md)
+  - [scale](//bizcharts.net/products/bizCharts/api/scale)
+  - [shape](//bizcharts.net/products/bizCharts/api/shape)
+  - [dataset](//bizcharts.net/products/bizCharts/api/dataset)
+  - [connector](//bizcharts.net/products/bizCharts/api/connector)
+  - [transform](//bizcharts.net/products/bizCharts/api/transform)
+  - [theme](//bizcharts.net/products/bizCharts/api/theme)
 
-### [FAQ](./doc/faq/faq.md)
+### [FAQ](./doc/faq/faq)
