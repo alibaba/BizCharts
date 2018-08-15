@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 function hasSource(source) {
   let flag = true;
 
-  if (source == null) {
+  if (source == null || source.length === 0) {
     flag = false;
   }
 

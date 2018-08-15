@@ -4,14 +4,14 @@
 
 BizCharts: a powerful data visualization library based [G2](https://antv.alipay.com/) React。
 
-[More details about BizCharts](//bizcharts.net/index)
+[More details about BizCharts](http://bizcharts.net/index)
 
 ## Features
 - easy to use
 - strong expansion capability
 - support most data visualization charts
 
-[see more demos](//bizcharts.net/products/bizCharts/demo)
+[see more demos](http://bizcharts.net/products/bizCharts/demo)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
 ## Installation
@@ -60,37 +60,37 @@ const data = [...];
 
 ## Document
 ### tutorial
-- [quick start](//bizcharts.net/products/bizCharts/docs/start)
-- [chart introduce](//bizcharts.net/products/bizCharts/docs/chart)
-- [chart type](//bizcharts.net/products/bizCharts/docs/chartType)
-- [data](//bizcharts.net/products/bizCharts/docs/data)
-- [DataSet](//bizcharts.net/products/bizCharts/docs/dataset)
-- [dataflow](//bizcharts.net/products/bizCharts/docs/dataflow)
-- [theme](//bizcharts.net/products/bizCharts/docs/theme)
-- [interaction](//bizcharts.net/products/bizCharts/docs/interaction)
-- [animation](//bizcharts.net/products/bizCharts/docs/animate)
+- [quick start](http://bizcharts.net/products/bizCharts/docs/start)
+- [chart introduce](http://bizcharts.net/products/bizCharts/docs/chart)
+- [chart type](http://bizcharts.net/products/bizCharts/docs/chartType)
+- [data](http://bizcharts.net/products/bizCharts/docs/data)
+- [DataSet](http://bizcharts.net/products/bizCharts/docs/dataset)
+- [dataflow](http://bizcharts.net/products/bizCharts/docs/dataflow)
+- [theme](http://bizcharts.net/products/bizCharts/docs/theme)
+- [interaction](http://bizcharts.net/products/bizCharts/docs/interaction)
+- [animation](http://bizcharts.net/products/bizCharts/docs/animate)
 
 ### api
-- [BizCharts](//bizcharts.net/products/bizCharts/api/bizcharts)
+- [BizCharts](http://bizcharts.net/products/bizCharts/api/bizcharts)
 - components
-  - [Chart](//bizcharts.net/products/bizCharts/api/chart)
-  - [Coord](//bizcharts.net/products/bizCharts/api/coord)
-  - [Axis](//bizcharts.net/products/bizCharts/api/axis)
-  - [Geom](//bizcharts.net/products/bizCharts/api/geom)
-  - [Label](//bizcharts.net/products/bizCharts/api/label)
-  - [Legend](//bizcharts.net/products/bizCharts/api/legend)
-  - [Tooltip](//bizcharts.net/products/bizCharts/api/tooltip)
-  - [Guide](//bizcharts.net/products/bizCharts/api/guide)
-  - [Facet](//bizcharts.net/products/bizCharts/api/facet)
-  - [View](//bizcharts.net/products/bizCharts/api/view)
+  - [Chart](http://bizcharts.net/products/bizCharts/api/chart)
+  - [Coord](http://bizcharts.net/products/bizCharts/api/coord)
+  - [Axis](http://bizcharts.net/products/bizCharts/api/axis)
+  - [Geom](http://bizcharts.net/products/bizCharts/api/geom)
+  - [Label](http://bizcharts.net/products/bizCharts/api/label)
+  - [Legend](http://bizcharts.net/products/bizCharts/api/legend)
+  - [Tooltip](http://bizcharts.net/products/bizCharts/api/tooltip)
+  - [Guide](http://bizcharts.net/products/bizCharts/api/guide)
+  - [Facet](http://bizcharts.net/products/bizCharts/api/facet)
+  - [View](http://bizcharts.net/products/bizCharts/api/view)
 - Plugin
-  - [Slider](//bizcharts.net/products/bizCharts/api/sliderPlugin)
+  - [Slider](http://bizcharts.net/products/bizCharts/api/sliderPlugin)
 - others
-  - [scale](//bizcharts.net/products/bizCharts/api/scale)
-  - [shape](//bizcharts.net/products/bizCharts/api/shape)
-  - [dataset](//bizcharts.net/products/bizCharts/api/dataset)
-  - [connector](//bizcharts.net/products/bizCharts/api/connector)
-  - [transform](//bizcharts.net/products/bizCharts/api/transform)
-  - [theme](//bizcharts.net/products/bizCharts/api/theme)
+  - [scale](http://bizcharts.net/products/bizCharts/api/scale)
+  - [shape](http://bizcharts.net/products/bizCharts/api/shape)
+  - [dataset](http://bizcharts.net/products/bizCharts/api/dataset)
+  - [connector](http://bizcharts.net/products/bizCharts/api/connector)
+  - [transform](http://bizcharts.net/products/bizCharts/api/transform)
+  - [theme](http://bizcharts.net/products/bizCharts/api/theme)
 
-### [FAQ](./doc/faq/faq)
+### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)

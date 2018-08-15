@@ -19,5 +19,8 @@ Guide.Text = Base.generateBaseTypedComponent('GuideText');
 Guide.Region = Base.generateBaseTypedComponent('GuideRegion');
 Guide.Html = Base.generateBaseTypedComponent('GuideHtml');
 Guide.Arc = Base.generateBaseTypedComponent('GuideArc');
+Guide.RegionFilter = Base.generateBaseTypedComponent('GuideRegionFilter');
+Guide.DataMarker = Base.generateBaseTypedComponent('GuideDataMarker');
+Guide.DataRegion = Base.generateBaseTypedComponent('GuideDataRegion');
 
 export default Guide;

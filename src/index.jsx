@@ -1,9 +1,12 @@
-import G2, { Shape, PathUtil, Animate } from '@antv/g2';
+import G2, { Shape, PathUtil, Animate } from '@antv/g2/lib/core';
 import Util from './shared/util';
 import Themes from './themes';
-import * as Components from './components';
+import * as components from './components';
 
-const BizCharts = Util.mix(Components, {
+
+G2.Global.trackingInfo = { bizcharts: '3.2.1-beta.2' };
+
+const BizCharts = Util.mix(components, {
   G2,
   Util,
   Shape,
@@ -24,4 +27,4 @@ const BizCharts = Util.mix(Components, {
 });
 
 exports.default = BizCharts;
-module.exports = exports['default'];
+module.exports = BizCharts;

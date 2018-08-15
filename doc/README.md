@@ -11,6 +11,7 @@
 - [主题](/doc/tutorial/theme.md)
 - [交互](/doc/tutorial/interaction.md)
 - [动画](/doc/tutorial/animate.md)
+- [按需加载](/doc/tutorial/needload.md)
 
 ## api 文档
 - [BizCharts](/doc/api/bizcharts.md)
@@ -35,6 +36,7 @@
   - [transform](/doc/api/transform.md)
   - [theme](/doc/api/theme.md)
   - [slider](https://github.com/alibaba/BizCharts/tree/slider/plugin/slider)
+
 
 ## 常见问题
 - [有问题怎么办](/doc/faq/faq.md#ques)

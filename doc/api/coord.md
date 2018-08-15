@@ -50,7 +50,6 @@ BizCharts 中支持的坐标系有：
 ```
 ![image](https://zos.alipayobjects.com/rmsportal/bAISlaEvIUpqIFVBiXKo.gif)
 
-// todo: !!!!
 ### 4、reflect 	  * 'x' | 'y' | Array*
 镜像, 沿 x 方向镜像或者沿 y 轴方向映射。默认值为：'y'.
 如果参赛是个数组，将依次调用.例如['x', 'y'] 则先执行x方向翻转`reflect('x')` 再执行y方向翻转`reflect('y')`,以此类推。
@@ -61,7 +60,7 @@ BizCharts 中支持的坐标系有：
 无额外配置参数。
 
 ## 极坐标系（polar/theta/clock/gauge）
-![5.png](http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/skylark/attach/3597/0cb53952e5516d94/5.png)
+![5.png](https://img.alicdn.com/tfs/TB1nBh1vHSYBuNjSspiXXXNzpXa-1200-280.png)
 
 <span id="polar"></span>
 <span id="theta"></span>
@@ -71,8 +70,8 @@ BizCharts 中支持的坐标系有：
 |  :--  |  :--  |  :--  |  :--  |  :--  |
 | radius | 设置半径，值为 0 至 1 的小数 | Number |  |  |
 | innerRadius | 内部极坐标系的半径，[0 - 1]的小数 | Number |  |  |
-| startAngle | 起始角度（弧度） | Number |  |  |
-| endAngle | 结束角度（弧度） | Number |  |  | |
+| startAngle | 起始角度(弧度), 整个极坐标系开始的弧度值 | Number |  |  |
+| endAngle | 结束角度(弧度),整个极坐标系结束的弧度值 | Number |  |  | |
 ```jsx
 //polar 示例
 <coord type="polar" radius={0.5} startAngle={-Math.PI / 6} endAngle={7 * Math.PI /6}/>

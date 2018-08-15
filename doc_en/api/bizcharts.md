@@ -11,17 +11,17 @@ Detail: [Chart api](chart.md)
 
 ### Coord
 Coordinate component.
-It was used to control Chart or View 's coordinate。
+It was used to control Chart or View 's coordinate.
 Detail: [Coord api](coord.md)
 
-### Aixs
+### Axis
 Coordinate's axis component.
-It was uesed to control Chart or View 's coordinate axis。
+It was used to control Chart or View 's coordinate axis.
 Detail: [Axis api](axis.md)
 
 ### Geom
 Geometry mark, the Geom and Coord are determines the type of chart.
-Detail: [Geom api](geom.md)。
+Detail: [Geom api](geom.md).
 
 ### Label
 Geometry mark's Label Component.
@@ -36,7 +36,7 @@ A container component to control chart's guids(Guide.Text Guide.Line ...) update
 Detail: [Guide api](guide.md)
 
 ### Facet
-Facet component。
+Facet component.
 Detail: [Facet api](facet.md)
 
 ### View
@@ -49,15 +49,15 @@ Detail: [G2](//antv.alipay.com/zh-cn/g2/3.x/index.html)
 
 ## 3、Animate
 It's used to register custom animation.
-Detail: [动画教程](../tutorial/animate.md)。
+Detail: [动画教程](../tutorial/animate.md).
 
 ## 4、Shape
 Chart's shapes, it's uesed to register custom shape.
-Detail [Shape api](shape.md)。
+Detail [Shape api](shape.md).
 
 ## 5、setTheme
 It's used to change theme.
-Defail [theme tutorial](../tutorial/theme.md)。
+Defail [theme tutorial](../tutorial/theme.md).
 
 ## 6、track
 It's used to monitor the usage of G2 version by G2, If you dont's want use to know it please set false.
@@ -73,18 +73,18 @@ From G2, it's used to
 | ---- | ---- | ---- |
 | `getBoundingClientRect(node)` | `node`:HTMLElement，dom element | return the element's position in page. Data format: `{top: , bottom: , left: , right}` |
 | `getStyle(dom, name)` | `dom`:HTMLElement，DOM element；`name`:String, style name | return the element's name style value. |
-| `modifyCSS(dom, css)` | `dom`:HTMLElement，DOM element; `css`:Object，style | change the element's css style, then return the final style after changed。 |
+| `modifyCSS(dom, css)` | `dom`:HTMLElement，DOM element; `css`:Object，style | change the element's css style, then return the final style after changed. |
 | `createDom(str)` | `str`:String，Dom string | Create an dom element and return it. |
-| `getRatio()` | -- | returns the screen pixel resolution。 |
+| `getRatio()` | -- | returns the screen pixel resolution. |
 | `getWidth(el)` | `el`:HTMLElement，dom element| return dom element's width, not contain padding border |
 | `getHeight(el)` | `e`l:HTMLElement，dom element| return dom element's height, not contain padding border |
 | `getOuterWidth(el)` | `el`:HTMLElement，dom element| return dom element's width, contain padding border |
 | `getOuterHeight(el)` | `el`:HTMLElement，dom element| return dom element's height, contain padding border |
 | `addEventListener(target, eventType, callback)` | `target`:HTMLElement，DOM element；`eventType`:String, event name；`callback`:Function | Add event listener. |
-| `requestAnimationFrame(fn)` | `fn`:Function, callback function  | 。
+| `requestAnimationFrame(fn)` | `fn`:Function, callback function  | .
 
 ## 8、Util
-Util function, most come from lodash。
+Util function, most come from lodash.
 ```js
 // example
 const Util = {
