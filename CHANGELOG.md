@@ -1,3 +1,8 @@
+#### 3.2.2-beta.3
+##### bug fix
+- after padding change, guide disappear.
+- after geom label content change, change padding, geom label content change as before.
+
 #### 3.2.1-beta.2
 ##### New Features
 - feat(tooltip): support custom format

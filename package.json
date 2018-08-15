@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.2.1-beta.2",
+  "version": "3.2.1-beta.3",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
