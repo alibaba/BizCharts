@@ -60,13 +60,14 @@
 ```jsx
 <Label
   content='sales'
-  textStyle={{
-    textAlign: 'center', // 文本对齐方向，可取值为： start middle end
-    fill: (sales)=>{
-	  if(sales > 1000)
-	    return '#ff0000';
-	  return '#00ff00';
-	}
+  textStyle={sales=>{
+    const style = {textAlign: 'center'};
+    if(if(sales > 1000)) {
+      style.fill = '#ff0000';
+    } else {
+      style.fill = '#00ff00';
+    }
+    return style;
   }}
 />
 ```

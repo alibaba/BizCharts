@@ -61,13 +61,14 @@ property of fill can support functon as below:
 ```jsx
 <Label
   content='sales'
-  textStyle={{
-    textAlign: 'center', // alignment of label text: 'start'|'middle'|'end'
-    fill: (sales)=>{
-	  if(sales > 1000)
-	    return '#ff0000';
-	  return '#00ff00';
-	}
+  textStyle={sales=>{
+    const style = {textAlign: 'center'};
+    if(if(sales > 1000)) {
+      style.fill = '#ff0000';
+    } else {
+      style.fill = '#00ff00';
+    }
+    return style;
   }}
 />
 ```
