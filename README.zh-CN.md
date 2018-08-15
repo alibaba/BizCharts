@@ -4,14 +4,14 @@
 
 BizCharts 是基于 [G2](https://antv.alipay.com/) 的 React 图表库，历经阿里两年打磨，覆盖数十个产品，于 11.21 开源，并同步升级到 G2 3.0 版本。
 
-[了解更多 BizCharts 详情](https://alibaba.github.io/BizCharts/)
+[了解更多 BizCharts 详情](//bizcharts.net/index)
 
 ## 特性
 - 简单、易用
 - 强大的扩展能力
 - 有跟 G2 1:1 的能力
 
-[查看更多图表示例](https://alibaba.github.io/BizCharts/demo.html)
+[查看更多图表示例](//bizcharts.net/products/bizCharts/demo)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
 ## 安装
@@ -60,43 +60,43 @@ const data = [...];
 
 ## 文档
 ### 教程
-- [快速入门](doc/tutorial/start.md)
-- [图表介绍](./doc/tutorial/chart.md)
-- [图表类型](./doc/tutorial/chartType.md)
-- [数据](./doc/tutorial/data.md)
-- [DataSet](./doc/tutorial/dataset.md)
-- [dataflow](./doc/tutorial/dataflow.md)
-- [主题](./doc/tutorial/theme.md)
-- [交互](./doc/tutorial/interaction.md)
-- [动画](./doc/tutorial/animate.md)
+- [快速入门](//bizcharts.net/products/bizCharts/docs/start)
+- [图表介绍](.///bizcharts.net/products/bizCharts/docs/chart)
+- [图表类型](.///bizcharts.net/products/bizCharts/docs/chartType)
+- [数据](.///bizcharts.net/products/bizCharts/docs/data)
+- [DataSet](.///bizcharts.net/products/bizCharts/docs/dataset)
+- [dataflow](.///bizcharts.net/products/bizCharts/docs/dataflow)
+- [主题](.///bizcharts.net/products/bizCharts/docs/theme)
+- [交互](.///bizcharts.net/products/bizCharts/docs/interaction)
+- [动画](.///bizcharts.net/products/bizCharts/docs/animate)
 
 ### api 文档
-- [BizCharts](./doc/api/bizcharts.md)
+- [BizCharts](//bizcharts.net/products/bizCharts/api/bizcharts)
 - 组件
-  - [Chart](./doc/api/chart.md)
-  - [Coord](./doc/api/coord.md)
-  - [Axis](./doc/api/axis.md)
-  - [Geom](./doc/api/geom.md)
-  - [Label](./doc/api/label.md)
-  - [Legend](./doc/api/legend.md)
-  - [Tooltip](./doc/api/tooltip.md)
-  - [Guide](./doc/api/guide.md)
-  - [Facet](./doc/api/facet.md)
-  - [View](./doc/api/view.md)
+  - [Chart](//bizcharts.net/products/bizCharts/api/chart)
+  - [Coord](//bizcharts.net/products/bizCharts/api/coord)
+  - [Axis](//bizcharts.net/products/bizCharts/api/axis)
+  - [Geom](//bizcharts.net/products/bizCharts/api/geom)
+  - [Label](//bizcharts.net/products/bizCharts/api/label)
+  - [Legend](//bizcharts.net/products/bizCharts/api/legend)
+  - [Tooltip](//bizcharts.net/products/bizCharts/api/tooltip)
+  - [Guide](//bizcharts.net/products/bizCharts/api/guide)
+  - [Facet](//bizcharts.net/products/bizCharts/api/facet)
+  - [View](//bizcharts.net/products/bizCharts/api/view)
 - 插件
-  - [Slider](//github.com/alibaba/BizCharts/blob/slider/plugin/slider/README.md)
+  - [Slider](//bizcharts.net/products/bizCharts/api/sliderPlugin)
 - 其他
-  - [scale](./doc/api/scale.md)
-  - [shape](./doc/api/shape.md)
-  - [dataset](./doc/api/dataset.md)
-  - [connector](./doc/api/connector.md)
-  - [transform](./doc/api/transform.md)
-  - [theme](./doc/api/theme.md)
+  - [scale](//bizcharts.net/products/bizCharts/api/scale)
+  - [shape](//bizcharts.net/products/bizCharts/api/shape)
+  - [dataset](//bizcharts.net/products/bizCharts/api/dataset)
+  - [connector](//bizcharts.net/products/bizCharts/api/connector)
+  - [transform](//bizcharts.net/products/bizCharts/api/transform)
+  - [theme](//bizcharts.net/products/bizCharts/api/theme)
 
 ### 常见问题
-- [有问题怎么办](./doc/faq/faq.md#ques)
-- [坐标轴空间不够](./doc/faq/faq.md#axisSpace)
-- [坐标轴label自定义](./doc/faq/faq.md#customLabel)
-- [tooltip显示](./doc/faq/faq.md#tooltipShow)
-- [tooltip自定义](./doc/faq/faq.md#customTooltip)
+- [有问题怎么办](./doc/faq/faq#ques)
+- [坐标轴空间不够](./doc/faq/faq#axisSpace)
+- [坐标轴label自定义](./doc/faq/faq#customLabel)
+- [tooltip显示](./doc/faq/faq#tooltipShow)
+- [tooltip自定义](./doc/faq/faq#customTooltip)
  
