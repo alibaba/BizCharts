@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.2.1-beta.3",
+  "version": "3.2.1-beta.4",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -61,7 +61,7 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "@antv/data-set": "0.6.2",
+    "@antv/data-set": "^0.9.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "6.1.2",

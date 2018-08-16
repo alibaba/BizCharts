@@ -7,6 +7,7 @@ import Tooltip from './tooltip';
 import ViewAD from './viewAD';
 import ViewUpdate from './viewUpdate';
 import Com16 from './com16';
+import Bugs from './bugs';
 
 
 export default {
@@ -20,5 +21,6 @@ export default {
     ViewAD,
     ViewUpdate,
     Com16,
+    Bugs
   },
 };

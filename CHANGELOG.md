@@ -1,3 +1,7 @@
+#### 3.2.2-beta.4
+##### bug fix
+- fix testDemo bugs: dataChange,data change lodash isEqual error.
+
 #### 3.2.2-beta.3
 ##### bug fix
 - after padding change, guide disappear.
