@@ -1,4 +1,4 @@
-### 3.2.3
+### 3.2.2
 #### G2 version 3.2.7
 #### buf fix
 - fix(chart): downlownImage not working in svg context
