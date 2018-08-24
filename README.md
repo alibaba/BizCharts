@@ -2,7 +2,7 @@
 
 # BizCharts
 
-BizCharts: a powerful data visualization library based [G2](https://antv.alipay.com/) React。
+New charting and visualization library has been released: http://bizcharts.net/products/bizCharts,Please move to it and we won't maintain the old version soon.
 
 [More details about BizCharts](http://bizcharts.net/index)
 
@@ -94,3 +94,9 @@ const data = [...];
   - [theme](http://bizcharts.net/products/bizCharts/api/theme)
 
 ### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)
+
+### Contributions
+We welcome all contributions. You could submit any ideas as pull requests or as Github issues. Thank you for your interest and have a good time.
+
+### License
+BizCharts is available under the License MIT.
