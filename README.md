@@ -2,7 +2,8 @@
 
 # BizCharts
 
-New charting and visualization library has been released: http://bizcharts.net/products/bizCharts,Please move to it and we won't maintain the old version soon.
+New charting and visualization library has been released: http://bizcharts.net/products/bizCharts
+Please move to it and we won't maintain the old version soon.
 
 [More details about BizCharts](http://bizcharts.net/index)
 
