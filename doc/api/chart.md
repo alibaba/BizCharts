@@ -329,7 +329,7 @@ tooltip 隐藏或者消失时触发。
 
 - 图形元素名称有：
 ```
-Point, Area, Line, Path, Interval, Schema, Polygon, Edage, AxisTitle, AxisLabel, AxisTicks, AxisLine, AxisGrid, LegendTitle, LegendItem, LegendMarker, LegendText, GuideText, GuideLine, GuideRegion, GuideImage, Label
+Point, Area, Line, Path, Interval, Schema, Polygon, Edge, AxisTitle, AxisLabel, AxisTicks, AxisLine, AxisGrid, LegendTitle, LegendItem, LegendMarker, LegendText, GuideText, GuideLine, GuideRegion, GuideImage, Label
 ```
 - 基础事件名有:
 ```
