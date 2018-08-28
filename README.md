@@ -9,6 +9,7 @@ Please move to it and we won't maintain the old version soon.
 [More details about BizCharts](http://bizcharts.net/index)
 
 ## Features
+- React es6 grammar
 - easy to use
 - strong expansion capability
 - support most data visualization charts
