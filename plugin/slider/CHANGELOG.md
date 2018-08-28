@@ -1,3 +1,7 @@
+# 2.0.5 (08.28, 2018)
+update g2 slider to 2.0.4
+fix #477
+
 # 2.0.4 (07.31, 2018)
 update g2 slider to 2.0.3
 fix #386

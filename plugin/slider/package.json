@@ -1,6 +1,6 @@
 {
   "name": "bizcharts-plugin-slider",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A datazoom slider plugin for BizCharts based g2-plugin-slider. ",
   "main": "umd/bizcharts-plugin-slider.min.js",
   "browser": "umd/bizcharts-plugin-slider.min.js",
@@ -48,12 +48,11 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2-plugin-slider": "^2.0.1"
+    "@antv/g2-plugin-slider": "2.0.4"
   },
   "devDependencies": {
-    "@antv/g2": ">= 3.0.1",
-    "@antv/data-set": ">= 0.7.0",
-    "bizcharts": "^3.0.4",
+    "@antv/data-set": ">= 0.9.3",
+    "bizcharts": "^3.2.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
