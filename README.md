@@ -10,9 +10,9 @@ Please move to it and we won't maintain the old version soon.
 
 ## Features
 - React es6 grammar
-- easy to use
-- strong expansion capability
-- support most data visualization charts
+- Easy to use
+- Strong expansion capability
+- Support most data visualization charts
 
 [see more demos](http://bizcharts.net/products/bizCharts/demo)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
@@ -55,9 +55,9 @@ const data = [...];
 <Chart height={400} data={data} forceFit>
   <Axis name="month" />
   <Axis name="temperature" label={{formatter: val => `${val}°C`}} />
-  <Tooltip crosshairs={{type : "y"}} />
+  <Tooltip crosshairs={{type : 'y'}} />
   <Geom type="line" position="month*temperature" size={2} color={'city'} />
-  <Geom type='point' position="month*temperature" size={4} color={'city'} />
+  <Geom type="point" position="month*temperature" size={4} color={'city'} />
 </Chart>
 ```
 
@@ -98,8 +98,9 @@ const data = [...];
 
 ### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)
 
-### Contributions
-We welcome all contributions. You could submit any ideas as pull requests or as Github issues. Thank you for your interest and have a good time.
+### How to Contribute
+We welcome all contributions. You could submit any ideas as pull requests. Thank you for your interest and have a good time.
+Please let us know how can we help. Do check out [issues](https://github.com/alibaba/BizCharts/issues) for bug reports or suggestions first.
 
 ### License
 BizCharts is available under the License MIT.
