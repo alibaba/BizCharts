@@ -1,3 +1,6 @@
+### 3.2.3-beta.1
+#### G2 version 3.2.8-beta.3
+
 ### 3.2.2
 #### G2 version 3.2.7
 #### buf fix
