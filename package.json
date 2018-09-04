@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.2.3-beta.1",
+  "version": "3.2.3-beta.2",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -27,11 +27,12 @@
     "BizCharts"
   ],
   "scripts": {
-    "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
+    "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min && npm run build-animate",
     "build-cjs": "rimraf lib && babel ./src -d lib --plugins=transform-es2015-modules-commonjs",
     "build-es6": "rimraf es6 && babel ./src -d es6",
     "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx umd/BizCharts.js",
     "build-min": "cross-env NODE_ENV=production webpack src/index.jsx umd/BizCharts.min.js",
+    "build-animate": "cross-env NODE_ENV=production webpack src/index.jsx umd/BizCharts.min.animate.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
     "testDemo": "webpack-dev-server --progress --port 9000 --content-base testDemo --inline --config testDemo/webpack.config.js",
     "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
@@ -55,7 +56,7 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.2.8-beta.3",
+    "@antv/g2": "3.2.8-beta.5",
     "invariant": "^2.2.2",
     "warning": "^3.0.0",
     "prop-types": "^15.6.0"
