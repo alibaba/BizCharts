@@ -110,7 +110,7 @@ export default class Processor {
 
   batchedUpdate() {
     if (this.chart == null) return null;
-    if (g2Update.needRebuildChart(this.config)) {
+    if (this.config.chart.props.forceUpdate || g2Update.needRebuildChart(this.config)) {
       configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
       this.chart.destroy();
       this.chart = 'destroy';

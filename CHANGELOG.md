@@ -1,4 +1,8 @@
 ### 3.2.3-beta.2
+#### New features
+- add chart forceUpdate prop.
+
+### 3.2.3-beta.2
 #### add animate false test lib
 
 ### 3.2.3-beta.1
