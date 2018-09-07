@@ -7,6 +7,9 @@ Components:
   Guide.Region
   Guide.Arc
   Guide.Html
+  Guide.RegionFilter
+  Guide.DataMarker
+  Guide.DataRegion
 */
 import Base from '../Base';
 
