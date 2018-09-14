@@ -84,6 +84,7 @@ declare namespace bizcharts{
     width?: number;
     height: number;
     padding?:
+      | string
       | {
           top: number;
           right: number;
