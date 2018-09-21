@@ -1,4 +1,4 @@
-### 3.2.3-beta.3
+### 3.2.3-beta.3（2018-9-11）
 #### New features
 - add chart forceUpdate prop.
 
