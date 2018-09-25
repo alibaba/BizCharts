@@ -45,14 +45,16 @@
   },
   "homepage": "https://alibaba.github.io/BizCharts/",
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
+    "react": ">15",
+    "react-dom": ">15",
+    "bizcharts": ">=3.2.3"
   },
   "dependencies": {
     "@antv/g2-plugin-slider": "2.1.0"
   },
   "devDependencies": {
     "@antv/data-set": ">= 0.9.3",
-    "bizcharts": "^3.2.2",
+    "bizcharts": "3.2.2-beta.4",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
