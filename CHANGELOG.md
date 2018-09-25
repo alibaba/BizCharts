@@ -1,12 +1,37 @@
-### 3.2.3-beta.3（2018-9-11）
+### 3.2.3（2018-9-25）
+#### G2 version 3.2.8
 #### New features
-- add chart forceUpdate prop.
+* add chart forceUpdate prop.
+* add animate false test lib
 
-### 3.2.3-beta.2
-#### add animate false test lib
+* chore(dev): coord as an interval dependency
+* chore(dev): upgrade babel
+* chore(dev): upgrade dataset, support grouped KED transform
+* feat(geom): support dodge adjust for violin geom
+* feat(geom): support violin
+* feat(geom): violin geom supports smooth/smoothHollow shapes
+* feat(guide): add start,end support
+* refactor(arc): sort out codes related to Math
+* refactor(polar): add endAngle until endAngle > startAngle
 
-### 3.2.3-beta.1
-#### G2 version 3.2.8-beta.3
+#### bug fix
+* fix(Global): G2.Global.animate setting is not working,
+* fix(arc): fix unable to draw circle
+* fix(arc): when start and end is equal, it should not be a circle
+* fix(chart): getSnapRecords for points. 
+* fix(dev): upgrade babel preset env for torchjs
+* fix(label): modify unit tests of label rotation
+* fix(label): stop setting rotation in attr(), use shape.transform instead
+* fix(legend):field option error
+* fix(liquidfill): clip shape should not be added into group
+* fix(polar): add endAngle until endAngle > startAngle
+* fix(polar): avoid possible exception when startAngle > endAngle
+* fix: add unit test of Polar coord when startAngle > endAngle
+* fix: add unit test of drawing arc
+* fix: modify test case accordingly
+* fix: resume origin code of direction
+* fix: 修复shared为false，tooltip不随动的bug
+* fix: 修改tooltip方法，旧的存在bug，导致typscript报错，无法使用第一个方法。
 
 ### 3.2.2
 #### G2 version 3.2.7
