@@ -61,11 +61,10 @@
 <Label
   content='sales'
   textStyle={(sales) => {
-      let textAlign = 'center', // 文本对齐方向，可取值为： start middle end
-      let fill = (sales > 1000) ? '#ff0000' : '#00ff00';
-	    return {textAlign: textAlign, fill: fill};
-	  }
-  }}
+    let textAlign = 'center', // 文本对齐方向，可取值为： start middle end
+    let fill = (sales > 1000) ? '#ff0000' : '#00ff00';
+    return {textAlign: textAlign, fill: fill};
+	}}
 />
 ```
 
