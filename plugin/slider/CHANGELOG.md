@@ -1,5 +1,9 @@
+# 2.1.1 (09.25, 2018)
+- add slider error boundary.
+
 # 2.1.0 (09.17, 2018)
-update g2 slider to 2.1.10
+- update g2 slider to 2.1.10
+- bizcharts version must bigger than bizcharts@3.2.3.
 
 # 2.0.7 (08.28, 2018)
 update g2 slider to 2.0.4
