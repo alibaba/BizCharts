@@ -7,6 +7,7 @@ import Util from '../../shared/util';
 import PureChart from './purechart';
 import Empty from './empty';
 import PropTypes from 'prop-types';
+import ErrorBoundary from '../ErrorBoundary';
 
 
 function hasSource(source) {
@@ -19,7 +20,7 @@ function hasSource(source) {
   return !!flag;
 }
 
-export default class Chart extends (React.PureComponent || React.Component) {
+class Chart extends (React.PureComponent || React.Component) {
   getG2Instance() {
     return this.chart;
   }
@@ -51,5 +52,14 @@ export default class Chart extends (React.PureComponent || React.Component) {
           />
       }
     </div>);
+  }
+}
+
+
+export default class BChart extends React.Component {
+  render() {
+    return <ErrorBoundary>
+      <Chart {...this.props}/>
+    </ErrorBoundary>
   }
 }
