@@ -1,9 +1,8 @@
-### 3.2.3（2018-9-25）
+### 3.2.4（2018-9-26）
 #### G2 version 3.2.8
 #### New features
 * add chart forceUpdate prop.
 * add animate false test lib
-
 * chore(dev): coord as an interval dependency
 * chore(dev): upgrade babel
 * chore(dev): upgrade dataset, support grouped KED transform
@@ -32,6 +31,12 @@
 * fix: resume origin code of direction
 * fix: 修复shared为false，tooltip不随动的bug
 * fix: 修改tooltip方法，旧的存在bug，导致typscript报错，无法使用第一个方法。
+
+
+### 3.2.3（2018-9-25）
+#### G2 version 3.2.7-beta.5
+#### New features
+* add chart forceUpdate prop.
 
 ### 3.2.2
 #### G2 version 3.2.7
