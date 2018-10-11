@@ -186,7 +186,7 @@ declare namespace G2 {
     active(open: boolean);
     animate(opt: any);
   }
-  
+
 
   /**
    * 坐标轴标签
