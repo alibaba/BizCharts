@@ -1,3 +1,4 @@
+/* eslint react/no-unused-prop-types: "off" */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Processor from '../../processor/processor';
@@ -17,6 +18,7 @@ export default class PureChart extends Component {
     height: PropTypes.number.isRequired,
     onGetG2Instance: PropTypes.func,
   }
+
   static childContextTypes = {
     addElement: PropTypes.func,
     updateElement: PropTypes.func,
@@ -126,5 +128,4 @@ export default class PureChart extends Component {
   render() {
     return <div ref={this.refHandle}>{this.props.children}</div>;
   }
-};
-
+}

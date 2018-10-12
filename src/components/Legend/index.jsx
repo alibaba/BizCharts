@@ -22,7 +22,7 @@ export default class Legend extends BaseComponent {
     getParentInfo: PropTypes.func,
     getViewId: PropTypes.func,
   }
-  
+
   static defaultProps = {
     visible: true,
   }

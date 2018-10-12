@@ -27,10 +27,8 @@ export default class Processor {
       if (data !== nextData || !Util.isEqual(otherProps, nextOtherProps)) {
         this.updated = true;
       }
-    } else {
-      if (!Util.isEqual(props, nextProps)) {
-        this.updated = true;
-      }
+    } else if (!Util.isEqual(props, nextProps)) {
+      this.updated = true;
     }
   }
 

@@ -61,14 +61,12 @@ const iDelete = {
       if (viewId) {
         if (reExecuteDeleteElements[elementInfo.name]) {
           config.views[viewId].needReExecute = true;
-        } else {
-          if (config.views[viewId].g2Instance && this[deleteFuncMap[elementInfo.name]]) {
-            this[deleteFuncMap[elementInfo.name]](
-              config.views[viewId].g2Instance,
-              config.views[viewId],
-              elementInfo.id,
-            );
-          }
+        } else if (config.views[viewId].g2Instance && this[deleteFuncMap[elementInfo.name]]) {
+          this[deleteFuncMap[elementInfo.name]](
+            config.views[viewId].g2Instance,
+            config.views[viewId],
+            elementInfo.id,
+          );
         }
       }
     });
