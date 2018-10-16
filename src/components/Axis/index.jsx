@@ -1,5 +1,5 @@
 /**
- * Axis Component
+ * Axis Component test
  */
 import Base from '../Base';
 
