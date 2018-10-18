@@ -12,6 +12,7 @@ import Theme from './theme';
 import Map from './map';
 import Guage from './guage';
 import Slider from './slider';
+import Guide from './guide';
 
 
 export default {
@@ -28,6 +29,7 @@ export default {
     Theme,
     Guage,
     Map,
-    Slider
+    Slider,
+    Guide
   },
 };

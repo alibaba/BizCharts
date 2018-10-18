@@ -270,37 +270,8 @@ const style={fontSize: '12'}
   + data：选中图形代表的数据，可能为空；
   + geom：选中的图形，可能为空。
 
-### 7、onItemSelected
-
-图表元素被选中时触发。
-
-* *ev*: 事件触发时返回的对象，包含以下属性
-  + shape：选中的图形；
-  + data：选中图形中的数据；
-  + geom：所选中的图表图层。
-
-### 8、onItemUnselected
-
-图表元素取消选中时触发。
-
-* *ev*: 事件触发时返回的对象，包含以下属性
-  + shape：取消选中的图形；
-  + data：取消选中图形代表的数据；
-  + geom：所选中的图表图层。
-
-### 9、onItemSelectedChange
-
-图表元素选中发生改变时触发。
-
-* ev: 事件触发时返回的对象，包含以下属性
-  + shape：选中的图形；
-  + data：选中图形代表的数据；
-  + preShape：之前选中的图形；
-  + preData：选中图形代表的数据；
-  + geom：所选中的图表图层。
-
 <span id="onTooltipChange"></span>
-### 10、onTooltipChange
+### 7、onTooltipChange
 
 tooltip 信息更新改变的时候触发。
 
@@ -337,7 +308,7 @@ tooltip 信息更新改变的时候触发。
 />
 ```
 
-### 11、onTooltipShow
+### 8、onTooltipShow
 
 tooltip 显示时触发。
 
@@ -346,19 +317,19 @@ tooltip 显示时触发。
   + x: 画布上的 x 坐标；
   + y: 画布上的 y 坐标。
 
-### 12、onTooltipHide
+### 9、onTooltipHide
 
 tooltip 隐藏或者消失时触发。
 
 * ev：事件触发时返回的对象，包含以下属性：
   + tooltip: 当前生成的 tooltip 对象。
 
-### 13、图形元素事件
+### 10、图形元素事件
 图形元素事件属性名 = on + 图形元素名称 + 基础事件名。
 
 - 图形元素名称有：
 ```
-Point, Area, Line, Path, Interval, Schema, Polygon, Edage, AxisTitle, AxisLabel, AxisTicks, AxisLine, AxisGrid, LegendTitle, LegendItem, LegendMarker, LegendText, GuideText, GuideLine, GuideRegion, GuideImage, Label
+Point, Area, Line, Path, Interval, Schema, Polygon, Edge, AxisTitle, AxisLabel, AxisTicks, AxisLine, AxisGrid, LegendTitle, LegendItem, LegendMarker, LegendText, GuideText, GuideLine, GuideRegion, GuideImage, Label
 ```
 - 基础事件名有:
 ```

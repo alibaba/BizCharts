@@ -11,7 +11,7 @@
 - [主题](/doc/tutorial/theme.md)
 - [交互](/doc/tutorial/interaction.md)
 - [动画](/doc/tutorial/animate.md)
-  - [按需加载](/doc/tutorial/needload.md)
+- [按需加载](/doc/tutorial/needload.md)
 
 ## api 文档
 - [BizCharts](/doc/api/bizcharts.md)

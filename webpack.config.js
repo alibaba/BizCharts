@@ -44,7 +44,7 @@ var config = {
       commonjs: 'prop-types',
       commonjs2: 'prop-types',
       amd: 'prop-types',
-      root: 'PropTypes',
+      root: 'prop-types',
     },
   },
 

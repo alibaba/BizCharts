@@ -4,14 +4,12 @@
 坐标轴配置，BizCharts中将Axis抽离为一个单独的组件，不使用Axis组件则默认不显示所有坐标轴及相关的信息。
 
 ## 使用说明
-### parent components
-- `<Chart />`
-- `<View />`
+### 父组件
+`<Chart />` `<View />`
 
-### child components
-- none
+### 子组件
+无
 
-g2 `chart.axis()` 方法使用：https://antv.alipay.com/zh-cn/g2/3.x/api/chart.html#_axis
 ### 注意事项
 
 ```html 

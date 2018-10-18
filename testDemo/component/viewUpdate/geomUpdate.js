@@ -114,7 +114,7 @@ export default class Basic extends Component {
           cancelable: true | false, // 选中之后是否允许取消选中，默认允许取消选中
           animate: true | false // 选中是否执行动画，默认执行动画
           }]}
-          Active={false}
+          active={false}
           animate={{
             animation: 'fadeIn', // 动画名称
             easing: 'easeInQuart', // 动画缓动效果

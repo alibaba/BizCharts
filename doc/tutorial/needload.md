@@ -31,7 +31,7 @@ g2 中资源主要是分为 core 和 对应个 geom 资源，g2 用户需要声�
 ```jsx
 import * as bizUtil from 'bizcharts/lib/core'
 import Chart from 'bizcharts/lib/components/Chart';
-import Axis from 'bizcharts/lib/components/Chart';
+import Axis from 'bizcharts/lib/components/Axis';
 import Line from 'bizcharts/lib/components/TypedGeom/Line';
 
 bizUtil.setTheme('dark');
