@@ -3,6 +3,11 @@ import Util from './shared/util';
 import Themes from './themes';
 import * as components from './components';
 
+
+G2.Global.trackingInfo = { bizcharts: '3.2.2-beta.4' };
+
+// G2.Global.animate = false;
+
 const BizCharts = Util.mix(components, {
   G2,
   Util,

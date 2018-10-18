@@ -66,7 +66,7 @@ const iUpdate = {
     const nextProps = chartConfig.updateProps;
     const { width, height, animate, data, scale } = props;
     const { width: nextWidth, height: nextHeight, animate: nextAnimate, data: nextData,
-    scale: nextScale } = nextProps;
+      scale: nextScale } = nextProps;
 
     if (data !== nextData) {
       chart.changeData(nextData);
@@ -120,8 +120,6 @@ const iUpdate = {
         this.updateAxis(chart, axises[id]);
       }
     }
-
-    return;
   },
 
   updateTooltip(chart, config) {
@@ -199,7 +197,7 @@ const iUpdate = {
 
     if (!Util.shallowEqual(others, nextOthers)
         || !Util.shallowEqual(content, nextContent)
-      ) {
+    ) {
       if (Util.isArray(nextContent)) {
         geom.label(nextContent[0], nextContent[1], nextOthers);
       } else {

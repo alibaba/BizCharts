@@ -15,6 +15,9 @@ const deleteFuncMap = {
   GuideRegion: 'deleteTypedGuide',
   GuideHtml: 'deleteTypedGuide',
   GuideArc: 'deleteTypedGuide',
+  GuideRegionFilter: 'deleteTypedGuide',
+  GuideDataMarker: 'deleteTypedGuide',
+  GuideDataRegion: 'deleteTypedGuide',
   Facet: 'deleteFacet',
 };
 
@@ -98,6 +101,7 @@ const iMerge = {
     this.mergeLegends(config.legends, clear);
     this.mergeTooltip(config, clear);
     this.mergeViews(config.views, clear);
+    this.mergeGuide(config.guide, clear);
   },
 
   mergeChart(config, clear) {
@@ -124,8 +128,6 @@ const iMerge = {
         delete axises[id].g2Instance;
       }
     }
-
-    return;
   },
 
   mergeTooltip(config, clear) {
@@ -169,6 +171,9 @@ const iMerge = {
         if (clear) {
           delete geoms[id].g2Instance;
           if (geoms[id].label && geoms[id].label.g2Instance) {
+            if (geoms[id].label.updateProps) {
+              geoms[id].label.props = geoms[id].label.updateProps;
+            }
             delete geoms[id].label.g2Instance;
           }
         }

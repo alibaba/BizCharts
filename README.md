@@ -1,17 +1,21 @@
-![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts) [![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
-
 # BizCharts
 
-BizCharts: a powerful data visualization library based on [G2](https://antv.alipay.com/) React。
+[![](https://img.shields.io/travis/alibaba/BiaCharts.svg)](https://travis-ci.com/alibaba/BizCharts)
+![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts) [![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
 
-[More details about BizCharts](https://alibaba.github.io/BizCharts/)
+New charting and visualization library has been released: http://bizcharts.net/products/bizCharts.
+
+Please move to it and we won't maintain the old version soon.
+
+[More details about BizCharts](http://bizcharts.net/index)
 
 ## Features
-- easy to use
-- strong expansion capability
-- support most data visualization charts
+- React es6 grammar
+- Easy to use
+- Strong expansion capability
+- Support most data visualization charts
 
-[see more demos](https://alibaba.github.io/BizCharts/demo.html)
+[see more demos](http://bizcharts.net/products/bizCharts/demo)
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
 ## Installation
@@ -52,47 +56,52 @@ const data = [...];
 <Chart height={400} data={data} forceFit>
   <Axis name="month" />
   <Axis name="temperature" label={{formatter: val => `${val}°C`}} />
-  <Tooltip crosshairs={{type : "y"}} />
+  <Tooltip crosshairs={{type : 'y'}} />
   <Geom type="line" position="month*temperature" size={2} color={'city'} />
-  <Geom type='point' position="month*temperature" size={4} color={'city'} />
+  <Geom type="point" position="month*temperature" size={4} color={'city'} />
 </Chart>
 ```
 
 ## Document
 ### tutorial
-- [quick start](doc/tutorial/start.md)
-- [chart introduce](./doc/tutorial/chart.md)
-- [chart type](./doc/tutorial/chartType.md)
-- [data](./doc/tutorial/data.md)
-- [DataSet](./doc/tutorial/dataset.md)
-- [dataflow](./doc/tutorial/dataflow.md)
-- [theme](./doc/tutorial/theme.md)
-- [interaction](./doc/tutorial/interaction.md)
-- [animation](./doc/tutorial/animate.md)
-- [load according need](/doc/tutorial/needload.md)
-
+- [quick start](http://bizcharts.net/products/bizCharts/docs/start)
+- [chart introduce](http://bizcharts.net/products/bizCharts/docs/chart)
+- [chart type](http://bizcharts.net/products/bizCharts/docs/chartType)
+- [data](http://bizcharts.net/products/bizCharts/docs/data)
+- [DataSet](http://bizcharts.net/products/bizCharts/docs/dataset)
+- [dataflow](http://bizcharts.net/products/bizCharts/docs/dataflow)
+- [theme](http://bizcharts.net/products/bizCharts/docs/theme)
+- [interaction](http://bizcharts.net/products/bizCharts/docs/interaction)
+- [animation](http://bizcharts.net/products/bizCharts/docs/animate)
 
 ### api
-- [BizCharts](./doc/api/bizcharts.md)
+- [BizCharts](http://bizcharts.net/products/bizCharts/api/bizcharts)
 - components
-  - [Chart](./doc/api/chart.md)
-  - [Coord](./doc/api/coord.md)
-  - [Axis](./doc/api/axis.md)
-  - [Geom](./doc/api/geom.md)
-  - [Label](./doc/api/label.md)
-  - [Legend](./doc/api/legend.md)
-  - [Tooltip](./doc/api/tooltip.md)
-  - [Guide](./doc/api/guide.md)
-  - [Facet](./doc/api/facet.md)
-  - [View](./doc/api/view.md)
+  - [Chart](http://bizcharts.net/products/bizCharts/api/chart)
+  - [Coord](http://bizcharts.net/products/bizCharts/api/coord)
+  - [Axis](http://bizcharts.net/products/bizCharts/api/axis)
+  - [Geom](http://bizcharts.net/products/bizCharts/api/geom)
+  - [Label](http://bizcharts.net/products/bizCharts/api/label)
+  - [Legend](http://bizcharts.net/products/bizCharts/api/legend)
+  - [Tooltip](http://bizcharts.net/products/bizCharts/api/tooltip)
+  - [Guide](http://bizcharts.net/products/bizCharts/api/guide)
+  - [Facet](http://bizcharts.net/products/bizCharts/api/facet)
+  - [View](http://bizcharts.net/products/bizCharts/api/view)
 - Plugin
-  - [Slider](//github.com/alibaba/BizCharts/blob/slider/plugin/slider/README.md)
+  - [Slider](http://bizcharts.net/products/bizCharts/api/sliderPlugin)
 - others
-  - [scale](./doc/api/scale.md)
-  - [shape](./doc/api/shape.md)
-  - [dataset](./doc/api/dataset.md)
-  - [connector](./doc/api/connector.md)
-  - [transform](./doc/api/transform.md)
-  - [theme](./doc/api/theme.md)
+  - [scale](http://bizcharts.net/products/bizCharts/api/scale)
+  - [shape](http://bizcharts.net/products/bizCharts/api/shape)
+  - [dataset](http://bizcharts.net/products/bizCharts/api/dataset)
+  - [connector](http://bizcharts.net/products/bizCharts/api/connector)
+  - [transform](http://bizcharts.net/products/bizCharts/api/transform)
+  - [theme](http://bizcharts.net/products/bizCharts/api/theme)
 
-### [FAQ](./doc/faq/faq.md)
+### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)
+
+### How to Contribute
+We welcome all contributions. You could submit any ideas as pull requests. Thank you for your interest and have a good time.
+Please let us know how can we help. Do check out [issues](https://github.com/alibaba/BizCharts/issues) for bug reports or suggestions first.
+
+### License
+BizCharts is available under the License MIT.

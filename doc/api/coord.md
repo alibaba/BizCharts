@@ -70,8 +70,8 @@ BizCharts 中支持的坐标系有：
 |  :--  |  :--  |  :--  |  :--  |  :--  |
 | radius | 设置半径，值为 0 至 1 的小数 | Number |  |  |
 | innerRadius | 内部极坐标系的半径，[0 - 1]的小数 | Number |  |  |
-| startAngle | 起始角度（弧度） | Number |  |  |
-| endAngle | 结束角度（弧度） | Number |  |  | |
+| startAngle | 起始角度(弧度), 整个极坐标系开始的弧度值 | Number |  |  |
+| endAngle | 结束角度(弧度),整个极坐标系结束的弧度值 | Number |  |  | |
 ```jsx
 //polar 示例
 <coord type="polar" radius={0.5} startAngle={-Math.PI / 6} endAngle={7 * Math.PI /6}/>

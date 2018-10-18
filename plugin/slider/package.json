@@ -1,6 +1,6 @@
 {
   "name": "bizcharts-plugin-slider",
-  "version": "2.0.3",
+  "version": "2.1.1",
   "description": "A datazoom slider plugin for BizCharts based g2-plugin-slider. ",
   "main": "umd/bizcharts-plugin-slider.min.js",
   "browser": "umd/bizcharts-plugin-slider.min.js",
@@ -24,8 +24,8 @@
     "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
     "build-cjs": "rimraf lib && babel ./src -d lib --plugins=transform-es2015-modules-commonjs",
     "build-es6": "rimraf es6 && babel ./src -d es6",
-    "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx build/bizcharts-plugin-slider.js",
-    "build-min": "cross-env NODE_ENV=production webpack src/index.jsx build/bizcharts-plugin-slider.min.js",
+    "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx umd/bizcharts-plugin-slider.js",
+    "build-min": "cross-env NODE_ENV=production webpack src/index.jsx umd/bizcharts-plugin-slider.min.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
     "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
     "lint": "eslint src",
@@ -45,15 +45,16 @@
   },
   "homepage": "https://alibaba.github.io/BizCharts/",
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
+    "react": ">15",
+    "react-dom": ">15",
+    "bizcharts": ">=3.2.3"
   },
   "dependencies": {
-    "@antv/g2-plugin-slider": "2.0.1"
+    "@antv/g2-plugin-slider": "2.1.0"
   },
   "devDependencies": {
-    "@antv/g2": ">= 3.0.1",
-    "@antv/data-set": ">= 0.7.0",
-    "bizcharts": "3.0.4",
+    "@antv/data-set": ">= 0.9.3",
+    "bizcharts": "3.2.2-beta.4",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",

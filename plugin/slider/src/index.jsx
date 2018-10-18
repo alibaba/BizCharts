@@ -1,5 +1,6 @@
 import G2Slider from '@antv/g2-plugin-slider';
 import React, { Component } from 'react';
+import ErrorBoundary from './error-boundary';
 
 const SliderAttrs = ['width', 'height', 'padding', 'xAis', 'yAxis', 'start', 'end',
   'fillerStyle', 'backgroundStyle', 'scales', 'textStyle', 'handleStyle', 'backgroundChart'];
@@ -74,5 +75,13 @@ class Slider extends Component {
   }
 }
 
-exports.default = Slider;
+class BSlider extends Component {
+  render() {
+    return <ErrorBoundary>
+      <Slider {...this.props}/>
+    </ErrorBoundary>
+  }
+  
+}
+exports.default = BSlider;
 module.exports = exports['default'];

@@ -14,6 +14,9 @@ const addFuncMap = {
   GuideRegion: 'addGuideRegion',
   GuideHtml: 'addGuideHtml',
   GuideArc: 'addGuideArc',
+  GuideRegionFilter: 'addGuideRegionFilter',
+  GuideDataMarker: 'addGuideDataMarker',
+  GuideDataRegion: 'addGuideDataRegion',
   Facet: 'addFacet',
 };
 
@@ -174,6 +177,18 @@ const iAdd = {
 
   addGuideArc(config, props, id, vId, parentInfo) {
     this.addTypedGuide(config, 'arc', props, id, vId, parentInfo);
+  },
+
+  addGuideRegionFilter(config, props, id, vId, parentInfo) {
+    this.addTypedGuide(config, 'regionFilter', props, id, vId, parentInfo);
+  },
+
+  addGuideDataMarker(config, props, id, vId, parentInfo) {
+    this.addTypedGuide(config, 'dataMarker', props, id, vId, parentInfo);
+  },
+
+  addGuideDataRegion(config, props, id, vId, parentInfo) {
+    this.addTypedGuide(config, 'dataRegion', props, id, vId, parentInfo);
   },
 
 };

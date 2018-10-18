@@ -21,16 +21,14 @@ export default class Processor {
     const { children, ...props } = this.elementInfos[id].props;
     const { children: nextChildren, ...nextProps } = this.elementInfos[id].updateProps;
     /* eslint-enable */
-    if (name === 'Chart') {
+    if (name === 'Chart' || name === 'View') {
       const { data, ...otherProps } = props;
       const { data: nextData, ...nextOtherProps } = nextProps;
       if (data !== nextData || !Util.isEqual(otherProps, nextOtherProps)) {
         this.updated = true;
       }
-    } else {
-      if (!Util.isEqual(props, nextProps)) {
-        this.updated = true;
-      }
+    } else if (!Util.isEqual(props, nextProps)) {
+      this.updated = true;
     }
   }
 
@@ -110,7 +108,7 @@ export default class Processor {
 
   batchedUpdate() {
     if (this.chart == null) return null;
-    if (g2Update.needRebuildChart(this.config)) {
+    if (this.config.chart.props.forceUpdate || g2Update.needRebuildChart(this.config)) {
       configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
       this.chart.destroy();
       this.chart = 'destroy';

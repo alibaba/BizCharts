@@ -30,7 +30,7 @@
 详细文档见 [Legend api](legend.md)
 
 ### Guide
-坐标轴组件，控制图表中坐标轴的样式等。
+用于绘制图标的辅助元素等。
 详细文档见 [Guide api](guide.md)
 
 ### Facet
