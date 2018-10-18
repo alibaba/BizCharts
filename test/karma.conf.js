@@ -44,7 +44,7 @@ module.exports = function (config) {
           /node_modules\/sinon\//,
         ],
         loaders: [{
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: [
             path.resolve('node_modules/'),
           ],
@@ -62,6 +62,7 @@ module.exports = function (config) {
         'text-encoding': 'window',
       },
       resolve: {
+        extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json'],
         alias: {
           sinon: 'sinon/pkg/sinon',
           bizcharts: path.resolve('./src/index.jsx'),

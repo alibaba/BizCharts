@@ -1,8 +1,12 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
-import { expect } from 'chai';
-import BizCharts from 'bizcharts';
+import Enzyme, { mount, render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+import BizCharts from '../../../src/index';
 
+chai.use(chaiEnzyme()); // Note the invocation at the end
+Enzyme.configure({ adapter: new Adapter() });
 const { Chart, Geom } = BizCharts;
 
 

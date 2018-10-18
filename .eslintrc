@@ -46,6 +46,7 @@
     "arrow-body-style" : "off",
     "no-unused-vars" : "warn",
     "guard-for-in" : "off",
-    "react/no-unused-prop-types": "off"
+    "react/no-unused-prop-types": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
