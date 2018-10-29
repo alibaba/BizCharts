@@ -8,7 +8,7 @@ const BizCharts = require('../../../src/index');
 
 chai.use(chaiEnzyme()); // Note the invocation at the end
 Enzyme.configure({ adapter: new Adapter() });
-const { Chart } = BizCharts;
+const { Chart, Geom } = BizCharts;
 
 
 describe('<Chart height={300}/>', () => {
