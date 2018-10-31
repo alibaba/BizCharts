@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -10,7 +10,7 @@ import { Chart, Geom } from 'bizcharts';
 chai.use(chaiEnzyme()); // Note the invocation at the end
 Enzyme.configure({ adapter: new Adapter() });
 
-
+window.devicePixelRatio = 1;
 describe('<Chart height={300}/>', () => {
   it('Render no data Chart', () => {
     const wrapper = mount(
@@ -52,6 +52,7 @@ describe('<Chart /> size props of width and height', () => {
       </Chart>
     </div>
   );
+  console.log(wrapper.getDOMNode().getElementsByTagName('canvas')[0]);
   it('int', () => {
     expect(wrapper.getDOMNode().getElementsByTagName('canvas').length).to.equal(1);
     expect(wrapper.getDOMNode().getElementsByTagName('canvas')[0].width).to.equal(800);
