@@ -87,7 +87,6 @@ describe('<Chart /> data prop', () => {
     expect(chartInstance.get('data').length).equal(9); // 数据初始化
   });
 
-  // 这个逻辑一直有问题 chartInstance 时机
   it('update data', () => {
     wrapper.setProps({ data: [{ year: '1991', value: 3 }] });
     wrapper.update();
