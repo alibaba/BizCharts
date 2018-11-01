@@ -3,6 +3,7 @@
   "parser": "babel-eslint",
   "root": true,
   "env": {
+    "jest": true,
     "browser": true,
     "node": true,
     "es6": true
