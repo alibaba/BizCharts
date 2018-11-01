@@ -683,8 +683,8 @@ describe('Tooltip API test: ', () => {
 describe('Tooltip API test: ', () => {
   it('g2-tooltip custom', () => {
     let g2Instance = null;
-    const containerTpl = '<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>'
-    const itemTpl = '<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>'
+    const containerTpl = '<div class="g2-tooltip"><p class="g2-tooltip-title"></p><table class="g2-tooltip-list"></table></div>';
+    const itemTpl = '<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>';
     const g2Tooltip = {
       position: 'absolute',
       visibility: 'hidden',
