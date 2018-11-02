@@ -6,7 +6,6 @@ import chaiEnzyme from 'chai-enzyme';
 // import sinon from 'sinon';
 import { Chart, Geom } from 'bizcharts';
 
-
 chai.use(chaiEnzyme()); // Note the invocation at the end
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -16,6 +15,7 @@ describe('<Chart height={300}/>', () => {
     const wrapper = mount(
       <Chart height={300} />
     );
+
     expect(wrapper.find('div').length).to.equal(2);
   });
 });
