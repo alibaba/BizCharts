@@ -35,7 +35,7 @@
     "build-animate": "cross-env NODE_ENV=production webpack src/index.jsx umd/BizCharts.min.animate.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
     "testDemo": "webpack-dev-server --progress --port 9000 --content-base testDemo --inline --config testDemo/webpack.config.js",
-    "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
+    "test": "cross-env BABEL_ENV=test NODE_ENV=test karma start test/karma.conf.js",
     "lint": "eslint src/ --ext '.js,.jsx'",
     "autofix": "eslint src --fix",
     "cov": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register 'test/**/**/*-specs.js'",
@@ -58,9 +58,10 @@
   },
   "dependencies": {
     "@antv/g2": "3.2.8",
+    "babel-plugin-istanbul": "^3.0.0",
     "invariant": "^2.2.2",
-    "warning": "^3.0.0",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "warning": "^3.0.0"
   },
   "devDependencies": {
     "@antv/data-set": "^0.9.1",

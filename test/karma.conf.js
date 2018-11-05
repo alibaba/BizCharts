@@ -3,7 +3,7 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
 module.exports = function (config) {
   if (process.env.RELEASE) {
@@ -91,6 +91,10 @@ module.exports = function (config) {
     reporters: ['progress', 'coverage', 'coveralls'],
 
     coverageReporter: {
+      files: [
+        'src/**/*.js',
+        'test/**/*.js'
+      ],
       dir: 'test',
       reporters: [{
         type: 'html',
@@ -103,10 +107,6 @@ module.exports = function (config) {
       }],
     },
 
-    webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      stats: 'errors-only',
-    },
 
     // web server port
     port: 9876,
