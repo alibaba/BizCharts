@@ -11,24 +11,37 @@ Enzyme.configure({ adapter: new Adapter() });
 const { Chart, Geom, Tooltip } = BizCharts;
 
 describe('Geom API test: ', () => {
-  it('geom length', () => {
-    let g2Instance = null;
-    const wrapper = mount(
+  let g2Instance = null;
+  const ChartComponent = ({ types = ['point', 'point', 'point'] }) => {
+    return (
       <Chart
         onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
         width={600}
         height={400}
         data={[{ key: 'a', value: 1 }]}
       >
-        <Geom type="point" position="key*value" />
-        <Geom type="point" position="key*value" />
-        <Geom type="point" position="key*value" />
+        {
+          types.map((type, index) => <Geom key={index} type={type} position="key*value" />)
+        }
       </Chart>
     );
+  };
+  const wrapper = mount(<ChartComponent />);
 
+  it('geom length', () => {
     expect(wrapper.find('div').length).to.equal(2);
     expect(g2Instance._attrs.geoms).to.be.an('array');
     expect(g2Instance._attrs.geoms.length).to.equal(3);
+    expect(g2Instance._attrs.geoms[0]._attrs.type).to.equal('point');
+    expect(g2Instance._attrs.geoms[1]._attrs.type).to.equal('point');
+    expect(g2Instance._attrs.geoms[2]._attrs.type).to.equal('point');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ types: ['interval', 'interval'] });
+    wrapper.update();
+    expect(g2Instance._attrs.geoms.length).to.equal(2);
+    expect(g2Instance._attrs.geoms[0]._attrs.type).to.equal('interval');
+    expect(g2Instance._attrs.geoms[1]._attrs.type).to.equal('interval');
   });
 });
 
@@ -48,6 +61,36 @@ describe('Geom API test: ', () => {
 
     expect(wrapper.find('div').length).to.equal(2);
     expect(g2Instance._attrs.geoms[0]._attrs.type).to.equal('point');
+  });
+});
+
+describe('Geom API test: ', () => {
+  let g2Instance = null;
+  const ChartComponent = ({ type = 'point' }) => {
+    return (
+      <Chart
+        onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+        width={600}
+        height={400}
+        data={[{ key: 'a', value: 1 }]}
+      >
+        <Geom type={type} position="key*value" />
+      </Chart>
+    );
+  };
+  const wrapper = mount(<ChartComponent />);
+
+  it('geom length', () => {
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.geoms).to.be.an('array');
+    expect(g2Instance._attrs.geoms.length).to.equal(1);
+    expect(g2Instance._attrs.geoms[0]._attrs.type).to.equal('point');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ type: 'interval' });
+    wrapper.update();
+    expect(g2Instance._attrs.geoms.length).to.equal(1);
+    expect(g2Instance._attrs.geoms[0]._attrs.type).to.equal('interval');
   });
 });
 
@@ -205,6 +248,38 @@ describe('Geom API test: ', () => {
 });
 
 describe('Geom API test: ', () => {
+  let g2Instance = null;
+  const ChartComponent = ({ position = 'key*value' }) => {
+    return (
+      <Chart
+        onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+        width={600}
+        height={400}
+        data={[
+          { key: 'a', value: 1, type: 'x' },
+          { key: 'a', value: 2, type: 'y' }
+        ]}
+      >
+        <Geom type="interval" position={position} color="type" />
+      </Chart>
+    );
+  };
+  const wrapper = mount(<ChartComponent />);
+
+  it('position update', () => {
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.position.type).to.equal('position');
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.position.field).to.equal('key*value');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ position: 'value*key' });
+    wrapper.update();
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.position.type).to.equal('position');
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.position.field).to.equal('value*key');
+  });
+});
+
+describe('Geom API test: ', () => {
   it('color', () => {
     let g2Instance = null;
     const wrapper = mount(
@@ -226,6 +301,39 @@ describe('Geom API test: ', () => {
     expect(g2Instance._attrs.geoms[0]._attrs.attrs.color.field).to.equal('type');
   });
 });
+
+describe('Geom API test: ', () => {
+  let g2Instance = null;
+  const ChartComponent = ({ color = 'type' }) => {
+    return (
+      <Chart
+        onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+        width={600}
+        height={400}
+        data={[
+          { key: 'a', value: 1, type: 'x' },
+          { key: 'a', value: 2, type: 'y' }
+        ]}
+      >
+        <Geom type="interval" position="key*value" color={color} />
+      </Chart>
+    );
+  };
+  const wrapper = mount(<ChartComponent />);
+
+  it('color update', () => {
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.color.type).to.equal('color');
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.color.field).to.equal('type');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ color: 'key' });
+    wrapper.update();
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.color.type).to.equal('color');
+    expect(g2Instance._attrs.geoms[0]._attrs.attrs.color.field).to.equal('key');
+  });
+});
+
 
 describe('Geom API test: ', () => {
   it('shape', () => {

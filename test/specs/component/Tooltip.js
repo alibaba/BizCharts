@@ -11,6 +11,42 @@ Enzyme.configure({ adapter: new Adapter() });
 const { Chart, Geom, Tooltip } = BizCharts;
 
 describe('Tooltip API test: ', () => {
+  let g2Instance = null;
+  const ChartComponent = ({ tooltipEnable = false }) => {
+    return (
+      <Chart
+        onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+        width={600}
+        height={400}
+        data={[
+          { key: 'a', value: 1, type: 'x' },
+          { key: 'a', value: 2, type: 'y' }
+        ]}
+      >
+        {!tooltipEnable || <Tooltip />}
+        <Geom type="point" position="key*value" />
+      </Chart>
+    );
+  };
+  const wrapper = mount(<ChartComponent />);
+
+  it('content update', () => {
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.tooltipController.tooltip).to.equal(null);
+  });
+  it('updateData', () => {
+    wrapper.setProps({ tooltipEnable: true });
+    wrapper.update();
+    expect(g2Instance._attrs.tooltipController.tooltip).to.be.an('object');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ tooltipEnable: false });
+    wrapper.update();
+    expect(g2Instance._attrs.tooltipController.tooltip).to.equal(null);
+  });
+});
+
+describe('Tooltip API test: ', () => {
   it('tooltip disable', () => {
     let g2Instance = null;
     const wrapper = mount(
