@@ -1,3 +1,11 @@
+### 3.3.1 (2018-11-19)
+
+#### G2 version 3.3.4
+
+#### Bug Fixes
+
+- update @antv/compnent0.2.7, fix pie label bug
+
 ### 3.3.0 (2018-11-16)
 
 #### G2 version 3.3.4
