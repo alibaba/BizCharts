@@ -156,7 +156,11 @@ const iUpdate = {
       const g2Instance = chart.coord(nextProps.type, nextAttrs);
       coordConfig.g2Instance = g2Instance;
       Prop.init(COORD_FUNC_PROPS, nextProps, (value, key) => {
-        g2Instance[key](...value);
+        if (key === 'reflect') {
+          Util.each(value, v => g2Instance[key](v));
+        } else {
+          g2Instance[key](...value);
+        }
       });
     }
   },

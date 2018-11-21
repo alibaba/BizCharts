@@ -50,9 +50,9 @@ BizCharts 中支持的坐标系有：
 ```
 ![image](https://zos.alipayobjects.com/rmsportal/bAISlaEvIUpqIFVBiXKo.gif)
 
-### 4、reflect 	  * 'x' | 'y' | Array*
+### 4、reflect 	  * 'x' | 'y' | Array *
 镜像, 沿 x 方向镜像或者沿 y 轴方向映射。默认值为：'y'.
-如果参赛是个数组，将依次调用.例如['x', 'y'] 则先执行x方向翻转`reflect('x')` 再执行y方向翻转`reflect('y')`,以此类推。
+如果参数是个数组，将依次调用.例如['x', 'y'] 则先执行x方向翻转`reflect('x')` 再执行y方向翻转`reflect('y')`,以此类推。
 ![image](https://zos.alipayobjects.com/skylark/3e02d865-fcfc-4afd-9ffa-66a1299b31b5/attach/2378/4225fd7483f54155/image.png)
 
 <span id="rect"></span>

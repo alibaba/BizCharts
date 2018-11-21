@@ -44,7 +44,11 @@ export default {
       Util.without(others, COORD_FUNC_PROPS)
     );
     Prop.init(COORD_FUNC_PROPS, others, (value, key) => {
-      coordIns[key](...value);
+      if (key === 'reflect') {
+        Util.each(value, v => coordIns[key](v));
+      } else {
+        coordIns[key](...value);
+      }
     });
     coordConfig.g2Instance = coordIns;
   },
