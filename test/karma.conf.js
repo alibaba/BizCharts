@@ -6,8 +6,16 @@
 const path = require('path');
 
 module.exports = function (config) {
-  if (process.env.RELEASE) {
-    config.singleRun = true;
+  const reporters = ['progress', 'coverage'];
+
+  let browserName = 'Chrome';
+
+  if (process.env.NODE_ENV === 'testPre') {
+    config.singleRun = true; // eslint-disable-line
+
+    browserName = 'ChromeHeadless';
+  } else {
+    reporters.push('coveralls');
   }
 
   config.set({
@@ -88,7 +96,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage', 'coveralls'],
+    reporters,
 
     coverageReporter: {
       files: [
@@ -107,7 +115,6 @@ module.exports = function (config) {
       }],
     },
 
-
     // web server port
     port: 9876,
 
@@ -120,8 +127,15 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [browserName],
 
     browserNoActivityTimeout: 60000,
+
+    // customLaunchers: {
+    //   ChromeHeadless: {
+    //     base: 'Chrome',
+    //     flags: ['--headless'],
+    //   },
+    // },
   });
 };
