@@ -11,6 +11,42 @@ Enzyme.configure({ adapter: new Adapter() });
 const { Chart, Geom, Label } = BizCharts;
 
 describe('Label API test: ', () => {
+  let g2Instance = null;
+  const ChartComponent = ({ content = 'string' }) => {
+    return (
+      <Chart
+        onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+        width={600}
+        height={400}
+        data={[
+          { key: 'a', value: 1, type: 'x' },
+          { key: 'a', value: 2, type: 'y' }
+        ]}
+      >
+        <Geom type="point" position="key*value" >
+          <Label content={content} />
+        </Geom>
+      </Chart>
+    );
+  };
+  const wrapper = mount(<ChartComponent />);
+
+  it('content update', () => {
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields).to.be.an('array');
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields[0]).to.equal('string');
+  });
+  it('updateData', () => {
+    wrapper.setProps({ content: ['key*value'] });
+    wrapper.update();
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields).to.be.an('array');
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields.length).to.equal(2);
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields[0]).to.equal('key');
+    expect(g2Instance._attrs.geoms[0]._attrs.labelCfg.fields[1]).to.equal('value');
+  });
+});
+
+describe('Label API test: ', () => {
   it('content is static string', () => {
     let g2Instance = null;
     const wrapper = mount(
