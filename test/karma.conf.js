@@ -14,9 +14,10 @@ module.exports = function (config) {
     config.singleRun = true; // eslint-disable-line
 
     browserName = 'ChromeHeadless';
-  } else {
-    reporters.push('coveralls');
   }
+  // } else {
+  //   reporters.push('coveralls');
+  // }
 
   config.set({
 
