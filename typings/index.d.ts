@@ -241,6 +241,7 @@ declare namespace bizcharts{
 
   export interface TooltipProps extends React.Props<any> {
     showTitle?: boolean;
+    title?: string
     crosshairs?: {
       type?: CrosshairsType;
       style?: G2.Styles.background | G2.Styles.line;
