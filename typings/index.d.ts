@@ -181,7 +181,7 @@ declare namespace bizcharts{
     size?: number | string | [string, [number, number]] | [string, (d?: any) => number];
     opacity?: string | number | [string, (d?: any) => number];
     style?: object | [string, object];
-    tooltip?: boolean | string | [string, (x?: any, y?: any) => {name?: string; value: string}];
+    tooltip?: boolean | string | [string, (...args: any[]) => {name?: string; value: string}];
     select?: boolean | [boolean, any];
     active?: boolean; // 图形激活交互开关
     animate?: any;
