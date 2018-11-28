@@ -1,3 +1,10 @@
+### 3.4.1 (2018-11-28)
+#### G2 version 3.4.5
+#### Bug Fixes
+- geom opacity is function
+- tooltip crosshair style & dark theme tooltip
+
+
 ### 3.3.1 (2018-11-19)
 
 #### G2 version 3.3.4

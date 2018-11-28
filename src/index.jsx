@@ -4,7 +4,7 @@ import Themes from './themes';
 import * as components from './components';
 
 
-G2.Global.trackingInfo = { bizcharts: '3.4.0' };
+G2.Global.trackingInfo = { bizcharts: '3.4.1' };
 
 // G2.Global.animate = false;
 
