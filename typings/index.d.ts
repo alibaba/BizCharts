@@ -296,6 +296,9 @@ declare namespace bizcharts{
     Region?: Base<GuideProps>;
     Html?: Base<GuideProps>;
     Arc?: Base<GuideProps>;
+    RegionFilter?:Base<GuideProps>;
+    DataMarker?:Base<GuideProps>;
+    DataRegion?:Base<GuideProps>;
   }
   namespace Guide {
     interface LineProps {
@@ -362,6 +365,39 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Text extends Base<TextProps> {}
+
+    interface RegionFilterProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      color?: string;
+      apply?: Array<any>
+    }
+    export class RegionFilter extends Base<RegionFilterProps> {}
+
+    interface DataMarkerProps {
+      top?: boolean;
+      position?: object | any[] | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataMarker extends Base<DataMarkerProps> {}
+
+    interface DataRegionProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      regionStyle?: object;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataRegion extends Base<DataRegionProps> {}
 
   }
   export class Label extends Base<LabelProps> {}
