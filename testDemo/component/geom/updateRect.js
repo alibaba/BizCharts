@@ -61,7 +61,7 @@ export default class Basic extends Component {
         lineDash:[Math.floor(Math.random()*2+1),Math.floor(Math.random()*3-1),],
         tickLineWidth:Math.floor(Math.random()*5),
         tickLineStroke:genColor(),
-        tickLineStrokeOpacity:Math.floor(Math.random()),
+        tickLineStrokeOpacity:Math.random(),
         tickLineLength:Math.floor(Math.random()*40-20),
         fontSize:Math.floor(Math.random()*10+12),
         subTickCount:Math.floor(Math.random()*10+5),
@@ -84,7 +84,7 @@ export default class Basic extends Component {
         // lineDash:[Math.floor(Math.random()*2+1),Math.floor(Math.random()*3-1),],
         // tickLineWidth:Math.floor(Math.random()*5),
         // tickLineStroke:genColor(),
-        tickLineStrokeOpacity:Math.floor(Math.random()),
+        tickLineStrokeOpacity:Math.random(),
         tickLineLength:Math.floor(Math.random()*40-20),
         // fontSize:Math.floor(Math.random()*10+12),
         typeAry:typeAry[Math.floor(Math.random()*6)]

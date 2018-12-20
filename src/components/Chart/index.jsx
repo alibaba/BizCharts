@@ -41,25 +41,29 @@ class Chart extends (React.PureComponent || React.Component) {
 
   render() {
     const { data, width, height, placeholder, className, style } = this.props;
-    return (<div className={className} style={style}>
-      {
-        (hasSource(data) || this.hasViewSource() || !placeholder) ?
-          <PureChart ref={this._refCallback} {...this.props} /> :
-          <Empty
-            width={width}
-            height={height}
-            placeholder={placeholder === true ? undefined : placeholder}
-          />
-      }
-    </div>);
+    return (
+      <div className={className} style={style}>
+        {
+          (hasSource(data) || this.hasViewSource() || !placeholder) ?
+            <PureChart ref={this._refCallback} {...this.props} /> :
+            <Empty
+              width={width}
+              height={height}
+              placeholder={placeholder === true ? undefined : placeholder}
+            />
+        }
+      </div>
+    );
   }
 }
 
 
 export default class BChart extends React.Component {
   render() {
-    return (<ErrorBoundary>
-      <Chart {...this.props} />
-    </ErrorBoundary>);
+    return (
+      <ErrorBoundary>
+        <Chart {...this.props} />
+      </ErrorBoundary>
+    );
   }
 }

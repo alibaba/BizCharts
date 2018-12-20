@@ -181,7 +181,7 @@ declare namespace bizcharts{
     size?: number | string | [string, [number, number]] | [string, (d?: any) => number];
     opacity?: string | number | [string, (d?: any) => number];
     style?: object | [string, object];
-    tooltip?: boolean | string | [string, (x?: any, y?: any) => {name?: string; value: string}];
+    tooltip?: boolean | string | [string, (...args: any[]) => {name?: string; value: string}];
     select?: boolean | [boolean, any];
     active?: boolean; // 图形激活交互开关
     animate?: any;
@@ -241,6 +241,7 @@ declare namespace bizcharts{
 
   export interface TooltipProps extends React.Props<any> {
     showTitle?: boolean;
+    title?: string
     crosshairs?: {
       type?: CrosshairsType;
       style?: G2.Styles.background | G2.Styles.line;
@@ -295,6 +296,9 @@ declare namespace bizcharts{
     Region?: Base<GuideProps>;
     Html?: Base<GuideProps>;
     Arc?: Base<GuideProps>;
+    RegionFilter?:Base<GuideProps>;
+    DataMarker?:Base<GuideProps>;
+    DataRegion?:Base<GuideProps>;
   }
   namespace Guide {
     interface LineProps {
@@ -361,6 +365,39 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Text extends Base<TextProps> {}
+
+    interface RegionFilterProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      color?: string;
+      apply?: Array<any>
+    }
+    export class RegionFilter extends Base<RegionFilterProps> {}
+
+    interface DataMarkerProps {
+      top?: boolean;
+      position?: object | any[] | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataMarker extends Base<DataMarkerProps> {}
+
+    interface DataRegionProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      regionStyle?: object;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataRegion extends Base<DataRegionProps> {}
 
   }
   export class Label extends Base<LabelProps> {}
