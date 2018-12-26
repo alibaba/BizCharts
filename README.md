@@ -103,9 +103,11 @@ const data = [...];
 We welcome all contributions. You could submit any ideas as pull requests. Thank you for your interest and have a good time.
 Please let us know how can we help. Do check out [issues](https://github.com/alibaba/BizCharts/issues) for bug reports or suggestions first.
 
-### ~~Experience improvement plan description
-In order to better service to users, and G2 will monitoring, such as URL information is sent back to AntV server, BizCharts did not close the request: https://kcart.alipay.com/web/bi.do
-No other information is collected except the URL and G2 version information, all in order to have a better understanding of how G2 works and better serve users. If you are worried, you can close it by the following code:
+### Experience improvement plan description
+
+~~In order to better service to users, and G2 will monitoring, such as URL information is sent back to AntV server, BizCharts did not close the request: https://kcart.alipay.com/web/bi.do~~
+
+~~No other information is collected except the URL and G2 version information, all in order to have a better understanding of how G2 works and better serve users. If you are worried, you can close it by the following code:~~
 
 ```
 // close G2 experience improvement plan dot request (such as server-side rendering)
