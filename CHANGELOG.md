@@ -1,3 +1,14 @@
+### 3.4.2 (2018-12-26)
+#### G2 version 3.4.8
+- All tracking code is removed, no more unexpected remote request will be sent.
+
+#### Bug Fixes
+- fix(interval): error bar filling issue.
+- fix(schema): error bar can't show
+- fix(scale & filter): remove min max limit if field filtered
+- fix(shape): liquid fill shapes should use hollow shape styles by default,
+- fix(tooltip): 正确清除 markers
+
 ### 3.4.1 (2018-11-28)
 #### G2 version 3.4.5
 #### Bug Fixes

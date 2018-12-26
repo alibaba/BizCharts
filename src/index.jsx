@@ -3,9 +3,6 @@ import Util from './shared/util';
 import Themes from './themes';
 import * as components from './components';
 
-
-G2.Global.trackingInfo = { bizcharts: '3.4.1' };
-
 // G2.Global.animate = false;
 
 const BizCharts = Util.mix(components, {
@@ -14,8 +11,7 @@ const BizCharts = Util.mix(components, {
   Shape,
   Animate,
   PathUtil,
-  track(enable = false) {
-    G2.track(enable);
+  track() {
   },
   setTheme(theme) {
     let themeObj = theme;
