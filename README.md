@@ -103,15 +103,18 @@ const data = [...];
 We welcome all contributions. You could submit any ideas as pull requests. Thank you for your interest and have a good time.
 Please let us know how can we help. Do check out [issues](https://github.com/alibaba/BizCharts/issues) for bug reports or suggestions first.
 
-### Experience improvement plan description
+### ~~Experience improvement plan description
 In order to better service to users, and G2 will monitoring, such as URL information is sent back to AntV server, BizCharts did not close the request: https://kcart.alipay.com/web/bi.do
-
 No other information is collected except the URL and G2 version information, all in order to have a better understanding of how G2 works and better serve users. If you are worried, you can close it by the following code:
 
 ```
 // close G2 experience improvement plan dot request (such as server-side rendering)
 BizCharts.Track (false);
 ```
+
+#### update:
+
+G2 decided to terminate the "Experience Improvement Program". In verson @antv/g2@3.4.7（released at 2018.12.26） and above, all tracking code is removed, no unexpected remote request will be sent while you are using G2. And Bizcharts Upgrade the dependent version the first time at 2018.12.26 24:00.
 
 ### License
 BizCharts is available under the License MIT.
