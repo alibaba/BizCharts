@@ -1,3 +1,13 @@
+### 3.4.3 (2018-01-08)
+
+#### Bug Fixes
+- fix(chart): auto padding with more accurate backPlot range, Closes #1079
+- fix: applyMatrix when calculating bbox of axis title
+- fix(chart): auto padding with more accurate backPlot range, Closes #1079
+- clearInteraction不能清除scrollBar的bug
+- fix pie-label adjustItems offset err
+
+
 ### 3.4.2 (2018-12-26)
 #### G2 version 3.4.8
 - All tracking code is removed, no more unexpected remote request will be sent.

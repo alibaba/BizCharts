@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -58,7 +58,7 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.4.8",
+    "@antv/g2": "3.4.9",
     "babel-plugin-istanbul": "^3.0.0",
     "invariant": "^2.2.2",
     "prop-types": "^15.6.0",
