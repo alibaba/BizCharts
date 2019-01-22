@@ -14,7 +14,7 @@
     "participle": {}
   },
   "dependencies": {
-    "@icedesign/base": "^0.2.2",
+    "@alifd/next": "^1.x",
     "bizcharts": "^3.1.7",
     "moment": "^2.22.2",
     "prop-types": "^15.5.8",

@@ -29,7 +29,7 @@
   "type": "react",
   "author": "昔夜",
   "dependencies": {
-    "@icedesign/base": "^0.2.2",
+    "@alifd/next": "^1.x",
     "bizcharts": "^3.1.7",
     "prop-types": "^15.5.8",
     "react": "^16.4.0",

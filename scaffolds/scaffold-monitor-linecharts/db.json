@@ -13,7 +13,7 @@
     "participle": {}
   },
   "dependencies": {
-    "@icedesign/base": "^0.2.2",
+    "@alifd/next": "^1.x",
     "bizcharts": "^3.1.7",
     "d3-scale": "^2.0.0",
     "ice-scripts": "^1.5.4",
