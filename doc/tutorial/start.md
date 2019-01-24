@@ -67,7 +67,7 @@ ReactDOM.render((
   <Chart width={600} height={400} data={data} scale={cols}>
       <Axis name="genre" />
       <Axis name="sold" />
-      <Legend position="top" dy={-20} />
+      <Legend position="top"/>
       <Tooltip />
       <Geom type="interval" position="genre*sold" color="genre" />
     </Chart>
