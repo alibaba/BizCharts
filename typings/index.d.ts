@@ -69,11 +69,11 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: PositionType;
-    title?: object;
-    line?: G2.Styles.line;
-    tickLine?: G2.Styles.tickLine;
-    label?: G2.AxisLabel;
-    grid?: G2.AxisGrid;
+    title?: object|null;
+    line?: G2.Styles.line|null;
+    tickLine?: G2.Styles.tickLine|null;
+    label?: G2.AxisLabel|null;
+    grid?: G2.AxisGrid|null;
     subTickCount?: number;
     subTickLine?: G2.Styles.tickLine;
   }
