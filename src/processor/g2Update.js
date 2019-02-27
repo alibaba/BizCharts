@@ -47,6 +47,13 @@ const iUpdate = {
     // });
   },
 
+  needRepaint(config) {
+    const chartConfig = config.chart;
+    const { data } = chartConfig.props;
+    const { data: nextData } = chartConfig.updateProps;
+    return data === nextData;
+  },
+
   synchronizeG2Update(chart, config) {
     this.updateChart(chart, config.chart);
     this.updateAxises(chart, config.axises);

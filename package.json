@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -58,7 +58,7 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.4.9",
+    "@antv/g2": "3.4.10",
     "babel-plugin-istanbul": "^3.0.0",
     "invariant": "^2.2.2",
     "prop-types": "^15.6.0",
@@ -117,7 +117,7 @@
     "pre-commit": "^1.2.2",
     "react": "16.0.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-dom": "16.0.0",
+    "react-dom": ">=16.0.1",
     "react-hot-loader": "^1.3.0",
     "react-router": "^3.0.1",
     "react-test-renderer": "^16.5.2",
@@ -125,7 +125,7 @@
     "sinon": "^7.1.0",
     "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": ">=3.1.11"
   },
   "license": "MIT",
   "directories": {

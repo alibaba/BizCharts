@@ -1,5 +1,10 @@
-### 3.4.3 (2018-01-08)
+### 3.4.4 (待发布)
+#### G2 version 3.4.10
+#### Bug Fixes
+- fix chart data update, have no animation.
 
+### 3.4.3 (2018-01-08)
+#### G2 version 3.4.9
 #### Bug Fixes
 - fix(chart): auto padding with more accurate backPlot range, Closes #1079
 - fix: applyMatrix when calculating bbox of axis title

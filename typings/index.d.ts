@@ -201,7 +201,7 @@ declare namespace bizcharts{
 
   export interface LegendProps extends React.Props<any> {
     name?: string;
-    visible?: string;
+    visible?: boolean;
     position?: PositionType;
     title?: boolean;
     offsetX?: number;
