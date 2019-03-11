@@ -70,10 +70,10 @@ declare namespace bizcharts{
     visible?: boolean;
     position?: PositionType;
     title?: object;
-    line?: G2.Styles.line;
-    tickLine?: G2.Styles.tickLine;
-    label?: G2.AxisLabel;
-    grid?: G2.AxisGrid;
+    line?: G2.Styles.line | boolean;
+    tickLine?: G2.Styles.tickLine | boolean;
+    label?: G2.AxisLabel | boolean;
+    grid?: G2.AxisGrid | boolean;
     subTickCount?: number;
     subTickLine?: G2.Styles.tickLine;
   }
@@ -242,10 +242,12 @@ declare namespace bizcharts{
   export interface TooltipProps extends React.Props<any> {
     showTitle?: boolean;
     title?: string
-    crosshairs?: {
-      type?: CrosshairsType;
-      style?: G2.Styles.background | G2.Styles.line;
-    };
+    crosshairs?: 
+      | {
+          type?: CrosshairsType;
+          style?: G2.Styles.background | G2.Styles.line;
+        }
+      | boolean;
     offset?: number;
     containerTpl?: string;
     itemTpl?: string;
