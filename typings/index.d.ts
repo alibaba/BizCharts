@@ -75,6 +75,7 @@ declare namespace bizcharts{
     label?: G2.AxisLabel | boolean;
     grid?: G2.AxisGrid | boolean;
     min?: number;
+    zIndex?: number;
     subTickCount?: number;
     subTickLine?: G2.Styles.tickLine;
   }
