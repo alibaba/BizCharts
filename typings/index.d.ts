@@ -187,6 +187,7 @@ declare namespace bizcharts{
     select?: boolean | [boolean, any];
     active?: boolean; // 图形激活交互开关
     animate?: any;
+    line?: G2.Styles.line | boolean;
   }
 
   export interface GuideProps extends React.Props<any> {}
