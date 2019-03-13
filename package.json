@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "3.4.4",
+  "version": "3.4.5",
   "description": "A powerful React chart library based G2 for browser",
   "main": "umd/BizCharts.js",
   "browser": "umd/BizCharts.js",
@@ -42,8 +42,7 @@
     "bundle-analyse": "cross-env NODE_ENV=analyse webpack src/index.jsx build/BizCharts.js"
   },
   "pre-commit": [
-    "lint",
-    "test:pre"
+    "lint"
   ],
   "repository": {
     "type": "git",

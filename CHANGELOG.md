@@ -1,6 +1,12 @@
 ### 3.4.4 (待发布)
 #### G2 version 3.4.10
 #### Bug Fixes
+- revert chart data update, have no animation.
+- fix legend ts position props.
+
+### 3.4.4 (版本有问题，已经撤销)
+#### G2 version 3.4.10
+#### Bug Fixes
 - fix chart data update, have no animation.
 
 ### 3.4.3 (2018-01-08)

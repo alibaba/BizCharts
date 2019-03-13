@@ -132,7 +132,8 @@ export default class Processor {
     if (this.updated) {
       g2Update.synchronizeG2Update(this.chart, this.config);
     }
-    if (g2Update.needRepaint(this.config) && (this.added || this.deleted || this.updated)) {
+    // if (g2Update.needRepaint(this.config) && (this.added || this.deleted || this.updated)) {
+    if (this.added || this.deleted || this.updated) {
       this.chart.repaint();
     }
 

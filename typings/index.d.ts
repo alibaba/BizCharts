@@ -61,6 +61,7 @@ declare namespace bizcharts{
   export type GeomAdjustType = 'stack' | 'dodge' | 'jitter' | 'symmetric';
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
+  export type LegendPositionType = 'top' | 'bottom' | 'left' | 'right' | 'left-top' | 'left-center' | 'left-bottom' | 'right-top' | 'right-bottom' | 'right-center' | 'top-left' | 'top-center' | 'top-bottom' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
   /**
    * components
@@ -202,7 +203,7 @@ declare namespace bizcharts{
   export interface LegendProps extends React.Props<any> {
     name?: string;
     visible?: boolean;
-    position?: PositionType;
+    position?: LegendPositionType;
     title?: boolean;
     offsetX?: number;
     offsetY?: number;
