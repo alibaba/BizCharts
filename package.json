@@ -58,7 +58,6 @@
   },
   "dependencies": {
     "@antv/g2": "3.4.10",
-    "babel-plugin-istanbul": "^3.0.0",
     "invariant": "^2.2.2",
     "prop-types": "^15.6.0",
     "warning": "^3.0.0"
