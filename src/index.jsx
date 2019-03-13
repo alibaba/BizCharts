@@ -3,7 +3,7 @@ import Util from './shared/util';
 import Themes from './themes';
 import * as components from './components';
 
-// G2.Global.animate = false;
+G2.Global.animate = false;
 
 const BizCharts = Util.mix(components, {
   G2,
