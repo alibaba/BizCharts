@@ -123,7 +123,7 @@
     "sinon": "^7.1.0",
     "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-dev-server": ">=3.1.11"
+    "webpack-dev-server": "2.9.1"
   },
   "license": "MIT",
   "directories": {
