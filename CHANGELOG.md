@@ -1,4 +1,4 @@
-### 3.4.4 (待发布)
+### 3.4.5
 #### G2 version 3.4.10
 #### Bug Fixes
 - revert chart data update, have no animation.
