@@ -57,7 +57,7 @@ declare namespace bizcharts{
   export type CoordType = 'rect' | 'polar' | 'theta' | 'helix';
   export type CrosshairsType = 'rect' | 'x' | 'y' | 'cross';
   export type FacetType = 'rect' | 'list' | 'circle' | 'tree' | 'mirror' | 'matrix';
-  export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'areaStack' | 'schemaDodge';
+  export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'lineStack' | 'areaStack' | 'schemaDodge';
   export type GeomAdjustType = 'stack' | 'dodge' | 'jitter' | 'symmetric';
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
