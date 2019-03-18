@@ -32,7 +32,7 @@ class Chart extends (React.PureComponent || React.Component) {
   hasViewSource = () => {
     let hasViewSource = false;
     React.Children.map(this.props.children, (child) => {
-      if (!hasViewSource && typeof (child.type) === 'function' && child.type.name === 'View' && child.props.data && hasSource(child.props.data)) {
+      if (!hasViewSource && child && typeof (child.type) === 'function' && child.type.name === 'View' && child.props.data && hasSource(child.props.data)) {
         hasViewSource = true;
       }
     });
