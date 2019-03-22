@@ -13,6 +13,7 @@ import Map from './map';
 import Guage from './guage';
 import Slider from './slider';
 import Guide from './guide';
+import Others from './others';
 
 
 export default {
@@ -30,6 +31,7 @@ export default {
     Guage,
     Map,
     Slider,
-    Guide
+    Guide,
+    Others
   },
 };

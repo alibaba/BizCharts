@@ -1,3 +1,8 @@
+### 3.5.1
+#### G2 version 3.5.1
+#### Fix Bugs
+- 韦恩图VennChart 接口变更支持。
+
 ### 3.5.0
 #### G2 version 3.5.1
 #### New Features
