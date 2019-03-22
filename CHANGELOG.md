@@ -1,3 +1,28 @@
+### 3.5.0
+#### G2 version 3.5.1
+#### New Features
+- feat(venn): venn geom label supports position adjusting
+- feat(types): improve TooltipConfig type definition
+- feat(types): add full LegendConfig.position enums.
+
+#### Fix Bugs
+- fix: label should keep default textStyle when textStyle is a function and returns null.
+- fix: 兼容，legend实例attr中存在x与y而canvas形式中是通过group获取的兼容.
+- fix(scale): Scale config should be effective when data is null or data length is 0.
+- fix(legend): fix the scale alias for mixed legend does not work.
+- fix(tooltip): Added line to TooltipConfig crosshairs type
+- fix(Scale): 线性缩放时，需要深拷贝scale配置. 
+- fix: auto padding blocks axis title.
+- fix(schema): use cfg.color for lineAttrs.stroke if available.
+- fix(HtmlTooltip): 在特定场景下HtmlTooltip.hide()时大概率获取不到container
+- fix(label): show label for heatmap.
+- fix: Use cfg.color for lineAttrs.stroke if available.
+- fix: issue-1167 还原格式化.
+- fix: when guide.html() is defined, legends is not in view. 
+- fix: bug in guide. 
+- fix: *.d.ts: Shape.registerShape and BashView.coord declare
+
+
 ### 3.4.5
 #### G2 version 3.4.10
 #### Bug Fixes
@@ -12,9 +37,9 @@
 ### 3.4.3 (2018-01-08)
 #### G2 version 3.4.9
 #### Bug Fixes
-- fix(chart): auto padding with more accurate backPlot range, Closes #1079
+- fix(chart): auto padding with more accurate backPlot range.
 - fix: applyMatrix when calculating bbox of axis title
-- fix(chart): auto padding with more accurate backPlot range, Closes #1079
+- fix(chart): auto padding with more accurate backPlot range.
 - clearInteraction不能清除scrollBar的bug
 - fix pie-label adjustItems offset err
 
