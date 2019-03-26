@@ -3,6 +3,7 @@ import Pie from './pie';
 import Rose from './rose';
 import DonutRose from './donutRose';
 import Sunburst from './sunburst';
+import Us from './us';
 
 export default class PieChart extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class PieChart extends Component {
           <Rose />
           <DonutRose />
           <Sunburst />
+          <Us />
         </div>
       </div>
     );

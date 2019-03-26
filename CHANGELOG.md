@@ -1,4 +1,9 @@
 ### 3.5.1
+#### G2 version 3.5.2
+#### Fix Bugs
+- 饼图数据为空时，报错。
+
+### 3.5.1
 #### G2 version 3.5.1
 #### Fix Bugs
 - 韦恩图VennChart 接口变更支持。
