@@ -62,6 +62,7 @@ declare namespace bizcharts{
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
   export type LegendPositionType = 'top' | 'bottom' | 'left' | 'right' | 'left-top' | 'left-center' | 'left-bottom' | 'right-top' | 'right-bottom' | 'right-center' | 'top-left' | 'top-center' | 'top-bottom' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+  export type triggerOnType = 'mousemove' | 'click' | 'none'
 
   /**
    * components
@@ -245,9 +246,13 @@ declare namespace bizcharts{
   }
 
   export interface TooltipProps extends React.Props<any> {
+    useHtml?: boolean;
+    type?: string;
+    triggerOn?: triggerOnType;
+    enterable?: boolean;
     showTitle?: boolean;
     title?: string
-    crosshairs?: 
+    crosshairs?:
       | {
           type?: CrosshairsType;
           style?: G2.Styles.background | G2.Styles.line;
