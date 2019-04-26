@@ -202,6 +202,7 @@ declare namespace bizcharts{
     autoRotate?: boolean;
     formatter?: ((text?: any, item?: any, index?: number) => string) | number;
     htmlTemplate?: ((text?: any, item?: any, index?: number) => string) | string;
+    labelEmit?: boolean;
   }
 
   export interface LegendProps extends React.Props<any> {
