@@ -36,7 +36,7 @@
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
     "testDemo": "webpack-dev-server --progress --port 9000 --content-base testDemo --inline --config testDemo/webpack.config.js",
     "test": "cross-env BABEL_ENV=test NODE_ENV=test karma start test/karma.conf.js",
-    "test:pre":"cross-env BABEL_ENV=test NODE_ENV=testPre karma start test/karma.conf.js --single-run",
+    "test:pre": "cross-env BABEL_ENV=test NODE_ENV=testPre karma start test/karma.conf.js --single-run",
     "lint": "eslint src/ --ext '.js,.jsx'",
     "autofix": "eslint src --fix",
     "bundle-analyse": "cross-env NODE_ENV=analyse webpack src/index.jsx build/BizCharts.js"
@@ -59,7 +59,9 @@
   "dependencies": {
     "@antv/g2": "3.5.2",
     "invariant": "^2.2.2",
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.6.0",
+    "resize-observer-polyfill": "^1.5.1",
     "warning": "^3.0.0"
   },
   "devDependencies": {
