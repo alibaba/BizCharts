@@ -45,6 +45,7 @@ export default class PureChart extends Component {
       getViewId: this.getViewId,
     };
   }
+
   componentDidMount() {
     this.addElement(this.name, this.id, {
       ...this.props,
