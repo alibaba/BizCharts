@@ -5,8 +5,8 @@
 
 // Last module patch version validated against: 3.1.0
 
-import * as React from "react";
 import * as G2 from '@antv/g2/src';
+import * as React from "react";
 
 export = bizcharts;
 export as namespace bizcharts;
@@ -70,11 +70,11 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: PositionType;
-    title?: object | boolean;
-    line?: G2.Styles.line | boolean;
-    tickLine?: G2.Styles.tickLine | boolean;
-    label?: G2.AxisLabel | boolean;
-    grid?: G2.AxisGrid | boolean;
+    title?: G2.Styles.text | boolean | null;
+    line?: G2.Styles.line | null;
+    tickLine?: G2.Styles.tickLine | null;
+    label?: G2.AxisLabel | null;
+    grid?: G2.AxisGrid | null;
     min?: number;
     zIndex?: number;
     subTickCount?: number;
@@ -248,7 +248,7 @@ declare namespace bizcharts{
   export interface TooltipProps extends React.Props<any> {
     showTitle?: boolean;
     title?: string
-    crosshairs?: 
+    crosshairs?:
       | {
           type?: CrosshairsType;
           style?: G2.Styles.background | G2.Styles.line;
