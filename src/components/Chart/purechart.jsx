@@ -30,6 +30,9 @@ export default class PureChart extends Component {
     this.gId = 0;
     this.id = this.createId();
     this.g2Processor = new Processor();
+    this.forceFit = debounce(() => {
+      this.chart.forceFit();
+    }, 300);
   }
 
   getChildContext() {
@@ -52,12 +55,9 @@ export default class PureChart extends Component {
     this.notifyG2Instance();
 
     //  ResizeObserver style warning
-    const ro = new ResizeObserver(
-      debounce(() => {
-        this.chart.forceFit();
-      }, 300)
-    );
+    const ro = new ResizeObserver(this.forceFit);
     ro.observe(this.containerWrap);
+    this.observe = ro;
   }
 
   componentDidUpdate() {
@@ -75,6 +75,12 @@ export default class PureChart extends Component {
   componentWillUnmount() {
     this.g2Processor.destory();
     this.chart = null;
+    if (this.forceFit) {
+      this.forceFit.cancel();
+    }
+    if (this.observe) {
+      this.observe.unobserve(this.containerWrap);
+    }
     this.containerWrap = null;
   }
 
@@ -82,7 +88,7 @@ export default class PureChart extends Component {
     return this.chart;
   }
 
-  getViewId = () => { };
+  getViewId = () => {};
 
   getParentInfo = () => {
     return {
@@ -114,7 +120,7 @@ export default class PureChart extends Component {
     }
   }
 
-  refHandle = (cw) => {
+  refHandle = cw => {
     // chart container wrap for reset operation
     if (!this.containerWrap) {
       this.containerWrap = cw;
