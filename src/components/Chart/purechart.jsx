@@ -31,6 +31,7 @@ export default class PureChart extends Component {
     this.id = this.createId();
     this.g2Processor = new Processor();
     this.forceFit = debounce(() => {
+      if (!this.chart) return;
       this.chart.forceFit();
     }, 300);
   }
