@@ -46,6 +46,8 @@ export default {
     Prop.init(COORD_FUNC_PROPS, others, (value, key) => {
       if (key === 'reflect') {
         Util.each(value, v => coordIns[key](v));
+      } else if (key === 'transpose') {
+        if (value[0] === true) coordIns[key](...value);
       } else {
         coordIns[key](...value);
       }

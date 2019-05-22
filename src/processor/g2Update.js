@@ -163,6 +163,8 @@ const iUpdate = {
       Prop.init(COORD_FUNC_PROPS, nextProps, (value, key) => {
         if (key === 'reflect') {
           Util.each(value, v => g2Instance[key](v));
+        } else if (key === 'transpose') {
+          if (value[0] === true) g2Instance[key](...value);
         } else {
           g2Instance[key](...value);
         }
