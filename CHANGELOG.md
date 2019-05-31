@@ -1,3 +1,9 @@
+### 3.5.3
+#### G2 version 3.5.7
+#### Fix Bugs
+- data=[], legend tail bug
+- fix issue-590
+
 ### 3.5.1
 #### G2 version 3.5.2
 #### Fix Bugs
