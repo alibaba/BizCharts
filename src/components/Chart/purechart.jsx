@@ -13,6 +13,7 @@ export default class PureChart extends Component {
     width: PropTypes.number,
     height: PropTypes.number.isRequired,
     onGetG2Instance: PropTypes.func,
+    forceFit: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -56,9 +57,11 @@ export default class PureChart extends Component {
     this.notifyG2Instance();
 
     //  ResizeObserver style warning
-    const ro = new ResizeObserver(this.forceFit);
-    ro.observe(this.containerWrap);
-    this.observe = ro;
+    if (this.props.forceFit) {
+      const ro = new ResizeObserver(this.forceFit);
+      ro.observe(this.containerWrap);
+      this.observe = ro;
+    }
   }
 
   componentDidUpdate() {
@@ -121,7 +124,7 @@ export default class PureChart extends Component {
     }
   }
 
-  refHandle = cw => {
+  refHandle = (cw) => {
     // chart container wrap for reset operation
     if (!this.containerWrap) {
       this.containerWrap = cw;

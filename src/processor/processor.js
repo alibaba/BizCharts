@@ -65,7 +65,7 @@ export default class Processor {
   }
 
   createG2Instance() {
-    const config = this.config;
+    const { config } = this;
     const chart = g2Creator.createChart(config, this.elementInfos);
     g2Creator.executeChartConfig(chart, config, this.elementInfos);
     g2Creator.synchronizeG2Add(chart, config, this.elementInfos);
@@ -85,6 +85,7 @@ export default class Processor {
 
   resetStates() {
     const elems = this.elementInfos;
+    // eslint-disable-next-line guard-for-in
     for (const id in elems) {
       if (elems[id].updateProps) delete elems[id].updateProps;
       if (this.deleteInfos[id]) {

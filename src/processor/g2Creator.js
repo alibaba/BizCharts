@@ -10,6 +10,7 @@ const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 export default {
   createChart(config) {
     const chartConfig = config.chart;
+    chartConfig.props.forceFit = false;
     const chart = new G2.Chart(chartConfig.props);
     chartConfig.g2Instance = chart;
     return chart;
