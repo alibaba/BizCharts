@@ -23,7 +23,7 @@ export default class BasicLineChart extends Component {
   
   render() {
     return (
-      <Chart height={400} data={data} scale={scale} forceFit>
+      <Chart height={400} data={data} scale={scale} width={400} >
         <Axis name="year" />
         <Axis name="value" />
         <Tooltip crosshairs={{type : "y"}}/>

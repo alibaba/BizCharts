@@ -1,3 +1,8 @@
+### 3.5.4-beta.0
+#### G2 version 3.5.7
+#### Fix Bugs
+- fix chart forceFit is false
+
 ### 3.5.3
 #### G2 version 3.5.7
 #### Fix Bugs
