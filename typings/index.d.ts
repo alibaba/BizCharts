@@ -262,7 +262,7 @@ declare namespace bizcharts{
     offset?: number;
     containerTpl?: string;
     itemTpl?: string;
-    htmlContent?: (title: string, items: any[]) => string;
+    htmlContent?: (title?: string, items?: any[]) => string;
     'g2-tooltip'?: React.CSSProperties;
     'g2-tooltip-title'?: React.CSSProperties;
     'g2-tooltip-list'?: React.CSSProperties;
