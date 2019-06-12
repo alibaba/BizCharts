@@ -11,7 +11,7 @@ import ErrorBoundary from '../ErrorBoundary';
 function hasSource(source) {
   let flag = true;
 
-  if (source == null || source.length === 0) {
+  if (source == null || source.length === 0 || (source.rows && source.rows.length === 0)) {
     flag = false;
   }
 

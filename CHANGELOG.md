@@ -1,6 +1,11 @@
 ### 3.5.4-beta.0
 #### G2 version 3.5.7
 #### Fix Bugs
+- dataview datasource length is 0,show placeholder.
+
+### 3.5.4-beta.0
+#### G2 version 3.5.7
+#### Fix Bugs
 - fix chart forceFit is false
 
 ### 3.5.3
