@@ -105,7 +105,7 @@ declare namespace bizcharts{
     pixelRatio?: number;
     data?: any;
     scale?: any;
-    placeholder?: JSX.Element | string;
+    placeholder?: JSX.Element | string | boolean;
     filter?: Array<any>;
     className?: string;
     style?: React.CSSProperties;
@@ -230,7 +230,7 @@ declare namespace bizcharts{
     useHtml?: boolean;
     container?: string; // useHtml 为true时生效
     containerTpl?: string;
-    itemTpl?: string | ((param1?: string, param2?: string, param3?: boolean, index?: number) => string);
+    itemTpl?: string | ((value?: string, color?: string, checked?: boolean, index?: number) => string);
     'g2-legend'?: React.CSSProperties;
     'g2-legend-item'?: React.CSSProperties;
     'g2-legend-list-item'?: React.CSSProperties;
@@ -262,6 +262,7 @@ declare namespace bizcharts{
     offset?: number;
     containerTpl?: string;
     itemTpl?: string;
+    htmlContent?: (title?: string, items?: any[]) => string;
     'g2-tooltip'?: React.CSSProperties;
     'g2-tooltip-title'?: React.CSSProperties;
     'g2-tooltip-list'?: React.CSSProperties;
