@@ -1,4 +1,4 @@
-### 3.5.4-beta.0
+### 3.5.4
 #### G2 version 3.5.7
 #### Fix Bugs
 - dataview datasource length is 0,show placeholder.
