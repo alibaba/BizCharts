@@ -62,6 +62,7 @@ declare namespace bizcharts{
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
   export type LegendPositionType = 'top' | 'bottom' | 'left' | 'right' | 'left-top' | 'left-center' | 'left-bottom' | 'right-top' | 'right-bottom' | 'right-center' | 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+  export type LegendLayoutType = 'vertical' | 'horizontal'
   export type triggerOnType = 'mousemove' | 'click' | 'none'
 
   /**
@@ -210,6 +211,7 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: LegendPositionType;
+    layout?: LegendLayoutType;
     title?: boolean;
     offsetX?: number;
     offsetY?: number;
