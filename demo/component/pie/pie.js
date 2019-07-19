@@ -24,9 +24,7 @@ const cols = {
       return val;
     }
   }
-}   
-
-console.log(G2.version);
+}
 
 export default class PieC extends Component {
   render() {
