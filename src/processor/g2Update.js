@@ -47,6 +47,13 @@ const iUpdate = {
     // });
   },
 
+  needRepaint(config) {
+    const chartConfig = config.chart;
+    const { data } = chartConfig.props;
+    const { data: nextData } = chartConfig.updateProps;
+    return data === nextData;
+  },
+
   synchronizeG2Update(chart, config) {
     this.updateChart(chart, config.chart);
     this.updateAxises(chart, config.axises);
@@ -66,7 +73,7 @@ const iUpdate = {
     const nextProps = chartConfig.updateProps;
     const { width, height, animate, data, scale } = props;
     const { width: nextWidth, height: nextHeight, animate: nextAnimate, data: nextData,
-    scale: nextScale } = nextProps;
+      scale: nextScale } = nextProps;
 
     if (data !== nextData) {
       chart.changeData(nextData);
@@ -120,8 +127,6 @@ const iUpdate = {
         this.updateAxis(chart, axises[id]);
       }
     }
-
-    return;
   },
 
   updateTooltip(chart, config) {
@@ -156,7 +161,13 @@ const iUpdate = {
       const g2Instance = chart.coord(nextProps.type, nextAttrs);
       coordConfig.g2Instance = g2Instance;
       Prop.init(COORD_FUNC_PROPS, nextProps, (value, key) => {
-        g2Instance[key](...value);
+        if (key === 'reflect') {
+          Util.each(value, v => g2Instance[key](v));
+        } else if (key === 'transpose') {
+          if (value[0] === true) g2Instance[key](...value);
+        } else {
+          g2Instance[key](...value);
+        }
       });
     }
   },
@@ -199,7 +210,7 @@ const iUpdate = {
 
     if (!Util.shallowEqual(others, nextOthers)
         || !Util.shallowEqual(content, nextContent)
-      ) {
+    ) {
       if (Util.isArray(nextContent)) {
         geom.label(nextContent[0], nextContent[1], nextOthers);
       } else {

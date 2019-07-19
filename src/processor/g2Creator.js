@@ -10,6 +10,7 @@ const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 export default {
   createChart(config) {
     const chartConfig = config.chart;
+    chartConfig.props.forceFit = false;
     const chart = new G2.Chart(chartConfig.props);
     chartConfig.g2Instance = chart;
     return chart;
@@ -44,7 +45,13 @@ export default {
       Util.without(others, COORD_FUNC_PROPS)
     );
     Prop.init(COORD_FUNC_PROPS, others, (value, key) => {
-      coordIns[key](...value);
+      if (key === 'reflect') {
+        Util.each(value, v => coordIns[key](v));
+      } else if (key === 'transpose') {
+        if (value[0] === true) coordIns[key](...value);
+      } else {
+        coordIns[key](...value);
+      }
     });
     coordConfig.g2Instance = coordIns;
   },

@@ -45,7 +45,8 @@ export default Util.mix({}, Util, {
 
     Util.each(objA, (v, k) => {
       if (!is(v, objB[k])) {
-        return (ret = false);
+        ret = false;
+        return ret;
       }
       return true;
     });

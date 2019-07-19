@@ -27,10 +27,8 @@ export default class Processor {
       if (data !== nextData || !Util.isEqual(otherProps, nextOtherProps)) {
         this.updated = true;
       }
-    } else {
-      if (!Util.isEqual(props, nextProps)) {
-        this.updated = true;
-      }
+    } else if (!Util.isEqual(props, nextProps)) {
+      this.updated = true;
     }
   }
 
@@ -67,7 +65,7 @@ export default class Processor {
   }
 
   createG2Instance() {
-    const config = this.config;
+    const { config } = this;
     const chart = g2Creator.createChart(config, this.elementInfos);
     g2Creator.executeChartConfig(chart, config, this.elementInfos);
     g2Creator.synchronizeG2Add(chart, config, this.elementInfos);
@@ -87,6 +85,7 @@ export default class Processor {
 
   resetStates() {
     const elems = this.elementInfos;
+    // eslint-disable-next-line guard-for-in
     for (const id in elems) {
       if (elems[id].updateProps) delete elems[id].updateProps;
       if (this.deleteInfos[id]) {
@@ -134,6 +133,7 @@ export default class Processor {
     if (this.updated) {
       g2Update.synchronizeG2Update(this.chart, this.config);
     }
+    // if (g2Update.needRepaint(this.config) && (this.added || this.deleted || this.updated)) {
     if (this.added || this.deleted || this.updated) {
       this.chart.repaint();
     }

@@ -38,7 +38,7 @@ export default class View extends BaseComponent {
     };
   }
 
-  getViewId = () => { 
+  getViewId = () => {
     return this.id;
   }
 }

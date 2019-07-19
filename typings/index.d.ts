@@ -5,8 +5,8 @@
 
 // Last module patch version validated against: 3.1.0
 
-import * as React from "react";
 import * as G2 from '@antv/g2/src';
+import * as React from "react";
 
 export = bizcharts;
 export as namespace bizcharts;
@@ -57,10 +57,13 @@ declare namespace bizcharts{
   export type CoordType = 'rect' | 'polar' | 'theta' | 'helix';
   export type CrosshairsType = 'rect' | 'x' | 'y' | 'cross';
   export type FacetType = 'rect' | 'list' | 'circle' | 'tree' | 'mirror' | 'matrix';
-  export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'areaStack' | 'schemaDodge';
+  export type GeomType = 'point' | 'path' | 'line' | 'area' | 'interval' | 'polygon' | 'edge' | 'schema' | 'heatmap' | 'pointStack' | 'pointJitter' | 'pointDodge' | 'intervalStack' | 'intervalDodge' | 'intervalSymmetric' | 'lineStack' | 'areaStack' | 'schemaDodge';
   export type GeomAdjustType = 'stack' | 'dodge' | 'jitter' | 'symmetric';
   export type MarkerType = 'circle' | 'square' | 'bowtie' | 'diamond' | 'hexagon' | 'triangle' | 'triangle-down' | 'hollowCircle' | 'hollowSquare' | 'hollowBowtie' | 'hollowDiamond' | 'hollowHexagon' | 'hollowTriangle' | 'hollowTriangle-down' | 'cross' | 'tick' | 'plus' | 'hyphen' | 'line';
   export type PositionType = 'top' | 'bottom' | 'left' | 'right';
+  export type LegendPositionType = 'top' | 'bottom' | 'left' | 'right' | 'left-top' | 'left-center' | 'left-bottom' | 'right-top' | 'right-bottom' | 'right-center' | 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+  export type LegendLayoutType = 'vertical' | 'horizontal'
+  export type triggerOnType = 'mousemove' | 'click' | 'none'
 
   /**
    * components
@@ -69,11 +72,13 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: PositionType;
-    title?: object;
-    line?: G2.Styles.line;
-    tickLine?: G2.Styles.tickLine;
-    label?: G2.AxisLabel;
-    grid?: G2.AxisGrid;
+    title?: G2.AxisTile | boolean | null;
+    line?: G2.Styles.line | null;
+    tickLine?: G2.Styles.tickLine | null;
+    label?: G2.AxisLabel | null;
+    grid?: G2.AxisGrid | null;
+    min?: number;
+    zIndex?: number;
     subTickCount?: number;
     subTickLine?: G2.Styles.tickLine;
   }
@@ -101,7 +106,7 @@ declare namespace bizcharts{
     pixelRatio?: number;
     data?: any;
     scale?: any;
-    placeholder?: JSX.Element | string;
+    placeholder?: JSX.Element | string | boolean;
     filter?: Array<any>;
     className?: string;
     style?: React.CSSProperties;
@@ -181,10 +186,12 @@ declare namespace bizcharts{
     size?: number | string | [string, [number, number]] | [string, (d?: any) => number];
     opacity?: string | number | [string, (d?: any) => number];
     style?: object | [string, object];
-    tooltip?: boolean | string | [string, (x?: any, y?: any) => {name?: string; value: string}];
+    tooltip?: boolean | string | [string, (...args: any[]) => {name?: string; value: string}];
     select?: boolean | [boolean, any];
     active?: boolean; // 图形激活交互开关
     animate?: any;
+    line?: G2.Styles.line | boolean;
+    selected?: boolean;
   }
 
   export interface GuideProps extends React.Props<any> {}
@@ -197,12 +204,14 @@ declare namespace bizcharts{
     autoRotate?: boolean;
     formatter?: ((text?: any, item?: any, index?: number) => string) | number;
     htmlTemplate?: ((text?: any, item?: any, index?: number) => string) | string;
+    labelEmit?: boolean;
   }
 
   export interface LegendProps extends React.Props<any> {
     name?: string;
-    visible?: string;
-    position?: PositionType;
+    visible?: boolean;
+    position?: LegendPositionType;
+    layout?: LegendLayoutType;
     title?: boolean;
     offsetX?: number;
     offsetY?: number;
@@ -223,7 +232,7 @@ declare namespace bizcharts{
     useHtml?: boolean;
     container?: string; // useHtml 为true时生效
     containerTpl?: string;
-    itemTpl?: string | ((param1?: string, param2?: string, param3?: boolean, index?: number) => string);
+    itemTpl?: string | ((value?: string, color?: string, checked?: boolean, index?: number) => string);
     'g2-legend'?: React.CSSProperties;
     'g2-legend-item'?: React.CSSProperties;
     'g2-legend-list-item'?: React.CSSProperties;
@@ -240,14 +249,22 @@ declare namespace bizcharts{
   }
 
   export interface TooltipProps extends React.Props<any> {
+    useHtml?: boolean;
+    type?: string;
+    triggerOn?: triggerOnType;
+    enterable?: boolean;
     showTitle?: boolean;
-    crosshairs?: {
-      type?: CrosshairsType;
-      style?: G2.Styles.background | G2.Styles.line;
-    };
+    title?: string
+    crosshairs?:
+      | {
+          type?: CrosshairsType;
+          style?: G2.Styles.background | G2.Styles.line;
+        }
+      | boolean;
     offset?: number;
     containerTpl?: string;
     itemTpl?: string;
+    htmlContent?: (title?: string, items?: any[]) => string;
     'g2-tooltip'?: React.CSSProperties;
     'g2-tooltip-title'?: React.CSSProperties;
     'g2-tooltip-list'?: React.CSSProperties;
@@ -295,6 +312,9 @@ declare namespace bizcharts{
     Region?: Base<GuideProps>;
     Html?: Base<GuideProps>;
     Arc?: Base<GuideProps>;
+    RegionFilter?:Base<GuideProps>;
+    DataMarker?:Base<GuideProps>;
+    DataRegion?:Base<GuideProps>;
   }
   namespace Guide {
     interface LineProps {
@@ -361,6 +381,39 @@ declare namespace bizcharts{
       offsetY?: number;
     }
     export class Text extends Base<TextProps> {}
+
+    interface RegionFilterProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      color?: string;
+      apply?: Array<any>
+    }
+    export class RegionFilter extends Base<RegionFilterProps> {}
+
+    interface DataMarkerProps {
+      top?: boolean;
+      position?: object | any[] | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataMarker extends Base<DataMarkerProps> {}
+
+    interface DataRegionProps {
+      top?: boolean;
+      start?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      end?: object | Array<any> | ((xScale?: any, yScale?: any) => any);
+      content?: string;
+      style?: object;
+      display?: object;
+      lineLength?: number;
+      regionStyle?: object;
+      direction?: 'upward' | 'downward';
+    }
+    export class DataRegion extends Base<DataRegionProps> {}
 
   }
   export class Label extends Base<LabelProps> {}

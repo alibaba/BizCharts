@@ -2,5 +2,10 @@
   "presets": ["es2015", "stage-0", "react"],
   "plugins": [
       "transform-object-assign"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [ "istanbul" ]
+    }
+  }
 }

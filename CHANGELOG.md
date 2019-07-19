@@ -1,3 +1,178 @@
+### 3.5.4
+#### G2 version 3.5.7
+#### Fix Bugs
+- dataview datasource length is 0,show placeholder.
+
+### 3.5.4-beta.0
+#### G2 version 3.5.7
+#### Fix Bugs
+- fix chart forceFit is false
+
+### 3.5.3
+#### G2 version 3.5.7
+#### Fix Bugs
+- data=[], legend tail bug
+- fix issue-590
+
+### 3.5.1
+#### G2 version 3.5.2
+#### Fix Bugs
+- 饼图数据为空时，报错。
+
+### 3.5.1
+#### G2 version 3.5.1
+#### Fix Bugs
+- 韦恩图VennChart 接口变更支持。
+
+### 3.5.0
+#### G2 version 3.5.1
+#### New Features
+- feat(venn): venn geom label supports position adjusting
+- feat(types): improve TooltipConfig type definition
+- feat(types): add full LegendConfig.position enums.
+
+#### Fix Bugs
+- fix: label should keep default textStyle when textStyle is a function and returns null.
+- fix: 兼容，legend实例attr中存在x与y而canvas形式中是通过group获取的兼容.
+- fix(scale): Scale config should be effective when data is null or data length is 0.
+- fix(legend): fix the scale alias for mixed legend does not work.
+- fix(tooltip): Added line to TooltipConfig crosshairs type
+- fix(Scale): 线性缩放时，需要深拷贝scale配置. 
+- fix: auto padding blocks axis title.
+- fix(schema): use cfg.color for lineAttrs.stroke if available.
+- fix(HtmlTooltip): 在特定场景下HtmlTooltip.hide()时大概率获取不到container
+- fix(label): show label for heatmap.
+- fix: Use cfg.color for lineAttrs.stroke if available.
+- fix: issue-1167 还原格式化.
+- fix: when guide.html() is defined, legends is not in view. 
+- fix: bug in guide. 
+- fix: *.d.ts: Shape.registerShape and BashView.coord declare
+
+
+### 3.4.5
+#### G2 version 3.4.10
+#### Bug Fixes
+- revert chart data update, have no animation.
+- fix legend ts position props.
+
+### 3.4.4 (版本有问题，已经撤销)
+#### G2 version 3.4.10
+#### Bug Fixes
+- fix chart data update, have no animation.
+
+### 3.4.3 (2018-01-08)
+#### G2 version 3.4.9
+#### Bug Fixes
+- fix(chart): auto padding with more accurate backPlot range.
+- fix: applyMatrix when calculating bbox of axis title
+- fix(chart): auto padding with more accurate backPlot range.
+- clearInteraction不能清除scrollBar的bug
+- fix pie-label adjustItems offset err
+
+
+### 3.4.2 (2018-12-26)
+#### G2 version 3.4.8
+- All tracking code is removed, no more unexpected remote request will be sent.
+
+#### Bug Fixes
+- fix(interval): error bar filling issue.
+- fix(schema): error bar can't show
+- fix(scale & filter): remove min max limit if field filtered
+- fix(shape): liquid fill shapes should use hollow shape styles by default,
+- fix(tooltip): 正确清除 markers
+
+### 3.4.1 (2018-11-28)
+#### G2 version 3.4.5
+#### Bug Fixes
+- geom opacity is function
+- tooltip crosshair style & dark theme tooltip
+
+
+### 3.3.1 (2018-11-19)
+
+#### G2 version 3.3.4
+
+#### Bug Fixes
+
+- update @antv/compnent0.2.7, fix pie label bug
+
+### 3.3.0 (2018-11-16)
+
+#### G2 version 3.3.4
+
+#### New Features
+
+- chore(demo): add some guide demos.
+- chore(dev): @babel/env => @babel/preset-env
+- chore(dev): add scripts for npm run pixel-test
+- chore(dev): update issue templates
+- chore: modify components reference
+- feat(theme): add chart view theme to tooltip
+- feat: add default style for guide component.
+- feat: add label type: interval
+- feat: component legend
+- feat: demo for custom html legend. fix: custom html and htmlpage category legend
+- feat: double direction interaction (from chart to legend)
+- feat: legend component html scroll
+- feat: legend demos
+- feat: legend-component, html controller, offset
+- feat: mini tooltip
+- feat: tooltip controller module import
+- refactor(axis): AxisController
+- refactor(demo): modify demos' styles
+- refactor(demo): modify html tooltip styles
+- refactor(geom-labels): merge master
+- refactor(legend): update demo html style
+- refactor(tooltip): modify tooltip marker style
+- refactor: adapt to new guide components.
+- refactor: better guide.render().
+- refactor: modify some test case with Labels
+- refactor: tooltip controller
+- refactor: use @antv/components to render label instead of Labels
+- refactor: use components to render label instead of `Labels`
+- refator: modify label callback args to fields
+- revert: remove polar coordinate support
+- test(bin): add scripts for npm run pixel-test
+- test: add Node.js 10
+- test: delete some tests; fix: @antv/component/lib
+- test: legend controller
+
+#### Bug Fixes
+
+- fix(area): modify default style of area
+- fix(area): remove default fillOpacity from area shape
+- fix(axis): clear axis component correctly in axisController
+- fix(axis): set default label offset to 8px
+- fix(dev): require lib version instead of src
+- fix(geom-labels): add unit test of scaled coord labels
+- fix(geom-labels): change label dependency to lib
+- fix(geom-labels): fix callback value type
+- fix(geom-labels): fix default label textStyle sometimes doesn't work
+- fix(geom-labels): fix label dependency
+- fix(geom-labels): fix label offset format to match with component
+- fix(geom-labels): fix offset exception when coord is scaled
+- fix(geom-labels): fix polygon label position calculation
+- fix(geom-labels): fix transposed text align logic
+- fix(geom-labels): modify label position calculation when geom is polygon
+- fix(geom-labels): resume drawLines
+- fix(label): merge labelLine only if a value is assigned to it
+- fix(legend): fix default style of color-legend demo
+- fix(legend): fix default style of legend marker of area
+- fix(legend): fix default style of legend marker of area & demo styles
+- fix(legend): marker for area should be a closed path
+- fix(pie-label): fix labelLine end point error
+- fix(test): auto padding in ci evironment
+- fix(tooltip): fixed tooltip won't hide when plotleave fired
+- fix(tooltip): should not merge viewTheme into default tooltip cfg again
+- fix(tooltip): viewTheme in controller
+- fix(tooltip):mini-tooltip flash
+- fix: configuration to control the interaction from chart to legend -- reactive [boolean]
+- fix: fix polar labels don't work
+- fix: html legend filter
+- fix: scales to scale
+- fix: viewTheme
+
+
 ### 3.2.4（2018-9-26）
 #### G2 version 3.2.8
 #### New features

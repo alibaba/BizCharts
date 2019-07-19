@@ -3,12 +3,21 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
 module.exports = function (config) {
-  if (process.env.RELEASE) {
-    config.singleRun = true;
+  const reporters = ['progress', 'coverage'];
+
+  let browserName = 'Chrome';
+
+  if (process.env.NODE_ENV === 'testPre') {
+    config.singleRun = true; // eslint-disable-line
+
+    browserName = 'ChromeHeadless';
   }
+  // } else {
+  //   reporters.push('coveralls');
+  // }
 
   config.set({
 
@@ -44,7 +53,7 @@ module.exports = function (config) {
           /node_modules\/sinon\//,
         ],
         loaders: [{
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: [
             path.resolve('node_modules/'),
           ],
@@ -62,6 +71,7 @@ module.exports = function (config) {
         'text-encoding': 'window',
       },
       resolve: {
+        extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json'],
         alias: {
           sinon: 'sinon/pkg/sinon',
           bizcharts: path.resolve('./src/index.jsx'),
@@ -87,9 +97,13 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage', 'coveralls'],
+    reporters,
 
     coverageReporter: {
+      files: [
+        'src/**/*.js',
+        'test/**/*.js'
+      ],
       dir: 'test',
       reporters: [{
         type: 'html',
@@ -100,11 +114,6 @@ module.exports = function (config) {
         type: 'lcov',
         subdir: 'coverage',
       }],
-    },
-
-    webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      stats: 'errors-only',
     },
 
     // web server port
@@ -119,8 +128,15 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [browserName],
 
     browserNoActivityTimeout: 60000,
+
+    // customLaunchers: {
+    //   ChromeHeadless: {
+    //     base: 'Chrome',
+    //     flags: ['--headless'],
+    //   },
+    // },
   });
 };

@@ -1,22 +1,21 @@
+/* eslint react/no-unused-prop-types: "off" */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Processor from '../../processor/processor';
+import ResizeObserver from 'resize-observer-polyfill';
+import debounce from 'lodash.debounce';
 
 export default class PureChart extends Component {
   static propTypes = {
-    data: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.object),
-      PropTypes.object,
-    ]),
-    scale: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.array,
-    ]),
+    data: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.object]),
+    scale: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     animate: PropTypes.bool,
     width: PropTypes.number,
     height: PropTypes.number.isRequired,
     onGetG2Instance: PropTypes.func,
-  }
+    forceFit: PropTypes.bool,
+  };
+
   static childContextTypes = {
     addElement: PropTypes.func,
     updateElement: PropTypes.func,
@@ -32,6 +31,10 @@ export default class PureChart extends Component {
     this.gId = 0;
     this.id = this.createId();
     this.g2Processor = new Processor();
+    this.forceFit = debounce(() => {
+      if (!this.chart) return;
+      this.chart.forceFit();
+    }, 300);
   }
 
   getChildContext() {
@@ -46,27 +49,26 @@ export default class PureChart extends Component {
   }
 
   componentDidMount() {
-    this.addElement(
-      this.name,
-      this.id,
-      {
-        ...this.props,
-        container: this.containerWrap,
-      }
-    );
+    this.addElement(this.name, this.id, {
+      ...this.props,
+      container: this.containerWrap,
+    });
     this.chart = this.g2Processor.createG2Instance();
     this.notifyG2Instance();
+
+    //  ResizeObserver style warning
+    if (this.props.forceFit) {
+      const ro = new ResizeObserver(this.forceFit);
+      ro.observe(this.containerWrap);
+      this.observe = ro;
+    }
   }
 
   componentDidUpdate() {
-    this.updateElement(
-      this.name,
-      this.id,
-      {
-        ...this.props,
-        container: this.containerWrap,
-      }
-    );
+    this.updateElement(this.name, this.id, {
+      ...this.props,
+      container: this.containerWrap,
+    });
     const newChart = this.g2Processor.batchedUpdate();
     if (this.chart !== newChart) {
       this.chart = newChart;
@@ -77,6 +79,12 @@ export default class PureChart extends Component {
   componentWillUnmount() {
     this.g2Processor.destory();
     this.chart = null;
+    if (this.forceFit) {
+      this.forceFit.cancel();
+    }
+    if (this.observe) {
+      this.observe.unobserve(this.containerWrap);
+    }
     this.containerWrap = null;
   }
 
@@ -84,31 +92,31 @@ export default class PureChart extends Component {
     return this.chart;
   }
 
-  getViewId = () => { }
+  getViewId = () => {};
 
   getParentInfo = () => {
     return {
       id: this.id,
       name: this.name,
     };
-  }
+  };
 
   createId = () => {
     this.gId += 1;
     return this.gId;
-  }
+  };
 
   addElement = (name, id, props, parentInfo, viewId) => {
     return this.g2Processor.addElement(name, id, props, parentInfo, viewId);
-  }
+  };
 
   updateElement = (name, id, props, parentInfo, viewId) => {
     this.g2Processor.updateElement(name, id, props, parentInfo, viewId);
-  }
+  };
 
   deleteElement = (name, id, parentInfo) => {
     this.g2Processor.deleteElement(name, id, parentInfo);
-  }
+  };
 
   notifyG2Instance() {
     if (this.props.onGetG2Instance) {
@@ -121,10 +129,9 @@ export default class PureChart extends Component {
     if (!this.containerWrap) {
       this.containerWrap = cw;
     }
-  }
+  };
 
   render() {
     return <div ref={this.refHandle}>{this.props.children}</div>;
   }
-};
-
+}

@@ -22,6 +22,7 @@ export default class Empty extends (React.PureComponent || React.Component) {
     ]),
     placeholder: PropTypes.node,
   }
+
   static defaultProps = {
     width: '100%',
     placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>,

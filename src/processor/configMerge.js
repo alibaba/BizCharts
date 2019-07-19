@@ -128,8 +128,6 @@ const iMerge = {
         delete axises[id].g2Instance;
       }
     }
-
-    return;
   },
 
   mergeTooltip(config, clear) {

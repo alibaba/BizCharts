@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HtmlTooltip from './htmlTooltip';
 import CustomLegend from './customLegend';
+import Venn from './venn';
 
 
 export default class OtherChart extends Component {
@@ -10,6 +11,7 @@ export default class OtherChart extends Component {
         <div className='cust-chart-china'>
           <HtmlTooltip />
           <CustomLegend />
+          <Venn />
         </div>
       </div>
     );
