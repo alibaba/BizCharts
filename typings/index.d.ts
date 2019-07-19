@@ -71,7 +71,7 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: PositionType;
-    title?: G2.Styles.text | boolean | null;
+    title?: G2.AxisTile | boolean | null;
     line?: G2.Styles.line | null;
     tickLine?: G2.Styles.tickLine | null;
     label?: G2.AxisLabel | null;
