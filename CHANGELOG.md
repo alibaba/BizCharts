@@ -1,3 +1,9 @@
+### 3.5.5
+#### G2 version 3.5.8-beta.1
+#### Fix Bugs
+- fix bizcharts error can't be fresh.
+
+
 ### 3.5.4
 #### G2 version 3.5.7
 #### Fix Bugs
