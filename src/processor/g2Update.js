@@ -107,7 +107,7 @@ const iUpdate = {
     const { name, visible, ...others } = axisConfig.props;
     const { name: nextName, visible: nextVisible, ...nextOthers } = axisConfig.updateProps;
 
-    warning(name === nextName, '`name` propertry should not be changed in `<Axis />`');
+    // warning(name === nextName, '`name` propertry should not be changed in `<Axis />`');
 
     if (visible !== nextVisible) {
       chart.axis(name, !!nextVisible);
