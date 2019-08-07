@@ -1,6 +1,6 @@
 
 // import interfaceEs6 from 'interface-es6';
-import warning from 'warning';
+// import warning from 'warning';
 import { Util, Prop } from '../shared';
 import common from './common';
 import g2Creator from './g2Creator';
@@ -139,6 +139,8 @@ const iUpdate = {
     }
 
     if (!Util.shallowEqual(props, nextProps)) {
+      // reset tooltip configs
+      chart.tooltip(false);
       chart.tooltip({ ...nextProps });
     }
   },

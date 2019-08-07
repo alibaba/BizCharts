@@ -776,3 +776,39 @@ describe('Tooltip API test: ', () => {
     expect(g2Instance._attrs.tooltipController.options['g2-tooltip-marker']).to.equal(g2TooltipMarker);
   });
 });
+
+describe('Tooltip API test: ', () => {
+  it('attributes set default if not assigned', () => {
+    let g2Instance = null;
+    function DynamicTooltip({ type }) {
+      return (
+        <Chart
+          onGetG2Instance={(g2Chart) => { g2Instance = g2Chart; }}
+          width={600}
+          height={400}
+          data={[
+            { key: 'a', value: 1, type: 'x' },
+            { key: 'a', value: 2, type: 'y' }
+          ]}
+        >
+          {type === 'static' ? (
+            <Tooltip
+              follow={false}
+              position="top"
+            />
+          ) : <Tooltip />}
+          <Geom type="point" position="key*value" />
+        </Chart>
+      );
+    }
+    const wrapper = mount(<DynamicTooltip type="static" />);
+
+    expect(wrapper.find('div').length).to.equal(2);
+    expect(g2Instance._attrs.tooltipController.options.follow).to.equal(false);
+    expect(g2Instance._attrs.tooltipController.options.position).to.equal('top');
+
+    wrapper.setProps({ type: 'default' });
+    expect(g2Instance._attrs.tooltipController.options.follow).to.equal(undefined);
+    expect(g2Instance._attrs.tooltipController.options.position).to.equal(undefined);
+  });
+});
