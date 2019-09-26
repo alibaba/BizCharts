@@ -1,14 +1,13 @@
-
 // import interfaceEs6 from 'interface-es6';
-import warning from 'warning';
+// import warning from 'warning';
 import { Util, Prop } from '../shared';
 import common from './common';
 import g2Creator from './g2Creator';
 import configMerge from './configMerge';
 import EventUtil from './event';
 
-const COORD_FUNC_PROPS = common.COORD_FUNC_PROPS;
-const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
+const { COORD_FUNC_PROPS } = common;
+const { GEOM_FUNC_PROPS } = common;
 
 const iUpdate = {
   needRebuildChart(config) {
@@ -16,29 +15,34 @@ const iUpdate = {
     const chartProps = config.chart.props;
     const nextChartProps = config.chart.updateProps;
 
-    if (!Util.shallowEqual(chartProps.padding, nextChartProps.padding)
-      || !Util.shallowEqual(chartProps.background, nextChartProps.background)
-      || !Util.shallowEqual(chartProps.plotBackground, nextChartProps.plotBackground)
-      || !Util.shallowEqual(chartProps.pixelRatio, nextChartProps.pixelRatio)
-    ) return true;
+    if (
+      !Util.shallowEqual(chartProps.padding, nextChartProps.padding) ||
+      !Util.shallowEqual(chartProps.background, nextChartProps.background) ||
+      !Util.shallowEqual(chartProps.plotBackground, nextChartProps.plotBackground) ||
+      !Util.shallowEqual(chartProps.pixelRatio, nextChartProps.pixelRatio)
+    ) {
+      return true;
+    }
 
     return false;
   },
 
   needReExecute(config) {
-    const geoms = config.geoms;
+    const { geoms } = config;
 
     if (geoms == null) return false;
 
     for (const id in geoms) {
-      if (geoms[id].props && geoms[id].updateProps
-        &&
-        (geoms[id].props.type !== geoms[id].updateProps.type
-         || (geoms[id].props.color && !geoms[id].updateProps.color)
-         || (geoms[id].props.size && !geoms[id].updateProps.size)
-         || (geoms[id].props.shape && !geoms[id].updateProps.shape)
-        )
-      ) return true;
+      if (
+        geoms[id].props &&
+        geoms[id].updateProps &&
+        (geoms[id].props.type !== geoms[id].updateProps.type ||
+          (geoms[id].props.color && !geoms[id].updateProps.color) ||
+          (geoms[id].props.size && !geoms[id].updateProps.size) ||
+          (geoms[id].props.shape && !geoms[id].updateProps.shape))
+      ) {
+        return true;
+      }
     }
     return false;
     // return Object.keys(geoms).find((id) => {
@@ -69,11 +73,16 @@ const iUpdate = {
   updateChart(chart, chartConfig) {
     if (!chartConfig) return;
 
-    const props = chartConfig.props;
+    const { props } = chartConfig;
     const nextProps = chartConfig.updateProps;
     const { width, height, animate, data, scale } = props;
-    const { width: nextWidth, height: nextHeight, animate: nextAnimate, data: nextData,
-      scale: nextScale } = nextProps;
+    const {
+      width: nextWidth,
+      height: nextHeight,
+      animate: nextAnimate,
+      data: nextData,
+      scale: nextScale,
+    } = nextProps;
 
     if (data !== nextData) {
       chart.changeData(nextData);
@@ -131,7 +140,7 @@ const iUpdate = {
 
   updateTooltip(chart, config) {
     if (!config.tooltip) return;
-    const props = config.tooltip.props;
+    const { props } = config.tooltip;
     const nextProps = config.tooltip.updateProps;
 
     if (props == null && nextProps == null) {
@@ -147,7 +156,7 @@ const iUpdate = {
     const coordConfig = config.coord;
     if (!coordConfig) return;
 
-    const props = coordConfig.props;
+    const { props } = coordConfig;
     const nextProps = coordConfig.updateProps;
 
     if (props == null || nextProps == null) {
@@ -173,7 +182,7 @@ const iUpdate = {
   },
 
   updateLegend(chart, legendConfig) {
-    const props = legendConfig.props;
+    const { props } = legendConfig;
     const nextProps = legendConfig.updateProps;
 
     if (!nextProps) return;
@@ -208,9 +217,7 @@ const iUpdate = {
     const { content, ...others } = props;
     const { content: nextContent, ...nextOthers } = nextProps;
 
-    if (!Util.shallowEqual(others, nextOthers)
-        || !Util.shallowEqual(content, nextContent)
-    ) {
+    if (!Util.shallowEqual(others, nextOthers) || !Util.shallowEqual(content, nextContent)) {
       if (Util.isArray(nextContent)) {
         geom.label(nextContent[0], nextContent[1], nextOthers);
       } else {
@@ -220,7 +227,7 @@ const iUpdate = {
   },
 
   updateGeom(chart, geomConfig) {
-    const props = geomConfig.props;
+    const { props } = geomConfig;
     const nextProps = geomConfig.updateProps;
 
     if (!props || !nextProps) return;
@@ -298,18 +305,29 @@ const iUpdate = {
   },
 
   updateView(chart, viewInfo) {
-    if (!viewInfo || !viewInfo.props || !viewInfo.updateProps || viewInfo.parentInfo.name === 'Facet') { return; }
+    if (
+      !viewInfo ||
+      !viewInfo.props ||
+      !viewInfo.updateProps ||
+      viewInfo.parentInfo.name === 'Facet'
+    ) {
+      return;
+    }
     const view = viewInfo.g2Instance;
-    const props = viewInfo.props;
+    const { props } = viewInfo;
     const nextProps = viewInfo.updateProps;
     /*
        Others object must exclude geoms property.
        Because geoms property will cover the g2 view' inner geoms property.
     */
     const { scale, data, animate, axis, filter } = props;
-    const { scale: nextScale, animate: nextAnimate, data: nextData,
-      axis: nextAxis, filter: nextFilter }
-      = nextProps;
+    const {
+      scale: nextScale,
+      animate: nextAnimate,
+      data: nextData,
+      axis: nextAxis,
+      filter: nextFilter,
+    } = nextProps;
 
     if (animate !== nextAnimate) {
       view.animate(nextAnimate);
@@ -324,7 +342,7 @@ const iUpdate = {
     }
 
     if (!Util.shallowEqual(filter, nextFilter)) {
-      nextFilter.forEach((filterArg) => {
+      nextFilter.forEach(filterArg => {
         view.filter(filterArg[0], filterArg[1]);
       });
     }
@@ -340,7 +358,7 @@ const iUpdate = {
   },
 
   updateViews(chart, config) {
-    const views = config.views;
+    const { views } = config;
 
     if (!views) return;
 
@@ -358,7 +376,7 @@ const iUpdate = {
   updateFacet(chart, config) {
     const facetConfig = config.facet;
     if (!facetConfig) return;
-    const props = facetConfig.props;
+    const { props } = facetConfig;
     const nextProps = facetConfig.updateProps;
     if (props == null || nextProps == null) return;
 
@@ -370,7 +388,6 @@ const iUpdate = {
       g2Creator.facet(chart, config);
     }
   },
-
 };
 
 export default iUpdate;
