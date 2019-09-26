@@ -9,7 +9,7 @@ class BaseComponent extends Component {
     createId: PropTypes.func,
     getParentInfo: PropTypes.func,
     getViewId: PropTypes.func,
-  }
+  };
 
   static childContextTypes = {
     addElement: PropTypes.func,
@@ -18,7 +18,7 @@ class BaseComponent extends Component {
     createId: PropTypes.func,
     getParentInfo: PropTypes.func,
     getViewId: PropTypes.func,
-  }
+  };
 
   constructor(props, name) {
     super(props);
@@ -37,10 +37,12 @@ class BaseComponent extends Component {
   }
 
   componentWillMount() {
-    const context = this.context;
+    const { context } = this;
     this.id = context.createId();
     context.addElement(
-      this.name, this.id, this.props,
+      this.name,
+      this.id,
+      this.props,
       context.getParentInfo(),
       context.getViewId()
     );
@@ -48,7 +50,9 @@ class BaseComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.context.updateElement(
-      this.name, this.id, nextProps,
+      this.name,
+      this.id,
+      nextProps,
       this.context.getParentInfo(),
       this.context.getViewId()
     );
@@ -58,19 +62,17 @@ class BaseComponent extends Component {
     this.context.deleteElement(this.name, this.id);
   }
 
-  getParentInfo = () => {
-    return {
-      id: this.id,
-      name: this.name,
-    };
-  }
+  getParentInfo = () => ({
+    id: this.id,
+    name: this.name,
+  });
 
   render() {
-    let children = this.props.children;
+    let { children } = this.props;
 
     if (children) {
       if (children.length) {
-        children = <div>{ children }</div>;
+        children = <div>{children}</div>;
       }
     } else {
       children = null;
@@ -89,7 +91,7 @@ function generateBaseTypedComponent(name) {
       createId: PropTypes.func,
       getParentInfo: PropTypes.func,
       getViewId: PropTypes.func,
-    }
+    };
 
     static childContextTypes = {
       addElement: PropTypes.func,
@@ -98,7 +100,7 @@ function generateBaseTypedComponent(name) {
       createId: PropTypes.func,
       getParentInfo: PropTypes.func,
       getViewId: PropTypes.func,
-    }
+    };
 
     constructor(props) {
       super(props, name);
@@ -115,6 +117,8 @@ function generateBaseTypedComponent(name) {
       };
     }
   }
+
+  TypedComponent.displayName = name;
 
   return TypedComponent;
 }
