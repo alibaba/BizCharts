@@ -1,4 +1,3 @@
-
 export Chart from './Chart';
 export Coord from './Coord';
 export Axis from './Axis';
