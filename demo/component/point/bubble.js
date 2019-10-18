@@ -28,7 +28,7 @@ const colorMap = {
 };
 
 export default class PointC extends Component {
-  
+
   render() {
     return (
       <Chart height={window.innerHeight} data={data} scale={cols} forceFit>
@@ -39,7 +39,8 @@ export default class PointC extends Component {
           } // 格式化坐标轴的显示
         }} />
         <Axis name='LifeExpectancy'/>
-        <Legend reversed />
+        <Legend />
+        <Legend name="Population" visible={false} />
         <Geom type='point' position="GDP*LifeExpectancy" color={['continent', val => {
           return colorMap[val];
           }]} tooltip='Country*Population*GDP*LifeExpectancy' opacity={0.65} shape="circle" size={['Population', [ 4, 65 ]]} style={['continent', {

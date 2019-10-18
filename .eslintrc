@@ -29,6 +29,12 @@
     "class-methods-use-this": "off",
     "comma-dangle": "off",
     "react/require-default-props": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": "off",
+    "prefer-destructuring": "off",
+    "arrow-body-style": "off",
+    "react/prop-types": "off",
+    "no-param-reassign": "off",
+    "guard-for-in": "off"
   }
 }
