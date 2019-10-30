@@ -1,6 +1,5 @@
 
 // import interfaceEs6 from 'interface-es6';
-import warning from 'warning';
 import { Util, Prop } from '../shared';
 import common from './common';
 import g2Creator from './g2Creator';

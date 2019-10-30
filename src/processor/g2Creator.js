@@ -12,6 +12,9 @@ export default {
     const chartConfig = config.chart;
     chartConfig.props.forceFit = false;
     const chart = new G2.Chart(chartConfig.props);
+    if (chartConfig.props.afterChartInitialized) {
+      chartConfig.props.afterChartInitialized(chartConfig.g2Instance);
+    }
     chartConfig.g2Instance = chart;
     return chart;
   },
