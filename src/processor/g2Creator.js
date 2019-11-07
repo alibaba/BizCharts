@@ -10,10 +10,15 @@ const GEOM_FUNC_PROPS = common.GEOM_FUNC_PROPS;
 export default {
   createChart(config) {
     const chartConfig = config.chart;
+    const shouldForceFit = chartConfig.props.forceFit;
     chartConfig.props.forceFit = false;
     const chart = new G2.Chart(chartConfig.props);
     if (chartConfig.props.afterChartInitialized) {
       chartConfig.props.afterChartInitialized(chartConfig.g2Instance);
+    }
+    // 保证第一次渲染是正确的
+    if (shouldForceFit) {
+      chart.forceFit();
     }
     chartConfig.g2Instance = chart;
     return chart;
