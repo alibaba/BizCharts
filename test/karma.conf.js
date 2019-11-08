@@ -6,7 +6,7 @@
 const path = require('path');
 
 module.exports = function (config) {
-  const reporters = ['progress', 'coverage'];
+  const reporters = ['progress'];
 
   let browserName = 'Chrome';
 
