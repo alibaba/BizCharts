@@ -106,7 +106,7 @@ declare namespace bizcharts{
     pixelRatio?: number;
     data?: any;
     scale?: any;
-    placeholder?: JSX.Element | string | boolean;
+    placeholder?: React.Node | string | boolean;
     filter?: Array<any>;
     className?: string;
     style?: React.CSSProperties;

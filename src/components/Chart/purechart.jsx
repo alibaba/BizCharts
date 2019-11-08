@@ -49,13 +49,13 @@ export default class PureChart extends Component {
   }
 
   componentDidMount() {
+    // 异步绘制
     this.addElement(this.name, this.id, {
       ...this.props,
       container: this.containerWrap,
     });
     this.chart = this.g2Processor.createG2Instance();
     this.notifyG2Instance();
-
     //  ResizeObserver style warning
     if (this.props.forceFit) {
       const ro = new ResizeObserver(this.forceFit);
