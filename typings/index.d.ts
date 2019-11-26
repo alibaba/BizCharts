@@ -51,7 +51,7 @@ declare namespace bizcharts{
   export const PathUtil: G2.PathUtil
 
   // some config type
-  export let AxisTile: G2.AxisTile;
+  export let AxisTitle: G2.AxisTitle;
   export type AlignXType = 'left' | 'middle' | 'right';
   export type AlignYType = 'top' | 'middle' | 'bottom';
   export type CoordType = 'rect' | 'polar' | 'theta' | 'helix';
@@ -72,7 +72,7 @@ declare namespace bizcharts{
     name?: string;
     visible?: boolean;
     position?: PositionType;
-    title?: G2.AxisTile | boolean | null;
+    title?: G2.AxisTitle | boolean | null;
     line?: G2.Styles.line | null;
     tickLine?: G2.Styles.tickLine | null;
     label?: G2.AxisLabel | null;
