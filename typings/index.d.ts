@@ -97,7 +97,7 @@ declare namespace bizcharts{
           left: number;
         }
       | number
-      | [number, number, number, number]
+      | [number | string, number | string, number | string, number | string]
       | [string, string];
     background?:G2.Styles.background;
     plotBackground?: G2.Styles.background;
