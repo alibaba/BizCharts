@@ -14,6 +14,7 @@ export default class PureChart extends Component {
     height: PropTypes.number.isRequired,
     onGetG2Instance: PropTypes.func,
     forceFit: PropTypes.bool,
+    forceUpdate: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -73,6 +74,9 @@ export default class PureChart extends Component {
     if (this.chart !== newChart) {
       this.chart = newChart;
       this.notifyG2Instance();
+    }
+    if (this.props.forceUpdate) {
+      this.chart.forceFit();
     }
   }
 

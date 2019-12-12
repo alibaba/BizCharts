@@ -60,9 +60,15 @@ class Chart extends (React.PureComponent || React.Component) {
 
 export default class BChart extends React.Component {
   render() {
+    // ‘widthErrorBoundary’内部api，不对外
+    // eslint-disable-next-line react/prop-types
+    const { widthErrorBoundary, ...cfg } = this.props;
+    if (widthErrorBoundary === false) {
+      return <Chart {...cfg} />;
+    }
     return (
       <ErrorBoundary>
-        <Chart {...this.props} />
+        <Chart {...cfg} />
       </ErrorBoundary>
     );
   }
