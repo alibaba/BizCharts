@@ -4,6 +4,22 @@ import { Chart, Axis, Tooltip, Geom, Legend, Guide } from 'bizcharts';
 
 const { Line, RegionFilter, DataMarker } = Guide;
 const data = [];
+const now = new Date();
+const time = now.getTime();
+const value1 = ~~30 + Math.random() * 50;
+const direction = Math.random() > 0.5 ? 1 : -1;
+const value2 = value1 + Math.random() * 20 * direction;
+
+data.push({
+  time,
+  value: value2,
+  type: 'yesterday'
+});
+data.push({
+  time,
+  value: value1,
+  type: 'today'
+});
 
 function findMax() {
   let maxValue = 0;
@@ -79,7 +95,7 @@ class RegionFilterRealtime extends React.Component {
 
   render() {
     return (
-      <Chart height={400} data={this.state.data} scale={scale} forceFit>
+      this.state.data.length && <Chart forceUpdate height={400} data={this.state.data} scale={scale} forceFit>
         <Axis />
         <Axis name="predict" visible={false} />
         <Legend name="attachLast" />
@@ -149,5 +165,6 @@ class RegionFilterRealtime extends React.Component {
     );
   }
 }
+
 
 export default RegionFilterRealtime;
