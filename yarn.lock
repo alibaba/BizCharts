@@ -14,9 +14,9 @@
   dependencies:
     "@antv/util" "~1.3.1"
 
-"@antv/component@~0.3.1":
-  version "0.3.1"
-  resolved "http://registry.npm.taobao.org/@antv/component/download/@antv/component-0.3.1.tgz#25eb53e3ed3a0f413896be2f83e7e704bfb6b097"
+"@antv/component@~0.3.3":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@antv/component/-/component-0.3.8.tgz#677ecd3b5026907d4cb70d9082951d7c3c2b5434"
   dependencies:
     "@antv/attr" "~0.1.2"
     "@antv/g" "~3.3.5"
@@ -55,16 +55,16 @@
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/@antv/g2-plugin-slider/download/@antv/g2-plugin-slider-2.1.0.tgz#7f2f5879d33dcfb14dd2b955092ca198ad9152b9"
 
-"@antv/g2@3.5.1":
-  version "3.5.1"
-  resolved "http://registry.npm.taobao.org/@antv/g2/download/@antv/g2-3.5.1.tgz#9b4e33c8322dde281c6581e05615c1710c1fc528"
+"@antv/g2@3.5.11":
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.5.11.tgz#bd17f4911618671f115a249af410d3bb1c932e5e"
   dependencies:
     "@antv/adjust" "~0.1.0"
     "@antv/attr" "~0.1.2"
-    "@antv/component" "~0.3.1"
+    "@antv/component" "~0.3.3"
     "@antv/coord" "~0.1.0"
     "@antv/g" "~3.3.6"
-    "@antv/scale" "~0.1.0"
+    "@antv/scale" "~0.1.1"
     "@antv/util" "~1.3.1"
     venn.js "~0.2.20"
     wolfy87-eventemitter "~5.1.0"
@@ -90,9 +90,9 @@
   dependencies:
     "@antv/util" "^1.2.4"
 
-"@antv/scale@~0.1.0":
-  version "0.1.2"
-  resolved "http://registry.npm.taobao.org/@antv/scale/download/@antv/scale-0.1.2.tgz#bd9cb33033d8944b52c3e0e4accfd60541c3c147"
+"@antv/scale@~0.1.1":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@antv/scale/-/scale-0.1.4.tgz#bcff21c20e818aa89bf6677ef12f79c0ee4efbdc"
   dependencies:
     "@antv/util" "~1.3.1"
     fecha "~2.3.3"
@@ -162,6 +162,12 @@
 "@babel/parser@^7.0.0", "@babel/parser@^7.4.0":
   version "7.4.2"
   resolved "http://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.4.2.tgz#b4521a400cb5a871eab3890787b4bc1326d38d91"
+
+"@babel/runtime@^7.7.6":
+  version "7.8.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.7.tgz#8fefce9802db54881ba59f90bb28719b4996324d"
+  dependencies:
+    regenerator-runtime "^0.13.4"
 
 "@babel/template@^7.1.0":
   version "7.4.0"
@@ -1860,7 +1866,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2, commander@^2.11.0, commander@^2.13.0, commander@^2.19.0, commander@~2.19.0:
+commander@2, commander@^2.11.0, commander@^2.13.0, commander@^2.19.0:
   version "2.19.0"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
@@ -1869,6 +1875,10 @@ commander@2.9.0:
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
     graceful-readlink ">= 1.0.0"
+
+commander@~2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -3247,7 +3257,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.16, fbjs@^0.8.9:
+fbjs@^0.8.9:
   version "0.8.17"
   resolved "http://registry.npm.taobao.org/fbjs/download/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -3686,8 +3696,8 @@ handle-thing@^1.2.5:
   resolved "http://registry.npm.taobao.org/handle-thing/download/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
 
 handlebars@^4.0.1:
-  version "4.1.1"
-  resolved "http://registry.npm.taobao.org/handlebars/download/handlebars-4.1.1.tgz#6e4e41c18ebe7719ae4d38e5aca3d32fa3dd23d3"
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.3.tgz#8ece2797826886cf8082d1726ff21d2a022550ee"
   dependencies:
     neo-async "^2.6.0"
     optimist "^0.6.1"
@@ -4744,6 +4754,10 @@ lodash.create@3.1.1:
     lodash._basecreate "^3.0.0"
     lodash._isiterateecall "^3.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash.endswith@^4.0.1:
   version "4.2.1"
   resolved "http://registry.npm.taobao.org/lodash.endswith/download/lodash.endswith-4.2.1.tgz#fed59ac1738ed3e236edd7064ec456448b37bc09"
@@ -4994,7 +5008,7 @@ minimist@1.2.0, minimist@^1.1.3, minimist@^1.2.0, minimist@~1.2.0:
 
 minimist@~0.0.1:
   version "0.0.10"
-  resolved "http://registry.npm.taobao.org/minimist/download/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 minipass@^2.2.1, minipass@^2.3.4:
   version "2.3.5"
@@ -5125,8 +5139,8 @@ negotiator@0.6.1:
   resolved "http://registry.npm.taobao.org/negotiator/download/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
 neo-async@^2.5.0, neo-async@^2.6.0:
-  version "2.6.0"
-  resolved "http://registry.npm.taobao.org/neo-async/download/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
 next-tick@^1.0.0:
   version "1.0.0"
@@ -5405,7 +5419,7 @@ opn@^5.1.0:
 
 optimist@^0.6.1:
   version "0.6.1"
-  resolved "http://registry.npm.taobao.org/optimist/download/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
@@ -5948,14 +5962,14 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.5.2:
     react-is "^16.8.5"
     scheduler "^0.13.5"
 
-react@16.0.0:
-  version "16.0.0"
-  resolved "http://registry.npm.taobao.org/react/download/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
+react@16.8.0:
+  version "16.8.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.8.0.tgz#8533f0e4af818f448a276eae71681d09e8dd970a"
   dependencies:
-    fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.2"
+    scheduler "^0.13.0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -6056,6 +6070,10 @@ regenerator-runtime@^0.10.5:
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "http://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+
+regenerator-runtime@^0.13.4:
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.4.tgz#e96bf612a3362d12bb69f7e8f74ffeab25c7ac91"
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -6197,6 +6215,10 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+
 resolve-from@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/resolve-from/download/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
@@ -6326,6 +6348,13 @@ safe-regex@^1.1.0:
 sax@^1.2.4:
   version "1.2.4"
   resolved "http://registry.npm.taobao.org/sax/download/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+
+scheduler@^0.13.0:
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 scheduler@^0.13.5:
   version "0.13.5"
@@ -6619,7 +6648,7 @@ source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, sour
 
 source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
-  resolved "http://registry.npm.taobao.org/source-map/download/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 source-map@~0.2.0:
   version "0.2.0"
@@ -7136,10 +7165,10 @@ uglify-js@^2.6.2, uglify-js@^2.8.27:
     uglify-to-browserify "~1.0.0"
 
 uglify-js@^3.1.4:
-  version "3.5.2"
-  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.5.2.tgz#dc0c7ac2da0a4b7d15e84266818ff30e82529474"
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.8.0.tgz#f3541ae97b2f048d7e7e3aa4f39fd8a1f5d7a805"
   dependencies:
-    commander "~2.19.0"
+    commander "~2.20.3"
     source-map "~0.6.1"
 
 uglify-to-browserify@~1.0.0:
@@ -7548,7 +7577,7 @@ wordwrap@^1.0.0, wordwrap@~1.0.0:
 
 wordwrap@~0.0.2:
   version "0.0.3"
-  resolved "http://registry.npm.taobao.org/wordwrap/download/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"
