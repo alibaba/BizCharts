@@ -14,7 +14,7 @@ export default {
     chartConfig.props.forceFit = false;
     const chart = new G2.Chart(chartConfig.props);
     if (chartConfig.props.afterChartInitialized) {
-      chartConfig.props.afterChartInitialized(chartConfig.g2Instance);
+      chartConfig.props.afterChartInitialized(chart);
     }
     // 保证第一次渲染是正确的
     if (shouldForceFit) {

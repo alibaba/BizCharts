@@ -56,7 +56,8 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g2": "3.5.9",
+    "@antv/g2": "3.5.11",
+    "@babel/runtime": "^7.7.6",
     "invariant": "^2.2.2",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.6.0",

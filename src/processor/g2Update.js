@@ -120,7 +120,6 @@ const iUpdate = {
 
   updateAxises(chart, axises) {
     if (!axises) return;
-
     for (const id in axises) {
       if (axises[id] && axises[id].props && axises[id].updateProps) {
         this.updateAxis(chart, axises[id]);
