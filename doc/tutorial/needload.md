@@ -59,3 +59,85 @@ ReactDOM.render(
   mountNode
 );
 ```
+
+## 使用 babel plugin
+
+可以使用 babel-plugin-import 完成上述转换。
+
+效果如下
+```javascript
+import { Chart } from 'bizcharts';
+ReactDOM.render(<Chart></Chart>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+      
+var _Chart = require('bizcharts/lib/components/Chart');
+ReactDOM.render(<_Chart></_Chart>);
+
+// or geoms
+
+import { Line } from 'bizcharts';
+ReactDOM.render(<Line></Line>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+      
+var _Line = require('bizcharts/lib/components/TypedGeom/Line');
+ReactDOM.render(<_Line></_Line>);
+```
+
+babel@7 配置如下
+
+其中：
+
+  `style: false,`  不需要样式。（plugin 为 antd 维护，默认带有样式）
+  
+  `camel2DashComponentName: false,`  因为 babel-plugin-import 默认会将 name 转换成驼峰，这里需要原始的 name。
+  
+  `'import-for-bizcharts',`  如果使用了多次 babel-plugin-import（给 antd 使用），需要增加名称。
+
+```
+{
+  "plugins": [
+    [
+      "babel-plugin-import",
+      {
+        libraryName: 'bizcharts',
+        customName: (name) => {
+          const bizchartsTypedGeoms = ['Area', 'Edge', 'Heatmap', 'Interval', 'Line', 'Path', 'Point', 'Polygon', 'Schema', 'Venn'];
+          if (bizchartsTypedGeoms.some(i => i === name)) {
+            // components of TypedGeom are different with others.
+            return `bizcharts/lib/components/TypedGeom/${name}`;
+          }
+          return `bizcharts/lib/components/${name}`;
+        },
+        style: false,
+        camel2DashComponentName: false,
+      },
+      'import-for-bizcharts',
+    ],
+  ]
+}
+
+// or compile with webpackConfig.resolve.mainFields 'module'.
+
+{
+  "plugins": [
+    [
+      "babel-plugin-import",
+      {
+        libraryName: 'bizcharts',
+        customName: (name) => {
+          const bizchartsTypedGeoms = ['Area', 'Edge', 'Heatmap', 'Interval', 'Line', 'Path', 'Point', 'Polygon', 'Schema', 'Venn'];
+          if (bizchartsTypedGeoms.some(i => i === name)) {
+            return `bizcharts/es6/components/TypedGeom/${name}`;
+          }
+          return `bizcharts/es6/components/${name}`;
+        },
+        style: false,
+        camel2DashComponentName: false,
+      },
+      'import-for-bizcharts',
+    ],
+  ]
+}
+```
