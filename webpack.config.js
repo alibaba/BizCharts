@@ -1,101 +1,140 @@
-var path = require('path');
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-var webpack = require('webpack');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var env = process.env.NODE_ENV;
+const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const pagckageJSON = require('./package.json');
 
-var config = {
-  entry: './src/index.jsx',
+const env = process.env.NODE_ENV;
+const isProduction = env === 'production';
 
+/* invoke */
+const packageName = 'BizChartsPlot';
+
+const config = {
+  mode: 'production',
+  entry: {
+    index: ['./src/index.tsx']
+  },
   output: {
-    library: 'BizCharts',
+    filename: '[name].js',
+    library: packageName,
     libraryTarget: 'umd',
+    path: path.resolve(__dirname, './dist')
   },
-
-  module: {
-    loaders: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      include: [
-        path.resolve(__dirname, 'src'),
-      ],
-      loader: 'babel-loader',
-      query: {
-        plugins: ['lodash'],
-      },
-    }],
-  },
-
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
-      react: path.resolve(__dirname, './node_modules/react'),
-    },
+      // shared: path.resolve(__dirname, '../shared'),
+      utils: path.resolve(__dirname, './src/utils'),
+      'bizcharts-plot': path.resolve(__dirname, './src'),
+    }
   },
-
   externals: {
     react: {
       root: 'React',
       commonjs2: 'react',
       commonjs: 'react',
       amd: 'react',
+      umd: 'react',
     },
-    'prop-types': {
-      commonjs: 'prop-types',
-      commonjs2: 'prop-types',
-      amd: 'prop-types',
-      root: 'prop-types',
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
     },
+    // react: 'React',
+    // 'react-dom': 'ReactDOM',
   },
-
+  module: {
+    rules: [{
+        test: /\.s?css$/,
+        use: ['style-loader', 'raw-loader', 'sass-loader'],
+        include: [path.resolve(__dirname, '../css/')],
+      },
+      {
+        test: /\.svg$/,
+        use: [{
+          loader: 'babel-loader',
+          query: {
+            presets: ['airbnb'],
+          },
+        }, ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: [{
+          loader: 'babel-loader',
+          query: {
+            presets: [
+              ["@babel/preset-env", { "targets": "last 2 versions, ie 11", "modules": false }]
+            ]
+          }
+        }],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        use: [{
+          loader: 'babel-loader',
+          query: {
+            presets: [
+              ["@babel/preset-env", { "targets": "last 2 versions, ie 11", "modules": false }]
+            ]
+          }
+        }, {
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true,
+          },
+        }]
+      }
+    ]
+  },
   plugins: [
-    new LodashModuleReplacementPlugin({
-      collections: true,
-      shorthands: true,
-    }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env),
-    }),
+      __DEV__: !isProduction,
+      __VERSION__: pagckageJSON.version,
+    })
   ],
+  optimization: {
+    minimizer: [new TerserPlugin({
+      terserOptions: {
+        extractComments: 'all',
+        compress: {
+          drop_console: true,
+        },
+      }
+    })],
+  },
+  devtool: 'source-map',
 };
 
-if (env === 'analyse') {
-  config.plugins.push(
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      analyzerHost: '127.0.0.1',
-      analyzerPort: 8889,
-      reportFilename: 'report.html',
-      defaultSizes: 'parsed',
-      openAnalyzer: true,
-      generateStatsFile: false,
-      statsFilename: 'stats.json',
-      statsOptions: null,
-      logLevel: 'info',
-    })
-  );
-}
-
-if (env === 'development' || env === 'production') {
-  // umd do not use prop-types as external lib.
-  delete config.externals['prop-types'];
-}
-
 if (env === 'production') {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false,
-      },
-      output: {
-        comments: false,
-      },
-      sourceMap: false,
-    })
-  );
+  if (process.env.npm_config_report) {
+    config.plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'server',
+        analyzerHost: '127.0.0.1',
+        analyzerPort: 8889,
+        reportFilename: 'report.html',
+        defaultSizes: 'parsed',
+        openAnalyzer: true,
+        generateStatsFile: false,
+        statsFilename: 'stats.json',
+        statsOptions: null,
+        logLevel: 'info',
+      })
+    );
+  }
+}
+
+if (env === 'development') {
+  config.devServer = {
+    contentBase: path.join(__dirname, 'demo'),
+    // compress: true,
+    port: 9000
+  };
 }
 
 module.exports = config;
