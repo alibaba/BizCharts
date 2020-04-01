@@ -2,6 +2,18 @@
 
 > 基于 bizcharts 4.0 版本
 
+## npm 使用
+
+```bash
+npm install bizcharts --save
+```
+
+## Browser
+
+```html
+
+```
+
 
 ## 开发
 

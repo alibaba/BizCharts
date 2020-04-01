@@ -34,9 +34,10 @@
     "uitest": "ice-chart-develop-cli test-multi"
   },
   "dependencies": {
-    "@antv/g2": "4.0",
+    "@antv/g2": "^4.0.2",
     "@antv/util": "^2.0.5",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "warning": "^4.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
