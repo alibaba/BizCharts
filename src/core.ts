@@ -9,3 +9,6 @@ import { registerEngine } from '@antv/g2/esm/core';
 
 registerEngine('canvas', CanvasEngine);
 registerEngine('svg', SVGEngine);
+
+// 动画
+import './animations';

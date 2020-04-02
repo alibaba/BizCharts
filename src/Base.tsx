@@ -11,9 +11,9 @@ export interface IBaseProps {
 
 export default abstract class Base<T extends IBaseProps> extends React.Component<T> {
   public g2Instance: any;
-  protected abstract ChartBaseClass;
+  protected readonly abstract ChartBaseClass;
   protected id: string;
-  protected abstract name: string = 'base';
+  protected readonly name: string = 'base';
   protected getInstance() {
     if (!this.g2Instance) {
       this.initInstance();
@@ -62,12 +62,6 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
     // 缓存g2Instance
     const g2Instance = this.getInstance();
     console.log('g2Instance', g2Instance);
-    return <>{
-      React.Children.map(this.props.children, (item) => {
-        if (React.isValidElement(item)) {
-          return React.cloneElement(item, { [this.name]: g2Instance });
-        }
-      })
-    }</>;
+    return null;
   }
 }
