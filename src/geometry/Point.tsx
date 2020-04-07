@@ -1,5 +1,5 @@
-import BaseGemo, { IBaseGemo } from './Base';
 import Point from '@antv/g2/esm/geometry/point';
+import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Point', Point);

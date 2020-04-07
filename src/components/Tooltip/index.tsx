@@ -1,13 +1,13 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import _Tooltip from '@antv/g2/esm/chart/controller/tooltip';
 import { registerComponentController } from '../../core';
 import useChartView from '../../hooks/useChartView';
+import './actions';
 
 registerComponentController('tooltip', _Tooltip);
 
 // Actions
-import './actions';
 
 export default function Tooltip(props) {
   const { visible = true, ...options } = props;

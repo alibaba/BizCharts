@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { getTheme } from '@antv/g2/esm/theme';
 
 export default function useTheme(defaultThemeName) {

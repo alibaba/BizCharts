@@ -1,5 +1,5 @@
-import BaseGemo, { IBaseGemo } from './Base';
 import Path from '@antv/g2/esm/geometry/path';
+import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Path', Path);

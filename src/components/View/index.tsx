@@ -1,12 +1,9 @@
 import React from 'react';
-import _pick from '@antv/util/esm/pick';
-import _each from '@antv/util/esm/each';
 import _isArray from '@antv/util/esm/is-array';
-import { ChartViewContext } from '../../hooks/useChartView';
-
-import Base, { IBaseProps } from '../../Base';
 import _View from '@antv/g2/esm/chart/view';
 
+import { ChartViewContext } from '../../hooks/useChartView';
+import Base, { IBaseProps } from '../../Base';
 import compareProps from '../../utils/compareProps';
 
 export interface IView extends IBaseProps {

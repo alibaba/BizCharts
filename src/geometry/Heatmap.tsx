@@ -1,5 +1,5 @@
-import BaseGemo, { IBaseGemo } from './Base';
 import Heatmap from '@antv/g2/esm/geometry/heatmap';
+import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Heatmap', Heatmap);

@@ -1,5 +1,5 @@
-import BaseGemo, { IBaseGemo } from './Base';
 import Edge from '@antv/g2/esm/geometry/edge';
+import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Edge', Edge);

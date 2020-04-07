@@ -4,7 +4,7 @@ import ListActive from '@antv/g2/esm/interaction/action/component/list-active';
 import ListUnchecked from '@antv/g2/esm/interaction/action/component/list-unchecked';
 
 import DataFilter from '@antv/g2/esm/interaction/action/data/filter';
-import ListSelected from '@antv/g2/esm/interaction/action/data/filter';
+import ListSelected from '@antv/g2/esm/interaction/action/component/list-selected';
 
 
 import { registerAction, registerInteraction } from '../../core';

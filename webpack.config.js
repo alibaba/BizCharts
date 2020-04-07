@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
 
 /* invoke */
-const packageName = 'BizChartsPlot';
+const packageName = 'BizCharts';
 
 const config = {
   mode: 'production',
@@ -16,17 +16,16 @@ const config = {
     index: ['./src/index.tsx']
   },
   output: {
-    filename: '[name].js',
+    filename: isProduction? 'BizCharts.min.js' : 'BizCharts.js',
     library: packageName,
     libraryTarget: 'umd',
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './umd')
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
-      // shared: path.resolve(__dirname, '../shared'),
       utils: path.resolve(__dirname, './src/utils'),
-      'bizcharts-plot': path.resolve(__dirname, './src'),
+      'bizcharts': path.resolve(__dirname, './src'),
     }
   },
   externals: {
@@ -96,45 +95,24 @@ const config = {
       __DEV__: !isProduction,
       __VERSION__: pagckageJSON.version,
     })
+    
   ],
   optimization: {
+    minimize: isProduction,
     minimizer: [new TerserPlugin({
+      extractComments: false,
       terserOptions: {
-        extractComments: 'all',
         compress: {
           drop_console: true,
         },
       }
     })],
   },
-  devtool: 'source-map',
 };
 
-if (env === 'production') {
-  if (process.env.npm_config_report) {
-    config.plugins.push(
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
-        analyzerPort: 8889,
-        reportFilename: 'report.html',
-        defaultSizes: 'parsed',
-        openAnalyzer: true,
-        generateStatsFile: false,
-        statsFilename: 'stats.json',
-        statsOptions: null,
-        logLevel: 'info',
-      })
-    );
-  }
-}
-
-if (env === 'development') {
-  config.devServer = {
-    contentBase: path.join(__dirname, 'demo'),
-    // compress: true,
-    port: 9000
-  };
+if (env === 'development' || env === 'production') {
+  // umd do not use prop-types as external lib.
+  delete config.externals['prop-types'];
 }
 
 module.exports = config;

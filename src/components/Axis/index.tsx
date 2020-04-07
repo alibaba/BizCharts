@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import _isBoolean from '@antv/util/esm/is-boolean';
 import _Axis from '@antv/g2/esm/chart/controller/axis';
 import { requiredPropWarn } from '../../utils/warning';

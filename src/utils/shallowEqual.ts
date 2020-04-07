@@ -12,10 +12,10 @@ function is(x, y) {
 function length(obj) {
   if (_isArray(obj)) {
     return obj.length;
-  } else if (_isObject(obj)) {
+  }
+  if (_isObject(obj)) {
     return Object.keys(obj).length;
   }
-
   return 0;
 }
 

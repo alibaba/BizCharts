@@ -11,29 +11,36 @@ export interface IBaseProps {
 
 export default abstract class Base<T extends IBaseProps> extends React.Component<T> {
   public g2Instance: any;
-  protected readonly abstract ChartBaseClass;
   protected id: string;
   protected readonly name: string = 'base';
+
+  componentDidMount() {
+    this.configInstance(null);
+  }
+  componentDidUpdate(perProps) {
+    this.configInstance(perProps);
+  }
+  componentWillUnmount() {
+    if (this.g2Instance) {
+      this.g2Instance.destroy();
+    }
+  }
+
+  // 初始化实例需要的Config
+  protected abstract getInitalConfig() : object;
+
   protected getInstance() {
     if (!this.g2Instance) {
       this.initInstance();
     }
     return this.g2Instance;
   }
+  protected readonly abstract ChartBaseClass;
 
   initInstance() {
     this.id = uniqueId(this.name);
     const options = this.getInitalConfig();
     this.g2Instance = new this.ChartBaseClass(options);
-  }
-
-  // 初始化实例需要的Config
-  protected abstract getInitalConfig() : object;
-
-  componentWillUnmount() {
-    if (this.g2Instance) {
-      this.g2Instance.destroy();
-    }
   }
 
   configInstance(perProps) {
@@ -51,16 +58,9 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
     }
   }
 
-  componentDidMount() {
-    this.configInstance(null);
-  }
-  componentDidUpdate(perProps) {
-    this.configInstance(perProps);
-  }
-
   render () {
     // 缓存g2Instance
-    const g2Instance = this.getInstance();
+    this.getInstance();
     // console.log('g2Instance', g2Instance);
     return null;
   }

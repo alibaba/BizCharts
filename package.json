@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.0",
+  "version": "4.0.0-beta.1",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -11,18 +11,19 @@
   "files": [
     "lib",
     "src",
-    "dist",
+    "umd",
     "es"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "browser": "dist/index.js",
+  "browser": "umd/index.js",
   "module": "es/index.js",
   "scripts": {
     "build": "run-s clean build:*",
     "build:father": "father-build",
-    "build:dist": "gulp",
-    "clean": "rimraf lib es dist",
+    "build:umd": "cross-env NODE_ENV=development gulp",
+    "build:min": "cross-env NODE_ENV=production gulp",
+    "clean": "rimraf lib es umd",
     "fix": "tslint 'src/**/*.ts?(x)' --project tsconfig.json",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",

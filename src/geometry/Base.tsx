@@ -1,6 +1,5 @@
-import React from 'react';
-import Base, { IBaseProps } from '../Base';
 import uniqueId from '@antv/util/lib/unique-id';
+import Base, { IBaseProps } from '../Base';
 import { ChartViewContext } from '../hooks/useChartView';
 
 import compareProps from '../utils/compareProps';

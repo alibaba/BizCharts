@@ -1,6 +1,6 @@
 import React from 'react';
-import { RootChartContext } from '../../hooks/useRootChartInstance';
 import * as _ from '@antv/util';
+import { RootChartContext } from '../../hooks/useRootChartInstance';
 
 export interface IAnnotationBaseProps {
   chartIns?: any;
@@ -13,19 +13,17 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
   protected id: string;
   protected type: string = 'line'; // 默认为line类型的guide
   protected index: number;
-  getChartIns() {
-    return this.context;
-  }
+
   componentDidMount() {
     const chartIns = this.getChartIns();
     this.id = _.uniqueId('annotation');
     this.annotation = chartIns.annotation();
-    const t = this.annotation[this.type](this.props);
+    this.annotation[this.type](this.props);
     this.annotation.options[this.annotation.options.length - 1].__id = this.id;
   }
   componentDidUpdate() {
     let index = null;
-    this.annotation.options.find((item, i) => {
+    this.annotation.options.forEach((item, i) => {
       if (item.__id === this.id) {
         index = i;
       }
@@ -39,7 +37,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     if (!this.annotation) {
       return;
     }
-    this.annotation.options.find((item, i) => {
+    this.annotation.options.forEach((item, i) => {
       if (item.__id === this.id) {
         index = i;
       }
@@ -48,6 +46,9 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
       this.annotation.options.splice(index, 1);
     }
     this.annotation = null;
+  }
+  getChartIns() {
+    return this.context;
   }
   render() {
     return null;

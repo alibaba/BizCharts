@@ -18,16 +18,19 @@ class Chart extends View<IChart> {
     // TODO: 排除事件&生命周期勾子属性；
     return { ...this.props }
   }
+
   componentDidMount() {
     super.componentDidMount();
     // console.log('render')
     this.g2Instance.render();
   }
+
   componentDidUpdate(perProps) {
     this.configInstance(perProps);
     // TODO: forceUpdate
     this.g2Instance.render(true);
   }
+
   render() {
     // console.log('chart: render', this.g2Instance)
     return <ErrorBoundary>

@@ -1,6 +1,6 @@
-import Base, { AnnotationBaseProps } from './base';
+import Base, { IAnnotationBaseProps } from './base';
 
-export interface AnnotationArcProps extends AnnotationBaseProps {}
+export interface AnnotationArcProps extends IAnnotationBaseProps {}
 
 export default class Arc extends Base<AnnotationArcProps>{
   public annotationType = 'arc';

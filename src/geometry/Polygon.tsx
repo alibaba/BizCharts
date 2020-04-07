@@ -1,5 +1,5 @@
-import BaseGemo, { IBaseGemo } from './Base';
 import Polygon from '@antv/g2/esm/geometry/polygon';
+import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Polygon', Polygon);

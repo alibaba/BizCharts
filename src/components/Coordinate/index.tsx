@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import useChartView from '../../hooks/useChartView';
 
 export default function Tooltip(props) {

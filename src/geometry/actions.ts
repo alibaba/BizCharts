@@ -1,4 +1,3 @@
-import { registerInteraction, registerAction } from '../core';
 
 // TODO: 按照element 详细分类
 import ElmentActive from '@antv/g2/esm/interaction/action/element/active';
@@ -6,7 +5,7 @@ import ElmentSingleActive from '@antv/g2/esm/interaction/action/element/single-a
 import ElmentRangeActive from '@antv/g2/esm/interaction/action/element/range-active';
 import ElmentHighlight from '@antv/g2/esm/interaction/action/element/highlight';
 import ElmentHighlightByX from '@antv/g2/esm/interaction/action/element/highlight-by-x';
-import ElmentHighlightByColor from '@antv/g2/esm/interaction/action/element/link-by-color';
+import ElmentHighlightByColor from '@antv/g2/esm/interaction/action/element/highlight-by-color';
 import ElmentSingleHighlight from '@antv/g2/esm/interaction/action/element/single-highlight';
 import ElementSelected from '@antv/g2/esm/interaction/action/element/range-highlight';
 import ElmentRangeHighlight from '@antv/g2/esm/interaction/action/element/selected';
@@ -14,6 +13,8 @@ import ElementSingleSelected from '@antv/g2/esm/interaction/action/element/singl
 import ElementRangeSelected from '@antv/g2/esm/interaction/action/element/range-selected';
 import ElementLinkByColor from '@antv/g2/esm/interaction/action/element/link-by-color';
 import CursorAction from '@antv/g2/esm/interaction/action/cursor';
+
+import { registerInteraction, registerAction } from '../core';
 
 registerAction('cursor', CursorAction);
 

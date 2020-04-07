@@ -4,12 +4,11 @@ const gutil = require('gulp-util');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 
-function buildDist(cb) {
+function buildUmd(cb) {
   const compiler = webpack(webpackConfig, (err, stats) => {
     if (err) {
       gutil.log(err);
     }
-
     gutil.log(
       stats.toString({
         colors: true,
@@ -30,5 +29,4 @@ function buildDist(cb) {
   });
 }
 
-
-exports.default = gulp.series(buildDist);
+exports.default = gulp.series(buildUmd);

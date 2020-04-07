@@ -5,5 +5,5 @@ export default {
     importLibToEs: true,
   },
   cjs: 'babel',
-  umd: true,
+  // umd: true,
 };
