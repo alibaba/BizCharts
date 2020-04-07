@@ -2,12 +2,12 @@ import React from 'react';
 import _pick from '@antv/util/esm/pick';
 import _each from '@antv/util/esm/each';
 import _isArray from '@antv/util/esm/is-array';
-import { ChartViewContext } from '../hooks/useChartView';
+import { ChartViewContext } from '../../hooks/useChartView';
 
-import Base, { IBaseProps } from '../Base';
+import Base, { IBaseProps } from '../../Base';
 import _View from '@antv/g2/esm/chart/view';
 
-import compareProps from '../utils/compareProps';
+import compareProps from '../../utils/compareProps';
 
 export interface IView extends IBaseProps {
   data?: any[];
@@ -26,7 +26,7 @@ export default class View<T extends IView = IView> extends Base<T> {
     super.configInstance(preProps);
     const nextProps = this.props;
     if (_isArray(this.props.data)) {
-      console.log('data', this.props.data)
+      // console.log('data', this.props.data)
       this.g2Instance.data(this.props.data); 
     }
     compareProps(preProps, nextProps, [], (value, key) => {

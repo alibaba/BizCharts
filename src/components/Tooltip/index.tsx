@@ -10,7 +10,7 @@ registerComponentController('tooltip', _Tooltip);
 import './actions';
 
 export default function Tooltip(props) {
-  const { visible, ...options } = props;
+  const { visible = true, ...options } = props;
   const view = useChartView();
   if (visible === true) {
     view.tooltip(options);

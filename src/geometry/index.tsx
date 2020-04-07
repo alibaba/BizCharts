@@ -1,20 +1,31 @@
-import BaseGemo, { IBaseGemo } from './Base';
-import Area from '@antv/g2/esm/geometry/area';
-import uniqueId from '@antv/util/lib/unique-id';
-import { registerGeometry } from '../core';
+import React from 'react';
+import Area from './Area';
+import Edge from './Edge';
+import Heatmap from './Heatmap';
+import Interval from './Interval';
+import Line from './Line';
+import Point from './Point';
+import Polygon from './Polygon';
 
-registerGeometry('Area', Area);
+import warn from '../utils/warning';
 
-interface IGemo extends IBaseGemo {
-  type: string;
+const GEOM_MAP = {
+  area: Area,
+  edge: Edge,
+  heatmap: Heatmap,
+  interval: Interval,
+  line: Line,
+  point: Point,
+  polygon: Polygon,
 }
 
-export default class AreaGeom extends BaseGemo<IGemo> {
-  GemoBaseClassName = '';
-  initInstance() {
-    const chart = this.props['chart'] || this.props['view'];
-    this.id = uniqueId(this.name);
-    const options = this.getInitalConfig();
-    this.g2Instance = chart[this.props.type](options);
-  }
+export interface IGemo {
+  [key: string]: any
+}
+
+export default function(props) {
+  const { type, ...cfg } = props;
+  warn(true, 'Geom 在4.1 之后将不再支持。请使用具体等GEMO图形组件');
+  const Geom = GEOM_MAP[type];
+  return <Geom {...cfg} />;
 }

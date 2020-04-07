@@ -6,14 +6,18 @@ export default function Tooltip(props) {
   const { visible, ...options } = props;
   const view = useChartView();
   if (visible === true) {
-    view.tooltip(options);
+    view.coordinate(options);
   } else {
-    view.tooltip(false);
+    view.coordinate(false);
   }
   useEffect(() => {
     return () => {
       // 销毁
-      view.tooltip(false);
+      view.coordinate({
+        type: 'rect',
+        actions: [],
+        cfg: {},
+      });
     }
   });
   return null;

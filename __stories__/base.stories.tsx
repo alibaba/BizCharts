@@ -32,8 +32,10 @@ const data = [
   { feature: 'Smartphone', value: 0.3, phone: 'Nokia Smartphone' },
 ];
 
-storiesOf('基础组件', module).add('Chart', () => <Chart height={500} autoFit data={data} >
+export const BaseDemo = () => <Chart height={500} autoFit data={data} >
   <Point position="feature*value" color="phone" />
   <Axis name="feature" />
   <Legend />
-</Chart>);
+</Chart>;
+
+storiesOf('基础组件', module).add('Chart', BaseDemo);

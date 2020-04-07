@@ -1,10 +1,10 @@
 import React from 'react';
-import View, { IView } from './View';
-import ErrorBoundary from '../boundary/ErrorBoundary';
-import withContainer from '../boundary/withContainer';
-import { Chart as _Chart } from '../core';
-import { RootChartContext } from '../hooks/useRootChartInstance';
-import { ChartViewContext } from '../hooks/useChartView';
+import View, { IView } from '../View';
+import ErrorBoundary from '../../boundary/ErrorBoundary';
+import withContainer from '../../boundary/withContainer';
+import { Chart as _Chart } from '../../core';
+import { RootChartContext } from '../../hooks/useRootChartInstance';
+import { ChartViewContext } from '../../hooks/useChartView';
 
 export interface IChart extends IView {
   container?: HTMLElement,
@@ -20,7 +20,7 @@ class Chart extends View<IChart> {
   }
   componentDidMount() {
     super.componentDidMount();
-    console.log('render')
+    // console.log('render')
     this.g2Instance.render();
   }
   componentDidUpdate(perProps) {
@@ -29,7 +29,7 @@ class Chart extends View<IChart> {
     this.g2Instance.render(true);
   }
   render() {
-    console.log('chart: render', this.g2Instance)
+    // console.log('chart: render', this.g2Instance)
     return <ErrorBoundary>
       <RootChartContext.Provider value={this.g2Instance}>
         <ChartViewContext.Provider value={this.g2Instance}>

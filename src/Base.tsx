@@ -61,7 +61,7 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   render () {
     // 缓存g2Instance
     const g2Instance = this.getInstance();
-    console.log('g2Instance', g2Instance);
+    // console.log('g2Instance', g2Instance);
     return null;
   }
 }

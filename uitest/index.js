@@ -1,4 +1,4 @@
-const AreaChartConfig = require('./area');
+const AreaChartConfig = require('./line');
 
 module.exports = [
   AreaChartConfig,
