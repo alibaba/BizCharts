@@ -2,7 +2,9 @@
 import React from "react";
 import {
   Chart,
-  Geom,
+  Area,
+  Axis,
+  Tooltip,
 } from "../../src";
 
 const data = [
@@ -54,15 +56,20 @@ function Basic() {
   };
   return (
     <div>
-      <Chart height={400} padding={[20, 40]} data={data} scale={cols} autoFit>
-        <Geom type='line' position="year*value" size={2} />
-        <Geom
-          type='point'
+      <Chart height={400} padding="auto" data={data} scale={cols} autoFit>
+        <Axis name="year" visible={false} />
+        <Axis name="value" />
+        <Tooltip
+          crosshairs={{
+            type: "y"
+          }}
+        />
+        <Area
           position="year*value"
           size={4}
           shape="circle"
           style={{
-            stroke: "red",
+            stroke: "#fff",
             lineWidth: 1
           }}
         />

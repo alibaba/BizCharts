@@ -15,10 +15,10 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   protected readonly name: string = 'base';
 
   componentDidMount() {
-    this.configInstance(null);
+    this.configInstance(null, this.props);
   }
   componentDidUpdate(perProps) {
-    this.configInstance(perProps);
+    this.configInstance(perProps, this.props);
   }
   componentWillUnmount() {
     if (this.g2Instance) {
@@ -43,12 +43,12 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
     this.g2Instance = new this.ChartBaseClass(options);
   }
 
-  configInstance(perProps) {
+  configInstance(perProps, curProps) {
     const { g2Instance } = this;
     if (!g2Instance) {
       throw new Error(`${this.name} 构建失败`);
     }
-    const { visible } = this.props;
+    const { visible } = curProps;
     if (visible !== (perProps || {}).visible) {
       if (visible) {
         this.g2Instance.show();
@@ -57,7 +57,6 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
       }
     }
   }
-
   render () {
     // 缓存g2Instance
     this.getInstance();

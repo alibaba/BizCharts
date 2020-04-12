@@ -18,6 +18,12 @@ export { default as BaseGeom } from './geometry/Base';
 
 export { default as Geom } from './geometry';
 
+// 兼容
+export { default as Coord } from './components/Coordinate/coord';
+
+export { default as G2Function } from './components/G2Function';
+export { default as Interaction } from './components/Interaction';
+
 // 注册主题
 export { getTheme, registerTheme } from '@antv/g2/esm/theme';
 

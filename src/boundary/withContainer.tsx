@@ -7,7 +7,8 @@ export default function withContainer<Iprops>(Component, name: string = 'Chart')
     useEffect(() => {
       setInited(true);
     }, [])
-    return <div ref={container}>
+    // @ts-ignore
+    return <div ref={container} className="bizcharts" style={{ height: props.height || '100%', width: props.width || '100%' }} >
       {inited ? <Component container={container.current} {...props} /> : <></>}
     </div>
   };

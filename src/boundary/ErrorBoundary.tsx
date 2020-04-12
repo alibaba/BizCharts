@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component<any> {
   private death: boolean;
 
   static getDerivedStateFromError() {
@@ -12,10 +12,11 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
+    const { errorContent } = this.props;
     if (this.death) {
       this.death = false; // 挂一次后要复活
       return (
-        <div>error</div>
+        errorContent ? errorContent : <div style={{ color: '#aaa' }}>Bizcharts something error</div>
       );
     }
     return this.props.children;

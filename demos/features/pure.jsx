@@ -2,7 +2,7 @@
 import React from "react";
 import {
   Chart,
-  Geom,
+  Interval,
 } from "../../src";
 
 const data = [
@@ -44,28 +44,10 @@ const data = [
   }
 ];
 function Basic() {
-  const cols = {
-    value: {
-      min: 0
-    },
-    year: {
-      range: [0, 1]
-    }
-  };
   return (
-    <div>
-      <Chart height={400} padding={[20, 40]} data={data} scale={cols} autoFit>
-        <Geom type='line' position="year*value" size={2} />
-        <Geom
-          type='point'
-          position="year*value"
-          size={4}
-          shape="circle"
-          style={{
-            stroke: "red",
-            lineWidth: 1
-          }}
-        />
+    <div style={{ width: '100%', height: 50 }}>
+      <Chart pure data={data} autoFit>
+        <Interval position="year*value"/>
       </Chart>
     </div>
   );

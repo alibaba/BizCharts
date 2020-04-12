@@ -2,13 +2,13 @@
 import { useEffect } from 'react';
 import useChartView from '../../hooks/useChartView';
 
-export default function Tooltip(props) {
-  const { visible, ...options } = props;
+export default function Coordinate(props) {
+  const { type, ...options } = props;
   const view = useChartView();
-  if (visible === true) {
-    view.coordinate(options);
+  if (type) {
+    view.coordinate(type, options);
   } else {
-    view.coordinate(false);
+    view.coordinate(options);
   }
   useEffect(() => {
     return () => {
