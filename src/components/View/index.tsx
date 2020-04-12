@@ -1,13 +1,16 @@
 import React from 'react';
 import _isArray from '@antv/util/esm/is-array';
 import _isFunction from '@antv/util/esm/is-function';
+import _deepMix from '@antv/util/esm/deep-mix';
 import _View from '@antv/g2/esm/chart/view';
+import uniqueId from '@antv/util/lib/unique-id';
 
 import { ChartViewContext } from '../../hooks/useChartView';
 import { RootChartContext } from '../../hooks/useRootChartInstance';
 import Base, { IBaseProps } from '../../Base';
 import compareProps from '../../utils/compareProps';
-import uniqueId from '@antv/util/lib/unique-id';
+import warn from '../../utils/warning';
+
 export interface IView extends IBaseProps {
   data?: any[];
 }
@@ -19,13 +22,18 @@ class View<T extends IView = IView> extends Base<T> {
     visible: true,
   }
   getInitalConfig() {
-    return {};
+    const { region, start, end } = this.props;
+    warn(start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
+    warn(end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')
+    // fixme: adepter3.5
+    const regionCfg = _deepMix({start: { x: 0,y: 0 }, end: { x: 1, y: 1 }}, {start,end}, region );
+    return { region: regionCfg };
   }
   initInstance() {
     this.id = uniqueId(this.name);
     console.log(3, this.context)
-    // const options = this.getInitalConfig();
-    this.g2Instance = this.context.chart.createView();
+    const options = this.getInitalConfig();
+    this.g2Instance = this.context.chart.createView(options);
   }
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
@@ -34,7 +42,7 @@ class View<T extends IView = IView> extends Base<T> {
       // console.log('data', this.props.data)
       this.g2Instance.data(this.props.data); 
     }
-    compareProps(preProps, nextProps, [], (value, key) => {
+    compareProps(preProps, nextProps, ['scale'], (value, key) => {
       this.g2Instance[key](value);
     });
   }

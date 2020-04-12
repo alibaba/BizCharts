@@ -133,13 +133,21 @@ const data = [
   { "date": "Mar 1 2010", "price": 1140.45 }
 ];
 
+// fixme: start={{ x: 0, y:0.5 }} end={{ x: 1, y: 0.5 }} g2 暂不支持
+
 function Basic() {
   return (
     <Chart height={500} scale={{price: { sync: true}}} autoFit>
-      <View data={data} animate={false} start={{ x: 0, y:0 }} end={{ x: 1, y: 0.4 }} padding={[10, 10, 40, 60]}>
+      <View data={data} animate={false} region={{
+        start: { x: 0, y:0.5 },
+        end: { x: 1, y: 1 }
+      }} padding={[10, 10, 40, 60]}>
         <Area position="date*price" />
       </View>
-      <View data={data} animate={false} start={{ x: 0, y:0.8 }} end={{ x: 1, y: 1 }} padding={[10, 10, 40, 60]}>
+      <View data={data} animate={false} region={{
+        start: { x: 0, y:0 },
+        end: { x: 1, y: 0.5 }
+      }} padding={[10, 10, 40, 60]}>
         <Interval position="date*price" />
       </View>
     </Chart>
