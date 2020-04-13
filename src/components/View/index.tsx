@@ -43,7 +43,7 @@ class View<T extends IView = IView> extends Base<T> {
       this.g2Instance.data(this.props.data); 
     }
     compareProps(preProps, nextProps, ['scale'], (value, key) => {
-      this.g2Instance[key](value);
+      this.g2Instance[key](...value);
     });
   }
   render () {
