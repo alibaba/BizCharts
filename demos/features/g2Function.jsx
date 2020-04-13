@@ -45,11 +45,11 @@ const data = [
     value: 13
   }
 ];
-function CustLabel({data}) {
+function CustLabel({dataSource}) {
 
   return <G2Function>
           {(chart) => {
-            data.forEach((item) => {
+            dataSource.forEach((item) => {
               chart
                 .annotation()
                 .text({
@@ -62,7 +62,7 @@ function CustLabel({data}) {
                 })
                 .text({
                   position: [item.type, item.value],
-                  content: (item.percent * 100).toFixed(0) + '%',
+                  content: `${(item.percent * 100).toFixed(0)  }%`,
                   style: {
                     textAlign: 'center',
                   },

@@ -21,7 +21,7 @@ class View<T extends IView = IView> extends Base<T> {
   static defaultProps = {
     visible: true,
   }
-  getInitalConfig() {
+  getInitalConfig(): any {
     const { region, start, end } = this.props;
     warn(start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
     warn(end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')

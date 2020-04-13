@@ -32,7 +32,7 @@ export default abstract class BaseGeom<T> extends Base<T> {
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
     const nextProps = this.props;
-    compareProps(preProps, nextProps, ['position', 'adjust', 'color', 'label', 'style'], (value, key) => {
+    compareProps(preProps, nextProps, ['position','shape', 'adjust', 'color', 'label', 'style'], (value, key) => {
       // console.log('position', value);
       console.log(key, value)
       this.g2Instance[key](...value);
