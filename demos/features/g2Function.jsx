@@ -45,6 +45,33 @@ const data = [
     value: 13
   }
 ];
+function CustLabel({data}) {
+
+  return <G2Function>
+          {(chart) => {
+            data.forEach((item) => {
+              chart
+                .annotation()
+                .text({
+                  position: [item.type, item.value],
+                  content: item.value,
+                  style: {
+                    textAlign: 'center',
+                  },
+                  offsetY: -30,
+                })
+                .text({
+                  position: [item.type, item.value],
+                  content: (item.percent * 100).toFixed(0) + '%',
+                  style: {
+                    textAlign: 'center',
+                  },
+                  offsetY: -12,
+                });
+            });
+          }}
+        </G2Function>
+}
 function Basic() {
   const cols = {
     value: {
@@ -58,11 +85,7 @@ function Basic() {
     <div>
       <Chart height={400} padding={0} data={data} scale={cols} autoFit>
         <Tooltip showMarkers={false} />
-        <G2Function>
-          {(chart) => {
-            chart.axis('year', false);
-          }}
-        </G2Function>
+        <CustLabel data={data} />
         <Interval position="year*value"/>
       </Chart>
     </div>
