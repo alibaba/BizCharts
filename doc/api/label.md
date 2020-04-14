@@ -103,6 +103,6 @@
 	percent = (percent * 100).toFixed(2) + '%';
 	// 自定义 html 模板
 	return '<span class="title" style="display: inline-block;width: 50px;">' + text + '</span><br><span style="color:' + point.color + '">' + percent + '</span>';
-  }
+  }}
 />
 ```
