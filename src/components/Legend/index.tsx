@@ -1,6 +1,6 @@
 import _Legend from '@antv/g2/esm/chart/controller/legend';
-import { registerComponentController } from '../../core';
-import useChartView from '../../hooks/useChartView';
+import { registerComponentController } from '@/core';
+import useChartView from '@/hooks/useChartView';
 
 import './actions';
 

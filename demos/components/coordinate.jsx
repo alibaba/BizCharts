@@ -15,7 +15,7 @@ const data = [
 
 export default function Demo() {
   return <Chart autoFit height={500} data={data}>
-    <Interval position="value" adjust="stack" color="type" />
-    <Coordinate type="theta" element-highlight radius={0.75} innerRadius={0.5} />
+    <Interval position="value" adjust="stack" color="type" element-highlight />
+    <Coordinate type="theta" radius={0.75} innerRadius={0.5} />
   </Chart>
 }

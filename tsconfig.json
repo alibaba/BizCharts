@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "paths": {
       "bizcharts": ["./src/index"],
-      "bizcharts/*": ["./src/*"]
+      "bizcharts/*": ["./src/*"],
+      "@/*":["./src/*"]
     }
   },
   "include": ["src"],

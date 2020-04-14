@@ -3,10 +3,10 @@ import ReactDom from 'react-dom';
 import _set from '@antv/util/lib/set';
 import _clone from '@antv/util/lib/clone';
 import _get from '@antv/util/lib/get';
-import _modifyCss from '@antv/dom-util/lib/modify-css'
-import withContainer from '../../boundary/withContainer'
-import { withRootChartInstance } from '../../hooks/useRootChartInstance';
-import { getTheme } from '../../core';
+import _modifyCss from '@antv/dom-util/lib/modify-css';
+import withContainer from '@/boundary/withContainer';
+import { withRootChartInstance } from '@/hooks/useRootChartInstance';
+import { getTheme } from '@/core';
 
 import InnerContent from './inner';
 

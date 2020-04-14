@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import _isBoolean from '@antv/util/esm/is-boolean';
 import _Axis from '@antv/g2/esm/chart/controller/axis';
-import { requiredPropWarn } from '../../utils/warning';
-import useChartView from '../../hooks/useChartView';
+import { requiredPropWarn } from '@/utils/warning';
+import useChartView from '@/hooks/useChartView';
 
-import { registerComponentController } from '../../core';
+import { registerComponentController } from '@/core';
 
 registerComponentController('axis', _Axis);
 

@@ -5,11 +5,11 @@ import _deepMix from '@antv/util/esm/deep-mix';
 import _View from '@antv/g2/esm/chart/view';
 import uniqueId from '@antv/util/lib/unique-id';
 
-import { ChartViewContext } from '../../hooks/useChartView';
-import { RootChartContext } from '../../hooks/useRootChartInstance';
-import Base, { IBaseProps } from '../../Base';
-import compareProps from '../../utils/compareProps';
-import warn from '../../utils/warning';
+import { ChartViewContext } from '@/hooks/useChartView';
+import { RootChartContext } from '@/hooks/useRootChartInstance';
+import Base, { IBaseProps } from '@/Base';
+import compareProps from '@/utils/compareProps';
+import warn from '@/utils/warning';
 
 export interface IView extends IBaseProps {
   data?: any[];

@@ -1,7 +1,7 @@
 import React from 'react';
 import _isFunction from '@antv/util/esm/is-function';
-import useChart from '../../hooks/useChartView';
-import warn from '../../utils/warning';
+import useChart from '@/hooks/useChartView';
+import warn from '@/utils/warning';
 
 export default function G2Function(props) {
   const chart = useChart();
