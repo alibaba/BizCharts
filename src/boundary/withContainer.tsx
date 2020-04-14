@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-export default function withContainer<Iprops>(Component, name: string = 'Chart') {
+export default function withContainer<Iprops>(Component, name: string = 'ChartContainer') {
   const Cls = (props: Iprops) => {
     const container = useRef();
     const [inited, setInited] = useState(false);
