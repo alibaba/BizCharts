@@ -9,11 +9,10 @@ import { ChartViewContext } from '@/hooks/useChartView';
 import warn from '@/utils/warning';
 import uniqueId from '@antv/util/lib/unique-id';
 
-
 export interface IChart extends IView {
-  container?: HTMLElement,
-  height?: number | string,
-};
+  container?: HTMLElement;
+  height?: number | string;
+}
 
 class Chart extends View<IChart> {
   ChartBaseClass: any = _Chart;
@@ -24,6 +23,8 @@ class Chart extends View<IChart> {
     if (options.pure) {
       this.g2Instance.axis(false);
       this.g2Instance.tooltip(false);
+    } else {
+      this.g2Instance.tooltip({ showMarkers: false });
     }
   }
   getInitalConfig() {
@@ -53,11 +54,13 @@ class Chart extends View<IChart> {
   render() {
     this.getInstance();
     console.log(this.g2Instance);
-    return <ErrorBoundary>
-      <RootChartContext.Provider value={{ chart: this.g2Instance }}>
-        {super.render()}
-      </RootChartContext.Provider>
-    </ErrorBoundary>
+    return (
+      <ErrorBoundary>
+        <RootChartContext.Provider value={{ chart: this.g2Instance }}>
+          {super.render()}
+        </RootChartContext.Provider>
+      </ErrorBoundary>
+    );
   }
 }
 

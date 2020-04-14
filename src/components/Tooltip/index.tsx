@@ -18,18 +18,18 @@ export default function Tooltip(props) {
     return () => {
       // 销毁
       view.tooltip(false);
-    }
+    };
   });
 
   const view = useChartView();
   if (visible === true) {
     if (_isFunction(children)) {
-      return <ReactTooltip {...options} >{children}</ReactTooltip>;
+      return <ReactTooltip {...options}>{children}</ReactTooltip>;
     }
-    view.tooltip(options);
+    view.tooltip({ showMarkers: false, options });
   } else {
     view.tooltip(false);
   }
-  
+
   return null;
 }
