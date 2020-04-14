@@ -2,8 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import _isFunction from '@antv/util/esm/is-function';
 import _Tooltip from '@antv/g2/esm/chart/controller/tooltip';
-import { registerComponentController } from '../../core';
-import useChartView from '../../hooks/useChartView';
+import { registerComponentController } from '@/core';
+import useChartView from '@/hooks/useChartView';
 import ReactTooltip from './ReactTooltip';
 import './actions';
 

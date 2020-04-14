@@ -26,6 +26,7 @@ const config = {
     alias: {
       utils: path.resolve(__dirname, './src/utils'),
       'bizcharts': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
     }
   },
   externals: {

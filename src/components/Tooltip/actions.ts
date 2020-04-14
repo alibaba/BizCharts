@@ -3,7 +3,7 @@ import ActiveRegion from '@antv/g2/esm/interaction/action/active-region';
 import SiblingTooltip from '@antv/g2/esm/interaction/action/component/sibling-tooltp';
 import TooltipAction from '@antv/g2/esm/interaction/action/component/tooltip';
 
-import { registerInteraction, registerAction } from '../../core';
+import { registerInteraction, registerAction } from '@/core';
 
 registerAction('tooltip', TooltipAction);
 registerAction('sibling-tooltip', SiblingTooltip);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import _isFunction from '@antv/util/esm/is-function';
-import useChart from '../../hooks/useChartView';
+import useChart from '@/hooks/useChartView';
 
 export default function Interaction(props) {
   const chart = useChart();

@@ -1,12 +1,12 @@
 import React from 'react';
 import _deepMix from '@antv/util/esm/deep-mix';
 import View, { IView } from '../View';
-import ErrorBoundary from '../../boundary/ErrorBoundary';
-import withContainer from '../../boundary/withContainer';
-import { Chart as _Chart } from '../../core';
-import { RootChartContext } from '../../hooks/useRootChartInstance';
-import { ChartViewContext } from '../../hooks/useChartView';
-import warn from '../../utils/warning';
+import ErrorBoundary from '@/boundary/ErrorBoundary';
+import withContainer from '@/boundary/withContainer';
+import { Chart as _Chart } from '@/core';
+import { RootChartContext } from '@/hooks/useRootChartInstance';
+import { ChartViewContext } from '@/hooks/useChartView';
+import warn from '@/utils/warning';
 import uniqueId from '@antv/util/lib/unique-id';
 
 
