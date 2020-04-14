@@ -7,7 +7,9 @@ class InnerContent extends React.Component {
     this.setState({ content })
   }
   render() {
-    return <div>{this.state.content}</div>;
+    return <div>
+    {this.state.content}
+    </div>;
   }
 }
 

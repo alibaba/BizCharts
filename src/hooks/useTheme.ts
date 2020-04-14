@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getTheme } from '@antv/g2/esm/theme';
+import { getTheme } from '../theme';
 
 export default function useTheme(defaultThemeName) {
   const [theme, setG2Theme] = useState(defaultThemeName || 'default');
@@ -8,3 +8,4 @@ export default function useTheme(defaultThemeName) {
   };
   return { theme, setTheme }
 }
+

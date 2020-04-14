@@ -2,11 +2,14 @@ import React, { RefObject } from 'react';
 import ReactDom from 'react-dom';
 import _set from '@antv/util/lib/set';
 import _clone from '@antv/util/lib/clone';
+import _get from '@antv/util/lib/get';
+import _modifyCss from '@antv/dom-util/lib/modify-css'
 import withContainer from '../../boundary/withContainer'
-import { withChartView } from '../../hooks/useChartView';
+import { withRootChartInstance } from '../../hooks/useRootChartInstance';
+import { getTheme } from '../../core';
+
 import InnerContent from './inner';
 
-import './index.scss';
 
 const CONTAINER_CLASS: string = 'g2-tooltip';
 
@@ -32,19 +35,28 @@ class Tooltip extends React.Component<TooltipProps> {
   constructor(props, context) {
     super(props, context);
     this.element = props.container;
-    this.element.classList.add('666');
+    this.element.classList.add('bizcharts-tooltip');
+    this.element.style.width = 'auto';
+    this.element.style.height = 'auto';
+
+  }
+
+  refreshContent = ({title, items, x, y}) => {
+
+    this.innerContent.current.refresh(this.props.children(title, items));
   }
   overwriteCfg() {
-    const { chartView, ...config } = this.props;
-    chartView.on('tooltip:change', ({title, items, x, y}) => {
-      this.innerContent.current.refresh(this.props.children(title, items));
-    });
-    chartView.tooltip({
+    const { chart, ...config } = this.props;
+    chart.on('tooltip:change', this.refreshContent);
+    chart.tooltip({
       inPlot: false,
       ...config,
       // showMarkers:false,
       container: this.element,
-    })
+    });
+    const domStyles: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});
+    _modifyCss(this.element, {...domStyles });
+
   }
   componentWillUnmount() {
     this.innerContent = null;
@@ -58,4 +70,4 @@ class Tooltip extends React.Component<TooltipProps> {
   }
 }
 
-export default withContainer(withChartView(Tooltip));
+export default withContainer(withRootChartInstance(Tooltip));

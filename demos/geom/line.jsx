@@ -70,9 +70,9 @@ function Basic() {
           }}
         />
         {/* <Text position={ ['50%', '50%']} content="24 hours" /> */}
-        <Tooltip>
-          {() => {
-            return <div>123</div>
+        <Tooltip className='sd' containerStyle={{ padding: 30, background: '#000' }} >
+          {(title, items) => {
+            return <div>{title}{items.length}</div>
           }}
         </Tooltip>
         <G2Function>
