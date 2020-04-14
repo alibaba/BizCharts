@@ -274,7 +274,7 @@ declare namespace bizcharts{
     follow?: boolean;
     shared?: boolean;
     position?: PositionType;
-
+    hideMarkers?: boolean;  
   }
 
 
