@@ -7,7 +7,7 @@ export const withRootChartInstance = Component => {
   return props => {
     return <RootChartContext.Consumer>
       {
-        ctx => <Component chart={ctx} {...props} />
+        ctx => <Component {...ctx} {...props} />
       }
     </RootChartContext.Consumer>
   }

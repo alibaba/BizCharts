@@ -3,7 +3,10 @@ import React from "react";
 import {
   Chart,
   Geom,
+  G2Function,
 } from "../../src";
+import { Text } from '../../src/components/Annotation';
+import Tooltip from '../../src/components/Tooltip';
 
 const data = [
   {
@@ -66,6 +69,19 @@ function Basic() {
             lineWidth: 1
           }}
         />
+        {/* <Text position={ ['50%', '50%']} content="24 hours" /> */}
+        <Tooltip>
+          {() => {
+            return <div>123</div>
+          }}
+        </Tooltip>
+        <G2Function>
+          {/* {(chart) => {
+            chart.tooltip({
+              showMarkers: false
+            })
+          }} */}
+        </G2Function>
       </Chart>
     </div>
   );

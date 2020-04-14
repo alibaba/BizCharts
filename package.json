@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -41,6 +41,7 @@
     "warning": "^4.0.3"
   },
   "devDependencies": {
+    "@antv/g2plot": "^1.0.3",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",

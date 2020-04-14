@@ -24,6 +24,10 @@ export { default as Coord } from './components/Coordinate/coord';
 export { default as G2Function } from './components/G2Function';
 export { default as Interaction } from './components/Interaction';
 
+export { default as createPlot } from './hooks/createPlot';
+export { default as useChartView, withChartView } from './hooks/useChartView';
+export { default as useRootChartInstance, withRootChartInstance } from './hooks/useRootChartInstance';
+
 // 注册主题
 export { getTheme, registerTheme } from '@antv/g2/esm/theme';
 
