@@ -1,6 +1,6 @@
 import React from 'react';
 import * as _ from '@antv/util';
-import { ChartViewContext } from '../../hooks/useChartView';
+import { ChartViewContext } from '@/hooks/useChartView';
 
 export interface IAnnotationBaseProps {
   chartIns?: any;

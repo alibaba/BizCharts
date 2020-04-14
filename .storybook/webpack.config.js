@@ -50,6 +50,9 @@ module.exports = ({ config }) => {
     },
   );
   config.resolve.extensions.push('.js', '.jsx');
-
+  config.resolve.alias={
+    ...config.resolve.alias,
+    "@":path.resolve(__dirname, '../src')
+  }
   return config;
 };

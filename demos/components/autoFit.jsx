@@ -3,6 +3,7 @@ import React from "react";
 import {
   Chart,
   Interval,
+  Tooltip
 } from "../../src";
 
 const data = [
@@ -45,9 +46,10 @@ const data = [
 ];
 function Basic() {
   return (
-    <div style={{ width: '100%', height: 50 }}>
-      <Chart pure data={data} autoFit>
+    <div style={{ width: '100%', height: 350 }}>
+      <Chart data={data} autoFit>
         <Interval position="year*value"/>
+        <Tooltip />
       </Chart>
     </div>
   );

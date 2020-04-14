@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import useChartView from '../../hooks/useChartView';
+import useChartView from '@/hooks/useChartView';
 
 export default function Coordinate(props) {
   const { type, ...options } = props;

@@ -10,7 +10,6 @@ import compareProps from '../utils/compareProps';
 // 交互事件
 import './actions';
 
-
 registerGeometryLabel('base', GeometryLabel);
 
 export interface IBaseGemo extends IBaseProps {}
@@ -19,7 +18,7 @@ export default abstract class BaseGeom<T> extends Base<T> {
   name = 'gemo';
   ChartBaseClass = null;
   protected interactionTyps: string[] = [];
-  protected readonly abstract GemoBaseClassName: string;
+  protected abstract readonly GemoBaseClassName: string;
   getInitalConfig() {
     return undefined;
   }
@@ -32,15 +31,20 @@ export default abstract class BaseGeom<T> extends Base<T> {
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
     const nextProps = this.props;
-    compareProps(preProps, nextProps, ['position','shape', 'adjust', 'color', 'label', 'style'], (value, key) => {
-      // console.log('position', value);
-      console.log(key, value)
-      this.g2Instance[key](...value);
-    });
+    compareProps(
+      preProps,
+      nextProps,
+      ['position', 'shape', 'adjust', 'color', 'label', 'style'],
+      (value, key) => {
+        // console.log('position', value);
+        console.log(key, value);
+        this.g2Instance[key](...value);
+      },
+    );
     // interaction
     compareProps(preProps, nextProps, this.interactionTyps, (value, key) => {
       // console.log('position', value);
-      if (value) {
+      if (value[0]) {
         this.context.interaction(key);
       } else {
         // unSave: g2-innerAPI

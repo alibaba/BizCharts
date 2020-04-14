@@ -2,8 +2,8 @@ import React, { RefObject } from 'react';
 import ReactDom from 'react-dom';
 import _set from '@antv/util/lib/set';
 import _clone from '@antv/util/lib/clone';
-import withContainer from '../../boundary/withContainer'
-import { withChartView } from '../../hooks/useChartView';
+import withContainer from '@/boundary/withContainer'
+import { withChartView } from '@/hooks/useChartView';
 import InnerContent from './inner';
 
 import './index.scss';
