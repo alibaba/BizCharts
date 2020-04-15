@@ -23,8 +23,9 @@ class View<T extends IView = IView> extends Base<T> {
   }
   getInitalConfig(): any {
     const { region, start, end } = this.props;
-    warn(start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
-    warn(end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')
+    console.log(88,start)
+    warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
+    warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')
     // fixme: adepter3.5
     const regionCfg = _deepMix({start: { x: 0,y: 0 }, end: { x: 1, y: 1 }}, {start,end}, region );
     return { region: regionCfg };

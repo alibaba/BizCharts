@@ -5,7 +5,7 @@ import _clone from '@antv/util/lib/clone';
 import _get from '@antv/util/lib/get';
 import _modifyCss from '@antv/dom-util/lib/modify-css';
 import withContainer from '@/boundary/withContainer';
-import { withRootChartInstance } from '@/hooks/useRootChartInstance';
+import { withChartInstance } from '@/hooks/useRootChartInstance';
 import { getTheme } from '@/core';
 
 import InnerContent from './inner';
@@ -70,4 +70,4 @@ class Tooltip extends React.Component<TooltipProps> {
   }
 }
 
-export default withContainer(withRootChartInstance(Tooltip));
+export default withContainer(withChartInstance(Tooltip));

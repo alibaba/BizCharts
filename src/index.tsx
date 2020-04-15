@@ -1,3 +1,7 @@
+import * as _Annotation from './components/Annotation/base';
+
+export const Annotation = _Annotation;
+
 export { default as Chart } from './components/Chart';
 export { default as View } from './components/View';
 
@@ -16,6 +20,7 @@ export { default as Polygon } from './geometry/Polygon';
 export { default as Schema } from './geometry/Schema';
 export { default as BaseGeom } from './geometry/Base';
 
+
 export { default as Geom } from './geometry';
 
 // 兼容
@@ -25,8 +30,8 @@ export { default as G2Function } from './components/G2Function';
 export { default as Interaction } from './components/Interaction';
 
 export { default as createPlot } from './hooks/createPlot';
-export { default as useChartView, withChartView } from './hooks/useChartView';
-export { default as useRootChartInstance, withRootChartInstance } from './hooks/useRootChartInstance';
+export { default as useView, withView } from './hooks/useChartView';
+export { default as useRootChart, withChartInstance } from './hooks/useRootChartInstance';
 
 // 注册主题
 export { getTheme, registerTheme } from '@antv/g2/esm/theme';

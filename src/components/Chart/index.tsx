@@ -32,7 +32,7 @@ class Chart extends View<IChart> {
     // TODO: 排除事件&生命周期勾子属性；
     const config = { ...this.props };
     if (config.forceFit !== undefined) {
-      warn(true, 'forceFit 将会在4.1后不再支持，请使用`autoFit`替代');
+      warn(false, 'forceFit 将会在4.1后不再支持，请使用`autoFit`替代');
       config.autoFit = config.forceFit;
     }
 

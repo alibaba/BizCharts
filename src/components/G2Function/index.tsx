@@ -10,7 +10,7 @@ export default function G2Function(props) {
     const res = props.children(chart);
     return React.isValidElement(res) ? res : null;
   } else {
-    warn(true, 'G2Function 的子组件应当是一个函数 (chart) => {}');
+    warn(false, 'G2Function 的子组件应当是一个函数 (chart) => {}');
     return null;
   }
 }

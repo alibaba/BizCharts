@@ -6,7 +6,7 @@ export const ChartViewContext = React.createContext(null);
 
 const Consumer: React.Consumer<any> = ChartViewContext.Consumer;
 
-export const withChartView = Component => {
+export const withView = Component => {
   return props => {
     return <Consumer>
       {
@@ -16,6 +16,6 @@ export const withChartView = Component => {
   }
 }
 
-export default function useChart() {
+export default function useView() {
   return React.useContext(ChartViewContext);
 }

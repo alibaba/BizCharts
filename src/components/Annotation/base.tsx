@@ -38,13 +38,13 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     if (!this.annotation) {
       return;
     }
-    this.annotation.options.forEach((item, i) => {
+    this.annotation.option.forEach((item, i) => {
       if (item.__id === this.id) {
         index = i;
       }
     });
     if (index !== null) {
-      this.annotation.options.splice(index, 1);
+      this.annotation.option.splice(index, 1);
     }
     this.annotation = null;
   }

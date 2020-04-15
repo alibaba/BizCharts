@@ -17,6 +17,6 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
       {inited ? <Component container={container.current} {...props} /> : <></>}
     </div>
   };
-  Cls.displayName = name;
+  Cls.displayName = name || Component.name;
   return Cls;
 };
