@@ -3,10 +3,10 @@ import _isArray from '@antv/util/esm/is-array';
 import _isFunction from '@antv/util/esm/is-function';
 import _deepMix from '@antv/util/esm/deep-mix';
 import _View from '@antv/g2/esm/chart/view';
-import uniqueId from '@antv/util/lib/unique-id';
+import uniqueId from '@antv/util/esm/unique-id';
 
-import { ChartViewContext } from '@/hooks/useChartView';
-import { RootChartContext } from '@/hooks/useRootChartInstance';
+import RootChartContext from '@/context/root';
+import ChartViewContext from '@/context/view';
 import Base, { IBaseProps } from '@/Base';
 import compareProps from '@/utils/compareProps';
 import warn from '@/utils/warning';
@@ -23,7 +23,7 @@ class View<T extends IView = IView> extends Base<T> {
   }
   getInitalConfig(): any {
     const { region, start, end } = this.props;
-    console.log(88,start)
+    // console.log(88,start)
     warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
     warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')
     // fixme: adepter3.5
@@ -32,7 +32,7 @@ class View<T extends IView = IView> extends Base<T> {
   }
   initInstance() {
     this.id = uniqueId(this.name);
-    console.log(3, this.context)
+    // console.log(3, this.context)
     const options = this.getInitalConfig();
     this.g2Instance = this.context.chart.createView(options);
   }
@@ -42,6 +42,13 @@ class View<T extends IView = IView> extends Base<T> {
     if (_isArray(this.props.data)) {
       // console.log('data', this.props.data)
       this.g2Instance.data(this.props.data); 
+    } else {
+      // @ts-ignore
+      if (this.props.data && _isArray(this.props.data.rows)) {
+        // @ts-ignore
+        this.g2Instance.data(this.props.data.rows);
+        warn(false, '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}')
+      }
     }
     compareProps(preProps, nextProps, ['scale'], (value, key) => {
       this.g2Instance[key](...value);

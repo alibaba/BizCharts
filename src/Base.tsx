@@ -1,5 +1,5 @@
 import React from 'react';
-import uniqueId from '@antv/util/lib/unique-id';
+import uniqueId from '@antv/util/esm/unique-id';
 
 /**
  * G2 Chart、View、Geometry 以及 Element 等的基类。

@@ -5,7 +5,7 @@ import warn from '@/utils/warning';
 
 export default function G2Function(props) {
   const chart = useChart();
-  console.log(props.children)
+  // console.log(props.children)
   if (_isFunction(props.children)) {
     const res = props.children(chart);
     return React.isValidElement(res) ? res : null;

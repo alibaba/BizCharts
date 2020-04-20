@@ -1,11 +1,11 @@
 import React, { RefObject } from 'react';
 import ReactDom from 'react-dom';
-import _set from '@antv/util/lib/set';
-import _clone from '@antv/util/lib/clone';
-import _get from '@antv/util/lib/get';
+import _set from '@antv/util/esm/set';
+import _clone from '@antv/util/esm/clone';
+import _get from '@antv/util/esm/get';
 import _modifyCss from '@antv/dom-util/lib/modify-css';
 import withContainer from '@/boundary/withContainer';
-import { withChartInstance } from '@/hooks/useRootChartInstance';
+import { withView } from '@/context/view';
 import { getTheme } from '@/core';
 
 import InnerContent from './inner';
@@ -46,9 +46,9 @@ class Tooltip extends React.Component<TooltipProps> {
     this.innerContent.current.refresh(this.props.children(title, items));
   }
   overwriteCfg() {
-    const { chart, ...config } = this.props;
-    chart.on('tooltip:change', this.refreshContent);
-    chart.tooltip({
+    const { chartView, ...config } = this.props;
+    chartView.on('tooltip:change', this.refreshContent);
+    chartView.tooltip({
       inPlot: false,
       ...config,
       // showMarkers:false,
@@ -63,11 +63,10 @@ class Tooltip extends React.Component<TooltipProps> {
   }
   render() {
     this.overwriteCfg();
-    console.log(this.props)
     return ReactDom.createPortal(<>
       <InnerContent ref={this.innerContent} />
     </>, this.element); // 无子组件
   }
 }
 
-export default withContainer(withChartInstance(Tooltip));
+export default withContainer(withView(Tooltip));

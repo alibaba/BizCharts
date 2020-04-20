@@ -13,21 +13,22 @@ export interface IAxis {
 }
 const isAllField = name => (name === "*" || name === undefined);
 
-
+// 单纯的赋值，重复执行不影响性能
 export default function Legend(props) {
-  const { name, visible, ...options } = props;
+  const { name, visible = true, ...options } = props;
   const view = useChartView();
-  if (isAllField(name)) {
-    if (name === undefined || name === "*") {
+  if (isAllField(name) ) {
+    if (visible) {
+      view.legend(options);
+    } else {
       view.legend(false);
+    }
+  } else {
+    if (visible) {
+      view.legend(name, options);
     } else {
       view.legend(name, false);
     }
-  }
-  if (isAllField(name)) {
-    view.legend(options);
-  } else {
-    view.legend(name, options); // 单纯的赋值，重复执行不影响性能
   }
   return null;
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 
-// 最顶层chart实例
+// 最顶层chart实例 theme, 局部配置
 
-export const RootChartContext = React.createContext(null);
+const RootChartContext = React.createContext(null);
+
 export const withChartInstance = Component => {
   const Com = props => {
     return <RootChartContext.Consumer>
@@ -15,6 +16,4 @@ export const withChartInstance = Component => {
   return Com;
 }
 
-export default function useChartInstance() {
-  return React.useContext(RootChartContext);
-}
+export default RootChartContext;

@@ -4,10 +4,10 @@ import View, { IView } from '../View';
 import ErrorBoundary from '@/boundary/ErrorBoundary';
 import withContainer from '@/boundary/withContainer';
 import { Chart as _Chart } from '@/core';
-import { RootChartContext } from '@/hooks/useRootChartInstance';
-import { ChartViewContext } from '@/hooks/useChartView';
+import RootChartContext from '@/context/root';
+import ChartViewContext from '@/context/view';
 import warn from '@/utils/warning';
-import uniqueId from '@antv/util/lib/unique-id';
+import uniqueId from '@antv/util/esm/unique-id';
 
 export interface IChart extends IView {
   container?: HTMLElement;
@@ -41,7 +41,6 @@ class Chart extends View<IChart> {
 
   componentDidMount() {
     super.componentDidMount();
-    // console.log('render')
     this.g2Instance && this.g2Instance.render();
   }
 
@@ -53,7 +52,6 @@ class Chart extends View<IChart> {
 
   render() {
     this.getInstance();
-    console.log(this.g2Instance);
     return (
       <ErrorBoundary>
         <RootChartContext.Provider value={{ chart: this.g2Instance }}>

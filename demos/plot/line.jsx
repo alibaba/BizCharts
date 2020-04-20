@@ -4,6 +4,7 @@ import { Line } from '@antv/g2plot';
 import { Point, Axis, createPlot } from '../../src';
 
 import { Text } from '../../src/components/Annotation';
+import Tooltip from '../../src/components/Tooltip';
 
 const LineChart = createPlot(Line);
 
@@ -62,6 +63,11 @@ function Basic(options) {
         <Axis visible={false} name="value" />
         <Point position="year*value" />
         <Text position={ ['50%', '50%']} content="24 hours" />
+        <Tooltip >
+          {() => {
+            return <div>123</div>
+          }}
+        </Tooltip>
       </LineChart>
     </div>
   );

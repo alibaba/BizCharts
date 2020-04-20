@@ -26,7 +26,7 @@ export default function Tooltip(props) {
     if (_isFunction(children)) {
       return <ReactTooltip {...options}>{children}</ReactTooltip>;
     }
-    view.tooltip({ showMarkers: false, options });
+    view.tooltip({ showMarkers: false, ...options });
   } else {
     view.tooltip(false);
   }

@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0-beta.5",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -37,6 +37,7 @@
   "dependencies": {
     "@antv/g2": "^4.0.5",
     "@antv/util": "^2.0.5",
+    "create-react-context": "^0.3.0",
     "resize-observer-polyfill": "^1.5.1",
     "warning": "^4.0.3"
   },

@@ -1,10 +1,10 @@
 import React from 'react';
 import _clone from '@antv/util';
 
-import withContainer from '../boundary/withContainer';
-import ErrorBoundary from '../boundary/ErrorBoundary';
-import { RootChartContext } from './useRootChartInstance';
-import { ChartViewContext } from './useChartView';
+import withContainer from '@/boundary/withContainer';
+import ErrorBoundary from '@/boundary/ErrorBoundary';
+import RootChartContext from '@/context/root';
+import ChartViewContext from '@/context/view';
 
 
 class BasePlot extends React.Component<any> {
@@ -44,13 +44,11 @@ class BasePlot extends React.Component<any> {
 
   render() {
     const g2Instance = this.getInstance();
+    const chartView = this.getChartView();
     return <RootChartContext.Provider value={{ chart: g2Instance }}>
-      <ChartViewContext.Provider value={this.getChartView()} >
+      <ChartViewContext.Provider value={chartView} >
         <>
-        {React.Children.map(this.props.children, (item) => {
-          // @ts-ignore
-          return React.cloneElement(item, { key: Math.random()})
-        })}
+        {this.props.children}
         </>
       </ChartViewContext.Provider>
     </RootChartContext.Provider>;
@@ -59,13 +57,14 @@ class BasePlot extends React.Component<any> {
 
 const BxPlot = withContainer(BasePlot) as any;
 
-function createPlot<IPlotConfig>(Plot): React.FunctionComponent<IPlotConfig> {
-
-  return (props: IPlotConfig) => {
+function createPlot<IPlotConfig>(Plot, name: string): React.FunctionComponent<IPlotConfig> {
+  const Com = (props: IPlotConfig) => {
     return <ErrorBoundary>
       <BxPlot {...props} PlotClass={Plot} />
     </ErrorBoundary>
   }
+  Com.displayName = name || Plot.name;
+  return Com;
 }
 
 export default createPlot;

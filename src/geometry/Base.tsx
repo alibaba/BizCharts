@@ -1,11 +1,13 @@
-import uniqueId from '@antv/util/lib/unique-id';
+import uniqueId from '@antv/util/esm/unique-id';
+import _isString from '@antv/util/esm/is-string';
 import GeometryLabel from '@antv/g2/esm/geometry/label/base';
 import Base, { IBaseProps } from '../Base';
-import { ChartViewContext } from '../hooks/useChartView';
+import ChartViewContext from '@/context/view';
 
 import { registerGeometryLabel } from '../core';
 
 import compareProps from '../utils/compareProps';
+import './Label';
 
 // 交互事件
 import './actions';
@@ -14,9 +16,10 @@ registerGeometryLabel('base', GeometryLabel);
 
 export interface IBaseGemo extends IBaseProps {}
 
-export default abstract class BaseGeom<T> extends Base<T> {
+export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   name = 'gemo';
   ChartBaseClass = null;
+  static contextType: any;
   protected interactionTyps: string[] = [];
   protected abstract readonly GemoBaseClassName: string;
   getInitalConfig() {
@@ -34,16 +37,27 @@ export default abstract class BaseGeom<T> extends Base<T> {
     compareProps(
       preProps,
       nextProps,
-      ['position', 'shape', 'adjust', 'color', 'label', 'style'],
+      ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size'],
       (value, key) => {
-        // console.log('position', value);
-        console.log(key, value);
+        // value 已被转为array
         this.g2Instance[key](...value);
       },
     );
-    // interaction
+    compareProps(
+      preProps,
+      nextProps,
+      ['adjust'],
+      (value, key) => {
+        if (_isString(value[0])) {
+          this.g2Instance[key](value[0]);
+        } else {
+          this.g2Instance[key](value);
+        }
+      },
+    );
+
+    // interaction 
     compareProps(preProps, nextProps, this.interactionTyps, (value, key) => {
-      // console.log('position', value);
       if (value[0]) {
         this.context.interaction(key);
       } else {

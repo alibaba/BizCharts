@@ -1,6 +1,11 @@
 import React from 'react';
 import * as _ from '@antv/util';
-import { ChartViewContext } from '@/hooks/useChartView';
+import ChartViewContext from '@/context/view';
+import { registerComponentController } from '@/core';
+
+import _Annotation from '@antv/g2/esm/chart/controller/annotation';
+
+registerComponentController('annotation', _Annotation);
 
 export interface IAnnotationBaseProps {
   chartIns?: any;
@@ -16,7 +21,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
 
   componentDidMount() {
     const chartIns = this.getChartIns();
-    console.log(chartIns);
+    // console.log(chartIns);
     this.id = _.uniqueId('annotation');
     this.annotation = chartIns.annotation();
     this.annotation[this.annotationType](this.props);
@@ -33,6 +38,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     // fixme: 需要判断view的情况
     this.getChartIns().repaint();
   }
+  static contextType: any;
   componentWillUnmount() {
     let index = null;
     if (!this.annotation) {
@@ -49,7 +55,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     this.annotation = null;
   }
   getChartIns() {
-    return this.context;
+    return this.context as any;
   }
   render() {
     return null;

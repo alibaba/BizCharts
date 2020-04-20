@@ -1,6 +1,8 @@
-import * as _Annotation from './components/Annotation/base';
+import * as _Annotation from './components/Annotation';
+import * as _Util from '@antv/util';
 
 export const Annotation = _Annotation;
+export const Util = _Util;
 
 export { default as Chart } from './components/Chart';
 export { default as View } from './components/View';
@@ -29,12 +31,18 @@ export { default as Coord } from './components/Coordinate/coord';
 export { default as G2Function } from './components/G2Function';
 export { default as Interaction } from './components/Interaction';
 
-export { default as createPlot } from './hooks/createPlot';
-export { default as useView, withView } from './hooks/useChartView';
-export { default as useRootChart, withChartInstance } from './hooks/useRootChartInstance';
+export { default as createPlot } from './createPlot';
+export { default as useView } from './hooks/useChartView';
+export { default as useRootChart } from './hooks/useChartInstance';
+
+export { withView } from './context/view';
+export { withChartInstance } from './context/root';
 
 // 注册主题
 export { getTheme, registerTheme } from '@antv/g2/esm/theme';
+
+export * from '@antv/g2/esm/core';
+
 
 
 export const version = process.env.__VERSION__;
