@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.0-beta.5",
+  "version": "4.0.0-beta.8",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -30,9 +30,11 @@
     "prepublishOnly": "npm run test && npm run build && np --no-cleanup --yolo --no-publish",
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
+    "ts-path": "npx ts-paths lib ./ -t tsconfig.json -d -l 2",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
-    "uitest": "ice-chart-develop-cli test-multi"
+    "uitest": "ice-chart-develop-cli test-multi",
+    "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
     "@antv/g2": "^4.0.5",
@@ -113,7 +115,8 @@
     "style-loader": "^0.20.3",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.11"
   },
   "greenkeeper": {
     "ignore": [

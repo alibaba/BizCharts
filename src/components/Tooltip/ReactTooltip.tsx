@@ -1,12 +1,11 @@
 import React, { RefObject } from 'react';
 import ReactDom from 'react-dom';
-import _set from '@antv/util/esm/set';
-import _clone from '@antv/util/esm/clone';
-import _get from '@antv/util/esm/get';
+
+import _get from '@antv/util/lib/get';
 import _modifyCss from '@antv/dom-util/lib/modify-css';
-import withContainer from '@/boundary/withContainer';
-import { withView } from '@/context/view';
-import { getTheme } from '@/core';
+import withContainer from '../../boundary/withContainer';
+import { withView } from '../../context/view';
+import { getTheme } from '../../core';
 
 import InnerContent from './inner';
 
@@ -14,15 +13,7 @@ import InnerContent from './inner';
 const CONTAINER_CLASS: string = 'g2-tooltip';
 
 export interface TooltipProps extends React.ComponentProps<any> {
-  children: (title?: string, items?: any[], styles?: {
-    // 不要抽出去成interface，为了编辑器提示效果
-    'g2-tooltip': React.StyleHTMLAttributes<HTMLDivElement>,
-    'g2-tooltip-title': React.StyleHTMLAttributes<HTMLDivElement>,
-    'g2-tooltip-list': React.StyleHTMLAttributes<HTMLDivElement>,
-    'g2-tooltip-marker': React.StyleHTMLAttributes<HTMLDivElement>,
-    'g2-tooltip-value': React.StyleHTMLAttributes<HTMLDivElement>,
-    'g2-tooltip-list-item': React.StyleHTMLAttributes<HTMLDivElement>
-  } ) => {},
+  children: (title?: string, items?: any[], x?: number, y?: number) => {},
   [key: string]: any;
 }
 
@@ -40,10 +31,13 @@ class Tooltip extends React.Component<TooltipProps> {
     this.element.style.height = 'auto';
 
   }
+  componentWillUnmount() {
+    this.innerContent = null;
+  }
 
   refreshContent = ({title, items, x, y}) => {
 
-    this.innerContent.current.refresh(this.props.children(title, items));
+    this.innerContent.current.refresh(this.props.children(title, items, x, y));
   }
   overwriteCfg() {
     const { chartView, ...config } = this.props;
@@ -58,9 +52,7 @@ class Tooltip extends React.Component<TooltipProps> {
     _modifyCss(this.element, {...domStyles });
 
   }
-  componentWillUnmount() {
-    this.innerContent = null;
-  }
+
   render() {
     this.overwriteCfg();
     return ReactDom.createPortal(<>

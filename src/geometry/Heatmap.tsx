@@ -1,4 +1,4 @@
-import Heatmap from '@antv/g2/esm/geometry/heatmap';
+import Heatmap from '@antv/g2/lib/geometry/heatmap';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

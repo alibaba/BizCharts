@@ -1,15 +1,14 @@
 import React from 'react';
-import _isArray from '@antv/util/esm/is-array';
-import _isFunction from '@antv/util/esm/is-function';
-import _deepMix from '@antv/util/esm/deep-mix';
-import _View from '@antv/g2/esm/chart/view';
-import uniqueId from '@antv/util/esm/unique-id';
+import _isArray from '@antv/util/lib/is-array';
+import _deepMix from '@antv/util/lib/deep-mix';
+import _View from '@antv/g2/lib/chart/view';
+import uniqueId from '@antv/util/lib/unique-id';
 
-import RootChartContext from '@/context/root';
-import ChartViewContext from '@/context/view';
-import Base, { IBaseProps } from '@/Base';
-import compareProps from '@/utils/compareProps';
-import warn from '@/utils/warning';
+import RootChartContext from '../../context/root';
+import ChartViewContext from '../../context/view';
+import Base, { IBaseProps } from '../../Base';
+import compareProps from '../../utils/compareProps';
+import warn from '../../utils/warning';
 
 export interface IView extends IBaseProps {
   data?: any[];
@@ -41,19 +40,18 @@ class View<T extends IView = IView> extends Base<T> {
     const nextProps = this.props;
     if (_isArray(this.props.data)) {
       // console.log('data', this.props.data)
-      this.g2Instance.data(this.props.data); 
-    } else {
+      this.g2Instance.data(this.props.data);
       // @ts-ignore
-      if (this.props.data && _isArray(this.props.data.rows)) {
-        // @ts-ignore
-        this.g2Instance.data(this.props.data.rows);
-        warn(false, '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}')
-      }
+    } else if (this.props.data && _isArray(this.props.data.rows)) {
+      // @ts-ignore
+      this.g2Instance.data(this.props.data.rows);
+      warn(false, '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}')
     }
     compareProps(preProps, nextProps, ['scale'], (value, key) => {
       this.g2Instance[key](...value);
     });
   }
+
   render () {
     return <ChartViewContext.Provider value={this.getInstance()}>
       <>{this.props.children}</>

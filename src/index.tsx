@@ -1,5 +1,7 @@
-import * as _Annotation from './components/Annotation';
 import * as _Util from '@antv/util';
+import * as _Annotation from './components/Annotation';
+import * as _G2 from './g2-all';
+
 
 export const Annotation = _Annotation;
 export const Util = _Util;
@@ -27,7 +29,6 @@ export { default as Geom } from './geometry';
 
 // 兼容
 export { default as Coord } from './components/Coordinate/coord';
-
 export { default as G2Function } from './components/G2Function';
 export { default as Interaction } from './components/Interaction';
 
@@ -39,10 +40,11 @@ export { withView } from './context/view';
 export { withChartInstance } from './context/root';
 
 // 注册主题
-export { getTheme, registerTheme } from '@antv/g2/esm/theme';
+export { getTheme, registerTheme } from '@antv/g2/lib/theme';
 
-export * from '@antv/g2/esm/core';
+export * from './core';
 
 
 
+export const G2 = _G2;
 export const version = process.env.__VERSION__;

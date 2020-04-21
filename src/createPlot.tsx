@@ -1,10 +1,9 @@
 import React from 'react';
-import _clone from '@antv/util';
 
-import withContainer from '@/boundary/withContainer';
-import ErrorBoundary from '@/boundary/ErrorBoundary';
-import RootChartContext from '@/context/root';
-import ChartViewContext from '@/context/view';
+import withContainer from './boundary/withContainer';
+import ErrorBoundary from './boundary/ErrorBoundary';
+import RootChartContext from './context/root';
+import ChartViewContext from './context/view';
 
 
 class BasePlot extends React.Component<any> {
@@ -14,7 +13,7 @@ class BasePlot extends React.Component<any> {
       this.getChartView().render();
     }
   }
-  componentDidUpdate(preProps) {
+  componentDidUpdate() {
     if (this.props.children) {
       this.getChartView().render();
     }
@@ -24,10 +23,7 @@ class BasePlot extends React.Component<any> {
       this.g2Instance.destroy();
     }
   }
-  initInstance() {
-    const { container, PlotClass, ...options } = this.props;
-    this.g2Instance = new PlotClass(container, options);
-  }
+
   protected getInstance() {
     if (!this.g2Instance) {
       this.initInstance();
@@ -38,8 +34,14 @@ class BasePlot extends React.Component<any> {
     }
     return this.g2Instance;
   }
+
   getChartView() {
     return this.g2Instance.layers[0].view;
+  }
+
+  initInstance() {
+    const { container, PlotClass, ...options } = this.props;
+    this.g2Instance = new PlotClass(container, options);
   }
 
   render() {

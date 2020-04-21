@@ -12,12 +12,10 @@ class ErrorBoundary extends React.Component<any> {
   }
 
   render() {
-    const { errorContent } = this.props;
+    const { errorContent = <div style={{ color: '#aaa' }}>Bizcharts something error</div> } = this.props;
     if (this.death) {
       this.death = false; // 挂一次后要复活
-      return (
-        errorContent ? errorContent : <div style={{ color: '#aaa' }}>Bizcharts something error</div>
-      );
+      return errorContent;
     }
     return this.props.children;
   }

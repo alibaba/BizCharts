@@ -1,10 +1,9 @@
 
 import { useEffect } from 'react';
-import useChartView from '@/hooks/useChartView';
-import warn from '@/utils/warning';
-import _each from '@antv/util/esm/each';
-import _isNil from '@antv/util/esm/is-nil';
-import _tranPropsToArray from '@/utils/tranPropsToArray';
+import useChartView from '../../hooks/useChartView';
+import warn from '../../utils/warning';
+import _isNil from '@antv/util/lib/is-nil';
+import _tranPropsToArray from '../../utils/tranPropsToArray';
 
 export default function Coordinate(props) {
   const { type, transpose, rotate, scale, reflect, actions, ...options } = props;

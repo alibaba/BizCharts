@@ -1,6 +1,6 @@
-import _Legend from '@antv/g2/esm/chart/controller/legend';
-import { registerComponentController } from '@/core';
-import useChartView from '@/hooks/useChartView';
+import _Legend from '@antv/g2/lib/chart/controller/legend';
+import { registerComponentController } from '../../core';
+import useChartView from '../../hooks/useChartView';
 
 import './actions';
 
@@ -17,18 +17,18 @@ const isAllField = name => (name === "*" || name === undefined);
 export default function Legend(props) {
   const { name, visible = true, ...options } = props;
   const view = useChartView();
-  if (isAllField(name) ) {
+  if (isAllField(name)) {
     if (visible) {
       view.legend(options);
     } else {
       view.legend(false);
     }
+    return null;
+  }
+  if (visible) {
+    view.legend(name, options);
   } else {
-    if (visible) {
-      view.legend(name, options);
-    } else {
-      view.legend(name, false);
-    }
+    view.legend(name, false);
   }
   return null;
 }

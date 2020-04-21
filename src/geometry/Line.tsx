@@ -1,5 +1,5 @@
-import Line from '@antv/g2/esm/geometry/line';
-import '@antv/g2/esm/geometry/shape/line/step';
+import Line from '@antv/g2/lib/geometry/line';
+import '@antv/g2/lib/geometry/shape/line/step';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

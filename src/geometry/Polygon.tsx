@@ -1,4 +1,4 @@
-import Polygon from '@antv/g2/esm/geometry/polygon';
+import Polygon from '@antv/g2/lib/geometry/polygon';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

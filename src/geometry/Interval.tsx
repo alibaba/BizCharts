@@ -1,7 +1,7 @@
-import Interval from '@antv/g2/esm/geometry/interval';
+import Interval from '@antv/g2/lib/geometry/interval';
 import PropsTypes from 'prop-types';
-import IntervalLabel from '@antv/g2/esm/geometry/label/interval';
-import PieLabel from '@antv/g2/esm/geometry/label/pie';
+import IntervalLabel from '@antv/g2/lib/geometry/label/interval';
+import PieLabel from '@antv/g2/lib/geometry/label/pie';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry, registerInteraction, registerGeometryLabel } from '../core';
 

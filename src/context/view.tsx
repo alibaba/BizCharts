@@ -3,7 +3,7 @@ import createContext from 'create-react-context';
 
 // 父级图层实例，chart 或者 view
 const ChartViewContext = createContext<any>(null);
-const Consumer = ChartViewContext.Consumer;
+const { Consumer } = ChartViewContext;
 
 export const withView = Component => {
   return props => {

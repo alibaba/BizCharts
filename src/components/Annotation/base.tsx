@@ -1,9 +1,9 @@
 import React from 'react';
 import * as _ from '@antv/util';
-import ChartViewContext from '@/context/view';
-import { registerComponentController } from '@/core';
+import ChartViewContext from '../../context/view';
+import { registerComponentController } from '../../core';
 
-import _Annotation from '@antv/g2/esm/chart/controller/annotation';
+import _Annotation from '@antv/g2/lib/chart/controller/annotation';
 
 registerComponentController('annotation', _Annotation);
 
@@ -38,7 +38,6 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     // fixme: 需要判断view的情况
     this.getChartIns().repaint();
   }
-  static contextType: any;
   componentWillUnmount() {
     let index = null;
     if (!this.annotation) {
@@ -57,6 +56,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
   getChartIns() {
     return this.context as any;
   }
+  static contextType: any;
   render() {
     return null;
   }

@@ -1,13 +1,12 @@
 import React from 'react';
-import _deepMix from '@antv/util/esm/deep-mix';
+import ErrorBoundary from '../../boundary/ErrorBoundary';
+import withContainer from '../../boundary/withContainer';
+import { Chart as _Chart } from '../../core';
+import RootChartContext from '../../context/root';
+import warn from '../../utils/warning';
+import uniqueId from '@antv/util/lib/unique-id';
+
 import View, { IView } from '../View';
-import ErrorBoundary from '@/boundary/ErrorBoundary';
-import withContainer from '@/boundary/withContainer';
-import { Chart as _Chart } from '@/core';
-import RootChartContext from '@/context/root';
-import ChartViewContext from '@/context/view';
-import warn from '@/utils/warning';
-import uniqueId from '@antv/util/esm/unique-id';
 
 export interface IChart extends IView {
   container?: HTMLElement;
@@ -41,11 +40,15 @@ class Chart extends View<IChart> {
 
   componentDidMount() {
     super.componentDidMount();
-    this.g2Instance && this.g2Instance.render();
+    if (this.g2Instance) {
+      this.g2Instance.render();
+    }
   }
 
   componentDidUpdate(perProps) {
+    const { data } = this.props;
     this.configInstance(perProps, this.props);
+    this.g2Instance.changeData(data);
     // TODO: forceUpdate
     this.g2Instance.render(true);
   }

@@ -1,4 +1,4 @@
-import Point from '@antv/g2/esm/geometry/point';
+import Point from '@antv/g2/lib/geometry/point';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

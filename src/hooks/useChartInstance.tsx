@@ -1,5 +1,5 @@
 import React from 'react';
-import RootChartContext from '@/context/root';
+import RootChartContext from '../context/root';
 
 
 export default function useChartInstance() {

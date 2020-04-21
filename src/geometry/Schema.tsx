@@ -1,4 +1,4 @@
-import Schema from '@antv/g2/esm/geometry/schema';
+import Schema from '@antv/g2/lib/geometry/schema';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

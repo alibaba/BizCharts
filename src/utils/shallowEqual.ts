@@ -1,6 +1,6 @@
-import _each from '@antv/util/esm/each';
-import _isArray from '@antv/util/esm/is-array';
-import _isObject from '@antv/util/esm/is-object';
+import _each from '@antv/util/lib/each';
+import _isArray from '@antv/util/lib/is-array';
+import _isObject from '@antv/util/lib/is-object';
 
 function is(x, y) {
   if (x === y) {

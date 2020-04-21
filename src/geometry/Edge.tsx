@@ -1,4 +1,4 @@
-import Edge from '@antv/g2/esm/geometry/edge';
+import Edge from '@antv/g2/lib/geometry/edge';
 import BaseGemo, { IBaseGemo } from './Base';
 import { registerGeometry } from '../core';
 

@@ -1,13 +1,13 @@
 
-import ListHighlight from '@antv/g2/esm/interaction/action/component/list-highlight';
-import ListActive from '@antv/g2/esm/interaction/action/component/list-active';
-import ListUnchecked from '@antv/g2/esm/interaction/action/component/list-unchecked';
+import ListHighlight from '@antv/g2/lib/interaction/action/component/list-highlight';
+import ListActive from '@antv/g2/lib/interaction/action/component/list-active';
+import ListUnchecked from '@antv/g2/lib/interaction/action/component/list-unchecked';
 
-import DataFilter from '@antv/g2/esm/interaction/action/data/filter';
-import ListSelected from '@antv/g2/esm/interaction/action/component/list-selected';
+import DataFilter from '@antv/g2/lib/interaction/action/data/filter';
+import ListSelected from '@antv/g2/lib/interaction/action/component/list-selected';
 
 
-import { registerAction, registerInteraction } from '@/core';
+import { registerAction, registerInteraction } from '../../core';
 
 registerAction('list-active', ListActive);
 registerAction('list-selected', ListSelected);

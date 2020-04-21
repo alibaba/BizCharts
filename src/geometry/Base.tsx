@@ -1,11 +1,10 @@
-import uniqueId from '@antv/util/esm/unique-id';
-import _isString from '@antv/util/esm/is-string';
-import GeometryLabel from '@antv/g2/esm/geometry/label/base';
-import Base, { IBaseProps } from '../Base';
-import ChartViewContext from '@/context/view';
+import uniqueId from '@antv/util/lib/unique-id';
+import _isString from '@antv/util/lib/is-string';
+import GeometryLabel from '@antv/g2/lib/geometry/label/base';
+import ChartViewContext from '../context/view';
 
 import { registerGeometryLabel } from '../core';
-
+import Base, { IBaseProps } from '../Base';
 import compareProps from '../utils/compareProps';
 import './Label';
 

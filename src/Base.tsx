@@ -1,5 +1,5 @@
 import React from 'react';
-import uniqueId from '@antv/util/esm/unique-id';
+import uniqueId from '@antv/util/lib/unique-id';
 
 /**
  * G2 Chart、View、Geometry 以及 Element 等的基类。
@@ -57,10 +57,15 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
       }
     }
   }
-  render () {
+  render (): any {
     // 缓存g2Instance
     this.getInstance();
     // console.log('g2Instance', g2Instance);
+    if (this.props.children) {
+      return React.Children.map(this.props.children, element => {
+        return React.isValidElement(element) ? React.cloneElement(element, { parentInstance: this.getInstance }) : element;
+      })
+    }
     return null;
   }
 }

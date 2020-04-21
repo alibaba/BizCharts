@@ -1,8 +1,8 @@
 /** 
  * 对比不一致则执行回调
 */
-import _each from '@antv/util/esm/each';
-import _isArray from '@antv/util/esm/is-array';
+import _each from '@antv/util/lib/each';
+import _isArray from '@antv/util/lib/is-array';
 import _shallowEqual from './shallowEqual';
 
 export default (preProps: any, nextProps: any | null, keys: string[], callback: Function) => {

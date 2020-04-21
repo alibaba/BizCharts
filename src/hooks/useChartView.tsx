@@ -1,6 +1,5 @@
 import React from 'react';
-import ChartViewContext from '@/context/view';
-import warn from '@/utils/warning';
+import ChartViewContext from '../context/view';
 
 export default function useView() {
 

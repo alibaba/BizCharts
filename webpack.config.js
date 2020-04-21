@@ -25,6 +25,7 @@ const config = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
       utils: path.resolve(__dirname, './src/utils'),
+      '@antv/g2': path.resolve(__dirname, './node_modules/@antv/g2'),
       'bizcharts': path.resolve(__dirname, './src'),
       '@': path.resolve(__dirname, './src'),
     }
@@ -95,8 +96,8 @@ const config = {
     new webpack.DefinePlugin({
       __DEV__: !isProduction,
       __VERSION__: pagckageJSON.version,
-    })
-    
+    }),
+    ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
   ],
   optimization: {
     minimize: isProduction,
