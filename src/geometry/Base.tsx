@@ -21,6 +21,7 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   static contextType: any;
   protected interactionTyps: string[] = [];
   protected abstract readonly GemoBaseClassName: string;
+
   getInitalConfig() {
     return undefined;
   }
@@ -32,10 +33,10 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   }
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
-    const nextProps = this.props;
+
     compareProps(
       preProps,
-      nextProps,
+      curProps,
       ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size'],
       (value, key) => {
         // value 已被转为array
@@ -44,7 +45,7 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
     );
     compareProps(
       preProps,
-      nextProps,
+      curProps,
       ['adjust'],
       (value, key) => {
         if (_isString(value[0])) {
@@ -56,12 +57,13 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
     );
 
     // interaction 
-    compareProps(preProps, nextProps, this.interactionTyps, (value, key) => {
+    console.log(preProps, this.props);
+    compareProps(preProps, curProps, this.interactionTyps, (value, key) => {
+      console.log(key, value)
       if (value[0]) {
         this.context.interaction(key);
       } else {
-        // unSave: g2-innerAPI
-        this.context.interactions[key].destory();
+        this.context.removeInteraction(key);
       }
     });
   }

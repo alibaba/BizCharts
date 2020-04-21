@@ -44,7 +44,8 @@ const data = [
     value: 13
   }
 ];
-function Basic() {
+function Basic(props) {
+  const cfg = props || {}
   const cols = {
     value: {
       min: 0
@@ -55,9 +56,9 @@ function Basic() {
   };
   return (
     <div>
-      <Chart height={400} padding="auto" data={data} scale={cols} autoFit>
-        <Tooltip showMarkers={false} />
-        <Interval position="year*value" label="value" />
+      <Chart height={400} padding="auto" data={data} scale={cols} autoFit {...cfg.Chart}>
+        <Tooltip showMarkers={false} {...cfg.Tooltip} />
+        <Interval position="year*value"  label="value" {...cfg.Interval} />
       </Chart>
     </div>
   );

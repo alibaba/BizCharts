@@ -20,9 +20,11 @@ export default class IntervalGeom extends BaseGemo<IIntervalGemo> {
   interactionTyps = ['active-region', 'element-highlight'];
   static propsTypes = {
     'active-region': PropsTypes.bool,
+    'element-highlight': PropsTypes.bool,
   }
   static defaultProps = {
     'active-region': true,
+    'element-highlight': false,
     'position': 'x*y'
   }
   GemoBaseClassName = 'interval'

@@ -40,16 +40,22 @@ class View<T extends IView = IView> extends Base<T> {
     const nextProps = this.props;
     if (_isArray(this.props.data)) {
       // console.log('data', this.props.data)
-      this.g2Instance.data(this.props.data);
+      this.g2Instance.changeData(this.props.data);
       // @ts-ignore
     } else if (this.props.data && _isArray(this.props.data.rows)) {
       // @ts-ignore
-      this.g2Instance.data(this.props.data.rows);
+      this.g2Instance.changeData(this.props.data.rows);
       warn(false, '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}')
     }
     compareProps(preProps, nextProps, ['scale'], (value, key) => {
       this.g2Instance[key](...value);
     });
+    const { width, height, interactions, geometries } = this.props;
+    this.g2Instance.option('interactions', interactions);
+    this.g2Instance.option('width', width);
+    this.g2Instance.option('height', height);
+    this.g2Instance.option('geometries', geometries);
+
   }
 
   render () {

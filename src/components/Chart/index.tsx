@@ -14,6 +14,10 @@ export interface IChart extends IView {
 }
 
 class Chart extends View<IChart> {
+  static defaultProps = {
+    placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>,
+    visible: true,
+  }
   ChartBaseClass: any = _Chart;
   initInstance() {
     this.id = uniqueId(this.name);
@@ -39,6 +43,9 @@ class Chart extends View<IChart> {
   }
 
   componentDidMount() {
+    if (!this.g2Instance) {
+      return;
+    }
     super.componentDidMount();
     if (this.g2Instance) {
       this.g2Instance.render();
@@ -46,14 +53,31 @@ class Chart extends View<IChart> {
   }
 
   componentDidUpdate(perProps) {
-    const { data } = this.props;
+    if (!this.g2Instance) {
+      return;
+    }
     this.configInstance(perProps, this.props);
-    this.g2Instance.changeData(data);
-    // TODO: forceUpdate
-    this.g2Instance.render(true);
+    this.g2Instance.render();
+  }
+
+  componentWillUnmount() {
+    this.destroy();
+  }
+
+  destroy() {
+    if (this.g2Instance) {
+      this.g2Instance.destroy();
+      this.g2Instance = null;
+    }
   }
 
   render() {
+    if (this.props.data === undefined) {
+      this.destroy();
+      return <ErrorBoundary>
+        {this.props.placeholder}
+      </ErrorBoundary>
+    }
     this.getInstance();
     return (
       <ErrorBoundary>

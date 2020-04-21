@@ -20,17 +20,13 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   componentDidUpdate(perProps) {
     this.configInstance(perProps, this.props);
   }
-  componentWillUnmount() {
-    if (this.g2Instance) {
-      this.g2Instance.destroy();
-    }
-  }
 
   // 初始化实例需要的Config
   protected abstract getInitalConfig() : object;
 
   protected getInstance() {
-    if (!this.g2Instance) {
+    const { forceUpdate } = this.props;
+    if (!this.g2Instance || forceUpdate) {
       this.initInstance();
     }
     return this.g2Instance;
