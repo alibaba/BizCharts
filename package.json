@@ -37,7 +37,7 @@
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
-    "@antv/g2": "^4.0.5",
+    "@antv/g2": "^4.0.7",
     "@antv/util": "^2.0.5",
     "create-react-context": "^0.3.0",
     "resize-observer-polyfill": "^1.5.1",

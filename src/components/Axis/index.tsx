@@ -14,15 +14,15 @@ export interface IAxis {
 const isAllField = name => (name === "*" || name === undefined);
 
 export default function Axis(props) {
-  const { name, visible, ...options } = props;
+  const { name, visible = true, ...options } = props;
   const view = useChartView();
   requiredPropWarn(!!name, 'Axis', 'name', `name属性为数据字段名, name="*" 表示配置所有字段。`);
   
   if (visible) {
     if (isAllField(name)) {
-      view.axis(false);
+      view.axis(options);
     } else {
-      view.axis(name, false);
+      view.axis(name, options);
     }
   } else {
     if (isAllField(name)) {
@@ -30,7 +30,6 @@ export default function Axis(props) {
     } else {
       view.axis(name, false);
     }
-    view.axis(name, options); // 单纯的赋值，重复执行不影响性能
   }
   return null;
 }
