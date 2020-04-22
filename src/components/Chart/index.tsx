@@ -1,17 +1,34 @@
 import React from 'react';
+import uniqueId from '@antv/util/lib/unique-id';
+import _isFunction from '@antv/util/lib/is-function';
 import ErrorBoundary from '../../boundary/ErrorBoundary';
 import withContainer from '../../boundary/withContainer';
 import { Chart as _Chart } from '../../core';
 import RootChartContext from '../../context/root';
 import warn from '../../utils/warning';
-import uniqueId from '@antv/util/lib/unique-id';
+
+import { IChart, IEvent } from '../../interface';
+
+import {
+  BASE_EVENT_NAMES,
+  DRAG_EVENT_NAMES,
+  MOBILE_EVENT_NAMES,
+  LIFE_CIRCLE_NAMES,
+  AXIS_EVENT_TARGET,
+  LEGEND_EVENT_TARGETS,
+  ANNOTATION_EVENT_TARGET,
+  LEGEND_EVENT,
+  TOOLTIP_EVENT,
+} from './events';
 
 import View, { IView } from '../View';
 
-export interface IChart extends IView {
-  container?: HTMLElement;
-  height?: number | string;
+function toHump(name) {
+  return name.replace(/\:/g,'-').replace(/\-(\w)/g, function(all, letter){
+      return letter.toUpperCase();
+  }).replace(/^\S/, s => s.toUpperCase());
 }
+
 
 class Chart extends View<IChart> {
   static defaultProps = {
@@ -29,10 +46,45 @@ class Chart extends View<IChart> {
     } else {
       this.g2Instance.tooltip({ showMarkers: false });
     }
+    this.bindEvents();
+  }
+  bindEvents() {
+    // 画布事件
+    [ ...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES, ...LIFE_CIRCLE_NAMES ].forEach(eName => {
+      const propsEventName = `on${toHump(eName)}`;
+      this.g2Instance.on(eName, (args: IEvent) => {
+        if (_isFunction(this.props[propsEventName])) {
+          if (args) {
+            this.props[propsEventName](args, this.g2Instance);
+          } else {
+            // 生命周期是没有 args
+            this.props[propsEventName](this.g2Instance);
+          }
+        }
+      })
+    });
+    // 组件事件
+    [...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES].forEach(eName => {
+      [ ...AXIS_EVENT_TARGET, ...LEGEND_EVENT_TARGETS, ...ANNOTATION_EVENT_TARGET ].forEach((target) => {
+        const propsEventName = `on${toHump(target)}${toHump(eName)}`;
+        this.g2Instance.on(`${target}:${eName}`, (args: IEvent) => {
+          if (_isFunction(this.props[propsEventName])) {
+            this.props[propsEventName](args, this.g2Instance);
+          }
+        })
+      })
+    });
+    // 组件特殊事件
+    [ ...LEGEND_EVENT, ...TOOLTIP_EVENT].forEach(eName => {
+      const propsEventName = `on${toHump(eName)}`;
+      this.g2Instance.on(eName, (args: IEvent) => {
+        if (_isFunction(this.props[propsEventName])) {
+          this.props[propsEventName](args, this.g2Instance);
+        }
+      })
+    })
   }
   getInitalConfig() {
-    // const { container } = this.props;
-    // TODO: 排除事件&生命周期勾子属性；
     const config = { ...this.props };
     if (config.forceFit !== undefined) {
       warn(false, 'forceFit 将会在4.1后不再支持，请使用`autoFit`替代');
@@ -49,6 +101,9 @@ class Chart extends View<IChart> {
     super.componentDidMount();
     if (this.g2Instance) {
       this.g2Instance.render();
+      if (_isFunction(this.props.onGetG2Instance)) {
+        this.props.onGetG2Instance(this.g2Instance);
+      }
     }
   }
 

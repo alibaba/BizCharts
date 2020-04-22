@@ -7,14 +7,15 @@ import './actions';
 registerComponentController('legend', _Legend);
 
 
-export interface IAxis {
+export interface ILegend {
   name: string;
+  visible: boolean;
   view?: any; // 来自父级的 chart 或者 view实例
 }
 const isAllField = name => (name === "*" || name === undefined);
 
 // 单纯的赋值，重复执行不影响性能
-export default function Legend(props) {
+export default function Legend(props: ILegend) {
   const { name, visible = true, ...options } = props;
   const view = useChartView();
   if (isAllField(name)) {
@@ -30,5 +31,6 @@ export default function Legend(props) {
   } else {
     view.legend(name, false);
   }
+
   return null;
 }

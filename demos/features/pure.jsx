@@ -3,6 +3,7 @@ import React from "react";
 import {
   Chart,
   Interval,
+  Tooltip,
 } from "../../src";
 
 const data = [

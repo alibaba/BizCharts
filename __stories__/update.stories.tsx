@@ -31,11 +31,31 @@ const dataSource2 = [
   { year: '1962 年', value: 38 },
 ];
 
+const getData = () => {
+  const count = Math.random();
+  if (count < 0.3) {
+    return dataSource2;
+  }
+  if (count < 0.7) {
+    return dataSource;
+  }
+
+  return undefined;
+}
+
 function ChangeData() {
   const [data, setData] = useState(dataSource);
   return <>
-    <div onClick={() => setData(Math.random() > 0.5 ? undefined : dataSource2)}>click me</div>
-    <Interval Chart={{ data }}  Interval={{ 'element-highlight': boolean('element-highlight', true)} }/>
+    <div onClick={() => setData(getData())}>click me</div>
+    <Interval
+      Chart={{
+        data,
+        onClick: console.log,
+        onAfterrender: () => console.log('onAfterrender'),
+        onAfterpaint: () => console.log('onAfterpaint'),
+        }} 
+      Interval={{ 'element-highlight': boolean('element-highlight', true)} }
+    />
   </>
 }
 

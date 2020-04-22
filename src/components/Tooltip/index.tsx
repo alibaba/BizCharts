@@ -19,7 +19,6 @@ export default function Tooltip(props) {
       view.tooltip(false);
     };
   });
-
   if (visible === true) {
     if (_isFunction(children)) {
       return <ReactTooltip {...options}>{children}</ReactTooltip>;
@@ -28,6 +27,5 @@ export default function Tooltip(props) {
   } else {
     view.tooltip(false);
   }
-
   return null;
 }

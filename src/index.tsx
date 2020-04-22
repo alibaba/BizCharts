@@ -29,7 +29,7 @@ export { default as Geom } from './geometry';
 
 // 兼容
 export { default as Coord } from './components/Coordinate/coord';
-export { default as G2Function } from './components/G2Function';
+export { default as Effects } from './components/Effects';
 export { default as Interaction } from './components/Interaction';
 
 export { default as createPlot } from './createPlot';

@@ -3,9 +3,9 @@ import React from "react";
 import {
   Chart,
   Geom,
-  G2Function,
+  Effects,
 } from "../../src";
-import { Text } from '../../src/components/Annotation';
+// import { Text } from '../../src/components/Annotation';
 import Tooltip from '../../src/components/Tooltip';
 
 const data = [
@@ -75,13 +75,13 @@ function Basic() {
             return <div>{title}{items.length}</div>
           }}
         </Tooltip>
-        <G2Function>
+        <Effects>
           {/* {(chart) => {
             chart.tooltip({
               showMarkers: false
             })
           }} */}
-        </G2Function>
+        </Effects>
       </Chart>
     </div>
   );

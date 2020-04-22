@@ -2,9 +2,9 @@
 import React from "react";
 import {
   Chart,
-  Area,
-  Axis,
+  Interval,
   Tooltip,
+  Coordinate,
 } from "../../src";
 
 const data = [
@@ -45,7 +45,8 @@ const data = [
     value: 13
   }
 ];
-function Basic() {
+function Basic(props) {
+  const cfg = props || {}
   const cols = {
     value: {
       min: 0
@@ -56,21 +57,15 @@ function Basic() {
   };
   return (
     <div>
-      <Chart height={400} padding="auto" data={data} scale={cols} autoFit>
-        <Tooltip
-          crosshairs={{
-            type: "y"
-          }}
-        />
-        <Area
-          position="year*value"
-          size={4}
-          shape="circle"
-          style={{
-            stroke: "#fff",
-            lineWidth: 1
-          }}
-        />
+      <Chart height={400} padding="auto" data={data} scale={cols} autoFit {...cfg.Chart}>
+        <Tooltip showMarkers={false} {...cfg.Tooltip} />
+        <Coordinate actions={coord => coord.rotate(Math.PI * 0.5).transpose().scale(-1,1)} />
+        <Interval position="year*value"  label="value" {...cfg.Interval} />
+      </Chart>
+      <Chart height={400} padding="auto" data={data} scale={cols} autoFit {...cfg.Chart}>
+        <Tooltip showMarkers={false} {...cfg.Tooltip} />
+        <Coordinate transpose />
+        <Interval position="year*value"  label="value" {...cfg.Interval} />
       </Chart>
     </div>
   );

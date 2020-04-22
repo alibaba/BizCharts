@@ -4,7 +4,7 @@ import {
   Chart,
   Interval,
   Tooltip,
-  G2Function,
+  Effects,
 } from "../../src";
 
 const data = [
@@ -47,7 +47,7 @@ const data = [
 ];
 function CustLabel({dataSource}) {
 
-  return <G2Function>
+  return <Effects>
           {(chart) => {
             dataSource.forEach((item) => {
               chart
@@ -70,7 +70,7 @@ function CustLabel({dataSource}) {
                 });
             });
           }}
-        </G2Function>
+        </Effects>
 }
 function Basic() {
   const cols = {
