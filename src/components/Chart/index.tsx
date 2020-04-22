@@ -21,7 +21,7 @@ import {
   TOOLTIP_EVENT,
 } from './events';
 
-import View, { IView } from '../View';
+import View from '../View';
 
 function toHump(name) {
   return name.replace(/\:/g,'-').replace(/\-(\w)/g, function(all, letter){
@@ -36,16 +36,12 @@ class Chart extends View<IChart> {
     visible: true,
   }
   ChartBaseClass: any = _Chart;
+  isNewInstance: boolean = true;
   initInstance() {
     this.id = uniqueId(this.name);
     const options = this.getInitalConfig();
     this.g2Instance = new this.ChartBaseClass(options);
-    if (options.pure) {
-      this.g2Instance.axis(false);
-      this.g2Instance.tooltip(false);
-    } else {
-      this.g2Instance.tooltip({ showMarkers: false });
-    }
+    this.isNewInstance = true;
     this.bindEvents();
   }
   bindEvents() {
@@ -100,10 +96,9 @@ class Chart extends View<IChart> {
     }
     super.componentDidMount();
     if (this.g2Instance) {
+      console.log('render')
       this.g2Instance.render();
-      if (_isFunction(this.props.onGetG2Instance)) {
-        this.props.onGetG2Instance(this.g2Instance);
-      }
+      this.onGetG2Instance();
     }
   }
 
@@ -111,8 +106,17 @@ class Chart extends View<IChart> {
     if (!this.g2Instance) {
       return;
     }
-    this.configInstance(perProps, this.props);
+    super.componentDidUpdate(perProps);
     this.g2Instance.render();
+    this.onGetG2Instance();
+  }
+
+  onGetG2Instance() {
+    // 更新实例执行
+    if (_isFunction(this.props.onGetG2Instance) && this.isNewInstance) {
+      this.props.onGetG2Instance(this.g2Instance);
+    }
+    this.isNewInstance = false;
   }
 
   componentWillUnmount() {
@@ -125,6 +129,21 @@ class Chart extends View<IChart> {
       this.g2Instance = null;
     }
   }
+  checkInstanceReady() {
+    super.checkInstanceReady();
+    if (this.props.pure) {
+      // 纯画布 关闭
+      this.g2Instance.axis(false);
+      this.g2Instance.tooltip(false);
+      this.g2Instance.legend(false);
+    } else {
+      // 默认开启
+      this.g2Instance.tooltip({ showMarkers: false });
+      this.g2Instance.axis(true);
+      this.g2Instance.tooltip(true);
+      this.g2Instance.legend(true);
+    }
+  }
 
   render() {
     if (this.props.data === undefined) {
@@ -133,9 +152,10 @@ class Chart extends View<IChart> {
         {this.props.placeholder}
       </ErrorBoundary>
     }
-    this.getInstance();
+    this.checkInstanceReady();
+    console.log('chart')
     return (
-      <ErrorBoundary>
+      <ErrorBoundary key={this.id} >
         <RootChartContext.Provider value={{ chart: this.g2Instance }}>
           {super.render()}
         </RootChartContext.Provider>

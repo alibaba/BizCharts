@@ -28,9 +28,8 @@ registerGeometryLabelLayout('limit-in-canvas', limitInCanvas);
 
 export default function Lable(props) {
   const { parentInstance, fields, ...cfg } = props;
-  parentInstance.label(false);
-  parentInstance.label(fields.join('*', cfg));
   useEffect(() => {
+    parentInstance.label(fields.join('*', cfg));
     return () => {
       parentInstance.label(false)
     }

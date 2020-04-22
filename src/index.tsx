@@ -1,11 +1,8 @@
-import * as _Util from '@antv/util';
-import * as _Annotation from './components/Annotation';
-import * as _G2 from './g2-all';
+import * as Util from '@antv/util';
+import * as Annotation from './components/Annotation';
+import * as G2 from './g2-all';
 
-
-export const Annotation = _Annotation;
-export const Util = _Util;
-
+export { Annotation, G2, Util };
 export { default as Chart } from './components/Chart';
 export { default as View } from './components/View';
 
@@ -13,6 +10,7 @@ export { default as Tooltip } from './components/Tooltip';
 export { default as Legend } from './components/Legend';
 export { default as Coordinate } from './components/Coordinate';
 export { default as Axis } from './components/Axis';
+export { default as Facet } from './components/Facet';
 
 export { default as Area } from './geometry/Area';
 export { default as Edge } from './geometry/Edge';
@@ -31,7 +29,6 @@ export { default as Geom } from './geometry';
 export { default as Coord } from './components/Coordinate/coord';
 export { default as Effects } from './components/Effects';
 export { default as Interaction } from './components/Interaction';
-
 export { default as createPlot } from './createPlot';
 export { default as useView } from './hooks/useChartView';
 export { default as useRootChart } from './hooks/useChartInstance';
@@ -45,6 +42,4 @@ export { getTheme, registerTheme } from '@antv/g2/lib/theme';
 export * from './core';
 
 
-
-export const G2 = _G2;
 export const version = process.env.__VERSION__;

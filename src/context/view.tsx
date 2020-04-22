@@ -5,8 +5,8 @@ import createContext from 'create-react-context';
 const ChartViewContext = createContext<any>(null);
 const { Consumer } = ChartViewContext;
 
-export const withView = Component => {
-  return props => {
+export function withView<T>(Component) {
+  return (props:T) => {
     return <Consumer>
       {
         ctx => <Component chartView={ctx} {...props} />

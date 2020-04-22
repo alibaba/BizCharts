@@ -46,23 +46,21 @@ const data = [
   }
 ];
 function CustLabel({dataSource}) {
-
   return <Effects>
           {(chart) => {
             dataSource.forEach((item) => {
               chart
                 .annotation()
                 .text({
-                  position: [item.type, item.value],
+                  position: [item.year, item.value],
                   content: item.value,
                   style: {
                     textAlign: 'center',
                   },
-                  offsetY: -30,
                 })
                 .text({
-                  position: [item.type, item.value],
-                  content: `${(item.percent * 100).toFixed(0)  }%`,
+                  position: [item.year, item.value],
+                  content: `${(item.value * 100).toFixed(0)  }%`,
                   style: {
                     textAlign: 'center',
                   },
@@ -83,9 +81,9 @@ function Basic() {
   };
   return (
     <div>
-      <Chart height={400} padding={0} data={data} scale={cols} autoFit>
+      <Chart height={400} padding="auto" data={data} scale={cols} autoFit>
         <Tooltip showMarkers={false} />
-        <CustLabel data={data} />
+        <CustLabel dataSource={data} />
         <Interval position="year*value"/>
       </Chart>
     </div>

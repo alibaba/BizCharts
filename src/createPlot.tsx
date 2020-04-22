@@ -24,15 +24,14 @@ class BasePlot extends React.Component<any> {
     }
   }
 
-  protected getInstance() {
+  protected checkInstanceReady() {
     if (!this.g2Instance) {
       this.initInstance();
       this.g2Instance.render()
     } else {
       this.g2Instance.updateConfig({...this.props});
-      this.g2Instance.repaint();
+      this.g2Instance.render();
     }
-    return this.g2Instance;
   }
 
   getChartView() {
@@ -45,9 +44,9 @@ class BasePlot extends React.Component<any> {
   }
 
   render() {
-    const g2Instance = this.getInstance();
+    this.checkInstanceReady();
     const chartView = this.getChartView();
-    return <RootChartContext.Provider value={{ chart: g2Instance }}>
+    return <RootChartContext.Provider value={{ chart: this.g2Instance }}>
       <ChartViewContext.Provider value={chartView} >
         <>
         {this.props.children}
@@ -61,6 +60,12 @@ const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig>(Plot, name: string): React.FunctionComponent<IPlotConfig> {
   const Com = (props: IPlotConfig) => {
+    if (this.props.data === undefined) {
+      this.destroy();
+      return <ErrorBoundary>
+        {this.props.placeholder ||  <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>}
+      </ErrorBoundary>
+    }
     return <ErrorBoundary>
       <BxPlot {...props} PlotClass={Plot} />
     </ErrorBoundary>

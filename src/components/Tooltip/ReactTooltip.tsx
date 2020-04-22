@@ -13,7 +13,7 @@ import InnerContent from './inner';
 const CONTAINER_CLASS: string = 'g2-tooltip';
 
 export interface TooltipProps extends React.ComponentProps<any> {
-  children: (title?: string, items?: any[], x?: number, y?: number) => {},
+  children?: (title?: string, items?: any[], x?: number, y?: number) => {},
   [key: string]: any;
 }
 
@@ -61,4 +61,4 @@ class Tooltip extends React.Component<TooltipProps> {
   }
 }
 
-export default withContainer(withView(Tooltip));
+export default withContainer<TooltipProps>(withView<TooltipProps>(Tooltip));

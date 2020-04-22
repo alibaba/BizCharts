@@ -3,6 +3,7 @@ import React from "react";
 import {
   Chart,
   Interval,
+  Coordinate,
   Tooltip,
 } from "../../src";
 
@@ -58,6 +59,7 @@ function Basic(props) {
     <div>
       <Chart height={400} padding="auto" data={data} scale={cols} autoFit {...cfg.Chart}>
         <Tooltip showMarkers={false} {...cfg.Tooltip} />
+        <Coordinate transpose />
         <Interval position="year*value"  label="value" {...cfg.Interval} />
       </Chart>
     </div>

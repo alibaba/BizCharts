@@ -86,12 +86,11 @@ class View<T extends IView = IView> extends Base<T> {
     this.g2Instance.option('height', height);
     this.g2Instance.option('geometries', geometries);
 
-
-
   }
 
   render() {
-    return <ChartViewContext.Provider value={this.getInstance()}>
+    this.checkInstanceReady();
+    return <ChartViewContext.Provider value={this.g2Instance}>
       <>{this.props.children}</>
     </ChartViewContext.Provider>;
   }

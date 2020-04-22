@@ -24,12 +24,11 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   // 初始化实例需要的Config
   protected abstract getInitalConfig() : object;
 
-  protected getInstance() {
+  protected checkInstanceReady() {
     const { forceUpdate } = this.props;
     if (!this.g2Instance || forceUpdate) {
       this.initInstance();
     }
-    return this.g2Instance;
   }
   protected readonly abstract ChartBaseClass;
 
@@ -55,11 +54,11 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   }
   render (): any {
     // 缓存g2Instance
-    this.getInstance();
-    // console.log('g2Instance', g2Instance);
+    this.checkInstanceReady();
+
     if (this.props.children) {
       return React.Children.map(this.props.children, element => {
-        return React.isValidElement(element) ? React.cloneElement(element, { parentInstance: this.getInstance }) : element;
+        return React.isValidElement(element) ? React.cloneElement(element, { parentInstance: this.g2Instance }) : element;
       })
     }
     return null;

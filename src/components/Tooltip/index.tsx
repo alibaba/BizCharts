@@ -8,24 +8,29 @@ import './actions';
 
 registerComponentController('tooltip', _Tooltip);
 
-// Actions
+const isReactTooltip = (props) => {
+  const { visible = true, children } = props;
+  return visible && _isFunction(children);
+}
 
-export default function Tooltip(props) {
+export interface ITooltip extends React.ComponentProps<any> {
+  visible?: boolean;
+  children?: (title?: string, items?: any[], x?: number, y?: number) => {};
+  [key: string]: any;
+}
+
+function TooltipNormal(props: ITooltip) {
   const { visible = true, children, ...options } = props;
-  const view = useChartView();
-  useEffect(() => {
-    return () => {
-      // 销毁
-      view.tooltip(false);
-    };
-  });
+  const chartView = useChartView();
   if (visible === true) {
-    if (_isFunction(children)) {
-      return <ReactTooltip {...options}>{children}</ReactTooltip>;
-    }
-    view.tooltip({ showMarkers: false, ...options });
+    chartView.tooltip({ showMarkers: false, ...options });
   } else {
-    view.tooltip(false);
+    chartView.tooltip(false);
   }
   return null;
+}
+
+export default function Tooltip(props: ITooltip) {
+  const { visible = true, children, ...options } = props;
+  return isReactTooltip(props) ? <ReactTooltip {...options} /> : <TooltipNormal {...props} />;
 }

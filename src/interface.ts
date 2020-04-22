@@ -10,7 +10,7 @@ export interface IEvent {
   y?: number, // 触发的位置 y，相对于画布左上角的位置
   clientX?: number, // 视窗的位置 x
   clientY?: number, // 视窗的位置 y
-  type?: string,
+  type?: string, // 事件名
   [key: string]: any;
 }
 
@@ -20,6 +20,7 @@ export interface IChart extends IView {
   width?: number | string;
   pure?: boolean;
   autoFit?: boolean;
+  theme?: string | object;
   // 基础鼠标事件
   onMousedown?: EventFunc,
   onMouseup?: EventFunc,

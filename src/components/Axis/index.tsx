@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import _isBoolean from '@antv/util/lib/is-boolean';
 import _Axis from '@antv/g2/lib/chart/controller/axis';
 import { requiredPropWarn } from '../../utils/warning';
 import useChartView from '../../hooks/useChartView';
@@ -19,7 +17,8 @@ export default function Axis(props) {
   const { name, visible, ...options } = props;
   const view = useChartView();
   requiredPropWarn(!!name, 'Axis', 'name', `name属性为数据字段名, name="*" 表示配置所有字段。`);
-  if (_isBoolean(visible)) {
+  
+  if (visible) {
     if (isAllField(name)) {
       view.axis(false);
     } else {
@@ -33,14 +32,5 @@ export default function Axis(props) {
     }
     view.axis(name, options); // 单纯的赋值，重复执行不影响性能
   }
-  useEffect(() => {
-    return () => {
-      if (isAllField(name)) {
-        view.axis(false);
-      } else {
-        view.axis(name, false);
-      }
-    }
-  })
   return null;
 }
