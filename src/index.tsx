@@ -1,6 +1,7 @@
 import * as Util from '@antv/util';
 import * as Annotation from './components/Annotation';
 import * as G2 from './g2-all';
+import './theme';
 
 export { Annotation, G2, Util };
 export { default as Chart } from './components/Chart';
@@ -22,7 +23,6 @@ export { default as Polygon } from './geometry/Polygon';
 export { default as Schema } from './geometry/Schema';
 export { default as BaseGeom } from './geometry/Base';
 
-
 export { default as Geom } from './geometry';
 
 // 兼容
@@ -32,6 +32,7 @@ export { default as Interaction } from './components/Interaction';
 export { default as createPlot } from './createPlot';
 export { default as useView } from './hooks/useChartView';
 export { default as useRootChart } from './hooks/useChartInstance';
+export { default as useTheme } from './hooks/useTheme';
 
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
@@ -40,6 +41,5 @@ export { withChartInstance } from './context/root';
 export { getTheme, registerTheme } from '@antv/g2/lib/theme';
 
 export * from './core';
-
 
 export const version = process.env.__VERSION__;
