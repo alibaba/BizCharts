@@ -11,6 +11,7 @@ npm install bizcharts --save
 ## Browser
 
 ```html
+<script src="https://unpkg.com/bizcharts@${version}/umd/BizCharts.min.js"></script>
 
 ```
 
