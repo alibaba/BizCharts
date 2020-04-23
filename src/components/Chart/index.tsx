@@ -24,18 +24,21 @@ import {
 import View from '../View';
 
 function toHump(name) {
-  return name.replace(/:/g,'-').replace(/-(\w)/g, (all, letter) => {
+  return name
+    .replace(/\:/g, '-')
+    .replace(/\-(\w)/g, function(all, letter) {
       return letter.toUpperCase();
-  }).replace(/^\S/, s => s.toUpperCase());
+    })
+    .replace(/^\S/, s => s.toUpperCase());
 }
-
 
 class Chart extends View<IChart> {
   static defaultProps = {
-    placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>,
-    padding: 'auto',
+    placeholder: (
+      <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>
+    ),
     visible: true,
-  }
+  };
   ChartBaseClass: any = _Chart;
   isNewInstance: boolean = true;
   initInstance() {
@@ -47,39 +50,43 @@ class Chart extends View<IChart> {
   }
   bindEvents() {
     // 画布事件
-    [ ...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES, ...LIFE_CIRCLE_NAMES ].forEach(eName => {
-      const propsEventName = `on${toHump(eName)}`;
-      this.g2Instance.on(eName, (args: IEvent) => {
-        if (_isFunction(this.props[propsEventName])) {
-          if (args) {
-            this.props[propsEventName](args, this.g2Instance);
-          } else {
-            // 生命周期是没有 args
-            this.props[propsEventName](this.g2Instance);
+    [...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES, ...LIFE_CIRCLE_NAMES].forEach(
+      eName => {
+        const propsEventName = `on${toHump(eName)}`;
+        this.g2Instance.on(eName, (args: IEvent) => {
+          if (_isFunction(this.props[propsEventName])) {
+            if (args) {
+              this.props[propsEventName](args, this.g2Instance);
+            } else {
+              // 生命周期是没有 args
+              this.props[propsEventName](this.g2Instance);
+            }
           }
-        }
-      })
-    });
+        });
+      },
+    );
     // 组件事件
     [...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES].forEach(eName => {
-      [ ...AXIS_EVENT_TARGET, ...LEGEND_EVENT_TARGETS, ...ANNOTATION_EVENT_TARGET ].forEach((target) => {
-        const propsEventName = `on${toHump(target)}${toHump(eName)}`;
-        this.g2Instance.on(`${target}:${eName}`, (args: IEvent) => {
-          if (_isFunction(this.props[propsEventName])) {
-            this.props[propsEventName](args, this.g2Instance);
-          }
-        })
-      })
+      [...AXIS_EVENT_TARGET, ...LEGEND_EVENT_TARGETS, ...ANNOTATION_EVENT_TARGET].forEach(
+        target => {
+          const propsEventName = `on${toHump(target)}${toHump(eName)}`;
+          this.g2Instance.on(`${target}:${eName}`, (args: IEvent) => {
+            if (_isFunction(this.props[propsEventName])) {
+              this.props[propsEventName](args, this.g2Instance);
+            }
+          });
+        },
+      );
     });
     // 组件特殊事件
-    [ ...LEGEND_EVENT, ...TOOLTIP_EVENT].forEach(eName => {
+    [...LEGEND_EVENT, ...TOOLTIP_EVENT].forEach(eName => {
       const propsEventName = `on${toHump(eName)}`;
       this.g2Instance.on(eName, (args: IEvent) => {
         if (_isFunction(this.props[propsEventName])) {
           this.props[propsEventName](args, this.g2Instance);
         }
-      })
-    })
+      });
+    });
   }
   getInitalConfig() {
     const config = { ...this.props };
@@ -107,7 +114,19 @@ class Chart extends View<IChart> {
       return;
     }
     super.componentDidUpdate(perProps);
-    this.g2Instance.render();
+    // 更新图表大小
+    const { width, height } = this.props;
+    if (
+      (width >= 0 && width !== this.g2Instance.width) ||
+      (height >= 0 && this.g2Instance.height)
+    ) {
+      const nextWidth = width ? width : this.g2Instance.width;
+      const nextHeight = height ? height : this.g2Instance.height;
+      // changeSize方法内部有调用render
+      this.g2Instance.changeSize(nextWidth, nextHeight);
+    } else {
+      this.g2Instance.render();
+    }
     this.onGetG2Instance();
   }
 
@@ -147,13 +166,11 @@ class Chart extends View<IChart> {
   render() {
     if (this.props.data === undefined) {
       this.destroy();
-      return <ErrorBoundary>
-        {this.props.placeholder}
-      </ErrorBoundary>
+      return <ErrorBoundary>{this.props.placeholder}</ErrorBoundary>;
     }
     this.checkInstanceReady();
     return (
-      <ErrorBoundary key={this.id} >
+      <ErrorBoundary key={this.id}>
         <RootChartContext.Provider value={{ chart: this.g2Instance }}>
           {super.render()}
         </RootChartContext.Provider>

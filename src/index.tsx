@@ -1,6 +1,7 @@
 import * as Util from '@antv/util';
 import * as Annotation from './components/Annotation';
 import * as G2 from './g2-all';
+import './theme';
 
 export { Annotation, G2, Util };
 export { default as Chart } from './components/Chart';
@@ -32,6 +33,7 @@ export { default as Interaction } from './components/Interaction';
 export { default as createPlot } from './createPlot';
 export { default as useView } from './hooks/useChartView';
 export { default as useRootChart } from './hooks/useChartInstance';
+export { default as useTheme } from './hooks/useTheme';
 
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
