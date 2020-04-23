@@ -3,7 +3,21 @@ import _isFunction from '@antv/util/lib/is-function';
 import shallowEqual from '../../utils/shallowEqual';
 import useChartView from '../../hooks/useChartView';
 
-const FacetContext = React.createContext();
+import { registerFacet } from '../../core';
+import Circle from '@antv/g2/lib/facet/circle';
+import List from '@antv/g2/lib/facet/list';
+import Matrix from '@antv/g2/lib/facet/matrix';
+import Mirror from '@antv/g2/lib/facet/mirror';
+import Rect from '@antv/g2/lib/facet/rect';
+import Tree from '@antv/g2/lib/facet/tree';
+
+registerFacet('rect', Rect);
+registerFacet('mirror', Mirror);
+registerFacet('list', List);
+registerFacet('matrix', Matrix);
+registerFacet('circle', Circle);
+registerFacet('tree', Tree);
+
 
 function Facet(props) {
   const chart = useChartView();
@@ -18,7 +32,7 @@ function Facet(props) {
       ...cfg,
     });
   }
-  return FacetContext;
+  return null;
 }
 
 export default React.memo(Facet, (preProps, nextProps) => {

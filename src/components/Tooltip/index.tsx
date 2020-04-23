@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import _isFunction from '@antv/util/lib/is-function';
 import _Tooltip from '@antv/g2/lib/chart/controller/tooltip';
 import { registerComponentController } from '../../core';
@@ -31,6 +31,10 @@ function TooltipNormal(props: ITooltip) {
 }
 
 export default function Tooltip(props: ITooltip) {
-  const { visible = true, children, ...options } = props;
-  return isReactTooltip(props) ? <ReactTooltip {...options} /> : <TooltipNormal {...props} />;
+  const { children, ...options } = props;
+return isReactTooltip(props) ? <ReactTooltip {...options} >{children}</ReactTooltip> : <TooltipNormal {...props} />;
+}
+
+Tooltip.defaultProps = {
+  showMarkers: false,
 }

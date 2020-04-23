@@ -21,7 +21,12 @@ class BasePlot extends React.Component<any> {
   componentWillUnmount() {
     if(this.g2Instance) {
       this.g2Instance.destroy();
+      this.g2Instance = null;
     }
+  }
+
+  getChartView() {
+    return this.g2Instance.layers[0].view;
   }
 
   protected checkInstanceReady() {
@@ -32,10 +37,6 @@ class BasePlot extends React.Component<any> {
       this.g2Instance.updateConfig({...this.props});
       this.g2Instance.render();
     }
-  }
-
-  getChartView() {
-    return this.g2Instance.layers[0].view;
   }
 
   initInstance() {
@@ -58,12 +59,16 @@ class BasePlot extends React.Component<any> {
 
 const BxPlot = withContainer(BasePlot) as any;
 
+
 function createPlot<IPlotConfig>(Plot, name: string): React.FunctionComponent<IPlotConfig> {
   const Com = (props: IPlotConfig) => {
-    if (this.props.data === undefined) {
-      this.destroy();
+    // @ts-ignore
+    if (props.data === undefined) {
       return <ErrorBoundary>
-        {this.props.placeholder ||  <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>}
+        {
+          // @ts-ignore
+          props.placeholder ||  <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>
+        }
       </ErrorBoundary>
     }
     return <ErrorBoundary>

@@ -25,7 +25,6 @@ export interface IGemo {
 
 export default function(props) {
   const { type, ...cfg } = props;
-  warn(false, 'Geom 在4.1 之后将不再支持。请使用具体等GEMO图形组件');
   const Geom = GEOM_MAP[type];
   return <Geom {...cfg} />;
 }

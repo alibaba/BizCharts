@@ -31,5 +31,6 @@ export default function Axis(props) {
       view.axis(name, false);
     }
   }
+  
   return null;
 }

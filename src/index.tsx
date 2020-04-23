@@ -21,7 +21,7 @@ export { default as Point } from './geometry/Point';
 export { default as Polygon } from './geometry/Polygon';
 export { default as Schema } from './geometry/Schema';
 export { default as BaseGeom } from './geometry/Base';
-
+export { default as Label } from './geometry/Label';
 
 export { default as Geom } from './geometry';
 
@@ -40,6 +40,8 @@ export { withChartInstance } from './context/root';
 export { getTheme, registerTheme } from '@antv/g2/lib/theme';
 
 export * from './core';
+
+export { default as Guide } from './addepter/Guide';
 
 
 export const version = process.env.__VERSION__;

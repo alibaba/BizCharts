@@ -58,7 +58,6 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
 
     // interaction 
     compareProps(preProps, curProps, this.interactionTyps, (value, key) => {
-      console.log(key, value)
       if (value[0]) {
         this.context.interaction(key);
       } else {

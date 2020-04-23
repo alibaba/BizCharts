@@ -24,7 +24,7 @@ import {
 import View from '../View';
 
 function toHump(name) {
-  return name.replace(/\:/g,'-').replace(/\-(\w)/g, function(all, letter){
+  return name.replace(/:/g,'-').replace(/-(\w)/g, (all, letter) => {
       return letter.toUpperCase();
   }).replace(/^\S/, s => s.toUpperCase());
 }
@@ -33,6 +33,7 @@ function toHump(name) {
 class Chart extends View<IChart> {
   static defaultProps = {
     placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>,
+    padding: 'auto',
     visible: true,
   }
   ChartBaseClass: any = _Chart;
@@ -96,7 +97,6 @@ class Chart extends View<IChart> {
     }
     super.componentDidMount();
     if (this.g2Instance) {
-      console.log('render')
       this.g2Instance.render();
       this.onGetG2Instance();
     }
@@ -140,7 +140,6 @@ class Chart extends View<IChart> {
       // 默认开启
       this.g2Instance.tooltip({ showMarkers: false });
       this.g2Instance.axis(true);
-      this.g2Instance.tooltip(true);
       this.g2Instance.legend(true);
     }
   }
@@ -153,7 +152,6 @@ class Chart extends View<IChart> {
       </ErrorBoundary>
     }
     this.checkInstanceReady();
-    console.log('chart')
     return (
       <ErrorBoundary key={this.id} >
         <RootChartContext.Provider value={{ chart: this.g2Instance }}>

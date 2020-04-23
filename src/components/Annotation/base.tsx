@@ -1,9 +1,9 @@
 import React from 'react';
+import _Annotation from '@antv/g2/lib/chart/controller/annotation';
 import * as _ from '@antv/util';
 import ChartViewContext from '../../context/view';
 import { registerComponentController } from '../../core';
 
-import _Annotation from '@antv/g2/lib/chart/controller/annotation';
 
 registerComponentController('annotation', _Annotation);
 
@@ -36,7 +36,7 @@ abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Com
     });
     this.annotation.option[index] = { type: this.annotationType, ...this.props, __id: this.id };
     // fixme: 需要判断view的情况
-    this.getChartIns().repaint();
+    this.getChartIns().render();
   }
   componentWillUnmount() {
     let index = null;

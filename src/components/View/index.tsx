@@ -10,7 +10,6 @@ import { ScaleOption } from '@antv/g2/lib/interface'
 import RootChartContext from '../../context/root';
 import ChartViewContext from '../../context/view';
 import Base, { IBaseProps } from '../../Base';
-import compareProps from '../../utils/compareProps';
 import warn from '../../utils/warning';
 
 interface IScale  {
@@ -28,8 +27,6 @@ export interface IView extends IBaseProps {
     end?: number | string;
   }
 }
-
-const INTERACTION_TYPES = ['legend-highlight', 'active-region', 'element-highlight'];
 
 class View<T extends IView = IView> extends Base<T> {
   ChartBaseClass = _View;
