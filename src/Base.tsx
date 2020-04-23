@@ -5,8 +5,8 @@ import uniqueId from '@antv/util/lib/unique-id';
  * G2 Chart、View、Geometry 以及 Element 等的基类。
  */
 export interface IBaseProps {
-  visible?: boolean,
-  [key: string]: any,
+  visible?: boolean;
+  [key: string]: any;
 }
 
 export default abstract class Base<T extends IBaseProps> extends React.Component<T> {
@@ -22,7 +22,7 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
   }
 
   // 初始化实例需要的Config
-  protected abstract getInitalConfig() : object;
+  protected abstract getInitalConfig(): object;
 
   protected checkInstanceReady() {
     const { forceUpdate } = this.props;
@@ -30,7 +30,7 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
       this.initInstance();
     }
   }
-  protected readonly abstract ChartBaseClass;
+  protected abstract readonly ChartBaseClass;
 
   initInstance() {
     this.id = uniqueId(this.name);
@@ -52,14 +52,16 @@ export default abstract class Base<T extends IBaseProps> extends React.Component
       }
     }
   }
-  render (): any {
+  render(): any {
     // 缓存g2Instance
     this.checkInstanceReady();
 
     if (this.props.children) {
       return React.Children.map(this.props.children, element => {
-        return React.isValidElement(element) ? React.cloneElement(element, { parentInstance: this.g2Instance }) : element;
-      })
+        return React.isValidElement(element)
+          ? React.cloneElement(element, { parentInstance: this.g2Instance })
+          : element;
+      });
     }
     return null;
   }

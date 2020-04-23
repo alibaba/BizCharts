@@ -5,7 +5,7 @@ import _each from '@antv/util/lib/each';
 import _get from '@antv/util/lib/get';
 import _View from '@antv/g2/lib/chart/view';
 import uniqueId from '@antv/util/lib/unique-id';
-import { ScaleOption } from '@antv/g2/lib/interface'
+import { ScaleOption } from '@antv/g2/lib/interface';
 
 import RootChartContext from '../../context/root';
 import ChartViewContext from '../../context/view';
@@ -13,20 +13,19 @@ import Base, { IBaseProps } from '../../Base';
 import compareProps from '../../utils/compareProps';
 import warn from '../../utils/warning';
 
-interface IScale  {
-  [field:string]: ScaleOption
+interface IScale {
+  [field: string]: ScaleOption;
 }
-
 
 export interface IView extends IBaseProps {
   data?: any[];
   scale?: {
-    [field:string]: ScaleOption
+    [field: string]: ScaleOption;
   };
   region?: {
     start?: number | string;
     end?: number | string;
-  }
+  };
 }
 
 const INTERACTION_TYPES = ['legend-highlight', 'active-region', 'element-highlight'];
@@ -36,14 +35,18 @@ class View<T extends IView = IView> extends Base<T> {
   name = 'view';
   static defaultProps = {
     visible: true,
-  }
+  };
   getInitalConfig(): any {
     const { region, start, end } = this.props;
     // console.log(88,start)
-    warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代')
-    warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代')
+    warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代');
+    warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代');
     // fixme: adepter3.5
-    const regionCfg = _deepMix({ start: { x: 0, y: 0 }, end: { x: 1, y: 1 } }, { start, end }, region);
+    const regionCfg = _deepMix(
+      { start: { x: 0, y: 0 }, end: { x: 1, y: 1 } },
+      { start, end },
+      region,
+    );
     return { region: regionCfg };
   }
   initInstance() {
@@ -58,36 +61,56 @@ class View<T extends IView = IView> extends Base<T> {
     }
     super.configInstance(preProps, curProps);
     const nextProps = curProps || this.props;
-    if (_isArray(nextProps.data)) {
+    const { data, interactions = [], theme, limitInPlot, options, ...others } = nextProps;
+    if (_isArray(data)) {
       // console.log('data', nextProps.data)
-      this.g2Instance.changeData(nextProps.data);
+      this.g2Instance.changeData(data);
       // @ts-ignore
-    } else if (nextProps.data && _isArray(nextProps.data.rows)) {
+    } else if (data && _isArray(data.rows)) {
       // @ts-ignore
-      this.g2Instance.changeData(nextProps.data.rows);
-      warn(false, '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}')
+      this.g2Instance.changeData(data.rows);
+      warn(
+        false,
+        '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}',
+      );
     }
 
     // 只支持枚举, 复杂配置用扩展配置方式
-    _each(preProps ? [..._get(preProps, 'interactions', []), ..._get(nextProps, 'interactions', [])] : curProps.interactions, (key) => {
-      if (nextProps.interactions[0]) {
-        this.g2Instance.interaction(key);
-      } else {
-        this.g2Instance.removeInteraction(key);
-      }
-    })
+    _each(
+      preProps
+        ? [..._get(preProps, 'interactions', []), ..._get(nextProps, 'interactions', [])]
+        : curProps.interactions,
+      key => {
+        if (nextProps.interactions[0]) {
+          this.g2Instance.interaction(key);
+        } else {
+          this.g2Instance.removeInteraction(key);
+        }
+      },
+    );
+    // 主题更新
+    if (preProps && preProps.theme !== theme) {
+      this.g2Instance.theme(theme);
+    }
 
+    if (preProps && preProps.options !== options) {
+      this.g2Instance.updateOptions(options);
+    }
+
+    this.g2Instance.limitInPlot = limitInPlot;
   }
   checkInstanceReady() {
     super.checkInstanceReady();
-    this.g2Instance.scale({...this.props.scale});
+    this.g2Instance.scale({ ...this.props.scale });
   }
 
   render() {
     this.checkInstanceReady();
-    return <ChartViewContext.Provider value={this.g2Instance}>
-      <>{this.props.children}</>
-    </ChartViewContext.Provider>;
+    return (
+      <ChartViewContext.Provider value={this.g2Instance}>
+        <>{this.props.children}</>
+      </ChartViewContext.Provider>
+    );
   }
 }
 
