@@ -1,6 +1,12 @@
 # Bizcharts Plot
 
-> 基于 bizcharts 4.0 版本
+> 基于 G2 4.0 版本
+
+
+# 新特性
+- Tooltip 全面支持React 定制化。
+- createPlot 快速使用g2Plot，并通过bizcharts 进行微定制。
+
 
 ## npm 使用
 
@@ -14,7 +20,6 @@ npm install bizcharts --save
 <script src="https://unpkg.com/bizcharts@${version}/umd/BizCharts.min.js"></script>
 
 ```
-
 
 ## 开发
 

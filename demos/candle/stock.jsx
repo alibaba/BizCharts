@@ -12,7 +12,7 @@ import DataSet from '@antv/data-set';
 
 
  function Demo() {
-   const [data, setData] = useState([]);
+   const [data, setData] = useState({});
    useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/candlestick-basic/0.3.2/mock.json')
        .then(res => res.json())

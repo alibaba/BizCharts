@@ -4,6 +4,7 @@ import withContainer from './boundary/withContainer';
 import ErrorBoundary from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
 import ChartViewContext from './context/view';
+import _uniqId from '@antv/util/lib/unique-id';
 
 
 class BasePlot extends React.Component<any> {
@@ -48,7 +49,8 @@ class BasePlot extends React.Component<any> {
     this.checkInstanceReady();
     const chartView = this.getChartView();
     return <RootChartContext.Provider value={{ chart: this.g2Instance }}>
-      <ChartViewContext.Provider value={chartView} >
+      {/* 每次更新都直接刷新子组件 */}
+      <ChartViewContext.Provider key={_uniqId('plot-chart')} value={chartView} >
         <>
         {this.props.children}
         </>

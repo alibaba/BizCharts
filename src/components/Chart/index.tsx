@@ -164,7 +164,7 @@ class Chart extends View<IChart> {
   }
 
   render() {
-    if (this.props.data === undefined) {
+    if (this.props.data === undefined && this.props.placeholder) {
       this.destroy();
       return <ErrorBoundary>{this.props.placeholder}</ErrorBoundary>;
     }

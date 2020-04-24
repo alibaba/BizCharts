@@ -35,10 +35,10 @@ class View<T extends IView = IView> extends Base<T> {
   };
   getInitalConfig(): any {
     const { region, start, end } = this.props;
-    // console.log(88,start)
+
     warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代');
     warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代');
-    // fixme: adepter3.5
+
     const regionCfg = _deepMix(
       { start: { x: 0, y: 0 }, end: { x: 1, y: 1 } },
       { start, end },
@@ -48,7 +48,7 @@ class View<T extends IView = IView> extends Base<T> {
   }
   initInstance() {
     this.id = uniqueId(this.name);
-    // console.log(3, this.context)
+
     const options = this.getInitalConfig();
     this.g2Instance = this.context.chart.createView(options);
   }
@@ -60,7 +60,6 @@ class View<T extends IView = IView> extends Base<T> {
     const nextProps = curProps || this.props;
     const { data, interactions = [], theme, limitInPlot, options, ...others } = nextProps;
     if (_isArray(data)) {
-      // console.log('data', nextProps.data)
       this.g2Instance.changeData(data);
       // @ts-ignore
     } else if (data && _isArray(data.rows)) {
