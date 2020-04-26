@@ -1,0 +1,63 @@
+import React, { RefObject } from 'react';
+import ReactDom from 'react-dom';
+
+import _get from '@antv/util/lib/get';
+import _modifyCss from '@antv/dom-util/lib/modify-css';
+import withContainer from '../../boundary/withContainer';
+import { withView } from '../../context/view';
+import { getTheme } from '../../core';
+
+import InnerContent from './inner';
+
+
+const CONTAINER_CLASS: string = 'g2-tooltip';
+
+export interface TooltipProps extends React.ComponentProps<any> {
+  children?: (title?: string, items?: any[], x?: number, y?: number) => {},
+  [key: string]: any;
+}
+
+class Tooltip extends React.Component<TooltipProps> {
+  // HTMLElement
+  protected element: HTMLElement ;
+
+  private innerContent: RefObject<InnerContent> = React.createRef();
+
+  constructor(props, context) {
+    super(props, context);
+    this.element = props.container;
+    this.element.classList.add('bizcharts-tooltip');
+    this.element.style.width = 'auto';
+    this.element.style.height = 'auto';
+
+  }
+  componentWillUnmount() {
+    this.innerContent = null;
+  }
+
+  overwriteCfg() {
+    const { chartView, children, ...config } = this.props;
+    const innerContent = this.innerContent;
+    chartView.on('tooltip:change', ({title, items, x, y}) => {
+      innerContent.current.refresh(children(title, items, x, y));
+    });
+    chartView.tooltip({
+      inPlot: false,
+      ...config,
+      // showMarkers:false,
+      container: this.element,
+    });
+    const domStyles: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});
+    _modifyCss(this.element, {...domStyles });
+
+  }
+
+  render() {
+    this.overwriteCfg();
+    return ReactDom.createPortal(<>
+      <InnerContent ref={this.innerContent} />
+    </>, this.element); // 无子组件
+  }
+}
+
+export default withContainer<TooltipProps>(withView<TooltipProps>(Tooltip));

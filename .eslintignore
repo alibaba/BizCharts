@@ -1,7 +1,5 @@
-build/
-demo/
-testDemo/
-doc/
-es6/
-node_modules/
 lib/
+.storybook/
+__stories__/
+test/_helpers/
+webpack.config.js

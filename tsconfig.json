@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2015",
+    "jsx": "react",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "bizcharts": ["./src/index"],
+      "bizcharts/*": ["./src/*"],
+      "@/*":["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts", "./umd"]
+}
