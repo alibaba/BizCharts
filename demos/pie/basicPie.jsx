@@ -3,6 +3,7 @@ import {
   Chart,
   Interval,
   Tooltip,
+  Axis,
   Coordinate
 } from '../../src';
 
@@ -28,6 +29,7 @@ function Labelline() {
     <Chart height={400} data={data} scale={cols} autoFit>
       <Coordinate type="theta" radius={0.75} />
       <Tooltip showTitle={false} />
+      <Axis visible={false}></Axis>
       <Interval
         position="percent"
         adjust="stack"

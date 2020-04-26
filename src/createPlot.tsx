@@ -64,15 +64,6 @@ const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig>(Plot, name: string): React.FunctionComponent<IPlotConfig> {
   const Com = (props: IPlotConfig) => {
-    // @ts-ignore
-    if (props.data === undefined) {
-      return <ErrorBoundary>
-        {
-          // @ts-ignore
-          props.placeholder ||  <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>
-        }
-      </ErrorBoundary>
-    }
     return <ErrorBoundary>
       <BxPlot {...props} PlotClass={Plot} />
     </ErrorBoundary>

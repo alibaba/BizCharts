@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, Interval } from '../../src';
+import { Chart, Interval, Interaction } from '../../src';
 
 const data = [
   { year: '1951 年', sales: 38 },
@@ -15,7 +15,9 @@ const data = [
 
 function Demo() {
   return <Chart autoFit data={data} height={400} >
-    <Interval position="year*sales"  />
+    <Interval position="year*sales" active-region />
+    {/* <Interaction type={'element-hilight'} />
+    <Interaction type={'active-region'} /> */}
   </Chart>
 }
 
