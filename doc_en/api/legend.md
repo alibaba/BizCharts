@@ -217,7 +217,7 @@ User should set legend by oneself including content and events, the structure of
 
 ```jsx
 <Legend
-  custom={true},
+  custom={true}
   items={[
     { value: 'waiting', fill: '#3182bd', marker: 'shape' },
     { value: 'call', fill: '#99d8c9', marker: 'shape' },

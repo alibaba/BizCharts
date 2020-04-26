@@ -39,7 +39,7 @@ default: false
 The pixel value of chart's width, when chart's forceFit is true that's will be no take effect。
 
 ### 3、height		* Number *    required
-The pixel value of chart's width.
+The pixel value of chart's height.
 
 <span id="data"></span>
 

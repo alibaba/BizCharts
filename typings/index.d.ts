@@ -31,6 +31,11 @@ declare namespace bizcharts{
   export const G2: G2;
 
   /**
+   * setTheme
+   */
+  export const setTheme:G2.Global.setTheme;
+  
+  /**
    * Util
    */
   export const Util: G2.Util
@@ -274,7 +279,7 @@ declare namespace bizcharts{
     follow?: boolean;
     shared?: boolean;
     position?: PositionType;
-
+    hideMarkers?: boolean;  
   }
 
 
