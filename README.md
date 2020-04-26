@@ -47,7 +47,6 @@ $ npm run build
 ## Usage
 [试一试](https://bizcharts.net/product/BizCharts4/demo/305)
 
-## Usage
 ```jsx
 import {Chart, Axis, Tooltip, Line, Point} from "bizcharts";
 
