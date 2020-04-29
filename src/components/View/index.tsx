@@ -60,7 +60,11 @@ class View<T extends IView = IView> extends Base<T> {
     const nextProps = curProps || this.props;
     const { data, interactions = [], theme, limitInPlot, options, ...others } = nextProps;
     if (_isArray(data)) {
-      this.g2Instance.changeData(data);
+      if (preProps && preProps.data) {
+        this.g2Instance.changeData(data);
+      } else {
+        this.g2Instance.data(data);
+      }
       // @ts-ignore
     } else if (data && _isArray(data.rows)) {
       // @ts-ignore

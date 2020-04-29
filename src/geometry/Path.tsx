@@ -1,6 +1,9 @@
 import Path from '@antv/g2/lib/geometry/path';
 import BaseGemo, { IBaseGemo } from './Base';
-import { registerGeometry } from '../core';
+import { registerGeometry, registerAnimation } from '../core';
+
+import { pathIn } from '@antv/g2/lib/animate/animation/path-in';
+registerAnimation('path-in', pathIn);
 
 registerGeometry('Path', Path);
 

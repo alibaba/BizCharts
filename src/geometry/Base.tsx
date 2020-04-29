@@ -37,9 +37,10 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
     compareProps(
       preProps,
       curProps,
-      ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size'],
+      ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size', 'animate'],
       (value, key) => {
         // value 已被转为array
+        console.log(value, key)
         this.g2Instance[key](...value);
       },
     );

@@ -1,7 +1,7 @@
+import * as G2 from './g2-all';
 import * as Util from '@antv/util';
 import * as Annotation from './components/Annotation';
-import * as G2 from './g2-all';
-import './theme';
+
 
 export { Annotation, G2, Util };
 export { default as Chart } from './components/Chart';
@@ -23,6 +23,7 @@ export { default as Polygon } from './geometry/Polygon';
 export { default as Schema } from './geometry/Schema';
 export { default as BaseGeom } from './geometry/Base';
 export { default as Label } from './geometry/Label';
+export { default as Path } from './geometry/Path';
 
 export { default as Geom } from './geometry';
 
