@@ -16,7 +16,7 @@ const isAllField = name => (name === "*" || name === undefined);
 export default function Axis(props) {
   const { name, visible = true, ...options } = props;
   const view = useChartView();
-  requiredPropWarn(!!name, 'Axis', 'name', `name属性为数据字段名, name="*" 表示配置所有字段。`);
+  // requiredPropWarn(!!name, 'Axis', 'name', `name属性为数据字段名, name="*" 表示配置所有字段。`);
   
   if (visible) {
     if (isAllField(name)) {

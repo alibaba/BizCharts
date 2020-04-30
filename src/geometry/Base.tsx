@@ -33,7 +33,6 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   }
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
-
     compareProps(
       preProps,
       curProps,

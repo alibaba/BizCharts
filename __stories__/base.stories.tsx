@@ -7,6 +7,7 @@ import Coordinate from '../demos/components/coordinate';
 import View from '../demos/components/view';
 import Annotation from '../demos/components/annotation';
 
+
 withInfo({ info: '' });
 
 const stories = storiesOf('基础组件', module);

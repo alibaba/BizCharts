@@ -1,6 +1,9 @@
 import React from 'react';
 import uniqueId from '@antv/util/lib/unique-id';
+import _debounce from '@antv/util/lib/debounce';
 import _isFunction from '@antv/util/lib/is-function';
+import { getChartSize } from '@antv/g2/lib/util/dom';
+import ResizeObserver from 'resize-observer-polyfill';
 import ErrorBoundary from '../../boundary/ErrorBoundary';
 import withContainer from '../../boundary/withContainer';
 import { Chart as _Chart } from '../../core';
@@ -33,10 +36,26 @@ function toHump(name) {
 }
 
 class Chart extends View<IChart> {
+  protected resizeObserver: ResizeObserver;
+  constructor(props) {
+    super(props);
+    // 监听容器发生resize
+    this.resizeObserver = new ResizeObserver(this.resize);
+    this.resizeObserver.observe(props.container);
+  }
+  resize = _debounce(() => {
+    if (this.props.autoFit && this.g2Instance) {
+      const { width, height } = getChartSize(
+        this.props.container,
+        this.props.autoFit,
+        this.g2Instance.width,
+        this.g2Instance.height
+      );
+      this.g2Instance.changeSize(width, height);
+    }
+  }, 300);
   static defaultProps = {
-    placeholder: (
-      <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>
-    ),
+    placeholder: false,
     visible: true,
   };
   ChartBaseClass: any = _Chart;
@@ -47,6 +66,8 @@ class Chart extends View<IChart> {
     this.g2Instance = new this.ChartBaseClass(options);
     this.isNewInstance = true;
     this.bindEvents();
+    // 去掉g2监听window的resize事件，改成监听容器resize
+    this.g2Instance.unbindAutoFit();
   }
   bindEvents() {
     // 画布事件
@@ -113,7 +134,7 @@ class Chart extends View<IChart> {
     if (!this.g2Instance) {
       return;
     }
-    super.componentDidUpdate(perProps);
+    super.configInstance(perProps, this.props);
     // 更新图表大小
     const { width, height } = this.props;
     if (
@@ -164,9 +185,11 @@ class Chart extends View<IChart> {
   }
 
   render() {
-    if (this.props.data === undefined && this.props.placeholder) {
+    const { placeholder, data } = this.props;
+    if ((data === undefined || data.length === 0) && placeholder) {
       this.destroy();
-      return <ErrorBoundary>{this.props.placeholder}</ErrorBoundary>;
+      const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div> : placeholder;
+      return <ErrorBoundary>{pl}</ErrorBoundary>;
     }
     this.checkInstanceReady();
     return (

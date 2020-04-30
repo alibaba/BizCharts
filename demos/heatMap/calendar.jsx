@@ -98,20 +98,15 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
           fill: "#666"
         }
       }}
-      >
-        <View>
-          <Polygon
-            position="day*week"
-            style={{
+      eachView={view => {
+        view.polygon().position('day*week')
+          .color('涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7')
+          .style({
             lineWidth: 1,
-              stroke: "#fff"
-            }}
-            color={[
-              "涨跌幅",
-              "#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7"
-            ]}
-          />
-        </View>
+            stroke: '#fff'
+          });
+      }}
+      >
       </Facet>
   </Chart>
  }

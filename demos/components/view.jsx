@@ -137,7 +137,7 @@ const data = [
 
 function Basic() {
   return (
-    <Chart placeholder={false} height={500} scale={{price: { sync: true}}} autoFit>
+    <Chart height={500} scale={{price: { sync: true}}} autoFit>
       <View data={data} animate={false} region={{
         start: { x: 0, y:0.5 },
         end: { x: 1, y: 1 }
