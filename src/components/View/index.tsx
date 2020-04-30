@@ -58,7 +58,7 @@ class View<T extends IView = IView> extends Base<T> {
     }
     super.configInstance(preProps, curProps);
     const nextProps = curProps || this.props;
-    const { data, interactions = [], theme, limitInPlot, options, ...others } = nextProps;
+    const { data, interactions = [], theme, limitInPlot, options, scale, ...others } = nextProps;
     if (_isArray(data)) {
       if (preProps && preProps.data) {
         this.g2Instance.changeData(data);
@@ -74,6 +74,9 @@ class View<T extends IView = IView> extends Base<T> {
         '接口不再支持 DataView 格式数据，只支持标准 JSON 数组，所以在使用 DataSet 时，要取最后的 JSON 数组结果传入。4.1 后将删除此兼容，请使用 data={dv.rows}',
       );
     }
+
+    // 更新比例尺
+    this.g2Instance.scale({ ...scale });
 
     // 只支持枚举, 复杂配置用扩展配置方式
     _each(
@@ -99,13 +102,12 @@ class View<T extends IView = IView> extends Base<T> {
 
     this.g2Instance.limitInPlot = limitInPlot;
   }
-  checkInstanceReady() {
-    super.checkInstanceReady();
-    this.g2Instance.scale({ ...this.props.scale });
-  }
 
-  render() {
-    this.checkInstanceReady();
+  // @ts-ignore
+  render(checked) {
+    if(!checked) {
+      this.checkInstanceReady();
+    }
     return (
       <ChartViewContext.Provider value={this.g2Instance}>
         <>{this.props.children}</>

@@ -46,5 +46,4 @@ export * from './core';
 
 export { default as Guide } from './addepter/Guide';
 
-
 export const version = process.env.__VERSION__;

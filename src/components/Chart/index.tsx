@@ -2,6 +2,7 @@ import React from 'react';
 import uniqueId from '@antv/util/lib/unique-id';
 import _debounce from '@antv/util/lib/debounce';
 import _isFunction from '@antv/util/lib/is-function';
+import _isArray from '@antv/util/lib/is-array';
 import { getChartSize } from '@antv/g2/lib/util/dom';
 import ResizeObserver from 'resize-observer-polyfill';
 import ErrorBoundary from '../../boundary/ErrorBoundary';
@@ -134,25 +135,29 @@ class Chart extends View<IChart> {
     if (!this.g2Instance) {
       return;
     }
+    // 执行view共同的属性配置更新
     super.configInstance(perProps, this.props);
+
     // 更新图表大小
-    const { width, height } = this.props;
-    if (
-      (width >= 0 && width !== this.g2Instance.width) ||
-      (height >= 0 && this.g2Instance.height)
-    ) {
-      const nextWidth = width ? width : this.g2Instance.width;
-      const nextHeight = height ? height : this.g2Instance.height;
-      // changeSize方法内部有调用render
-      this.g2Instance.changeSize(nextWidth, nextHeight);
-    } else {
-      this.g2Instance.render();
+    const { width, height, autoFit } = this.props;
+    // 自适应就不更新大小了
+    if (!autoFit) {
+      if (
+        (width >= 0 && width !== this.g2Instance.width) ||
+        (height >= 0 && height !== this.g2Instance.height)
+      ) {
+        const nextWidth = width ? width : this.g2Instance.width;
+        const nextHeight = height ? height : this.g2Instance.height;
+        // changeSize方法内部有调用render
+        this.g2Instance.changeSize(nextWidth, nextHeight);
+      }
     }
+    this.g2Instance.render();
     this.onGetG2Instance();
   }
 
   onGetG2Instance() {
-    // 更新实例执行
+    // 当且仅当更新实例后执行
     if (_isFunction(this.props.onGetG2Instance) && this.isNewInstance) {
       this.props.onGetG2Instance(this.g2Instance);
     }
@@ -169,7 +174,21 @@ class Chart extends View<IChart> {
       this.g2Instance = null;
     }
   }
+
+  handleEmptyData() {
+    // 如果上一个实例数据为空则直接销毁重建，以免影响动画
+    const { data } = this.props;
+    if (this.g2Instance
+      && this.g2Instance.getData()
+      && this.g2Instance.getData().length === 0
+      && _isArray(data)
+      && data.length !== 0 ) {
+      this.destroy();
+    }
+  }
+
   checkInstanceReady() {
+    this.handleEmptyData();
     super.checkInstanceReady();
     if (this.props.pure) {
       // 纯画布 关闭
@@ -191,11 +210,12 @@ class Chart extends View<IChart> {
       const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div> : placeholder;
       return <ErrorBoundary>{pl}</ErrorBoundary>;
     }
+
     this.checkInstanceReady();
     return (
       <ErrorBoundary key={this.id}>
         <RootChartContext.Provider value={{ chart: this.g2Instance }}>
-          {super.render()}
+          {super.render(true)}
         </RootChartContext.Provider>
       </ErrorBoundary>
     );
