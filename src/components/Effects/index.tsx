@@ -3,7 +3,9 @@ import _isFunction from '@antv/util/lib/is-function';
 import useChart from '../../hooks/useChartInstance';
 import warn from '../../utils/warning';
 
-export default function Effects(props) {
+interface IEffectsProps extends React.Props<any> {}
+
+export default function Effects(props: IEffectsProps) {
   const chart = useChart();
 
   if (_isFunction(props.children)) {

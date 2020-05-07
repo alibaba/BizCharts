@@ -12,6 +12,7 @@ export { default as Legend } from './components/Legend';
 export { default as Coordinate } from './components/Coordinate';
 export { default as Axis } from './components/Axis';
 export { default as Facet } from './components/Facet';
+export { default as Slider } from './components/Slider';
 
 export { default as Area } from './geometry/Area';
 export { default as Edge } from './geometry/Edge';

@@ -31,10 +31,21 @@ function TooltipNormal(props: ITooltip) {
 }
 
 export default function Tooltip(props: ITooltip) {
-  const { children, ...options } = props;
-return isReactTooltip(props) ? <ReactTooltip {...options} >{children}</ReactTooltip> : <TooltipNormal {...props} />;
+  const { children, triggerOn, ...options } = props;
+  const chartView = useChartView();
+  chartView.removeInteraction('tooltip');
+  chartView.removeInteraction('tooltip-click');
+
+  if (triggerOn === 'click') {
+    chartView.interaction(`tooltip-click`);
+  } else {
+    chartView.interaction(`tooltip`);
+  }
+
+  return isReactTooltip(props) ? <ReactTooltip {...options} >{children}</ReactTooltip> : <TooltipNormal {...props} />;
 }
 
 Tooltip.defaultProps = {
   showMarkers: false,
+  triggerOn: 'hover',
 }

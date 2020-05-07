@@ -1,4 +1,5 @@
 import React from 'react';
+import { FacetCfg } from '@antv/g2/lib/interface';
 import _isFunction from '@antv/util/lib/is-function';
 import shallowEqual from '../../utils/shallowEqual';
 import useChartView from '../../hooks/useChartView';
@@ -18,8 +19,11 @@ registerFacet('matrix', Matrix);
 registerFacet('circle', Circle);
 registerFacet('tree', Tree);
 
+export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
+  type: string;
+}
 
-function Facet(props) {
+function Facet(props: IFacetProps) {
   const chart = useChartView();
   const { type, children, ...cfg } = props;
   if (_isFunction(children)) {
