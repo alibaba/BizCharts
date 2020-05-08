@@ -1,24 +1,26 @@
+import { useEffect } from 'react';
 import _Legend from '@antv/g2/lib/chart/controller/legend';
+import { LegendCfg, FilterCondition } from '@antv/g2/lib/interface';
 import _isFunction from '@antv/util/lib/is-function';
 import { registerComponentController } from '../../core';
 import useChartView from '../../hooks/useChartView';
+import { IEvent } from '../../interface';
 
 import './actions';
-
 registerComponentController('legend', _Legend);
 
-export interface ILegend {
+export interface ILegend extends LegendCfg {
   name?: string;
   visible?: boolean;
-  filter?: Function;
-  onValuechanged?: Function;
+  filter?: FilterCondition;
+  onChange?: Function;
   view?: any; // 来自父级的 chart 或者 view实例
 }
 const isAllField = name => (name === "*" || name === undefined);
 
 // 单纯的赋值，重复执行不影响性能
 export default function Legend(props: ILegend) {
-  const { name, visible = true, onValuechanged, filter, ...options } = props;
+  const { name, visible = true, onChange, filter, ...options } = props;
   const view = useChartView();
   if (isAllField(name)) {
     if (visible) {
@@ -26,12 +28,12 @@ export default function Legend(props: ILegend) {
     } else {
       view.legend(false);
     }
-    return null;
-  }
-  if (visible) {
-    view.legend(name, options);
   } else {
-    view.legend(name, false);
+    if (visible) {
+      view.legend(name, options);
+    } else {
+      view.legend(name, false);
+    }
   }
 
   // 图例默认置灰
@@ -39,8 +41,30 @@ export default function Legend(props: ILegend) {
     view.filter(name, filter);
   }
 
-  view.off('legend:valuechanged');
-  view.on('legend:valuechanged', onValuechanged);
+  // 事件didmount后绑定一次即可
+  useEffect(() => {
+    // 连续图例
+    view.on('legend:valuechanged',(ev: {
+      /** [ start, end ] */
+      originValue: [ number | any,  number | any ],
+      /** [ start, end ] */
+      value: [  number | any,  number | any ],
+    }) => {
+      if (_isFunction(props.onChange)) {
+        props.onChange(ev, view)
+      }
+    });
+    // 分类图例
+    view.on('legend-item:click', (ev: IEvent) => {
+      if (_isFunction(props.onChange)) {
+        const target = ev.target;
+        const delegateObject = target.get('delegateObject');
+        const item = delegateObject.item; // 图例选项
+        ev.item = item; // 快捷获取
+        props.onChange(ev, view);
+      }
+    });
+  }, []);
 
   return null;
 }

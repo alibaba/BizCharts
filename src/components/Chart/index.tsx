@@ -152,7 +152,7 @@ class Chart extends View<IChart> {
         this.g2Instance.changeSize(nextWidth, nextHeight);
       }
     }
-    this.g2Instance.render();
+    this.g2Instance.render(true);
     this.onGetG2Instance();
   }
 

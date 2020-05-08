@@ -4,8 +4,8 @@ import {
   Area,
   Line,
   Tooltip,
+  Legend,
   Axis,
-  Coordinate
 } from '../../src';
 import DataSet from '@antv/data-set';
 
@@ -45,7 +45,7 @@ function Labelline () {
     value: {
       alias: 'The Share Price in Dollars',
       formatter: (val) => {
-        return '$' + val;
+        return `$${val}`;
       },
       nice: true,
     },
@@ -57,6 +57,8 @@ function Labelline () {
   return (
     <Chart scale={scale} height={400} data={dv.rows} autoFit>
       <Tooltip shared />
+      <Legend onChange={(...args) => { console.log('onChange', ...args)}} />
+      <Axis visible={false} name="value" />
       <Area position="year*value" color="type" />
       <Line position="year*value" color="type" />
     </Chart>

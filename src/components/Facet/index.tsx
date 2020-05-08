@@ -20,8 +20,8 @@ registerFacet('circle', Circle);
 registerFacet('tree', Tree);
 
 export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
-  type: string;
-}
+  type: "circle" | "rect" | "mirror" | "list" | "matrix" | "tree";
+};
 
 function Facet(props: IFacetProps) {
   const chart = useChartView();
@@ -29,6 +29,7 @@ function Facet(props: IFacetProps) {
   if (_isFunction(children)) {
     chart.facet(type, {
       ...cfg,
+      // @ts-ignore
       eachView: children
     });
   } else {

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Chart,
   Area,
   Line,
   Tooltip,
   Axis,
-  Coordinate
+  Slider
 } from '../../src';
 
 function Labelline () {
+  const [ count, setCount ] = useState(0);
   const data = [
     { year: '1991', value: 15468 },
     { year: '1992', value: 16100 },
@@ -32,11 +33,35 @@ function Labelline () {
   };
 
   return (
-    <Chart scale={scale} height={400} data={data} autoFit>
-      <Tooltip shared />
+    <div>
+      <div onClick={() => setCount(count+1)}>click me {count}</div>
+      <Chart scale={scale} height={400} data={data} autoFit>
+      <Tooltip shared onShow={(...args) => {
+        console.log('onShow', ...args)
+      }} onChange={(...args) => {
+        console.log('onChange', ...args)
+      }} onHide={(...args) => {
+        console.log('onHide', ...args)
+      }} />
+      <Axis name="year" grid={{
+        line: {
+          style: {
+            stroke: 'red'
+          }
+        }
+      }} title />
+      <Axis name="value" grid={{
+        line: {
+          style: {
+            stroke: 'red'
+          }
+        }
+      }} title />
+      <Slider start={0.2} end={0.8} />
       <Area position="year*value" />
       <Line position="year*value" />
     </Chart>
+    </div>
   );
 }
 
