@@ -11,7 +11,6 @@ import {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/point-bubble/0.2.9/mock.json')
        .then(res => res.json())
        .then(data => {
-
          setData(data);
        })
    }, [])
@@ -45,6 +44,7 @@ import {
      height={400}
      data={data}
      autoFit
+     placeholder
      scale={scale}
      interactions={['element-active']}
    >

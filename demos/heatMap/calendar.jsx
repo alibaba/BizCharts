@@ -52,7 +52,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
        })
    }, [])
    
-   return <Chart
+   return data.rows ? <Chart
      height={400}
      padding={[20, 120, 50, 120]}
      data={data.rows}
@@ -80,7 +80,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
      }}
    >
      <Tooltip
-        title={'日期'}
+        title="日期"
         showTitle={false}
      />
      <Axis visible={false} />
@@ -106,9 +106,8 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
             stroke: '#fff'
           });
       }}
-      >
-      </Facet>
-  </Chart>
+       />
+  </Chart> : <></>
  }
  
  export default Demo;
