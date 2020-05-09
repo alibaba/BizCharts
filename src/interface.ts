@@ -1,7 +1,7 @@
 
 import { View } from '@antv/g2/lib/chart';
 import { IView } from './components/View';
-
+export * from '@antv/g2/lib/interface';
 export interface IEvent {
   target?: any, // 触发的对象，图形或者 Canvas 对象
   view?: View, // 当前 target 所属的 view
@@ -14,6 +14,13 @@ export interface IEvent {
   type?: string, // 事件名
   [key: string]: any;
 }
+
+export type FieldString = string;
+export type ColorString = string;
+export type ShapeString = string;
+
+/** [min: number, max: number] */
+export type SizeRange = [number, number];
 
 export interface IChart extends IView {
   container?: HTMLElement;

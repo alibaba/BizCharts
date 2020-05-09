@@ -4,16 +4,17 @@ import * as _ from '@antv/util';
 import ChartViewContext from '../../context/view';
 import { registerComponentController } from '../../core';
 
+import { AnnotationBaseOption } from '../../interface';
 
 registerComponentController('annotation', _Annotation);
 
-export interface IAnnotationBaseProps {
+export interface IAnnotationBaseProps extends AnnotationBaseOption {
   chartIns?: any;
   [key: string]: any;
 }
 
 // 4.0之后称为Annotation，为了名字统一
-abstract class Annotation<PropsI extends IAnnotationBaseProps> extends React.Component<PropsI, any> {
+abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
   protected annotation: any;
   protected id: string;
   protected annotationType: string = 'line'; // 默认为line类型的guide

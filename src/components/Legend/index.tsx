@@ -16,13 +16,14 @@ export interface ILegend extends LegendCfg {
   onChange?: Function;
   view?: any; // 来自父级的 chart 或者 view实例
 }
-const isAllField = name => (name === "*" || name === undefined);
+const undefinedField = name => (name === undefined);
 
 // 单纯的赋值，重复执行不影响性能
 export default function Legend(props: ILegend) {
   const { name, visible = true, onChange, filter, ...options } = props;
   const view = useChartView();
-  if (isAllField(name)) {
+  if (undefinedField(name)) {
+    // 不指定字段，则表示对图例进行整体配置
     if (visible) {
       view.legend(options);
     } else {

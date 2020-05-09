@@ -1,7 +1,8 @@
 import Base, { IAnnotationBaseProps } from './base';
+import { RegionOption } from '../../interface';
 
-export interface AnnotationRegionProps extends IAnnotationBaseProps {}
+export interface AnnotationRegionProps extends RegionOption, IAnnotationBaseProps {}
 
-export default class Arc extends Base<AnnotationRegionProps>{
+export default class Region extends Base<AnnotationRegionProps>{
   public annotationType = 'region';
 };

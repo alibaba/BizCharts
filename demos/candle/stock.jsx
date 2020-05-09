@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
   Point,
@@ -8,11 +9,10 @@ import {
   Axis,
   Interval,
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 
- function Demo() {
-   const [data, setData] = useState({});
+function Demo() {
+   const [data, setData] = useState();
    useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/candlestick-basic/0.3.2/mock.json')
        .then(res => res.json())
@@ -29,14 +29,14 @@ import DataSet from '@antv/data-set';
               }
             });
            console.log(dv)
-           setData(dv);
+           setData(dv.rows);
        })
    }, [])
    
    return <Chart
      height={400}
      padding={[10, 40, 40, 40]}
-     data={data.rows}
+     data={data}
      autoFit
      scale={{
         time: {
@@ -63,24 +63,21 @@ import DataSet from '@antv/data-set';
           + '{name}{value}</li>'}
      />
     <View
-      data={data.rows}
+      data={data}
       region={{
         start: { x: 0, y: 0 },
         end: { x: 1, y: 0.7 },
       }}
     >
       <Schema
-        position={'time*range'}
-        shape={'candle'}
+        position="time*range"
+        shape="candle"
         color={[
           'trend', val => {
             if (val === '上涨') {
               return '#f04864';
             }
-    
-            if (val === '下跌') {
-              return '#2fc25b';
-            }
+            return '#2fc25b';
           }
         ]}
         tooltip={[
@@ -88,16 +85,16 @@ import DataSet from '@antv/data-set';
         (time, start, end, max, min) => {
           return {
             name: time,
-            value: '<br><span style="padding-left: 16px">开盘价：' + start + '</span><br/>'
-              + '<span style="padding-left: 16px">收盘价：' + end + '</span><br/>'
-              + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
-              + '<span style="padding-left: 16px">最低价：' + min + '</span>'
+            value: `<br><span style="padding-left: 16px">开盘价：${  start  }</span><br/>`
+              + `<span style="padding-left: 16px">收盘价：${  end  }</span><br/>`
+              + `<span style="padding-left: 16px">最高价：${  max  }</span><br/>`
+              + `<span style="padding-left: 16px">最低价：${  min  }</span>`
           }}
         ]}
       />
     </View>
     <View
-      data={data.rows}
+      data={data}
       region={{
         start: { x: 0, y: 0.7 },
         end: { x: 1, y: 1 },
@@ -112,25 +109,24 @@ import DataSet from '@antv/data-set';
     <Axis name="volumn"
       label={{
           formatter: val => {
-            return +val / 1000 + 'k';
+            return `${+val / 1000  }k`;
           }
         }}
     />
     <Interval
-      position={'time*volumn'}
-      color={['trend', val => {
-        if (val === '上涨') {
-          return '#f04864';
-        }
-
-        if (val === '下跌') {
+      position="time*volumn"
+      color={[
+        'trend', val => {
+          if (val === '上涨') {
+            return '#f04864';
+          }
           return '#2fc25b';
         }
-      }]}
+      ]}
       tooltip={['time*volumn', (time, volumn) => {
         return {
           name: time,
-          value: '<br/><span style="padding-left: 16px">成交量：' + volumn + '</span><br/>'
+          value: `<br/><span style="padding-left: 16px">成交量：${  volumn  }</span><br/>`
         };
       }]}
     />
@@ -138,4 +134,4 @@ import DataSet from '@antv/data-set';
   </Chart>
  }
  
- export default Demo;
+export default Demo;

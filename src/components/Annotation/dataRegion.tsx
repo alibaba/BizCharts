@@ -1,6 +1,7 @@
 import Base, { IAnnotationBaseProps } from './base';
+import { DataRegionOption } from '../../interface';
 
-interface AnnotationDataRegionProps extends IAnnotationBaseProps {}
+interface AnnotationDataRegionProps extends DataRegionOption, IAnnotationBaseProps {}
 
 export default class DataRegion extends Base<AnnotationDataRegionProps>{
   public annotationType = 'data-region';
