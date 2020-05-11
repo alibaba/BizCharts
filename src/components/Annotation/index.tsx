@@ -7,5 +7,5 @@ export { default as DataRegion } from './dataRegion';
 // export { default as Html } from './html';
 export { default as Image } from './image';
 export { default as Line } from './line';
-export { default as Regiion } from './region';
+export { default as Region } from './region';
 export { default as Text } from './text';
