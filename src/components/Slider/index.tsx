@@ -1,6 +1,6 @@
 
 import 'react';
-import _Slider from '@antv/g2/lib/chart/controller/slider';
+import _Slider, { SliderOption } from '@antv/g2/lib/chart/controller/slider';
 import { registerComponentController } from '@antv/g2/lib/core';
 // 引入 slider 组件
 registerComponentController('slider', _Slider);
@@ -18,7 +18,7 @@ interface TrendCfg {
   areaStyle?: object;
 }
 
-export interface ISliderProps {
+export interface ISliderProps extends SliderOption {
   // 缩略轴高度
   height?: number;
 

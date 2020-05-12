@@ -5,29 +5,38 @@ import _each from '@antv/util/lib/each';
 import _get from '@antv/util/lib/get';
 import _View from '@antv/g2/lib/chart/view';
 import uniqueId from '@antv/util/lib/unique-id';
-import { ScaleOption } from '@antv/g2/lib/interface';
+import { ScaleOption, ViewPadding } from '@antv/g2/lib/interface';
 
 import RootChartContext from '../../context/root';
 import ChartViewContext from '../../context/view';
 import Base, { IBaseProps } from '../../Base';
 import warn from '../../utils/warning';
 
-interface IScale {
-  [field: string]: ScaleOption;
-}
-
 export interface IView extends IBaseProps {
+  /** 数据源配置。 */
   data?: any[];
+  /** 列定义配置，用于配置数值的类型等，以 data 中的数据属性为 key。 */
   scale?: {
     [field: string]: ScaleOption;
   };
+  /**
+   * 设置图表的内边距，使用方式参考 CSS 盒模型。
+   * 下图黄色区域即为 padding 的范围。
+   * ![](https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*pYwiQrdXGJ8AAAAAAAAAAABkARQnAQ)
+   *
+   * @example
+   * 1. padding: 20
+   * 2. padding: [ 10, 30, 30 ]
+   */
+  padding?: ViewPadding;
+  /** view 的绘制范围，起始点为左上角。 */
   region?: {
     start?: number | string;
     end?: number | string;
   };
 }
 
-class View<T extends IView = IView> extends Base<T> {
+export class GenericView<T extends IView = IView> extends Base<T> {
   ChartBaseClass = _View;
   name = 'view';
   static defaultProps = {
@@ -116,6 +125,6 @@ class View<T extends IView = IView> extends Base<T> {
   }
 }
 
-View.contextType = RootChartContext;
+GenericView.contextType = RootChartContext;
 
-export default View;
+export default class View extends GenericView<IView>{};
