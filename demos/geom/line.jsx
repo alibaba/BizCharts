@@ -1,11 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import {
   Chart,
   Geom,
   Effects,
 } from "../../src";
-// import { Text } from '../../src/components/Annotation';
 import Tooltip from '../../src/components/Tooltip';
 
 const data = [

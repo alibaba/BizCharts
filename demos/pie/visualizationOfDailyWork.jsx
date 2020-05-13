@@ -1,4 +1,5 @@
 import React from "react";
+import DataSet from "@antv/data-set";
 import {
   Chart,
   Interval,
@@ -9,7 +10,6 @@ import {
   View,
   Annotation,
 } from "../../src";
-import DataSet from "@antv/data-set";
 
 const Clock = () => {
     const text = [
@@ -24,9 +24,9 @@ const Clock = () => {
     ];
     const data = [];
 
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 24; i+=1) {
       const item = {};
-      item.type = i + "";
+      item.type = `${i  }`;
       item.value = 10;
       data.push(item);
     }
@@ -56,22 +56,22 @@ const Clock = () => {
       dimension: 'type',
       as: 'percent',
     });
-    const cols = {
-      percent: {
-        formatter: val => {
-          return (val * 100).toFixed(2) + "%";
-        }
-      },
-      value: {
-        formatter: val => {
-          return (val * 100).toFixed(2) + "%";
-        }
-      }
-    };
+    // const cols = {
+    //   percent: {
+    //     formatter: val => {
+    //       return `${(val * 100).toFixed(2)  }%`;
+    //     }
+    //   },
+    //   value: {
+    //     formatter: val => {
+    //       return `${(val * 100).toFixed(2)  }%`;
+    //     }
+    //   }
+    // };
     
     
     return (
-      <Chart padding={50} autoFit>
+      <Chart padding={50} height={400} autoFit>
         <Legend visible={false} />
         {/* 背景图层 */}
         <View data={dv.rows}>
@@ -132,7 +132,7 @@ const Clock = () => {
         <View data={userDv.rows} scale={{
           percent: {
             formatter: (val) => {
-                return (val * 100).toFixed(2) + '%';
+                return `${(val * 100).toFixed(2)}%`;
               },
           }
         }}>

@@ -1,13 +1,11 @@
 import React from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
   Area,
   Line,
   Tooltip,
-  Axis,
-  Coordinate
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 function Labelline () {
   const data = [

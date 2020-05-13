@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Chart, Line, Point } from '../../src';
 
 // 数据源

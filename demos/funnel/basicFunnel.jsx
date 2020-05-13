@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
-  Point,
-  Line,
-  Area,
   Tooltip,
   Interval,
   Legend,
   Annotation,
   Coordinate
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 const { DataView } = DataSet;
 const dv = new DataView().source([
@@ -23,8 +20,9 @@ const dv = new DataView().source([
 dv.transform({
   type: 'map',
   callback(row) {
-    row.percent = row.pv / 50000;
-    return row;
+    const newRow = Object.assign({}, row);
+    newRow.percent = row.pv / 50000;
+    return newRow;
   },
 });
 
@@ -47,12 +45,12 @@ function Demo() {
       {dv.rows.map(obj => {
           return (
             <Annotation.Text
-              top={true}
+              top
               position={{
                 action: obj.action,
                 percent: "median"
               }}
-              content={parseInt(obj.percent * 100) + "%"}
+              content={`${parseInt( obj.percent * 100, 10 )}%`}
               style={{
                 fill: "#fff",
                 fontSize: "12",
@@ -76,14 +74,14 @@ function Demo() {
           (action, pv, percent) => {
             return {
               name: action,
-              percent: parseInt(percent * 100) + "%",
-              pv: pv
+              percent: `${parseInt(percent * 100, 10)}%`,
+              pv
             };
           }
         ]}
         label={["action*pv",
           (action, pv) => {
-            return {content: action + " " + pv};
+            return {content: `${action  } ${  pv}`};
           },
           {
             offset: 35,
@@ -92,8 +90,7 @@ function Demo() {
               stroke: "rgba(0, 0, 0, 0.15)"
             }
           }]}
-      >
-      </Interval>
+       />
     </Chart>
   )
 }

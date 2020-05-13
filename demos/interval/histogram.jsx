@@ -1,20 +1,10 @@
 import React from "react";
 import DataSet from "@antv/data-set";
 import {
-  G2,
   Chart,
-  Geom,
   Axis,
   Tooltip,
-  Coord,
-  Label,
-  Legend,
-  View,
-  Guide,
-  Shape,
   Interval,
-  Facet,
-  Util
 } from "../../src";
 
 const Histogram = () => {
@@ -76,7 +66,7 @@ const Histogram = () => {
     ];
     const data = [];
 
-    for (let i = 0; i < values.length; i++) {
+    for (let i = 0; i < values.length; i += 1) {
       const obj = {};
       obj.value = values[i];
       data.push(obj);
@@ -116,7 +106,7 @@ const Histogram = () => {
         />
         <Axis name="count" />
         <Tooltip inPlot={false} crosshairs={false} position="top" />
-        <Interval position="value*count" />
+        <Interval position="value*count" element-highlight />
       </Chart>
     );
 }

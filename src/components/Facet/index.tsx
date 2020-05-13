@@ -1,5 +1,5 @@
 import React from 'react';
-import { FacetCfg } from '@antv/g2/lib/interface';
+import { FacetCfg, FacetTitle, Line } from '@antv/g2/lib/interface';
 import _isFunction from '@antv/util/lib/is-function';
 import shallowEqual from '../../utils/shallowEqual';
 import useChartView from '../../hooks/useChartView';
@@ -21,6 +21,17 @@ registerFacet('tree', Tree);
 
 export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
   type: "circle" | "rect" | "mirror" | "list" | "matrix" | "tree";
+  /** 行标题的样式。 */
+  readonly columnTitle?: FacetTitle,
+  /** 列标题的样式。 */
+  readonly rowTitle?: FacetTitle,
+  /** 是否转置。 */
+  readonly transpose?: boolean;
+  /** 标题样式。 */
+  readonly title?: FacetTitle;
+  /** 指定每行可显示分面的个数，超出时会自动换行。 */
+  readonly cols?: number;
+  readonly line?: Line;
 };
 
 function Facet(props: IFacetProps) {

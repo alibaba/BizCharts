@@ -1,10 +1,9 @@
 import React from "react";
 import {
-  G2,
   Chart,
   Tooltip,
   Interval,
-  Coord
+  Coordinate
 } from "../../src";
 
 const data = [
@@ -39,7 +38,7 @@ function Grouped() {
         color="name"
         position="月份*月均降雨量"
       />
-      <Coord type="polar"/>
+      <Coordinate type="polar"/>
       <Tooltip shared />
     </Chart>
   );

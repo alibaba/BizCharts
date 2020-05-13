@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { DataView } from '@antv/data-set';
 import {
   Chart,
-  Point,
-  View,
   Tooltip,
   Schema,
-  Axis,
   Interaction,
 } from '../../src';
-import { DataView } from '@antv/data-set';
 
 
  function Demo() {
@@ -26,8 +23,9 @@ const dv = new DataView().source(data);
 dv.transform({
   type: 'map',
   callback: obj => {
-    obj.range = [obj.low, obj.q1, obj.median, obj.q3, obj.high];
-    return obj;
+    const newObj = Object.assign({}, obj);
+    newObj.range = [obj.low, obj.q1, obj.median, obj.q3, obj.high];
+    return newObj;
   }
 });
    
@@ -57,8 +55,8 @@ dv.transform({
      />
     
       <Schema
-        position={'x*range'}
-        shape={'box'}
+        position="x*range"
+        shape="box"
         style={{
           stroke: '#545454',
           fill: '#1890FF',
@@ -78,7 +76,7 @@ dv.transform({
         }
         ]}
       />
-    <Interaction type={'active-region'} />
+    <Interaction type="active-region" />
   </Chart>
  }
  

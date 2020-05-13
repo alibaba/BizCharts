@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Chart, Interval, Tooltip, useTheme } from '../../src';
-import { useChartTheme } from '../../src/hooks/useChartInstance';
+// import { useChartTheme } from '../../src/hooks/useChartInstance';
 
 const data = [
   {

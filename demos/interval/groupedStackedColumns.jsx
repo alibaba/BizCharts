@@ -1,19 +1,11 @@
 import React from "react";
 import DataSet from "@antv/data-set";
 import {
-  G2,
   Chart,
   Geom,
   Axis,
   Tooltip,
-  Coord,
-  Label,
   Legend,
-  View,
-  Guide,
-  Shape,
-  Facet,
-  Util
 } from "../../src";
 
 const Clusteredstacked = () => {
@@ -157,8 +149,8 @@ const Clusteredstacked = () => {
           <Axis
             name="population"
             label={{
-              formatter: function(val) {
-                return val / 1000000 + "M";
+              formatter(val) {
+                return `${val / 1000000  }M`;
               }
             }}
           />
@@ -169,7 +161,7 @@ const Clusteredstacked = () => {
             position="State*population"
             color={[
               "age",
-              function(age) {
+              (age) => {
                 return colorMap[age];
               }
             ]}

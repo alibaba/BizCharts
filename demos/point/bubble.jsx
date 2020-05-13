@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
   Chart,
   Point,
+  Axis,
+  Legend,
+  Tooltip,
 } from '../../src';
 
 
@@ -10,9 +13,8 @@ import {
    useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/point-bubble/0.2.9/mock.json')
        .then(res => res.json())
-       .then(data => {
-
-         setData(data);
+       .then(resData => {
+         setData(resData);
        })
    }, [])
    
@@ -22,7 +24,7 @@ import {
         nice: true,
       },
       Population: {
-        type: 'pow',
+        // type: 'pow',
         alias: '人口总数'
       },
       GDP: {
@@ -48,6 +50,19 @@ import {
      scale={scale}
      interactions={['element-active']}
    >
+     <Axis
+      name="GDP"
+      label={{
+        formatter: (value) => { // 格式化坐标轴的显示
+          return `${(+value / 1000).toFixed(0)}k`;
+        }
+      }}
+    />
+    <Legend name="Population" visible={false} />
+    <Tooltip
+      showTitle={false}
+      showMarkers={false}
+    />
     <Point
       position="GDP*LifeExpectancy"
       color={["continent", val => {
@@ -56,6 +71,7 @@ import {
       opacity={0.65}
       shape="circle"
       size={["Population", [4, 65]]}
+      tooltip='Country*Population*GDP*LifeExpectancy'
       style={['continent',  (val) => {
         return {
           lineWidth: 1,

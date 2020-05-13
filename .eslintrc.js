@@ -8,6 +8,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'lines-between-class-members': 0,
     'class-methods-use-this': 0,
-    'no-lonely-if': 0
+    'no-lonely-if': 0,
+    'no-param-reassign': 0
   }
 };

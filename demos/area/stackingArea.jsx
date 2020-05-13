@@ -4,8 +4,6 @@ import {
   Area,
   Line,
   Tooltip,
-  Axis,
-  Coordinate
 } from '../../src';
 
 function Labelline () {

@@ -48,7 +48,7 @@ const Grouped = () => {
       value: "value" // value字段
     });
     return (
-      <Chart height={400} data={dv.rows} forceFit>
+      <Chart height={400} data={dv.rows} autoFit>
           <Legend />
           <Coordinate actions={[['scale', 1, -1], ['transpose']]} />
           <Axis

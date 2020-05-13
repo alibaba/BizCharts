@@ -1,6 +1,6 @@
 import React from "react";
 import { Pie } from '@antv/g2plot';
-import { Point, Axis, createPlot } from '../../src';
+import { createPlot } from '../../src';
 
 const RingChart = createPlot(Pie);
 

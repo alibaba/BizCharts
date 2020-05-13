@@ -1,4 +1,5 @@
 import React from 'react';
+import { DataView } from '@antv/data-set';
 import {
   Chart,
   Interval,
@@ -8,7 +9,6 @@ import {
   Axis,
   Coordinate
 } from '../../src';
-import { DataView } from '@antv/data-set';
 
 
 function Labelline () {
@@ -46,7 +46,7 @@ function Labelline () {
       scale={{
         percent: {
           formatter: (val) => {
-            val = (val * 100).toFixed(2) + '%';
+            val = `${(val * 100).toFixed(2)}%`;
             return val;
           },
         }

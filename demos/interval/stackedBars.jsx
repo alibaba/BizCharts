@@ -1,19 +1,11 @@
 import React from "react";
+import DataSet from "@antv/data-set";
 import {
   Chart,
   Interval,
   Axis,
-  Tooltip,
   Coordinate,
-  Label,
-  Legend,
-  View,
-  Guide,
-  Shape,
-  Facet,
-  Util
 } from "../../src";
-import DataSet from "@antv/data-set";
 
 const Stacked = () => {
     const data = [
@@ -72,7 +64,7 @@ const Stacked = () => {
         <Interval
           adjust={[{type: 'stack'}]}
           position="State*人口数量"
-          color={"年龄段"}
+          color="年龄段"
         />
       </Chart>
     );

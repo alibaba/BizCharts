@@ -4,7 +4,7 @@ import {
   Chart,
   Axis,
   Tooltip,
-  Coord,
+  Coordinate,
   Legend,
   Interval
 } from "../../src";
@@ -160,7 +160,7 @@ const Bardiverge = () => {
 
         callback(row) {
           row["Strongly Disagree"] *= -1;
-          row["Disagree"] *= -1;
+          row.Disagree *= -1;
           return row;
         }
       })
@@ -185,25 +185,25 @@ const Bardiverge = () => {
       "Strongly Disagree": "#CB2920"
     };
     return (
-      <Chart height={400} padding="auto" data={dv} autoFit>
+      <Chart height={400} padding="auto" data={dv.rows} autoFit>
           <Axis name="type" title={null} labelOffset={10} />
           <Axis
             name="value"
             title={null}
             tickLine={null}
             position="right"
-            formatter={function (val) {
-              return val + "%";
+            formatter={(val) => {
+              return `${val}%`;
             }}
           />
-          <Coord transpose />
+          <Coordinate transpose />
           <Tooltip shared />
           <Legend />
           <Interval
             position="type*value"
             color={[
               "opinion",
-              function (opinion) {
+              (opinion) => {
                 return colorMap[opinion];
               }
             ]}

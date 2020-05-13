@@ -5,7 +5,6 @@ import {
   Line,
   Point,
   Tooltip,
-  Axis,
   View
 } from '../../src';
   

@@ -1,19 +1,9 @@
 import React from 'react';
 import DataSet from '@antv/data-set';
 import {
-  G2,
   Chart,
   Geom,
-  Axis,
   Tooltip,
-  Coord,
-  Label,
-  Legend,
-  View,
-  Guide,
-  Shape,
-  Facet,
-  Util,
 } from '../../src';
 
 const newdata = [
@@ -123,7 +113,6 @@ const Stackedcolumn = () => {
         obj.type = 'GAAP收入'
      }
       obj.level = `${obj.key.split('_')[1].toUpperCase()  }级`
-      console.log(obj)
       return obj;
     },
   });
@@ -134,9 +123,7 @@ const Stackedcolumn = () => {
             type="interval"
             position="time*value"
             color="level"
-            color="level"
             tooltip={['time*value*level*type', (time, value, level, type)=>{ // array
-              console.log(time, value, level, type)
               return {
                 name: level,
                 value: `${type  }:${  value}`
@@ -154,7 +141,7 @@ const Stackedcolumn = () => {
               },{
                 type: 'stack',
               },
-{
+              {
                 type: 'stack',
                 dodgeBy: 'level'
               },

@@ -40,7 +40,7 @@ const Basic = () => {
       }
     });
     return (
-      <Chart height={400} data={dv.rows} forceFit>
+      <Chart height={400} data={dv.rows} autoFit>
         <Coordinate transpose />
         <Interval element-highlight position="country*population" />
       </Chart>

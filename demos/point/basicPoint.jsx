@@ -10,9 +10,8 @@ import {
    useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/point-scatter/0.2.8/mock.json')
        .then(res => res.json())
-       .then(data => {
-         console.log(data)
-         setData(data);
+       .then(resData => {
+         setData(resData);
        })
    }, [])
    

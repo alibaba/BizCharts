@@ -8,6 +8,7 @@ import Point from './Point';
 import Polygon from './Polygon';
 
 import warn from '../utils/warning';
+import { IBaseGemo } from './Base';
 
 const GEOM_MAP = {
   area: Area,
@@ -19,11 +20,13 @@ const GEOM_MAP = {
   polygon: Polygon,
 }
 
-export interface IGemo {
-  [key: string]: any
+export interface IGemo extends IBaseGemo {
+  /** 几何标记类型 */
+  type: 'area'|'edge'|'heatmap'|'interval'|'line'|'point'|'polygon';
+  [key: string]: any;
 }
 
-export default function(props) {
+export default function(props: IGemo) {
   const { type, ...cfg } = props;
   const Geom = GEOM_MAP[type];
   return <Geom {...cfg} />;

@@ -16,8 +16,7 @@ const data = [
 function Demo() {
   return <Chart autoFit data={data} height={400} >
     <Interval position="year*sales" active-region />
-    {/* <Interaction type={'element-hilight'} />
-    <Interaction type={'active-region'} /> */}
+    <Interaction type="element-hilight" />
   </Chart>
 }
 
