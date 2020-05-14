@@ -25,7 +25,7 @@ import {
   TOOLTIP_EVENT,
 } from './events';
 
-import View from '../View';
+import { GenericView } from '../View';
 
 function toHump(name) {
   return name
@@ -36,7 +36,7 @@ function toHump(name) {
     .replace(/^\S/, s => s.toUpperCase());
 }
 
-class Chart extends View<IChart> {
+class Chart extends GenericView<IChart> {
   protected resizeObserver: ResizeObserver;
   constructor(props) {
     super(props);

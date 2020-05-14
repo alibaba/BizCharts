@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import _isFunction from '@antv/util/lib/is-function';
 import useChart from '../../hooks/useChartView';
+import { InteractionOption } from '@antv/g2/lib/interface';
 
-export interface IInteractionProps extends React.Props<any> {
+export interface IInteractionProps extends InteractionOption, React.Props<any> {
   type: string;
   config?: object;
 }

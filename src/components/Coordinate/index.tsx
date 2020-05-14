@@ -17,12 +17,13 @@ export interface ICoordinateProps extends CoordinateCfg {
    * 4. transpose 表示 x，y 轴置换。
    */
   actions?: CoordinateActions[];
+  /** 是否转置。 */
   transpose?: boolean;
   /** 旋转，使用弧度制。 */
   rotate?: number;
   /** 表示沿着 x 和 y 方向的缩放比率。 */
   scale?: [number, number];
-  /** 表示 x，y 轴置换 */
+  /** 表示沿 x 方向镜像或者沿 y 轴方向映射。 */
   reflect?: 'x' | 'y';
 }
 

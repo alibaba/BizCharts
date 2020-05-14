@@ -15,7 +15,8 @@ export interface IAxis {
   /** Axis 对应的数据字段名，如果不配置则对所有轴生效，但只支持配置visible */
   name?: string;
   visible?: boolean;
-  view?: IChart | IView; // 来自父级的 chart 或者 view实例
+  /** 来自父级的 chart 或者 view实例 */
+  view?: IChart | IView;
   /**
    * 标题的配置项，null | false 表示不展示。
    * 属性结构如下：
