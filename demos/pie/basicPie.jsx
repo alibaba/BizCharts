@@ -55,6 +55,7 @@ function Labelline() {
       data={data}
       scale={cols}
       autoFit
+      placeholder
       // interactions={['element-selected']}
     >
       <Coordinate type="theta" radius={0.8} innerRadius={0.75} />

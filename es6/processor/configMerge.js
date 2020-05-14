@@ -1,0 +1,214 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var deleteFuncMap = {
+  Chart: 'deleteChart',
+  Coord: 'deleteCoord',
+  Geom: 'deleteGeom',
+  Axis: 'deleteAxis',
+  Tooltip: 'deleteTooltip',
+  Legend: 'deleteLegend',
+  Label: 'deleteLabel',
+  View: 'deleteView',
+  Guide: 'deleteGuide',
+  GuideLine: 'deleteTypedGuide',
+  GuideImage: 'deleteTypedGuide',
+  GuideText: 'deleteTypedGuide',
+  GuideRegion: 'deleteTypedGuide',
+  GuideHtml: 'deleteTypedGuide',
+  GuideArc: 'deleteTypedGuide',
+  GuideRegionFilter: 'deleteTypedGuide',
+  GuideDataMarker: 'deleteTypedGuide',
+  GuideDataRegion: 'deleteTypedGuide',
+  Facet: 'deleteFacet'
+};
+
+var iMerge = {
+  merge: function merge(config, deleteInfos, elementInfos, clear) {
+    this.mergeDelete(config, deleteInfos, elementInfos);
+    this.mergeUpdate(config, clear);
+  },
+  mergeDelete: function mergeDelete(config, deleteInfos, elementInfos) {
+    var _this = this;
+
+    Object.keys(deleteInfos).forEach(function (id) {
+      var funName = deleteFuncMap[elementInfos[id].name];
+      var deleteConfigContainer = config;
+      if (elementInfos[id].viewId) {
+        deleteConfigContainer = config.views[elementInfos[id].viewId];
+      }
+      if (_this[funName]) {
+        _this[funName](deleteConfigContainer, id, elementInfos[id].parentInfo.id);
+      }
+    });
+  },
+  deleteAxis: function deleteAxis(config, id) {
+    if (!config) return;
+    delete config.axises[id];
+  },
+  deleteTooltip: function deleteTooltip(config) {
+    if (!config) return;
+    delete config.tooltip;
+  },
+  deleteCoord: function deleteCoord(config) {
+    if (!config) return;
+    delete config.coord;
+  },
+  deleteLegend: function deleteLegend(config, id) {
+    if (!config) return;
+    delete config.legends[id];
+  },
+  deleteGuide: function deleteGuide(config) {
+    if (!config) return;
+    delete config.guide;
+  },
+  deleteGeom: function deleteGeom(config, id) {
+    if (!config || !config.geoms) return;
+
+    delete config.geoms[id];
+  },
+  deleteLabel: function deleteLabel(config, id, parentId) {
+    if (!config || !config.geoms || !config.geoms[parentId]) return;
+
+    delete config.geoms[parentId].label;
+  },
+  deleteFacet: function deleteFacet(config) {
+    if (!config) return;
+
+    delete config.facet;
+  },
+  deleteTypedGuide: function deleteTypedGuide(config, id) {
+    if (!config || !config.guide) return;
+    delete config.guide.elements[id];
+  },
+  deleteView: function deleteView(config, id) {
+    if (!config) return;
+    delete config.views[id];
+  },
+  mergeUpdate: function mergeUpdate(config, clear) {
+    this.mergeChart(config, clear);
+    this.mergeAxises(config, clear);
+    this.mergeCoord(config, clear);
+    this.mergeGeoms(config.geoms, clear);
+    this.mergeLegends(config.legends, clear);
+    this.mergeTooltip(config, clear);
+    this.mergeViews(config.views, clear);
+    this.mergeGuide(config.guide, clear);
+  },
+  mergeChart: function mergeChart(config, clear) {
+    if (config.chart && config.chart.updateProps) {
+      config.chart.props = config.chart.updateProps;
+    }
+    if (clear) {
+      delete config.chart.g2Instance;
+    }
+  },
+  mergeAxises: function mergeAxises(config, clear) {
+    var axises = config.axises;
+
+    if (!axises == null) {
+      return;
+    }
+
+    for (var id in axises) {
+      if (axises[id] && axises[id].updateProps) {
+        axises[id].props = axises[id].updateProps;
+      }
+      if (clear) {
+        delete axises[id].g2Instance;
+      }
+    }
+  },
+  mergeTooltip: function mergeTooltip(config, clear) {
+    if (!config.tooltip) return;
+    if (clear) {
+      delete config.tooltip.g2Instance;
+    }
+
+    if (config.tooltip.updateProps) {
+      config.tooltip.props = config.tooltip.updateProps;
+    }
+  },
+  mergeCoord: function mergeCoord(config, clear) {
+    if (!config.coord) return;
+    if (clear) delete config.coord.g2Instance;
+    if (config.coord.updateProps) {
+      config.coord.props = config.coord.updateProps;
+    }
+  },
+  mergeLegends: function mergeLegends(legends, clear) {
+    if (!legends) return;
+
+    for (var id in legends) {
+      if (legends[id]) {
+        var legendConfig = legends[id];
+        if (clear) {
+          delete legendConfig.g2Instance;
+        }
+        if (legendConfig.updateProps) legendConfig.props = legendConfig.updateProps;
+      }
+    }
+  },
+  mergeGeoms: function mergeGeoms(geoms, clear) {
+    if (geoms == null) return;
+
+    for (var id in geoms) {
+      if (geoms[id]) {
+        if (clear) {
+          delete geoms[id].g2Instance;
+          if (geoms[id].label && geoms[id].label.g2Instance) {
+            if (geoms[id].label.updateProps) {
+              geoms[id].label.props = geoms[id].label.updateProps;
+            }
+            delete geoms[id].label.g2Instance;
+          }
+        }
+        if (geoms[id].updateProps) geoms[id].props = geoms[id].updateProps;
+      }
+    }
+  },
+  mergeGuide: function mergeGuide(guide, clear) {
+    if (guide == null) return;
+
+    var guides = guide.elements;
+    for (var id in guides) {
+      if (guides[id]) {
+        if (clear) {
+          delete guides[id].g2Instance;
+        }
+        if (guides[id].updateProps) {
+          guides[id].props = guides[id].updateProps;
+        }
+      }
+    }
+  },
+  mergeView: function mergeView(view, clear) {
+    if (!view) return;
+    // merge self
+    if (clear && view.g2Instance) {
+      delete view.g2Instance;
+    }
+    if (view.updateProps) {
+      view.props = view.updateProps;
+    }
+
+    this.mergeCoord(view, clear);
+    this.mergeAxises(view, clear);
+    this.mergeGeoms(view.geoms, clear);
+    this.mergeGuide(view.guide, clear);
+  },
+  mergeViews: function mergeViews(views, clear) {
+    if (views == null) return;
+
+    for (var id in views) {
+      if (views[id]) {
+        this.mergeView(views[id], clear);
+      }
+    }
+  }
+};
+
+exports.default = iMerge;

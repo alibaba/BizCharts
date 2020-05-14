@@ -80,6 +80,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
      <Tooltip
         title="日期"
         showMarkers={false}
+        showTitle={false}
      />
      <Axis visible={false} />
      <Legend name="涨跌幅" />

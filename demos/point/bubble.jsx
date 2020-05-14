@@ -47,6 +47,7 @@ import {
      height={400}
      data={data}
      autoFit
+     placeholder
      scale={scale}
      interactions={['element-active']}
    >

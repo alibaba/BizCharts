@@ -18,6 +18,7 @@ import {
    return <Chart
      height={400}
      data={data}
+     placeholder
      autoFit
      interactions={['legend-highlight']}
    >

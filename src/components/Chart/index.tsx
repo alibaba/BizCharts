@@ -207,7 +207,7 @@ class Chart extends GenericView<IChart> {
     const { placeholder, data } = this.props;
     if ((data === undefined || data.length === 0) && placeholder) {
       this.destroy();
-      const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div> : placeholder;
+      const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div> : placeholder;
       return <ErrorBoundary>{pl}</ErrorBoundary>;
     }
 

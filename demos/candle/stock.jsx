@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataSet from '@antv/data-set';
+import dataSource from './data';
 import {
   Chart,
   View,
@@ -11,26 +12,20 @@ import {
 
 
 function Demo() {
-   const [data, setData] = useState();
-   useEffect(() => {
-     fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/candlestick-basic/0.3.2/mock.json')
-       .then(res => res.json())
-       .then(resData => {
-          const ds = new DataSet();
-          const dv = ds.createView();
-          dv.source(resData)
-            .transform({
-              type: 'map',
-              callback: obj => {
-                const newObj = Object.assign({}, obj);
-                newObj.trend = (obj.start <= obj.end) ? '上涨' : '下跌';
-                newObj.range = [obj.start, obj.end, obj.max, obj.min];
-                return newObj;
-              }
-            });
-           setData(dv.rows);
-       })
-   }, [])
+  const ds = new DataSet();
+  const dv = ds.createView();
+  dv.source(dataSource)
+    .transform({
+      type: 'map',
+      callback: obj => {
+        // eslint-disable-next-line no-param-reassign
+        obj.trend = (obj.start <= obj.end) ? '上涨' : '下跌';
+        // eslint-disable-next-line no-param-reassign
+        obj.range = [obj.start, obj.end, obj.max, obj.min];
+        return obj;
+      }
+    });
+   const data = dv.rows;
    
    return <Chart
      height={400}
