@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
   Chart,
-  Point,
-  View,
   Tooltip,
-  Schema,
   Axis,
   Legend,
-  Interval,
   Annotation,
   Heatmap
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 
  function Demo() {
@@ -19,8 +14,8 @@ import DataSet from '@antv/data-set';
    useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/heatmap-image/0.3.0/mock.json')
        .then(res => res.json())
-       .then(data => {
-           setData(data);
+       .then(resData => {
+          setData(resData);
        })
    }, [])
    
@@ -38,11 +33,11 @@ import DataSet from '@antv/data-set';
      />
      <Axis visible={false} />
      <Legend offset={10} />
-     <Heatmap position={'g*l'} color={['tmp', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2']} />
+     <Heatmap position="g*l" color={['tmp', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2']} />
      <Annotation.Image
       start={['min', 'max']}
       end={['max', 'min']}
-      src={'https://gw.alipayobjects.com/zos/rmsportal/NeUTMwKtPcPxIFNTWZOZ.png'}
+      src="https://gw.alipayobjects.com/zos/rmsportal/NeUTMwKtPcPxIFNTWZOZ.png"
      />
   </Chart>
  }

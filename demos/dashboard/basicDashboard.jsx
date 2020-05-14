@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Chart,
   Point,
-  Area,
   Annotation,
   Axis,
   Coordinate,
@@ -59,7 +58,7 @@ function Demo() {
           tickInterval: 1,
         }
       }}
-      forceFit
+      autoFit
     >
       <Coordinate
       type="polar"
@@ -119,7 +118,7 @@ function Demo() {
       />
       <Annotation.Text
         position={['50%', '85%']}
-        content={'合格率'}
+        content="合格率"
         style={{
           fontSize: 20,
           fill: '#545454',

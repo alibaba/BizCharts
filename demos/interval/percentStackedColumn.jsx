@@ -47,7 +47,7 @@ function Grouped() {
         percent: {
           min: 0,
           formatter(val) {
-            return (val * 100).toFixed(2) + '%';
+            return `${(val * 100).toFixed(2)}%`;
           },
         }
       }}

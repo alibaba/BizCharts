@@ -1,4 +1,5 @@
 import React from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
   Area,
@@ -7,7 +8,6 @@ import {
   Legend,
   Axis,
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 function Labelline () {
   const data = [

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DataSet from "@antv/data-set";
 import {
   Chart,
-  Coordinate,
   Interval,
 } from "../../src";
 
@@ -57,14 +55,12 @@ const Basic = () => {
       }
       if (count > 0.2) {
         setData(data3);
-        return;
+        
       }
     }, 1000)
   }, [])
-  console.log(2)
   return (
     <Chart scale={{ value: { min: -10 }}} data={data} height={500} autoFit>
-      
       <Interval position="year*value" />
     </Chart>
   );

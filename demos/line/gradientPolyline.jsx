@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, Line, Point } from '../../src';
+import { Chart, Line } from '../../src';
 
 // 数据源
 const data = [

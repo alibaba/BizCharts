@@ -3,12 +3,10 @@ import DataSet from '@antv/data-set';
 
 import {
   Chart,
-  View,
   Tooltip,
   Axis,
   Legend,
   Facet,
-  Polygon,
 } from '../../src';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -18,7 +16,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
    useEffect(() => {
      fetch("https://alifd.alibabausercontent.com/materials/@bizcharts/heatmap-calendar/0.3.1/mock.json")
        .then(res => res.json())
-       .then(data => {
+       .then(resData => {
           const { DataView } = DataSet;
           // 获取当前月的第几周,从 0 开始
           function getMonthWeek(date) {
@@ -32,7 +30,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
           // 加工数据
           // 增加涨幅、跌幅
           // 添加所属月、周几、每个月的第几周
-          data.forEach(function (obj) {
+          resData.forEach((obj) => {
             const date = new Date(obj['日期']);
             const month = date.getMonth();
             obj.month = MONTHS[month];
@@ -42,7 +40,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
           // 对数据进行排序
           const dv = new DataView();
-          dv.source(data)
+          dv.source(resData)
             .transform({
               type: 'sort-by',
               fields: ['day'],
@@ -52,7 +50,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
        })
    }, [])
    
-   return <Chart
+   return data.rows ? <Chart
      height={400}
      padding={[20, 120, 50, 120]}
      data={data.rows}
@@ -80,17 +78,17 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
      }}
    >
      <Tooltip
-        title={'日期'}
-        showTitle={false}
+        title="日期"
+        showMarkers={false}
      />
      <Axis visible={false} />
-     <Legend name="涨跌幅" offset={0} />
+     <Legend name="涨跌幅" />
      <Facet
       type="list"
       fields={["month"]}
       cols={3}
       padding={[0, 15, 30, 15]}
-      colTitle={{
+      columnTitle={{
         offsetY: -10,
         style: {
           fontSize: 12,
@@ -106,9 +104,8 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
             stroke: '#fff'
           });
       }}
-      >
-      </Facet>
-  </Chart>
+       />
+  </Chart> : <></>
  }
  
  export default Demo;

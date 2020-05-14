@@ -2,7 +2,6 @@ import React from "react";
 import {
   Chart,
   Interval,
-  Axis,
   Tooltip,
 } from "../../src";
 

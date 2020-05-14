@@ -3,7 +3,6 @@ import {
   Chart,
   Tooltip,
   Axis,
-  Label,
   Interaction,
   Polygon
 } from '../../src';
@@ -87,11 +86,9 @@ const source = data.map((arr) => {
       height={500}
       data={source}
       autoFit
-
     >
-    
       <Axis
-        name={'name'}
+        name="name"
         tickLine={null}
         grid={{
           alignTick: false,
@@ -105,7 +102,7 @@ const source = data.map((arr) => {
         }}
       />
       <Axis
-        name={'day'}
+        name="day"
         title={null}
         grid={{
           alignTick: false,
@@ -120,7 +117,7 @@ const source = data.map((arr) => {
       />
       <Tooltip shared showMarkers={false}/>
       <Polygon
-        position={'name*day'}
+        position="name*day"
         color={['sales', '#BAE7FF-#1890FF-#0050B3']}
         label={['sales', {
           offset: -2,
@@ -135,7 +132,7 @@ const source = data.map((arr) => {
           stroke: '#fff',
         }}
       />
-      <Interaction type={'element-active'} />
+      <Interaction type="element-active" />
     </Chart>
   );
 }

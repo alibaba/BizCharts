@@ -1,13 +1,11 @@
 import React from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
   Area,
   Line,
   Tooltip,
-  Axis,
-  Coordinate
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 function Labelline () {
   
@@ -55,9 +53,10 @@ function Labelline () {
   const scale = {
     percent: {
       formatter: (value) => {
-        value = +value || 0;
-        value = +value * 100;
-        return `${value.toFixed(2)}%`;
+        let newValue = value;
+        newValue = +value || 0;
+        newValue = +value * 100;
+        return `${newValue.toFixed(2)}%`;
       },
       alias: 'percent(%)',
     },

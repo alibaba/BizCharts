@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import DataSet from '@antv/data-set';
 import {
   Chart,
   Point,
@@ -7,7 +8,6 @@ import {
   Tooltip,
   Coordinate
 } from '../../src';
-import DataSet from '@antv/data-set';
 
 const data = [
   { item: 'Design', a: 70, b: 30 },

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Chart, G2, Path, Effects } from '../../src';
-
-console.log(Path);
+import { Chart, G2, Path, Point } from '../../src';
 
 // 数据源
 const data = [
@@ -34,23 +32,47 @@ function Demo() {
     chart.axis(true);
     chart.legend(true);
     chart.tooltip({ showMarkers: false })
-    chart.path()
-          .size(1)
-          .shape('dash')
-            .animate({
-              appear: {
-                animation: 'path-in',
-                duration: 1000,
-                easing: 'easeLinear',
-              }
-            })
-            .position('price*consumption')
-            chart.render();
+    chart
+      .path()
+      .animate({
+        appear: {
+          animation: 'path-in',
+          duration: 1000,
+          easing: 'easeLinear',
+        }
+      })
+      .position('price*consumption')
+      .label('year', (val) => {
+        return {
+          content: `${val} 年`,
+          animate: {
+            appear: {
+              delay: 1000
+            }
+          }
+        };
+      });
+    chart
+      .point()
+      .animate({
+        appear: {
+          appear: 'fade-in',
+          duration: 200,
+          delay: (obj) => {
+            const index = data.findIndex(item => item.year === obj.year);
+            return index * (1000 / data.length);
+          },
+          easing: 'easeLinear',
+        }
+      })
+      .position('price*consumption')
+      .shape('square');
+    chart.render();
   }, [])
   return <>
   <div ref={container} />
   <Chart height={200} padding={[20, 40]} autoFit data={data} >
-    {/* <Path
+    <Path
       animate={{
         appear: {
           animation: 'path-in',
@@ -60,24 +82,32 @@ function Demo() {
       }}
       shape="smooth"
       position="price*consumption"
-    /> */}
-    <Effects>
-      {
-        chart => {
-          chart.path()
-          .size(1)
-          .shape('dash')
-            .animate({
-              appear: {
-                animation: 'path-in',
-                duration: 1000,
-                easing: 'easeLinear',
-              }
-            })
-            .position('price*consumption')
+      label={['year', (val) => {
+        return {
+          content: `${val} 年`,
+          animate: {
+            appear: {
+              delay: 1000
+            }
+          }
+        };
+      }]}
+    />
+    <Point
+      shape="square"
+      position="price*consumption"
+      animate={{
+        appear: {
+          appear: 'fade-in',
+          duration: 200,
+          delay: (obj) => {
+            const index = data.findIndex(item => item.year === obj.year);
+            return index * (1000 / data.length);
+          },
+          easing: 'easeLinear',
         }
-      }
-    </Effects>
+      }}
+    />
   </Chart>
   </>
 }

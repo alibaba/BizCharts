@@ -9,21 +9,21 @@ import {
 const Basic = () => {
   const [ width, setWidth ] = useState(400)
   useEffect(() => {
-    // setInterval(() => {
-    //   const count = Math.random();
-    //   if (count > 0.8) {
-    //     setWidth(300);
-    //     return;
-    //   }
-    //   if (count > 0.5) {
-    //     setWidth(500);
-    //     return;
-    //   }
-    //   if (count > 0.2) {
-    //     setWidth(600);
-    //     return;
-    //   }
-    // }, 1000)
+    setInterval(() => {
+      const count = Math.random();
+      if (count > 0.8) {
+        setWidth(300);
+        return;
+      }
+      if (count > 0.5) {
+        setWidth(500);
+        return;
+      }
+      if (count > 0.2) {
+        setWidth(600);
+        
+      }
+    }, 1000)
   }, [])
     const data = [
       {

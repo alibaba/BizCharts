@@ -1,6 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
-import { Chart, Geom, Axis, Tooltip, Coord, Label } from '../../src';
+import { Chart, Geom, Axis, Tooltip, Coordinate } from '../../src';
 
 // CDN START
 
@@ -44,7 +44,7 @@ const BarLabel = () => {
         padding="auto"
         autoFit
       >
-        <Coord transpose />
+        <Coordinate transpose />
         <Axis name="age" />
         <Axis name="count" visible={false} />
         <Tooltip />
