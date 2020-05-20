@@ -67,7 +67,7 @@ export class GenericView<T extends IView = IView> extends Base<T> {
     }
     super.configInstance(preProps, curProps);
     const nextProps = curProps || this.props;
-    const { data, interactions = [], theme, limitInPlot, options, scale, ...others } = nextProps;
+    const { data, theme, limitInPlot, options, scale } = nextProps;
     if (_isArray(data)) {
       if (preProps && preProps.data) {
         this.g2Instance.changeData(data);

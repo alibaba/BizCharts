@@ -93,6 +93,11 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.NormalModuleReplacementPlugin(/@antv\/g2\/(.*)/, function (resource) {
+      resource.request = resource.request
+        .replace(/@antv\/component\/esm/, '@antv/component/lib')
+        .replace(/@antv\/g2\/esm/, '@antv/g2/lib');
+    }),
     new webpack.DefinePlugin({
       __DEV__: !isProduction,
       __VERSION__: pagckageJSON.version,

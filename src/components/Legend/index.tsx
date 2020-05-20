@@ -8,6 +8,7 @@ import useChartView from '../../hooks/useChartView';
 import { IEvent } from '../../interface';
 
 import './actions';
+
 registerComponentController('legend', _Legend);
 
 export interface ILegend extends LegendCfg {

@@ -29,7 +29,9 @@ import { GenericView } from '../View';
 
 function toHump(name) {
   return name
+    //@ts-ignore
     .replace(/\:/g, '-')
+    //@ts-ignore
     .replace(/\-(\w)/g, function(all, letter) {
       return letter.toUpperCase();
     })

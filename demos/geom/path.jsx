@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Chart, G2, Path, Point } from '../../src';
+import { Chart, G2, Path, Point, Geom } from '../../src';
 
 // 数据源
 const data = [
@@ -72,7 +72,8 @@ function Demo() {
   return <>
   <div ref={container} />
   <Chart height={200} padding={[20, 40]} autoFit data={data} >
-    <Path
+    <Geom type="" />
+     <Path
       animate={{
         appear: {
           animation: 'path-in',

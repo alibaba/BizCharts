@@ -1,8 +1,9 @@
 
 import { View } from '@antv/g2/lib/chart';
-import { IView } from './components/View';
 import { ViewPadding } from '@antv/g2/lib/interface';
 export * from '@antv/g2/lib/interface';
+import { IView } from './components/View';
+
 export interface IEvent {
   target?: any, // 触发的对象，图形或者 Canvas 对象
   view?: View, // 当前 target 所属的 view

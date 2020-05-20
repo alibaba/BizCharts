@@ -1,16 +1,17 @@
 import React from 'react';
 import { FacetCfg, FacetTitle, Line } from '@antv/g2/lib/interface';
 import _isFunction from '@antv/util/lib/is-function';
-import shallowEqual from '../../utils/shallowEqual';
-import useChartView from '../../hooks/useChartView';
 
-import { registerFacet } from '../../core';
 import Circle from '@antv/g2/lib/facet/circle';
 import List from '@antv/g2/lib/facet/list';
 import Matrix from '@antv/g2/lib/facet/matrix';
 import Mirror from '@antv/g2/lib/facet/mirror';
 import Rect from '@antv/g2/lib/facet/rect';
 import Tree from '@antv/g2/lib/facet/tree';
+
+import shallowEqual from '../../utils/shallowEqual';
+import useChartView from '../../hooks/useChartView';
+import { registerFacet } from '../../core';
 
 registerFacet('rect', Rect);
 registerFacet('mirror', Mirror);

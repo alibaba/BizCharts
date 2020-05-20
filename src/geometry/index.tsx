@@ -7,7 +7,6 @@ import Line from './Line';
 import Point from './Point';
 import Polygon from './Polygon';
 
-import warn from '../utils/warning';
 import { IBaseGemo } from './Base';
 
 const GEOM_MAP = {

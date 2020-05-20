@@ -31,7 +31,7 @@ export interface ITooltip extends TooltipCfg, React.ComponentProps<any> {
   onHide?: (e?: ITooltipEvent, chart?: Chart) => void;
 }
 
-function TooltipNormal(props: ITooltip) {
+const TooltipNormal: React.FC<ITooltip> = (props) => {
   const { visible = true, children, ...options } = props;
   const chartView = useChartView();
   if (visible === true) {
