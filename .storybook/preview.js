@@ -2,9 +2,12 @@ import { setAddon, configure, addDecorator, addParameters } from '@storybook/rea
 // import JSXAddon from 'storybook-addon-jsx';
 // import { setDefaults } from 'react-storybook-addon-props-combinations';
 import { text, withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { create } from '@storybook/theming';
 import { withInfo } from '@storybook/addon-info';
 
-addDecorator(withInfo); 
+addDecorator(withInfo({
+  propTables: false
+})); 
 addDecorator(withKnobs); 
 addParameters({
   info: {
@@ -28,7 +31,8 @@ function loadStories() {
 addParameters({
   options: {
     panelPosition: 'right',
-    theme: {
+    theme: create({
+      base: 'light',
       appBg: '#FFFFFF',
       textColor: '#000',
       colorSecondary: '#184c7c',
@@ -36,7 +40,7 @@ addParameters({
       fontBase: 'PingFang-SC, Roboto, Microsoft YaHei',
       brandUrl: '//bizcharts.alibaba.net/index',
       brandImage: '//img.alicdn.com/tfs/TB1rvjLvkvoK1RjSZFwXXciCFXa-164-41.svg'
-    }
+    }),
   },
 })
 configure(loadStories, module);
