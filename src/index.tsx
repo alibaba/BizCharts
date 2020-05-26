@@ -41,10 +41,11 @@ export { withView } from './context/view';
 export { withChartInstance } from './context/root';
 
 // 注册主题
-export { getTheme, registerTheme } from '@antv/g2/lib/theme';
+
 
 export * from './core';
+export * from './plots';
 
 export { default as Guide } from './adapter/Guide';
 
-export const version = process.env.__VERSION__;
+export const VERSION = process.env.__VERSION__;

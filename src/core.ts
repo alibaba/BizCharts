@@ -11,4 +11,4 @@ registerEngine('canvas', CanvasEngine);
 registerEngine('svg', SVGEngine);
 
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.0.0';
+export const VERSION = process.env.__VERSION__;

@@ -44,6 +44,12 @@ $ npm start
 $ npm run build
 ```
 
+### test snapshot
+在不支持外网测试
+```
+tnpm run uitest
+```
+
 ## Usage
 [试一试](https://bizcharts.net/product/BizCharts4/demo/305)
 
@@ -58,6 +64,7 @@ const data = [...];
   <Point position="month*temperature" size={4} color={'city'} />
 </Chart>
 ```
+
 
 ### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)
 

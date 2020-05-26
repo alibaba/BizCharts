@@ -1,5 +1,5 @@
 
-import 'react';
+import React from 'react';
 import _Slider, { SliderOption } from '@antv/g2/lib/chart/controller/slider';
 import { registerComponentController } from '@antv/g2/lib/core';
 // 引入 slider 组件

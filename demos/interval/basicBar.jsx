@@ -3,8 +3,30 @@ import DataSet from "@antv/data-set";
 import {
   Chart,
   Coordinate,
+  Tooltip,
+  Axis,
   Interval,
 } from "../../src";
+
+
+function Pie ({ data }) {
+  return (
+    <Chart pure height={100} width={100} data={data} autoFit>
+      <Coordinate type="polar" innerRadius={0.2} />
+      <Interval
+        position="year*population"
+        adjust="stack"
+        color="year"
+        element-highlight
+        style={{
+          lineWidth: 1,
+          stroke: '#fff',
+        }}
+      />
+    </Chart>
+  );
+}
+
 
 const Basic = () => {
     const data = [
@@ -18,7 +40,7 @@ const Basic = () => {
       },
       {
         country: "美国",
-        population: 29034
+        population: 29034,
       },
       {
         country: "印尼",
@@ -40,9 +62,28 @@ const Basic = () => {
       }
     });
     return (
-      <Chart height={400} data={dv.rows} autoFit>
+      <Chart height={200} data={dv.rows} autoFit>
         <Coordinate transpose />
         <Interval element-highlight position="country*population" />
+        <Tooltip>
+          {(title, items, x, y) => {
+            const data = [
+              { year: '2001', population: 41.8 },
+              { year: '2002', population: 38 },
+              { year: '2003', population: 33.7 },
+              { year: '2004', population: 30.7 },
+              { year: '2005', population: 25.8 },
+              { year: '2006', population: 31.7 },
+              { year: '2007', population: 33 },
+              { year: '2008', population: 46 },
+              { year: '2009', population: 38.3 },
+              { year: '2010', population: 28 },
+              { year: '2011', population: 42.5 },
+              { year: '2012', population: 30.3 },
+            ];
+            return <Pie data={data} />
+          }}
+        </Tooltip>
       </Chart>
     );
 }

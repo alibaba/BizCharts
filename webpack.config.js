@@ -3,6 +3,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const pagckageJSON = require('./package.json');
+const Helper = require('./webpack.helper.js');
 
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
@@ -102,6 +103,7 @@ const config = {
       __DEV__: !isProduction,
       __VERSION__: pagckageJSON.version,
     }),
+    new Helper(),
     ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
   ],
   optimization: {
