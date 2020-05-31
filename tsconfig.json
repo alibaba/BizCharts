@@ -14,9 +14,8 @@
     "paths": {
       "bizcharts": ["./src/index"],
       "bizcharts/*": ["./src/*"],
-      "@/*":["./src/*"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts", "./umd"]
+  "exclude": ["node_modules", "**/*.spec.ts", "umd"]
 }

@@ -63,37 +63,14 @@ const config = {
     "visible": true,
     "text": "一个简单的环形图"
   },
-  "legend": {
-    "position": "left-top",
-    "flipPage": false,
-    "offsetX": 0
-  },
   "label": {
     "type": "spider"
   },
   "width": 580,
   "height": 460,
   "forceFit": false,
-  "radius": 1,
-  "statistic": {
-    "visible": false
-  },
   "colorField": "x",
   "angleField": "y",
-  "color": [
-    "#5B8FF9",
-    "#5AD8A6",
-    "#5D7092",
-    "#F6BD16",
-    "#E8684A",
-    "#6DC8EC",
-    "#9270CA",
-    "#FF9D4D",
-    "#269A99",
-    "#FF99C3",
-    "#5B8FF9",
-    "#BDD2FD"
-  ]
 }
 
 function Basic() {

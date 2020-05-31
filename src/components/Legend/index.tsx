@@ -12,7 +12,7 @@ import './actions';
 registerComponentController('legend', _Legend);
 
 export interface ILegend extends LegendCfg {
-  /** 图例的对应到数据源中的数据字段名，不传则默认设置所有图例。*/
+  /** 图例的对应到数据源中的数据字段名，不传则默认设置所有图例。 */
   name?: string;
   /** 图例是否可见 */
   visible?: boolean;
@@ -65,9 +65,9 @@ export default function Legend(props: ILegend) {
     // 分类图例
     view.on('legend-item:click', (ev: IEvent) => {
       if (_isFunction(props.onChange)) {
-        const target = ev.target;
+        const { target } = ev;
         const delegateObject = target.get('delegateObject');
-        const item = delegateObject.item; // 图例选项
+        const { item } = delegateObject; // 图例选项
         ev.item = item; // 快捷获取
         props.onChange(ev, view);
       }

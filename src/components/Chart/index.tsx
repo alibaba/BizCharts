@@ -29,10 +29,10 @@ import { GenericView } from '../View';
 
 function toHump(name) {
   return name
-    //@ts-ignore
+    // @ts-ignore
     .replace(/\:/g, '-')
-    //@ts-ignore
-    .replace(/\-(\w)/g, function(all, letter) {
+    // @ts-ignore
+    .replace(/\-(\w)/g, (all, letter) => {
       return letter.toUpperCase();
     })
     .replace(/^\S/, s => s.toUpperCase());
@@ -148,8 +148,8 @@ class Chart extends GenericView<IChart> {
         (width >= 0 && width !== this.g2Instance.width) ||
         (height >= 0 && height !== this.g2Instance.height)
       ) {
-        const nextWidth = width ? width : this.g2Instance.width;
-        const nextHeight = height ? height : this.g2Instance.height;
+        const nextWidth = width || this.g2Instance.width;
+        const nextHeight = height || this.g2Instance.height;
         // changeSize方法内部有调用render
         this.g2Instance.changeSize(nextWidth, nextHeight);
       }

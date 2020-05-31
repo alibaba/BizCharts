@@ -1,11 +1,8 @@
 import React from "react";
 import {
   Chart,
-  Tooltip,
-  Interval,
-  Annotation,
-  Axis,
-  registerShape
+  registerShape,
+  Effects
 } from "../../src";
 
 registerShape('interval', 'border-radius', {
@@ -78,7 +75,7 @@ function Demo() {
   };
   return (
     <Chart height={400} scale={scale} padding="auto" data={activeData} autoFit>
-      <Interval
+      {/* <Interval
         color="#cbcbcb"
         shape="border-radius"
         position="date*expected"
@@ -130,7 +127,79 @@ function Demo() {
           textBaseline: 'top',
         }}
       />
-      <Tooltip shared />
+      <Tooltip shared /> */}
+      <Effects>
+        {chart => {
+
+chart.axis('date', false);
+chart.axis('actual', false);
+chart.axis('expected', {
+  line: null,
+  tickLine: null,
+  title: null,
+  position: 'right',
+  label: {
+    formatter: (val) => {
+      if (val === '1200') {
+        return '';
+      }
+      return val;
+    },
+  },
+});
+chart.legend(false);
+chart.tooltip({
+  shared: true,
+  showMarkers: false,
+});
+
+chart
+  .interval()
+  .position('date*expected')
+  .color('#cbcbcb')
+  .shape('border-radius')
+  .tooltip('expected')
+  .style({
+    opacity: 0.6,
+  });
+chart
+  .interval()
+  .position('date*actual')
+  .color('#5B8FF9')
+  .tooltip('actual')
+  .shape('date*actual', (date, val) => {
+    if (val === 0) {
+      return;
+    }
+    // eslint-disable-next-line consistent-return
+    return 'border-radius';
+  });
+
+chart.annotation().text({
+  position: ['min', 'max'],
+  content: '活动',
+  style: {
+    fill: '#5B8FF9',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textBaseline: 'top',
+  },
+});
+
+chart.annotation().text({
+  position: ['max', 'max'],
+  content: '67 / 900 千卡',
+  style: {
+    fill: '#cbcbcb',
+    fontSize: 20,
+    textAlign: 'end',
+    textBaseline: 'top',
+  },
+});
+
+chart.interaction('active-region');
+        }}
+      </Effects>
     </Chart>
   );
 }

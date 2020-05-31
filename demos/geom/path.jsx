@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Chart, G2, Path, Point, Geom } from '../../src';
+import React, { useRef } from 'react';
+import { Chart, Path, Point } from '../../src';
 
 // 数据源
 const data = [
@@ -22,57 +22,9 @@ const data = [
 
 function Demo() {
   const container = useRef();
-  useEffect(() => {
-    const chart = new G2.Chart({
-      container: container.current,
-      height: 200,
-      autoFit: true,
-    })
-    chart.data(data);
-    chart.axis(true);
-    chart.legend(true);
-    chart.tooltip({ showMarkers: false })
-    chart
-      .path()
-      .animate({
-        appear: {
-          animation: 'path-in',
-          duration: 1000,
-          easing: 'easeLinear',
-        }
-      })
-      .position('price*consumption')
-      .label('year', (val) => {
-        return {
-          content: `${val} 年`,
-          animate: {
-            appear: {
-              delay: 1000
-            }
-          }
-        };
-      });
-    chart
-      .point()
-      .animate({
-        appear: {
-          appear: 'fade-in',
-          duration: 200,
-          delay: (obj) => {
-            const index = data.findIndex(item => item.year === obj.year);
-            return index * (1000 / data.length);
-          },
-          easing: 'easeLinear',
-        }
-      })
-      .position('price*consumption')
-      .shape('square');
-    chart.render();
-  }, [])
   return <>
   <div ref={container} />
   <Chart height={200} padding={[20, 40]} autoFit data={data} >
-    <Geom type="" />
      <Path
       animate={{
         appear: {

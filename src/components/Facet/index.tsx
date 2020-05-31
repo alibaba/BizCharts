@@ -33,7 +33,7 @@ export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
   /** 指定每行可显示分面的个数，超出时会自动换行。 */
   cols?: number;
   line?: Line;
-  /** 绘制每个分面 **/
+  /** 绘制每个分面 */
   eachView: (view, facet) => void;
 };
 

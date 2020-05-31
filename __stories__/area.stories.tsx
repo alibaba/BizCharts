@@ -16,3 +16,6 @@ storiesOf('area', module).add('色块图', colorBlock);
 storiesOf('area', module).add('区间面积图', intervalArea);
 storiesOf('area', module).add('百分比堆叠面积图', percentStackingArea);
 storiesOf('area', module).add('堆叠面积图', stackingArea);
+
+
+    

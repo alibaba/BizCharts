@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 // 注册 Geometry 内置的 label
 
 import GeometryLabel from '@antv/g2/lib/geometry/label/base';

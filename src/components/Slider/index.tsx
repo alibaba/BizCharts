@@ -1,11 +1,12 @@
 
-import React from 'react';
+import 'react';
 import _Slider, { SliderOption } from '@antv/g2/lib/chart/controller/slider';
 import { registerComponentController } from '@antv/g2/lib/core';
+import useChartView from '../../hooks/useChartView';
+
 // 引入 slider 组件
 registerComponentController('slider', _Slider);
 
-import useChartView from '../../hooks/useChartView';
 
 interface TrendCfg {
   // 数据

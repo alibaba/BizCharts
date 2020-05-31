@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import HtmlComponent from '@antv/component/lib/abstract/html-component';
 import { Annotation as AnnotationComponent } from '@antv/component/lib';
 
@@ -10,11 +10,11 @@ class HtmlAnnotation extends HtmlComponent {
     return {}
   }
   render() {
-    const container = this.get('container');
+    // const container = this.get('container');
   }
 }
-
-AnnotationComponent['Html'] = HtmlAnnotation;
+// @ts-ignore
+AnnotationComponent.Html = HtmlAnnotation;
 
 export interface AnnotationHtmlProps extends IAnnotationBaseProps {
   el: HTMLElement;

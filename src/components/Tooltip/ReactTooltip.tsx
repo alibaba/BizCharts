@@ -39,7 +39,7 @@ class Tooltip extends React.Component<TooltipProps> {
     const { chartView, children, ...config } = this.props;
     const innerContent = this.innerContent;
     chartView.on('tooltip:change', ({title, items, x, y}) => {
-      innerContent.current.refresh(children(title, items, x, y));
+      innerContent.current && innerContent.current.refresh(children(title, items, x, y));
     });
     chartView.tooltip({
       inPlot: false,
@@ -54,9 +54,9 @@ class Tooltip extends React.Component<TooltipProps> {
 
   render() {
     this.overwriteCfg();
-    return ReactDom.createPortal(<>
+    return ReactDom.createPortal(<div>
       <InnerContent ref={this.innerContent} />
-    </>, this.element); // 无子组件
+    </div>, this.element); // 无子组件
   }
 }
 

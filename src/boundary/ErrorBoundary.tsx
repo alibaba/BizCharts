@@ -7,7 +7,7 @@ class ErrorBoundary extends React.Component<any> {
     return {};
   }
 
-  componentDidCatch() {
+  componentDidCatch(error, errorInfo) {
     this.death = true;
   }
 

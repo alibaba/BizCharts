@@ -1,6 +1,7 @@
 import React from 'react';
 import * as plots from './plots';
 import * as sparkline from './sparkline';
+import warn from '../utils/warning';
 
 const PLOT_MAP = {
   ...plots,
@@ -57,6 +58,12 @@ const PlotAdapter: React.FC<IAdapterProps> = (props) => {
   }
 
   return <Plot {...options} />
+}
+
+// @ts-ignore
+PlotAdapter.registerPlot = (name: string, Component) => {
+  warn(!PLOT_MAP[name], '%s的plot已存在', name);
+  PLOT_MAP[name] = Component;
 }
 
 export default PlotAdapter;

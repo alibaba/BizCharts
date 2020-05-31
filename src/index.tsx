@@ -1,12 +1,11 @@
-import * as G2 from './g2-all';
 import * as Util from '@antv/util';
 import * as Annotation from './components/Annotation';
+import * as G2 from './g2-all';
 
-
+// 基础组件
 export { Annotation, G2, Util };
 export { default as Chart } from './components/Chart';
 export { default as View } from './components/View';
-
 export { default as Tooltip } from './components/Tooltip';
 export { default as Legend } from './components/Legend';
 export { default as Coordinate } from './components/Coordinate';
@@ -14,6 +13,7 @@ export { default as Axis } from './components/Axis';
 export { default as Facet } from './components/Facet';
 export { default as Slider } from './components/Slider';
 
+// geometry
 export { default as Area } from './geometry/Area';
 export { default as Edge } from './geometry/Edge';
 export { default as Heatmap } from './geometry/Heatmap';
@@ -26,26 +26,28 @@ export { default as BaseGeom } from './geometry/Base';
 export { default as Label } from './geometry/Label';
 export { default as Path } from './geometry/Path';
 
+// 通用 geometry
 export { default as Geom } from './geometry';
 
 // 兼容
 export { default as Coord } from './components/Coordinate/coord';
+export { default as Guide } from './adapter/Guide';
+
+// 工具
 export { default as Effects } from './components/Effects';
 export { default as Interaction } from './components/Interaction';
 export { default as createPlot } from './createPlot';
+
+// hooks
 export { default as useView } from './hooks/useChartView';
 export { default as useRootChart } from './hooks/useChartInstance';
 export { default as useTheme } from './hooks/useTheme';
-
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
 
 // 注册主题
-
-
 export * from './core';
+
+// 基于 g2-plots 基础图表
 export * from './plots';
 
-export { default as Guide } from './adapter/Guide';
-
-export const VERSION = process.env.__VERSION__;

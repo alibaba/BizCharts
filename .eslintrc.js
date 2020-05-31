@@ -9,6 +9,7 @@ module.exports = {
     'lines-between-class-members': 0,
     'class-methods-use-this': 0,
     'no-lonely-if': 0,
-    'no-param-reassign': 0
+    'no-param-reassign': 0,
+    'no-useless-escape': 0
   }
 };

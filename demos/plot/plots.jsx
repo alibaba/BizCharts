@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from "react";
+import React, { useState } from "react";
 import { LineChart, BarChart, Axis, Chart, Coordinate, Tooltip, Interval, View } from '../../src';
 
 import { Text } from '../../src/components/Annotation';
@@ -26,7 +26,7 @@ function Pie ({ data }) {
 const data = [
   {
     year: "1991",
-    value: 3
+    value: 5
   },
   {
     year: "1992",
@@ -47,6 +47,8 @@ const data = [
 ];
 
 function Basic(options) {
+  const [value, setValue] = useState(1);
+  data[0].value = value;
   return (
     <div>
       <LineChart
@@ -62,12 +64,16 @@ function Basic(options) {
         <Axis visible={false} name="value" />
         <Text position={ ['50%', '50%']} content="24 hours" />
         <Tooltip >
-          {() => {
+          {/* {() => {
             return <div>123</div>
-          }}
+          }} */}
         </Tooltip>
       </LineChart>
+      <div onClick={() => {
+        setValue(value+1);
+      }}>click me</div>
       <BarChart
+        title="图表标题"
         data={data}
         yField="year"
         xField="value"
