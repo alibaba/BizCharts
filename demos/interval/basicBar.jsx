@@ -62,7 +62,7 @@ const Basic = () => {
       }
     });
     return (
-      <Chart height={200} data={dv.rows} autoFit>
+      <Chart onAfterrender={() => console.log('onAfterRender')} height={200} data={dv.rows} autoFit>
         <Coordinate transpose />
         <Interval element-highlight position="country*population" />
         <Tooltip>

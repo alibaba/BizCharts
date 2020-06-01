@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { LineChart, BarChart, Axis, Chart, Coordinate, Tooltip, Interval, View } from '../../src';
 
 import { Text } from '../../src/components/Annotation';
@@ -48,7 +48,9 @@ const data = [
 
 function Basic(options) {
   const [value, setValue] = useState(1);
-  data[0].value = value;
+  const [autoFit, setAutoFit] = useState(true);
+  // data[0].value = value;
+  console.log(autoFit);
   return (
     <div>
       <LineChart
@@ -58,19 +60,17 @@ function Basic(options) {
           visible: true,
           text: '曲线折线图',
        }}
+       autoFit={autoFit}
        yField="value"
        {...options}
       >
-        <Axis visible={false} name="value" />
-        <Text position={ ['50%', '50%']} content="24 hours" />
-        <Tooltip >
-          {/* {() => {
-            return <div>123</div>
-          }} */}
-        </Tooltip>
+        {/* <Axis visible={false} name="value" />
+        <Text position={ ['50%', '50%']} content="24 hours" /> */}
+
       </LineChart>
       <div onClick={() => {
         setValue(value+1);
+        setAutoFit(!autoFit);
       }}>click me</div>
       <BarChart
         title="图表标题"

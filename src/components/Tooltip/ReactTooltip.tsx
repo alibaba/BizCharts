@@ -22,6 +22,7 @@ class Tooltip extends React.Component<TooltipProps> {
   protected element: HTMLElement ;
 
   private innerContent: RefObject<InnerContent> = React.createRef();
+  private portal:  RefObject<HTMLDivElement> = React.createRef();
 
   constructor(props, context) {
     super(props, context);
@@ -54,7 +55,7 @@ class Tooltip extends React.Component<TooltipProps> {
 
   render() {
     this.overwriteCfg();
-    return ReactDom.createPortal(<div>
+    return ReactDom.createPortal(<div ref={this.portal}>
       <InnerContent ref={this.innerContent} />
     </div>, this.element); // 无子组件
   }
