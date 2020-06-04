@@ -6,13 +6,13 @@ const RootChartContext = React.createContext(null);
 RootChartContext.displayName = 'RootChartContext';
 
 export const withChartInstance = Component => {
-  const Com = props => {
+  const Com = React.forwardRef((props, ref) => {
     return (
       <RootChartContext.Consumer>
-        {ctx => <Component {...ctx} {...props} />}
+        {ctx => <Component ref={ref} {...ctx} {...props} />}
       </RootChartContext.Consumer>
     );
-  };
+  })
   Com.displayName = Component.name;
   return Com;
 };

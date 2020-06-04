@@ -1,3 +1,6 @@
+// /[^on]+\S+(?=(Click)\b)/
+import forIn from '@antv/util/lib/for-in';
+
 export const BASE_EVENT_NAMES = [
   'mousedown',
   'mouseup',
@@ -10,6 +13,43 @@ export const BASE_EVENT_NAMES = [
   'contextmenu',
   'click',
 ]
+
+const EVENT_ACTION_NAMES = [
+  'mousedown',
+  'mouseup',
+  'dblclick',
+  'mouseenter',
+  'mouseout',
+  'mouseover',
+  'mousemove',
+  'mouseleave',
+  'contextmenu',
+  'click',
+  'show',
+  'hide',
+  'change',
+]
+
+const RegExpEvent = new RegExp(`(?<=on).*(?=(${EVENT_ACTION_NAMES.map(k => k.replace(/^\S/, s => s.toUpperCase())).join('|')})\\b)`);
+
+export const pickEventName = (props) => {
+  const names: [ string, string][] = [];
+  forIn(props, (v, k:string) => {
+    if (k.indexOf('on') === 0) {
+      const res = RegExpEvent.exec(k);
+      console.log(RegExpEvent, res)
+      if (res) {
+        const target = res[0].replace(/([A-Z])/g,"-$1").toLowerCase();
+        if (target) {
+          names.push([k, `${target.replace('-', '')}:${res[1].toLowerCase()}`]);
+        } else {
+          names.push([k, res[1].toLowerCase()]);
+        }
+      }
+    }
+  });
+  return names;
+}
 
 export const DRAG_EVENT_NAMES = [
   'dragstart',
@@ -46,6 +86,17 @@ export const LEGEND_EVENT_TARGETS = [
   'legend-item-name', // 图例选项 name 文本 的事件前缀
   'legend-item-Maker', // 图例选项 marke 图标 的事件前缀
   'legend-item-value', // 图例选项 value 的事件前缀
+];
+
+
+export const GEOM_NAME = [
+  'line',
+  'area',
+  'point',
+  'interval',
+  'polygon',
+  'edge',
+  'schema'
 ];
 
 export const LEGEND_EVENT = [ 'legend:valuechanged' ];

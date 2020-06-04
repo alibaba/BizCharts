@@ -60,6 +60,7 @@ export class GenericView<T extends IView = IView> extends Base<T> {
 
     const options = this.getInitalConfig();
     this.g2Instance = this.context.chart.createView(options);
+    this.g2Instance.root = this.context.chart;
   }
   configInstance(preProps, curProps) {
     if (!this.g2Instance) {

@@ -54,7 +54,7 @@ const data = [
     ];
 
 function Demo() {
-  return <Chart scale={{value: {min: 0}}} padding={[10,20,50,40]} autoFit height={500} data={data} >
+  return <Chart onLineClick={console.log} scale={{value: {min: 0}}} padding={[10,20,50,40]} autoFit height={500} data={data} >
     <Line shape="hv" position="month*value" />
   </Chart>
 }

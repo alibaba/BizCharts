@@ -1,5 +1,6 @@
 import uniqueId from '@antv/util/lib/unique-id';
 import _isString from '@antv/util/lib/is-string';
+import _isFunction from '@antv/util/lib/is-function';
 import GeometryLabel from '@antv/g2/lib/geometry/label/base';
 import {
   SizeRange,
@@ -24,6 +25,7 @@ import {
 } from '../interface';
 
 import ChartViewContext from '../context/view';
+import { withChartInstance } from '../context/root';
 import { registerGeometryLabel } from '../core';
 import Base, { IBaseProps } from '../Base';
 import compareProps from '../utils/compareProps';
@@ -359,7 +361,7 @@ export interface IBaseGemo extends IBaseProps, React.Props<any> {
   state?: StateOption;
 }
 
-export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
+abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   name = 'gemo';
   ChartBaseClass = null;
   static contextType: any;
@@ -377,11 +379,24 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
   getInitalConfig() {
     return undefined;
   }
+  // 处理elements，即geometry 的图形元素
+  processElemens = () => {
+    const chart = this.context;
+    if (_isFunction(this.props.children)) {
+      this.props.children(this.g2Instance.elements, this.g2Instance, chart);
+    }
+  }
+  componentWillUnmount() {
+    const chart = this.context;
+    chart.off('processElemens', this.processElemens);
+    // super.componentWillUnmount();
+  }
   initInstance() {
     const chart = this.context;
     this.id = uniqueId(this.name);
     const options = this.getInitalConfig();
     this.g2Instance = chart[this.GemoBaseClassName](options);
+    chart.on('processElemens', this.processElemens);
   }
   configInstance(preProps, curProps) {
     super.configInstance(preProps, curProps);
@@ -417,7 +432,8 @@ export default abstract class BaseGeom<T extends IBaseGemo> extends Base<T> {
       }
     });
   }
-  configInteraction() {}
 }
 
 BaseGeom.contextType = ChartViewContext;
+
+export default BaseGeom;

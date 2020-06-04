@@ -31,6 +31,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
+    "test-live": "DEBUG_MODE=1 jest --watch unittest/utils/percentage-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
@@ -42,11 +43,11 @@
     "@antv/g2plot": "1.1.4",
     "@antv/util": "^2.0.5",
     "resize-observer-polyfill": "^1.5.1",
+    "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
   },
   "devDependencies": {
     "@antv/data-set": "^0.11.4",
-    "@antv/g2plot": "^1.0.3",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
@@ -128,7 +129,7 @@
       "!**/node_modules/**",
       "!**/vendor/**"
     ],
-    "testRegex": "/unit-test/.*-spec\\.tsx?$",
+    "testRegex": "/unittest/.*-spec\\.tsx?$",
     "moduleFileExtensions": [
       "ts",
       "tsx",

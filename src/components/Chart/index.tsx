@@ -7,7 +7,7 @@ import { getChartSize } from '@antv/g2/lib/util/dom';
 import ResizeObserver from 'resize-observer-polyfill';
 import ErrorBoundary from '../../boundary/ErrorBoundary';
 import withContainer from '../../boundary/withContainer';
-import { Chart as _Chart } from '../../core';
+import { Chart as G2Chart } from '../../core';
 import RootChartContext from '../../context/root';
 import warn from '../../utils/warning';
 
@@ -23,9 +23,89 @@ import {
   ANNOTATION_EVENT_TARGET,
   LEGEND_EVENT,
   TOOLTIP_EVENT,
+  GEOM_NAME,
+  pickEventName,
 } from './events';
 
 import { GenericView } from '../View';
+
+class ChartHelper {
+  public instance: G2Chart;
+  public config: Record<string, any> = {};
+  private isNewInstance: boolean;
+  createInstance(config) {
+    this.instance = new G2Chart(config);
+    this.config = config;
+    this.instance.emit('initial');
+    this.isNewInstance = true; // 更新了实例的标记
+  }
+  render() {
+    this.onGetG2Instance();
+  }
+  private onGetG2Instance() {
+    // 当且仅当 isNewInstance 的时候执行。
+    if (this.isNewInstance && _isFunction(this.config.onGetG2Instance)) {
+      this.config.onGetG2Instance(this.instance);
+    }
+    this.isNewInstance = false;
+  }
+  shouldReCreateInstance(newConfig) {
+    // 如果上一个实例数据为空则直接销毁重建，以免影响动画
+    if (!this.instance) {
+      return true;
+    }
+    const { data } = newConfig;
+    if (this.instance.getData()
+      && this.instance.getData().length === 0
+      && _isArray(data)
+      && data.length !== 0 ) {
+      return true;
+    }
+  }
+  update(newConfig) {
+    if (this.shouldReCreateInstance(newConfig)) {
+      this.destory();
+    }
+    // 重置
+    if (newConfig.pure) {
+      // 纯画布 关闭
+      this.instance.axis(false);
+      this.instance.tooltip(false);
+      this.instance.legend(false);
+    } else {
+      // 默认开启
+      this.instance.tooltip({ showMarkers: false });
+      this.instance.axis(true);
+      this.instance.legend(true);
+    }
+    // 取消事件绑定
+    const events = pickEventName(this.config);
+    const newEvents = pickEventName(newConfig);
+    events.forEach(ev => {
+      this.instance.off(ev[1], this.config[ev[0]])
+    });
+    // 更新事件
+    newEvents.forEach(ev => {
+      this.instance.on(ev[1], newConfig[ev[0]])
+    });
+    // 更新配置
+    this.instance.updateOptions(this.adapterOptions(newConfig));
+
+    // 缓存配置
+    this.config = newConfig;
+  }
+  adapterOptions(newConfig) {
+    // 适配
+    const opt = {...newConfig};
+    const { forceFit } = newConfig;
+    return opt;
+  }
+  destory() {
+    this.instance.destroy();
+    this.instance = null;
+    this.config = null;
+  }
+}
 
 function toHump(name) {
   return name
@@ -61,12 +141,13 @@ class Chart extends GenericView<IChart> {
     placeholder: false,
     visible: true,
   };
-  ChartBaseClass: any = _Chart;
+  ChartBaseClass: any = G2Chart;
   isNewInstance: boolean = true;
   initInstance() {
     this.id = uniqueId(this.name);
     const options = this.getInitalConfig();
     this.g2Instance = new this.ChartBaseClass(options);
+    this.g2Instance.root = this.g2Instance;
     this.isNewInstance = true;
     this.bindEvents();
     // 去掉g2监听window的resize事件，改成监听容器resize
@@ -91,7 +172,7 @@ class Chart extends GenericView<IChart> {
     );
     // 组件事件
     [...BASE_EVENT_NAMES, ...DRAG_EVENT_NAMES, ...MOBILE_EVENT_NAMES].forEach(eName => {
-      [...AXIS_EVENT_TARGET, ...LEGEND_EVENT_TARGETS, ...ANNOTATION_EVENT_TARGET].forEach(
+      [...AXIS_EVENT_TARGET, ...GEOM_NAME, ...LEGEND_EVENT_TARGETS, ...ANNOTATION_EVENT_TARGET].forEach(
         target => {
           const propsEventName = `on${toHump(target)}${toHump(eName)}`;
           this.g2Instance.on(`${target}:${eName}`, (args: IEvent) => {
@@ -160,6 +241,7 @@ class Chart extends GenericView<IChart> {
 
   onGetG2Instance() {
     // 当且仅当更新实例后执行
+    this.g2Instance.emit('processElemens');
     if (_isFunction(this.props.onGetG2Instance) && this.isNewInstance) {
       this.props.onGetG2Instance(this.g2Instance);
     }
@@ -173,6 +255,7 @@ class Chart extends GenericView<IChart> {
   destroy() {
     if (this.g2Instance) {
       this.g2Instance.destroy();
+      this.g2Instance.root = null;
       this.g2Instance = null;
     }
   }
