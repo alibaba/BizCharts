@@ -70,7 +70,7 @@ export interface IBaseGemo extends IBaseProps, React.Props<any> {
    * @type {(AttributeOption | [ FieldString, ColorString | ColorString[] | ColorAttrCallback ])}
    * @memberof IBaseGemo
    */
-  color?: AttributeOption | [ FieldString, ColorString | ColorString[] | ColorAttrCallback ];
+  color?: AttributeOption | FieldString | ColorString | [ FieldString, ColorString | ColorString[] | ColorAttrCallback ];
   /**
    *
    * @example
