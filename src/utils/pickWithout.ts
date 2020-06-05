@@ -1,11 +1,19 @@
 import _each from '@antv/util/lib/each';
-import _indexOf from '@antv/util/lib/index-of';
+import _isString from '@antv/util/lib/is-string';
 
-
-const pickWithout = (obj: Record<string, any>, keys:string[]) => {
+// 支持正则匹配
+const pickWithout = (obj: Record<string, any>, keys:(string | RegExp)[]) => {
   const ret: { [key: string]: any } = {};
   _each(obj, (v: any, k: string) => {
-    if (_indexOf(keys, k) === -1) {
+    let match = false;
+    keys.forEach(itKey => {
+      if (_isString(itKey) && itKey === k) {
+        match = true;
+      } else if (itKey instanceof RegExp && k.match(itKey)) {
+        match = true;
+      }
+    })
+    if (!match) {
       ret[k] = v;
     }
   });

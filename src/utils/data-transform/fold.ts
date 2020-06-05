@@ -1,7 +1,4 @@
 // 只列举常用的函数，复杂的推荐使用第三方类库。
-import _forIn from '@antv/util/lib/for-in';
-import _groupBy from '@antv/util/lib/group-by';
-import _isArray from '@antv/util/lib/is-array';
 
 /**
  * 折叠数据

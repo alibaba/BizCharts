@@ -18,7 +18,7 @@
  * @example
  * sum([1, 2, 3]); // => 6
  */
-function sum(x /*: Array<number> */) /*: number */ {
+function sumFnc(x: number[]): number {
   // If the array is empty, we needn't bother computing its sum
   if (x.length === 0) {
       return 0;
@@ -50,4 +50,4 @@ function sum(x /*: Array<number> */) /*: number */ {
   return sum + correction;
 }
 
-export default sum;
+export default sumFnc;

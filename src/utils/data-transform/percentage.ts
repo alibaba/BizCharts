@@ -1,8 +1,7 @@
 // 只列举常用的函数，复杂的推荐使用第三方类库。
 import _forIn from '@antv/util/lib/for-in';
-import _groupBy from '@antv/util/lib/group-by';
-import _isArray from '@antv/util/lib/is-array';
 import sum from './sum';
+import warn from '../warning';
 
 import partition from './partition';
 
@@ -19,10 +18,7 @@ export default (data: object[], field: string, as: string, groupBy?: string | st
   const groups = groupBy? partition(data, groupBy) : { _data: data };
   _forIn(groups, (group) => {
     const totalSum = sum(group.map((row: any) => row[field]));
-    if (totalSum === 0) {
-      console.warn(`Invalid data: total sum of field ${field} is 0!`);
-    }
-    console.log(totalSum)
+    warn(totalSum !== 0, `Invalid data: total sum of field ${field} is 0!`);
     _forIn(group, (item) => {
       const resultRow = {...item};
       if (totalSum === 0) {

@@ -6,7 +6,7 @@ import isString from '@antv/util/lib/is-string';
 export type SortTarget = string | string[] | ((a: any, b: any) => number);
 
 export default function sortBy(arr: any[], keys: SortTarget = []): any[] {
-  let comparer: ((a: any, b: any) => number) | undefined = undefined;
+  let comparer: ((a: any, b: any) => number) | undefined;
   if (isFunction(keys)) {
     comparer = keys;
   } else if (isArray(keys)) {

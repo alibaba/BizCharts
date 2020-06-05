@@ -1,8 +1,8 @@
 import _Axis from '@antv/g2/lib/chart/controller/axis';
 import { ComponentAnimateOption, AxisGridCfg } from '@antv/g2/lib/interface';
 import { AxisTitleCfg, AxisLineCfg, AxisTickLineCfg, AxisSubTickLineCfg, AxisLabelCfg } from '@antv/g2/lib/dependents';
-import { IView } from '../View';
-import { IChart } from '../../interface';
+import { Chart } from '../Chart';
+import { View } from '../View';
 import useChartView from '../../hooks/useChartView';
 import _transBooleanCfg from '../../utils/transBooleanCfg';
 
@@ -16,7 +16,7 @@ export interface IAxis {
   name?: string;
   visible?: boolean;
   /** 来自父级的 chart 或者 view实例 */
-  view?: IChart | IView;
+  view?: Chart | View;
   /**
    * 标题的配置项，null | false 表示不展示。
    * 属性结构如下：

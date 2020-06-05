@@ -3,7 +3,6 @@ import React from 'react';
 import _uniqId from '@antv/util/lib/unique-id';
 import _isEqual from '@antv/util/lib/is-equal';
 import _isFunction from '@antv/util/lib/is-function';
-import _isNil from '@antv/util/lib/is-nil';
 import withContainer from './boundary/withContainer';
 import ErrorBoundary from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
@@ -17,6 +16,9 @@ import { REACT_PIVATE_PROPS } from './utils/constant';
 class BasePlot extends React.Component<any> {
   g2Instance: any;
   preConfig: any;
+  public _context = {
+    chart: this.g2Instance,
+  }
   componentDidMount() {
     if (this.props.children) {
       this.getChartView().render();
@@ -97,10 +99,6 @@ class BasePlot extends React.Component<any> {
       return true;
     }
     return false;
-  }
-
-  public _context = {
-    chart: this.g2Instance,
   }
 
   render() {

@@ -41,7 +41,7 @@ const data3 = [
 ];
 
 const Basic = () => {
-  const [ data, setData ] = useState([])
+  const [ data, setData ] = useState(undefined)
   useEffect(() => {
     setInterval(() => {
       const count = Math.random();
@@ -57,10 +57,10 @@ const Basic = () => {
         setData(data3);
         
       }
-    }, 1000)
+    }, 2000)
   }, [])
   return (
-    <Chart scale={{ value: { min: -10 }}} data={data} height={500} autoFit>
+    <Chart onIntervalClick={console.log}  data={data} height={500} autoFit>
       <Interval position="year*value" />
     </Chart>
   );

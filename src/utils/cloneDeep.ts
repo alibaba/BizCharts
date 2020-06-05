@@ -1,8 +1,9 @@
 import isArray from '@antv/util/lib/is-array';
+import forIn from '@antv/util/lib/for-in';
 
 const cloneDeep = (deepObject) => {
-  let map = [];
-  const clone = function (obj) {
+  const map = [];
+  const clone = (obj) => {
     map.push(obj);
     if (map.includes(obj)) {
       return obj;
@@ -24,14 +25,14 @@ const cloneDeep = (deepObject) => {
     }
     else {
       rst = {};
-      for (let k in obj) {
-        if (typeof obj[k] === 'object' && obj[k] != null) {
-          rst[k] = clone(obj[k]);
+      forIn(obj, (value, k) => {
+        if (typeof value === 'object' && value != null) {
+          rst[k] = clone(value);
         }
         else {
-          rst[k] = obj[k];
+          rst[k] = value;
         }
-      }
+      })
     }
     return rst;
   };
@@ -39,4 +40,3 @@ const cloneDeep = (deepObject) => {
 }
 
 export default cloneDeep;
-//# sourceMappingURL=clone.js.map

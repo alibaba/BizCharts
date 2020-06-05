@@ -5,8 +5,8 @@ import React from 'react';
 const RootChartContext = React.createContext(null);
 RootChartContext.displayName = 'RootChartContext';
 
-export const withChartInstance = Component => {
-  const Com = React.forwardRef((props, ref) => {
+export function withChartInstance<T>(Component) {
+  const Com = React.forwardRef((props:T, ref) => {
     return (
       <RootChartContext.Consumer>
         {ctx => <Component ref={ref} {...ctx} {...props} />}

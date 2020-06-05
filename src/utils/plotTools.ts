@@ -1,4 +1,3 @@
-import _isNil from '@antv/util/lib/is-nil';
 import _isString from '@antv/util/lib/is-string';
 import _isBoolean from '@antv/util/lib/is-boolean';
 import _isObject from '@antv/util/lib/is-object';

@@ -37,7 +37,6 @@ export const pickEventName = (props) => {
   forIn(props, (v, k:string) => {
     if (k.indexOf('on') === 0) {
       const res = RegExpEvent.exec(k);
-      console.log(RegExpEvent, res)
       if (res) {
         const target = res[0].replace(/([A-Z])/g,"-$1").toLowerCase();
         if (target) {

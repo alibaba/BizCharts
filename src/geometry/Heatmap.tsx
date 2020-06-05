@@ -1,11 +1,11 @@
 import Heatmap from '@antv/g2/lib/geometry/heatmap';
-import BaseGemo, { IBaseGemo } from './Base';
+import BaseGemo, { IBaseGemoProps } from './Base';
 import { registerGeometry } from '../core';
 
 registerGeometry('Heatmap', Heatmap);
 
-interface IHeatmapGemo extends IBaseGemo {}
+export interface IHeatmapGemoProps extends IBaseGemoProps {}
 
-export default class HeatmapGeom extends BaseGemo<IHeatmapGemo> {
+export default class HeatmapGeom extends BaseGemo<IHeatmapGemoProps> {
   GemoBaseClassName = 'heatmap'
 }
