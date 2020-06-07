@@ -24,12 +24,18 @@ class ChartHelper {
   public chart: G2Chart;
   public config: Record<string, any> = {};
   private isNewInstance: boolean;
+  public extendGroup: any;
   public key: string;
+  
   createInstance(config) {
     this.chart = new G2Chart(config);
     this.key = uniqueId('bx-chart');
-    this.chart.emit('initial');
+    this.chart.emit('initialed');
     this.isNewInstance = true; // 更新了实例的标记
+    this.extendGroup = {
+      isChartCanvas: true,
+      chart: this.chart,
+    };
   }
   render() {
     if (!this.chart) {
@@ -55,7 +61,7 @@ class ChartHelper {
   }
   shouldReCreateInstance(newConfig) {
     // 如果上一个实例数据为空则直接销毁重建，以免影响动画
-    if (!this.chart) {
+    if (!this.chart || newConfig.forceUpdate) {
       return true;
     }
     const { data:preData, ...preOptions} = this.config;
@@ -66,7 +72,7 @@ class ChartHelper {
       && data.length !== 0 ) {
       return true;
     }
-    const unCompareProps = ['width', 'height', 'container', /^on/, /^\_on/];
+    const unCompareProps = [...REACT_PIVATE_PROPS, 'width', 'height', 'container', '_container', '_interactions',  /^on/, /^\_on/];
     if (!_isEqual(pickWithout(preOptions, [...unCompareProps]),
       pickWithout(options, [...unCompareProps]))) {
       return true;
@@ -85,11 +91,6 @@ class ChartHelper {
       this.chart.axis(false);
       this.chart.tooltip(false);
       this.chart.legend(false);
-    } else {
-      // 默认开启
-      this.chart.tooltip({ showMarkers: false });
-      this.chart.axis(true);
-      this.chart.legend(true);
     }
 
     // 事件
@@ -173,6 +174,7 @@ class ChartHelper {
     if (!this.chart) {
       return;
     }
+    this.extendGroup = null;
     this.chart.destroy();
     this.chart = null;
     this.config = {};

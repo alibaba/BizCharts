@@ -1,24 +1,25 @@
 import React from 'react';
 import { withGroupContext } from '../context/group';
-import Helper from './Helper';
+import Helper from './Base/Helper';
+import Base, { IBaseProps } from './Base';
 
-export interface ICircleProps extends React.Props<any> {
+export interface IEllipseProps extends IBaseProps, React.Props<any> {
+  // 支持绘图属性
+  attrs: {
+    x?: number,
+    y?: number,
+    rx?: number,
+    ry?: number,
+    [key: string]: any;
+  };
   [key: string]: any;
 }
 
-class Circle extends React.Component<ICircleProps> {
-  helper: Helper;
+class Ellipse extends Base<IEllipseProps> {
   constructor(props) {
     super(props);
     this.helper = new Helper('ellipse');
   }
-  componentWillUnmount() {
-    this.helper.destroy();
-  }
-  render() {
-    this.helper.update(this.props)
-    return null;
-  }
 }
 
-export default withGroupContext<ICircleProps>(Circle);
+export default withGroupContext<IEllipseProps>(Ellipse);

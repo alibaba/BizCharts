@@ -3,6 +3,7 @@ import { Canvas as GCanvas, Cursor, Renderer } from '@antv/g-canvas';
 import { Canvas as GSVG } from '@antv/g-svg';
 import { IGroup } from '@antv/g-canvas';
 import withContainer from '../boundary/withContainer';
+import ErrorBoundary from '../boundary/ErrorBoundary';
 import CanvasContext from '../context/canvas';
 import GroupContext from '../context/group';
 // import pickWithout from '../utils/pickWithout';
@@ -39,13 +40,13 @@ class CanvasHelper {
     }
   }
   draw() {
-    if(!this.instance) {
+    if (!this.instance) {
       return;
     }
     this.instance.draw();
   }
   destory() {
-    if(this.instance) {
+    if (this.instance) {
       this.instance.remove();
       this.instance = null;
     }
@@ -66,11 +67,13 @@ class Canvas extends React.Component<ICanvasProps> {
   }
   render() {
     this.helper.update(this.props);
-    return <CanvasContext.Provider value={this.helper}>
-      <GroupContext.Provider value={this.helper.instance}>
-        <>{this.props.children}</>
-      </GroupContext.Provider>
-    </CanvasContext.Provider>
+    return <ErrorBoundary>
+      <CanvasContext.Provider value={this.helper}>
+        <GroupContext.Provider value={this.helper.instance}>
+          <>{this.props.children}</>
+        </GroupContext.Provider>
+      </CanvasContext.Provider>
+    </ErrorBoundary>
   }
 }
 

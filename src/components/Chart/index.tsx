@@ -7,6 +7,7 @@ import ErrorBoundary from '../../boundary/ErrorBoundary';
 import withContainer from '../../boundary/withContainer';
 import RootChartContext from '../../context/root';
 import ChartViewContext from '../../context/view';
+import GroupContext from '../../context/group';
 import { IChartProps } from '../../interface';
 import ChartHelper from './chartHelper';
 
@@ -14,6 +15,8 @@ export class Chart extends React.Component<IChartProps> {
   protected resizeObserver: ResizeObserver;
   private chartHelper: ChartHelper;
   public readonly isRootView = true;
+  protected width: number;
+  protected height: number;
   private resize = _debounce(() => {
     const { chart } = this.chartHelper;
     if (this.props.autoFit && this.chartHelper.chart) {
@@ -23,8 +26,10 @@ export class Chart extends React.Component<IChartProps> {
         chart.width,
         chart.height
       );
-      chart.changeSize(width, height);
-      chart.render(true);
+      if (this.width !== width || this.height !== height) {
+        chart.changeSize(width, height);
+        chart.emit('resize');
+      }
     }
   }, 300);
   static defaultProps = {
@@ -43,29 +48,38 @@ export class Chart extends React.Component<IChartProps> {
 
   componentDidMount() {
     this.chartHelper.render();
+    this.width = this.chartHelper.chart.width;
+    this.height = this.chartHelper.chart.height;
   }
 
   componentDidUpdate() {
     // 更新图表大小
     const { width, height, autoFit } = this.props;
     // 已经自适应就不更新大小了
-    if (!autoFit) {
+    if (!autoFit && this.chartHelper.chart) {
       if (
         (width >= 0 && width !== this.chartHelper.chart.width) ||
         (height >= 0 && height !== this.chartHelper.chart.height)
       ) {
         const nextWidth = width || this.chartHelper.chart.width;
         const nextHeight = height || this.chartHelper.chart.height;
-        // changeSize方法内部有调用render
+        // changeSize方法内部有调用render, 自动更新无需
         this.chartHelper.chart.changeSize(nextWidth, nextHeight);
+        this.chartHelper.chart.emit('resize');
       }
+    } else {
+      this.chartHelper.render();
     }
-    this.chartHelper.render();
   }
 
   componentWillUnmount() {
     this.chartHelper.destory();
     this.resizeObserver.unobserve(this.props.container);
+  }
+
+  // 外部通过ref调用获取实例
+  public getG2Instance() {
+    return this.chartHelper.chart;
   }
 
   render() {
@@ -80,7 +94,9 @@ export class Chart extends React.Component<IChartProps> {
       <ErrorBoundary key={this.chartHelper.key}>
         <RootChartContext.Provider value={this.chartHelper}>
           <ChartViewContext.Provider value={this.chartHelper.chart}>
-            {this.props.children}
+            <GroupContext.Provider value={this.chartHelper.extendGroup}>
+              {this.props.children}
+            </GroupContext.Provider>
           </ChartViewContext.Provider>
         </RootChartContext.Provider>
       </ErrorBoundary>

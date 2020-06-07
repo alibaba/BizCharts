@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { LineChart, BarChart, Axis, Chart, Coordinate, Tooltip, Interval, View } from '../../src';
 
 import { Text } from '../../src/components/Annotation';
@@ -48,7 +48,11 @@ const data = [
 
 function Basic(options) {
   const [value, setValue] = useState(1);
+  const bar = React.createRef();
   const [autoFit, setAutoFit] = useState(true);
+  useEffect(() => {
+    console.log(2, bar)
+  })
   // data[0].value = value;
   console.log(autoFit);
   return (
@@ -98,6 +102,7 @@ function Basic(options) {
           }}
         </Tooltip>
        </BarChart>
+       <BarChart ref={bar} onAfterrender={() => {console.log(1)}}></BarChart>
     </div>
   );
 }

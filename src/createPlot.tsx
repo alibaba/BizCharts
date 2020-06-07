@@ -40,6 +40,9 @@ class BasePlot extends React.Component<any> {
       }, 0)
     }
   }
+  public getG2Instance() {
+    return this.g2Instance;
+  }
 
   getChartView() {
     return this.g2Instance.layers[0].view;
@@ -118,7 +121,7 @@ class BasePlot extends React.Component<any> {
 const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig>(Plot, name: string) {
-  const Com = React.memo(React.forwardRef((props: IPlotConfig, ref) => {
+  const Com = React.forwardRef((props: IPlotConfig, ref) => {
     // @ts-ignore
     const { title, description, autoFit, ...cfg } = props;
     return <ErrorBoundary>
@@ -134,7 +137,7 @@ function createPlot<IPlotConfig>(Plot, name: string) {
         PlotClass={Plot}
       />
     </ErrorBoundary>
-  }))
+  });
   Com.displayName = name || Plot.name;
   return Com;
 }

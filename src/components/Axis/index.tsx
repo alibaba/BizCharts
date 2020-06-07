@@ -1,10 +1,13 @@
+
 import _Axis from '@antv/g2/lib/chart/controller/axis';
 import { ComponentAnimateOption, AxisGridCfg } from '@antv/g2/lib/interface';
+import _isEqual from '@antv/util/lib/is-equal';
 import { AxisTitleCfg, AxisLineCfg, AxisTickLineCfg, AxisSubTickLineCfg, AxisLabelCfg } from '@antv/g2/lib/dependents';
 import { Chart } from '../Chart';
 import { View } from '../View';
 import useChartView from '../../hooks/useChartView';
 import _transBooleanCfg from '../../utils/transBooleanCfg';
+import warning from '../../utils/warning';
 
 import { registerComponentController } from '../../core';
 
@@ -112,16 +115,19 @@ const mixinAxisCfg = (options) => {
   return _transBooleanCfg(options, ['title', 'line', 'tickLine', 'subTickLine', 'label', 'grid']);
 }
 
+
+
 export default function Axis(props: IAxis) {
   const { name, visible = true, ...options } = props;
   const view = useChartView();
-
+  const newConfig = mixinAxisCfg(options);
+  // warning(newConfig.grid !== null, 'fix g2 bug: Axis null 请先在Chart上配置forceUpdate 强制刷新以等待g2 修复。');
   if (visible) {
     if (undefinedField(name)) {
       // 不指定字段名称，仅visible生效
       view.axis(true);
     } else {
-      view.axis(name, mixinAxisCfg(options));
+      view.axis(name, newConfig);
     }
   } else {
     if (undefinedField(name)) {
@@ -130,6 +136,5 @@ export default function Axis(props: IAxis) {
       view.axis(name, false);
     }
   }
-
   return null;
 }

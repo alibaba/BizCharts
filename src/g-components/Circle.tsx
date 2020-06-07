@@ -1,23 +1,23 @@
 import React from 'react';
 import { withGroupContext } from '../context/group';
-import Helper from './Helper';
+import Helper from './Base/Helper';
+import Base, { IBaseProps } from './Base';
 
-export interface ICircleProps extends React.Props<any> {
+export interface ICircleProps extends IBaseProps, React.Props<any> {
+  // 支持绘图属性
+  attrs: {
+    x?: number,
+    y?: number,
+    r?: number,
+    [key: string]: any;
+  };
   [key: string]: any;
 }
 
-class Circle extends React.Component<ICircleProps> {
-  helper: Helper;
+class Circle extends Base<ICircleProps> {
   constructor(props) {
     super(props);
     this.helper = new Helper('circle');
-  }
-  componentWillUnmount() {
-    this.helper.destroy();
-  }
-  render() {
-    this.helper.update(this.props)
-    return null;
   }
 }
 
