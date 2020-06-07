@@ -57,18 +57,20 @@ export class Chart extends React.Component<IChartProps> {
     // 更新图表大小
     const { width, height, autoFit } = this.props;
     // 已经自适应就不更新大小了
-    if (!autoFit) {
+    if (!autoFit && this.chartHelper.chart) {
       if (
         (width >= 0 && width !== this.chartHelper.chart.width) ||
         (height >= 0 && height !== this.chartHelper.chart.height)
       ) {
         const nextWidth = width || this.chartHelper.chart.width;
         const nextHeight = height || this.chartHelper.chart.height;
-        // changeSize方法内部有调用render
+        // changeSize方法内部有调用render, 自动更新无需
         this.chartHelper.chart.changeSize(nextWidth, nextHeight);
+        this.chartHelper.chart.emit('resize');
       }
+    } else {
+      this.chartHelper.render();
     }
-    this.chartHelper.render();
   }
 
   componentWillUnmount() {
