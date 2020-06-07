@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 export default function withContainer<Iprops>(Component, name: string = 'ChartContainer') {
-  const Cls = (props: Iprops) => {
+  const Cls = React.forwardRef((props: Iprops, ref) => {
     const container = useRef();
     const [inited, setInited] = useState(false);
     const { className = "bizcharts", containerStyle } = props as any;
@@ -14,9 +14,9 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
      className={className}
      // @ts-ignore
      style={{ height: props.height || '100%', width: props.width || '100%', ...containerStyle }} >
-      {inited ? <Component container={container.current} {...props} /> : <></>}
+      {inited ? <Component ref={ref} container={container.current} {...props} /> : <></>}
     </div>
-  };
+  });
   Cls.displayName = name || Component.name;
   return Cls;
 };

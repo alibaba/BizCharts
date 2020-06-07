@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import DataSet from "@antv/data-set";
 import {
   Chart,
@@ -61,8 +61,13 @@ const Basic = () => {
         return a.population - b.population > 0;
       }
     });
+    const chart = useRef();
+    useEffect(() => {
+      console.log('chart ref', chart);
+    }, [])
+    console.log(8888)
     return (
-      <Chart  onAfterrender={() => console.log('onAfterRender')} height={200} data={dv.rows} autoFit>
+      <Chart ref={chart} onAfterrender={() => console.log('onAfterRender')} height={200} data={dv.rows} autoFit>
         <Coordinate transpose />
         <Interval element-highlight position="country*population" />
         <Tooltip>

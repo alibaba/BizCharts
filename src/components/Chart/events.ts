@@ -35,7 +35,8 @@ const RegExpEvent = new RegExp(`(?<=on).*(?=(${EVENT_ACTION_NAMES.map(k => k.rep
 export const pickEventName = (props) => {
   const names: [ string, string][] = [];
   forIn(props, (v, k:string) => {
-    if (k.indexOf('on') === 0) {
+    const event = /(?<=on).*/.exec(k)
+    if (event) {
       const res = RegExpEvent.exec(k);
       if (res) {
         const target = res[0].replace(/([A-Z])/g,"-$1").toLowerCase();
@@ -44,6 +45,8 @@ export const pickEventName = (props) => {
         } else {
           names.push([k, res[1].toLowerCase()]);
         }
+      } else {
+        names.push([k, event[0].toLowerCase()]);
       }
     }
   });

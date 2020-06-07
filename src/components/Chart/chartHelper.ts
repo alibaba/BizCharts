@@ -28,7 +28,7 @@ class ChartHelper {
   createInstance(config) {
     this.chart = new G2Chart(config);
     this.key = uniqueId('bx-chart');
-    this.chart.emit('initial');
+    this.chart.emit('initialed');
     this.isNewInstance = true; // 更新了实例的标记
   }
   render() {

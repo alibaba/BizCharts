@@ -14,6 +14,8 @@ export class Chart extends React.Component<IChartProps> {
   protected resizeObserver: ResizeObserver;
   private chartHelper: ChartHelper;
   public readonly isRootView = true;
+  protected width: number;
+  protected height: number;
   private resize = _debounce(() => {
     const { chart } = this.chartHelper;
     if (this.props.autoFit && this.chartHelper.chart) {
@@ -23,8 +25,12 @@ export class Chart extends React.Component<IChartProps> {
         chart.width,
         chart.height
       );
-      chart.changeSize(width, height);
-      chart.render(true);
+      if (this.width !== width || this.height !== height) {
+        chart.changeSize(width, height);
+        chart.render(true);
+        chart.emit('resize');
+      }
+      
     }
   }, 300);
   static defaultProps = {
@@ -43,6 +49,8 @@ export class Chart extends React.Component<IChartProps> {
 
   componentDidMount() {
     this.chartHelper.render();
+    this.width = this.chartHelper.chart.width;
+    this.height = this.chartHelper.chart.height;
   }
 
   componentDidUpdate() {
@@ -66,6 +74,11 @@ export class Chart extends React.Component<IChartProps> {
   componentWillUnmount() {
     this.chartHelper.destory();
     this.resizeObserver.unobserve(this.props.container);
+  }
+
+  // 外部通过ref调用获取实例
+  public getG2Instance() {
+    return this.chartHelper.chart;
   }
 
   render() {
