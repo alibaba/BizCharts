@@ -6,8 +6,13 @@
     "bizcharts",
     "g2"
   ],
-  "license": "MIT",
   "author": "leannechn",
+  "license": "MIT",
+  "homepage": "https://bizcharts.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alibaba/BizCharts"
+  },
   "files": [
     "lib",
     "src",
