@@ -4,7 +4,9 @@ import _clone from '@antv/util/lib/clone';
 export default (cfg: Object, keys: string[]) => {
   const opt = _clone(cfg);
   keys.forEach(key => {
-    if (opt[key] === false) {
+    if (opt[key] === true) {
+      opt[key] = {};
+    } else if (opt[key] === false) {
       opt[key] = null;
     }
   });

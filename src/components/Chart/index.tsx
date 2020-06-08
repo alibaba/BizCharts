@@ -15,8 +15,6 @@ export class Chart extends React.Component<IChartProps> {
   protected resizeObserver: ResizeObserver;
   private chartHelper: ChartHelper;
   public readonly isRootView = true;
-  protected width: number;
-  protected height: number;
   private resize = _debounce(() => {
     const { chart } = this.chartHelper;
     if (this.props.autoFit && this.chartHelper.chart) {
@@ -26,7 +24,7 @@ export class Chart extends React.Component<IChartProps> {
         chart.width,
         chart.height
       );
-      if (this.width !== width || this.height !== height) {
+      if (chart.width !== width || chart.height !== height) {
         chart.changeSize(width, height);
         chart.emit('resize');
       }
@@ -48,8 +46,6 @@ export class Chart extends React.Component<IChartProps> {
 
   componentDidMount() {
     this.chartHelper.render();
-    this.width = this.chartHelper.chart.width;
-    this.height = this.chartHelper.chart.height;
   }
 
   componentDidUpdate() {

@@ -1,6 +1,6 @@
 import shallowEqual from '../src/utils/shallowEqual';
 
-describe('todos reducer', () => {
+describe('shallowEqual', () => {
   it('should ref data shallowEqual true', () => {
     const data = [{x:1,y:1}];
     expect(

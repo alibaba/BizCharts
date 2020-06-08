@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Chart,
   Interval,
+  Coordinate
 } from "../../src";
 
 const data1 = [
@@ -62,6 +63,7 @@ const Basic = () => {
   return (
     <Chart onIntervalClick={console.log}  data={data} height={500} autoFit>
       <Interval position="year*value" />
+      <Coordinate transpose />
     </Chart>
   );
 }

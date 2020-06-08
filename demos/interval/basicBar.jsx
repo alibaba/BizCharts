@@ -90,7 +90,7 @@ const Basic = () => {
               return <>
               {
                 chart.filteredData.map((d, index) => {
-                  return <Ellipse attrs={{
+                  return <Ellipse key={index} attrs={{
                     x: 30 + index * 20,
                     y: 50 + count,
                     rx: 20,
