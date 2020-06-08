@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import { Chart, Interval, Tooltip, useTheme } from '../../src';
+import { Chart, Interval, Tooltip, useTheme, Effects } from '../../src';
 // import { useChartTheme } from '../../src/hooks/useChartInstance';
 
 const data = [
@@ -56,6 +56,30 @@ function Basic() {
       <Chart data={data} autoFit theme={theme} onGetG2Instance={setChart}>
         <Interval position="year*value" />
         <Tooltip />
+        <Effects>
+          {chart => {
+            data.forEach((item) => {
+              chart
+                .annotation()
+                .text({
+                  position: [item.year, item.value],
+                  content: item.value,
+                  style: {
+                    textAlign: 'center',
+                  },
+                  offsetY: -30,
+                })
+                .text({
+                  position: [item.type, item.value],
+                  content: (item.percent * 100).toFixed(0) + '%',
+                  style: {
+                    textAlign: 'center',
+                  },
+                  offsetY: -12,
+                });
+            });
+          }}
+        </Effects>
       </Chart>
       <div style={{ display: 'flex' }}>
         {thems.map(item => (

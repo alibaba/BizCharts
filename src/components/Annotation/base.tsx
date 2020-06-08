@@ -22,7 +22,6 @@ abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
 
   componentDidMount() {
     const chartIns = this.getChartIns();
-    // console.log(chartIns);
     this.id = _.uniqueId('annotation');
     this.annotation = chartIns.annotation();
     this.annotation[this.annotationType](this.props);

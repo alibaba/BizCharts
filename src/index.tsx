@@ -51,3 +51,6 @@ export * from './core';
 // 基于 g2-plots 基础图表
 export * from './plots';
 
+// g-components
+export * from './g-components';
+

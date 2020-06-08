@@ -26,7 +26,6 @@ const config = {
     alias: {
       utils: path.resolve(__dirname, './src/utils'),
       '@antv/g2': path.resolve(__dirname, './node_modules/@antv/g2'),
-      'bizcharts': path.resolve(__dirname, './src'),
       // '@': path.resolve(__dirname, './src'),
     }
   },

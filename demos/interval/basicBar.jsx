@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import DataSet from "@antv/data-set";
 import {
   Chart,
   Coordinate,
   Tooltip,
   Axis,
+  Effects,
   Interval,
 } from "../../src";
+
+import Canvas from "../../src/g-components/Canvas";
+import Circle from "../../src/g-components/Circle";
+import Ellipse from "../../src/g-components/Ellipse";
+import Group from "../../src/g-components/Group";
+
 
 
 function Pie ({ data }) {
@@ -23,12 +30,14 @@ function Pie ({ data }) {
           stroke: '#fff',
         }}
       />
+      
     </Chart>
   );
 }
 
 
 const Basic = () => {
+    const [count, setCount] = useState(0);
     const data = [
       {
         country: "中国",
@@ -61,10 +70,42 @@ const Basic = () => {
         return a.population - b.population > 0;
       }
     });
+    const chart = useRef();
+    useEffect(() => {
+      console.log('chart ref', chart);
+    }, [])
+    console.log(8888)
     return (
-      <Chart height={200} data={dv.rows} autoFit>
+      <div>
+        <div onClick={() => {
+          setCount(count+3)
+        }}>clicke me</div>
+        <Chart ref={chart} onAfterrender={() => console.log('onAfterRender')} height={200} data={dv.rows} autoFit>
         <Coordinate transpose />
         <Interval element-highlight position="country*population" />
+        <Group>
+          <Effects>
+            {chart => {
+              console.log(chart)
+              return <>
+              {
+                chart.filteredData.map((d, index) => {
+                  return <Ellipse key={index} attrs={{
+                    x: 30 + index * 20,
+                    y: 50 + count,
+                    rx: 20,
+                    ry: 50,
+                    fill: '#1890FF',
+                    stroke: '#F04864',
+                    lineWidth: 4,
+                    radius: 8,
+                  }} />
+                })
+              }
+              </>
+            }}
+          </Effects>
+        </Group>
         <Tooltip>
           {(title, items, x, y) => {
             const data = [
@@ -85,6 +126,8 @@ const Basic = () => {
           }}
         </Tooltip>
       </Chart>
+
+      </div>
     );
 }
 

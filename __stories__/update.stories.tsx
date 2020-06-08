@@ -40,7 +40,7 @@ const getData = () => {
     return dataSource;
   }
 
-  return undefined;
+  return dataSource;
 }
 
 function ChangeData() {

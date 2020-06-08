@@ -52,7 +52,7 @@ module.exports = ({ config }) => {
   config.resolve.extensions.push('.js', '.jsx');
   config.resolve.alias={
     ...config.resolve.alias,
-    "@":path.resolve(__dirname, '../src')
+    '@antv/g2': path.resolve(__dirname, '../node_modules/@antv/g2'),
   }
   return config;
 };

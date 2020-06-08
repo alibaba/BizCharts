@@ -17,4 +17,5 @@ module.exports = [
   create('pie-basicPie 测试', 'pie', 'basicPie.jsx'),
   create('pie-nestedPie 测试', 'pie', 'nestedPie.jsx'),
   create('pie-nightingaleRoseIllustration 测试', 'pie', 'nightingaleRoseIllustration.jsx'),
+  create('plot-bar', 'bugs', 'plot-bar.jsx'),
 ]

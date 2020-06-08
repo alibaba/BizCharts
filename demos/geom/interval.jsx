@@ -59,7 +59,7 @@ function Basic(props) {
       <Chart height={400} padding="auto" data={data} scale={cols} autoFit {...cfg.Chart}>
         <Tooltip showMarkers={false} {...cfg.Tooltip} />
         <Coordinate transpose />
-        <Interval position="year*value"  label="value" {...cfg.Interval} />
+        <Interval active-region position="year*value"  label="value" />
       </Chart>
     </div>
   );

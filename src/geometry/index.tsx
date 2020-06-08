@@ -7,7 +7,7 @@ import Line from './Line';
 import Point from './Point';
 import Polygon from './Polygon';
 
-import { IBaseGemo } from './Base';
+import { IBaseGemoProps } from './Base';
 
 const GEOM_MAP = {
   area: Area,
@@ -19,7 +19,7 @@ const GEOM_MAP = {
   polygon: Polygon,
 }
 
-export interface IGemo extends IBaseGemo {
+export interface IGemo extends IBaseGemoProps {
   /** 几何标记类型 */
   type: 'area'|'edge'|'heatmap'|'interval'|'line'|'point'|'polygon';
   [key: string]: any;
