@@ -1,9 +1,12 @@
 import React from 'react';
+import forIn from '@antv/util/lib/for-in';
+import isFunction from '@antv/util/lib/is-function';
 import debounce from '@antv/util/lib/debounce';
 import { IGroup } from '@antv/g-canvas';
 import { IGroup as ISVGGroup } from '@antv/g-svg';
 import uniqId from '@antv/util/lib/unique-id';
 import GroupContext, { withGroupContext } from '../context/group';
+import { EVENTS } from './Base/events';
 
 export interface IGroupProps extends React.Props<any>{
   [key: string]: any;
@@ -26,6 +29,14 @@ class Group extends React.Component<any> {
       this.instance = group.addGroup();
     }
   }
+  bindEvents = () => {
+    this.instance.off();
+    forIn(EVENTS, (v, k) => {
+      if (isFunction(this.props[k])) {
+        this.instance.on(v, this.props[k]);
+      }
+    });
+  }
   handleRender = debounce(() => {
     if (!this.instance) {
       this.instance = this.props.group.chart.canvas.addGroup();
@@ -45,6 +56,7 @@ class Group extends React.Component<any> {
     const { group } = this.props;
     if (this.instance) {
       this.instance.clear();
+      this.bindEvents();
     }
 
     return (group.isChartCanvas && this.state.isReady) || (!group.isChartCanvas) 

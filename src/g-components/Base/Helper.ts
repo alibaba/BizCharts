@@ -1,7 +1,11 @@
 import React from 'react';
+import forIn from '@antv/util/lib/for-in';
+import isFunction from '@antv/util/lib/is-function';
 import pickWithout from '../../utils/pickWithout';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 import cloneDeep from '../../utils/cloneDeep';
+
+import { EVENTS } from './events';
 
 export interface IBaseProps extends React.Props<any> {
   animate?: {
@@ -70,7 +74,7 @@ export default class Helper {
   update(props) {
     const newConfig = pickWithout(props, [...REACT_PIVATE_PROPS])
     this.createInstance(newConfig);
-    const { attrs, animate, isClipShape, visible, matrix } = newConfig;
+    const { attrs, animate, isClipShape, visible, matrix, ...others } = newConfig;
 
     this.instance.attr(attrs);
     if (animate) {
@@ -87,6 +91,12 @@ export default class Helper {
     if (matrix) {
       this.instance.setMatrix(matrix);
     }
+
+    forIn(EVENTS, (v, k) => {
+      if (isFunction(others[k])) {
+        this.instance.on(v, others[k]);
+      }
+    });
 
     this.config = cloneDeep(newConfig);
 

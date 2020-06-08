@@ -1,5 +1,5 @@
 
-import { View } from '@antv/g2/lib/chart';
+import { View, Chart } from '@antv/g2/lib/chart';
 import {
   ViewPadding,
   ScaleOption,
@@ -21,6 +21,7 @@ import {
 } from '@antv/g2/lib/interface';
 
 export * from '@antv/g2/lib/interface';
+export { View, Chart };
 
 export interface IEvent {
   target?: any, // 触发的对象，图形或者 Canvas 对象

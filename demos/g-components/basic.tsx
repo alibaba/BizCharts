@@ -91,8 +91,9 @@ function Labelline() {
                     x: xScale.scale(d.year),
                     y: 1
                   });
-                  return <Group key={index}>
+                  return <Group onClick={console.log} key={index}>
                     <Rect
+                      onClick={console.log}
                       attrs={{
                         x: x - 15,
                         y: y,
@@ -144,7 +145,7 @@ export default function Demo() {
       setY(y + 1);
     }}>click me</div>
     <Labelline />
-    {/* <Canvas width={800} height={400} id="test">
+    <Canvas width={800} height={400} id="test">
       {(y < 12 || y > 16) && <Circle ref={(c) => {
         console.log(222, c)
       }} attrs={{ x: 10, y, r: 10, fill: 'red' }} />}
@@ -248,6 +249,6 @@ export default function Demo() {
           stroke: '#F04864',
         }} />
       </Group>
-    </Canvas> */}
+    </Canvas>
   </div>
 }
