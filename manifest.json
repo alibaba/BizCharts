@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "npm": "bizcharts",
+    "version": "4.0.5-beta.4",
+    "name": "bizcharts",
+    "title": "bizcharts",
+    "description": "基于 g2 的react图表库",
+    "homepage": "https://bizcharts.net",
+    "logo": "https://img.alicdn.com/tfs/TB1rvjLvkvoK1RjSZFwXXciCFXa-164-41.svg",
+    "screenshot": "https://img.alicdn.com/tfs/TB1rvjLvkvoK1RjSZFwXXciCFXa-164-41.svg",
+    "devMode": 2,
+    "jsLibrary": 1,
+    "componentLibrary": 0,
+    "platform": 1,
+    "repository": "https://github.com/alibaba-fusion/next",
+    "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}"
+  },
+  "components": [
+    {
+      "name": "LineChart",
+      "title": "折线图",
+      "description": "折线图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/116",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "http://bizcharts-resource.oss-cn-zhangjiakou.aliyuncs.com/images/e0efb5c0-9979-11ea-a591-9be663db1ad5.png",
+      "extends": null
+    },
+    {
+      "name": "StepLineChart",
+      "title": "阶梯折线图",
+      "description": "阶梯折线图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/117",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "http://bizcharts-resource.oss-cn-zhangjiakou.aliyuncs.com/images/e0f18a80-9979-11ea-bd36-0f0eda3e7ac1.png",
+      "extends": null
+    },
+    {
+      "name": "AreaChart",
+      "title": "面积图",
+      "description": "面积图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/118",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*aARCQbtAl4AAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "StackedAreaChart",
+      "title": "堆叠面积图",
+      "description": "堆叠面积图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/119",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*YYfSRoiOS_EAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "ColumnChart",
+      "title": "柱状图",
+      "description": "柱状图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/120",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*92VnSrkQLeAAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "StackedColumnChart",
+      "title": "堆叠柱状图",
+      "description": "堆叠柱状图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/121",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*b7StTaZVdmAAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "GroupedColumnChart",
+      "title": "分组柱状图",
+      "description": "分组柱状图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/122",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*AKPAToru0A4AAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "RangeColumnChart",
+      "title": "分组柱状图",
+      "description": "分组柱状图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/123",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*m_0ORYQ56-YAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "HistogramChart",
+      "title": "直方图",
+      "description": "直方图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/124",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*8rGET7N9C9kAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "WaterfallChart",
+      "title": "瀑布图",
+      "description": "瀑布图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/125",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*gTX1T6UddcYAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "BarChart",
+      "title": "条形图",
+      "description": "条形图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/126",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*uSKqQo2lCPoAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    },
+    {
+      "name": "StackedBarChart",
+      "title": "条形图",
+      "description": "条形图",
+      "category": "chart",
+      "homepage": "https://bizcharts.net/product/BizCharts4/category/77/page/127",
+      "owners": "{'email':'huanian.chn@alibaba-inc.com','name':'huanian.chn','url':''}",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*N8smQYy45fAAAAAAAAAAAABkARQnAQ",
+      "extends": null
+    }
+  ]
+}
