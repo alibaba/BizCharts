@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.5",
+  "version": "4.0.6-bate.0",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -12,7 +12,8 @@
     "lib",
     "src",
     "umd",
-    "es"
+    "es",
+    "manifest.json"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -1,4 +1,4 @@
-export const minifyNum = (num, decimal = 2) => {
+export default (num, decimal = 2) => {
   const wan = 10000;
   const yi = 100000000;
   if (num >= yi) {
@@ -8,11 +8,4 @@ export const minifyNum = (num, decimal = 2) => {
     return `${(num / wan).toFixed(decimal).replace(/\.?0*$/, '')}\u4E07`;
   }
   return num.toFixed(decimal).replace(/\.?0*$/, '');
-}
-
-export const splitBySeparator = (num, separator=',') => {
-  if (typeof num === 'number') {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-  }
-  return num;
 }
