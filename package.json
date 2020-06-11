@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.6-bate.0",
+  "version": "4.0.6",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -32,7 +32,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 jest --watch unittest/utils/percentage-spec.tsx",
+    "test-live": "DEBUG_MODE=1 jest --watch unittest/event-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
