@@ -25,7 +25,13 @@ export default class ViewHelper {
   update(newConfig) {
     // 不需要重建实例
     const { data: preData} = this.config;
-    const { data, scale, animate, filter, visible } = newConfig;
+
+    const { scale, animate, filter, visible } = newConfig;
+    let { data = [] } = newConfig;
+    if (data.rows) {
+      warn(!data.rows, 'bizcharts@4不支持 dataset数据格式，请使用data={dv.rows}');
+      data = data.rows;
+    }
     if (!this.view || _isArray(preData) && preData.length === 0) {
       // hack g2 数据切换的问题
       this.destroy();
@@ -82,6 +88,7 @@ export default class ViewHelper {
       this.view.hide();
     }
 
+    this.config = { ...newConfig, data };
   }
   destroy() {
     if (this.view) {

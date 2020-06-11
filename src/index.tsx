@@ -1,9 +1,17 @@
-import * as Util from '@antv/util';
+import * as antUtils from '@antv/util';
 import * as Annotation from './components/Annotation';
 import * as G2 from './g2-all';
+import * as GComponents from './g-components';
+
+import * as bxUtil from './utils';
+
+export const Util = {
+  ...antUtils,
+  ...bxUtil,
+}
 
 // 基础组件
-export { Annotation, G2, Util };
+export { Annotation, G2, GComponents };
 export { default as Chart } from './components/Chart';
 export { default as View } from './components/View';
 export { default as Tooltip } from './components/Tooltip';
@@ -52,5 +60,4 @@ export * from './core';
 export * from './plots';
 
 // g-components
-export * from './g-components';
 

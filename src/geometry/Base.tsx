@@ -36,6 +36,7 @@ class GeomHelper {
   update(newConfig, component) {
     if (!this.geom) {
       this.setView(component.context);
+
       this.createGeomInstance(component.GemoBaseClassName);
       this.interactionTypes = component.interactionTypes;
     }
@@ -112,7 +113,9 @@ abstract class BaseGeom<T extends IBaseGemoProps> extends React.Component<T> {
   protected abstract readonly GemoBaseClassName: string;
   render() {
     this.geomHelper.update(this.props, this);
-    return <>{this.props.children}</>;
+    return <>{React.Children.map(this.props.children, (ele) => {
+      return React.isValidElement(ele) ? React.cloneElement(ele, {parentInstance: this.geomHelper.geom}) : null
+    })}</>;
   }
 }
 

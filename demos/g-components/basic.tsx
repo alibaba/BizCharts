@@ -18,10 +18,11 @@ import {
   getTheme,
   Legend,
   Effects,
-  Rect,
-  Text,
+  GComponents,
   Coordinate
 } from '../../src';
+
+const { Rect, Text } = GComponents
 
 const colors = [
   '#f5222d',

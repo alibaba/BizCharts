@@ -30,23 +30,23 @@ const EVENT_ACTION_NAMES = [
   'change',
 ]
 
-const RegExpEvent = new RegExp(`(?<=on).*(?=(${EVENT_ACTION_NAMES.map(k => k.replace(/^\S/, s => s.toUpperCase())).join('|')})\\b)`);
+const RegExpEvent = new RegExp(`^on(.*)(?=(${EVENT_ACTION_NAMES.map(k => k.replace(/^\S/, s => s.toUpperCase())).join('|')}))`);
 
 export const pickEventName = (props) => {
   const names: [ string, string][] = [];
   forIn(props, (v, k:string) => {
-    const event = /(?<=on).*/.exec(k)
+    const event = k.match(/^on(.*)/)
     if (event) {
-      const res = RegExpEvent.exec(k);
+      const res = k.match(RegExpEvent);
       if (res) {
-        const target = res[0].replace(/([A-Z])/g,"-$1").toLowerCase();
+        const target = res[1].replace(/([A-Z])/g,"-$1").toLowerCase();
         if (target) {
-          names.push([k, `${target.replace('-', '')}:${res[1].toLowerCase()}`]);
+          names.push([k, `${target.replace('-', '')}:${res[2].toLowerCase()}`]);
         } else {
-          names.push([k, res[1].toLowerCase()]);
+          names.push([k, res[2].toLowerCase()]);
         }
       } else {
-        names.push([k, event[0].toLowerCase()]);
+        names.push([k, event[1].toLowerCase()]);
       }
     }
   });
