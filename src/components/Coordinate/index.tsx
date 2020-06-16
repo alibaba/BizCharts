@@ -35,14 +35,11 @@ export default function Coordinate(props: ICoordinateProps) {
   // 重置
   coordIns.update({});
 
+  // actions属性在初始化或更新时使用。
   if (type) {
-    view.coordinate(type, { ...options });
+    view.coordinate({ type, actions, ...options });
   } else {
-    view.coordinate({ type: 'rect', ...options });
-  }
-
-  if (_isFunction(actions)) {
-    actions(coordIns);
+    view.coordinate({ type: 'rect', actions, ...options });
   }
 
   if (rotate) {
