@@ -47,7 +47,6 @@ class Tooltip extends React.Component<TooltipProps> {
     chartView.tooltip({
       inPlot: false,
       ...config,
-      // showMarkers:false,
       container: this.element,
     });
     const domStyles: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});

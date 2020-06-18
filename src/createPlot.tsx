@@ -120,8 +120,8 @@ class BasePlot extends React.Component<any> {
 
 const BxPlot = withContainer(BasePlot) as any;
 
-function createPlot<IPlotConfig>(Plot, name: string) {
-  const Com = React.forwardRef((props: IPlotConfig, ref) => {
+function createPlot<IPlotConfig>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
+  const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
     // @ts-ignore
     const { title, description, autoFit, ...cfg } = props;
     return <ErrorBoundary>
@@ -133,7 +133,7 @@ function createPlot<IPlotConfig>(Plot, name: string) {
         title={visibleHelper(title)}
         // react 习惯
         description={visibleHelper(description)}
-        {...cfg}
+        {...transCfg(cfg)}
         PlotClass={Plot}
       />
     </ErrorBoundary>

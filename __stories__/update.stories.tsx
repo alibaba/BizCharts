@@ -33,7 +33,7 @@ const dataSource2 = [
 
 const getData = () => {
   const count = Math.random();
-  if (count < 0.3) {
+  if (count < 0.5) {
     return dataSource2;
   }
   if (count < 0.7) {
@@ -49,10 +49,7 @@ function ChangeData() {
     <div onClick={() => setData(getData())}>click me</div>
     <Interval
       Chart={{
-        data,
-        onClick: console.log,
-        onAfterrender: () => console.log('onAfterrender'),
-        onAfterpaint: () => console.log('onAfterpaint'),
+        data: data
         }} 
       Interval={{ 'element-highlight': boolean('element-highlight', true)} }
     />

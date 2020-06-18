@@ -77,12 +77,11 @@ function Labelline() {
         }}
       />
       <Group>
-        <Text attrs={{ x: 100, y: 50, fill: '#000', fontSize: 14, text: '高度自定义的图表' }} />
+        {/* <Text attrs={{ x: 100, y: 50, fill: '#000', fontSize: 14, text: '高度自定义的图表' }} /> */}
         <Effects>
           {chart => {
             const data = chart.filteredData;
             const xScale = chart.getXScale();
-            // const yScale = chart.getYScales();
             const coord = chart.getCoordinate();
 
             return <>
@@ -92,7 +91,27 @@ function Labelline() {
                     x: xScale.scale(d.year),
                     y: 1
                   });
-                  return <Group onClick={console.log} key={index}>
+
+                  console.log(coord.center);
+                  return <Group rotateAtPoint={[coord.center.x, coord.center.y, Math.PI / 4]} onClick={console.log} key={index}>
+                    {/* canvas 元素 */}
+                    <Text attrs={{
+                      x,
+                      y: y - 8,
+                      textAlign: 'center',
+                      textBaseline: 'middle',
+                      text: d.year,
+                      fill: '#333'
+                    }} />
+                    {/* dome 或者 reactNode */}
+                    {/* <div style={{
+                      position: 'absolute',
+                      left: x - 10,
+                      top: y + 25,
+                      border: 0,
+                    }}>
+                      <button style={{ width: 40, cursor: 'pointer' }} >{d.population}</button>
+                    </div> */}
                     <Rect
                       onClick={console.log}
                       attrs={{
@@ -105,28 +124,21 @@ function Labelline() {
                         r: 20,
                         fill: colors[index]
                       }}
-                      animate={{
-                        toAttrs: {
-                          x: x - 10,
-                          y: y - 5,
-                          radius: 10,
-                          width: 20,
-                          height: 20,
-                        },
-                        duration: 2000,
-                        easing: 'easeQuadInOut',
-                        // repeat: true,
-                        delay: 1000
-                      }}
+                      // animate={{
+                      //   toAttrs: {
+                      //     x: x - 10,
+                      //     y: y - 5,
+                      //     radius: 10,
+                      //     width: 20,
+                      //     height: 20,
+                      //   },
+                      //   duration: 2000,
+                      //   easing: 'easeQuadInOut',
+                      //   // repeat: true,
+                      //   delay: 1000
+                      // }}
                     />
-                    <Text attrs={{
-                      x,
-                      y: y - 8,
-                      textAlign: 'center',
-                      textBaseline: 'middle',
-                      text: d.year,
-                      fill: '#333'
-                    }} />
+                    
                   </Group>
                 })
               }
@@ -146,7 +158,7 @@ export default function Demo() {
       setY(y + 1);
     }}>click me</div>
     <Labelline />
-    <Canvas width={800} height={400} id="test">
+    <Canvas  width={800} height={400} id="test">
       {(y < 12 || y > 16) && <Circle ref={(c) => {
         console.log(222, c)
       }} attrs={{ x: 10, y, r: 10, fill: 'red' }} />}

@@ -64,6 +64,7 @@ function Basic(options) {
           visible: true,
           text: '曲线折线图',
        }}
+       point
        autoFit={autoFit}
        yField="value"
        {...options}
