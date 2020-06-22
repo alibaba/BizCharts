@@ -68,13 +68,13 @@ export default function Tooltip(props: ITooltip) {
   }, []);
 
   const changeFnc =  useCallback((ITooltipEvent) => {
-    if (_isFunction(onShow)) {
+    if (_isFunction(onChange)) {
       onChange(ITooltipEvent, chartView);
     }
   }, []);
 
   const hideFnc = useCallback((ITooltipEvent) => {
-    if (_isFunction(onShow)) {
+    if (_isFunction(onHide)) {
       onHide(ITooltipEvent, chartView);
     }
   }, []);

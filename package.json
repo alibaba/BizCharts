@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.6",
+  "version": "4.0.7-beta.1",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@antv/component": "^0.5.6",
-    "@antv/g2": "4.0.11",
+    "@antv/g2": "4.0.10",
     "@antv/g2plot": "1.1.7",
     "@antv/util": "^2.0.5",
     "resize-observer-polyfill": "^1.5.1",

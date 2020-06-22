@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import _isFunction from '@antv/util/lib/is-function';
 import { InteractionOption } from '@antv/g2/lib/interface';
 import useChart from '../../hooks/useChartView';
@@ -13,12 +13,8 @@ export default function Interaction(props: IInteractionProps) {
   const { type, config } = props;
 
   // @ts-ignore
-  useEffect(() => {
+  useLayoutEffect(() => {
     chart.interaction(type, config);
-    if (_isFunction(props.children)) {
-      const res = props.children(chart);
-      return React.isValidElement(res) ? res : null;
-    }
     return () => {
       chart.removeInteraction(type);
     }

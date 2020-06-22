@@ -22,6 +22,7 @@ export interface ILegend extends LegendCfg {
   onChange?: (e?: IEvent, chart?: Chart) => void;
   /** 来自父级的 chart 或者 view实例 */ 
   view?: any;
+  [key: string]: any;
 }
 const undefinedField = name => (name === undefined);
 
