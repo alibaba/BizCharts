@@ -7,11 +7,11 @@ import { IGroup as ISVGGroup } from '@antv/g-svg';
 import uniqId from '@antv/util/lib/unique-id';
 import GroupContext, { withGroupContext } from '../context/group';
 import { EVENTS } from './Base/events';
+import isArray from '@antv/util/lib/is-array';
 
 export interface IGroupProps extends React.Props<any>{
   [key: string]: any;
 }
-
 
 class Group extends React.Component<any> {
   state={
@@ -21,12 +21,36 @@ class Group extends React.Component<any> {
   protected instance: IGroup | ISVGGroup;
   constructor(props) {
     super(props);
-    const { group } = props;
+    const { group, zIndex, name, rotate, animate } = props;
     this.id = uniqId('group')
     if (group.isChartCanvas) {
       group.chart.on('afterrender', this.handleRender)
     } else {
-      this.instance = group.addGroup();
+      this.instance = group.addGroup({ zIndex, name });
+      this.configGroup(props);
+    }
+  }
+  configGroup = (props) => {
+    const { rotate, animate, rotateAtPoint, scale, translate, move } = props;
+    if (rotate) {
+      this.instance.rotate(rotate);
+    }
+    if (isArray(rotateAtPoint)) {
+      // @ts-ignore
+      this.instance.rotateAtPoint(...rotateAtPoint);
+    }
+    if (scale) {
+      this.instance.rotate(scale);
+    }
+    if (translate) {
+      this.instance.rotate(translate);
+    }
+    if (move) {
+      this.instance.move(move.x, move.y);
+    }
+    if (animate) {
+      const { toAttrs, ...animateCfg } = animate;
+      this.instance.animate(toAttrs, animateCfg);
     }
   }
   bindEvents = () => {
@@ -39,7 +63,10 @@ class Group extends React.Component<any> {
   }
   handleRender = debounce(() => {
     if (!this.instance) {
-      this.instance = this.props.group.chart.canvas.addGroup();
+      const { group, zIndex, name } = this.props;
+      this.instance = group.chart.canvas.addGroup({ zIndex, name });
+      
+      
       this.setState({ isReady: true })
     } else {
       this.forceUpdate();

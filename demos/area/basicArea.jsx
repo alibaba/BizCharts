@@ -34,7 +34,7 @@ function Labelline () {
 
   return (
     <div>
-      <div onClick={() => setCount(count+1)}>click me {count}</div>
+      <div onClick={() => setCount(count+1)}>click me2 {count}</div>
       <Chart scale={scale} height={400} data={data} autoFit>
       <Tooltip shared onShow={(...args) => {
         console.log('onShow', ...args)

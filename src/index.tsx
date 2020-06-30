@@ -45,13 +45,18 @@ export { default as Guide } from './adapter/Guide';
 export { default as Effects } from './components/Effects';
 export { default as Interaction } from './components/Interaction';
 export { default as createPlot } from './createPlot';
+export { default as createTooltipConnector } from './connector/createTooltipConnector';
 
 // hooks
 export { default as useView } from './hooks/useChartView';
+// fixme: 更名，在4.1.0后正式更名为 useChartInstance
 export { default as useRootChart } from './hooks/useChartInstance';
+// 正确写法
+export { default as useChartInstance } from './hooks/useChartInstance';
 export { default as useTheme } from './hooks/useTheme';
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
+
 
 // 注册主题
 export * from './core';

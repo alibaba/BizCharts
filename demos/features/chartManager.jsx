@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import {
   Chart,
   Interval,
-  Coordinate
+  Coordinate,
+  createTooltipConnector,
+  Tooltip,
 } from "../../src";
 
-const data1 = [
+const data = [
   { year: "1991", value: 3 },
   { year: "1992", value: 4 },
   { year: "1993", value: 3.5},
@@ -41,30 +43,31 @@ const data3 = [
   { year: "1999", value: 13}
 ];
 
+const tc = createTooltipConnector();
+
 const Basic = () => {
-  const [ data, setData ] = useState(undefined)
-  useEffect(() => {
-    setInterval(() => {
-      const count = Math.random();
-      if (count > 0.8) {
-        setData(data1);
-        return;
-      }
-      if (count > 0.5) {
-        setData(data2);
-        return;
-      }
-      if (count > 0.2) {
-        setData(data3);
-        
-      }
-    }, 2000)
-  }, [])
   return (
-    <Chart  data={data} height={500} autoFit>
-      <Interval position="year*value" />
-      <Coordinate transpose />
-    </Chart>
+    <div>
+      <Chart data={data} height={100} autoFit onGetG2Instance={(chart) => {
+        tc.connect('c1', chart);
+      }} >
+        <Interval position="year*value" />
+        <Coordinate transpose />
+        <Tooltip  />
+      </Chart>
+      <Chart data={data2} height={100} autoFit onGetG2Instance={(chart) => {
+        tc.connect('c2', chart);
+      }} >
+        <Interval position="year*value" />
+        <Coordinate transpose />
+      </Chart>
+      <Chart  data={data3} height={100} autoFit onGetG2Instance={(chart) => {
+        tc.connect('c3', chart);
+      }} >
+        <Interval position="year*value" />
+        <Coordinate transpose />
+      </Chart>
+    </div>
   );
 }
 

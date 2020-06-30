@@ -1,4 +1,5 @@
 import uniqueId from '@antv/util/lib/unique-id';
+import _each from '@antv/util/lib/each';
 import _isFunction from '@antv/util/lib/is-function';
 import _isArray from '@antv/util/lib/is-array';
 import _isEqual from '@antv/util/lib/is-equal';
@@ -120,7 +121,6 @@ class ChartHelper {
 
     // 数据
     if(_isArray(preData) && preData.length) {
-      this.chart.changeData(data);
       // 数据只做2级浅比较
       let isEqual = true;
       if (preData.length !== data.length) {
@@ -133,7 +133,7 @@ class ChartHelper {
         });
       }
       if (!isEqual) {
-          this.chart.changeData(data);
+        this.chart.changeData(data);
       }
     } else {
       this.chart.data(data);
@@ -150,6 +150,23 @@ class ChartHelper {
     interactions.forEach(interact => {
       this.chart.interaction(interact);
     });
+
+    // filter
+    _each(this.config.filter, (it, index) => {
+      // 销毁
+      if (_isArray(it)) {
+        this.chart.filter(it[0], null);
+      } else {
+        this.chart.filter(index, null);
+      }
+    });
+    _each(newConfig.filter, (it, index) => {
+      if (_isArray(it)) {
+        this.chart.filter(it[0], it[1]);
+      } else {
+        this.chart.filter(index, it);
+      }
+    })
 
     // 主题
     this.chart.theme(newConfig.theme);

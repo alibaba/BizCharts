@@ -34,6 +34,7 @@ export class Chart extends React.Component<IChartProps> {
     placeholder: false,
     visible: true,
     interactions: [],
+    filter: [],
   };
   constructor(props) {
     super(props);
