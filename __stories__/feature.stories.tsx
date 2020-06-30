@@ -9,12 +9,15 @@ import ChangeData from '../demos/features/changeData';
 import Slider from '../demos/features/slider';
 import Selected from '../demos/features/selected';
 import ChartManager from '../demos/features/chartManager';
+import Filter from '../demos/features/filter';
 
-storiesOf('features', module).add('Pure', Pure);
-storiesOf('features', module).add('transform', Transform);
-storiesOf('features', module).add('effects', Effects);
-storiesOf('features', module).add('resize', Resize);
-storiesOf('features', module).add('changeData', ChangeData);
-storiesOf('features', module).add('slider', Slider);
-storiesOf('features', module).add('selected', Selected);
-storiesOf('features', module).add('chartManager', ChartManager);
+storiesOf('features', module)
+  .add('Pure', Pure)
+  .add('transform', Transform)
+  .add('effects', Effects)
+  .add('resize', Resize)
+  .add('changeData', ChangeData)
+  .add('slider', Slider)
+  .add('selected', Selected)
+  .add('chartManager', ChartManager)
+  .add('filter', Filter);
