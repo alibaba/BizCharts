@@ -5,6 +5,9 @@ export * from './Helper';
 
 class Base<T> extends React.Component<T> {
   helper: Helper;
+  componentWillUnmount() {
+    this.helper.destroy();
+  }
   render() {
     this.helper.update(this.props);
     return null;

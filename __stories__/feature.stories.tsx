@@ -10,6 +10,7 @@ import Slider from '../demos/features/slider';
 import Selected from '../demos/features/selected';
 import ChartManager from '../demos/features/chartManager';
 import Filter from '../demos/features/filter';
+import Reconciler from '../demos/features/fiber-reconciler';
 
 storiesOf('features', module)
   .add('Pure', Pure)
@@ -20,4 +21,5 @@ storiesOf('features', module)
   .add('slider', Slider)
   .add('selected', Selected)
   .add('chartManager', ChartManager)
-  .add('filter', Filter);
+  .add('filter', Filter)
+  .add('reconciler', () => <Reconciler />);

@@ -10,3 +10,4 @@ export { default as Polygon } from './Polygon';
 export { default as Polyline } from './Polyline';
 export { default as Rect } from './Rect';
 export { default as Text } from './Text';
+export { default as GRenderer } from './reconciler';
