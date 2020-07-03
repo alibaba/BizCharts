@@ -1,52 +1,44 @@
 import Reconciler from 'react-reconciler';
 import React from 'react';
-import GroupContext, { withGroupContext } from '../../context/group';
+import GroupContext from '../../context/group';
+
 const emptyObject = {}
 
+// 渲染的组件为封装组件，不需要渲染
 const HostConfig = {
-  createInstance(type, props) {},
-  getRootHostContext() {
-
-  },
-  hideTextInstance() {},
-  getPublicInstance(instance: any) {
-    return instance
-  },
-  hideInstance() {},
-  commitUpdate() {
-    console.log(12)
-  },
-  unhideInstance() {},
-  getChildHostContext(nextRootInstance) {
-    return nextRootInstance
-  },
-  createTextInstance() {},
+  getRootHostContext(rootContainerInstance) {},
+  getChildHostContext() {},
+  createInstance(type, props) {}, // 不返回实例则不进入其他周期
   finalizeInitialChildren() {
     return false
   },
+  hideTextInstance() {},
+  getPublicInstance(instance: any) {
+    return instance;
+  },
+  hideInstance() {},
+  unhideInstance() {},
+  createTextInstance() {},
   prepareUpdate() {
-    return emptyObject
+    return emptyObject;
   },
   shouldDeprioritizeSubtree() {
     return false
   },
+  appendInitialChild() {},
   appendChildToContainer() {},
   removeChildFromContainer() {},
   prepareForCommit() {},
   resetAfterCommit() {},
+  // 是否需要设置文字内容
   shouldSetTextContent() {
-    return false
+    return false;
   },
-  // ...
   supportsMutation: true, // it works by mutating nodes
-  appendChild(parent, child) {
-    console.log(999)
-  },
-  // ...
+  appendChild(parent, child) {},
 };
 
 const Renderer = Reconciler(HostConfig);
-
 const LegacyRoot = 0;
 
 const withContext = (element, container) => {
@@ -61,7 +53,6 @@ const ReactG = {
       container.clear();
     }
     const root = Renderer.createContainer(container, LegacyRoot, false);
-    console.log(root);
     Renderer.updateContainer(withContext(element, container), root, null, () => undefined);
     return Renderer.getPublicRootInstance(root);
   }

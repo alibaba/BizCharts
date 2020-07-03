@@ -3,11 +3,12 @@ import { registerInteraction, registerAction } from '../core';
 import { unregisterAction } from '@antv/g2/lib/interaction/action/register';
 import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip';
 
-
 import { Chart } from '../interface';
 import { uniqueId, forIn, get, set } from '@antv/util';
 
-export class ChartConnector {
+const CONNECTOR_MAP = {};
+
+export class Connector {
   public id: string;
   protected type: string;
   constructor(type) {
@@ -33,10 +34,9 @@ export class ChartConnector {
 }
 
 export default () => {
-  const cm = new ChartConnector('tooltip');
+  const cm = new Connector('tooltip');
   registerAction(`connect-tooltip-${cm.id}`, class ConnectTooltip extends TooltipAction {
-    private CM: ChartConnector = cm;
-  
+    private CM: Connector = cm;
     protected showTooltip(view, point) {
       forIn(this.CM.chartMap, chart => chart.showTooltip(point))
     }

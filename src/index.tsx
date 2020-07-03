@@ -8,6 +8,7 @@ import * as bxUtil from './utils';
 export const Util = {
   ...antUtils,
   ...bxUtil,
+  ...G2.Util,
 }
 
 // 基础组件
@@ -56,7 +57,6 @@ export { default as useChartInstance } from './hooks/useChartInstance';
 export { default as useTheme } from './hooks/useTheme';
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
-
 
 // 注册主题
 export * from './core';

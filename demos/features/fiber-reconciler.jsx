@@ -2,13 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Canvas from "../../src/g-components/Canvas";
 import ReactG from '../../src/g-components/reconciler';
 import Circle from "../../src/g-components/Circle";
-import Ellipse from "../../src/g-components/Ellipse";
 import Group from "../../src/g-components/Group";
-import Image from "../../src/g-components/Image";
-import Line from "../../src/g-components/Line";
-import Marker from "../../src/g-components/Marker";
-import Path from "../../src/g-components/Path";
-import Polygon from "../../src/g-components/Polygon";
 import Text from "../../src/g-components/Text";
 
 const AnimateCircle = () => {

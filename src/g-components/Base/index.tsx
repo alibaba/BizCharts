@@ -8,6 +8,9 @@ class Base<T> extends React.Component<T> {
   componentWillUnmount() {
     this.helper.destroy();
   }
+  public getInstance() {
+    return this.helper.instance;
+  }
   render() {
     this.helper.update(this.props);
     return null;
