@@ -73,7 +73,7 @@ class BasePlot extends React.Component<any> {
   diffConfig() {
     // 只有数据更新就不重绘，其他全部直接重新创建实例。
     const preConfig = this.preConfig || {};
-    const currentConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance']);
+    const currentConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
     this.preConfig = cloneDeep(currentConfig);
     return !_isEqual(preConfig, currentConfig);
   }
