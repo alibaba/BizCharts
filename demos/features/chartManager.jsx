@@ -49,7 +49,10 @@ const Basic = () => {
   return (
     <div>
       <Chart data={data} height={100} autoFit onGetG2Instance={(chart) => {
-        tc.connect('c1', chart);
+        tc.connect('c1', chart, (d, c) => {
+          // debugger
+          return c.getXY(d._origin);
+        });
       }} >
         <Interval position="year*value" />
         <Coordinate transpose />
@@ -62,7 +65,10 @@ const Basic = () => {
         <Coordinate transpose />
       </Chart>
       <Chart  data={data3} height={100} autoFit onGetG2Instance={(chart) => {
-        tc.connect('c3', chart);
+        tc.connect('c3', chart, (d, c) => {
+          // debugger
+          return c.getXY(d._origin);
+        });
       }} >
         <Interval position="year*value" />
         <Coordinate transpose />

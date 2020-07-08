@@ -72,7 +72,8 @@ export default class Helper {
     }
   }
   update(props) {
-    const newConfig = pickWithout(props, [...REACT_PIVATE_PROPS])
+    const newConfig = pickWithout(props, [...REACT_PIVATE_PROPS]);
+    this.destroy();
     this.createInstance(newConfig);
     const { attrs, animate, isClipShape, visible, matrix, ...others } = newConfig;
 

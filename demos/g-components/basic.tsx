@@ -76,6 +76,9 @@ function Labelline() {
           stroke: '#fff',
         }}
       />
+      <Group zIndex={4}>
+        <Circle attrs={{ x: 200, y: 50, r: 200, fill: '#392' }} />
+      </Group>
       <Group>
         {/* <Text attrs={{ x: 100, y: 50, fill: '#000', fontSize: 14, text: '高度自定义的图表' }} /> */}
         <Effects>
@@ -83,7 +86,6 @@ function Labelline() {
             const data = chart.filteredData;
             const xScale = chart.getXScale();
             const coord = chart.getCoordinate();
-
             return <>
               {
                 data.map((d, index) => {

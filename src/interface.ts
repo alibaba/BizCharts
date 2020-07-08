@@ -45,18 +45,18 @@ export type SizeRange = [number, number];
 
 export interface IChartProps extends IViewProps {
   /** 指定 chart 绘制的 DOM，可以传入 DOM id，也可以直接传入 dom 实例。 */
-  readonly container?: HTMLElement;
+  container?: HTMLElement;
   /** 图表宽度。 */
-  readonly width?: number;
+  width?: number;
   /** 图表高度。 */
-  readonly height?: number;
+  height?: number;
   /**
    * 图表是否自适应容器宽高，默认为 false，用户需要手动设置 width 和 height。
    * 当 `autoFit: true` 时，会自动取图表容器的宽高，如果用户设置了 height，那么会以用户设置的 height 为准。
    */
-  readonly autoFit?: boolean;
+  autoFit?: boolean;
   /** 设置设备像素比，默认取浏览器的值 `window.devicePixelRatio`。 */
-  readonly pixelRatio?: number;
+  pixelRatio?: number;
   /**
    * 设置图表的内边距，使用方式参考 CSS 盒模型。
    * 下图黄色区域即为 padding 的范围。
@@ -66,23 +66,23 @@ export interface IChartProps extends IViewProps {
    * 1. padding: 20
    * 2. padding: [ 10, 30, 30 ]
    */
-  readonly padding?: ViewPadding;
+  padding?: ViewPadding;
   /**
    * 是否开启局部刷新，默认开启。
    */
-  readonly localRefresh?: boolean;
+  localRefresh?: boolean;
   /**
    * chart 是否可见，默认为 true，设置为 false 则会隐藏。
    */
-  readonly visible?: boolean;
+  visible?: boolean;
   /**
    * 配置图表默认交互，仅支持字符串形式。
    */
-  readonly defaultInteractions?: string[];
+  defaultInteractions?: string[];
   /** 是否对超出坐标系范围的 Geometry 进行剪切 */
-  readonly limitInPlot?: boolean;
+  limitInPlot?: boolean;
   /** 主题 */
-  readonly theme?: object | string;
+  theme?: object | string;
   pure?: boolean;
   // 基础鼠标事件
   onMousedown?: EventFunc,

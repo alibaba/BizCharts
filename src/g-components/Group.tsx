@@ -19,16 +19,22 @@ class Group extends React.Component<any> {
   }
   private id: string;
   protected instance: IGroup | ISVGGroup;
+  static defaultProps = {
+    zIndex: 3,
+  }
   constructor(props) {
     super(props);
     const { group, zIndex, name, rotate, animate } = props;
     this.id = uniqId('group')
     if (group.isChartCanvas) {
-      group.chart.on('afterrender', this.handleRender)
+      group.chart.on('afterrender', this.handleRender);
     } else {
       this.instance = group.addGroup({ zIndex, name });
       this.configGroup(props);
     }
+  }
+  public getInstance() {
+    return this.instance;
   }
   configGroup = (props) => {
     const { rotate, animate, rotateAtPoint, scale, translate, move } = props;
@@ -65,8 +71,7 @@ class Group extends React.Component<any> {
     if (!this.instance) {
       const { group, zIndex, name } = this.props;
       this.instance = group.chart.canvas.addGroup({ zIndex, name });
-      
-      
+      group.chart.canvas.sort();
       this.setState({ isReady: true })
     } else {
       this.forceUpdate();

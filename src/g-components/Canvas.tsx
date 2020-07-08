@@ -62,6 +62,9 @@ class Canvas extends React.Component<ICanvasProps> {
   componentDidMount() {
     this.helper.draw();
   }
+  public getInstance() {
+    return this.helper.instance;
+  }
   componentWillUnmount() {
     this.helper.destory();
   }
