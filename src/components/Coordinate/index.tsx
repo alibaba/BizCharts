@@ -35,9 +35,9 @@ export default function Coordinate(props: ICoordinateProps) {
   coordIns.update({});
 
   if (type) {
-    view.coordinate({ type, ...options });
+    view.coordinate(type, { ...options });
   } else {
-    view.coordinate({ type: 'rect', ...options });
+    view.coordinate('rect', { ...options });
   }
 
   if (rotate) {
