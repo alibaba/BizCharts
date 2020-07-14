@@ -13,7 +13,7 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
      ref={container}
      className={className}
      // @ts-ignore
-     style={{ height: props.height || '100%', width: props.width || '100%', ...containerStyle }} >
+     style={{ position:'relative', height: props.height || '100%', width: props.width || '100%', ...containerStyle }} >
       {inited ? <Component ref={ref} container={container.current} {...props} /> : <></>}
     </div>
   });
