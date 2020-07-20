@@ -48,6 +48,7 @@
     "@antv/g2": "4.0.12",
     "@antv/g2plot": "1.1.7",
     "@antv/util": "^2.0.5",
+    "react-reconciler": "^0.25.1",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
@@ -114,7 +115,6 @@
     "raw-loader": "^0.5.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-reconciler": "^0.25.1",
     "react-with-styles-interface-aphrodite": "^6.0.0",
     "react-with-styles-interface-css-compiler": "^2.2.0",
     "rimraf": "^3.0.2",
