@@ -73,7 +73,7 @@ class ChartHelper {
       && data.length !== 0 ) {
       return true;
     }
-    const unCompareProps = [...REACT_PIVATE_PROPS, 'width', 'height', 'container', '_container', '_interactions',  /^on/, /^\_on/];
+    const unCompareProps = [...REACT_PIVATE_PROPS, 'width', 'height', 'container', '_container', '_interactions', 'placeholder',  /^on/, /^\_on/];
     if (!_isEqual(pickWithout(preOptions, [...unCompareProps]),
       pickWithout(options, [...unCompareProps]))) {
       return true;

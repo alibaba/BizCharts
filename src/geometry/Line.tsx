@@ -8,5 +8,5 @@ registerGeometry('Line', Line);
 export interface ILineGemoProps extends IBaseGemoProps {}
 
 export default class LineGeom extends BaseGemo<ILineGemoProps> {
-  GemoBaseClassName = 'line'
+  GemoBaseClassName = 'line';
 }

@@ -57,7 +57,7 @@ export { default as useChartInstance } from './hooks/useChartInstance';
 export { default as useTheme } from './hooks/useTheme';
 export { withView } from './context/view';
 export { withChartInstance } from './context/root';
-export * from './theme';
+
 
 // 注册主题
 export * from './core';
