@@ -43,7 +43,7 @@ describe('percentage', () => {
       { name: 'c', year: '1992', type: 'b', value: 3},
     ]
     const res = percentage(data, 'value', 'percentage', ['year', 'type']);
-    console.log(res)
+    // console.log(res)
     expect(res.length).toEqual(12);
     expect(res[0].percentage).toEqual(0.2);
     expect(res[2].percentage).toEqual(0.3);

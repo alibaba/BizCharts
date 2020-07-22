@@ -37,7 +37,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 jest --watch unittest/event-spec.tsx",
+    "test-live": "DEBUG_MODE=1 jest --watch unittest/exports/theme-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
