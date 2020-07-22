@@ -48,6 +48,7 @@
     "@antv/g2": "4.0.12",
     "@antv/g2plot": "1.1.7",
     "@antv/util": "^2.0.5",
+    "react-reconciler": "^0.25.1",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
     "warning": "^4.0.3",
