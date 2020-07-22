@@ -104,7 +104,9 @@ function Basic(options) {
           }}
         </Tooltip>
        </BarChart>
-       <BarChart ref={bar} onAfterrender={() => {console.log(1)}}></BarChart>
+       <BarChart ref={bar} onGetG2Instance={(c) => {
+         console.log('onGetG2Instance', c)
+       }} onAfterrender={() => {console.log(1)}} />
     </div>
   );
 }
