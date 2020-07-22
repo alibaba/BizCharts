@@ -15,6 +15,7 @@ export interface IAnnotationBaseProps extends AnnotationBaseOption {
 
 // 4.0之后称为Annotation，为了名字统一
 abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
+  static contextType: any;
   protected annotation: any;
   protected id: string;
   protected annotationType: string = 'line'; // 默认为line类型的guide
@@ -56,7 +57,6 @@ abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
   getChartIns() {
     return this.context as any;
   }
-  static contextType: any;
   render() {
     return null;
   }

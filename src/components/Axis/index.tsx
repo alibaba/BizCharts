@@ -1,13 +1,12 @@
 
 import _Axis from '@antv/g2/lib/chart/controller/axis';
 import { ComponentAnimateOption, AxisGridCfg } from '@antv/g2/lib/interface';
-import _isEqual from '@antv/util/lib/is-equal';
 import { AxisTitleCfg, AxisLineCfg, AxisTickLineCfg, AxisSubTickLineCfg, AxisLabelCfg } from '@antv/g2/lib/dependents';
 import { Chart } from '../Chart';
 import { View } from '../View';
 import useChartView from '../../hooks/useChartView';
 import _transBooleanCfg from '../../utils/transBooleanCfg';
-import warning from '../../utils/warning';
+
 
 import { registerComponentController } from '../../core';
 

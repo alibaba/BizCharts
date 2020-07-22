@@ -27,5 +27,6 @@ export default class IntervalGeom extends BaseGemo<IIntervalGemoProps> {
   //   'element-highlight': false,
   //   'position': 'x*y'
   // }
-  GemoBaseClassName = 'interval'
+
+  GemoBaseClassName = 'interval';
 }

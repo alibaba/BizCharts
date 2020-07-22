@@ -1,12 +1,12 @@
 // todo: 图表联动方案
-import { registerInteraction, registerAction } from '../core';
 import { unregisterAction } from '@antv/g2/lib/interaction/action/register';
 import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip';
-
-import { Chart } from '../interface';
 import { uniqueId, forIn, get, set } from '@antv/util';
 
-const CONNECTOR_MAP = {};
+import { registerInteraction, registerAction } from '../core';
+import { Chart } from '../interface';
+
+// const CONNECTOR_MAP = {};
 
 export class Connector {
   public id: string;
@@ -33,10 +33,8 @@ export class Connector {
     unregisterAction(`connect-tooltip-${this.id}`);
   }
 }
-/** 
- * @finder 关联图表何处触发tooltip
- * 
- **/ 
+
+// 关联图表何处触发tooltip
 export default () => {
   const cm = new Connector('tooltip');
   registerAction(`connect-tooltip-${cm.id}`, class ConnectTooltip extends TooltipAction {
@@ -53,7 +51,7 @@ export default () => {
         }
       })
     }
-    protected hideTooltip(view) {
+    protected hideTooltip() {
       forIn(this.CM.chartMap, ({chart}) => chart.hideTooltip())
     }
   });

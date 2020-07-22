@@ -54,8 +54,8 @@ function Facet(props: IFacetProps) {
   return null;
 }
 
-// 
-// export default React.memo(Facet, (preProps, nextProps) => {
-//   return shallowEqual(preProps, nextProps);
-// })
-export default Facet;
+
+export default React.memo(Facet, (preProps, nextProps) => {
+  return shallowEqual(preProps, nextProps);
+})
+// export default Facet;

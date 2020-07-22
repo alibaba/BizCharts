@@ -3,6 +3,6 @@ import { ImageOption } from '../../interface';
 
 interface AnnotationImageProps extends ImageOption, IAnnotationBaseProps {}
 
-export default class image extends Base<AnnotationImageProps>{
+export default class Image extends Base<AnnotationImageProps>{
   public annotationType = 'image';
 };
