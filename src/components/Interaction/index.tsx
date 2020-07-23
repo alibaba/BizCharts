@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import _isFunction from '@antv/util/lib/is-function';
+// import _isFunction from '@antv/util/lib/is-function';
 import { InteractionOption } from '@antv/g2/lib/interface';
 import useChart from '../../hooks/useChartView';
 

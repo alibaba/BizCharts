@@ -13,6 +13,8 @@ import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 
+const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
+
 class BasePlot extends React.Component<any> {
   g2Instance: any;
   preConfig: any;
@@ -120,10 +122,20 @@ class BasePlot extends React.Component<any> {
 
 const BxPlot = withContainer(BasePlot) as any;
 
-function createPlot<IPlotConfig>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
+function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    // @ts-ignore
-    const { title, description, autoFit, ...cfg } = props;
+    const { title, description, autoFit, placeholder, ...cfg } = props;
+    const realCfg = transCfg(cfg);
+    // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
+    if (placeholder && !realCfg.data) {
+      const pl = placeholder === true ?  DEFAULT_PLACEHOLDER : placeholder;
+      // plot 默认是400px高度
+      return <ErrorBoundary>
+      <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
+        {pl}
+      </div>
+      </ErrorBoundary>;
+    }
     return <ErrorBoundary>
       <BxPlot
         // API 统一
@@ -133,7 +145,7 @@ function createPlot<IPlotConfig>(Plot, name: string, transCfg: Function = (cfg) 
         title={visibleHelper(title)}
         // react 习惯
         description={visibleHelper(description)}
-        {...transCfg(cfg)}
+        {...realCfg}
         PlotClass={Plot}
       />
     </ErrorBoundary>
