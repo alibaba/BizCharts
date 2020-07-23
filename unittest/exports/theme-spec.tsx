@@ -3,7 +3,6 @@ import { registerPlotTheme } from '../../src';
 
 
 describe('export function', () => {
-  const noop = () => {};
   it('should export registerShape', () => {
     expect(registerShape).toBeDefined();
   });
