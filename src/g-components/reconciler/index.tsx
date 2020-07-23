@@ -6,9 +6,9 @@ const emptyObject = {}
 
 // 渲染的组件为封装组件，不需要渲染
 const HostConfig = {
-  getRootHostContext(rootContainerInstance) {},
+  getRootHostContext() {},
   getChildHostContext() {},
-  createInstance(type, props) {}, // 不返回实例则不进入其他周期
+  createInstance() {}, // 不返回实例则不进入其他周期
   finalizeInitialChildren() {
     return false
   },
@@ -35,7 +35,7 @@ const HostConfig = {
     return false;
   },
   supportsMutation: true, // it works by mutating nodes
-  appendChild(parent, child) {},
+  appendChild() {},
 };
 
 const Renderer = Reconciler(HostConfig);

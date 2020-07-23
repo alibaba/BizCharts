@@ -1,7 +1,6 @@
 import React from 'react';
-import { Canvas as GCanvas, Cursor, Renderer } from '@antv/g-canvas';
+import { Canvas as GCanvas, Cursor, Renderer, IGroup } from '@antv/g-canvas';
 import { Canvas as GSVG } from '@antv/g-svg';
-import { IGroup } from '@antv/g-canvas';
 import withContainer from '../boundary/withContainer';
 import ErrorBoundary from '../boundary/ErrorBoundary';
 import CanvasContext from '../context/canvas';
@@ -20,6 +19,7 @@ export interface ICanvasProps extends React.Props<any> {
 }
 
 class CanvasHelper {
+
   instance: GCanvas | GSVG;
   rootGroup: IGroup;
   createInstance(props) {
@@ -55,19 +55,24 @@ class CanvasHelper {
 
 class Canvas extends React.Component<ICanvasProps> {
   public helper: CanvasHelper;
+
   constructor(props) {
     super(props);
     this.helper = new CanvasHelper();
   }
+
   componentDidMount() {
     this.helper.draw();
   }
-  public getInstance() {
-    return this.helper.instance;
-  }
+  
   componentWillUnmount() {
     this.helper.destory();
   }
+
+  public getInstance() {
+    return this.helper.instance;
+  }
+
   render() {
     this.helper.update(this.props);
     return <ErrorBoundary>

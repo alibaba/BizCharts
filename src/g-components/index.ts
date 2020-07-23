@@ -13,4 +13,4 @@ export { default as Polyline } from './Polyline';
 export { default as Rect } from './Rect';
 export { default as Text } from './Text';
 
-export const render = ReactG.render;
+export const { render } = ReactG;

@@ -65,8 +65,6 @@ class GeomHelper {
     // 状态设置
     this.geom.state(newConfig.state || {});
 
-    
-
     // selected 和 active 使用 interacttion 替代
 
     // setElements 设置 selected 和 active 默认值
@@ -105,7 +103,7 @@ abstract class BaseGeom<T extends IBaseGemoProps> extends React.Component<T> {
   protected interactionTypes: string[] = [];
   constructor(props) {
     super(props);
-    this.geomHelper = new GeomHelper();
+    this.geomHelper = new GeomHelper()
   }
   componentWillUnmount() {
     this.geomHelper.destroy();

@@ -8,7 +8,7 @@ import { Text } from '../../src/components/Annotation';
 
 function Pie ({ data }) {
   return (
-    <Chart pure height={100} width={100} data={data} autoFit>
+    <Chart pure height={100}  width={100} data={data} autoFit>
       <Coordinate type="polar" innerRadius={0.2} />
       <Interval
         position="year*population"
@@ -58,12 +58,13 @@ function Basic(options) {
   return (
     <div>
       <LineChart
-       data={data}
+       data={autoFit ? null : data}
        xField="year"
        title={{
           visible: true,
           text: '曲线折线图',
        }}
+       placeholder={<div>暂无数据！！</div>}
        point
        autoFit={autoFit}
        yField="value"
@@ -103,7 +104,9 @@ function Basic(options) {
           }}
         </Tooltip>
        </BarChart>
-       <BarChart ref={bar} onAfterrender={() => {console.log(1)}}></BarChart>
+       <BarChart ref={bar} onGetG2Instance={(c) => {
+         console.log('onGetG2Instance', c)
+       }} onAfterrender={() => {console.log(1)}} />
     </div>
   );
 }

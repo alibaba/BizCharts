@@ -1,6 +1,7 @@
 import _isNil from '@antv/util/lib/is-nil';
 import { CoordinateCfg, CoordinateActions } from '@antv/g2/lib/interface';
 import useChartView from '../../hooks/useChartView';
+import _isFunction from '@antv/util/lib/is-function';
 // import _tranPropsToArray from '../../utils/tranPropsToArray';
 
 export interface ICoordinateProps extends CoordinateCfg {
@@ -27,7 +28,7 @@ export interface ICoordinateProps extends CoordinateCfg {
 }
 
 export default function Coordinate(props: ICoordinateProps) {
-  const { type, transpose, rotate, scale, reflect, ...options } = props;
+  const { type, transpose, rotate, scale, reflect, actions, ...options } = props;
   const view = useChartView();
   const coordIns = view.coordinate();
 
@@ -35,9 +36,9 @@ export default function Coordinate(props: ICoordinateProps) {
   coordIns.update({});
 
   if (type) {
-    view.coordinate({ type, ...options });
+    view.coordinate(type, { ...options });
   } else {
-    view.coordinate({ type: 'rect', ...options });
+    view.coordinate('rect', { ...options });
   }
 
   if (rotate) {
@@ -51,6 +52,10 @@ export default function Coordinate(props: ICoordinateProps) {
   }
   if (transpose) {
     coordIns.transpose();
+  }
+
+  if (_isFunction(actions)) {
+    actions(coordIns);
   }
 
   return null;
