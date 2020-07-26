@@ -10,14 +10,26 @@ registerAction('sibling-tooltip', SiblingTooltip);
 registerAction('active-region', ActiveRegion);
 
 // 注册 tooltip 的 interaction
-registerInteraction('tooltip-hover', {
+registerInteraction('tooltip', {
   // @ts-ignore
-  start: [{ trigger: 'plot:mousemove', action: 'tooltip:show', throttle: { wait: 50, leading: true, trailing: false } }],
+  start: [
+    {
+      trigger: 'plot:mousemove',
+      action: 'tooltip:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+    {
+      trigger: 'plot:mousedown',
+      action: 'tooltip:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+  ],
   end: [{ trigger: 'plot:mouseleave', action: 'tooltip:hide' }],
 });
 
-// 点击触发 tooltip事件
-registerInteraction('tooltip-click', {
-  start: [{ trigger: 'plot:mousedown', action: 'tooltip:show', throttle: { wait: 50, leading: true, trailing: false } }],
-  end: [{ trigger: 'plot:mouseleave', action: 'tooltip:hide' }],
+
+// 注册 sibling-tooltip 的 interaction
+registerInteraction('sibling-tooltip', {
+  start: [{ trigger: 'plot:mousemove', action: 'sibling-tooltip:show' }],
+  end: [{ trigger: 'plot:mouseleave', action: 'sibling-tooltip:hide' }],
 });
