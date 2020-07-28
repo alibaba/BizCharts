@@ -54,6 +54,7 @@ export default function Tooltip(props: ITooltip) {
   const chartView = useChartView();
   chartView.removeInteraction('tooltip');
   chartView.removeInteraction('tooltip-click');
+  chartView.removeInteraction('tooltip-lock');
 
   if (lock) {
     // hover的时候触发，但是点击的时候锁定位置
