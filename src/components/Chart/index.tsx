@@ -51,9 +51,9 @@ export class Chart extends React.Component<IChartProps> {
 
   componentDidUpdate() {
     // 更新图表大小
-    const { width, height, autoFit } = this.props;
+    const { width, height, autoFit, forceFit } = this.props;
     // 已经自适应就不更新大小了
-    if (!autoFit && this.chartHelper.chart) {
+    if (!(autoFit || forceFit) && this.chartHelper.chart) {
       if (
         (width >= 0 && width !== this.chartHelper.chart.width) ||
         (height >= 0 && height !== this.chartHelper.chart.height)
