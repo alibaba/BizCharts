@@ -45,7 +45,7 @@ $ npm run build
 ```
 
 ### test snapshot
-在不支持外网测试
+不支持外网测试
 ```
 tnpm run uitest
 ```

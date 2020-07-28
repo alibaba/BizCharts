@@ -50,14 +50,19 @@ export interface ITooltipEvent {
 }
 
 export default function Tooltip(props: ITooltip) {
-  const { children, triggerOn, onShow, onChange, onHide, ...options } = props;
+  const { children, triggerOn, onShow, onChange, onHide, lock, ...options } = props;
   const chartView = useChartView();
   chartView.removeInteraction('tooltip');
   chartView.removeInteraction('tooltip-click');
 
-  if (triggerOn === 'click') {
+  if (lock) {
+    // hover的时候触发，但是点击的时候锁定位置
+    chartView.interaction(`tooltip-lock`);
+  } else if (triggerOn === 'click') {
+    // 只有click的时候才会出现tooltip，hover 无效
     chartView.interaction(`tooltip-click`);
   } else {
+    // click不会有任何动作，只有hover的时候跟随
     chartView.interaction(`tooltip`);
   }
 
