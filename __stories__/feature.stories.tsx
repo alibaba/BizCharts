@@ -11,6 +11,7 @@ import Selected from '../demos/features/selected';
 import ChartManager from '../demos/features/chartManager';
 import Filter from '../demos/features/filter';
 import Reconciler from '../demos/features/fiber-reconciler';
+import TooltipLinkage from '../demos/features/tooltip-linkage';
 
 storiesOf('features', module)
   .add('Pure', Pure)
@@ -22,4 +23,5 @@ storiesOf('features', module)
   .add('selected', Selected)
   .add('chartManager', ChartManager)
   .add('filter', Filter)
+  .add('TooltipLinkage', TooltipLinkage)
   .add('reconciler', () => <Reconciler />);

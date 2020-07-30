@@ -1,11 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Chart } from '@antv/g2/lib/chart';
 import _isFunction from '@antv/util/lib/is-function';
 import _Tooltip from '@antv/g2/lib/chart/controller/tooltip';
+import _uniqueId from '@antv/util/lib/unique-id';
+import _isArray from '@antv/util/lib/is-array';
+import _isString from '@antv/util/lib/is-string';
 import { TooltipCfg } from '@antv/g2/lib/interface';
 import { registerComponentController } from '../../core';
 import useChartView from '../../hooks/useChartView';
 import ReactTooltip from './ReactTooltip';
+import { registerConnector } from '../../connector/createTooltipConnector';
 import './actions';
 
 registerComponentController('tooltip', _Tooltip);
@@ -50,7 +54,7 @@ export interface ITooltipEvent {
 }
 
 export default function Tooltip(props: ITooltip) {
-  const { children, triggerOn, onShow, onChange, onHide, lock, ...options } = props;
+  const { children, triggerOn, onShow, onChange, onHide, lock, linkage, ...options } = props;
   const chartView = useChartView();
   chartView.removeInteraction('tooltip');
   chartView.removeInteraction('tooltip-click');
@@ -64,8 +68,22 @@ export default function Tooltip(props: ITooltip) {
     chartView.interaction(`tooltip-click`);
   } else {
     // click不会有任何动作，只有hover的时候跟随
+    console.log(99999)
     chartView.interaction(`tooltip`);
   }
+
+  const connectorId = useRef(_uniqueId('tooltip'));
+
+  console.log(connectorId);
+
+  // tooltip 联动
+  useEffect(() => {
+    if (_isArray(linkage)) {
+      registerConnector(linkage[0], connectorId.current, chartView, options.shared, linkage[1]);
+    } else if (_isString(linkage)) {
+      registerConnector(linkage, connectorId.current, chartView, options.shared);
+    }
+  }, [linkage, chartView]);
 
   const showFnc = useCallback((ITooltipEvent) => {
     if (_isFunction(onShow)) {
@@ -73,7 +91,7 @@ export default function Tooltip(props: ITooltip) {
     }
   }, []);
 
-  const changeFnc =  useCallback((ITooltipEvent) => {
+  const changeFnc = useCallback((ITooltipEvent) => {
     if (_isFunction(onChange)) {
       onChange(ITooltipEvent, chartView);
     }
