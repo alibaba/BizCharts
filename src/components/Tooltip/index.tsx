@@ -68,13 +68,10 @@ export default function Tooltip(props: ITooltip) {
     chartView.interaction(`tooltip-click`);
   } else {
     // click不会有任何动作，只有hover的时候跟随
-    console.log(99999)
     chartView.interaction(`tooltip`);
   }
 
   const connectorId = useRef(_uniqueId('tooltip'));
-
-  console.log(connectorId);
 
   // tooltip 联动
   useEffect(() => {

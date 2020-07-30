@@ -7,9 +7,11 @@
 - react-reconciler required but not add into deps #1219
 - Duplicate export #1221
 - 修复Coordinate组件的action属性
+- 和Tooltip 点击后才展示。
 ##### feature
 - 图表联动，当前支持没有设置adjust的图表联动。详细见Tooltip linkage 属性文档。
-- Tooltip 点击后锁定位置。和Tooltip 点击后才展示。
+- Tooltip 点击后锁定位置。详见 Tooltip lock 属性文档。
+- 新增 LineAdvance 的图形组件。
 
 
 ### 4.0.10 (2020-07-14)
