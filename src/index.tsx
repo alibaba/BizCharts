@@ -34,6 +34,7 @@ export { default as Schema } from './geometry/Schema';
 export { default as BaseGeom } from './geometry/Base';
 export { default as Label } from './geometry/Label';
 export { default as Path } from './geometry/Path';
+export { default as LineAdvance } from './geometry/LineAdvance';
 
 // 通用 geometry
 export { default as Geom } from './geometry';

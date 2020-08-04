@@ -66,7 +66,7 @@ class Group extends React.Component<any> {
       this.instance.rotate(scale);
     }
     if (translate) {
-      this.instance.rotate(translate);
+      this.instance.translate(translate);
     }
     if (move) {
       this.instance.move(move.x, move.y);

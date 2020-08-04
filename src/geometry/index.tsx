@@ -6,6 +6,7 @@ import Interval from './Interval';
 import Line from './Line';
 import Point from './Point';
 import Polygon from './Polygon';
+import LineAdvance from './LineAdvance';
 
 import { IBaseGemoProps } from './Base';
 
@@ -17,11 +18,13 @@ const GEOM_MAP = {
   line: Line,
   point: Point,
   polygon: Polygon,
+  // bx 做了预设的图形
+  'line-advance': LineAdvance,
 }
 
 export interface IGemo extends IBaseGemoProps {
   /** 几何标记类型 */
-  type: 'area'|'edge'|'heatmap'|'interval'|'line'|'point'|'polygon';
+  type: 'area'|'edge'|'heatmap'|'interval'|'line'|'point'|'polygon'|'line-advance';
   [key: string]: any;
 }
 

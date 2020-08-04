@@ -192,7 +192,12 @@ class ChartHelper {
       return;
     }
     this.extendGroup = null;
-    this.chart.destroy();
+    let chart = this.chart;
+    setTimeout(() => {
+      // 大坑勿改: 这样做是为了等react 先卸载，再销毁图表实例。
+      chart.destroy();
+      chart = null;
+    }, 0)
     this.chart = null;
     this.config = {};
   }
