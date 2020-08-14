@@ -54,7 +54,7 @@ class BasePlot extends React.Component<any> {
     if (!this.g2Instance) {
       this.initInstance();
       this.g2Instance.render();
-    } else if (this.diffConfig()) {
+    } else if (this.diffConfig() || this.shouldReCreate()) {
       // 只有数据更新就不重绘，其他全部直接重新创建实例。
       this.g2Instance.destroy();
       this.initInstance();
@@ -98,9 +98,8 @@ class BasePlot extends React.Component<any> {
   }
 
   shouldReCreate() {
-    const { forceFit } = this.props;
-    const preOptions = this.g2Instance.options;
-    if (!_isEqual(preOptions.forceFit, forceFit)) {
+    const { forceUpdate } = this.props;
+    if (forceUpdate) {
       return true;
     }
     return false;
