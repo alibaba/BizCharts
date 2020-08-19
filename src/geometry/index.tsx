@@ -31,5 +31,7 @@ export interface IGemo extends IBaseGemoProps {
 export default function(props: IGemo) {
   const { type, ...cfg } = props;
   const Geom = GEOM_MAP[type];
-  return <Geom {...cfg} />;
+  if (Geom) return <Geom {...cfg} />;
+  window.console.warn('Only support the below type: area|edge|heatmap|interval|line|point|polygon|line-advance');
+  return null;
 }
