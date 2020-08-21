@@ -1,6 +1,6 @@
 // todo: 图表联动方案
 import { unregisterAction } from '@antv/g2/lib/interaction/action/register';
-import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip';
+import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip/geometry';
 import { uniqueId, forIn, get, set } from '@antv/util';
 
 import { registerInteraction, registerAction } from '../core';

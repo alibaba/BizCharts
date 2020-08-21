@@ -2,7 +2,7 @@
 import { antvDark } from '@antv/g2/lib/theme/style-sheet/dark';
 import { antvLight } from '@antv/g2/lib/theme/style-sheet/light';
 import { createThemeByStylesheet } from '@antv/g2/lib/util/theme';
-import { getTheme, registerTheme } from '@antv/g2/lib/theme';
+import { registerTheme } from '@antv/g2/lib/theme';
 
 export { createThemeByStylesheet, antvLight, antvDark };
 

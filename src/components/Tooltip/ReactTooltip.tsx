@@ -28,6 +28,7 @@ class Tooltip extends React.Component<TooltipProps> {
     super(props, context);
     this.element = props.container;
     this.element.classList.add('bizcharts-tooltip');
+    this.element.classList.add('g2-tooltip');
     this.element.style.width = 'auto';
     this.element.style.height = 'auto';
 
@@ -37,7 +38,7 @@ class Tooltip extends React.Component<TooltipProps> {
   }
 
   overwriteCfg() {
-    const { chartView, children, ...config } = this.props;
+    const { chartView, children, domStyles = {}, ...config } = this.props;
     const { innerContent } = this;
     chartView.on('tooltip:change', ({title, items, x, y}) => {
       if (innerContent.current) {
@@ -46,11 +47,14 @@ class Tooltip extends React.Component<TooltipProps> {
     });
     chartView.tooltip({
       inPlot: false,
+      domStyles,
       ...config,
       container: this.element,
     });
-    const domStyles: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});
-    _modifyCss(this.element, {...domStyles });
+
+    // fixme: 主题要去图表主题，要meger domStyle。
+    const domStylesTheme: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});
+    _modifyCss(this.element, {...domStylesTheme, ...domStyles[CONTAINER_CLASS]});
 
   }
 

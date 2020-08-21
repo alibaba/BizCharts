@@ -3,12 +3,20 @@ import _each from '@antv/util/lib/each';
 import _isFunction from '@antv/util/lib/is-function';
 import _isArray from '@antv/util/lib/is-array';
 import _isEqual from '@antv/util/lib/is-equal';
+import HTMLComponent from '@antv/component/lib/abstract/html-component';
 import { Chart as G2Chart } from '../../core';
 import warn from '../../utils/warning';
 import shallowEqual from '../../utils/shallowEqual';
 import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
+
+
+HTMLComponent['removeDom'] = function() {
+  const container = this.get('container');
+  // 节点不一定有parentNode
+  container && container.parentNode && container.parentNode.removeChild(container);
+}
 
 import { IEvent } from '../../interface';
 
