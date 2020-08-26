@@ -48,7 +48,9 @@ class Group extends React.Component<any> {
     if (group.isChartCanvas) {
       group.chart.off('afterrender', this.handleRender)
     }
-    this.instance.remove(true);
+    if (this.instance) {
+      this.instance.remove(true);
+    }
   }
   public getInstance() {
     return this.instance;

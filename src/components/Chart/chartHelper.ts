@@ -11,14 +11,13 @@ import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 
+import { IEvent } from '../../interface';
 
-HTMLComponent['removeDom'] = function() {
+// @ts-ignore
+HTMLComponent.prototype.removeDom = () => {
   const container = this.get('container');
-  // 节点不一定有parentNode
   container && container.parentNode && container.parentNode.removeChild(container);
 }
-
-import { IEvent } from '../../interface';
 
 import { pickEventName } from './events';
 
