@@ -1,8 +1,8 @@
 import _isNil from '@antv/util/lib/is-nil';
 import { CoordinateCfg, CoordinateActions } from '@antv/g2/lib/interface';
-import useChartView from '../../hooks/useChartView';
 import _isFunction from '@antv/util/lib/is-function';
 // import _tranPropsToArray from '../../utils/tranPropsToArray';
+import useChartView from '../../hooks/useChartView';
 
 export interface ICoordinateProps extends CoordinateCfg {
   /** 坐标系类型 */

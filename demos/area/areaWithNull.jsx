@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
   // Annotation,
+  Interaction,
   Axis,
 } from '../../src';
 
@@ -63,6 +64,7 @@ function Labelline () {
       <Area position="year*value" color="type" />
       <Line position="year*value" color="type" />
       {/* <Annotation.Html /> */}
+      <Interaction type="brush" />
     </Chart>
   );
 }

@@ -12,14 +12,16 @@ import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 
 import { IEvent } from '../../interface';
+import { pickEventName } from './events';
 
 // @ts-ignore
 HTMLComponent.prototype.removeDom = () => {
   const container = this.get('container');
-  container && container.parentNode && container.parentNode.removeChild(container);
+  if (container && container.parentNode) {
+    container.parentNode.removeChild(container);
+  }
 }
 
-import { pickEventName } from './events';
 
 const processData = (data) => {
   if (data && data.rows) {
@@ -199,7 +201,8 @@ class ChartHelper {
       return;
     }
     this.extendGroup = null;
-    let chart = this.chart;
+    let { chart } = this;
+    chart.hide();
     setTimeout(() => {
       // 大坑勿改: 这样做是为了等react 先卸载，再销毁图表实例。
       chart.destroy();

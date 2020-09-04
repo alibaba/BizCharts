@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import Gauge, { GaugeConfig } from '@antv/g2plot/lib/plots/gauge';
 import createPlot from '../createPlot';
 
