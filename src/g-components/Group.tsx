@@ -11,6 +11,7 @@ import { EVENTS } from './Base/events';
 
 export interface IGroupProps extends React.Props<any>{
   [key: string]: any;
+  translate?: [number, number];
 }
 
 class Group extends React.Component<any> {
@@ -25,6 +26,7 @@ class Group extends React.Component<any> {
   handleRender = debounce(() => {
     if (!this.instance) {
       const { group, zIndex, name } = this.props;
+      // children.push 中push 找不到
       this.instance = group.chart.canvas.addGroup({ zIndex, name });
       group.chart.canvas.sort();
       this.setState({ isReady: true })
@@ -55,7 +57,7 @@ class Group extends React.Component<any> {
   public getInstance() {
     return this.instance;
   }
-  configGroup = (props) => {
+  configGroup = (props: IGroupProps) => {
     const { rotate, animate, rotateAtPoint, scale, translate, move } = props;
     if (rotate) {
       this.instance.rotate(rotate);
@@ -68,7 +70,7 @@ class Group extends React.Component<any> {
       this.instance.rotate(scale);
     }
     if (translate) {
-      this.instance.translate(translate);
+      this.instance.translate(translate[0], translate[1]);
     }
     if (move) {
       this.instance.move(move.x, move.y);
