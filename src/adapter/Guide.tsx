@@ -8,7 +8,7 @@ import DataRegion from '../components/Annotation/dataRegion';
 import Html from '../components/Annotation/html';
 import Image from '../components/Annotation/image';
 import Line from '../components/Annotation/line';
-import Regiion from '../components/Annotation/region';
+import Region from '../components/Annotation/region';
 import Text from '../components/Annotation/text';
 
 const Guide = (props) => {
@@ -22,7 +22,7 @@ Guide.DataRegion = DataRegion;
 Guide.Html = Html;
 Guide.Image = Image;
 Guide.Line = Line;
-Guide.Regiion = Regiion;
+Guide.Region = Region;
 Guide.Text = Text;
 
 export default Guide;
