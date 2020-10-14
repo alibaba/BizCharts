@@ -6,7 +6,7 @@ import IntervalLabel from '@antv/g2/lib/geometry/label/interval';
 import PieLabel from '@antv/g2/lib/geometry/label/pie';
 import PolarLabel from '@antv/g2/lib/geometry/label/polar';
 // 注册 Geometry label 内置的布局函数
-import { distribute } from '@antv/g2/lib/geometry/label/layout/distribute';
+import { distribute } from '@antv/g2/lib/geometry/label/layout/pie/distribute';
 import { limitInCanvas } from '@antv/g2/lib/geometry/label/layout/limit-in-canvas';
 import { limitInShape } from '@antv/g2/lib/geometry/label/layout/limit-in-shape';
 import { fixedOverlap, overlap } from '@antv/g2/lib/geometry/label/layout/overlap';

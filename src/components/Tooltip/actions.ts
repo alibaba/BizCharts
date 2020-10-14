@@ -1,13 +1,15 @@
 
 import ActiveRegion from '@antv/g2/lib/interaction/action/active-region';
-import SiblingTooltip from '@antv/g2/lib/interaction/action/component/sibling-tooltp';
-import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip';
+import SiblingTooltip from '@antv/g2/lib/interaction/action/component/tooltip/sibling';
+import TooltipAction from '@antv/g2/lib/interaction/action/component/tooltip/geometry';
+import EllipsisTextAction from '@antv/g2/lib/interaction/action/component/tooltip/ellipsis-text';
 
 import { registerInteraction, registerAction } from '../../core';
 
 registerAction('tooltip', TooltipAction);
 registerAction('sibling-tooltip', SiblingTooltip);
 registerAction('active-region', ActiveRegion);
+registerAction('ellipsis-text', EllipsisTextAction);
 
 // 注册 tooltip 的 interaction
 registerInteraction('tooltip', {
@@ -21,6 +23,38 @@ registerInteraction('tooltip', {
     { trigger: 'plot:touchend', action: 'tooltip:hide' },
   ],
 });
+
+registerInteraction('ellipsis-text', {
+  start: [
+    {
+      trigger: 'legend-item-name:mousemove',
+      action: 'ellipsis-text:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+    {
+      trigger: 'legend-item-name:touchstart',
+      action: 'ellipsis-text:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+    {
+      trigger: 'axis-label:mousemove',
+      action: 'ellipsis-text:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+    {
+      trigger: 'axis-label:touchstart',
+      action: 'ellipsis-text:show',
+      throttle: { wait: 50, leading: true, trailing: false },
+    },
+  ],
+  end: [
+    { trigger: 'legend-item-name:mouseleave', action: 'ellipsis-text:hide' },
+    { trigger: 'legend-item-name:touchend', action: 'ellipsis-text:hide' },
+    { trigger: 'axis-label:mouseleave', action: 'ellipsis-text:hide' },
+    { trigger: 'axis-label:touchend', action: 'ellipsis-text:hide' },
+  ],
+});
+
 
 // click 触发
 registerInteraction('tooltip-click', {

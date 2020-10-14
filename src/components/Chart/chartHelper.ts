@@ -3,6 +3,7 @@ import _each from '@antv/util/lib/each';
 import _isFunction from '@antv/util/lib/is-function';
 import _isArray from '@antv/util/lib/is-array';
 import _isEqual from '@antv/util/lib/is-equal';
+import HTMLComponent from '@antv/component/lib/abstract/html-component';
 import { Chart as G2Chart } from '../../core';
 import warn from '../../utils/warning';
 import shallowEqual from '../../utils/shallowEqual';
@@ -11,8 +12,16 @@ import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 
 import { IEvent } from '../../interface';
-
 import { pickEventName } from './events';
+
+// @ts-ignore
+HTMLComponent.prototype.removeDom = () => {
+  const container = this.get('container');
+  if (container && container.parentNode) {
+    container.parentNode.removeChild(container);
+  }
+}
+
 
 const processData = (data) => {
   if (data && data.rows) {
@@ -192,7 +201,8 @@ class ChartHelper {
       return;
     }
     this.extendGroup = null;
-    let chart = this.chart;
+    let { chart } = this;
+    chart.hide();
     setTimeout(() => {
       // 大坑勿改: 这样做是为了等react 先卸载，再销毁图表实例。
       chart.destroy();

@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.13",
+  "version": "4.0.14",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -44,8 +44,8 @@
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
-    "@antv/component": "^0.5.6",
-    "@antv/g2": "4.0.14",
+    "@antv/component": "^0.7.2",
+    "@antv/g2": "4.0.15",
     "@antv/g2plot": "1.1.23",
     "@antv/util": "^2.0.5",
     "d3-color": "^1.4.1",

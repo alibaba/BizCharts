@@ -3,17 +3,16 @@ import { getShapeAttrs, getConstraint } from '@antv/g2/lib/geometry/shape/area/u
 // 按需使用需要加载图形
 import '@antv/g2/lib/geometry/shape/line/step';
 import _isObject from '@antv/util/lib/is-object';
-import _isArray from '@antv/util/lib/is-array';
 import _deepMix from '@antv/util/lib/deep-mix';
 import _get from '@antv/util/lib/get';
 import _set from '@antv/util/lib/set';
+import { registerShape } from '@antv/g2/lib/geometry/shape/base';
 import * as d3Color from 'd3-color';
 import useChartView from '../hooks/useChartView';
 import Line, { ILineGemoProps } from './Line';
 import Point, { IPointGemoProps } from './Point';
-import { registerShape } from '@antv/g2/lib/geometry/shape/base';
 import Area, { IAreaGemoProps }  from './Area';
-import Tooltip from '../components/Tooltip';
+
 
 
 export interface ILineAdvanceGemoProps extends ILineGemoProps {
@@ -98,7 +97,9 @@ registerShape('area', 'gradient', {
     const attrs = getShapeAttrs(cfg, false, false, this);
     const c = attrs.fill;
     const clr = d3Color.color(c);
-    clr && (attrs.fill = `l (90) 0:${d3Color.rgb(clr.r, clr.g, clr.b, 1).formatRgb()} 1:${d3Color.rgb(clr.r, clr.g, clr.b, 0.1).formatRgb()}`);
+    if (clr) {
+      attrs.fill = `l (90) 0:${d3Color.rgb(clr.r, clr.g, clr.b, 1).formatRgb()} 1:${d3Color.rgb(clr.r, clr.g, clr.b, 0.1).formatRgb()}`;
+    }
     // attrs.fill = 'red';
     const shape = container.addShape({
       type: 'path',
@@ -114,11 +115,13 @@ registerShape('area', 'gradient', {
  */
 registerShape('area', 'gradient-smooth', {
   draw(cfg, container) {
-    const coordinate = this.coordinate;
+    const { coordinate } = this;
     const attrs = getShapeAttrs(cfg, false, true, this, getConstraint(coordinate));
     const c = attrs.fill;
     const clr = d3Color.color(c);
-    clr && (attrs.fill = `l (90) 0:${d3Color.rgb(clr.r, clr.g, clr.b, 1).formatRgb()} 1:${d3Color.rgb(clr.r, clr.g, clr.b, 0.1).formatRgb()}`);
+    if (clr) {
+      attrs.fill = `l (90) 0:${d3Color.rgb(clr.r, clr.g, clr.b, 1).formatRgb()} 1:${d3Color.rgb(clr.r, clr.g, clr.b, 0.1).formatRgb()}`;
+    }
     // attrs.fill = 'red';
     const shape = container.addShape({
       type: 'path',

@@ -13,6 +13,7 @@ module.exports = {
     'no-lonely-if': 0,
     'no-param-reassign': 0,
     'no-useless-escape': 0,
-    'no-plusplus': 0
+    'no-plusplus': 0,
+    'react/no-typos': 0
   }
 };
