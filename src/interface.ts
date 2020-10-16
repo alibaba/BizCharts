@@ -120,6 +120,8 @@ export interface IChartProps extends IViewProps {
   events?: {
     [EventName: string]: EventFunc
   },
+  // 发生错误的时候显示的内容
+  errorContent? : React.ReactNode,
   [key: string]: any;
 }
 
