@@ -15,7 +15,7 @@ import { IEvent } from '../../interface';
 import { pickEventName } from './events';
 
 // @ts-ignore
-HTMLComponent.prototype.removeDom = () => {
+HTMLComponent.prototype.removeDom = function() {
   const container = this.get('container');
   if (container && container.parentNode) {
     container.parentNode.removeChild(container);
