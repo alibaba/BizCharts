@@ -80,15 +80,15 @@ export class Chart extends React.Component<IChartProps> {
   }
 
   render() {
-    const { placeholder, data } = this.props;
+    const { placeholder, data, errorContent } = this.props;
     if ((data === undefined || data.length === 0) && placeholder) {
       this.chartHelper.destory();
       const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div> : placeholder;
-      return <ErrorBoundary>{pl}</ErrorBoundary>;
+      return <ErrorBoundary errorContent={errorContent}>{pl}</ErrorBoundary>;
     }
     this.chartHelper.update(this.props);
     return (
-      <ErrorBoundary key={this.chartHelper.key}>
+      <ErrorBoundary errorContent={errorContent} key={this.chartHelper.key}>
         <RootChartContext.Provider value={this.chartHelper}>
           <ChartViewContext.Provider value={this.chartHelper.chart}>
             <GroupContext.Provider value={this.chartHelper.extendGroup}>
