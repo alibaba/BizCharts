@@ -84,8 +84,10 @@ const Basic = () => {
           setData(data3);
           
         }
-      }}>click me</div>
-    <Chart data={data} width={300} height={300} >
+      }}>click me！</div>
+    <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
+      chart.on('tooltip:change', console.log)
+    }} >
       <Interval position="year*value" />
       <Coordinate transpose />
       <Tooltip>

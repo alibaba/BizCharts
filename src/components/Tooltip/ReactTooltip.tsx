@@ -40,7 +40,7 @@ class Tooltip extends React.Component<TooltipProps> {
   overwriteCfg() {
     const { chartView, children, domStyles = {}, ...config } = this.props;
     const { innerContent } = this;
-    chartView.on('tooltip:change', ({title, items, x, y}) => {
+    chartView.on('tooltip:change', ({title, items, x, y, ...others}) => {
       if (innerContent.current) {
         innerContent.current.refresh(children(title, items, x, y))
       };

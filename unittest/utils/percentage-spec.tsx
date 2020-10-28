@@ -13,7 +13,7 @@ describe('percentage', () => {
     expect(res[0].percentage).toEqual(0.2);
     expect(res[1].percentage).toEqual(0.5);
   });
-  it('groupby', () => {
+  it('percentage', () => {
     const data = [
       { name: 'a', year: '1991', value: 2},
       { name: 'a', year: '1992', value: 2},

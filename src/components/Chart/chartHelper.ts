@@ -131,6 +131,7 @@ class ChartHelper {
     // 数据
     if(_isArray(preData) && preData.length) {
       // 数据只做2级浅比较
+      // fixme: 做4级比较
       let isEqual = true;
       if (preData.length !== data.length) {
         isEqual = false;
