@@ -82,7 +82,8 @@ class ChartHelper {
       && data.length !== 0 ) {
       return true;
     }
-    const unCompareProps = [...REACT_PIVATE_PROPS, 'width', 'height', 'container', '_container', '_interactions', 'placeholder',  /^on/, /^\_on/];
+    // scale 切换不需要重建实例
+    const unCompareProps = [...REACT_PIVATE_PROPS, 'scale', 'width', 'height', 'container', '_container', '_interactions', 'placeholder',  /^on/, /^\_on/];
     if (!_isEqual(pickWithout(preOptions, [...unCompareProps]),
       pickWithout(options, [...unCompareProps]))) {
       return true;
@@ -133,7 +134,12 @@ class ChartHelper {
       // 数据只做2级浅比较
       // fixme: 做4级比较
       let isEqual = true;
+      if (newConfig.notCompareData) {
+        // 手动关闭对比
+        isEqual = false;
+      }
       if (preData.length !== data.length) {
+        // 长度不相等
         isEqual = false;
       } else {
         preData.forEach((element, index) => {
@@ -143,7 +149,7 @@ class ChartHelper {
         });
       }
       if (!isEqual) {
-        this.chart.changeData(data);
+        this.chart.data(data); // changeData 会发生重渲染
       }
     } else {
       this.chart.data(data);
@@ -151,6 +157,13 @@ class ChartHelper {
 
     // 比例尺
     this.chart.scale(options.scale);
+
+    // 动画
+    if (options.animate === false) {
+      this.chart.animate(false);
+    } else {
+      this.chart.animate(true);
+    }
 
     // 交互 interactions
     preInteractions.forEach(interact => {
