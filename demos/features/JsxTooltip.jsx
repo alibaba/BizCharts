@@ -3,8 +3,6 @@ import {
   Chart,
   Interval,
   Tooltip,
-  Effects,
-  G2,
   Coordinate
 } from "../../src";
 
@@ -49,7 +47,6 @@ const data3 = [
 const Basic = () => {
   const [ data, setData ] = useState(data1);
   const div = useRef(null);
-  console.log(G2);
 
   useEffect(() => {
     // setInterval(() => {
@@ -64,7 +61,6 @@ const Basic = () => {
     //   }
     //   if (count > 0.2) {
     //     setData(data1);
-        
     //   }
     // }, 2000)
   }, [])
@@ -90,13 +86,13 @@ const Basic = () => {
     }} >
       <Interval position="year*value" />
       <Coordinate transpose />
-      <Tooltip>
+      {Math.random() > 0.5 ? <Tooltip>
         {
           (title) => {
             return title;
           }
         }
-      </Tooltip>
+      </Tooltip> : null}
     </Chart>
     <Chart data={data} width={500} height={300} autoFit={!(Math.random()>0.5)} >
       <Interval position="year*value" />
