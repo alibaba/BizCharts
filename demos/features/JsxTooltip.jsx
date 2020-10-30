@@ -48,6 +48,9 @@ const Basic = () => {
   const [ data, setData ] = useState(data1);
   const div = useRef(null);
 
+  const count = Math.random();
+  console.log(count)
+
   useEffect(() => {
     // setInterval(() => {
     //   const count = Math.random();
@@ -81,18 +84,34 @@ const Basic = () => {
           
         }
       }}>click me！</div>
+    <div style={{ transform: 'scale(0.5)translate(10px,30px)' }}>
+      <h5>scale下的tooltip</h5>
+      <Chart data={data}  width={300} height={300} onGetG2Instancce={(chart) => {
+        chart.on('tooltip:show', () => console.log('show'))
+      }} >
+        <Interval position="year*value" />
+        <Tooltip onShow={() => console.log('show')} />
+      </Chart>
+      <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
+        // chart.on('tooltip:change', console.log)
+      }} >
+        <Interval position="year*value" />
+        <Coordinate transpose />
+      </Chart>
+      
+    </div>
     <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
-      chart.on('tooltip:change', console.log)
+      // chart.on('tooltip:change', console.log)
     }} >
       <Interval position="year*value" />
       <Coordinate transpose />
-      {Math.random() > 0.5 ? <Tooltip>
+      {count > 0.5 ? <Tooltip>
         {
           (title) => {
             return title;
           }
         }
-      </Tooltip> : null}
+      </Tooltip> : <Tooltip />}
     </Chart>
     <Chart data={data} width={500} height={300} autoFit={!(Math.random()>0.5)} >
       <Interval position="year*value" />

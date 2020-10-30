@@ -6,7 +6,25 @@ import EllipsisTextAction from '@antv/g2/lib/interaction/action/component/toolti
 
 import { registerInteraction, registerAction } from '../../core';
 
-registerAction('tooltip', TooltipAction);
+class BizTooltipAction extends TooltipAction {
+  // 容器缩放后tooltip 失效，此函数仅修复canvas，引擎下的问题。
+  // todo: svg 下缩放后的getTooltipItems有问题, 从需要g包解。
+  protected showTooltip(view, point) {
+    // 相同位置不重复展示
+    const { x, y } = point;
+    const el = view.canvas.get('el');
+    const bbox = el.getBoundingClientRect();
+    const setWidth = view.width;
+    const setHeight = view.height;
+    const { width: realWidth, height: realHeight } = bbox;
+    view.showTooltip({
+      x: x / (realWidth / setWidth),
+      y: y / (realHeight / setHeight)
+    });
+  }
+}
+
+registerAction('tooltip', BizTooltipAction);
 registerAction('sibling-tooltip', SiblingTooltip);
 registerAction('active-region', ActiveRegion);
 registerAction('ellipsis-text', EllipsisTextAction);

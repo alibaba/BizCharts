@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.15-beta.0",
+  "version": "4.0.15-beta.5",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -46,7 +46,7 @@
   "dependencies": {
     "@antv/component": "^0.7.2",
     "@antv/g2": "4.0.15",
-    "@antv/g2plot": "^1.1.28",
+    "@antv/g2plot": "1.1.28",
     "@antv/util": "^2.0.5",
     "d3-color": "^1.4.1",
     "react-reconciler": "^0.25.1",

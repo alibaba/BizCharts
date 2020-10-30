@@ -38,8 +38,10 @@ export interface ITooltip extends TooltipCfg, React.ComponentProps<any> {
 const TooltipNormal: React.FC<ITooltip> = (props) => {
   const { visible = true, children, ...options } = props;
   const chartView = useChartView();
+  chartView.getController('tooltip').clear();
+  console.log('clear')
   if (visible === true) {
-    chartView.tooltip({ showMarkers: false, ...options });
+    chartView.tooltip({ customContent: null, showMarkers: false, ...options });
   } else {
     chartView.tooltip(false);
   }

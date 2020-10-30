@@ -48,6 +48,8 @@ export interface IChartProps extends IViewProps {
   container?: HTMLElement;
   /** 图表宽度。 */
   width?: number;
+  /** 当数据量过大的时候，可以手动关闭此选项，避免对比数据带来的性能开销 */
+  notCompareData?: boolean;
   /** 图表高度。 */
   height?: number;
   /**

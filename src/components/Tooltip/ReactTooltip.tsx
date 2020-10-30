@@ -1,13 +1,10 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 
 import _get from '@antv/util/lib/get';
 import _modifyCss from '@antv/dom-util/lib/modify-css';
-import withContainer from '../../boundary/withContainer';
 import { withView } from '../../context/view';
 import { getTheme } from '../../core';
-
-import InnerContent from './inner';
 
 
 const CONTAINER_CLASS: string = 'g2-tooltip';
@@ -21,36 +18,44 @@ class Tooltip extends React.Component<TooltipProps> {
   // HTMLElement
   protected element: HTMLElement ;
 
-  private innerContent: RefObject<InnerContent> = React.createRef();
-  private portal:  RefObject<HTMLDivElement> = React.createRef();
-
-  constructor(props, context) {
-    super(props, context);
-    this.element = props.container;
-    this.element.classList.add('bizcharts-tooltip');
-    this.element.classList.add('g2-tooltip');
-    this.element.style.width = 'auto';
-    this.element.style.height = 'auto';
-
+  private getElement() {
+    if (!this.element) {
+      this.element = document.createElement('div');
+      this.element.classList.add('bizcharts-tooltip');
+      this.element.classList.add('g2-tooltip');
+      this.element.style.width = 'auto';
+      this.element.style.height = 'auto';
+    }
+    return this.element;
   }
+
   componentWillUnmount() {
-    this.innerContent = null;
+    const { chartView } = this.props;
+    if (this.element) {
+      this.element.remove();
+    }
+    chartView.getController('tooltip').clear();
+    chartView.off('tooltip:change', this.renderInnder);
+  }
+
+  renderInnder = ({title, items, x, y}) => {
+    console.log('renderInnder')
+    // 当数据变化的时候渲染, todo: 新建fiber根节点，和react虚拟dom的性能对比报告
+    ReactDom.render(this.props.children(title, items, x, y), this.getElement());
   }
 
   overwriteCfg() {
     const { chartView, children, domStyles = {}, ...config } = this.props;
-    const { innerContent } = this;
-    chartView.on('tooltip:change', ({title, items, x, y, ...others}) => {
-      if (innerContent.current) {
-        innerContent.current.refresh(children(title, items, x, y))
-      };
-    });
+
     chartView.tooltip({
       inPlot: false,
       domStyles,
       ...config,
-      container: this.element,
+      // 坐标移动即渲染
+      customContent: () => this.getElement()
     });
+
+    chartView.on('tooltip:change', this.renderInnder);
 
     // fixme: 主题要去图表主题，要meger domStyle。
     const domStylesTheme: object = _get(getTheme(), ['components', 'tooltip', 'domStyles', CONTAINER_CLASS], {});
@@ -60,10 +65,8 @@ class Tooltip extends React.Component<TooltipProps> {
 
   render() {
     this.overwriteCfg();
-    return ReactDom.createPortal(<div ref={this.portal}>
-      <InnerContent ref={this.innerContent} />
-    </div>, this.element); // 无子组件
+    return null; // 无子组件
   }
 }
 
-export default withContainer<TooltipProps>(withView<TooltipProps>(Tooltip));
+export default withView<TooltipProps>(Tooltip);
