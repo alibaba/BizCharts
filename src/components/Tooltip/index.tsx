@@ -38,8 +38,9 @@ export interface ITooltip extends TooltipCfg, React.ComponentProps<any> {
 const TooltipNormal: React.FC<ITooltip> = (props) => {
   const { visible = true, children, ...options } = props;
   const chartView = useChartView();
+  chartView.getController('tooltip').clear();
   if (visible === true) {
-    chartView.tooltip({ showMarkers: false, ...options });
+    chartView.tooltip({ customContent: null, showMarkers: false, ...options });
   } else {
     chartView.tooltip(false);
   }
@@ -60,13 +61,13 @@ export default function Tooltip(props: ITooltip) {
   chartView.removeInteraction('tooltip-click');
   chartView.removeInteraction('tooltip-lock');
 
-  if (lock) {
-    // hover的时候触发，但是点击的时候锁定位置
-    chartView.interaction(`tooltip-lock`);
-  } else if (triggerOn === 'click') {
+  if (triggerOn === 'click') {
     // 只有click的时候才会出现tooltip，hover 无效
     chartView.interaction(`tooltip-click`);
-  } else {
+  } else if (lock) {
+    // hover的时候触发，但是点击的时候锁定位置
+    chartView.interaction(`tooltip-lock`);
+  }  else {
     // click不会有任何动作，只有hover的时候跟随
     chartView.interaction(`tooltip`);
   }

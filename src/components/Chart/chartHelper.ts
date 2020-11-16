@@ -3,7 +3,7 @@ import _each from '@antv/util/lib/each';
 import _isFunction from '@antv/util/lib/is-function';
 import _isArray from '@antv/util/lib/is-array';
 import _isEqual from '@antv/util/lib/is-equal';
-import HTMLComponent from '@antv/component/lib/abstract/html-component';
+import HTMLComponent from '@antv/component/esm/abstract/html-component';
 import { Chart as G2Chart } from '../../core';
 import warn from '../../utils/warning';
 import shallowEqual from '../../utils/shallowEqual';
@@ -11,13 +11,12 @@ import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 
-const xss = require("xss");
-
 import { IEvent } from '../../interface';
 import { pickEventName } from './events';
 
 // @ts-ignore
-HTMLComponent.prototype.removeDom = () => {
+// fixme: @antv/component@0.7.2 以上版本已修复，但因为g2plot锁到0.6.3
+HTMLComponent.prototype.removeDom = function() {
   const container = this.get('container');
   if (container && container.parentNode) {
     container.parentNode.removeChild(container);
@@ -40,7 +39,7 @@ class ChartHelper {
   public key: string;
   
   createInstance(config) {
-    this.chart = new G2Chart(config);
+    this.chart = new G2Chart({ ...config });
     this.key = uniqueId('bx-chart');
     this.chart.emit('initialed');
     this.isNewInstance = true; // 更新了实例的标记
@@ -84,7 +83,8 @@ class ChartHelper {
       && data.length !== 0 ) {
       return true;
     }
-    const unCompareProps = [...REACT_PIVATE_PROPS, 'width', 'height', 'container', '_container', '_interactions', 'placeholder',  /^on/, /^\_on/];
+    // scale 切换不需要重建实例
+    const unCompareProps = [...REACT_PIVATE_PROPS, 'scale', 'width', 'height', 'container', '_container', '_interactions', 'placeholder',  /^on/, /^\_on/];
     if (!_isEqual(pickWithout(preOptions, [...unCompareProps]),
       pickWithout(options, [...unCompareProps]))) {
       return true;
@@ -96,12 +96,6 @@ class ChartHelper {
     if (this.shouldReCreateInstance(newConfig)) {
       this.destory();
       this.createInstance(newConfig);
-    }
-
-    if( Array.isArray(newConfig.data) ) {	// Clean item str to avoid XSS
-      newConfig.data.forEach(el => {
-        if( el.item ) el.item =  xss(el.item)
-      })
     }
 
     // 重置
@@ -140,8 +134,14 @@ class ChartHelper {
     // 数据
     if(_isArray(preData) && preData.length) {
       // 数据只做2级浅比较
+      // fixme: 做4级比较
       let isEqual = true;
+      if (newConfig.notCompareData) {
+        // 手动关闭对比
+        isEqual = false;
+      }
       if (preData.length !== data.length) {
+        // 长度不相等
         isEqual = false;
       } else {
         preData.forEach((element, index) => {
@@ -151,7 +151,7 @@ class ChartHelper {
         });
       }
       if (!isEqual) {
-        this.chart.changeData(data);
+        this.chart.data(data); // changeData 会发生重渲染
       }
     } else {
       this.chart.data(data);
@@ -159,6 +159,13 @@ class ChartHelper {
 
     // 比例尺
     this.chart.scale(options.scale);
+
+    // 动画
+    if (options.animate === false) {
+      this.chart.animate(false);
+    } else {
+      this.chart.animate(true);
+    }
 
     // 交互 interactions
     preInteractions.forEach(interact => {

@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -33,7 +33,7 @@
     "fix": "tslint 'src/**/*.ts?(x)' --project tsconfig.json",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "prepublishOnly": "npm run test && npm run build && np --no-cleanup --yolo --no-publish",
+    "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish",
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
@@ -44,16 +44,15 @@
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
-    "@antv/component": "^0.7.2",
-    "@antv/g2": "4.0.15",
-    "@antv/g2plot": "1.1.23",
+    "@antv/component": "^0.6.3",
+    "@antv/g2": "^4.0.15",
+    "@antv/g2plot": "^1.1.28",
     "@antv/util": "^2.0.5",
     "d3-color": "^1.4.1",
     "react-reconciler": "^0.25.1",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
-    "warning": "^4.0.3",
-    "xss": "^1.0.8"
+    "warning": "^4.0.3"
   },
   "devDependencies": {
     "@antv/data-set": "^0.11.4",
@@ -78,6 +77,7 @@
     "@welldone-software/why-did-you-render": "^3.3.1",
     "airbnb-js-shims": "^2.2.0",
     "aphrodite": "^2.3.1",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-inline-react-svg": "^1.1.0",
     "babel-plugin-inline-svg": "^1.0.1",
@@ -101,10 +101,11 @@
     "gulp-util": "^3.0.8",
     "imports-loader": "^0.8.0",
     "in-publish": "^2.0.0",
-    "jest": "^26.0.1",
+    "jest": "26.0.1",
     "jest-electron": "^0.1.11",
     "jest-extended": "^0.11.5",
     "js-beautify": "^1.10.2",
+    "mocha": "^8.2.0",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.7.4",
     "node-sass": "^4.12.0",

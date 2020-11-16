@@ -48,30 +48,20 @@ const tc = createTooltipConnector();
 const Basic = () => {
   return (
     <div>
-      <Chart data={data} height={100} autoFit onGetG2Instance={(chart) => {
-        tc.connect('c1', chart, (d, c) => {
-          // debugger
-          return c.getXY(d._origin);
-        });
-      }} >
+      <Chart data={data} height={100} autoFit>
         <Interval position="year*value" />
         <Coordinate transpose />
-        <Tooltip  />
+        <Tooltip shared linkage="tc" />
       </Chart>
-      <Chart data={data2} height={100} autoFit onGetG2Instance={(chart) => {
-        tc.connect('c2', chart);
-      }} >
+      <Chart data={data2} height={100} autoFit >
         <Interval position="year*value" />
         <Coordinate transpose />
+        <Tooltip shared linkage="tc" />
       </Chart>
-      <Chart  data={data3} height={100} autoFit onGetG2Instance={(chart) => {
-        tc.connect('c3', chart, (d, c) => {
-          // debugger
-          return c.getXY(d._origin);
-        });
-      }} >
+      <Chart  data={data3} height={100} autoFit  >
         <Interval position="year*value" />
         <Coordinate transpose />
+        <Tooltip shared linkage="tc" />
       </Chart>
     </div>
   );

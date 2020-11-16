@@ -11,6 +11,7 @@
     "jsx": "react",
     "baseUrl": "./",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "paths": {
       "bizcharts": ["./src/index"],
       "bizcharts/*": ["./src/*"],

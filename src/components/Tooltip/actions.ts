@@ -6,6 +6,7 @@ import EllipsisTextAction from '@antv/g2/lib/interaction/action/component/toolti
 
 import { registerInteraction, registerAction } from '../../core';
 
+
 registerAction('tooltip', TooltipAction);
 registerAction('sibling-tooltip', SiblingTooltip);
 registerAction('active-region', ActiveRegion);

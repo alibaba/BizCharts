@@ -61,7 +61,7 @@ const Basic = () => {
     }, 2000)
   }, [])
   return (
-    <Chart  data={data} height={500} autoFit>
+    <Chart animate={false} data={data} height={500} autoFit>
       <Interval position="year*value" />
       <Coordinate transpose />
     </Chart>

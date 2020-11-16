@@ -3,8 +3,6 @@ import {
   Chart,
   Interval,
   Tooltip,
-  Effects,
-  G2,
   Coordinate
 } from "../../src";
 
@@ -49,7 +47,9 @@ const data3 = [
 const Basic = () => {
   const [ data, setData ] = useState(data1);
   const div = useRef(null);
-  console.log(G2);
+
+  const count = Math.random();
+  console.log(count)
 
   useEffect(() => {
     // setInterval(() => {
@@ -64,7 +64,6 @@ const Basic = () => {
     //   }
     //   if (count > 0.2) {
     //     setData(data1);
-        
     //   }
     // }, 2000)
   }, [])
@@ -84,17 +83,36 @@ const Basic = () => {
           setData(data3);
           
         }
-      }}>click me</div>
-    <Chart data={data} width={300} height={300} >
+      }}>click me！</div>
+    <div style={{ transform: 'scale(0.5)' }}>
+      <h5>scale下的tooltip</h5>
+      <Chart data={data} supportCSSTransform width={300} height={300} onGetG2Instancce={(chart) => {
+        chart.on('plot:mousemove', () => console.log('show', chart))
+      }} >
+        <Interval position="year*value" />
+        <Tooltip onShow={(...arg) => console.log('show', ...arg)} shared />
+      </Chart>
+      <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
+        chart.on('tooltip:change', console.log)
+      }} >
+        <Interval position="year*value" />
+        <Coordinate transpose />
+        <Tooltip onShow={() => console.log('show')} shared />
+      </Chart>
+      
+    </div>
+    <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
+      chart.on('tooltip:change', console.log)
+    }} >
       <Interval position="year*value" />
       <Coordinate transpose />
-      <Tooltip>
+      {count > 0.5 ? <Tooltip>
         {
           (title) => {
             return title;
           }
         }
-      </Tooltip>
+      </Tooltip> : <Tooltip />}
     </Chart>
     <Chart data={data} width={500} height={300} autoFit={!(Math.random()>0.5)} >
       <Interval position="year*value" />
