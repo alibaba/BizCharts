@@ -33,7 +33,7 @@
     "fix": "tslint 'src/**/*.ts?(x)' --project tsconfig.json",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "prepublishOnly": "npm run test && npm run build && np --no-cleanup --yolo --no-publish",
+    "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish",
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",

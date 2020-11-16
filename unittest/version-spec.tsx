@@ -1,10 +1,9 @@
-import shallowEqual from '../src/utils/shallowEqual';
 import { VERSION } from '../src/core';
 import packageJson from '../package.json';
 
+// 全局变量中的版本号是否和 package.json 中的一致
 describe('version', () => {
   it('should equal package.json', () => {
-    const data = [{x:1,y:1}];
     expect(
       packageJson.version
     ).toEqual(VERSION)
