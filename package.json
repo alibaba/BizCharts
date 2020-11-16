@@ -134,11 +134,13 @@
     "runner": "jest-electron/runner",
     "testEnvironment": "jest-electron/environment",
     "preset": "ts-jest",
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest",
-      "^.+\\.(js|jsx)$": "babel-jest"
-    },
-    "testRegex": "/unittest/.*-spec\\.(ts|tsx|js)$",
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "testRegex": "/unittest/.*-spec\\.tsx?$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
