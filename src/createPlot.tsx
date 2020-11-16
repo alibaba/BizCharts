@@ -16,11 +16,11 @@ import { REACT_PIVATE_PROPS } from './utils/constant';
 const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
 
 class BasePlot extends React.Component<any> {
+  [x: string]: any;
   g2Instance: any;
   preConfig: any;
-  public _context = {
-    chart: this.g2Instance,
-  }
+  public _context: { chart: any } = { chart: null };
+
   componentDidMount() {
     if (this.props.children) {
       this.getChartView().render();
@@ -39,6 +39,7 @@ class BasePlot extends React.Component<any> {
       setTimeout(() => {
         this.g2Instance.destroy();
         this.g2Instance = null;
+        this._context.chart = null;
       }, 0)
     }
   }
@@ -68,6 +69,7 @@ class BasePlot extends React.Component<any> {
   initInstance() {
     const { container, PlotClass, onGetG2Instance, children, ...options } = this.props;
     this.g2Instance = new PlotClass(container, options);
+    this._context.chart = this.g2Instance;
     if(_isFunction(onGetG2Instance)) {
       onGetG2Instance(this.g2Instance);
     }

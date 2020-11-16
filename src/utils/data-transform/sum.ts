@@ -1,4 +1,4 @@
-/* from antv/ */
+/* from @antv */
 
 /**
  * Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
