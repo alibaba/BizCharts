@@ -52,7 +52,8 @@
     "react-reconciler": "^0.25.1",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
-    "warning": "^4.0.3"
+    "warning": "^4.0.3",
+    "xss": "^1.0.8"
   },
   "devDependencies": {
     "@antv/data-set": "^0.11.4",

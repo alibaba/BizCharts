@@ -11,6 +11,8 @@ import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 
+const xss = require("xss");
+
 import { IEvent } from '../../interface';
 import { pickEventName } from './events';
 
@@ -97,6 +99,13 @@ class ChartHelper {
       this.destory();
       this.createInstance(newConfig);
     }
+
+    if( Array.isArray(newConfig.data) ) {	// Clean item str to avoid XSS
+      newConfig.data.forEach(el => {
+        if( el.item ) el.item =  xss(el.item)
+      })
+    }
+
     // 重置
     if (newConfig.pure) {
       // 纯画布 关闭
