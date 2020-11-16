@@ -7,7 +7,6 @@ import useChartView from '../../hooks/useChartView';
 // 引入 slider 组件
 registerComponentController('slider', _Slider);
 
-
 interface TrendCfg {
   // 数据
   data: number[];
@@ -40,6 +39,7 @@ export interface ISliderProps extends SliderOption {
 function Slider(props: ISliderProps) {
   const view = useChartView();
   view.option('slider', props);
+  view.render(); // fixme: 4.1.0 后g2已修复
   return null;
 }
 

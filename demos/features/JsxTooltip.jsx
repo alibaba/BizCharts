@@ -84,24 +84,25 @@ const Basic = () => {
           
         }
       }}>click me！</div>
-    <div style={{ transform: 'scale(0.5)translate(10px,30px)' }}>
+    <div style={{ transform: 'scale(0.5)' }}>
       <h5>scale下的tooltip</h5>
-      <Chart data={data}  width={300} height={300} onGetG2Instancce={(chart) => {
-        chart.on('tooltip:show', () => console.log('show'))
+      <Chart data={data} supportCSSTransform width={300} height={300} onGetG2Instancce={(chart) => {
+        chart.on('plot:mousemove', () => console.log('show', chart))
       }} >
         <Interval position="year*value" />
-        <Tooltip onShow={() => console.log('show')} />
+        <Tooltip onShow={(...arg) => console.log('show', ...arg)} shared />
       </Chart>
       <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
-        // chart.on('tooltip:change', console.log)
+        chart.on('tooltip:change', console.log)
       }} >
         <Interval position="year*value" />
         <Coordinate transpose />
+        <Tooltip onShow={() => console.log('show')} shared />
       </Chart>
       
     </div>
     <Chart data={data} width={300} height={300} onGetG2Instancce={(chart) => {
-      // chart.on('tooltip:change', console.log)
+      chart.on('tooltip:change', console.log)
     }} >
       <Interval position="year*value" />
       <Coordinate transpose />

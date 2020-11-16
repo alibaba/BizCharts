@@ -18,6 +18,15 @@ class Tooltip extends React.Component<TooltipProps> {
   // HTMLElement
   protected element: HTMLElement ;
 
+  componentWillUnmount() {
+    const { chartView } = this.props;
+    if (this.element) {
+      this.element.remove();
+    }
+    chartView.getController('tooltip').clear();
+    chartView.off('tooltip:change', this.renderInnder);
+  }
+
   private getElement() {
     if (!this.element) {
       this.element = document.createElement('div');
@@ -29,24 +38,13 @@ class Tooltip extends React.Component<TooltipProps> {
     return this.element;
   }
 
-  componentWillUnmount() {
-    const { chartView } = this.props;
-    if (this.element) {
-      this.element.remove();
-    }
-    chartView.getController('tooltip').clear();
-    chartView.off('tooltip:change', this.renderInnder);
-  }
-
   renderInnder = ({title, items, x, y}) => {
-    console.log('renderInnder')
     // 当数据变化的时候渲染, todo: 新建fiber根节点，和react虚拟dom的性能对比报告
     ReactDom.render(this.props.children(title, items, x, y), this.getElement());
   }
 
   overwriteCfg() {
     const { chartView, children, domStyles = {}, ...config } = this.props;
-
     chartView.tooltip({
       inPlot: false,
       domStyles,
