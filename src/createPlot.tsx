@@ -12,8 +12,18 @@ import shallowEqual from './utils/shallowEqual';
 import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
+import { Plot } from '@antv/g2plot/lib/core/plot';
 
 const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
+
+interface BasePlotOptions {
+  /**
+   * 获取g2Plot实例的勾子函数
+   */
+  onGetG2Instance: (chart: Plot<any>) => void;
+};
+
+export { BasePlotOptions };
 
 class BasePlot extends React.Component<any> {
   [x: string]: any;

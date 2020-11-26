@@ -12,7 +12,7 @@ const MOCK_DATA = [{
 },
 {
   "Date": "2010-02",
-  "scales": 1850
+  "scales": 1250
 },
 {
   "Date": "2010-03",
@@ -22,7 +22,7 @@ const MOCK_DATA = [{
 const demoContainer = document.createElement('div')
 const demoContainer2 = document.createElement('div')
 
-const Chart = () => {
+const Chart = (props) => {
   const [data, setData] = useState([]);
   const option = {
     xField: 'Date',
@@ -31,7 +31,8 @@ const Chart = () => {
       range: [0, 1],
       tickCount: 5,
     },
-  }
+    ...props,
+  };
   useEffect(() => {
     act(() => setData(MOCK_DATA));
   }, [])
@@ -41,12 +42,14 @@ demoContainer2.className = 'demoContainer';
 document.body.appendChild(demoContainer);
 
 describe('AreaChart', () => {
-  test('renders App component', () => {
-    const { asFragment, debug } = render(<Chart />, {
+  test('数据更新[] --> [{},{},{}]', () => {
+    let chart = null;
+    render(<Chart onGetG2Instance={c => {
+      chart = c;
+    }} />, {
       container: demoContainer,
     });
-    debug();
-    const firstRender = asFragment();
-    expect(firstRender).toMatchDiffSnapshot(asFragment());
+    console.log(chart);
+    expect(chart.options.data.length).toBe(3);
   });
 });
