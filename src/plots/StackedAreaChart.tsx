@@ -1,5 +1,12 @@
 import 'react';
-import StackedArea, { StackedAreaConfig } from '@antv/g2plot/lib/plots/stacked-area';
+import StackedArea, { AreaOptions } from '@antv/g2plot/lib/plots/area';
 import createPlot from '../createPlot';
+import warn from 'warning';
 
-export default createPlot<StackedAreaConfig>(StackedArea, 'StackedAreaChart');
+interface StackedAreaOptions extends AreaOptions {}
+
+export { StackedAreaOptions };
+export default createPlot<StackedAreaOptions>(StackedArea, 'StackedAreaChart', props => {
+  warn(true, '<StackedAreaChart /> 即将在4.2.0后废弃，请使用AreaChart替代，文档查看：');
+  return props;
+});

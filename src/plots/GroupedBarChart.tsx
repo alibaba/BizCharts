@@ -1,5 +1,8 @@
 import 'react';
-import GroupedBar, { GroupedBarConfig } from '@antv/g2plot/lib/plots/grouped-bar';
+import GroupedBar, { BarOptions } from '@antv/g2plot/lib/plots/bar';
 import createPlot from '../createPlot';
 
-export default createPlot<GroupedBarConfig>(GroupedBar, 'GroupedBarChart');
+interface GroupedBarOptions extends BarOptions {}
+
+export { GroupedBarOptions };
+export default createPlot<GroupedBarOptions>(GroupedBar, 'GroupedBarChart');

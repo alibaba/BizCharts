@@ -1,5 +1,10 @@
 import 'react';
-import Calendar, { CalendarConfig } from '@antv/g2plot/lib/plots/calendar';
+import Calendar, { HeatmapOptions } from '@antv/g2plot/lib/plots/heatmap';
 import createPlot from '../createPlot';
+import warn from 'warning';
 
-export default createPlot<CalendarConfig>(Calendar, 'CalendarChart');
+interface CalendarOptions extends HeatmapOptions {}
+export default createPlot<CalendarOptions>(Calendar, 'CalendarChart', (props) => {
+  warn(true, '日历图即将被废弃，请使用<Heatmap />替代，具体用法请查看文档：')
+  return props;
+});

@@ -7,7 +7,7 @@ import withContainer from './boundary/withContainer';
 import ErrorBoundary from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
 import ChartViewContext from './context/view';
-import { visibleHelper } from './utils/plotTools';
+import { visibleHelperInvert } from './utils/plotTools';
 import shallowEqual from './utils/shallowEqual';
 import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
@@ -48,21 +48,24 @@ class BasePlot extends React.Component<any> {
   }
 
   getChartView() {
-    return this.g2Instance.layers[0].view;
+    console.log(this.g2Instance);
+    return this.g2Instance.chart;
   }
 
   protected checkInstanceReady() {
     if (!this.g2Instance) {
       this.initInstance();
       this.g2Instance.render();
-    } else if (this.diffConfig() || this.shouldReCreate()) {
+    } else if (this.shouldReCreate()) {
       // 只有数据更新就不重绘，其他全部直接重新创建实例。
       this.g2Instance.destroy();
       this.initInstance();
       this.g2Instance.render();
+    } else if (this.diffConfig()) {
+      const options = pickWithout(this.props, ['container', 'PlotClass', 'onGetG2Instance', 'children']);
+      this.g2Instance.update(options);
     } else if (this.diffData()) {
       this.g2Instance.changeData(this.props.data);
-      this.g2Instance.repaint();
     }
   }
 
@@ -138,17 +141,17 @@ function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string,
       </ErrorBoundary>;
     }
     return <ErrorBoundary>
-      <BxPlot
-        // API 统一
-        forceFit={autoFit}
-        ref={ref}
-        // react 习惯
-        title={visibleHelper(title)}
-        // react 习惯
-        description={visibleHelper(description)}
-        {...realCfg}
-        PlotClass={Plot}
-      />
+      <div>
+        <div className="bizcharts-plot-title">{visibleHelperInvert(title)}</div>
+        <div className="bizcharts-plot-description">{visibleHelperInvert(description)}</div>
+        <BxPlot
+          // API 统一
+          forceFit={autoFit}
+          ref={ref}
+          {...realCfg}
+          PlotClass={Plot}
+        />
+      </div>
     </ErrorBoundary>
   });
   Com.displayName = name || Plot.name;

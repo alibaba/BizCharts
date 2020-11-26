@@ -1,5 +1,5 @@
 import 'react';
-import Rose, { RoseConfig } from '@antv/g2plot/lib/plots/rose';
+import Rose, { RoseOptions } from '@antv/g2plot/lib/plots/rose';
 import createPlot from '../createPlot';
 
-export default createPlot<RoseConfig>(Rose, 'RoseChart');
+export default createPlot<RoseOptions>(Rose, 'RoseChart');

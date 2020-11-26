@@ -1,5 +1,12 @@
 import 'react';
-import PercentStackedArea, { PercentStackedAreaConfig } from '@antv/g2plot/lib/plots/percent-stacked-area';
+import PercentStackedArea, { AreaOptions } from '@antv/g2plot/lib/plots/area';
 import createPlot from '../createPlot';
+import warn from 'warning';
 
-export default createPlot<PercentStackedAreaConfig>(PercentStackedArea, 'PercentStackedAreaChart');
+interface PercentStackedAreaOptions extends AreaOptions {}
+
+export { PercentStackedAreaOptions };
+export default createPlot<PercentStackedAreaOptions>(PercentStackedArea, 'PercentStackedAreaChart', props => {
+  warn(true, '<PercentStackedAreaChart /> 即将在4.2.0后废弃，请使用<AreaChart /> 替代。文档查看：')
+  return props;
+});

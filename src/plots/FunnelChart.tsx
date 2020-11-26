@@ -1,5 +1,6 @@
 import 'react';
-import Funnel, { FunnelConfig } from '@antv/g2plot/lib/plots/funnel';
+import Funnel, { FunnelOptions } from '@antv/g2plot/lib/plots/funnel';
 import createPlot from '../createPlot';
 
-export default createPlot<FunnelConfig>(Funnel, 'FunnelChart');
+export { FunnelOptions };
+export default createPlot<FunnelOptions>(Funnel, 'FunnelChart');

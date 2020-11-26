@@ -1,5 +1,6 @@
 import 'react';
-import Histogram, { HistogramConfig } from '@antv/g2plot/lib/plots/histogram';
+import Histogram, { HistogramOptions } from '@antv/g2plot/lib/plots/histogram';
 import createPlot from '../createPlot';
 
-export default createPlot<HistogramConfig>(Histogram, 'HistogramChart');
+export { HistogramOptions };
+export default createPlot<HistogramOptions>(Histogram, 'HistogramChart');

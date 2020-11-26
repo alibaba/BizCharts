@@ -1,6 +1,13 @@
 import 'react';
-import StepLine, { StepLineConfig } from '@antv/g2plot/lib/plots/step-line';
+import StepLine, { LineOptions } from '@antv/g2plot/lib/plots/line';
 import createPlot from '../createPlot';
+import warn from 'warning';
 
+interface StepLineOptions extends LineOptions {};
 
-export default createPlot<StepLineConfig>(StepLine, 'StepLineChart');
+export { StepLineOptions };
+export default createPlot<StepLineOptions>(StepLine, 'StepLineChart', props => {
+  warn(true, '<StepLineChart />即将在4.2.0后废弃，请使用<LineChart />替代。文档查看：');
+  return props;
+});
+

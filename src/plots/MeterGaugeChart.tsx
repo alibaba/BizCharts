@@ -1,6 +1,9 @@
 import 'react';
-import MeterGauge, { MeterGaugeConfig } from '@antv/g2plot/lib/plots/meter-gauge';
+import MeterGauge, { GaugeOptions } from '@antv/g2plot/lib/plots/gauge';
 import createPlot from '../createPlot';
 
-export default createPlot<MeterGaugeConfig>(MeterGauge, 'MeterGaugeChart');
+interface MeterGaugeOptions extends  GaugeOptions {}
+
+export { MeterGaugeOptions };
+export default createPlot<MeterGaugeOptions>(MeterGauge, 'MeterGaugeChart');
 

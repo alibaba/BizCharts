@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreaChart renders App component 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;

@@ -1,5 +1,8 @@
 import 'react';
-import Donut, { DonutConfig } from '@antv/g2plot/lib/plots/donut';
+import Donut, { PieOptions } from '@antv/g2plot/lib/plots/pie';
 import createPlot from '../createPlot';
 
-export default createPlot<DonutConfig>(Donut, 'DonutChart');
+interface DonutOptions extends PieOptions {}
+
+export { DonutOptions };
+export default createPlot<DonutOptions>(Donut, 'DonutChart');

@@ -1,5 +1,9 @@
 import 'react';
-import DensityHeatmap, { DensityHeatmapConfig } from '@antv/g2plot/lib/plots/density-heatmap';
+import DensityHeatmap, { HeatmapOptions } from '@antv/g2plot/lib/plots/heatmap';
 import createPlot from '../createPlot';
 
-export default createPlot<DensityHeatmapConfig>(DensityHeatmap, 'DensityHeatmapChartChart');
+interface DensityHeatmapOptions extends HeatmapOptions {}
+
+export { DensityHeatmapOptions };
+
+export default createPlot<DensityHeatmapOptions>(DensityHeatmap, 'DensityHeatmapChartChart');

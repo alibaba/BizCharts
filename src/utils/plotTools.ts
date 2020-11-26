@@ -25,3 +25,12 @@ export const visibleHelper = (cfg, defaultVisible:boolean = true) => {
     visible: defaultVisible,
   }
 }
+
+export const visibleHelperInvert = (cfg) => {
+  // @ts-ignore
+  if (_isObject(cfg) && cfg.visible !== false) {
+    // @ts-ignore
+    return cfg.text;
+  }
+  return cfg
+}

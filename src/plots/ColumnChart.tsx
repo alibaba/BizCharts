@@ -1,6 +1,7 @@
 import 'react';
-import Column, { ColumnConfig } from '@antv/g2plot/lib/plots/column';
+import Column, { ColumnOptions } from '@antv/g2plot/lib/plots/column';
 
 import createPlot from '../createPlot';
 
-export default createPlot<ColumnConfig>(Column, 'ColumnChart');
+export { ColumnOptions };
+export default createPlot<ColumnOptions>(Column, 'ColumnChart');

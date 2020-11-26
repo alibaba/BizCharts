@@ -1,6 +1,11 @@
 import 'react';
 
-import PercentStackedColumn, { PercentStackedColumnConfig } from '@antv/g2plot/lib/plots/percent-stacked-column';
+import PercentStackedColumn, { ColumnOptions } from '@antv/g2plot/lib/plots/column';
 import createPlot from '../createPlot';
+import warn from 'warning';
 
-export default createPlot<PercentStackedColumnConfig>(PercentStackedColumn, 'PercentStackedColumnChart');
+interface PercentStackedColumnOptions extends ColumnOptions {}
+export default createPlot<PercentStackedColumnOptions>(PercentStackedColumn, 'PercentStackedColumnChart', props => {
+  warn(true, '<PercentStackedColumnChart /> 即将在4.2.0后废弃，请使用<ColumnChart />替代，文档查看：')
+  return props;
+});

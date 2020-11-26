@@ -1,5 +1,5 @@
 import 'react'
-import TinyColumn, { TinyColumnConfig } from '@antv/g2plot/lib/sparkline/tiny-column';
+import TinyColumn, { TinyColumnOptions } from '@antv/g2plot/lib/plots/tiny-column';
 import createPlot from '../createPlot';
 
-export default createPlot<TinyColumnConfig>(TinyColumn, 'TinyColumnChart');
+export default createPlot<TinyColumnOptions>(TinyColumn, 'TinyColumnChart');
