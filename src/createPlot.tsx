@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 import _uniqId from '@antv/util/lib/unique-id';
 import _isEqual from '@antv/util/lib/is-equal';
@@ -7,20 +7,43 @@ import withContainer from './boundary/withContainer';
 import ErrorBoundary from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
 import ChartViewContext from './context/view';
-import { visibleHelperInvert } from './utils/plotTools';
+import { visibleHelper } from './utils/plotTools';
 import shallowEqual from './utils/shallowEqual';
 import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 import { Plot } from '@antv/g2plot/lib/core/plot';
 
-const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
+const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', left: '50%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
+
+
+const DESCRIPTION_STYLE: CSSProperties =  {
+  padding: '8px 24px 10px 10px',
+  fontFamily: 'PingFang SC',
+  fontSize: 12,
+  color: 'grey',
+  textAlign: 'left',
+  lineHeight: '16px',
+};
+
+const TITLE_HEIGHT = 30;
+const DESCRIPTION_HEIGHT = 34;
+
+const TITLE_STYLE: CSSProperties = {
+  padding: '10px 0 0 10px',
+  fontFamily: 'PingFang SC',
+  fontSize: 18,
+  color: 'black',
+  textAlign: 'left',
+  lineHeight: '20px',
+}
 
 interface BasePlotOptions {
   /**
    * 获取g2Plot实例的勾子函数
    */
-  onGetG2Instance: (chart: Plot<any>) => void;
+  onGetG2Instance?: (chart: Plot<any>) => void;
+  errorContent?: React.ReactNode;
 };
 
 export { BasePlotOptions };
@@ -126,7 +149,7 @@ class BasePlot extends React.Component<any> {
     return <RootChartContext.Provider value={this._context}>
       {/* 每次更新都直接刷新子组件 */}
       <ChartViewContext.Provider value={chartView} >
-        <div key={_uniqId('plot-chart')}>
+        <div>
           {this.props.children}
         </div>
       </ChartViewContext.Provider>
@@ -138,24 +161,40 @@ const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit, placeholder, ...cfg } = props;
+    const { title, description, autoFit, errorContent, placeholder, ...cfg } = props;
     const realCfg = transCfg(cfg);
     // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
     if (placeholder && !realCfg.data) {
       const pl = placeholder === true ?  DEFAULT_PLACEHOLDER : placeholder;
       // plot 默认是400px高度
-      return <ErrorBoundary>
+      return <ErrorBoundary errorContent={errorContent}>
       <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
         {pl}
       </div>
       </ErrorBoundary>;
     }
-    return <ErrorBoundary>
+    const titleCfg = visibleHelper(title);
+    const descriptionCfg = visibleHelper(description);
+
+    if (titleCfg.visible) {
+      // 兼容1.0 plot title的高度
+      realCfg.height -= TITLE_HEIGHT;
+    }
+
+    if (descriptionCfg.visible) {
+      // 兼容1.0 plot description的高度
+      realCfg.height -= DESCRIPTION_HEIGHT;
+    }
+
+    return <ErrorBoundary errorContent={errorContent}>
       <div>
-        <div className="bizcharts-plot-title">{visibleHelperInvert(title)}</div>
-        <div className="bizcharts-plot-description">{visibleHelperInvert(description)}</div>
+        {/* title 不一定有 */}
+        { titleCfg.visible && <div className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }
+        {/* description 不一定有 */}
+        { descriptionCfg.visible && <div className="bizcharts-plot-description" style={DESCRIPTION_STYLE}>{descriptionCfg.text}</div> }
         <BxPlot
           // API 统一
+          appendPadding={[10, 5, 10, 10]}
           forceFit={autoFit}
           ref={ref}
           {...realCfg}
