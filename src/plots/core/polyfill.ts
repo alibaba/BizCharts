@@ -1,8 +1,5 @@
-import get from '@antv/util/lib/get';
-import set from '@antv/util/lib/set';
+import { get, set, maxBy, minBy } from '@antv/util';
 import sum from '../../utils/data-transform/sum';
-import max from '@antv/util/lib/max-by';
-import min from '@antv/util/lib/min-by';
 import { pickEventName } from '../../components/Chart/events';
 
 export const polyfillOptions = (opt) => {
@@ -24,14 +21,14 @@ export const polyfillOptions = (opt) => {
       let y: number | string = 'median';
       switch (element.type) {
         case 'max':
-          y = max(data, d => d[yField])[yField];
+          y = maxBy(data, d => d[yField])[yField];
           break;
         case 'mean':
           y = sum(data.map(d => d[yField])) / data.length;
           break;
         default:
           // min
-          y = min(data, d => d[yField])[yField];
+          y = minBy(data, d => d[yField])[yField];
           break;
       }
       const line = {

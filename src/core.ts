@@ -18,6 +18,7 @@ export const VERSION = '4.1.0-beta.0';
 
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持
+
 // 原始的计算坐标方法
 const rawGetPointByClient = CanvasEngine.Canvas.prototype.getPointByClient;
 
