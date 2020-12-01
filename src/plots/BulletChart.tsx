@@ -8,7 +8,7 @@ import isNil from '@antv/util/lib/is-nil';
 import isArray from '@antv/util/lib/is-array';
 import { polyfillOptions } from './core/polyfill';
 
-interface BulletOptions extends Options, BasePlotOptions {
+export interface BulletOptions extends Options, BasePlotOptions {
   /**
    * 该属性已废弃，请使用size.measure替代
    * @example 
@@ -77,7 +77,6 @@ interface BulletOptions extends Options, BasePlotOptions {
   rangeMax?: number;
 }
 
-export { BulletOptions };
 
 const polyfill = (opt: BulletOptions): BulletOptions => {
   const options = polyfillOptions(opt);

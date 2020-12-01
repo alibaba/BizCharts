@@ -1,9 +1,9 @@
 
 
 // 注册 G 渲染引擎
-import * as CanvasEngine from '@antv/g-canvas';
-import * as SVGEngine from '@antv/g-svg';
-import { registerEngine } from '@antv/g2/lib/core';
+import * as CanvasEngine from '@antv/g-canvas/esm';
+import * as SVGEngine from '@antv/g-svg/esm';
+import { registerEngine } from '@antv/g2/esm/core';
 // 动画
 import './animations';
 // 主题
@@ -12,8 +12,9 @@ export * from './theme';
 registerEngine('canvas', CanvasEngine);
 registerEngine('svg', SVGEngine);
 
-export * from '@antv/g2/lib/core';
-export const VERSION = '4.0.15';
+// @ts-ignore
+export * from '@antv/g2/esm/core';
+export const VERSION = '4.1.0-beta.0';
 
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持

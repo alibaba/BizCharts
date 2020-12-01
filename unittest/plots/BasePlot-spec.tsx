@@ -112,7 +112,7 @@ describe('基础功能-以AreaChart为demo', () => {
     const handleClick = jest.fn();
     const handletTitleClick = jest.fn();
     let plot = null;
-    const { container } = render(<AreaChart
+    render(<AreaChart
       data={MOCK_DATA}
       xField="Date"
       yField="scales"

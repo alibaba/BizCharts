@@ -2,7 +2,6 @@ import React from 'react';
 import BulletChart from '../../src/plots/BulletChart';
 import { render, cleanup } from '@testing-library/react';
 
-
 const MOCK_DATA = [
   {
     title: '满意度',
