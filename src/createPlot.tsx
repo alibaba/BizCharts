@@ -50,9 +50,13 @@ interface BasePlotOptions {
    */
   events?: Record<string, Function>;
   /** 
-   * 图表标题，不推荐使用，请直接用react组件拼接。
+   * 图表标题。如需绑定事件请直接使用ReactNode。
   */
   readonly title?: React.ReactNode;
+  /** 
+   * 图表副标题。如需绑定事件请直接使用ReactNode。
+  */
+  readonly description?: React.ReactNode;
 };
 
 export { BasePlotOptions };

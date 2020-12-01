@@ -8,7 +8,7 @@ import { polyfillOptions } from './core/polyfill';
 
 interface AreaOptions extends Options, BasePlotOptions { };
 
-export const polyfill = (opt: AreaOptions): AreaOptions => {
+const polyfill = (opt: AreaOptions): AreaOptions => {
   const options = polyfillOptions(opt);
   if (get(options, 'line.visible') === false) {
     set(options, 'line', false);

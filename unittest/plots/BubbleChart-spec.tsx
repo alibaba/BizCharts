@@ -16,7 +16,7 @@ const MOCK_DATA = [
 ];
 
 
-describe('Plots-BarChart', () => {
+describe('Plots-BubbleChart', () => {
   test('colorField --> seriesField', () => {
     let chart = null;
     render(<BarChart

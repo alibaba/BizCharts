@@ -1,13 +1,15 @@
 import 'react';
-import Bubble, { ScatterOptions } from '@antv/g2plot/lib/plots/scatter';
+import { Scatter, ScatterOptions as options } from '@antv/g2plot/lib/plots/scatter';
 import warn from 'warning';
+import { polyfillOptions } from './core/polyfill';
+import createPlot, { BasePlotOptions } from '../createPlot';
 
-import createPlot from '../createPlot';
-
-interface BubbleOptions extends ScatterOptions {};
+interface BubbleOptions extends options, BasePlotOptions {};
 
 export { BubbleOptions };
-export default createPlot<BubbleOptions>(Bubble, 'BubbleChart', (props) => {
-  warn(true, 'Bubble 图表类型命名已变更为Scatter，请修改为<Scatter />')
-  return props;
+// 气泡图, 与散点图合并
+export default createPlot<BubbleOptions>(Scatter, 'BubbleChart', (props) => {
+  const options = polyfillOptions(props);
+  warn(true, 'BubbleChart 图表类型命名已变更为Scatter，请修改为<ScatterChart />')
+  return options;
 });
