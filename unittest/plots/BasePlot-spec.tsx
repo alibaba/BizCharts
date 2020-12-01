@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AreaChart from '../../src/plots/AreaChart';
 import Effects from '../../src/components/Effects';
-import { render, act, cleanup } from '@testing-library/react';
+import { render, act, cleanup, fireEvent, screen } from '@testing-library/react';
+import { getClientPoint } from '../tools/simulate';
 // import { toMatchDiffSnapshot } from 'snapshot-diff';
 
 // @ts-ignore
@@ -69,7 +70,7 @@ describe('基础功能-以AreaChart为demo', () => {
     const { container } = render(<Chart>
       <Effects>
       {
-        () => {throw new Error("test");}
+        () => {throw new Error("test error");}
       }
       </Effects>
     </Chart>);
@@ -102,10 +103,43 @@ describe('基础功能-以AreaChart为demo', () => {
   });
 
   test('forceFit --> autoFit', () => {
-    render(<Chart placeholder="自定义 placeholder" data={undefined} />);
+    render(<Chart placeholder="自定义 placeholder" forceFit data={undefined} />);
     expect(chart.options.autoFit).toBe(true);
     cleanup();
   });
+
+  test('polyfill event', () => {
+    const handleClick = jest.fn();
+    const handletTitleClick = jest.fn();
+    let plot = null;
+    const { container } = render(<AreaChart
+      data={MOCK_DATA}
+      xField="Date"
+      yField="scales"
+      title="图表标题"
+      onGetG2Instance={(c) => {
+        plot = c;
+        const canvas = plot.chart.getCanvas();
+        fireEvent.click(canvas.get('el'), {
+          bubbles: true,
+          cancelable: true,
+          ...getClientPoint(plot.chart.canvas, 130, 300)
+        })
+      }}
+      events={{
+        onPlotClick: handleClick,
+        onTitleClick: handletTitleClick,
+      }}
+    />);
+    const canvas = plot.chart.getCanvas();
+    fireEvent(canvas.get('el'), new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130,100)));
+    fireEvent.click(screen.getByText(/图表标题/i));
+    // fixme: .toHaveBeenCalledTimes(1); 待g2Plot修复
+    expect(handleClick).toHaveBeenCalledTimes(2);
+    // 图表标题是独立的div
+    expect(handletTitleClick).toHaveBeenCalledTimes(1);
+    cleanup();
+  })
 });
 
 

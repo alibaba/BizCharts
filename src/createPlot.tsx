@@ -13,6 +13,7 @@ import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 import { Plot } from '@antv/g2plot/lib/core/plot';
+import { polyfillEvents, polyfillTitleEvent, polyfillDescriptionEvent } from './plots/core/polyfill';
 
 const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', left: '50%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
 
@@ -44,6 +45,14 @@ interface BasePlotOptions {
    */
   onGetG2Instance?: (chart: Plot<any>) => void;
   errorContent?: React.ReactNode;
+  /**
+   * 图表事件
+   */
+  events?: Record<string, Function>;
+  /** 
+   * 图表标题，不推荐使用，请直接用react组件拼接。
+  */
+  readonly title?: React.ReactNode;
 };
 
 export { BasePlotOptions };
@@ -55,17 +64,12 @@ class BasePlot extends React.Component<any> {
   public _context: { chart: any } = { chart: null };
 
   componentDidMount() {
-    if (this.props.children) {
-      this.getChartView().render();
-    }
+    console.log('this.props', this.props)
+    polyfillEvents(this.g2Instance, {}, this.props);
   }
-  componentDidUpdate() {
-    if (this.props.children) {
-      const { animate = true } = this.props;
-      this.getChartView().animate(false);
-      this.getChartView().render();
-      this.getChartView().animate(animate);
-    }
+  componentDidUpdate(prevProps) {
+    // 兼容1.0 的events写法
+    polyfillEvents(this.g2Instance, prevProps, this.props);
   }
   componentWillUnmount() {
     if(this.g2Instance) {
@@ -101,6 +105,7 @@ class BasePlot extends React.Component<any> {
       this.g2Instance.changeData(this.props.data);
     }
   }
+
 
   initInstance() {
     const { container, PlotClass, onGetG2Instance, children, ...options } = this.props;
@@ -189,9 +194,9 @@ function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string,
     return <ErrorBoundary errorContent={errorContent}>
       <div>
         {/* title 不一定有 */}
-        { titleCfg.visible && <div className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }
+        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
-        { descriptionCfg.visible && <div className="bizcharts-plot-description" style={DESCRIPTION_STYLE}>{descriptionCfg.text}</div> }
+        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={DESCRIPTION_STYLE}>{descriptionCfg.text}</div> }
         <BxPlot
           // API 统一
           appendPadding={[10, 5, 10, 10]}

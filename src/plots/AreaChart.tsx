@@ -16,7 +16,6 @@ export const polyfill = (opt: AreaOptions): AreaOptions => {
   if (get(options, 'point.visible') === false) {
     set(options, 'point', false);
   }
-  
   return options;
 }
 
