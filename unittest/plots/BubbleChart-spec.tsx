@@ -1,8 +1,6 @@
 import React from 'react';
 import BubbleChart from '../../src/plots/BubbleChart';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import { getClientPoint } from '../tools/simulate';
-
+import { render, cleanup } from '@testing-library/react';
 
 const MOCK_DATA = [
   { type: '家具家电', sales: 38 },
@@ -14,7 +12,6 @@ const MOCK_DATA = [
   { type: '食品饮料', sales: 38 },
   { type: '家庭清洁', sales: 38 },
 ];
-
 
 describe('Plots-BubbleChart', () => {
   test('pointSize --> size', () => {
