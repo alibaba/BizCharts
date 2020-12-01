@@ -1,5 +1,5 @@
 import React from 'react';
-import BarChart from '../../src/plots/BarChart';
+import BubbleChart from '../../src/plots/BubbleChart';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import { getClientPoint } from '../tools/simulate';
 
@@ -17,18 +17,19 @@ const MOCK_DATA = [
 
 
 describe('Plots-BubbleChart', () => {
-  test('colorField --> seriesField', () => {
+  test('pointSize --> size', () => {
     let chart = null;
-    render(<BarChart
+    render(<BubbleChart
       data={MOCK_DATA}
       xField="sales"
       yField="type"
-      colorField="type"
+      sizeField="sales"
+      pointSize={[10,50]}
       onGetG2Instance={
         (c) => chart = c
       }
     />)
-    expect(chart.options.seriesField).toBe('type');
+    expect(chart.options.size).toEqual([10,50]);
     cleanup();
   });
 })
