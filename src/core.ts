@@ -13,7 +13,7 @@ registerEngine('canvas', CanvasEngine);
 registerEngine('svg', SVGEngine);
 
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.0.15';
+export const VERSION = '4.0.16';
 
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持
