@@ -75,6 +75,8 @@ class BasePlot extends React.Component<any> {
   componentDidMount() {
     console.log('this.props', this.props)
     polyfillEvents(this.g2Instance, {}, this.props);
+    this.g2Instance.data = this.props.data;
+    this.preConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
   }
   componentDidUpdate(prevProps) {
     // 兼容1.0 的events写法
