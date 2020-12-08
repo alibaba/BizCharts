@@ -63,6 +63,8 @@ export class Chart extends React.Component<IChartProps> {
         // changeSize方法内部有调用render, 自动更新无需
         this.chartHelper.chart.changeSize(nextWidth, nextHeight);
         this.chartHelper.chart.emit('resize');
+      } else {
+        this.chartHelper.render();
       }
     } else {
       this.chartHelper.render();
