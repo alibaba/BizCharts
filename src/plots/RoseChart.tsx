@@ -5,8 +5,9 @@ import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
+import { replaceApi } from './core/replaceApi';
 
-const REPLACEKEYS = [{
+const REPLACEAPILIST = [{
     sourceKey: 'colorField',
     targetKey: 'seriesField',
     notice: '请使用seriesField替代',
@@ -32,14 +33,7 @@ interface RoseOptions extends options, BasePlotOptions {
 
 const polyfill = (opt: RoseOptions): RoseOptions => {
     const options = polyfillOptions(opt);
-    REPLACEKEYS.forEach((item) => {
-        const { sourceKey, targetKey, notice } = item;
-        const value = get(options, sourceKey);
-        if (value) {
-            warn(true, notice);
-            set(options, targetKey, value);
-        }
-    })
+    replaceApi(REPLACEAPILIST, options);
     return options;
 }
 

@@ -1,13 +1,43 @@
 import 'react';
-import StackedRose, { RoseOptions } from '@antv/g2plot/lib/plots/rose';
-import createPlot from '../createPlot';
 import warn from 'warning';
+import get from '@antv/util/lib/get';
+import set from '@antv/util/lib/set';
+import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
+import createPlot, { BasePlotOptions } from '../createPlot';
+import { polyfillOptions } from './core/polyfill';
+import { replaceApi } from './core/replaceApi';
 
-interface StackedRoseOptions extends RoseOptions {};
+const REPLACEAPILIST = [{
+  sourceKey: 'stackField',
+  targetKey: 'seriesField',
+  notice: '请使用seriesField替代',
+}, {
+  sourceKey: 'categoryField',
+  targetKey: 'xField',
+  notice: '请使用xField替代',
+}, {
+  sourceKey: 'radiusField',
+  targetKey: 'yField',
+  notice: '请使用yFeild替代',
+}];
+
+interface StackedRoseOptions extends options, BasePlotOptions {
+  /** 请使用seriesField替代 */
+  stackField?: string;
+  /** 请使用xField替代 */
+  categoryField?: string;
+  /** 请使用yFeild替代 */
+  radiusField?: string;
+}
+
+const polyfill = (opt: StackedRoseOptions): StackedRoseOptions => {
+  warn(true, '<StackedRoseChart /> 即将在4.2.0后废弃，请使用<RoseChart />替代，文档查看：')
+
+  const options = polyfillOptions(opt);
+  replaceApi(REPLACEAPILIST,options);
+  return { ...options, isStack: true };
+}
 
 export { StackedRoseOptions };
 
-export default createPlot<StackedRoseOptions>(StackedRose, 'StackedRoseChart', props => {
-  warn(true, '<StackedRoseChart /> 即将在4.2.0后废弃，请使用<RoseChart />替代，文档查看：')
-  return props;
-});
+export default createPlot<StackedRoseOptions>(Rose, 'StackedRoseChart', polyfill);
