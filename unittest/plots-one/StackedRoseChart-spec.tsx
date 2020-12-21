@@ -23,16 +23,19 @@ const MOCK_DATA = [
 ];
 
 
+const basicCfg = {
+  data: MOCK_DATA,
+  xField: "月份",
+  yField: "月均降雨量",
+  seriesField: "name",
+  autoFit: true,
+}
 describe('Plots-StackedRoseChart', () => {
-  test('新版本的基础堆叠玫瑰图', () => {
+  test('新版本xField*yField*seriesField', () => {
     let chart = null;
     render(<StackedRoseChart
-      data={MOCK_DATA}
-      xField="月份"
-      yField="月均降雨量"
-      seriesField="name"
-      autoFit
-      title="基础堆叠玫瑰图"
+      title="新版本xField*yField*seriesField"
+      {...basicCfg}
       onGetG2Instance={
         (c) => chart = c
       }
@@ -45,7 +48,7 @@ describe('Plots-StackedRoseChart', () => {
     // cleanup();
   });
 
-  test('老版本基础堆叠玫瑰图categoryField*radiusField*stackField', () => {
+  test('老版本categoryField*radiusField*stackField', () => {
     let chart = null;
     // @ts-ignore
     render(<StackedRoseChart
@@ -54,12 +57,12 @@ describe('Plots-StackedRoseChart', () => {
       radiusField="月均降雨量"
       stackField="name"
       autoFit
-      title="老版本基础堆叠玫瑰图categoryField*radiusField*stackField"
+      title="老版本categoryField*radiusField*stackField"
       onGetG2Instance={
         (c) => chart = c
       }
     />)
-    console.log(chart.options,99)
+    console.log(chart.options, 99)
     expect(chart.options.categoryField).toBe('月份');
     expect(chart.options.radiusField).toBe('月均降雨量');
     expect(chart.options.stackField).toBe('name');
@@ -68,4 +71,101 @@ describe('Plots-StackedRoseChart', () => {
     // cleanup();
   });
 
+
+  test('基础堆叠图', () => {
+    render(<StackedRoseChart
+      {...basicCfg}
+      title="基础堆叠图"
+      pixelRatio={3}
+      renderer="svg"
+      meta={{
+        月份: {
+          formatter: val => `${val}%`
+        }
+      }}
+      radius={0.9}
+      innerRadius={0.1}
+      // color={['red', 'green']}
+      color={({ name }) => {
+        if (name === 'London') return 'red';
+        return 'blue';
+      }}
+      sectorStyle={{
+        stroke: 'black',
+        lineDash: [5, 5],
+      }}
+    />);
+    // cleanup();
+  });
+
+
+  test('legend-堆叠图', () => {
+    render(<StackedRoseChart
+      title="legend-堆叠图"
+      {...basicCfg}
+      legend={{
+        position: "bottom",
+        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        offsetX: 40,
+        offsetY: 2,
+        title: {
+          text: '2',
+          style: {
+            fill: "red",
+          },
+        },
+        marker: {
+          symbol: "circle",
+        },
+        text: {
+          style: {
+            fill: "pink",
+            stroke: "pink",
+          },
+          formatter: (val) => `${val}$`,
+        },
+      }}
+    />);
+  });
+
+
+  test('tooltip-堆叠图', () => {
+    render(<StackedRoseChart
+      title="tooltip-堆叠图"
+      {...basicCfg}
+      meta={{
+        name: {
+          formatter: val => val === 'London' ? '伦敦' : '柏林'
+        }
+      }}
+      tooltip={{
+        visible: true,
+        offset: 10,
+        shared: true,
+        showCrosshairs: true,
+        crosshairs: { type: 'y' },
+        fields: ['name'],
+      }}
+    />);
+  });
+
+  test('label-堆叠图', () => {
+    render(<StackedRoseChart
+      title="label-堆叠图"
+      {...basicCfg}
+      label={{
+        visible: true,
+        autoRotate: true,
+        formatter: (item) => `${item['月份']}val`,
+        offsetX: 6,
+        offsetY: 6,
+        style: {
+          fill: 'red',
+        }
+      }}
+    />);
+  });
+
+
 });
+

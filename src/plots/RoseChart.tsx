@@ -1,5 +1,4 @@
 import 'react';
-import warn from 'warning';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
