@@ -107,30 +107,6 @@ const data = [
   },
 ];
 
-const legendOptions = {
-  position: "bottom",
-  formatter: (val) => `${val}%`,
-  offsetX: 40,
-  offsetY: 2,
-  title: {
-    text: 2,
-    style: {
-      fill: "red",
-    },
-  },
-  marker: {
-    symbol: "circle",
-  },
-  text: {
-    style: {
-      fill: "pink",
-      stroke: "pink",
-    },
-    formatter: (val) => `${val}$`,
-  },
-};
-
-
 describe('Plots-RadarChart', () => {
   test('基础-雷达图', () => {
     let chart = null;
@@ -170,15 +146,14 @@ describe('Plots-RadarChart', () => {
 
 
   test('基础2-雷达图', () => {
-    // @ts-ignore
     render(<RadarChart
       data={data}
       title={{
         visible: true,
         text: "基础2-雷达图",
       }}
-      angleField="item"
-      radiusField="score"
+      xField="item"
+      yField="score"
       seriesField="user"
       color={({ user }) => {
         return (user === 'a' ? 'red' : 'yellow');
@@ -188,15 +163,14 @@ describe('Plots-RadarChart', () => {
   });
 
   test('area-雷达图', () => {
-    // @ts-ignore
     render(<RadarChart
       data={data}
       title={{
         visible: true,
         text: "基础2-雷达图",
       }}
-      angleField="item"
-      radiusField="score"
+      xField="item"
+      yField="score"
       seriesField="user"
       area={{
         visible: true,
@@ -209,12 +183,11 @@ describe('Plots-RadarChart', () => {
 
 
   test('point-雷达图', () => {
-    // @ts-ignore
     render(<RadarChart
       data={data}
       title={{ visible: true, text: "point-雷达图", }}
-      angleField="item"
-      radiusField="score"
+      xField="item"
+      yField="score"
       seriesField="user"
       point={{
         visible: true,
@@ -229,12 +202,12 @@ describe('Plots-RadarChart', () => {
 
 
   test('line-雷达图', () => {
-    // @ts-ignore
+
     render(<RadarChart
       data={data}
       title={{ visible: true, text: "line-雷达图", }}
-      angleField="item"
-      radiusField="score"
+      xField="item"
+      yField="score"
       seriesField="user"
       line={{
         visible: true,
@@ -247,12 +220,11 @@ describe('Plots-RadarChart', () => {
   });
 
   test('angleAxis-雷达图', () => {
-    // @ts-ignore
     render(<RadarChart
       data={data}
       title={{ visible: true, text: "angleAxis-雷达图", }}
-      angleField="item"
-      radiusField="score"
+      xField="item"
+      yField="score"
       seriesField="user"
       angleAxis={{
         line: {
@@ -337,7 +309,6 @@ describe('Plots-RadarChart', () => {
   });
 
   test('legend-雷达图', () => {
-    let chart = null;
     render(<RadarChart
       height={500}
       data={data}
@@ -348,11 +319,28 @@ describe('Plots-RadarChart', () => {
       xField="item"
       yField="score"
       seriesField="user"
-      // @ts-ignore
-      legend={legendOptions}
-      onGetG2Instance={
-        (c) => chart = c
-      }
+      legend={{
+        position: "bottom",
+        formatter: val => `${val}%`,
+        offsetX: 40,
+        offsetY: 2,
+        title: {
+          text: '2',
+          style: {
+            fill: "red",
+          },
+        },
+        marker: {
+          symbol: "circle",
+        },
+        text: {
+          style: {
+            fill: "pink",
+            stroke: "pink",
+          },
+          formatter: (val) => `${val}$`,
+        },
+      }}
     />);
   });
 
@@ -392,7 +380,7 @@ describe('Plots-RadarChart', () => {
       label={{
         visible: true,
         autoRotate: true,
-        formatter: ({score})=>`${score}val`,
+        formatter: ({ score }) => `${score}val`,
         offsetX: 6,
         offsetY: 6,
 

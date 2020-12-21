@@ -18,3 +18,25 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
         }
     })
 }
+
+export const replaceLegend = (options) => {
+    if (get(options, 'legend.visible') === false) {
+        set(options, 'legend', false);
+        return;
+    }
+
+    if (get(options, 'legend.title.visible') === false) {
+        set(options, 'legend.title', false);
+    }
+
+    const formatter = get(options, 'legend.formatter');
+    if (formatter) {
+        const itemName = get(options, 'legend.itemName', {});
+        set(options, 'legend.itemName', { ...itemName, formatter });
+    }
+
+    const textConfig = get(options, 'legend.text');
+    if (textConfig) {
+        set(options, 'legend.itemName', textConfig);
+    }
+}

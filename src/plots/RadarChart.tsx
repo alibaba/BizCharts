@@ -4,12 +4,11 @@ import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import { Radar, RadarOptions as options } from '@antv/g2plot/lib/plots/radar';
 import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
-import { TooltipOptions } from '@antv/g2plot/lib/types/tooltip'
-import { GeometryLabelCfg } from '@antv/g2/lib/interface';
 
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
-import { replaceApi } from './core/replaceApi';
+import { replaceApi, replaceLegend } from './core/replaceApi';
+import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
     sourceKey: 'angleField',
@@ -34,16 +33,6 @@ interface AreaAPIOptions extends MappingOptions {
     visible?: boolean,
 }
 
-interface TooltipAPIOptions extends TooltipOptions {
-    visible?: boolean,
-}
-
-interface LabelAPIOptions extends GeometryLabelCfg {
-    visible?: boolean,
-    readonly formatter?: GeometryLabelCfg['content'];
-}
-
-
 interface RadarOptions extends options, BasePlotOptions {
     /** 请使用xField替代 */
     angleField?: string;
@@ -55,6 +44,8 @@ interface RadarOptions extends options, BasePlotOptions {
     point?: PointAPIOptions,
 
     area?: AreaAPIOptions,
+
+    legend?: LengendAPIOptions,
 
     tooltip?: TooltipAPIOptions,
 
@@ -125,24 +116,6 @@ const replaceAxis = (options: RadarOptions, sourceKey = 'angleAxis', targetKey =
     set(options, targetKey, config);
 
 }
-
-const replaceLegend = (options: RadarOptions) => {
-    if (get(options, 'legend.visible') === false) {
-        set(options, 'legend', false);
-        return;
-    }
-
-    if (get(options, 'legend.title.visible') === false) {
-        set(options, 'legend.title', false);
-    }
-
-    const textConfig = get(options, 'legend.text', {});
-    if (textConfig) {
-        set(options, 'legend.itemName', textConfig);
-    }
-
-}
-
 
 const polyfill = (opt: RadarOptions): RadarOptions => {
     const options = polyfillOptions(opt);
