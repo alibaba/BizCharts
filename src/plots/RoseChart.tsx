@@ -5,7 +5,8 @@ import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
-import { replaceApi } from './core/replaceApi';
+import { replaceApi, replaceLegend } from './core/replaceApi';
+import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
     sourceKey: 'colorField',
@@ -29,11 +30,24 @@ interface RoseOptions extends options, BasePlotOptions {
     categoryField?: string;
     /** 请使用yFeild替代 */
     radiusField?: string;
+    legend?: LengendAPIOptions,
+    tooltip?: TooltipAPIOptions,
+    label?: LabelAPIOptions,
 }
 
 const polyfill = (opt: RoseOptions): RoseOptions => {
     const options = polyfillOptions(opt);
     replaceApi(REPLACEAPILIST, options);
+
+    replaceLegend(options);
+
+    if (get(options, 'tooltip.visible') === false) {
+        set(options, 'tooltip', false);
+    }
+
+    if (get(options, 'label.visible') === false) {
+        set(options, 'label', false);
+    }
     return options;
 }
 
