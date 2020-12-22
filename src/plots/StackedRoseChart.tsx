@@ -29,16 +29,16 @@ interface StackedRoseOptions extends options, BasePlotOptions {
   categoryField?: string;
   /** 请使用yFeild替代 */
   radiusField?: string;
-  legend?: LengendAPIOptions,
-  tooltip?: TooltipAPIOptions,
-  label?: LabelAPIOptions,
+  legend?: LengendAPIOptions;
+  tooltip?: TooltipAPIOptions;
+  label?: LabelAPIOptions;
 }
 
 const polyfill = (opt: StackedRoseOptions): StackedRoseOptions => {
   warn(true, '<StackedRoseChart /> 即将在4.2.0后废弃，请使用<RoseChart />替代，文档查看：')
 
   const options = polyfillOptions(opt);
-  replaceApi(REPLACEAPILIST,options);
+  replaceApi(REPLACEAPILIST, options);
 
   replaceLegend(options);
 

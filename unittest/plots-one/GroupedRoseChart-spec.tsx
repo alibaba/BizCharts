@@ -21,18 +21,21 @@ const MOCK_DATA = [
   { name: 'Berlin', 月份: 'Jul.', 月均降雨量: 37.4 },
   { name: 'Berlin', 月份: 'Aug.', 月均降雨量: 42.4 },
 ];
+const basicCfg = {
+  data: MOCK_DATA,
+  xField: "月份",
+  yField: "月均降雨量",
+  seriesField: "name",
+  autoFit: true,
+}
 
 
 describe('Plots-GroupedRoseChart', () => {
-  test('新版本基础分组玫瑰图', () => {
+  test('新版本分组玫瑰图xField*yField*seriesField', () => {
     let chart = null;
     render(<GroupedRoseChart
-      data={MOCK_DATA}
-      xField="月份"
-      yField="月均降雨量"
-      seriesField="name"
-      autoFit
-      title="新版本基础分组玫瑰图"
+      title="新版本分组玫瑰图xField*yField*seriesField"
+      {...basicCfg}
       onGetG2Instance={
         (c) => chart = c
       }
@@ -45,7 +48,7 @@ describe('Plots-GroupedRoseChart', () => {
     // cleanup();
   });
 
-  test('老版本基础分组玫瑰图categoryField*radiusField*groupField', () => {
+  test('老版本categoryField*radiusField*groupField', () => {
     let chart = null;
     // @ts-ignore
     render(<GroupedRoseChart
@@ -66,5 +69,104 @@ describe('Plots-GroupedRoseChart', () => {
     // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
     // cleanup();
   });
+
+
+
+  test('基础分组玫瑰图', () => {
+    render(<GroupedRoseChart
+      {...basicCfg}
+      title="基础分组玫瑰图"
+      pixelRatio={3}
+      renderer="svg"
+      meta={{
+        月份: {
+          formatter: val => `${val}%`
+        }
+      }}
+      radius={0.9}
+      innerRadius={0.1}
+      // color={['red', 'green']}
+      color={({ name }) => {
+        if (name === 'London') return 'red';
+        return 'blue';
+      }}
+      sectorStyle={{
+        stroke: 'black',
+        lineDash: [5, 5],
+      }}
+    />);
+    // cleanup();
+  });
+
+
+  test('legend-分组玫瑰图', () => {
+    render(<GroupedRoseChart
+      title="legend-分组玫瑰图"
+      {...basicCfg}
+      legend={{
+        visible: true,
+        position: "bottom",
+        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        offsetX: 40,
+        offsetY: 2,
+        title: {
+          text: '2',
+          style: {
+            fill: "red",
+          },
+        },
+        marker: {
+          symbol: "circle",
+        },
+        text: {
+          style: {
+            fill: "pink",
+            stroke: "pink",
+          },
+          formatter: (val) => `${val}$`,
+        },
+      }}
+    />);
+  });
+
+
+  test('tooltip-分组玫瑰图', () => {
+    render(<GroupedRoseChart
+      title="tooltip-分组玫瑰图"
+      {...basicCfg}
+      meta={{
+        name: {
+          formatter: val => val === 'London' ? '伦敦' : '柏林'
+        }
+      }}
+      tooltip={{
+        visible: true,
+        offset: 10,
+        shared: true,
+        showCrosshairs: true,
+        crosshairs: { type: 'y' },
+        fields: ['name', '月均降雨量'],
+        formatter: (item) => ({ value: item['月均降雨量'], name: item.name === 'London' ? '伦敦' : '柏林' })
+      }}
+    />);
+  });
+
+  test('label-分组玫瑰图', () => {
+    render(<GroupedRoseChart
+      title="label-分组玫瑰图"
+      {...basicCfg}
+      label={{
+        visible: true,
+        autoRotate: true,
+        formatter: (item) => `${item['月份']}val`,
+        offsetX: 6,
+        offsetY: 6,
+        style: {
+          fill: 'red',
+        }
+      }}
+    />);
+  });
+
 
 });
