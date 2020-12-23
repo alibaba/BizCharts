@@ -12,6 +12,7 @@ import shallowEqual from './utils/shallowEqual';
 import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
+import { isArray } from '@antv/util';
 
 const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
 
@@ -64,6 +65,10 @@ class BasePlot extends React.Component<any> {
       this.g2Instance.changeData(this.props.data);
       this.g2Instance.repaint();
     }
+    // 缓存配置
+    const currentConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
+    this.preConfig = cloneDeep(currentConfig);
+    this.g2Instance.data = this.props.data;
   }
 
   initInstance() {
@@ -78,15 +83,17 @@ class BasePlot extends React.Component<any> {
     // 只有数据更新就不重绘，其他全部直接重新创建实例。
     const preConfig = this.preConfig || {};
     const currentConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
-    this.preConfig = cloneDeep(currentConfig);
     return !_isEqual(preConfig, currentConfig);
   }
   diffData() {
     // 只有数据更新就不重绘，其他全部直接重新创建实例。
-    const preData = this.g2Instance.data || [];
-    const data = this.props.data || [];
-    // 数据只做2级浅比较
-    this.g2Instance.data = this.props.data;
+    const preData = this.g2Instance.data;
+    const data = this.props.data;
+
+    if (!isArray(preData) || !isArray(data)) {
+      // 非数组直接对比
+      return !preData === data;
+    }
     if (preData.length !== data.length) {
       return true;
     }

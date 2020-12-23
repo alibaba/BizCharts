@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useMemo, useEffect } from "react";
-import { LineChart, BarChart, Axis, Chart, Coordinate, Tooltip, Interval, View } from '../../src';
+import { LineChart, BarChart, GaugeChart, Chart, Coordinate, Tooltip, Interval, View } from '../../src';
 
 import { Text } from '../../src/components/Annotation';
 // import Tooltip from '../../src/components/Tooltip';
@@ -50,34 +50,31 @@ function Basic(options) {
   const [value, setValue] = useState(1);
   const bar = React.createRef();
   const [autoFit, setAutoFit] = useState(true);
-  useEffect(() => {
-    console.log(2, bar)
-  })
-  // data[0].value = value;
-  console.log(autoFit);
   return (
     <div>
-      <LineChart
-       data={autoFit ? null : data}
-       xField="year"
-       title={{
-          visible: true,
-          text: '曲线折线图',
-       }}
-       placeholder={<div>暂无数据！！</div>}
-       point
-       autoFit={autoFit}
-       yField="value"
-       {...options}
-      >
-        {/* <Axis visible={false} name="value" />
-        <Text position={ ['50%', '50%']} content="24 hours" /> */}
-
-      </LineChart>
+      
       <div onClick={() => {
         setValue(value+1);
         setAutoFit(!autoFit);
       }}>click me</div>
+      <GaugeChart
+				title={{
+					visible: true,
+					text: '仪表盘',
+				}}
+				width={400}
+				height={400}
+				value={64}
+				min={0}
+				max={100}
+				range={[0, 25, 50, 75, 100]}
+				color={['#39B8FF', '#52619B', '#43E089', '#C0EDF3']}
+				statistic={{
+					visible: true,
+					text: '优',
+					color: '#30bf78',
+				}}
+			/>
       <BarChart
         title="图表标题"
         data={data}
@@ -107,6 +104,7 @@ function Basic(options) {
        <BarChart ref={bar} onGetG2Instance={(c) => {
          console.log('onGetG2Instance', c)
        }} onAfterrender={() => {console.log(1)}} />
+       
     </div>
   );
 }
