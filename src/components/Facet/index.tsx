@@ -9,7 +9,6 @@ import Mirror from '@antv/g2/lib/facet/mirror';
 import Rect from '@antv/g2/lib/facet/rect';
 import Tree from '@antv/g2/lib/facet/tree';
 
-import shallowEqual from '../../utils/shallowEqual';
 import useChartView from '../../hooks/useChartView';
 import { registerFacet } from '../../core';
 
@@ -54,8 +53,4 @@ function Facet(props: IFacetProps) {
   return null;
 }
 
-
-export default React.memo(Facet, (preProps, nextProps) => {
-  return shallowEqual(preProps, nextProps);
-})
-// export default Facet;
+export default Facet;

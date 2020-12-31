@@ -7,6 +7,7 @@ import Line from './Line';
 import Point from './Point';
 import Polygon from './Polygon';
 import LineAdvance from './LineAdvance';
+import warn from 'warning';
 
 import { IBaseGemoProps } from './Base';
 
@@ -32,6 +33,6 @@ export default function(props: IGemo) {
   const { type, ...cfg } = props;
   const Geom = GEOM_MAP[type];
   if (Geom) return <Geom {...cfg} />;
-  window.console.warn('Only support the below type: area|edge|heatmap|interval|line|point|polygon|line-advance');
+  warn(true, 'Only support the below type: area|edge|heatmap|interval|line|point|polygon|line-advance');
   return null;
 }

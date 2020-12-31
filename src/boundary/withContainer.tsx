@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-export default function withContainer<Iprops>(Component, name: string = 'ChartContainer') {
+export default function withContainer<Iprops, ComponentT>(Component, name: string = 'ChartContainer'): ComponentT {
   const Cls = React.forwardRef<any, Iprops>((props: Iprops, ref) => {
     const container = useRef();
     const [inited, setInited] = useState(false);
@@ -18,5 +18,5 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
     </div>
   });
   Cls.displayName = name || Component.name;
-  return Cls;
+  return Cls as any;
 };
