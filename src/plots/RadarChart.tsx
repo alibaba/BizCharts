@@ -7,7 +7,7 @@ import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
 
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
-import { replaceApi, replaceLegend } from './core/replaceApi';
+import { replaceApi, replaceLegend, replaceAxis } from './core/replaceApi';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
@@ -80,42 +80,7 @@ const replaceLineWithLinestyle = (options: RadarOptions) => {
 }
 
 
-const replaceAxis = (options: RadarOptions, sourceKey = 'angleAxis', targetKey = 'xAxis') => {
-    if (get(options, `${sourceKey}.visible`) === false) {
-        set(options, targetKey, false);
-        return;
-    }
 
-    let config = { ...get(options, sourceKey, {}) };
-    if (get(options, `${sourceKey}.line.visible`) === false) {
-        config.line = false
-    }
-
-    if (get(options, `${sourceKey}.grid.visible`) === false) {
-        config.grid = false
-    }
-
-    if (get(options, `${sourceKey}.label.visible`) === false) {
-        config.label = false
-    } else {
-        const label = get(options, `${sourceKey}.label`, {});
-        const suffix = label.suffix;
-        if (!isNil(suffix) || suffix) { // 不是undefined null / suffix存在
-            config.label = { ...label, formatter: val => `${val}${suffix}` }
-        }
-    }
-
-    if (get(options, `${sourceKey}.tickLine.visible`) === false) {
-        config.tickLine = false
-    }
-
-    if (get(options, `${sourceKey}.title.visible`) === false) {
-        config.title = false
-    }
-
-    set(options, targetKey, config);
-
-}
 
 const polyfill = (opt: RadarOptions): RadarOptions => {
     const options = polyfillOptions(opt);
@@ -143,8 +108,6 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
     if (get(options, 'label.visible') === false) {
         set(options, 'label', false);
     }
-
-    console.log(options, 'radaChart')
 
     return options;
 }
