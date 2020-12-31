@@ -8,6 +8,13 @@ import { registerGeometry, registerInteraction, registerGeometryLabel } from '..
 registerGeometry('Interval', Interval);
 registerGeometryLabel('interval', IntervalLabel);
 registerGeometryLabel('pie', PieLabel);
+
+import '@antv/g2/lib/geometry/shape/interval/funnel';
+import '@antv/g2/lib/geometry/shape/interval/hollow-rect';
+import '@antv/g2/lib/geometry/shape/interval/line';
+import '@antv/g2/lib/geometry/shape/interval/pyramid';
+import '@antv/g2/lib/geometry/shape/interval/tick';
+
 // 出现背景框
 registerInteraction('active-region', {
   start: [{ trigger: 'plot:mousemove', action: 'active-region:show' }],

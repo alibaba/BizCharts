@@ -103,4 +103,4 @@ export class Chart extends React.Component<IChartProps> {
   }
 }
 
-export default withContainer<IChartProps>(Chart);
+export default withContainer<IChartProps, Chart>(Chart);
