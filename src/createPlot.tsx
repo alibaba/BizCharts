@@ -58,6 +58,11 @@ interface BasePlotOptions {
    * 图表副标题。如需绑定事件请直接使用ReactNode。
   */
   readonly description?: React.ReactNode;
+
+  /**
+  * forceFit即将废弃，请使用autoFit替代
+  */
+  forceFit?: boolean,
 };
 
 export { BasePlotOptions };
@@ -71,6 +76,8 @@ class BasePlot extends React.Component<any> {
   componentDidMount() {
     console.log('this.props', this.props)
     polyfillEvents(this.g2Instance, {}, this.props);
+    this.g2Instance.data = this.props.data;
+    this.preConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
   }
   componentDidUpdate(prevProps) {
     // 兼容1.0 的events写法
@@ -184,9 +191,9 @@ function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string,
       const pl = placeholder === true ?  DEFAULT_PLACEHOLDER : placeholder;
       // plot 默认是400px高度
       return <ErrorBoundary errorContent={errorContent}>
-      <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
-        {pl}
-      </div>
+        <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
+          {pl}
+        </div>
       </ErrorBoundary>;
     }
     const titleCfg = visibleHelper(title);

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`基础功能-以AreaChart为demo ErrorBoundary 1`] = `
+<div>
+  <div
+    style="color: rgb(170, 170, 170);"
+  >
+    Bizcharts something error
+  </div>
+</div>
+`;
+
+exports[`基础功能-以AreaChart为demo placeholder 1`] = `
+<div>
+  <div
+    style="width: 100%; height: 400px; text-align: center;"
+  >
+    <div
+      style="position: absolute; top: 48%; left: 50%; color: rgb(170, 170, 170); text-align: center;"
+    >
+      暂无数据
+    </div>
+  </div>
+</div>
+`;
+
+exports[`基础功能-以AreaChart为demo title、 description 高度计算和dom渲染 1`] = `<div />`;
+
+exports[`基础功能-以AreaChart为demo 自定义 ErrorBoundary 1`] = `
+<div>
+  <div>
+    自定义 ErrorBoundary
+  </div>
+</div>
+`;
+
+exports[`基础功能-以AreaChart为demo 自定义 placeholder 1`] = `
+<div>
+  <div
+    style="width: 100%; height: 400px; text-align: center;"
+  >
+    自定义 placeholder
+  </div>
+</div>
+`;
