@@ -14,7 +14,7 @@ import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 import { Plot } from '@antv/g2plot/lib/core/plot';
 import { polyfillEvents, polyfillTitleEvent, polyfillDescriptionEvent } from './plots/core/polyfill';
-import { isArray } from '@antv/util';
+import { isArray, isNil } from '@antv/util';
 
 const DEFAULT_PLACEHOLDER = <div style={{ position: 'absolute', top: '48%', left: '50%', color: '#aaa', textAlign: 'center' }}>暂无数据</div>;
 
@@ -184,7 +184,7 @@ const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit, errorContent, placeholder, ...cfg } = props;
+    const { title, description, autoFit, forceFit, errorContent, placeholder, ...cfg } = props;
     const realCfg = transCfg(cfg);
     // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
     if (placeholder && !realCfg.data) {
@@ -218,7 +218,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string,
         <BxPlot
           // API 统一
           appendPadding={[10, 5, 10, 10]}
-          forceFit={autoFit}
+          autoFit={isNil(autoFit) ? forceFit : autoFit}
           ref={ref}
           {...realCfg}
           PlotClass={Plot}

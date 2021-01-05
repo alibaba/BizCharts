@@ -4,8 +4,7 @@ import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions } from './core/polyfill';
-import { replaceApi, replaceLegend } from './core/replaceApi';
+import { polyfillOptions, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
@@ -40,15 +39,8 @@ const polyfill = (opt: GroupedRoseOptions): GroupedRoseOptions => {
   const options = polyfillOptions(opt);
   replaceApi(REPLACEAPILIST, options);
 
-  replaceLegend(options);
 
-  if (get(options, 'tooltip.visible') === false) {
-    set(options, 'tooltip', false);
-  }
 
-  if (get(options, 'label.visible') === false) {
-    set(options, 'label', false);
-  }
 
   return { ...options, isGroup: true };
 }

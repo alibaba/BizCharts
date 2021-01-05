@@ -6,8 +6,8 @@ import { Radar, RadarOptions as options } from '@antv/g2plot/lib/plots/radar';
 import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
 
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions } from './core/polyfill';
-import { replaceApi, replaceLegend } from './core/replaceApi';
+import { polyfillOptions, replaceApi } from './core/polyfill';
+
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
@@ -133,8 +133,6 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
 
     replaceAxis(options, 'angleAxis', 'xAxis');
     replaceAxis(options, 'radiusAxis', 'yAxis');
-
-    replaceLegend(options);
 
     if (get(options, 'tooltip.visible') === false) {
         set(options, 'tooltip', false);

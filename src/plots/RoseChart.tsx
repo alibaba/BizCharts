@@ -3,8 +3,7 @@ import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions } from './core/polyfill';
-import { replaceApi, replaceLegend } from './core/replaceApi';
+import { polyfillOptions, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 const REPLACEAPILIST = [{
@@ -37,8 +36,6 @@ interface RoseOptions extends options, BasePlotOptions {
 const polyfill = (opt: RoseOptions): RoseOptions => {
     const options = polyfillOptions(opt);
     replaceApi(REPLACEAPILIST, options);
-
-    replaceLegend(options);
 
     if (get(options, 'tooltip.visible') === false) {
         set(options, 'tooltip', false);

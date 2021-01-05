@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DonutChart from '../../src/plots/DonutChart';
 import { render, cleanup } from '@testing-library/react';
 
@@ -65,7 +65,7 @@ describe('Plots-DonutChart', () => {
         lineDash: [5, 5],
       }}
     />);
-    // cleanup();
+    cleanup();
   });
 
 
@@ -81,7 +81,7 @@ describe('Plots-DonutChart', () => {
         offsetY: 2,
         title: {
           visible: true,
-          text: '2',
+          text: 'legend title',
           style: {
             fill: "red",
           },
@@ -98,6 +98,7 @@ describe('Plots-DonutChart', () => {
         },
       }}
     />);
+    cleanup();
   });
 
 
@@ -112,13 +113,13 @@ describe('Plots-DonutChart', () => {
         showCrosshairs: true,
         crosshairs: { type: 'y' },
         fields: ['type', 'value'],
-        formatter: ({ type, value }) => ({ value, name: `${type}-tyz` })
+        formatter: ({ type, value }) => ({ value, name: `${type}-cust` })
       }}
     />);
+    cleanup();
   });
 
   test('label-环形图', () => {
-
     const cc = {
       label: {
         visible: true,
@@ -137,7 +138,6 @@ describe('Plots-DonutChart', () => {
       {...basicCfg}
       {...cc}
     />);
+    cleanup();
   });
-
-
 });
