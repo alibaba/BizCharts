@@ -6,8 +6,9 @@ import {
   Tooltip,
   Axis,
   Effects,
-  Interval,
+  // Interval,
 } from "../../src";
+import Interval from '../../src/geometry/Interval';
 
 import Canvas from "../../src/g-components/Canvas";
 import Circle from "../../src/g-components/Circle";
@@ -22,15 +23,14 @@ function Pie ({ data }) {
       <Coordinate type="polar" innerRadius={0.2} />
       <Interval
         position="year*population"
-        adjust="stack"
-        color="year"
-        element-highlight
-        style={{
-          lineWidth: 1,
-          stroke: '#fff',
-        }}
+        // adjust="stack"
+        // color="year"
+        // element-highlight
+        // style={{
+        //   lineWidth: 1,
+        //   stroke: '#fff',
+        // }}
       />
-      
     </Chart>
   );
 }
