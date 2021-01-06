@@ -1,7 +1,6 @@
 import 'react';
 import { Heatmap, HeatmapOptions } from '@antv/g2plot/lib/plots/heatmap';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import warn from 'warning';
 import { registerShape } from '../core';
 import { polyfillOptions } from './core/polyfill';
 import { get, set } from '@antv/util';
@@ -62,7 +61,6 @@ registerShape('polygon', 'boundary-polygon', {
 export interface CalendarOptions extends HeatmapOptions, BasePlotOptions {}
 
 export default createPlot<CalendarOptions>(Heatmap, 'CalendarChart', (props) => {
-  warn(true, '日历图即将被废弃，请使用<Heatmap />替代，具体用法请查看文档：');
   const options = polyfillOptions(props);
   if (get(props, 'shape')) {
     set(options, 'shape', 'boundary-polygon');

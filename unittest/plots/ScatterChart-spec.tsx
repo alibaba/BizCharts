@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ScatterChart from '../../src/plots/ScatterChart';
 import { render, cleanup } from '@testing-library/react';
-import { Chart } from '@antv/g2';
 
 const MOCK_DATA = [
   {
@@ -314,232 +313,191 @@ const basicCfg = {
 }
 
 describe('Plots-ScatterChart', () => {
-  // test('基础散点图', () => {
+  test('基础散点图', () => {
+    let chart = null;
+    render(<ScatterChart
+      onGetG2Instance={c => (chart = c)}
+      title="基础散点图"
+      {...basicCfg}
+      sizeField="Rating"
+      pixelRatio={3}
+      renderer="svg"
+      meta={{
+        Rating: {
+          formatter: val => `${val}%`
+        }
+      }}
+      color={['red', 'green', 'yellow', 'black', 'orange']}
+      pointStyle={{
+        strokeOpacity: 0.5,
+      }}
+      size={[5, 10]}
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
 
-  //   render(<ScatterChart
-  //     title="基础散点图"
-  //     {...basicCfg}
-  //     sizeField="Rating"
-  //     pixelRatio={3}
-  //     renderer="svg"
-  //     meta={{
-  //       Rating: {
-  //         formatter: val => `${val}%`
-  //       }
-  //     }}
+  test('xAxis-散点图', () => {
+    let chart = null;
+    render(<ScatterChart
+      title="xAxis-散点图"
+      {...basicCfg}
+      xAxis={{
+        line: {
+          visible: true,
+          style: {
+            stroke: "black",
+            lineWidth: 2,
+            lineDash: [4, 5],
+            strokeOpacity: 0.7,
+            shadowColor: "black",
+            shadowBlur: 10,
+            shadowOffsetX: 5,
+            shadowOffsetY: 5,
+            cursor: "pointer",
+          },
+        },
+        grid: {
+          visible: true,
+          line: {
+            style: {
+              stroke: "orange",
+              lineWidth: 2,
+              lineDash: [4, 5],
+            },
+          },
+        },
+        label: {
+          visible: true,
+          // formatter: (val) => `${val}$`,
 
-  //     color={['red', 'green', 'yellow', 'black', 'orange']}
-  //     // color={({ type }) => {
-  //     //   if (type === '分类五') return 'red';
-  //     //   return 'blue';
-  //     // }}
-  //     pointStyle={{
-  //       strokeOpacity: 0.5,
-  //     }}
-  //     size={[5, 10]}
-  //   />);
-  //   // cleanup();
-  // });
+          suffix: "%",
+          // @ts-ignore
+          // offsetX: 40,
+          // offsetY: 4,
+          offset: 20,
+          style: {
+            fill: "red",
+          },
+          autoHide: true,
+          autoRotate: true,
+        },
+        tickLine: {
+          visible: true,
+          style: {
+            fill: "red",
+            stroke: "red",
+          },
+        },
+        title: {
+          // @ts-ignore
+          visible: true,
+          text: "名称11",
+          offset: 50,
+          style: {
+            fill: "blue",
+          },
+        },
 
-  // test('xAxis-散点图', () => {
-  //   let chart = null;
-  //   render(<ScatterChart
-  //     title="xAxis-散点图"
-  //     {...basicCfg}
-  //     xAxis={{
-  //       line: {
-  //         visible: true,
-  //         style: {
-  //           stroke: "black",
-  //           lineWidth: 2,
-  //           lineDash: [4, 5],
-  //           strokeOpacity: 0.7,
-  //           shadowColor: "black",
-  //           shadowBlur: 10,
-  //           shadowOffsetX: 5,
-  //           shadowOffsetY: 5,
-  //           cursor: "pointer",
-  //         },
-  //       },
-  //       grid: {
-  //         visible: true,
-  //         line: {
-  //           style: {
-  //             stroke: "orange",
-  //             lineWidth: 2,
-  //             lineDash: [4, 5],
-  //           },
-  //         },
-  //       },
-  //       label: {
-  //         visible: true,
-  //         // formatter: (val) => `${val}$`,
-
-  //         suffix: "%",
-  //         // @ts-ignore
-  //         // offsetX: 40,
-  //         // offsetY: 4,
-  //         offset: 20,
-  //         style: {
-  //           fill: "red",
-  //         },
-  //         autoHide: true,
-  //         autoRotate: true,
-  //       },
-  //       tickLine: {
-  //         visible: true,
-  //         style: {
-  //           fill: "red",
-  //           stroke: "red",
-  //         },
-  //       },
-  //       title: {
-  //         // @ts-ignore
-  //         visible: true,
-  //         text: "名称11",
-  //         offset: 50,
-  //         style: {
-  //           fill: "blue",
-  //         },
-  //       },
-
-  //     }}
-  //     onGetG2Instance={c => (chart = c)}
-  //   />);
-  // });
-
-  // test('legend-散点图', () => {
-  //   render(<ScatterChart
-  //     title="legend-散点图"
-  //     {...basicCfg}
-  //     legend={{
-  //       visible: true,
-  //       position: "bottom",
-  //       formatter: val => `${val}%`, //  text 的优先度大于formatter
-  //       offsetX: 40,
-  //       offsetY: 5,
-  //       title: {
-  //         visible: true,
-  //         text: 'legne-title',
-  //         style: {
-  //           fill: "red",
-  //         },
-  //       },
-  //       marker: {
-  //         symbol: "circle",
-  //       },
-  //       text: {
-  //         style: {
-  //           fill: "pink",
-  //           stroke: "pink",
-  //         },
-  //         formatter: (val) => `${val}$`,
-  //       },
-  //     }}
-  //   />);
-  // });
+      }}
+      onGetG2Instance={c => (chart = c)}
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
 
 
-  // test('tooltip-散点图', () => {
-  //   render(<ScatterChart
-  //     title="tooltip-散点图"
-  //     {...basicCfg}
-  //     tooltip={{
-  //       visible: true,
-  //       offset: 10,
-  //       // shared: true,
-  //       showCrosshairs: true,
-  //       crosshairs: { type: 'y' },
-  //       fields: ['Rating'],
-  //       formatter: ({ Rating }) => ({ value:Rating, name: 'name' })
-  //     }}
-  //   />);
-  // });
-
-  // test('label-散点图', () => {
-  //   render(<ScatterChart
-  //     title="label-散点图"
-  //     {...basicCfg}
-  //     label={
-  //       {
-  //         visible: true,
-  //         formatter: val => `${val.Rating}1`,
-  //         offsetX: 10,
-  //         offsetY: 10,
-  //         style: {
-  //           fill: 'red',
-  //         },
-  //       }
-  //     }
-  //   />);
-  // });
+  test('label-散点图', () => {
+    let chart = null;
+    render(<ScatterChart
+      onGetG2Instance={c => (chart = c)}
+      title="label-散点图"
+      {...basicCfg}
+      label={
+        {
+          visible: true,
+          formatter: val => `${val.Rating}1`,
+          offsetX: 10,
+          offsetY: 10,
+          style: {
+            fill: 'red',
+          },
+        }
+      }
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
 
 
-  // test('quadrant-散点图', () => {
-  //   render(<ScatterChart
-  //     title="quadrant-散点图"
-  //     {...basicCfg}
-  //     quadrant={{
-  //       xBaseline: 500,
-  //       yBaseline: 5,
-  //       lineStyle: {
-  //         //@ts-ignore
-  //         fill: 'red',
-  //         stroke: 'red',
-  //       },
-  //       regionStyle: [
-  //         {
-  //           //@ts-ignore
-  //           stroke: 'pink'
-  //         },
-  //         {
-  //           //@ts-ignore
-  //           fill: 'blue'
-  //         },
-  //         {
-  //           //@ts-ignore
-  //           fill: 'green'
-  //         },
-  //         {
-  //           //@ts-ignore
-  //           fill: 'yellow'
-  //         },
-  //       ],
-  //       labels: [ // labels优先级高于label
-  //         {
-  //           content: '第一象限',
-  //           style: {
-  //             fill: 'red'
-  //           }
-  //         },
-  //         {
-  //           content: '第二象限',
-  //         },
-  //         {
-  //           content: '第三象限',
-  //         },
-  //         {
-  //           content: '第四象限',
-  //         },
-  //       ],
+  test('quadrant-散点图', () => {
+    let chart = null;
+    render(<ScatterChart
+      onGetG2Instance={c => (chart = c)}
+      title="quadrant-散点图"
+      {...basicCfg}
+      quadrant={{
+        xBaseline: 500,
+        yBaseline: 5,
+        lineStyle: {
+          //@ts-ignore
+          fill: 'red',
+          stroke: 'red',
+        },
+        regionStyle: [
+          {
+            //@ts-ignore
+            stroke: 'pink'
+          },
+          {
+            //@ts-ignore
+            fill: 'blue'
+          },
+          {
+            //@ts-ignore
+            fill: 'green'
+          },
+          {
+            //@ts-ignore
+            fill: 'yellow'
+          },
+        ],
+        labels: [ // labels优先级高于label
+          {
+            content: '第一象限',
+            style: {
+              fill: 'red'
+            }
+          },
+          {
+            content: '第二象限',
+          },
+          {
+            content: '第三象限',
+          },
+          {
+            content: '第四象限',
+          },
+        ],
+        label: {
+          text: ['第一象限', '第二象限', '第三象限', '第四0象限'],
+          style: {
+            fill: '#ccc',
+            fontSize: 16,
+            opacity: 0.6
+          }
+        }
 
-
-  //       label: {
-  //         text: ['第一象限', '第二象限', '第三象限', '第四0象限'],
-  //         style: {
-  //           fill: '#ccc',
-  //           fontSize: 16,
-  //           opacity: 0.6
-  //         }
-  //       }
-
-  //     }}
-  //   />);
-  // });
-
+      }}
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
 
   test('trendline-散点图', () => {
+    let chart = null;
     render(<ScatterChart
+      onGetG2Instance={c => (chart = c)}
       title="quadrant-散点图"
       {...basicCfg}
       trendline={{
@@ -555,6 +513,8 @@ describe('Plots-ScatterChart', () => {
         }
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 

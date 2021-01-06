@@ -436,7 +436,6 @@ describe('Plots-RadarChart', () => {
         formatter: ({ score }) => `${score}val`,
         offsetX: 6,
         offsetY: 6,
-
         style: {
           fill: 'rgba(0, 0, 0, 0.65)',
           stroke: 'red',

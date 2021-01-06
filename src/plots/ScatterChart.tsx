@@ -5,9 +5,9 @@ import { Scatter, ScatterOptions as options } from '@antv/g2plot/lib/plots/scatt
 import { RegressionLineOptions } from '@antv/g2plot/lib/plots/scatter/types';
 import { StyleAttr } from '@antv/g2plot/lib/types/attr';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions } from './core/polyfill';
-import { replaceLegend, replaceAxis } from './core/replaceApi';
+import { polyfillOptions, replaceAxis, polyfillVisible } from './core/polyfill';
 import { AxisAPIOptions, LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
+import { isNil, isObject } from '@antv/util';
 
 interface TrendLineAPIOptions extends RegressionLineOptions {
     showConfidence?: boolean,
@@ -26,7 +26,7 @@ interface ScatterOptions extends options, BasePlotOptions {
     yAxis?: AxisAPIOptions,
     pointSize?: options['size'],
     size?: options['size'],
-    trendline: TrendLineAPIOptions,
+    trendline?: TrendLineAPIOptions,
 }
 
 const polyfill = (opt: ScatterOptions): ScatterOptions => {
@@ -38,19 +38,7 @@ const polyfill = (opt: ScatterOptions): ScatterOptions => {
     replaceAxis(options, 'xAxis', 'xAxis');
     replaceAxis(options, 'yAxis', 'yAxis');
 
-    replaceLegend(options);
-
-    if (get(options, 'tooltip.visible') === false) {
-        set(options, 'tooltip', false);
-    }
-
-    if (get(options, 'label.visible') === false) {
-        set(options, 'label', false);
-    }
-
-    if (get(options, 'quadrant.visible') === false) {
-        set(options, 'quadrant', false);
-    }
+    polyfillVisible(options, 'quadrant')
 
     const quadrantLabel = get(options, 'quadrant.label');
     const qLabels = get(options, 'quadrant.labels')
@@ -65,8 +53,8 @@ const polyfill = (opt: ScatterOptions): ScatterOptions => {
     const regressionLine = get(options, 'regressionLine');
     if (!regressionLine) {
         const trendline = get(options, 'trendline');
-        if (trendline.visible === false) {
-            set(options, 'regressionLine', false);
+        if (isObject(trendline) && get(trendline, 'visible') === false) {
+            set(options, 'regressionLine', null);
         } else {
             set(options, 'regressionLine', trendline);
         }
