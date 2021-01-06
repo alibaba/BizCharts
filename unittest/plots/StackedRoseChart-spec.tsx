@@ -40,15 +40,11 @@ describe('Plots-StackedRoseChart', () => {
         (c) => chart = c
       }
     />)
-
-    expect(chart.options.xField).toBe('月份');
-    expect(chart.options.yField).toBe('月均降雨量');
-    expect(chart.options.seriesField).toBe('name');
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
-  test('老版本categoryField*radiusField*stackField', () => {
+  test('老版本categoryField,radiusField,stackField --> xField,yField,seriesField', () => {
     let chart = null;
     // @ts-ignore
     render(<StackedRoseChart
@@ -62,17 +58,15 @@ describe('Plots-StackedRoseChart', () => {
         (c) => chart = c
       }
     />)
-    console.log(chart.options, 99)
-    expect(chart.options.categoryField).toBe('月份');
-    expect(chart.options.radiusField).toBe('月均降雨量');
-    expect(chart.options.stackField).toBe('name');
-
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    expect(chart.options.xField).toBe('月份');
+    expect(chart.options.yField).toBe('月均降雨量');
+    expect(chart.options.seriesField).toBe('name');
+    cleanup();
   });
 
 
-  test('基础堆叠图', () => {
+  test('color & sectorStyle', () => {
+    let chart = null;
     render(<StackedRoseChart
       {...basicCfg}
       title="基础堆叠图"
@@ -85,7 +79,6 @@ describe('Plots-StackedRoseChart', () => {
       }}
       radius={0.9}
       innerRadius={0.1}
-      // color={['red', 'green']}
       color={({ name }) => {
         if (name === 'London') return 'red';
         return 'blue';
@@ -94,22 +87,32 @@ describe('Plots-StackedRoseChart', () => {
         stroke: 'black',
         lineDash: [5, 5],
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('legend-堆叠图', () => {
+    let chart = null;
+    const fn = jest.fn(val => `${val}%`);
+    const fn2 = jest.fn(val => `${val}%`);
     render(<StackedRoseChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       title="legend-堆叠图"
       {...basicCfg}
       legend={{
         position: "bottom",
-        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        formatter: fn, //  text 的优先度大于formatter
         offsetX: 40,
         offsetY: 2,
         title: {
-          text: '2',
+          text: 'legend title',
           style: {
             fill: "red",
           },
@@ -122,15 +125,23 @@ describe('Plots-StackedRoseChart', () => {
             fill: "pink",
             stroke: "pink",
           },
-          formatter: (val) => `${val}$`,
+          formatter: fn2,
         },
       }}
     />);
+    expect(fn).not.toHaveBeenCalled();
+    expect(fn2).toHaveBeenCalled();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('tooltip-堆叠图', () => {
+    let chart = null;
     render(<StackedRoseChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       title="tooltip-堆叠图"
       {...basicCfg}
       meta={{
@@ -147,10 +158,28 @@ describe('Plots-StackedRoseChart', () => {
         fields: ['name'],
       }}
     />);
+    expect(chart.options.tooltip).toEqual({
+      crosshairs: {
+        type: "y",
+      },
+      fields: [
+        "name",
+      ],
+      offset: 10,
+      shared: true,
+      showCrosshairs: true,
+      showMarkers: false,
+      visible: true,
+    });
+    cleanup();
   });
 
   test('label-堆叠图', () => {
+    let chart = null;
     render(<StackedRoseChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       title="label-堆叠图"
       {...basicCfg}
       label={{
@@ -164,8 +193,9 @@ describe('Plots-StackedRoseChart', () => {
         }
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
-
 
 });
 
