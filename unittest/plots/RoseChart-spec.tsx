@@ -28,21 +28,17 @@ const basicCfg = {
 };
 
 describe('Plots-RoseChart', () => {
-  test('新版本玫瑰图xField*yField*DaseriesFieldte', () => {
+  test('新版本玫瑰图xField*yField*seriesFieldte', () => {
     let chart = null;
     render(<RoseChart
       {...basicCfg}
-      title="新版本玫瑰图xField*yField*DaseriesFieldte"
+      title="新版本玫瑰图xField*yField*seriesField"
       onGetG2Instance={
         (c) => chart = c
       }
     />)
-
-    expect(chart.options.xField).toBe('Date');
-    expect(chart.options.yField).toBe('scales');
-    expect(chart.options.seriesField).toBe('Date');
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('老版本玫瑰图categoryField*radiusField*Date', () => {
@@ -62,15 +58,12 @@ describe('Plots-RoseChart', () => {
         (c) => chart = c
       }
     />)
-    expect(chart.options.xField).toBe('Date');
-    expect(chart.options.yField).toBe('scales');
-    expect(chart.options.seriesField).toBe('Date');
-
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('基础玫瑰图', () => {
+    let chart = null;
     render(<RoseChart
       {...basicCfg}
       title="基础玫瑰图"
@@ -92,12 +85,19 @@ describe('Plots-RoseChart', () => {
         stroke: 'black',
         lineDash: [5, 5],
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('legend-玫瑰图', () => {
+    let chart = null;
+    const fn = jest.fn(val => `${val}%`);
+    const fn2 = jest.fn(val => `${val}%`);
     render(<RoseChart
       title={{
         visible: true,
@@ -106,7 +106,7 @@ describe('Plots-RoseChart', () => {
       {...basicCfg}
       legend={{
         position: "bottom",
-        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        formatter: fn, //  text 的优先度大于formatter
         offsetX: 40,
         offsetY: 2,
         title: {
@@ -123,14 +123,21 @@ describe('Plots-RoseChart', () => {
             fill: "pink",
             stroke: "pink",
           },
-          formatter: (val) => `${val}$`,
+          formatter: fn2,
         },
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(fn).not.toHaveBeenCalled();
+    expect(fn2).toHaveBeenCalled();
+    expect(chart.options).toMatchSnapshot();
   });
 
 
   test('tooltip-玫瑰图', () => {
+    let chart = null;
     render(<RoseChart
       title="tooltip-玫瑰图"
       {...basicCfg}
@@ -142,10 +149,15 @@ describe('Plots-RoseChart', () => {
         crosshairs: { type: 'y' },
         fields: ['scales'],
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
   });
 
   test('label-玫瑰图', () => {
+    let chart = null;
     render(<RoseChart
       title="label-玫瑰图"
       {...basicCfg}
@@ -159,7 +171,11 @@ describe('Plots-RoseChart', () => {
           fill: 'red',
         }
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
   });
 
 

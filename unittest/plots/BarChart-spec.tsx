@@ -1,7 +1,6 @@
 import React from 'react';
 import BarChart from '../../src/plots/BarChart';
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
-import { getClientPoint } from '../tools/simulate';
+import { render, cleanup } from '@testing-library/react';
 
 
 const MOCK_DATA = [
@@ -17,6 +16,19 @@ const MOCK_DATA = [
 
 
 describe('Plots-BarChart', () => {
+  test('基础条形图', () => {
+    let chart = null;
+    render(<BarChart
+      data={MOCK_DATA}
+      xField="sales"
+      yField="type"
+      colorField="type"
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />)
+    expect(chart.options).toMatchSnapshot();
+  })
   test('colorField --> seriesField', () => {
     let chart = null;
     render(<BarChart

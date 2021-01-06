@@ -81,10 +81,13 @@ describe('Plots-PieChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('legend-饼图: text 转 itemName', () => {
+    const fn = jest.fn(val => `${val}%`);
+    const fn2 = jest.fn(val => `${val}%`);
     let chart = null;
     render(<PieChart
       title="legend-饼图"
@@ -92,7 +95,7 @@ describe('Plots-PieChart', () => {
       legend={{
         visible: true,
         position: "bottom",
-        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        formatter: fn, //  text 的优先度大于formatter
         offsetX: 40,
         offsetY: 2,
         title: {
@@ -110,21 +113,27 @@ describe('Plots-PieChart', () => {
             fill: "pink",
             stroke: "pink",
           },
-          formatter: (val) => `${val}$`,
+          formatter: fn2,
         },
       }}
       onGetG2Instance={
         (c) => chart = c
       }
     />);
-    expect(chart.options.legend.itemName.style.fill).toBe("pink");
+    expect(fn).not.toHaveBeenCalled();
+    expect(fn2).toHaveBeenCalled();
+    cleanup();
   });
 
 
   test('tooltip-饼图', () => {
+    let chart = null;
     render(<PieChart
       title="tooltip-饼图"
       {...basicCfg}
+      onGetG2Instance={
+        (c) => chart = c
+      }
       tooltip={{
         visible: true,
         offset: 10,
@@ -135,11 +144,13 @@ describe('Plots-PieChart', () => {
         formatter: ({ type, value }) => ({ value, name: `${type}-tyz` })
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('label-饼图', () => {
-
-    const cc = {
+    let chart = null;
+    const opt = {
       data: MOCK_DATA,
       width: 500,
       height: 500,
@@ -161,9 +172,13 @@ describe('Plots-PieChart', () => {
     }
     render(<PieChart
       title="label-饼图"
-      {...cc}
+      {...opt}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
-
 
 });

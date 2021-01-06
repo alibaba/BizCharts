@@ -1,0 +1,437 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-RoseChart label-玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "autoRotate": true,
+    "formatter": [Function],
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+    "offsetX": 6,
+    "offsetY": 6,
+    "style": Object {
+      "fill": "red",
+    },
+    "visible": true,
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart legend-玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "formatter": [Function],
+    "itemName": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fill": "pink",
+        "stroke": "pink",
+      },
+    },
+    "marker": Object {
+      "symbol": "circle",
+    },
+    "offsetX": 40,
+    "offsetY": 2,
+    "position": "bottom",
+    "text": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fill": "pink",
+        "stroke": "pink",
+      },
+    },
+    "title": Object {
+      "style": Object {
+        "fill": "red",
+      },
+      "text": "2",
+    },
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart tooltip-玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "crosshairs": Object {
+      "type": "y",
+    },
+    "fields": Array [
+      "scales",
+    ],
+    "offset": 10,
+    "shared": true,
+    "showCrosshairs": true,
+    "showMarkers": false,
+    "visible": true,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart 基础玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "color": [Function],
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "innerRadius": 0.1,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "meta": Object {
+    "date": Object {
+      "formatter": [Function],
+    },
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "pixelRatio": 3,
+  "radius": 0.5,
+  "renderer": "svg",
+  "sectorStyle": Object {
+    "lineDash": Array [
+      5,
+      5,
+    ],
+    "lineWidth": 1,
+    "stroke": "black",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart 新版本玫瑰图xField*yField*seriesFieldte 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart 老版本玫瑰图categoryField*radiusField*Date 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "categoryField": "Date",
+  "colorField": "Date",
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 436,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "radiusField": "scales",
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
