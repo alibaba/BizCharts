@@ -141,11 +141,14 @@ describe('Plots-RadarChart', () => {
     expect(chart.options.radiusField).toBe(chart.options.yField);
     expect(chart.options.angleField).toBe('item');
     expect(chart.options.radiusField).toBe('score');
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
 
   test('基础2-雷达图', () => {
+    let chart = null;
     render(<RadarChart
       data={data}
       title={{
@@ -159,11 +162,20 @@ describe('Plots-RadarChart', () => {
         return (user === 'a' ? 'red' : 'yellow');
       }}
       smooth
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('area-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       data={data}
       title={{
         visible: true,
@@ -179,10 +191,13 @@ describe('Plots-RadarChart', () => {
         }
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('point-雷达图', () => {
+    let chart = null;
     render(<RadarChart
       data={data}
       title={{ visible: true, text: "point-雷达图", }}
@@ -197,12 +212,17 @@ describe('Plots-RadarChart', () => {
         },
         size: 4,
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('line-雷达图', () => {
-
+    let chart = null;
     render(<RadarChart
       data={data}
       title={{ visible: true, text: "line-雷达图", }}
@@ -216,11 +236,20 @@ describe('Plots-RadarChart', () => {
           lineDash: [6, 6],
         },
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('angleAxis-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       data={data}
       title={{ visible: true, text: "angleAxis-雷达图", }}
       xField="item"
@@ -281,10 +310,16 @@ describe('Plots-RadarChart', () => {
 
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('radiusAxis-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       height={500}
       data={data}
       title={{
@@ -306,10 +341,16 @@ describe('Plots-RadarChart', () => {
         },
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('legend-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       height={500}
       data={data}
       title={{
@@ -342,11 +383,17 @@ describe('Plots-RadarChart', () => {
         },
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('tooltip-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       height={500}
       data={data}
       title={{
@@ -365,10 +412,16 @@ describe('Plots-RadarChart', () => {
         fields: ['user', 'score'],
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('label-雷达图', () => {
+    let chart = null;
     render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
       data={data}
       title={{
         visible: true,
@@ -390,6 +443,7 @@ describe('Plots-RadarChart', () => {
         }
       }}
     />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
-
 });

@@ -161,6 +161,7 @@ describe('Plots-GroupedRoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('label-分组玫瑰图', () => {
@@ -183,6 +184,7 @@ describe('Plots-GroupedRoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 });
