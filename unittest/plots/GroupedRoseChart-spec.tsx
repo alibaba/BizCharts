@@ -44,8 +44,7 @@ describe('Plots-GroupedRoseChart', () => {
     expect(chart.options.xField).toBe('月份');
     expect(chart.options.yField).toBe('月均降雨量');
     expect(chart.options.seriesField).toBe('name');
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    cleanup();
   });
 
   test('老版本categoryField*radiusField*groupField', () => {
@@ -65,9 +64,7 @@ describe('Plots-GroupedRoseChart', () => {
     expect(chart.options.categoryField).toBe('月份');
     expect(chart.options.radiusField).toBe('月均降雨量');
     expect(chart.options.groupField).toBe('name');
-
-    // // expect(chart.options.autoFit).toBe(true); // autoFit被转成了forceFit,所以不测试autoFit
-    // cleanup();
+    cleanup();
   });
 
 
@@ -95,18 +92,21 @@ describe('Plots-GroupedRoseChart', () => {
         lineDash: [5, 5],
       }}
     />);
-    // cleanup();
+    cleanup();
   });
 
 
   test('legend-分组玫瑰图', () => {
+    let chart = null;
+    const fn = jest.fn(val => `${val}%`);
+    const fn2 = jest.fn(val => `${val}%`);
     render(<GroupedRoseChart
       title="legend-分组玫瑰图"
       {...basicCfg}
       legend={{
         visible: true,
         position: "bottom",
-        formatter: val => `${val}%`, //  text 的优先度大于formatter
+        formatter: fn, //  text 的优先度大于formatter
         offsetX: 40,
         offsetY: 2,
         title: {
@@ -123,14 +123,22 @@ describe('Plots-GroupedRoseChart', () => {
             fill: "pink",
             stroke: "pink",
           },
-          formatter: (val) => `${val}$`,
+          formatter: fn2,
         },
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(fn).not.toHaveBeenCalled();
+    expect(fn2).toHaveBeenCalled();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
   test('tooltip-分组玫瑰图', () => {
+    let chart = null;
     render(<GroupedRoseChart
       title="tooltip-分组玫瑰图"
       {...basicCfg}
@@ -148,10 +156,15 @@ describe('Plots-GroupedRoseChart', () => {
         fields: ['name', '月均降雨量'],
         formatter: (item) => ({ value: item['月均降雨量'], name: item.name === 'London' ? '伦敦' : '柏林' })
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
   });
 
   test('label-分组玫瑰图', () => {
+    let chart = null;
     render(<GroupedRoseChart
       title="label-分组玫瑰图"
       {...basicCfg}
@@ -165,8 +178,11 @@ describe('Plots-GroupedRoseChart', () => {
           fill: 'red',
         }
       }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />);
+    expect(chart.options).toMatchSnapshot();
   });
-
 
 });

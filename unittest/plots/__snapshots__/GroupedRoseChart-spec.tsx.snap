@@ -1,0 +1,479 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-GroupedRoseChart legend-分组玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "name": "London",
+      "月份": "Jan.",
+      "月均降雨量": 18.9,
+    },
+    Object {
+      "name": "London",
+      "月份": "Feb.",
+      "月均降雨量": 28.8,
+    },
+    Object {
+      "name": "London",
+      "月份": "Mar.",
+      "月均降雨量": 39.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Apr.",
+      "月均降雨量": 81.4,
+    },
+    Object {
+      "name": "London",
+      "月份": "May",
+      "月均降雨量": 47,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jun.",
+      "月均降雨量": 20.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jul.",
+      "月均降雨量": 24,
+    },
+    Object {
+      "name": "London",
+      "月份": "Aug.",
+      "月均降雨量": 35.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jan.",
+      "月均降雨量": 12.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Feb.",
+      "月均降雨量": 23.2,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Mar.",
+      "月均降雨量": 34.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Apr.",
+      "月均降雨量": 99.7,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "May",
+      "月均降雨量": 52.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jun.",
+      "月均降雨量": 35.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jul.",
+      "月均降雨量": 37.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Aug.",
+      "月均降雨量": 42.4,
+    },
+  ],
+  "height": NaN,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isGroup": true,
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "formatter": [MockFunction],
+    "itemName": Object {
+      "formatter": [MockFunction] {
+        "calls": Array [
+          Array [
+            "London",
+            Object {
+              "id": "London",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5B8FF9",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "London",
+              "unchecked": false,
+              "value": "London",
+            },
+            0,
+          ],
+          Array [
+            "Berlin",
+            Object {
+              "id": "Berlin",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5AD8A6",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "Berlin",
+              "unchecked": false,
+              "value": "Berlin",
+            },
+            1,
+          ],
+          Array [
+            "London",
+            Object {
+              "id": "London",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5B8FF9",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "London",
+              "unchecked": false,
+              "value": "London",
+            },
+            0,
+          ],
+          Array [
+            "Berlin",
+            Object {
+              "id": "Berlin",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5AD8A6",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "Berlin",
+              "unchecked": false,
+              "value": "Berlin",
+            },
+            1,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": "London%",
+          },
+          Object {
+            "type": "return",
+            "value": "Berlin%",
+          },
+          Object {
+            "type": "return",
+            "value": "London%",
+          },
+          Object {
+            "type": "return",
+            "value": "Berlin%",
+          },
+        ],
+      },
+      "style": Object {
+        "fill": "pink",
+        "stroke": "pink",
+      },
+    },
+    "marker": Object {
+      "symbol": "circle",
+    },
+    "offsetX": 40,
+    "offsetY": 2,
+    "position": "bottom",
+    "text": Object {
+      "formatter": [MockFunction] {
+        "calls": Array [
+          Array [
+            "London",
+            Object {
+              "id": "London",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5B8FF9",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "London",
+              "unchecked": false,
+              "value": "London",
+            },
+            0,
+          ],
+          Array [
+            "Berlin",
+            Object {
+              "id": "Berlin",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5AD8A6",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "Berlin",
+              "unchecked": false,
+              "value": "Berlin",
+            },
+            1,
+          ],
+          Array [
+            "London",
+            Object {
+              "id": "London",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5B8FF9",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "London",
+              "unchecked": false,
+              "value": "London",
+            },
+            0,
+          ],
+          Array [
+            "Berlin",
+            Object {
+              "id": "Berlin",
+              "marker": Object {
+                "spacing": 8,
+                "style": Object {
+                  "fill": "#5AD8A6",
+                  "r": 4.5,
+                },
+                "symbol": "circle",
+              },
+              "name": "Berlin",
+              "unchecked": false,
+              "value": "Berlin",
+            },
+            1,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": "London%",
+          },
+          Object {
+            "type": "return",
+            "value": "Berlin%",
+          },
+          Object {
+            "type": "return",
+            "value": "London%",
+          },
+          Object {
+            "type": "return",
+            "value": "Berlin%",
+          },
+        ],
+      },
+      "style": Object {
+        "fill": "pink",
+        "stroke": "pink",
+      },
+    },
+    "title": Object {
+      "style": Object {
+        "fill": "red",
+      },
+      "text": "2",
+    },
+    "visible": true,
+  },
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "name",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": false,
+  "xField": "月份",
+  "yAxis": false,
+  "yField": "月均降雨量",
+}
+`;
+
+exports[`Plots-GroupedRoseChart tooltip-分组玫瑰图 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "name": "London",
+      "月份": "Jan.",
+      "月均降雨量": 18.9,
+    },
+    Object {
+      "name": "London",
+      "月份": "Feb.",
+      "月均降雨量": 28.8,
+    },
+    Object {
+      "name": "London",
+      "月份": "Mar.",
+      "月均降雨量": 39.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Apr.",
+      "月均降雨量": 81.4,
+    },
+    Object {
+      "name": "London",
+      "月份": "May",
+      "月均降雨量": 47,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jun.",
+      "月均降雨量": 20.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jul.",
+      "月均降雨量": 24,
+    },
+    Object {
+      "name": "London",
+      "月份": "Aug.",
+      "月均降雨量": 35.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jan.",
+      "月均降雨量": 12.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Feb.",
+      "月均降雨量": 23.2,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Mar.",
+      "月均降雨量": 34.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Apr.",
+      "月均降雨量": 99.7,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "May",
+      "月均降雨量": 52.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jun.",
+      "月均降雨量": 35.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jul.",
+      "月均降雨量": 37.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Aug.",
+      "月均降雨量": 42.4,
+    },
+  ],
+  "height": NaN,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isGroup": true,
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "meta": Object {
+    "name": Object {
+      "formatter": [Function],
+    },
+  },
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "name",
+  "tooltip": Object {
+    "crosshairs": Object {
+      "type": "y",
+    },
+    "fields": Array [
+      "name",
+      "月均降雨量",
+    ],
+    "formatter": [Function],
+    "offset": 10,
+    "shared": true,
+    "showCrosshairs": true,
+    "showMarkers": false,
+    "visible": true,
+  },
+  "xAxis": false,
+  "xField": "月份",
+  "yAxis": false,
+  "yField": "月均降雨量",
+}
+`;

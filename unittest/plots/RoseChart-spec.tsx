@@ -2,7 +2,6 @@ import React from 'react';
 import RoseChart from '../../src/plots/RoseChart';
 import { render, cleanup } from '@testing-library/react';
 
-
 const MOCK_DATA = [{
   "Date": "2010-01",
   "scales": 1998
@@ -110,7 +109,7 @@ describe('Plots-RoseChart', () => {
         offsetX: 40,
         offsetY: 2,
         title: {
-          text: '2',
+          text: 'legend title',
           style: {
             fill: "red",
           },
@@ -133,6 +132,7 @@ describe('Plots-RoseChart', () => {
     expect(fn).not.toHaveBeenCalled();
     expect(fn2).toHaveBeenCalled();
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
 
@@ -154,6 +154,7 @@ describe('Plots-RoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 
   test('label-玫瑰图', () => {
@@ -176,7 +177,7 @@ describe('Plots-RoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
-
 
 });
