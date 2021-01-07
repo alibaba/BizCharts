@@ -6,6 +6,7 @@ import set from '@antv/util/lib/set';
 import isNil from '@antv/util/lib/is-nil';
 import { polyfillOptions } from './core/polyfill';
 import createPlot, { BasePlotOptions } from '../createPlot';
+import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 interface BubbleOptions extends options, BasePlotOptions {
   /** 该属性已废弃，请使用size替代 */
@@ -15,6 +16,9 @@ interface BubbleOptions extends options, BasePlotOptions {
    * 文档查看：https://g2plot.antv.vision/zh/examples/scatter/basic/#regressionLine
    */
   trendLine?: any;
+  legend?: LengendAPIOptions;
+  tooltip?: TooltipAPIOptions;
+  label?: LabelAPIOptions;
 };
 
 export { BubbleOptions };
