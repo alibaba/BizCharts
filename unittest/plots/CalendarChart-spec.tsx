@@ -219,12 +219,12 @@ describe('Plots-CalendarChart', () => {
           type: 'cat'
         }
       }}
-      // label={{
-      //   visible: true,
-      // }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />)
-    // expect(chart.options.size).toEqual([10,50]);
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
   test('新版日历图', () => {
     let chart = null;
@@ -235,24 +235,23 @@ describe('Plots-CalendarChart', () => {
         visible: true,
         text: '日历图',
       }}
-      xField= 'week'
-      yField= 'day'
+      xField="week"
+      yField="day"
       colorField= 'commits'
       color= '#BAE7FF-#1890FF-#0050B3'
-      // reflect: 'y',
+      reflect="y"
       shape= 'boundary-polygon'
       dateField='date'
-      // valueField='commits'
       meta={{
         day: {
           type: 'cat'
         }
       }}
-      // label={{
-      //   visible: true,
-      // }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
     />)
-    // expect(chart.options.size).toEqual([10,50]);
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   });
 })

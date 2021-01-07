@@ -16,7 +16,7 @@ G2.registerShape('polygon', 'boundary-polygon', {
       fill: cfg.color,
       paht: [],
     };
-    const points = cfg.points;
+    const points: any = cfg.points;
     const path = [
       ['M', points[0].x, points[0].y],
       ['L', points[1].x, points[1].y],
@@ -30,7 +30,7 @@ G2.registerShape('polygon', 'boundary-polygon', {
       attrs,
     });
 
-    if (cfg.data.lastWeek) {
+    if (get(cfg, 'data.lastWeek')) {
       const linePath = [
         ['M', points[2].x, points[2].y],
         ['L', points[3].x, points[3].y],
@@ -43,7 +43,7 @@ G2.registerShape('polygon', 'boundary-polygon', {
           stroke: '#404040',
         },
       });
-      if (cfg.data.lastDay) {
+      if (get(cfg, 'data.lastDay')) {
         group.addShape('path', {
           attrs: {
             path: this.parsePath([
@@ -109,6 +109,7 @@ export default createPlot<CalendarOptions>(Heatmap, 'CalendarChart', (props) => 
     set(options, 'xAxis', {
       tickLine: null,
       line: null,
+      title: null,
       label: {
         offset: 20,
         style: {
