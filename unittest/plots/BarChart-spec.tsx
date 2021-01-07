@@ -2,7 +2,6 @@ import React from 'react';
 import BarChart from '../../src/plots/BarChart';
 import { render, cleanup } from '@testing-library/react';
 
-
 const MOCK_DATA = [
   { type: '家具家电', sales: 38 },
   { type: '粮油副食', sales: 52 },
@@ -13,7 +12,6 @@ const MOCK_DATA = [
   { type: '食品饮料', sales: 38 },
   { type: '家庭清洁', sales: 38 },
 ];
-
 
 describe('Plots-BarChart', () => {
   test('基础条形图', () => {
