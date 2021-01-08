@@ -3,7 +3,7 @@ import { Gauge, GaugeOptions as Options } from '@antv/g2plot/lib/plots/gauge';
 import { Statistic } from '@antv/g2plot/lib/types';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
-import { isArray, get, set, isNil } from '@antv/util';
+import { isArray, get, set, isNil, isFunction } from '@antv/util';
 import warn from 'warning';
 import { getTheme } from '@antv/g2';
 
@@ -56,7 +56,14 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
     options.percent = value / (max - min);
     set(options, 'axis', {
       label: {
-        formatter: v => v * (max - min)
+        formatter: v => {
+          const formatter = get(options, 'axis.label.formatter');
+          const val = v * (max - min);
+          if (isFunction(formatter)) {
+            return formatter(val)
+          }
+          return val;
+        }
       },
     });
   }
@@ -65,6 +72,5 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
   warn(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle', '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。')
   // value 转为data，用于placeholder统一判断
   let data = !isNil(options.percent) ? options.percent : value;
-  console.log(options)
   return { data, ...options };
 });

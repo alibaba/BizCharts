@@ -1,7 +1,5 @@
 import 'react';
 import warn from 'warning';
-import get from '@antv/util/lib/get';
-import set from '@antv/util/lib/set';
 import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions, replaceApi } from './core/polyfill';
@@ -10,15 +8,15 @@ import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/in
 const REPLACEAPILIST = [{
   sourceKey: 'groupField',
   targetKey: 'seriesField',
-  notice: '请使用seriesField替代',
+  notice: 'groupField 是 g2@1.0的属性，即将废弃，请使用seriesField替代',
 }, {
   sourceKey: 'categoryField',
   targetKey: 'xField',
-  notice: '请使用xField替代',
+  notice: 'categoryField 是 g2@1.0的属性，即将废弃，请使用xField替代',
 }, {
   sourceKey: 'radiusField',
   targetKey: 'yField',
-  notice: '请使用yFeild替代',
+  notice: 'radiusField 是 g2@1.0的属性，即将废弃，请使用yFeild替代',
 }];
 
 interface GroupedRoseOptions extends options, BasePlotOptions {
@@ -34,13 +32,10 @@ interface GroupedRoseOptions extends options, BasePlotOptions {
 }
 
 const polyfill = (opt: GroupedRoseOptions): GroupedRoseOptions => {
-  warn(true, '<GroupedRose /> 即将在4.2.0后废弃，请使用<Rose />。文档查看：')
+  warn(true, '<GroupedRose /> 即将在4.2.0后废弃，请使用<Rose />。')
 
   const options = polyfillOptions(opt);
   replaceApi(REPLACEAPILIST, options);
-
-
-
 
   return { ...options, isGroup: true };
 }

@@ -13,11 +13,11 @@ import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/in
 const REPLACEAPILIST = [{
     sourceKey: 'angleField',
     targetKey: 'xField',
-    notice: '请使用xField替代',
+    notice: 'angleField 是 g2@1.0的属性，即将废弃，请使用xField替代',
 }, {
     sourceKey: 'radiusField',
     targetKey: 'yField',
-    notice: '请使用yFeild替代',
+    notice: 'radiusField 是 g2@1.0的属性，即将废弃，请使用yFeild替代',
 }];
 
 interface LineAPIOptions {

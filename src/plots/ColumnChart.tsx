@@ -15,7 +15,7 @@ export { ColumnOptions };
 const REPLACEAPILIST = [{
   sourceKey: 'colorField',
   targetKey: 'seriesField',
-  notice: '请使用seriesField替代',
+  notice: 'colorField 是 g2@1.0的属性，即将废弃，请使用seriesField替代',
 }];
 
 export default createPlot<ColumnOptions>(Column, 'ColumnChart', (props) => {
