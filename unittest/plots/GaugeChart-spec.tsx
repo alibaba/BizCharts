@@ -16,7 +16,7 @@ const MOCK_DATA = [
 ];
 
 
-describe('Plots-FunnelChart', () => {
+describe('Plots-GaugeChart', () => {
   test('旧版仪表图', () => {
     let chart = null;
     render(<GaugeChart

@@ -74,7 +74,6 @@ class BasePlot extends React.Component<any> {
   public _context: { chart: any } = { chart: null };
 
   componentDidMount() {
-    console.log('this.props', this.props)
     polyfillEvents(this.g2Instance, {}, this.props);
     this.g2Instance.data = this.props.data;
     this.preConfig = pickWithout(this.props, [...REACT_PIVATE_PROPS, 'container', 'PlotClass', 'onGetG2Instance', 'data']);
@@ -97,7 +96,6 @@ class BasePlot extends React.Component<any> {
   }
 
   getChartView() {
-    console.log(this.g2Instance);
     return this.g2Instance.chart;
   }
 

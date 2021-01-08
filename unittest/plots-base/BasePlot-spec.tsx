@@ -66,29 +66,29 @@ describe('基础功能-以AreaChart为demo', () => {
     cleanup();
   });
 
-  test('ErrorBoundary', () => {
-    const { container } = render(<Chart>
-      <Effects>
-      {
-        () => {throw new Error("test error");}
-      }
-      </Effects>
-    </Chart>);
-    expect(container).toMatchSnapshot();
-    cleanup();
-  });
+  // test('ErrorBoundary', () => {
+  //   const { container } = render(<Chart>
+  //     <Effects>
+  //     {
+  //       () => {throw new Error("test error");}
+  //     }
+  //     </Effects>
+  //   </Chart>);
+  //   expect(container).toMatchSnapshot();
+  //   cleanup();
+  // });
 
-  test('自定义 ErrorBoundary', () => {
-    const { container } = render(<Chart errorContent={<div>自定义 ErrorBoundary</div>}>
-      <Effects>
-      {
-        () => {throw new Error("test");}
-      }
-      </Effects>
-    </Chart>);
-    expect(container).toMatchSnapshot();
-    cleanup();
-  });
+  // test('自定义 ErrorBoundary', () => {
+  //   const { container } = render(<Chart errorContent={<div>自定义 ErrorBoundary</div>}>
+  //     <Effects>
+  //     {
+  //       () => {throw new Error("test");}
+  //     }
+  //     </Effects>
+  //   </Chart>);
+  //   expect(container).toMatchSnapshot();
+  //   cleanup();
+  // });
 
   test('placeholder', () => {
     const { container } = render(<Chart placeholder data={undefined} />);

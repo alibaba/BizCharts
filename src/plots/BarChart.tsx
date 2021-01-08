@@ -24,7 +24,7 @@ const polyfill = (opt: BarOptions): BarOptions => {
     warn(true, '请使用seriesField替代');
     set(options, 'seriesField', get(options, 'colorField'));
   }
-  if (isNil(barSize)) {
+  if (!isNil(barSize)) {
     options.minBarWidth = barSize;
     options.maxBarWidth = barSize;
   }

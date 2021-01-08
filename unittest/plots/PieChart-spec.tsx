@@ -85,7 +85,7 @@ describe('Plots-PieChart', () => {
   });
 
 
-  test('legend-饼图: text 转 itemName', () => {
+  test('legend-饼图:text转itemName', () => {
     const fn = jest.fn(val => `${val}%`);
     const fn2 = jest.fn(val => `${val}%`);
     let chart = null;
@@ -126,7 +126,7 @@ describe('Plots-PieChart', () => {
   });
 
 
-  test('tooltip-饼图', () => {
+  test('tooltip饼图', () => {
     let chart = null;
     render(<PieChart
       title="tooltip-饼图"
@@ -148,7 +148,7 @@ describe('Plots-PieChart', () => {
     cleanup();
   });
 
-  test('label-饼图', () => {
+  test('label饼图', () => {
     let chart = null;
     const opt = {
       data: MOCK_DATA,
@@ -171,7 +171,7 @@ describe('Plots-PieChart', () => {
       }
     }
     render(<PieChart
-      title="label-饼图"
+      title="label饼图"
       {...opt}
       onGetG2Instance={
         (c) => chart = c
@@ -180,5 +180,4 @@ describe('Plots-PieChart', () => {
     expect(chart.options).toMatchSnapshot();
     cleanup();
   });
-
 });

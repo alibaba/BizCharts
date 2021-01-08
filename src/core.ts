@@ -1,9 +1,9 @@
 
 
 // 注册 G 渲染引擎
-import * as CanvasEngine from '@antv/g-canvas/esm';
-import * as SVGEngine from '@antv/g-svg/esm';
-import { registerEngine } from '@antv/g2/esm/core';
+import * as CanvasEngine from '@antv/g-canvas/lib';
+import * as SVGEngine from '@antv/g-svg/lib';
+import { registerEngine } from '@antv/g2/lib/core';
 // 动画
 import './animations';
 // 主题
@@ -13,7 +13,7 @@ registerEngine('canvas', CanvasEngine);
 registerEngine('svg', SVGEngine);
 
 // @ts-ignore
-export * from '@antv/g2/esm/core';
+export * from '@antv/g2/lib/core';
 export const VERSION = '4.1.0-beta.0';
 
 

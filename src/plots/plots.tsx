@@ -33,7 +33,6 @@ export { default as BubbleChart } from './BubbleChart';
 export { default as BulletChart } from './BulletChart';
 export { default as CalendarChart } from './CalendarChart';
 export { default as GaugeChart } from './GaugeChart';
-export { default as FanGaugeChart } from './FanGaugeChart';
 export { default as MeterGaugeChart } from './MeterGaugeChart';
 
 
