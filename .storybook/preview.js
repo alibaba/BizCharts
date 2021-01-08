@@ -23,7 +23,7 @@ addParameters({
 
 // automatically import all files ending in *.stories.tsx
 // @ts-ignore
-const req = require.context('../__stories__/plots', true, /.stories.(jsx|tsx)$/);
+const req = require.context('../__stories__', true, /.stories.(jsx|tsx)$/);
 
 function loadStories() {
   req.keys().forEach(req);

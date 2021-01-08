@@ -1,5 +1,5 @@
 import 'react';
-import Line, { LineOptions } from '@antv/g2plot/lib/plots/line';
+import {Line, LineOptions } from '@antv/g2plot/lib/plots/line';
 import createPlot from '../createPlot';
 import { visibleHelper } from '../utils/plotTools';
 

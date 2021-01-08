@@ -1,5 +1,5 @@
 import 'react';
-import Bar, { BarOptions } from '@antv/g2plot/lib/plots/bar';
+import { Bar, BarOptions } from '@antv/g2plot/lib/plots/bar';
 import createPlot from '../createPlot';
 import warn from 'warning';
 

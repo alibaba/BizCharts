@@ -1,5 +1,5 @@
 import 'react';
-import Liquid, { LiquidOptions } from '@antv/g2plot/lib/plots/liquid';
+import {Liquid, LiquidOptions } from '@antv/g2plot/lib/plots/liquid';
 import createPlot from '../createPlot';
 
 export { LiquidOptions };

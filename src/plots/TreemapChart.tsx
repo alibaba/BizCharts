@@ -1,5 +1,5 @@
 import 'react';
-import Treemap, { TreemapConfig } from '@antv/g2plot/lib/plots/treemap';
+import { Treemap, TreemapOptions } from '@antv/g2plot/lib/plots/treemap';
 import createPlot from '../createPlot';
 
-export default createPlot<TreemapConfig>(Treemap, 'TreemapChart');
+export default createPlot<TreemapOptions>(Treemap, 'TreemapChart');

@@ -26,7 +26,6 @@ export { default as GroupedRoseChart } from './GroupedRoseChart';
 export { default as RadarChart } from './RadarChart';
 export { default as LiquidChart } from './LiquidChart';
 export { default as HistogramChart } from './HistogramChart';
-export { default as DensityChart } from './DensityChart';
 export { default as DonutChart } from './DonutChart';
 export { default as WaterfallChart } from './WaterfallChart';
 export { default as ScatterChart } from './ScatterChart';
