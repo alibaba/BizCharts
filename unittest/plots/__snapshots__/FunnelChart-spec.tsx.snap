@@ -1,0 +1,388 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-FunnelChart 基础漏斗图 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "compareField": "quarter",
+  "data": Array [
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        50000,
+      ],
+      "$$mappingValue$$": 0.625,
+      "$$percentage$$": 0.625,
+      "action": "浏览网站",
+      "pv": 50000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        50000,
+        35000,
+      ],
+      "$$mappingValue$$": 0.4375,
+      "$$percentage$$": 0.4375,
+      "action": "放入购物车",
+      "pv": 35000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        35000,
+        25000,
+      ],
+      "$$mappingValue$$": 0.3125,
+      "$$percentage$$": 0.3125,
+      "action": "生成订单",
+      "pv": 25000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        25000,
+        15000,
+      ],
+      "$$mappingValue$$": 0.1875,
+      "$$percentage$$": 0.1875,
+      "action": "支付订单",
+      "pv": 15000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        15000,
+        11500,
+      ],
+      "$$mappingValue$$": 0.14375,
+      "$$percentage$$": 0.14375,
+      "action": "完成交易",
+      "pv": 11500,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        80000,
+      ],
+      "$$mappingValue$$": 1,
+      "$$percentage$$": 1,
+      "action": "浏览网站",
+      "pv": 80000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        80000,
+        63000,
+      ],
+      "$$mappingValue$$": 0.7875,
+      "$$percentage$$": 0.7875,
+      "action": "放入购物车",
+      "pv": 63000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        63000,
+        47000,
+      ],
+      "$$mappingValue$$": 0.5875,
+      "$$percentage$$": 0.5875,
+      "action": "生成订单",
+      "pv": 47000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        47000,
+        24000,
+      ],
+      "$$mappingValue$$": 0.3,
+      "$$percentage$$": 0.3,
+      "action": "支付订单",
+      "pv": 24000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        24000,
+        17500,
+      ],
+      "$$mappingValue$$": 0.21875,
+      "$$percentage$$": 0.21875,
+      "action": "完成交易",
+      "pv": 17500,
+      "quarter": "2020Q2",
+    },
+  ],
+  "height": NaN,
+  "xField": "action",
+  "yField": "pv",
+}
+`;
+
+exports[`Plots-FunnelChart 旧版漏斗图 transpose --> isTransposed 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "compareField": "quarter",
+  "data": Array [
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        50000,
+      ],
+      "$$mappingValue$$": 0.625,
+      "$$percentage$$": 0.625,
+      "action": "浏览网站",
+      "pv": 50000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        50000,
+        35000,
+      ],
+      "$$mappingValue$$": 0.4375,
+      "$$percentage$$": 0.4375,
+      "action": "放入购物车",
+      "pv": 35000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        35000,
+        25000,
+      ],
+      "$$mappingValue$$": 0.3125,
+      "$$percentage$$": 0.3125,
+      "action": "生成订单",
+      "pv": 25000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        25000,
+        15000,
+      ],
+      "$$mappingValue$$": 0.1875,
+      "$$percentage$$": 0.1875,
+      "action": "支付订单",
+      "pv": 15000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        15000,
+        11500,
+      ],
+      "$$mappingValue$$": 0.14375,
+      "$$percentage$$": 0.14375,
+      "action": "完成交易",
+      "pv": 11500,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        80000,
+      ],
+      "$$mappingValue$$": 1,
+      "$$percentage$$": 1,
+      "action": "浏览网站",
+      "pv": 80000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        80000,
+        63000,
+      ],
+      "$$mappingValue$$": 0.7875,
+      "$$percentage$$": 0.7875,
+      "action": "放入购物车",
+      "pv": 63000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        63000,
+        47000,
+      ],
+      "$$mappingValue$$": 0.5875,
+      "$$percentage$$": 0.5875,
+      "action": "生成订单",
+      "pv": 47000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        47000,
+        24000,
+      ],
+      "$$mappingValue$$": 0.3,
+      "$$percentage$$": 0.3,
+      "action": "支付订单",
+      "pv": 24000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        24000,
+        17500,
+      ],
+      "$$mappingValue$$": 0.21875,
+      "$$percentage$$": 0.21875,
+      "action": "完成交易",
+      "pv": 17500,
+      "quarter": "2020Q2",
+    },
+  ],
+  "height": NaN,
+  "isTransposed": true,
+  "transpose": true,
+  "xField": "action",
+  "yField": "pv",
+}
+`;
+
+exports[`Plots-FunnelChart 水平漏斗图 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "compareField": "quarter",
+  "data": Array [
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        50000,
+      ],
+      "$$mappingValue$$": 0.625,
+      "$$percentage$$": 0.625,
+      "action": "浏览网站",
+      "pv": 50000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        50000,
+        35000,
+      ],
+      "$$mappingValue$$": 0.4375,
+      "$$percentage$$": 0.4375,
+      "action": "放入购物车",
+      "pv": 35000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        35000,
+        25000,
+      ],
+      "$$mappingValue$$": 0.3125,
+      "$$percentage$$": 0.3125,
+      "action": "生成订单",
+      "pv": 25000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        25000,
+        15000,
+      ],
+      "$$mappingValue$$": 0.1875,
+      "$$percentage$$": 0.1875,
+      "action": "支付订单",
+      "pv": 15000,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        15000,
+        11500,
+      ],
+      "$$mappingValue$$": 0.14375,
+      "$$percentage$$": 0.14375,
+      "action": "完成交易",
+      "pv": 11500,
+      "quarter": "2020Q1",
+    },
+    Object {
+      "$$conversion$$": Array [
+        undefined,
+        80000,
+      ],
+      "$$mappingValue$$": 1,
+      "$$percentage$$": 1,
+      "action": "浏览网站",
+      "pv": 80000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        80000,
+        63000,
+      ],
+      "$$mappingValue$$": 0.7875,
+      "$$percentage$$": 0.7875,
+      "action": "放入购物车",
+      "pv": 63000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        63000,
+        47000,
+      ],
+      "$$mappingValue$$": 0.5875,
+      "$$percentage$$": 0.5875,
+      "action": "生成订单",
+      "pv": 47000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        47000,
+        24000,
+      ],
+      "$$mappingValue$$": 0.3,
+      "$$percentage$$": 0.3,
+      "action": "支付订单",
+      "pv": 24000,
+      "quarter": "2020Q2",
+    },
+    Object {
+      "$$conversion$$": Array [
+        24000,
+        17500,
+      ],
+      "$$mappingValue$$": 0.21875,
+      "$$percentage$$": 0.21875,
+      "action": "完成交易",
+      "pv": 17500,
+      "quarter": "2020Q2",
+    },
+  ],
+  "height": NaN,
+  "isTransposed": true,
+  "xField": "action",
+  "yField": "pv",
+}
+`;
