@@ -34,5 +34,3 @@ export { default as BulletChart } from './BulletChart';
 export { default as CalendarChart } from './CalendarChart';
 export { default as GaugeChart } from './GaugeChart';
 export { default as MeterGaugeChart } from './MeterGaugeChart';
-
-

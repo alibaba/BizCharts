@@ -17,6 +17,8 @@ import roundedColumn from '../demos/interval/roundedColumn';
 import stackedBars from '../demos/interval/stackedBars';
 import stackedColumn from '../demos/interval/stackedColumn';
 
+import bezierInterval from '../demos/interval/bezier';
+
 storiesOf('interval', module).add('基础条形图', basicBar);
 storiesOf('interval', module).add('基础柱状图', basicColumn);
 storiesOf('interval', module).add('color映射多字段,分组堆叠柱状图', colorGroupedStackedColumns);
@@ -32,3 +34,4 @@ storiesOf('interval', module).add('极坐标分组柱状图', polarCoordinate);
 storiesOf('interval', module).add('圆角柱状图', roundedColumn);
 storiesOf('interval', module).add('堆叠条形图', stackedBars);
 storiesOf('interval', module).add('堆叠柱状图', stackedColumn);
+storiesOf('interval', module).add('贝塞尔柱状图', bezierInterval);
