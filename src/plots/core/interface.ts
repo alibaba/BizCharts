@@ -53,7 +53,7 @@ export interface TooltipCfg extends TooltipOptions {
     visible?: boolean;
 }
 
-export declare type TooltipAPIOptions = false | TooltipCfg;
+export type TooltipAPIOptions = false | TooltipCfg;
 
 
 
@@ -63,7 +63,7 @@ export interface LabelOptions extends GeometryLabelCfg {
     readonly formatter?: GeometryLabelCfg['content'];
 }
 
-export declare type LabelAPIOptions = false | LabelOptions;
+export type LabelAPIOptions = false | LabelOptions;
 
 
 
