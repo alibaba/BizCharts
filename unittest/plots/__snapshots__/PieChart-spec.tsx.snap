@@ -122,6 +122,261 @@ Object {
 }
 `;
 
+<<<<<<< HEAD
+exports[`Plots-PieChart tooltip饼图 1`] = `
+=======
+exports[`Plots-PieChart label饼图 1`] = `
+Object {
+  "angleField": "value",
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": false,
+  "colorField": "type",
+  "data": Array [
+    Object {
+      "type": "分类一",
+      "value": 2.7456789876543237e+36,
+    },
+    Object {
+      "type": "分类二",
+      "value": 2.5234567890987654e+35,
+    },
+    Object {
+      "type": "分类三",
+      "value": 3.456789987654346e+35,
+    },
+    Object {
+      "type": "分类四",
+      "value": 2.345678098765446e+35,
+    },
+    Object {
+      "type": "分类五",
+      "value": 2.3456785434567898e+35,
+    },
+    Object {
+      "type": "其它",
+      "value": 1.234567898767891e+35,
+    },
+  ],
+  "height": 436,
+  "label": Object {
+    "autoHide": false,
+    "autoRotate": true,
+    "formatter": [Function],
+    "layout": Object {
+      "cfg": Object {
+        "action": "ellipsis",
+      },
+      "type": "limit-in-plot",
+    },
+    "offsetX": 6,
+    "offsetY": 6,
+    "style": Object {
+      "fill": "red",
+    },
+    "type": "outer",
+  },
+  "legend": Object {
+    "position": "right",
+  },
+  "pieStyle": Object {
+    "lineWidth": 1,
+    "stroke": "white",
+  },
+  "radius": 0.4,
+  "renderer": "canvas",
+  "statistic": Object {
+    "content": Object {
+      "style": Object {
+        "color": "rgba(44,53,66,0.85)",
+        "fontSize": "32px",
+        "fontWeight": "bold",
+        "lineHeight": 1,
+        "textAlign": "center",
+      },
+    },
+    "title": Object {
+      "style": Object {
+        "color": "#4B535E",
+        "fontSize": "20px",
+        "fontWeight": 300,
+        "lineHeight": 1,
+        "textAlign": "center",
+      },
+    },
+  },
+  "theme": Object {
+    "components": Object {
+      "annotation": Object {
+        "text": Object {
+          "animate": false,
+        },
+      },
+    },
+  },
+  "tooltip": Object {
+    "shared": false,
+    "showMarkers": false,
+    "showTitle": false,
+  },
+  "width": 500,
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+}
+`;
+
+exports[`Plots-PieChart tooltip-饼图 1`] = `
+>>>>>>> f124f71a008b3526d65a6f6701bfd164cd9e8392
+Object {
+  "angleField": "value",
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "colorField": "type",
+  "data": Array [
+    Object {
+      "type": "分类一",
+      "value": 2.7456789876543237e+36,
+    },
+    Object {
+      "type": "分类二",
+      "value": 2.5234567890987654e+35,
+    },
+    Object {
+      "type": "分类三",
+      "value": 3.456789987654346e+35,
+    },
+    Object {
+      "type": "分类四",
+      "value": 2.345678098765446e+35,
+    },
+    Object {
+      "type": "分类五",
+      "value": 2.3456785434567898e+35,
+    },
+    Object {
+      "type": "其它",
+      "value": 1.234567898767891e+35,
+    },
+  ],
+  "height": 436,
+  "label": Object {
+    "layout": Object {
+      "cfg": Object {
+        "action": "ellipsis",
+      },
+      "type": "limit-in-plot",
+    },
+  },
+  "legend": Object {
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "pieStyle": Object {
+    "lineWidth": 1,
+    "stroke": "white",
+  },
+  "renderer": "canvas",
+  "statistic": Object {
+    "content": Object {
+      "style": Object {
+        "color": "rgba(44,53,66,0.85)",
+        "fontSize": "32px",
+        "fontWeight": "bold",
+        "lineHeight": 1,
+        "textAlign": "center",
+      },
+    },
+    "title": Object {
+      "style": Object {
+        "color": "#4B535E",
+        "fontSize": "20px",
+        "fontWeight": 300,
+        "lineHeight": 1,
+        "textAlign": "center",
+      },
+    },
+  },
+  "theme": Object {
+    "components": Object {
+      "annotation": Object {
+        "text": Object {
+          "animate": false,
+        },
+      },
+    },
+  },
+  "tooltip": Object {
+    "crosshairs": Object {
+      "type": "y",
+    },
+    "fields": Array [
+      "type",
+      "value",
+    ],
+    "formatter": [Function],
+    "offset": 10,
+    "shared": false,
+    "showCrosshairs": true,
+    "showMarkers": false,
+    "showTitle": false,
+    "visible": true,
+  },
+  "width": 500,
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+}
+`;
+
 exports[`Plots-PieChart tooltip饼图 1`] = `
 Object {
   "angleField": "value",

@@ -1,5 +1,3 @@
-
-
 // 注册 G 渲染引擎
 import * as CanvasEngine from '@antv/g-canvas/lib';
 import * as SVGEngine from '@antv/g-svg/lib';
@@ -16,6 +14,7 @@ registerEngine('svg', SVGEngine);
 export * from '@antv/g2/lib/core';
 export const VERSION = '4.1.0-beta.1';
 
+import './extend/scale/scale';
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持
 
@@ -38,4 +37,3 @@ CanvasEngine.Canvas.prototype.getPointByClient = function(clientX, clientY) {
     y: raw.y / (realHeight / setHeight),
   };
 };
-
