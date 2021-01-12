@@ -4,7 +4,7 @@ import { Column } from '@antv/g2plot/lib/plots/column';
 import createPlot from '../createPlot';
 import warn from 'warning';
 import { deepMix } from '@antv/util';
-import { ColumnOptions } from './ColumnChart';
+import { ColumnOptions, polyfill } from './ColumnChart';
 
 interface PercentStackedColumnOptions extends ColumnOptions {}
 export default createPlot<PercentStackedColumnOptions>(Column, 'PercentStackedColumnChart', props => {
@@ -13,5 +13,5 @@ export default createPlot<PercentStackedColumnOptions>(Column, 'PercentStackedCo
     isPercent: true,
     isStack: true,
   });
-  return props;
+  return polyfill(props);
 });

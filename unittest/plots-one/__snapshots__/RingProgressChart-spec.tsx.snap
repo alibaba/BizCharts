@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-ProgressChart 进度条 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": Array [
+    "#5B8FF9",
+    "#E8EDF3",
+  ],
+  "data": 0.8,
+  "height": 36,
+  "innerRadius": 0.8,
+  "percent": 0.8,
+  "radius": 0.98,
+  "statistic": Object {
+    "content": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fill": "#4D4D4D",
+        "fontSize": "14px",
+        "fontWeight": 300,
+        "textAlign": "center",
+        "textBaseline": "middle",
+      },
+    },
+    "title": false,
+  },
+  "width": 200,
+}
+`;
+
+exports[`Plots-RingProgressChart 进度条 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": Array [
+    "#5B8FF9",
+    "#E8EDF3",
+  ],
+  "data": 0.8,
+  "height": 36,
+  "innerRadius": 0.8,
+  "percent": 0.8,
+  "radius": 0.98,
+  "statistic": Object {
+    "content": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fill": "#4D4D4D",
+        "fontSize": "14px",
+        "fontWeight": 300,
+        "textAlign": "center",
+        "textBaseline": "middle",
+      },
+    },
+    "title": false,
+  },
+  "width": 200,
+}
+`;

@@ -12,6 +12,8 @@ interface ColumnOptions extends Options, BasePlotOptions {
   tooltip?: TooltipAPIOptions;
   /** 数据标注label */
   label?: LabelAPIOptions;
+  /** 旧版api，即将废弃 请使用seriesField替代 */
+  stackField?: string;
 }
 
 export { ColumnOptions };
@@ -19,10 +21,16 @@ const REPLACEAPILIST = [{
   sourceKey: 'colorField',
   targetKey: 'seriesField',
   notice: 'colorField 是 g2@1.0的属性，即将废弃，请使用seriesField替代',
+}, {
+  sourceKey: 'stackField',
+  targetKey: 'seriesField',
+  notice: 'colorField是旧版API，即将废弃 请使用seriesField替代',
 }];
 
-export default createPlot<ColumnOptions>(Column, 'ColumnChart', (props) => {
+export const polyfill = (props) => {
   const options = polyfillOptions(props);
   replaceApi(REPLACEAPILIST, options);
   return options;
-});
+};
+
+export default createPlot<ColumnOptions>(Column, 'ColumnChart', polyfill);

@@ -1,5 +1,5 @@
 import React from 'react';
-import PercentStackedBarChart from '../../src/plots/PercentStackedBarChart';
+import PercentStackedColumnChart from '../../src/plots/PercentStackedColumnChart';
 import { render, cleanup } from '@testing-library/react';
 
 const MOCK_DATA = [
@@ -55,18 +55,19 @@ const MOCK_DATA = [
   },
 ];
 
-describe('Plots-PercentStackedBarChart', () => {
-  test('百分比堆叠面积图-旧版', () => {
+describe('Plots-PercentStackedColumnChart', () => {
+  test('百分比堆叠柱状图-旧版', () => {
     let chart = null;
-    render(<PercentStackedBarChart
+    render(<PercentStackedColumnChart
       data={MOCK_DATA}
-      xField="value"
-      yField="label"
+      yField="value"
+      xField="label"
       stackField="type"
       onGetG2Instance={
         (c) => chart = c
       }
     />)
-    // cleanup();
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
   })
 })

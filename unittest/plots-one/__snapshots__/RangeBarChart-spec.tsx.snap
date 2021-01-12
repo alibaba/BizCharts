@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-GroupedColumnChart 基础-分组柱状图 1`] = `
+exports[`Plots-PercentStackedBarChart 百分比堆叠条形图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
@@ -10,7 +10,7 @@ Object {
     10,
   ],
   "autoFit": undefined,
-  "columnWidthRatio": 0.6,
+  "barWidthRatio": 0.6,
   "data": Array [
     Object {
       "label": "Mon.",
@@ -63,18 +63,25 @@ Object {
       "value": 100,
     },
   ],
-  "groupField": "type",
   "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",
     },
   ],
-  "legend": false,
+  "isPercent": true,
+  "isStack": true,
+  "legend": Object {
+    "position": "top-left",
+    "reversed": false,
+  },
   "marginRatio": 0.03125,
   "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
   "tooltip": Object {
     "offset": 20,
+    "reversed": false,
     "shared": true,
     "showMarkers": false,
   },
@@ -90,7 +97,7 @@ Object {
     },
     "nice": true,
   },
-  "xField": "label",
+  "xField": "value",
   "yAxis": Object {
     "label": Object {
       "autoHide": true,
@@ -98,11 +105,11 @@ Object {
     },
     "nice": true,
   },
-  "yField": "value",
+  "yField": "label",
 }
 `;
 
-exports[`Plots-PercentStackedAreaChart 基础-分组柱状图 1`] = `
+exports[`Plots-RangeBarChart 百分比堆叠条形图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
@@ -112,6 +119,7 @@ Object {
     10,
   ],
   "autoFit": undefined,
+  "barWidthRatio": 0.6,
   "data": Array [
     Object {
       "label": "Mon.",
@@ -164,22 +172,26 @@ Object {
       "value": 100,
     },
   ],
-  "groupField": "type",
   "height": NaN,
-  "isPercent": true,
-  "isStack": true,
-  "legend": Object {
-    "position": "top-left",
-  },
-  "line": Object {},
-  "renderer": "canvas",
-  "tooltip": Object {
-    "crosshairs": Object {
-      "type": "x",
+  "interactions": Array [
+    Object {
+      "type": "active-region",
     },
+  ],
+  "isRange": true,
+  "legend": Object {
+    "position": "right-top",
+    "reversed": true,
+  },
+  "marginRatio": 0.03125,
+  "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
+  "tooltip": Object {
+    "offset": 20,
+    "reversed": true,
     "shared": true,
-    "showCrosshairs": true,
-    "showMarkers": true,
+    "showMarkers": false,
   },
   "xAxis": Object {
     "label": Object {
@@ -193,7 +205,7 @@ Object {
     },
     "nice": true,
   },
-  "xField": "label",
+  "xField": "value",
   "yAxis": Object {
     "label": Object {
       "autoHide": true,
@@ -201,6 +213,6 @@ Object {
     },
     "nice": true,
   },
-  "yField": "value",
+  "yField": "label",
 }
 `;
