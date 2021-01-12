@@ -6,9 +6,12 @@ import { polyfillOptions } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
 interface DonutOptions extends options, BasePlotOptions {
-    tooltip?: TooltipAPIOptions,
-    label?: LabelAPIOptions,
-    legend?: LengendAPIOptions,
+  /** 图例 */
+  legend?: LengendAPIOptions;
+  /** 图表提示框 */
+  tooltip?: TooltipAPIOptions;
+  /** 数据标注label */
+  label?: LabelAPIOptions;
 };
 
 const polyfill = (opt: DonutOptions): DonutOptions => {

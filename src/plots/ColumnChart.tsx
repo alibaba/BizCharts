@@ -6,8 +6,11 @@ import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/in
 interface ColumnOptions extends Options, BasePlotOptions {
   /** 请使用seriesField替代 */
   colorField?: string;
+  /** 图例 */
   legend?: LengendAPIOptions;
+  /** 图表提示框 */
   tooltip?: TooltipAPIOptions;
+  /** 数据标注label */
   label?: LabelAPIOptions;
 }
 

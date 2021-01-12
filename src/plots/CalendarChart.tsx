@@ -75,8 +75,11 @@ const REPLACEAPILIST = [{
 }];
 
 export interface CalendarOptions extends HeatmapOptions, BasePlotOptions {
+  /** 图例 */
   legend?: LengendAPIOptions;
+  /** 图表提示框 */
   tooltip?: TooltipAPIOptions;
+  /** 数据标注label */
   label?: LabelAPIOptions;
   dateField?: string;
   /** valueField 是 g2@1.0的属性，即将废弃，请使用colorField替代 */

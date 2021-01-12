@@ -26,8 +26,11 @@ interface GroupedRoseOptions extends options, BasePlotOptions {
   categoryField?: string;
   /** 请使用yFeild替代 */
   radiusField?: string;
+  /** 图例 */
   legend?: LengendAPIOptions;
+  /** 图表提示框 */
   tooltip?: TooltipAPIOptions;
+  /** 数据标注label */
   label?: LabelAPIOptions;
 }
 

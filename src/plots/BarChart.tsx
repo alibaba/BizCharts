@@ -11,8 +11,11 @@ import { isNil } from '@antv/util';
 interface BarOptions extends options, BasePlotOptions {
   /** 请使用seriesField替代 */
   colorField?: any;
+  /** 图例 */
   legend?: LengendAPIOptions;
+  /** 图表提示框 */
   tooltip?: TooltipAPIOptions;
+  /** 数据标注label */
   label?: LabelAPIOptions;
   /** 条形的宽度，如设置该属性值，则宽度固定不自动调整 */
   barSize?: number;
