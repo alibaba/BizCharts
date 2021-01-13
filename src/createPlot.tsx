@@ -67,11 +67,6 @@ interface BasePlotOptions {
    * 图表副标题。如需绑定事件请直接使用ReactNode。
    */
   readonly description?: React.ReactNode;
-
-  /**
-   * forceFit即将废弃，请使用autoFit替代
-   */
-  forceFit?: boolean;
 }
 
 export { BasePlotOptions };

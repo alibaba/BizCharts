@@ -9,6 +9,7 @@ import shallowEqual from '../../utils/shallowEqual';
 import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
+import { VIEW_LIFE_CIRCLE } from '@antv/g2/lib/constant';
 
 import { IEvent } from '../../interface';
 import { pickEventName } from './events';
@@ -48,7 +49,7 @@ class ChartHelper {
       this.chart.unbindAutoFit(); // 不使用g2的监听
       this.isNewInstance = false;
     } else {
-      this.chart.render(true);
+      this.chart.render();
     }
     // 处理elements状态
     this.chart.emit('processElemens');
@@ -87,6 +88,7 @@ class ChartHelper {
       this.createInstance(newConfig);
     }
 
+
     // 重置
     if (newConfig.pure) {
       // 纯画布 关闭
@@ -120,7 +122,7 @@ class ChartHelper {
       this.chart.on(evName[1], newConfig[`_${evName[0]}`])
     });
 
-    // 数据
+    // 数据 更新
     if(_isArray(preData) && preData.length) {
       // 数据只做2级浅比较
       // fixme: 做4级比较
@@ -140,7 +142,20 @@ class ChartHelper {
         });
       }
       if (!isEqual) {
-        this.chart.data(data); // changeData 会发生重渲染
+        //@ts-ignore
+        this.chart.isDataChanged = true;
+        this.chart.emit(VIEW_LIFE_CIRCLE.BEFORE_CHANGE_DATA);
+        // 1. 保存数据
+        this.chart.data(data);
+        // 2. 最后再渲染
+        // 3. 遍历子 view 进行 change data
+        const views = this.chart.views;
+        for (let i = 0, len = views.length; i < len; i++) {
+          const view = views[i];
+          // 子 view 有自己的数据, 会在执行view的配置时会覆盖
+          view.changeData(data);
+        }
+        this.chart.emit(VIEW_LIFE_CIRCLE.AFTER_CHANGE_DATA);
       }
     } else {
       this.chart.data(data);
@@ -192,11 +207,9 @@ class ChartHelper {
   adapterOptions({data, ...others}) {
     // 剔除 React 自身的属性
     const options = pickWithout(others, [...REACT_PIVATE_PROPS]);
-    // 适配
-    const { forceFit } = options;
-    if (forceFit) {
-      options.autoFit = forceFit;
-      warn(false, 'forceFit 将会在4.1后不再支持，请使用`autoFit`替代');
+
+    if (options.forceFit) {
+      warn(true, 'forceFit 已废弃，请使用`autoFit`替代');
     }
     options.data = processData(data) || [];
     return options;
@@ -208,11 +221,8 @@ class ChartHelper {
     this.extendGroup = null;
     let { chart } = this;
     chart.hide();
-    setTimeout(() => {
-      // 大坑勿改: 这样做是为了等react 先卸载，再销毁图表实例。
-      chart.destroy();
-      chart = null;
-    }, 0)
+    chart.destroy();
+    chart = null;
     this.chart = null;
     this.config = {};
   }
