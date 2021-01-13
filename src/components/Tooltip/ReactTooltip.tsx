@@ -10,7 +10,7 @@ import { getTheme } from '../../core';
 const CONTAINER_CLASS: string = 'g2-tooltip';
 
 export interface TooltipProps extends React.ComponentProps<any> {
-  children?: (title?: string, items?: any[], x?: number, y?: number) => {},
+  children?: (title?: string, items?: any[], x?: number, y?: number, event?: any) => {},
   [key: string]: any;
 }
 
@@ -38,9 +38,10 @@ class Tooltip extends React.Component<TooltipProps> {
     return this.element;
   }
 
-  renderInnder = ({title, items, x, y}) => {
+  renderInnder = (e) => {
+    const { title, items, x, y } = e.data;
     // 当数据变化的时候渲染, todo: 新建fiber根节点，和react虚拟dom的性能对比报告
-    ReactDom.render(this.props.children(title, items, x, y), this.getElement());
+    ReactDom.render(this.props.children(title, items, x, y, e), this.getElement());
   }
 
   overwriteCfg() {

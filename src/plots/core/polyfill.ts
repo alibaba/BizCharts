@@ -144,6 +144,12 @@ export const polyfillOptions = (opt) => {
     }
   });
 
+  // slider
+  const interactions = get(polyfillOpt, 'interactions', []);
+  const slider = interactions.find(it => it.type === 'slider');
+  if (slider && isNil(polyfillOpt.slider)) {
+    polyfillOpt.slider = slider.cfg;
+  }
   return polyfillOpt;
 }
 

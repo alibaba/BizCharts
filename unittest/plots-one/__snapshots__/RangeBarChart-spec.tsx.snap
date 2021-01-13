@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-PercentStackedBarChart 百分比堆叠条形图-旧版 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "barWidthRatio": 0.6,
+  "data": Array [
+    Object {
+      "label": "Mon.",
+      "type": "series1",
+      "value": 2800,
+    },
+    Object {
+      "label": "Mon.",
+      "type": "series2",
+      "value": 2260,
+    },
+    Object {
+      "label": "Tues.",
+      "type": "series1",
+      "value": 1800,
+    },
+    Object {
+      "label": "Tues.",
+      "type": "series2",
+      "value": 1300,
+    },
+    Object {
+      "label": "Wed.",
+      "type": "series1",
+      "value": 950,
+    },
+    Object {
+      "label": "Wed.",
+      "type": "series2",
+      "value": 900,
+    },
+    Object {
+      "label": "Thur.",
+      "type": "series1",
+      "value": 500,
+    },
+    Object {
+      "label": "Thur.",
+      "type": "series2",
+      "value": 390,
+    },
+    Object {
+      "label": "Fri.",
+      "type": "series1",
+      "value": 170,
+    },
+    Object {
+      "label": "Fri.",
+      "type": "series2",
+      "value": 100,
+    },
+  ],
+  "height": NaN,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isPercent": true,
+  "isStack": true,
+  "legend": Object {
+    "position": "top-left",
+    "reversed": false,
+  },
+  "marginRatio": 0.03125,
+  "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
+  "tooltip": Object {
+    "offset": 20,
+    "reversed": false,
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "xField": "value",
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yField": "label",
+}
+`;
+
+exports[`Plots-RangeBarChart 百分比堆叠条形图-旧版 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "barWidthRatio": 0.6,
+  "data": Array [
+    Object {
+      "label": "Mon.",
+      "type": "series1",
+      "value": 2800,
+    },
+    Object {
+      "label": "Mon.",
+      "type": "series2",
+      "value": 2260,
+    },
+    Object {
+      "label": "Tues.",
+      "type": "series1",
+      "value": 1800,
+    },
+    Object {
+      "label": "Tues.",
+      "type": "series2",
+      "value": 1300,
+    },
+    Object {
+      "label": "Wed.",
+      "type": "series1",
+      "value": 950,
+    },
+    Object {
+      "label": "Wed.",
+      "type": "series2",
+      "value": 900,
+    },
+    Object {
+      "label": "Thur.",
+      "type": "series1",
+      "value": 500,
+    },
+    Object {
+      "label": "Thur.",
+      "type": "series2",
+      "value": 390,
+    },
+    Object {
+      "label": "Fri.",
+      "type": "series1",
+      "value": 170,
+    },
+    Object {
+      "label": "Fri.",
+      "type": "series2",
+      "value": 100,
+    },
+  ],
+  "height": NaN,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isRange": true,
+  "legend": Object {
+    "position": "right-top",
+    "reversed": true,
+  },
+  "marginRatio": 0.03125,
+  "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
+  "tooltip": Object {
+    "offset": 20,
+    "reversed": true,
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "xField": "value",
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yField": "label",
+}
+`;

@@ -1,13 +1,18 @@
 import 'react';
-import { Column, ColumnOptions } from '@antv/g2plot/lib/plots/column';
+import { Column } from '@antv/g2plot/lib/plots/column';
+import { ColumnOptions, polyfill } from './ColumnChart';
 import createPlot from '../createPlot';
 import warn from 'warning';
+import { deepMix } from '@antv/util';
 
 interface RangeColumnOptions extends ColumnOptions {};
 
 export {RangeColumnOptions};
 
 export default createPlot<RangeColumnOptions>(Column, 'RangeColumnChart', props => {
-  warn(true, '<RangeColumnChart /> 即将在4.2.0后废弃，请使用<ColumnChart />替代，文档查看：');
-  return props;
+  warn(true, '<RangeColumnChart /> 即将在4.2.0后废弃，请使用<ColumnChart />替代。');
+  deepMix(props, {
+    isRange: true,
+  })
+  return polyfill(props);
 });

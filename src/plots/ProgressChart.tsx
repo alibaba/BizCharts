@@ -1,10 +1,13 @@
 import 'react'
-// import Progress, { ProgressConfig } from '@antv/g2plot/lib/sparkline/progress';
-// import createPlot from '../createPlot';
+import { Progress, ProgressOptions as Options } from '@antv/g2plot/lib/plots/progress';
+import createPlot, { BasePlotOptions } from '../createPlot';
 
-// export default createPlot<ProgressConfig>(Progress, 'ProgressChart', (opt) => {
-//   // value 转为data，用于placeholder统一判断
-//   return { data: opt.percent, ...opt };
-// });
+interface ProgressOptions extends BasePlotOptions, Options {}
 
-export default () => {};
+export { ProgressOptions }
+
+export default createPlot<ProgressOptions>(Progress, 'ProgressChart', (opt) => {
+  // value 转为data，用于placeholder统一判断
+  return { data: opt.percent, ...opt };
+});
+

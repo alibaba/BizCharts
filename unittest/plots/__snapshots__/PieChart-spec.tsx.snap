@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-PieChart label-饼图 1`] = `
+exports[`Plots-PieChart label饼图 1`] = `
 Object {
   "angleField": "value",
   "animation": true,
@@ -122,6 +122,9 @@ Object {
 }
 `;
 
+<<<<<<< HEAD
+exports[`Plots-PieChart tooltip饼图 1`] = `
+=======
 exports[`Plots-PieChart label饼图 1`] = `
 Object {
   "angleField": "value",
@@ -245,6 +248,7 @@ Object {
 `;
 
 exports[`Plots-PieChart tooltip-饼图 1`] = `
+>>>>>>> f124f71a008b3526d65a6f6701bfd164cd9e8392
 Object {
   "angleField": "value",
   "animation": true,

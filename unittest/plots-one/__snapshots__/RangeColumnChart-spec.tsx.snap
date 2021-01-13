@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-RangeColumnChart 区间条形图-旧版 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": "l(90) 0:#3e5bdb 1:#b4d9e4",
+  "columnStyle": Object {
+    "fillOpacity": 0.8,
+  },
+  "columnWidthRatio": 0.6,
+  "data": Array [
+    Object {
+      "type": "分类一",
+      "values": Array [
+        76,
+        100,
+      ],
+    },
+    Object {
+      "type": "分类二",
+      "values": Array [
+        56,
+        108,
+      ],
+    },
+    Object {
+      "type": "分类三",
+      "values": Array [
+        38,
+        129,
+      ],
+    },
+    Object {
+      "type": "分类四",
+      "values": Array [
+        58,
+        155,
+      ],
+    },
+    Object {
+      "type": "分类五",
+      "values": Array [
+        45,
+        120,
+      ],
+    },
+    Object {
+      "type": "分类六",
+      "values": Array [
+        23,
+        99,
+      ],
+    },
+    Object {
+      "type": "分类七",
+      "values": Array [
+        18,
+        56,
+      ],
+    },
+    Object {
+      "type": "分类八",
+      "values": Array [
+        18,
+        34,
+      ],
+    },
+  ],
+  "height": NaN,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isRange": true,
+  "label": Object {
+    "visible": true,
+  },
+  "legend": false,
+  "marginRatio": 0.03125,
+  "renderer": "canvas",
+  "tooltip": Object {
+    "offset": 20,
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "xField": "type",
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yField": "values",
+}
+`;

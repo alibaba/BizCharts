@@ -12,7 +12,7 @@ registerEngine('svg', SVGEngine);
 
 // @ts-ignore
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.1.0-beta.0';
+export const VERSION = '4.1.0-beta.1';
 
 import './extend/scale/scale';
 
