@@ -68,7 +68,7 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
     });
   }
 
-  warn(get(options, 'min') || get(options, 'max'), '请直接配置属性range.ticks');
+  warn(get(options, 'min') || get(options, 'max'), '属性 `max` 和 `min` 不推荐使用， 请直接配置属性range.ticks');
   warn(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle', '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。')
   // value 转为data，用于placeholder统一判断
   let data = !isNil(options.percent) ? options.percent : value;

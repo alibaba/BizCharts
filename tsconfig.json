@@ -13,10 +13,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "bizcharts": ["./src/index"],
-      "bizcharts/*": ["./src/*"],
+      "bizcharts": [
+        "./src/index"
+      ],
+      "bizcharts/*": [
+        "./src/*"
+      ],
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts", "umd"]
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "umd"
+  ]
 }
