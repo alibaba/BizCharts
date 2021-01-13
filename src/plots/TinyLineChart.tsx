@@ -3,7 +3,7 @@ import { TinyLine, TinyLineOptions as options } from '@antv/g2plot/lib/plots/tin
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions, replaceApi } from './core/polyfill';
+import { polyfillOptions } from './core/polyfill';
 import { isNil } from '@antv/util';
 interface TinyLineOptions extends options, BasePlotOptions {
     /** size在4.2.0即将废弃 */

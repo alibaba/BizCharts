@@ -1,5 +1,5 @@
 import React from 'react';
-import TinyLineChart from '../../src/plots/TinyLineChart';
+import TinyColumnChart from '../../src/plots/TinyColumnChart';
 import { render, cleanup } from '@testing-library/react';
 
 const MOCK_DATA = [
@@ -24,29 +24,26 @@ const basicCfg = {
 }
 
 
-describe('Plots-TinyLineChart', () => {
-    test('基础TinyLineChart', () => {
+describe('Plots-TinyColumnChart', () => {
+    test('基础-TinyColumnChart', () => {
         let chart = null;
-        render(<TinyLineChart
+        render(<TinyColumnChart
             {...basicCfg}
-            size={10}
+            color="pink"
             onGetG2Instance={(c) => {
                 chart = c;
             }}
         />);
-        expect(chart.options.lineStyle.lineWidth).toBe(10);
-        expect(chart.options.data[0]).toBe(3);
         expect(chart.options).toMatchSnapshot();
         cleanup();
     });
-    test('TinyLineChart-guidLine-type', () => {
+    test('TinyColumnChart-guidLine-type', () => {
         let chart = null;
-        render(<TinyLineChart
+        render(<TinyColumnChart
             {...basicCfg}
-            smooth
             color="pink"
-            lineStyle={{
-                stroke: 'red' // 优先级高于color
+            columnStyle={{
+                fill: 'red' // 优先级高于color
             }}
             guideLine={[
                 {
@@ -70,15 +67,10 @@ describe('Plots-TinyLineChart', () => {
         expect(chart.options).toMatchSnapshot();
         cleanup();
     });
-    test('TinyLineChart-guidLine-start', () => {
+    test('TinyColumnChart-guidLine-start', () => {
         let chart = null;
-        render(<TinyLineChart
+        render(<TinyColumnChart
             {...basicCfg}
-            smooth
-            color="pink"
-            lineStyle={{
-                stroke: 'red' // 优先级高于color
-            }}
             guideLine={[
                 {
                     start: ['min', 5],
