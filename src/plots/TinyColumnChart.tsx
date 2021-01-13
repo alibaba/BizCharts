@@ -1,23 +1,26 @@
 import 'react'
-import { TinyColumn, TinyColumnOptions as options } from '@antv/g2plot/lib/plots/tiny-column';
+import { TinyColumn, TinyColumnOptions as Options } from '@antv/g2plot/lib/plots/tiny-column';
 import set from '@antv/util/lib/set';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
 import { isNil } from '@antv/util';
-interface TinyColumnOptions extends options, BasePlotOptions {
-    /** colorField在4.2.0即将废弃 */
+
+type Opt = Omit<Options, 'data'>;
+
+interface TinyColumnOptions extends Opt, BasePlotOptions {
+    /** colorField 旧版g2Plot api，即将废弃请查看最新文档 */
     colorField?: string,
 
-    data: any[],
+    data: number[] | Record<string, any>[],
 
-    /** xField在4.2.0即将废弃 */
+    /** xField 旧版g2Plot api，即将废弃请查看最新文档 */
     xField?: string,
 
-    /** yField在4.2.0即将废弃 */
+    /** yField 旧版g2Plot api，即将废弃请查看最新文档 */
     yField?: string,
 
-    /** guideLine 在4.2.0即将废弃 */
-    guideLine?: Array<object> // TODO
+    /** guideLine 旧版g2Plot api，即将废弃请查看最新文档 */
+    guideLine?: Array<object>
 }
 
 const polyfill = (opt: TinyColumnOptions): TinyColumnOptions => {

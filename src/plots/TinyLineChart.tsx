@@ -1,24 +1,27 @@
 import 'react'
-import { TinyLine, TinyLineOptions as options } from '@antv/g2plot/lib/plots/tiny-line';
+import { TinyLine, TinyLineOptions as Options } from '@antv/g2plot/lib/plots/tiny-line';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions } from './core/polyfill';
 import { isNil } from '@antv/util';
-interface TinyLineOptions extends options, BasePlotOptions {
+
+type Opt = Omit<Options, 'data'>;
+
+interface TinyLineOptions extends Opt, BasePlotOptions {
     /** size在4.2.0即将废弃 */
     size?: number,
 
-    data: any[],
+    data: number[] | Record<string, any>[],
 
-    /** xField在4.2.0即将废弃 */
+    /** xField 旧版g2Plot api，即将废弃请查看最新文档 */
     xField?: string,
 
-    /** yField在4.2.0即将废弃 */
+    /** yField 旧版g2Plot api，即将废弃请查看最新文档 */
     yField?: string,
 
-    /** guideLine 在4.2.0即将废弃 */
-    guideLine?: Array<object> // TODO
+    /** guideLine 旧版g2Plot api，即将废弃请查看最新文档 */
+    guideLine?: Array<object>
 }
 
 const polyfill = (opt: TinyLineOptions): TinyLineOptions => {
