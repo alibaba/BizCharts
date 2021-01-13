@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-TinyAreaChart 堆叠面积图-旧版 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "areaStyle": Object {
+    "fillOpacity": 0.6,
+  },
+  "autoFit": undefined,
+  "color": "l(90) 0:#E5EDFE 1:#ffffff",
+  "data": Array [
+    3,
+    4,
+    6,
+    6,
+    8,
+    9,
+    7,
+    9,
+    13,
+  ],
+  "line": Object {
+    "color": "#5B8FF9",
+    "size": 1,
+  },
+  "tooltip": Object {
+    "containerTpl": "<div class=\\"g2-tooltip\\"><div class=\\"g2-tooltip-list\\"></div></div>",
+    "crosshairs": Object {
+      "type": "x",
+    },
+    "customContent": [Function],
+    "domStyles": Object {
+      "g2-tooltip": Object {
+        "fontSize": "10px",
+        "padding": "2px 4px",
+      },
+    },
+    "itemTpl": "<span>{value}</span>",
+    "shared": true,
+    "showCrosshairs": true,
+    "showMarkers": false,
+    "showTitle": false,
+  },
+}
+`;

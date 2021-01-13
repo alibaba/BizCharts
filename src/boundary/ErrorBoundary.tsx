@@ -1,25 +1,24 @@
 import React from 'react';
+import { ErrorBoundary, ErrorBoundaryProps } from 'react-error-boundary';
 
-class ErrorBoundary extends React.Component<any> {
-  private death: boolean;
 
-  static getDerivedStateFromError() {
-    return {};
-  }
+let DefaultErrorFallback = ({ error }) => {
+  return (
+    <div className="bizcharts-error" role="alert">
+      <p>BizCharts something went wrong:</p>
+      <pre>{error.message}</pre>
+    </div>
+  )
+};
 
-  componentDidCatch() {
-    this.death = true;
-    this.forceUpdate();
-  }
-
-  render() {
-    const { errorContent = <div style={{ color: '#aaa' }}>Bizcharts something error</div> } = this.props;
-    if (this.death) {
-      this.death = false; // 挂一次后要复活
-      return errorContent;
-    }
-    return this.props.children;
-  }
+export function ErrorFallback(args) {
+  return DefaultErrorFallback(args);
 }
+
+export const setDefaultErrorFallback = (CustComponents) => {
+  DefaultErrorFallback = CustComponents;
+}
+
+export { ErrorBoundaryProps };
 
 export default ErrorBoundary;

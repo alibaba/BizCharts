@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-GroupedColumnChart 基础-分组柱状图 1`] = `
+exports[`Plots-StackedColumnChart 堆叠柱状图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
@@ -63,15 +63,19 @@ Object {
       "value": 100,
     },
   ],
-  "groupField": "type",
   "interactions": Array [
     Object {
       "type": "active-region",
     },
   ],
-  "legend": false,
+  "isStack": true,
+  "legend": Object {
+    "position": "right-top",
+  },
   "marginRatio": 0.03125,
   "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
   "tooltip": Object {
     "offset": 20,
     "shared": true,

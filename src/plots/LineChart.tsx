@@ -13,7 +13,7 @@ interface LineOptions extends Opt, BasePlotOptions {
   point?: Options['point'] | boolean;
  };
 
-const polyfill = (opt: LineOptions): LineOptions => {
+export const polyfill = (opt: LineOptions): LineOptions => {
   const options = polyfillOptions(opt);
   // point
   polyfillVisible(options, 'point');

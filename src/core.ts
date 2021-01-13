@@ -12,7 +12,7 @@ registerEngine('svg', SVGEngine);
 
 // @ts-ignore
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.1.0-beta.1';
+export const VERSION = '4.1.0-beta.2';
 
 import './extend/scale/scale';
 
@@ -37,3 +37,6 @@ CanvasEngine.Canvas.prototype.getPointByClient = function(clientX, clientY) {
     y: raw.y / (realHeight / setHeight),
   };
 };
+
+// 设置全局默认的error fallback
+export { setDefaultErrorFallback } from './boundary/ErrorBoundary';

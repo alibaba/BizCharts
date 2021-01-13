@@ -122,7 +122,6 @@ Object {
       "quarter": "2020Q2",
     },
   ],
-  "height": NaN,
   "xField": "action",
   "yField": "pv",
 }
@@ -250,7 +249,6 @@ Object {
       "quarter": "2020Q2",
     },
   ],
-  "height": NaN,
   "isTransposed": true,
   "transpose": true,
   "xField": "action",
@@ -380,7 +378,6 @@ Object {
       "quarter": "2020Q2",
     },
   ],
-  "height": NaN,
   "isTransposed": true,
   "xField": "action",
   "yField": "pv",

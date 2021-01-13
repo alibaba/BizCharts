@@ -1,4 +1,4 @@
-import 'react';
+import React from 'react';
 // 注册 Geometry 内置的 label
 
 import GeometryLabel from '@antv/g2/lib/geometry/label/base';
@@ -30,5 +30,5 @@ export default function Label(props) {
   warn(false, 'Label组件即将在4.1被取消，请使用图形组件的label属性进行配置');
   parentInstance.label(false)
   parentInstance.label(content, cfg);
-  return null;
+  return <></>;
 }

@@ -112,7 +112,7 @@ abstract class BaseGeom<T extends IBaseGemoProps> extends React.Component<T> {
   render() {
     this.geomHelper.update(this.props, this);
     return <>{React.Children.map(this.props.children, (ele) => {
-      return React.isValidElement(ele) ? React.cloneElement(ele, {parentInstance: this.geomHelper.geom}) : null
+      return React.isValidElement(ele) ? React.cloneElement(ele, {parentInstance: this.geomHelper.geom}) : <></>
     })}</>;
   }
 }

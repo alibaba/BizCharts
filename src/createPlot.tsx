@@ -4,7 +4,7 @@ import _uniqId from '@antv/util/lib/unique-id';
 import _isEqual from '@antv/util/lib/is-equal';
 import _isFunction from '@antv/util/lib/is-function';
 import withContainer from './boundary/withContainer';
-import ErrorBoundary from './boundary/ErrorBoundary';
+import ErrorBoundary, { ErrorFallback } from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
 import ChartViewContext from './context/view';
 import { visibleHelper } from './utils/plotTools';
@@ -67,11 +67,6 @@ interface BasePlotOptions {
    * 图表副标题。如需绑定事件请直接使用ReactNode。
    */
   readonly description?: React.ReactNode;
-
-  /**
-   * forceFit即将废弃，请使用autoFit替代
-   */
-  forceFit?: boolean;
 }
 
 export { BasePlotOptions };
@@ -217,25 +212,18 @@ function createPlot<IPlotConfig extends Record<string, any>>(
   transCfg: Function = cfg => cfg,
 ) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit, forceFit, errorContent, placeholder, ...cfg } = props;
+    const { title, description, autoFit, forceFit, errorContent = ErrorFallback, placeholder, ErrorBoundaryProps, ...cfg } = props;
     const realCfg = transCfg(cfg);
+    const FallbackComponent = React.isValidElement(errorContent) ? () => errorContent : errorContent;
     // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
     if (placeholder && !realCfg.data) {
       const pl = placeholder === true ? DEFAULT_PLACEHOLDER : placeholder;
       // plot 默认是400px高度
-      return (
-        <ErrorBoundary errorContent={errorContent}>
-          <div
-            style={{
-              width: props.width || '100%',
-              height: props.height || 400,
-              textAlign: 'center',
-            }}
-          >
-            {pl}
-          </div>
-        </ErrorBoundary>
-      );
+      return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
+        <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
+          {pl}
+        </div>
+      </ErrorBoundary>;
     }
     const titleCfg = visibleHelper(title, false);
     const descriptionCfg = visibleHelper(description, false);
@@ -250,40 +238,22 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       realCfg.height -= DESCRIPTION_HEIGHT;
     }
 
-    return (
-      <ErrorBoundary errorContent={errorContent}>
-        <div>
-          {/* title 不一定有 */}
-          {titleCfg.visible && (
-            <div
-              {...polyfillTitleEvent(realCfg)}
-              className="bizcharts-plot-title"
-              style={TITLE_STYLE}
-            >
-              {titleCfg.text}
-            </div>
-          )}
-          {/* description 不一定有 */}
-          {descriptionCfg.visible && (
-            <div
-              {...polyfillDescriptionEvent(realCfg)}
-              className="bizcharts-plot-description"
-              style={DESCRIPTION_STYLE}
-            >
-              {descriptionCfg.text}
-            </div>
-          )}
-          <BxPlot
-            // API 统一
-            appendPadding={[10, 5, 10, 10]}
-            autoFit={isNil(autoFit) ? forceFit : autoFit}
-            ref={ref}
-            {...realCfg}
-            PlotClass={Plot}
-          />
-        </div>
-      </ErrorBoundary>
-    );
+    return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
+      <div>
+        {/* title 不一定有 */}
+        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }
+        {/* description 不一定有 */}
+        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={DESCRIPTION_STYLE}>{descriptionCfg.text}</div> }
+        <BxPlot
+          // API 统一
+          appendPadding={[10, 5, 10, 10]}
+          autoFit={isNil(autoFit) ? forceFit : autoFit}
+          ref={ref}
+          {...realCfg}
+          PlotClass={Plot}
+        />
+      </div>
+    </ErrorBoundary>
   });
   Com.displayName = name || Plot.name;
   return Com;

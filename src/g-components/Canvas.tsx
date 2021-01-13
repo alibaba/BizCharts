@@ -75,7 +75,7 @@ class Canvas extends React.Component<ICanvasProps> {
 
   render() {
     this.helper.update(this.props);
-    return <ErrorBoundary>
+    return <ErrorBoundary {...this.props.ErrorBoundaryProps}>
       <CanvasContext.Provider value={this.helper}>
         <GroupContext.Provider value={this.helper.instance}>
           <>{this.props.children}</>

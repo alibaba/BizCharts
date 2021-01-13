@@ -46,7 +46,6 @@ Object {
       "type": "家庭清洁",
     },
   ],
-  "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",

@@ -83,7 +83,7 @@ describe('基础功能-以AreaChart为demo', () => {
   //     </Effects>
   //   </Chart>);
   //   expect(container).toMatchSnapshot();
-  //   cleanup();
+  //   // cleanup();
   // });
 
   // test('自定义 ErrorBoundary', () => {
@@ -95,57 +95,52 @@ describe('基础功能-以AreaChart为demo', () => {
   //     </Effects>
   //   </Chart>);
   //   expect(container).toMatchSnapshot();
-  //   cleanup();
+  //   // cleanup();
   // });
 
   test('placeholder', () => {
     const { container } = render(<Chart placeholder data={undefined} />);
     expect(container).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   test('自定义 placeholder', () => {
     const { container } = render(<Chart placeholder="自定义 placeholder" data={undefined} />);
     expect(container).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   test('forceFit --> autoFit', () => {
     render(<Chart placeholder="自定义 placeholder" forceFit data={undefined} />);
     expect(chart.options.autoFit).toBe(true);
-    cleanup();
+    // cleanup();
   });
 
   test('polyfill event', () => {
     const handleClick = jest.fn();
     const handletTitleClick = jest.fn();
     let plot = null;
-    render(
-      <AreaChart
-        data={MOCK_DATA}
-        xField="Date"
-        yField="scales"
-        title="图表标题"
-        onGetG2Instance={c => {
-          plot = c;
-          const canvas = plot.chart.getCanvas();
-          fireEvent.click(canvas.get('el'), {
-            bubbles: true,
-            cancelable: true,
-            ...getClientPoint(plot.chart.canvas, 130, 300),
-          });
-        }}
-        events={{
-          onPlotClick: handleClick,
-          onTitleClick: handletTitleClick,
-        }}
-      />,
-    );
+    render(<AreaChart
+      data={MOCK_DATA}
+      xField="Date"
+      yField="scales"
+      title="图表标题"
+      onGetG2Instance={(c) => {
+        plot = c;
+      }}
+      events={{
+        onPlotClick: handleClick,
+        onTitleClick: handletTitleClick,
+      }}
+    />);
+    
     const canvas = plot.chart.getCanvas();
-    fireEvent(
-      canvas.get('el'),
-      new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130, 100)),
-    );
+    fireEvent.click(canvas.get('el'), {
+      bubbles: true,
+      cancelable: true,
+      ...getClientPoint(plot.chart.canvas, 130, 300)
+    })
+    fireEvent(canvas.get('el'), new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130,100)));
     fireEvent.click(screen.getByText(/图表标题/i));
     // fixme: .toHaveBeenCalledTimes(1); 待g2Plot修复
     expect(handleClick).toHaveBeenCalledTimes(2);

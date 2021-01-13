@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-ProgressChart 进度条 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": Array [
+    "#5B8FF9",
+    "#E8EDF3",
+  ],
+  "data": 0.8,
+  "height": 100,
+  "percent": 0.8,
+  "width": 200,
+}
+`;

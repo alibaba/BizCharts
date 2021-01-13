@@ -29,7 +29,7 @@ Object {
   },
   "data": 0.75,
   "endAngle": 0.5235987755982988,
-  "height": 336,
+  "height": 370,
   "indicator": Object {
     "pin": Object {
       "style": Object {
@@ -117,7 +117,7 @@ Object {
   ],
   "data": 0.78,
   "endAngle": 0.5235987755982988,
-  "height": 336,
+  "height": 370,
   "indicator": Object {
     "pin": Object {
       "style": Object {

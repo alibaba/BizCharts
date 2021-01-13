@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-GroupedColumnChart 基础-分组柱状图 1`] = `
+exports[`Plots-PercentStackedAreaChart 百分比堆叠面积图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
@@ -10,7 +10,6 @@ Object {
     10,
   ],
   "autoFit": undefined,
-  "columnWidthRatio": 0.6,
   "data": Array [
     Object {
       "label": "Mon.",
@@ -63,19 +62,22 @@ Object {
       "value": 100,
     },
   ],
-  "groupField": "type",
-  "interactions": Array [
-    Object {
-      "type": "active-region",
-    },
-  ],
-  "legend": false,
-  "marginRatio": 0.03125,
+  "isPercent": true,
+  "isStack": true,
+  "legend": Object {
+    "position": "top-left",
+  },
+  "line": Object {},
   "renderer": "canvas",
+  "seriesField": "type",
+  "stackField": "type",
   "tooltip": Object {
-    "offset": 20,
+    "crosshairs": Object {
+      "type": "x",
+    },
     "shared": true,
-    "showMarkers": false,
+    "showCrosshairs": true,
+    "showMarkers": true,
   },
   "xAxis": Object {
     "label": Object {
