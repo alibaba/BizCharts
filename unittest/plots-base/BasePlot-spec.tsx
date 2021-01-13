@@ -8,20 +8,22 @@ import { getClientPoint } from '../tools/simulate';
 // @ts-ignore
 // global.expect.extend({ toMatchDiffSnapshot });
 
-const MOCK_DATA = [{
-  "Date": "2010-01",
-  "scales": 1998
-},
-{
-  "Date": "2010-02",
-  "scales": 1250
-},
-{
-  "Date": "2010-03",
-  "scales": 1720
-}];
+const MOCK_DATA = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  {
+    Date: '2010-02',
+    scales: 1250,
+  },
+  {
+    Date: '2010-03',
+    scales: 1720,
+  },
+];
 
-const Chart = (props) => {
+const Chart = props => {
   const [data, setData] = useState([]);
   const option = {
     xField: 'Date',
@@ -41,17 +43,23 @@ const Chart = (props) => {
   };
   useEffect(() => {
     act(() => setData(MOCK_DATA));
-  }, [])
-  return <AreaChart data={data} {...option} >
-    {props.children}
+  }, []);
+  return (
+    <AreaChart data={data} {...option}>
+      {props.children}
     </AreaChart>
-}
+  );
+};
 
 describe('基础功能-以AreaChart为demo', () => {
   let chart = null;
-  const { container } = render(<Chart onGetG2Instance={c => {
-    chart = c;
-  }} />);
+  const { container } = render(
+    <Chart
+      onGetG2Instance={c => {
+        chart = c;
+      }}
+    />,
+  );
 
   test('数据更新[] --> [{},{},{}]', () => {
     expect(chart.options.data.length).toBe(3);
@@ -112,34 +120,37 @@ describe('基础功能-以AreaChart为demo', () => {
     const handleClick = jest.fn();
     const handletTitleClick = jest.fn();
     let plot = null;
-    render(<AreaChart
-      data={MOCK_DATA}
-      xField="Date"
-      yField="scales"
-      title="图表标题"
-      onGetG2Instance={(c) => {
-        plot = c;
-        const canvas = plot.chart.getCanvas();
-        fireEvent.click(canvas.get('el'), {
-          bubbles: true,
-          cancelable: true,
-          ...getClientPoint(plot.chart.canvas, 130, 300)
-        })
-      }}
-      events={{
-        onPlotClick: handleClick,
-        onTitleClick: handletTitleClick,
-      }}
-    />);
+    render(
+      <AreaChart
+        data={MOCK_DATA}
+        xField="Date"
+        yField="scales"
+        title="图表标题"
+        onGetG2Instance={c => {
+          plot = c;
+          const canvas = plot.chart.getCanvas();
+          fireEvent.click(canvas.get('el'), {
+            bubbles: true,
+            cancelable: true,
+            ...getClientPoint(plot.chart.canvas, 130, 300),
+          });
+        }}
+        events={{
+          onPlotClick: handleClick,
+          onTitleClick: handletTitleClick,
+        }}
+      />,
+    );
     const canvas = plot.chart.getCanvas();
-    fireEvent(canvas.get('el'), new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130,100)));
+    fireEvent(
+      canvas.get('el'),
+      new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130, 100)),
+    );
     fireEvent.click(screen.getByText(/图表标题/i));
     // fixme: .toHaveBeenCalledTimes(1); 待g2Plot修复
     expect(handleClick).toHaveBeenCalledTimes(2);
     // 图表标题是独立的div
     expect(handletTitleClick).toHaveBeenCalledTimes(1);
     cleanup();
-  })
+  });
 });
-
-
