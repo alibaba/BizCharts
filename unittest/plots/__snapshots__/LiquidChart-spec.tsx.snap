@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-LiquidChart 兼容旧版LiquidChart 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": "#6a99f9",
+  "data": 0.5639,
+  "height": NaN,
+  "outline": Object {
+    "border": 2,
+    "distance": 0,
+  },
+  "percent": 0.5639,
+  "radius": 0.9,
+  "statistic": Object {
+    "content": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fontSize": "30px",
+        "opacity": 0.75,
+        "textAlign": "center",
+      },
+    },
+    "title": false,
+  },
+  "wave": Object {
+    "count": 3,
+    "length": 192,
+  },
+}
+`;
+
+exports[`Plots-LiquidChart 新版使用 1`] = `
+Object {
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "color": "#6a99f9",
+  "data": 0.5,
+  "height": NaN,
+  "outline": Object {
+    "border": 4,
+    "distance": 8,
+  },
+  "percent": 0.5,
+  "radius": 0.9,
+  "statistic": Object {
+    "content": Object {
+      "formatter": [Function],
+      "style": Object {
+        "fontSize": "30px",
+        "opacity": 0.75,
+        "textAlign": "center",
+      },
+    },
+    "title": false,
+  },
+  "wave": Object {
+    "count": 3,
+    "length": 128,
+  },
+}
+`;

@@ -24,7 +24,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -95,7 +95,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -457,7 +457,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -530,7 +530,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "innerRadius": 0.1,
   "interactions": Array [
     Object {
@@ -605,7 +605,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -670,7 +670,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 436,
+  "height": 470,
   "interactions": Array [
     Object {
       "type": "active-region",

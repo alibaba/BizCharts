@@ -200,7 +200,7 @@ export const polyfillDescriptionEvent = (options) => {
     'onDescriptionMouseenter'
   ].forEach(e => {
     if (events[e]) {
-      titleEvents[e.replace('Title', '')] = events[e];
+      titleEvents[e.replace('Description', '')] = events[e];
     }
   })
   return titleEvents;

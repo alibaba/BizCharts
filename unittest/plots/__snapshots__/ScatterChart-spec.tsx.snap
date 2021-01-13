@@ -307,7 +307,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 436,
+  "height": 470,
   "label": Object {
     "formatter": [Function],
     "offsetX": 10,
@@ -667,7 +667,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 436,
+  "height": 470,
   "padding": Array [
     90,
     90,
@@ -1070,7 +1070,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 436,
+  "height": 470,
   "padding": Array [
     90,
     90,
@@ -1444,7 +1444,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 436,
+  "height": 470,
   "padding": Array [
     90,
     90,
@@ -1849,7 +1849,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 436,
+  "height": 470,
   "meta": Object {
     "Rating": Object {
       "formatter": [Function],

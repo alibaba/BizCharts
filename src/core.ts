@@ -37,3 +37,6 @@ CanvasEngine.Canvas.prototype.getPointByClient = function(clientX, clientY) {
     y: raw.y / (realHeight / setHeight),
   };
 };
+
+// 设置全局默认的error fallback
+export { setDefaultErrorFallback } from './boundary/ErrorBoundary';

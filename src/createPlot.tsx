@@ -4,7 +4,7 @@ import _uniqId from '@antv/util/lib/unique-id';
 import _isEqual from '@antv/util/lib/is-equal';
 import _isFunction from '@antv/util/lib/is-function';
 import withContainer from './boundary/withContainer';
-import ErrorBoundary from './boundary/ErrorBoundary';
+import ErrorBoundary, { ErrorFallback } from './boundary/ErrorBoundary';
 import RootChartContext from './context/root';
 import ChartViewContext from './context/view';
 import { visibleHelper } from './utils/plotTools';
@@ -182,13 +182,14 @@ const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string, transCfg: Function = (cfg) => cfg) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit, forceFit, errorContent, placeholder, ...cfg } = props;
+    const { title, description, autoFit, forceFit, errorContent = ErrorFallback, placeholder, ErrorBoundaryProps, ...cfg } = props;
     const realCfg = transCfg(cfg);
+    const FallbackComponent = React.isValidElement(errorContent) ? () => errorContent : errorContent;
     // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
     if (placeholder && !realCfg.data) {
       const pl = placeholder === true ?  DEFAULT_PLACEHOLDER : placeholder;
       // plot 默认是400px高度
-      return <ErrorBoundary errorContent={errorContent}>
+      return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
         <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
           {pl}
         </div>
@@ -207,7 +208,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(Plot, name: string,
       realCfg.height -= DESCRIPTION_HEIGHT;
     }
 
-    return <ErrorBoundary errorContent={errorContent}>
+    return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
       <div>
         {/* title 不一定有 */}
         { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }

@@ -1,5 +1,6 @@
 
 import { View, Chart } from '@antv/g2/lib/chart';
+import { ErrorBoundaryProps } from 'react-error-boundary';
 import {
   ViewPadding,
   ScaleOption,
@@ -122,9 +123,18 @@ export interface IChartProps extends IViewProps {
   events?: {
     [EventName: string]: EventFunc
   },
-  // 发生错误的时候显示的内容
-  errorContent? : React.ReactNode,
+  /** 
+   * 发生错误的时候显示的内容, errorContent api已调整，
+   * 请使用 ErrorBoundaryProps
+   * @example ErrorBoundaryProps={{FallbackComponent: error => <div>{error}</div>}}
+  */
+  errorContent? : React.ReactElement<unknown, string | React.FunctionComponent<{}>>,
   [key: string]: any;
+  /** 
+   *  ErrorBoundary 使用的是 react-error-boundary, 可通过ErrorBoundaryProps透传其属性
+   *  @example ErrorBoundaryProps={{FallbackComponent: error => <div>{error}</div>}}
+   */
+  ErrorBoundaryProps?: ErrorBoundaryProps,
 }
 
 

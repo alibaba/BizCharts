@@ -64,7 +64,6 @@ Object {
     },
   ],
   "groupField": "type",
-  "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-BarChart 基础条形图 1`] = `
+exports[`Plots-LineChart 兼容旧版LineChart-point 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
@@ -10,59 +10,57 @@ Object {
     10,
   ],
   "autoFit": undefined,
-  "barWidthRatio": 0.6,
-  "colorField": "type",
   "data": Array [
     Object {
-      "sales": 38,
-      "type": "家具家电",
+      "value": 3,
+      "year": "1991",
     },
     Object {
-      "sales": 52,
-      "type": "粮油副食",
+      "value": 4,
+      "year": "1992",
     },
     Object {
-      "sales": 61,
-      "type": "生鲜水果",
+      "value": 3.5,
+      "year": "1993",
     },
     Object {
-      "sales": 145,
-      "type": "美容洗护",
+      "value": 5,
+      "year": "1994",
     },
     Object {
-      "sales": 48,
-      "type": "母婴用品",
+      "value": 4.9,
+      "year": "1995",
     },
     Object {
-      "sales": 38,
-      "type": "进口食品",
+      "value": 6,
+      "year": "1996",
     },
     Object {
-      "sales": 38,
-      "type": "食品饮料",
+      "value": 7,
+      "year": "1997",
     },
     Object {
-      "sales": 38,
-      "type": "家庭清洁",
+      "value": 9,
+      "year": "1998",
+    },
+    Object {
+      "value": 13,
+      "year": "1999",
     },
   ],
-  "interactions": Array [
-    Object {
-      "type": "active-region",
-    },
-  ],
+  "isStack": false,
   "legend": Object {
-    "position": "right-top",
-    "reversed": true,
+    "position": "top-left",
   },
-  "marginRatio": 0.03125,
+  "point": Object {},
   "renderer": "canvas",
-  "seriesField": "type",
   "tooltip": Object {
-    "offset": 20,
-    "reversed": true,
+    "crosshairs": Object {
+      "type": "x",
+    },
     "shared": true,
-    "showMarkers": false,
+    "showCrosshairs": true,
+    "showMarkers": true,
   },
   "xAxis": Object {
     "label": Object {
@@ -76,7 +74,7 @@ Object {
     },
     "nice": true,
   },
-  "xField": "sales",
+  "xField": "year",
   "yAxis": Object {
     "label": Object {
       "autoHide": true,
@@ -84,6 +82,6 @@ Object {
     },
     "nice": true,
   },
-  "yField": "type",
+  "yField": "value",
 }
 `;

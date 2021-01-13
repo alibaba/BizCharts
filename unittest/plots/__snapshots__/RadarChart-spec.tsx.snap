@@ -758,7 +758,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 436,
+  "height": 470,
   "legend": Object {
     "formatter": [Function],
     "itemName": Object {
@@ -1334,7 +1334,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 436,
+  "height": 470,
   "legend": Object {
     "position": "top",
   },
@@ -1524,7 +1524,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 436,
+  "height": 470,
   "legend": Object {
     "position": "top",
   },
@@ -1707,7 +1707,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 536,
+  "height": 570,
   "legend": Object {
     "position": "top",
   },
