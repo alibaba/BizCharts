@@ -5,7 +5,7 @@ import warn from  '../utils/warning';
 import Arc from '../components/Annotation/arc';
 import DataMarker from '../components/Annotation/dataMarker';
 import DataRegion from '../components/Annotation/dataRegion';
-import Html from '../components/Annotation/html';
+// import Html from '../components/Annotation/html';
 import Image from '../components/Annotation/image';
 import Line from '../components/Annotation/line';
 import Region from '../components/Annotation/region';
@@ -19,7 +19,7 @@ const Guide = (props) => {
 Guide.Arc = Arc;
 Guide.DataMarker = DataMarker;
 Guide.DataRegion = DataRegion;
-Guide.Html = Html;
+// Guide.Html = Html;
 Guide.Image = Image;
 Guide.Line = Line;
 Guide.Region = Region;

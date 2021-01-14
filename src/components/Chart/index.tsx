@@ -55,6 +55,10 @@ export class Chart extends React.Component<IChartProps> {
   }
 
   componentDidUpdate() {
+    if (this.isError) {
+      this.chartHelper.destory();
+      return;
+    }
     // 更新图表大小
     const { width, height, autoFit } = this.props;
     // 已经自适应就不更新大小了
@@ -72,7 +76,6 @@ export class Chart extends React.Component<IChartProps> {
         this.chartHelper.render();
       }
     } else {
-      
       this.chartHelper.render();
     }
   }
@@ -113,10 +116,11 @@ export class Chart extends React.Component<IChartProps> {
     return (
       <ErrorBoundary
         {...ErrorBoundaryProps}
+        key={this.chartHelper.key}
         onError={(...args) => { this.isError = true; isFunction(ErrorBoundaryProps.onError) && ErrorBoundaryProps.onError(...args)}}
         onReset={(...args) => { this.isError = false; isFunction(ErrorBoundaryProps.onReset) && ErrorBoundaryProps.onReset(...args)}}
         resetKeys={[this.chartHelper.key]} fallback={errorContent} >
-        <RootChartContext.Provider value={this.chartHelper}>
+        <RootChartContext.Provider  value={this.chartHelper}>
           <ChartViewContext.Provider value={this.chartHelper.chart}>
             <GroupContext.Provider value={this.chartHelper.extendGroup}>
               {this.props.children}

@@ -45,6 +45,7 @@ export type ShapeString = string;
 export type SizeRange = [number, number];
 
 export interface IChartProps extends IViewProps {
+  forceUpdate?: boolean;
   /** 指定 chart 绘制的 DOM，可以传入 DOM id，也可以直接传入 dom 实例。 */
   container?: HTMLElement;
   /** 图表宽度。 */

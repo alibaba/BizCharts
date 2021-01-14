@@ -15,7 +15,7 @@ function sleep(ms) {
 }
 
 const Demo = (props) => {
-  const [data, setData] = useState([{gender: "female", height: '23', weight: 51.6}, {gender: "female", height: '32', weight: 59}]);
+  const [data, setData] = useState([{}]);
   useEffect(() => {
      fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/point-scatter/0.2.8/mock.json')
        .then(res => res.json())
@@ -23,7 +23,7 @@ const Demo = (props) => {
           act(() => setData(data));
        })
    }, [])
-  return <Chart appendPadding={10} data={data} width={500} height={300} {...props}>
+  return <Chart forceUpdate appendPadding={10} data={data} width={500} height={300} {...props}>
   <Point 
     position="height*weight"
     color="gender"

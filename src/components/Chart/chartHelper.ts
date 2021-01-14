@@ -42,14 +42,13 @@ class ChartHelper {
     if (!this.chart) {
       return;
     }
+
+    this.chart.render();
     if (this.isNewInstance) {
-      this.chart.render();
       this.onGetG2Instance();
       // @ts-ignore
       this.chart.unbindAutoFit(); // 不使用g2的监听
       this.isNewInstance = false;
-    } else {
-      this.chart.render();
     }
     // 处理elements状态
     this.chart.emit('processElemens');
@@ -68,7 +67,7 @@ class ChartHelper {
     const { data:preData, ...preOptions} = this.config;
     const { data, ...options } = newConfig;
     if (_isArray(this.config.data)
-      && this.config.data.length === 0
+      && preData.length === 0
       && _isArray(data)
       && data.length !== 0 ) {
       return true;
@@ -83,11 +82,11 @@ class ChartHelper {
   }
   update(props) {
     const newConfig = cloneDeep(this.adapterOptions(props));
+
     if (this.shouldReCreateInstance(newConfig)) {
       this.destory();
       this.createInstance(newConfig);
     }
-
 
     // 重置
     if (newConfig.pure) {
@@ -220,7 +219,6 @@ class ChartHelper {
     }
     this.extendGroup = null;
     let { chart } = this;
-    chart.hide();
     chart.destroy();
     chart = null;
     this.chart = null;
