@@ -9,7 +9,7 @@ import { isNil } from '@antv/util';
 type Opt = Omit<Options, 'data'>;
 
 interface TinyLineOptions extends Opt, BasePlotOptions {
-    /** size在4.2.0即将废弃 */
+    /** size 旧版g2Plot api，即将废弃请查看最新文档 */
     size?: number,
 
     data: number[] | Record<string, any>[],
