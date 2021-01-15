@@ -12,12 +12,12 @@ interface ReplaceApi {
 // 批量替换api
 export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) => {
   replaceApiList.forEach((item) => {
-      const { sourceKey, targetKey, notice } = item;
-      const value = get(options, sourceKey);
-      if (value) {
-          warn(true, notice);
-          set(options, targetKey, value);
-      }
+    const { sourceKey, targetKey, notice } = item;
+    const value = get(options, sourceKey);
+    if (value) {
+      warn(true, notice);
+      set(options, targetKey, value);
+    }
   })
 }
 
@@ -30,38 +30,50 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
  */
 export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis') => {
   if (get(options, `${sourceKey}.visible`) === false) {
-      set(options, targetKey, false);
-      return;
+    set(options, targetKey, false);
+    return;
   }
 
   let config = { ...get(options, sourceKey, {}) };
   if (get(options, `${sourceKey}.line.visible`) === false) {
-      config.line = null
+    config.line = null
   }
 
   if (get(options, `${sourceKey}.grid.visible`) === false) {
-      config.grid = null
+    config.grid = null
   }
 
   if (get(options, `${sourceKey}.label.visible`) === false) {
-      config.label = false
+    config.label = false
   } else {
-      const label = get(options, `${sourceKey}.label`, {});
-      if (label) {
-          const suffix = label.suffix;
-          if (!isNil(suffix) || suffix) { // 不是undefined null 或 suffix存在
-              config.label = { ...label, formatter: val => `${val}${suffix}` }
-          }
+    let label = get(options, `${sourceKey}.label`, {});
+    if (label) {
+      const suffix = label.suffix;
+      if (!isNil(suffix) || suffix) { // 不是undefined null 或 suffix存在
+        label = { ...label, formatter: val => `${val}${suffix}` }
       }
+
+      const { offsetX, offsetY, offset } = label;
+      if (isNil(offset)) {
+        if (targetKey === 'xAxis') {
+          label = { ...label, offset: !isNil(offsetX) ? offsetX : offsetY }
+        }
+        if (targetKey === 'yAxis') {
+          label = { ...label, offset: !isNil(offsetY) ? offsetY : offsetX }
+        }
+      }
+
+      config.label = label;
+    }
 
   }
 
   if (get(options, `${sourceKey}.tickLine.visible`) === false) {
-      config.tickLine = false
+    config.tickLine = false
   }
 
   if (get(options, `${sourceKey}.title.visible`) === false) {
-      config.title = false
+    config.title = false
   }
 
   set(options, targetKey, config);
@@ -98,12 +110,12 @@ export const polyfillOptions = (opt) => {
   }
   const formatter = get(polyfillOpt, 'legend.formatter');
   if (formatter) {
-      const itemName = get(polyfillOpt, 'legend.itemName', {});
-      set(polyfillOpt, 'legend.itemName', { ...itemName, formatter });
+    const itemName = get(polyfillOpt, 'legend.itemName', {});
+    set(polyfillOpt, 'legend.itemName', { ...itemName, formatter });
   }
   const textConfig = get(polyfillOpt, 'legend.text');
   if (textConfig) {
-      set(polyfillOpt, 'legend.itemName', textConfig);
+    set(polyfillOpt, 'legend.itemName', textConfig);
   }
 
   // label
