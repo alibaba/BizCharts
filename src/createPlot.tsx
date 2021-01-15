@@ -78,6 +78,9 @@ class BasePlot extends React.Component<any> {
   public _context: { chart: any } = { chart: null };
 
   componentDidMount() {
+    if (this.props.children && this.g2Instance.chart) {
+      this.g2Instance.chart.render();
+    }
     polyfillEvents(this.g2Instance, {}, this.props);
     this.g2Instance.data = this.props.data;
     this.preConfig = pickWithout(this.props, [
@@ -89,6 +92,9 @@ class BasePlot extends React.Component<any> {
     ]);
   }
   componentDidUpdate(prevProps) {
+    if (this.props.children && this.g2Instance.chart) {
+      this.g2Instance.chart.render();
+    }
     // 兼容1.0 的events写法
     polyfillEvents(this.g2Instance, prevProps, this.props);
   }
@@ -220,7 +226,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       const pl = placeholder === true ? DEFAULT_PLACEHOLDER : placeholder;
       // plot 默认是400px高度
       return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
-        <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center' }}>
+        <div style={{ width: props.width || '100%',  height: props.height || 400, textAlign: 'center', position: 'relative' }}>
           {pl}
         </div>
       </ErrorBoundary>;

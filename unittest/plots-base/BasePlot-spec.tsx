@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AreaChart from '../../src/plots/AreaChart';
 import Effects from '../../src/components/Effects';
+import {Annotation} from '../../src';
 import { render, act, cleanup, fireEvent, screen } from '@testing-library/react';
 import { getClientPoint } from '../tools/simulate';
 // import { toMatchDiffSnapshot } from 'snapshot-diff';
@@ -47,6 +48,7 @@ const Chart = props => {
   return (
     <AreaChart data={data} {...option}>
       {props.children}
+
     </AreaChart>
   );
 };
@@ -57,13 +59,35 @@ describe('基础功能-以AreaChart为demo', () => {
     <Chart
       onGetG2Instance={c => {
         chart = c;
+        console.log(c)
       }}
-    />,
+    >
+      <Effects>
+        {
+          chart => {
+            console.log(111, chart)
+          }
+        }
+      </Effects>
+      <Annotation.Line
+            start={[0, 'max']}
+            end={[100, 'max']}
+            text={{
+              content: `集团最高分`,
+              position: 'start',
+              offsetX: 30,
+              offsetY: -2,
+            }}
+            style={{
+              stroke: '#0d7eff',
+            }}
+          />
+      </Chart>,
   );
 
   test('数据更新[] --> [{},{},{}]', () => {
     expect(chart.options.data.length).toBe(3);
-    cleanup();
+    // cleanup();
   });
 
   test('title、 description 高度计算和dom渲染', () => {
@@ -71,7 +95,7 @@ describe('基础功能-以AreaChart为demo', () => {
     expect(chart.options.height).toBe(336);
     // dom 快照
     expect(container).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   // test('ErrorBoundary', () => {
@@ -146,6 +170,6 @@ describe('基础功能-以AreaChart为demo', () => {
     expect(handleClick).toHaveBeenCalledTimes(2);
     // 图表标题是独立的div
     expect(handletTitleClick).toHaveBeenCalledTimes(1);
-    cleanup();
+    // cleanup();
   });
 });
