@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plots-TreemapChart 基础TreemapChart 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "colorField": "type",
+  "data": Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "name": "分类 1-1",
+            "type": "a",
+            "value": 120,
+          },
+          Object {
+            "name": "分类 1-2",
+            "type": "a",
+            "value": 120,
+          },
+          Object {
+            "name": "分类 1-3",
+            "type": "a",
+            "value": 120,
+          },
+          Object {
+            "name": "分类 1-4",
+            "type": "a",
+            "value": 120,
+          },
+          Object {
+            "name": "分类 1-5",
+            "type": "a",
+            "value": 120,
+          },
+          Object {
+            "name": "分类 1-6",
+            "type": "a",
+            "value": 300,
+          },
+        ],
+        "name": "分类 1",
+        "type": "mm",
+        "value": 900,
+      },
+      Object {
+        "name": "分类 2",
+        "type": "b",
+        "value": 500,
+      },
+      Object {
+        "name": "分类 3",
+        "type": "d",
+        "value": 150,
+      },
+      Object {
+        "name": "分类 4",
+        "type": "e",
+        "value": 140,
+      },
+      Object {
+        "name": "分类 5",
+        "type": "f",
+        "value": 115,
+      },
+      Object {
+        "name": "分类 6",
+        "type": "g",
+        "value": 95,
+      },
+      Object {
+        "name": "分类 7",
+        "type": "h",
+        "value": 90,
+      },
+      Object {
+        "name": "分类 8",
+        "type": "i",
+        "value": 75,
+      },
+      Object {
+        "name": "分类 9",
+        "type": "j",
+        "value": 98,
+      },
+      Object {
+        "name": "分类 10",
+        "type": "k",
+        "value": 60,
+      },
+      Object {
+        "name": "分类 11",
+        "type": "l",
+        "value": 45,
+      },
+      Object {
+        "name": "分类 12",
+        "type": "m",
+        "value": 40,
+      },
+      Object {
+        "name": "分类 13",
+        "type": "n",
+        "value": 40,
+      },
+      Object {
+        "name": "分类 14",
+        "type": "o",
+        "value": 35,
+      },
+      Object {
+        "name": "分类 15",
+        "type": "p",
+        "value": 40,
+      },
+      Object {
+        "name": "分类 16",
+        "type": "q",
+        "value": 40,
+      },
+      Object {
+        "name": "分类 17",
+        "type": "r",
+        "value": 40,
+      },
+      Object {
+        "name": "分类 18",
+        "type": "s",
+        "value": 30,
+      },
+      Object {
+        "name": "分类 19",
+        "type": "t",
+        "value": 28,
+      },
+      Object {
+        "name": "分类 20",
+        "type": "u",
+        "value": 16,
+      },
+    ],
+    "name": "root",
+  },
+  "height": NaN,
+  "maxLevel": 2,
+  "renderer": "canvas",
+  "tooltip": Object {
+    "visible": true,
+  },
+  "xAxis": Object {
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yAxis": Object {
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+}
+`;
