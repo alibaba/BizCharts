@@ -68,6 +68,6 @@ describe('Plots-StackedColumnChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
 })

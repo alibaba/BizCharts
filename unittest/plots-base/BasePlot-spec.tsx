@@ -87,7 +87,7 @@ describe('基础功能-以AreaChart为demo', () => {
 
   test('数据更新[] --> [{},{},{}]', () => {
     expect(chart.options.data.length).toBe(3);
-    // cleanup();
+    cleanup();
   });
 
   test('title、 description 高度计算和dom渲染', () => {
@@ -95,7 +95,7 @@ describe('基础功能-以AreaChart为demo', () => {
     expect(chart.options.height).toBe(336);
     // dom 快照
     expect(container).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   });
 
   // test('ErrorBoundary', () => {
@@ -107,7 +107,7 @@ describe('基础功能-以AreaChart为demo', () => {
   //     </Effects>
   //   </Chart>);
   //   expect(container).toMatchSnapshot();
-  //   // cleanup();
+  //   cleanup();
   // });
 
   // test('自定义 ErrorBoundary', () => {
@@ -119,25 +119,25 @@ describe('基础功能-以AreaChart为demo', () => {
   //     </Effects>
   //   </Chart>);
   //   expect(container).toMatchSnapshot();
-  //   // cleanup();
+  //   cleanup();
   // });
 
   test('placeholder', () => {
     const { container } = render(<Chart placeholder data={undefined} />);
     expect(container).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   });
 
   test('自定义 placeholder', () => {
     const { container } = render(<Chart placeholder="自定义 placeholder" data={undefined} />);
     expect(container).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   });
 
   test('forceFit --> autoFit', () => {
     render(<Chart placeholder="自定义 placeholder" forceFit data={undefined} />);
     expect(chart.options.autoFit).toBe(true);
-    // cleanup();
+    cleanup();
   });
 
   test('polyfill event', () => {
@@ -170,6 +170,6 @@ describe('基础功能-以AreaChart为demo', () => {
     expect(handleClick).toHaveBeenCalledTimes(2);
     // 图表标题是独立的div
     expect(handletTitleClick).toHaveBeenCalledTimes(1);
-    // cleanup();
+    cleanup();
   });
 });

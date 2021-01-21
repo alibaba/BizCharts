@@ -1,8 +1,10 @@
 import React from 'react';
 import Chart from '../../src/components/Chart';
 import Interval from '../../src/geometry/Interval';
+import { Html } from '../../src/components/Annotation';
 import '../../src/core';
 import { render, cleanup } from '@testing-library/react';
+
 
 const MOCK_DATA = [
 	{
@@ -136,27 +138,17 @@ const Demo = (props) => {
 			area
 			{...others}
 		/>
+    <Html position={['min', 'max']} html="<div>123</div>" />
 	</Chart>
 }
 
 
-describe('geomtrys-Interval', () => {
-	test('has one geometry', async () => {
+describe('Anno-Annotation', () => {
+	test('html', async () => {
 		let chart = null;
-		render(<Demo onGetG2Instance={c => chart = c} />);
-		expect(chart.geometries.length).toBe(1);
-		expect(chart.geometries[0].type).toBe('interval');
-		cleanup()
+		render(<Demo onGetG2Instance={c => { console.log(c); chart = c }} />);
+		expect(chart.annotation().option.length).toBe(1);
+    expect(chart.annotation().option[0].type).toBe('html');
+    cleanup();
 	})
-
-	test('funnel shape', async () => {
-		let chart = null;
-		render(<Demo shape="funnel" onGetG2Instance={c => {
-			console.log(c);
-			chart = c
-		}} />);
-		expect(chart.geometries[0].elements[0].shapeType).toBe('funnel');
-		cleanup()
-  })
-  
 })

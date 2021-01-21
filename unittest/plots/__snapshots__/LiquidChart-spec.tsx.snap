@@ -23,6 +23,7 @@ Object {
       "formatter": [Function],
       "style": Object {
         "fontSize": "30px",
+        "lineHeight": "30px",
         "opacity": 0.75,
         "textAlign": "center",
       },
@@ -59,6 +60,7 @@ Object {
       "formatter": [Function],
       "style": Object {
         "fontSize": "30px",
+        "lineHeight": "30px",
         "opacity": 0.75,
         "textAlign": "center",
       },

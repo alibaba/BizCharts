@@ -29,18 +29,22 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
  * @param targetKey  string
  */
 export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis') => {
+  if (isNil(options[sourceKey])) {
+    return;
+  }
   if (get(options, `${sourceKey}.visible`) === false) {
     set(options, targetKey, false);
     return;
   }
 
-  let config = { ...get(options, sourceKey, {}) };
+  let config = { ...options[sourceKey] };
+  // console.log(options, config)
   if (get(options, `${sourceKey}.line.visible`) === false) {
-    config.line = null
+    config.line = null;
   }
 
   if (get(options, `${sourceKey}.grid.visible`) === false) {
-    config.grid = null
+    config.grid = null;
   }
 
   if (get(options, `${sourceKey}.label.visible`) === false) {
@@ -53,13 +57,13 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
         label = { ...label, formatter: val => `${val}${suffix}` }
       }
 
-      const { offsetX, offsetY, offset } = label;
-      if (isNil(offset)) {
+      const { offsetX, offsetY, offset, ...labelCfg } = label;
+      if (isNil(offset) && (!isNil(offsetX) || !isNil(offsetY))) {
         if (targetKey === 'xAxis') {
-          label = { ...label, offset: !isNil(offsetX) ? offsetX : offsetY }
+          label = { ...labelCfg, offset: !isNil(offsetX) ? offsetX : offsetY }
         }
         if (targetKey === 'yAxis') {
-          label = { ...label, offset: !isNil(offsetY) ? offsetY : offsetX }
+          label = { ...labelCfg, offset: !isNil(offsetY) ? offsetY : offsetX }
         }
       }
 
@@ -75,7 +79,7 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
   if (get(options, `${sourceKey}.title.visible`) === false) {
     config.title = false
   }
-
+  console.log('targetKey',targetKey,options, config)
   set(options, targetKey, config);
 
 }

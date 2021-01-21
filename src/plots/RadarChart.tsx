@@ -2,6 +2,7 @@ import 'react';
 import isNil from '@antv/util/lib/is-nil';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
+import isObject from '@antv/util/lib/is-object';
 import { Radar, RadarOptions as options } from '@antv/g2plot/lib/plots/radar';
 import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
 
@@ -96,6 +97,15 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
 
     replaceLineWithLinestyle(options);
 
+    if (isObject(options.angleAxis) || isObject(options.radiusAxis)) {
+        // 旧版用法就默认关闭此line
+        if (!options.angleAxis) {
+            options.angleAxis = {}
+        }
+        options.angleAxis.line = get(options, 'angleAxis.line', null);
+        options.angleAxis.tickLine = get(options, 'angleAxis.tickLine', null);
+    }
+
     replaceAxis(options, 'angleAxis', 'xAxis');
     replaceAxis(options, 'radiusAxis', 'yAxis');
 
@@ -106,6 +116,8 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
     if (get(options, 'label.visible') === false) {
         set(options, 'label', false);
     }
+
+    console.log(options)
 
     return options;
 }

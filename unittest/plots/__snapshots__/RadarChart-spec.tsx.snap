@@ -218,9 +218,7 @@ Object {
       "autoHide": true,
       "autoRotate": true,
       "formatter": [Function],
-      "offset": 15,
-      "offsetX": 4,
-      "offsetY": 4,
+      "offset": 4,
       "style": Object {
         "fill": "red",
       },
@@ -848,6 +846,404 @@ Object {
 }
 `;
 
+exports[`Plots-RadarChart line grid 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "data": Array [
+    Object {
+      "item": "Design",
+      "score": 70,
+      "user": "a",
+    },
+    Object {
+      "item": "Design",
+      "score": 30,
+      "user": "b",
+    },
+    Object {
+      "item": "Development",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Development",
+      "score": 70,
+      "user": "b",
+    },
+    Object {
+      "item": "Marketing",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Marketing",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Users",
+      "score": 40,
+      "user": "a",
+    },
+    Object {
+      "item": "Users",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Test",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Test",
+      "score": 70,
+      "user": "b",
+    },
+    Object {
+      "item": "Language",
+      "score": 70,
+      "user": "a",
+    },
+    Object {
+      "item": "Language",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Technology",
+      "score": 50,
+      "user": "a",
+    },
+    Object {
+      "item": "Technology",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "Support",
+      "score": 30,
+      "user": "a",
+    },
+    Object {
+      "item": "Support",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "Sales",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Sales",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "UX",
+      "score": 50,
+      "user": "a",
+    },
+    Object {
+      "item": "UX",
+      "score": 60,
+      "user": "b",
+    },
+  ],
+  "legend": Object {
+    "position": "top",
+  },
+  "lineStyle": Object {
+    "fillOpacity": 1,
+    "lineWidth": 2,
+    "opacity": 1,
+    "strokeOpacity": 1,
+  },
+  "meta": Object {
+    "score": Object {
+      "alias": "分数",
+      "max": 80,
+      "min": 0,
+    },
+  },
+  "point": Object {
+    "size": 2,
+  },
+  "renderer": "canvas",
+  "seriesField": "user",
+  "tooltip": Object {
+    "crosshairs": Object {
+      "follow": true,
+      "line": Object {
+        "style": Object {
+          "lineDash": Array [
+            4,
+          ],
+          "stroke": "#565656",
+        },
+      },
+      "type": "xy",
+    },
+    "shared": true,
+    "showCrosshairs": true,
+    "showMarkers": true,
+  },
+  "xAxis": Object {
+    "grid": Object {
+      "line": Object {
+        "style": Object {
+          "lineWidth": "",
+          "stroke": "#aaa",
+        },
+        "type": "line",
+      },
+    },
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+      "offset": 15,
+    },
+    "line": null,
+    "nice": true,
+    "tickLine": null,
+  },
+  "xField": "item",
+  "yAxis": Object {
+    "grid": Object {
+      "alternateColor": Array [
+        "rgba(0, 0, 0, 0.04)",
+        "rgba(0, 0, 0, 0.04)",
+      ],
+      "line": Object {
+        "style": Object {
+          "lineDash": null,
+        },
+        "type": "line",
+      },
+    },
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "line": null,
+    "nice": true,
+    "tickLine": null,
+  },
+  "yField": "score",
+}
+`;
+
+exports[`Plots-RadarChart line grid- 旧版用法 1`] = `
+Object {
+  "angleAxis": Object {
+    "line": null,
+    "tickLine": null,
+  },
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": undefined,
+  "data": Array [
+    Object {
+      "item": "Design",
+      "score": 70,
+      "user": "a",
+    },
+    Object {
+      "item": "Design",
+      "score": 30,
+      "user": "b",
+    },
+    Object {
+      "item": "Development",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Development",
+      "score": 70,
+      "user": "b",
+    },
+    Object {
+      "item": "Marketing",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Marketing",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Users",
+      "score": 40,
+      "user": "a",
+    },
+    Object {
+      "item": "Users",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Test",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Test",
+      "score": 70,
+      "user": "b",
+    },
+    Object {
+      "item": "Language",
+      "score": 70,
+      "user": "a",
+    },
+    Object {
+      "item": "Language",
+      "score": 50,
+      "user": "b",
+    },
+    Object {
+      "item": "Technology",
+      "score": 50,
+      "user": "a",
+    },
+    Object {
+      "item": "Technology",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "Support",
+      "score": 30,
+      "user": "a",
+    },
+    Object {
+      "item": "Support",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "Sales",
+      "score": 60,
+      "user": "a",
+    },
+    Object {
+      "item": "Sales",
+      "score": 40,
+      "user": "b",
+    },
+    Object {
+      "item": "UX",
+      "score": 50,
+      "user": "a",
+    },
+    Object {
+      "item": "UX",
+      "score": 60,
+      "user": "b",
+    },
+  ],
+  "legend": Object {
+    "position": "top",
+  },
+  "lineStyle": Object {
+    "fillOpacity": 1,
+    "lineWidth": 2,
+    "opacity": 1,
+    "strokeOpacity": 1,
+  },
+  "meta": Object {
+    "score": Object {
+      "alias": "分数",
+      "max": 80,
+      "min": 0,
+    },
+  },
+  "point": Object {
+    "size": 2,
+  },
+  "radiusAxis": Object {
+    "grid": Object {
+      "line": Object {
+        "type": "line",
+      },
+    },
+  },
+  "renderer": "canvas",
+  "seriesField": "user",
+  "tooltip": Object {
+    "crosshairs": Object {
+      "follow": true,
+      "line": Object {
+        "style": Object {
+          "lineDash": Array [
+            4,
+          ],
+          "stroke": "#565656",
+        },
+      },
+      "type": "xy",
+    },
+    "shared": true,
+    "showCrosshairs": true,
+    "showMarkers": true,
+  },
+  "xAxis": Object {
+    "grid": Object {
+      "line": Object {
+        "type": "line",
+      },
+    },
+    "label": Object {
+      "autoHide": Object {
+        "cfg": Object {
+          "minGap": 6,
+        },
+        "type": "equidistance",
+      },
+      "autoRotate": false,
+      "offset": 15,
+    },
+    "line": null,
+    "nice": true,
+    "tickLine": null,
+  },
+  "xField": "item",
+  "yAxis": Object {
+    "grid": Object {
+      "line": Object {
+        "type": "line",
+      },
+    },
+    "label": Object {
+      "autoHide": true,
+      "autoRotate": false,
+    },
+    "nice": true,
+  },
+  "yField": "score",
+}
+`;
+
 exports[`Plots-RadarChart line-雷达图 1`] = `
 Object {
   "animation": true,
@@ -1224,6 +1620,10 @@ Object {
 
 exports[`Plots-RadarChart radiusAxis-雷达图 1`] = `
 Object {
+  "angleAxis": Object {
+    "line": null,
+    "tickLine": null,
+  },
   "animation": true,
   "appendPadding": Array [
     10,
@@ -1389,7 +1789,9 @@ Object {
       "autoRotate": false,
       "offset": 15,
     },
+    "line": null,
     "nice": true,
+    "tickLine": null,
   },
   "xField": "item",
   "yAxis": Object {

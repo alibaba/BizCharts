@@ -68,6 +68,6 @@ describe('Plots-StackedBarChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
 })

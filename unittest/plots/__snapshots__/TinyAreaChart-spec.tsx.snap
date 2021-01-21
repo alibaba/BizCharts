@@ -2,6 +2,7 @@
 
 exports[`Plots-TinyAreaChart 堆叠面积图-旧版 1`] = `
 Object {
+  "animation": true,
   "appendPadding": Array [
     10,
     5,

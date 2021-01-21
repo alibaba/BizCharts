@@ -1,15 +1,11 @@
-// @ts-nocheck
-// import HtmlComponent from '@antv/component/lib/abstract/html-component';
-// import { Annotation as AnnotationComponent } from '@antv/component/lib';
-
-// fixme: 先开发 g2 registerAnnotation。预计g2@4.0.9版本
-// import Base, { IAnnotationBaseProps } from './base';
+import Base, { IAnnotationBaseProps } from './base';
+import { HtmlAnnotationOption } from '../../interface';
 
 
-// export interface AnnotationHtmlProps extends IAnnotationBaseProps {
-//   el: HTMLElement;
-// }
+type BaseProps = Omit<IAnnotationBaseProps, 'offsetX'>;
 
-// export default class Html extends Base<AnnotationHtmlProps>{
-//   public annotationType = 'html';
-// };
+interface HtmlAnnotationProps extends HtmlAnnotationOption, BaseProps {}
+
+export default class Html extends Base<HtmlAnnotationProps>{
+  public annotationType = 'html';
+};

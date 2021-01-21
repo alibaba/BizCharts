@@ -2,6 +2,7 @@
 
 exports[`Plots-RingProgressChart 进度条 1`] = `
 Object {
+  "animation": true,
   "appendPadding": Array [
     10,
     5,

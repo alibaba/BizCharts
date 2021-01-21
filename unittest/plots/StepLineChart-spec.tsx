@@ -38,7 +38,7 @@ describe('Plots-StepLineChart', () => {
       start: 0,
       end: 0.5,
     });
-    // cleanup();
+    cleanup();
   })
   test('兼容旧版StepLineChart-point', () => {
     let chart = null;
@@ -53,7 +53,7 @@ describe('Plots-StepLineChart', () => {
     />);
     expect(chart.options.point).toEqual({});
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
   test('兼容旧版shape-shapeType', () => {
     let chart = null;
@@ -68,6 +68,6 @@ describe('Plots-StepLineChart', () => {
     />);
     expect(chart.options.stepType).toBe('vhv');
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
 })

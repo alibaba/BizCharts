@@ -146,6 +146,7 @@ describe('geomtrys-Line', () => {
 		render(<Demo onGetG2Instance={c => chart = c} />);
 		expect(chart.geometries.length).toBe(1);
 		expect(chart.geometries[0].type).toBe('line');
+		cleanup()
 	})
 
 	test('smooth shape', async () => {
@@ -154,7 +155,8 @@ describe('geomtrys-Line', () => {
 			console.log(c);
 			chart = c
 		}} />);
-    expect(chart.geometries[0].elements[0].shapeType).toBe('smooth');
+		expect(chart.geometries[0].elements[0].shapeType).toBe('smooth');
+		cleanup()
 
   })
   
@@ -164,7 +166,8 @@ describe('geomtrys-Line', () => {
 			console.log(c);
 			chart = c
 		}} />);
-    expect(chart.geometries[0].elements[0].shapeType).toBe('hvh');
+		expect(chart.geometries[0].elements[0].shapeType).toBe('hvh');
+		cleanup()
   })
   
   test('step shape: hv', async () => {
@@ -173,7 +176,8 @@ describe('geomtrys-Line', () => {
 			console.log(c);
 			chart = c
 		}} />);
-    expect(chart.geometries[0].elements[0].shapeType).toBe('hv');
+		expect(chart.geometries[0].elements[0].shapeType).toBe('hv');
+		cleanup()
   })
   
   test('step shape: vh', async () => {
@@ -182,7 +186,8 @@ describe('geomtrys-Line', () => {
 			console.log(c);
 			chart = c
 		}} />);
-    expect(chart.geometries[0].elements[0].shapeType).toBe('vh');
+		expect(chart.geometries[0].elements[0].shapeType).toBe('vh');
+		cleanup()
   })
   
   test('step shape: vhv', async () => {

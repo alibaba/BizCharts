@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DensityHeatmapChart from '../../src/plots/DensityHeatmapChart';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 
 function Demo(props) {
   const [data, setData] = useState([]);
@@ -8,7 +8,7 @@ function Demo(props) {
     fetch('https://alifd.alibabausercontent.com/materials/@bizcharts/heatmap-image/0.3.0/mock.json')
       .then(res => res.json())
       .then(data => {
-        setData(data);
+        act(() => setData(data));
       })
   }, [])
   

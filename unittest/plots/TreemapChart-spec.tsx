@@ -76,6 +76,6 @@ describe('Plots-TreemapChart', () => {
         />);
         expect(chart.options.maxLevel).toBe(2);
         // expect(chart.options).toMatchSnapshot();
-        // cleanup();
+        cleanup();
     });
 });

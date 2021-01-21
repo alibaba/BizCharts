@@ -200,7 +200,7 @@ describe('Plots-AreaChart', () => {
         (c) => chart = c
       }
     />);
-    // cleanup();
+    cleanup();
   });
 
   test('guideLine-max/mean/min', () => {

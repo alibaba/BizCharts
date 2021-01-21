@@ -1,39 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-ScatterChart 基础TinyLineChart 1`] = `
-Object {
-  "appendPadding": Array [
-    10,
-    5,
-    10,
-    10,
-  ],
-  "autoFit": undefined,
-  "data": Array [
-    3,
-    4,
-    3.5,
-    5,
-    4.9,
-    6,
-    7,
-    9,
-    13,
-  ],
-  "height": 400,
-  "lineStyle": Object {
-    "lineWidth": 10,
-  },
-  "size": 10,
-  "tooltip": false,
-  "width": 400,
-  "xField": "year",
-  "yField": "value",
-}
-`;
-
 exports[`Plots-TinyLineChart TinyLineChart-guidLine-start 1`] = `
 Object {
+  "animation": true,
   "annotations": Array [
     Object {
       "end": Array [
@@ -116,6 +85,7 @@ Object {
 
 exports[`Plots-TinyLineChart TinyLineChart-guidLine-type 1`] = `
 Object {
+  "animation": true,
   "annotations": Array [
     Object {
       "end": Array [
@@ -191,6 +161,7 @@ Object {
 
 exports[`Plots-TinyLineChart 基础TinyLineChart 1`] = `
 Object {
+  "animation": true,
   "appendPadding": Array [
     10,
     5,

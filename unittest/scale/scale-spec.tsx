@@ -62,6 +62,6 @@ describe('基础功能-双轴刻度对齐', () => {
     expect(valueScale.max === valueScale.ticks[valueScale.ticks.length - 1]).toBe(true);
     expect(value1Scale.min === value1Scale.ticks[0]).toBe(true);
     expect(value1Scale.max === value1Scale.ticks[valueScale.ticks.length - 1]).toBe(true);
-    // cleanup();
+    cleanup();
   });
 });

@@ -113,6 +113,7 @@ describe('Plots-RadarChart', () => {
     // @ts-ignore
     render(<RadarChart
       height={600}
+      // @ts-ignore
       forceFit
       data={data}
       pixelRatio={3}
@@ -445,4 +446,91 @@ describe('Plots-RadarChart', () => {
     expect(chart.options).toMatchSnapshot();
     cleanup();
   });
+  test('line grid', () => {
+    let chart = null;
+    const options = {
+      data,
+      xField: 'item',
+      yField: 'score',
+      seriesField: 'user',
+      meta: {
+        score: {
+          alias: '分数',
+          min: 0,
+          max: 80,
+        },
+      },
+      xAxis: {
+        line: null,
+        tickLine: null,
+        grid: {
+          line: {
+            style: {
+              stroke: '#aaa',
+              lineWidth: ''
+            },
+          },
+        },
+      },
+      yAxis: {
+        line: null,
+        tickLine: null,
+        grid: {
+          line: {
+            type: 'line',
+            style: {
+              lineDash: null,
+            },
+          },
+          alternateColor: ['rgba(0, 0, 0, 0.04)', 'rgba(0, 0, 0, 0.04)'],
+        },
+      },
+      // 开启辅助点
+      point: {
+        size: 2,
+      },
+    };
+    render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
+      {...options}
+    />);
+    expect(chart.options).toMatchSnapshot();
+  })
+
+  test('line grid- 旧版用法', () => {
+    let chart = null;
+    const options = {
+      data,
+      xField: 'item',
+      yField: 'score',
+      seriesField: 'user',
+      meta: {
+        score: {
+          alias: '分数',
+          min: 0,
+          max: 80,
+        },
+      },
+      radiusAxis: {
+        grid: {
+          line: {
+            type: 'line',
+          },
+        },
+      },
+      // 开启辅助点
+      point: {
+        size: 2,
+      },
+    };
+    render(<RadarChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
+      {...options}
+    />);
+    expect(chart.options).toMatchSnapshot();
+  })
 });

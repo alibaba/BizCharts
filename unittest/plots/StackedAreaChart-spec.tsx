@@ -68,6 +68,6 @@ describe('Plots-StackedAreaChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
 })
