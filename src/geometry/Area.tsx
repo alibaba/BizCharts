@@ -4,9 +4,7 @@ import { registerGeometry } from '../core';
 
 registerGeometry('Area', Area);
 
-import '@antv/g2/lib/geometry/shape/area/line';
-import '@antv/g2/lib/geometry/shape/area/smooth';
-import '@antv/g2/lib/geometry/shape/area/smooth-line';
+import '@antv/g2/lib/geometry/shape/area';
 
 export interface IAreaGemoProps extends IBaseGemoProps {}
 

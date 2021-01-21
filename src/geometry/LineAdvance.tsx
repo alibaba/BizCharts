@@ -1,12 +1,13 @@
 import React from 'react';
 import { getShapeAttrs, getConstraint } from '@antv/g2/lib/geometry/shape/area/util';
 // 按需使用需要加载图形
-import '@antv/g2/lib/geometry/shape/line/step';
+import '@antv/g2/lib/geometry/shape/line';
+import '@antv/g2/lib/geometry/shape/area';
 import _isObject from '@antv/util/lib/is-object';
 import _deepMix from '@antv/util/lib/deep-mix';
 import _get from '@antv/util/lib/get';
 import _set from '@antv/util/lib/set';
-import { registerShape } from '@antv/g2';
+import { registerShape } from '../core';
 import * as d3Color from 'd3-color';
 import useChartView from '../hooks/useChartView';
 import Line, { ILineGemoProps } from './Line';
@@ -106,7 +107,7 @@ registerShape('area', 'gradient', {
       attrs,
       name: 'area',
     });
-    return shape;
+    return container;
   },
 });
 
@@ -128,7 +129,7 @@ registerShape('area', 'gradient-smooth', {
       attrs,
       name: 'area',
     });
-    return shape;
+    return container;
   }
 });
 export default LineAdvance;

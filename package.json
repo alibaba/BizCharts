@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.0-beta.5",
+  "version": "4.1.0-beta.6",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -37,7 +37,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/plots-base",
+    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/geometry",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
