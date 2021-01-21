@@ -2,7 +2,7 @@ import { GeometryLabelCfg, LegendCfg, G2LegendTitleCfg } from '@antv/g2/lib/inte
 import { TooltipOptions } from '@antv/g2plot/lib/types/tooltip'
 import { Meta } from '@antv/g2plot/lib/types/meta'
 import { AxisCfg, AxisGridCfg } from '@antv/g2/lib/interface';
-import {ListItem} from '@antv/component/lib/types';
+import { ListItem } from '@antv/component/lib/types';
 import { AxisLabelCfg, AxisLineCfg, AxisSubTickLineCfg, AxisTickLineCfg, AxisTitleCfg, ContinueLegendHandlerCfg, ContinueLegendLabelCfg, ContinueLegendRailCfg, ContinueLegendTrackCfg, Coordinate, CrosshairLineCfg, CrosshairTextBackgroundCfg, CrosshairTextCfg, EnhancedTextCfg, GridLineCfg, GroupComponent, HtmlComponent, ICanvas, IGroup, IShape, LegendBackgroundCfg, LegendItemNameCfg, LegendItemValueCfg, LegendMarkerCfg, LegendTitleCfg, PathCommand, Scale, ScaleConfig, ShapeAttrs, LineAnnotationTextCfg, TrendCfg } from './dependents';
 
 declare type formatterCallback = (text: string, item: ListItem, index: number) => any;
@@ -76,6 +76,16 @@ interface AxisGrid extends AxisGridCfg {
 interface AxisLabel extends AxisLabelCfg {
     visible?: boolean;
     suffix?: string;
+    /**
+     * 4.2版本开始废除 offsetX,offsetY,用offset替代。
+     * 4.1版本：x轴优先取offsetX,其次offsetY，y轴优先取offsetY,其次offsetX。
+     */
+    offsetX?: number,
+     /**
+     * 4.2版本开始废除 offsetX,offsetY,用offset替代
+     * 4.1版本：x轴优先取offsetX,其次offsetY，y轴优先取offsetY,其次offsetX。
+     */
+    offsetY?: number,
 }
 
 
