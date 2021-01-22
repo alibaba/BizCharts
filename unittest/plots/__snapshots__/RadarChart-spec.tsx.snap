@@ -1221,6 +1221,7 @@ Object {
         "type": "equidistance",
       },
       "autoRotate": false,
+      "formatter": [Function],
       "offset": 15,
     },
     "line": null,
@@ -1237,6 +1238,7 @@ Object {
     "label": Object {
       "autoHide": true,
       "autoRotate": false,
+      "formatter": [Function],
     },
     "nice": true,
   },
@@ -1787,6 +1789,7 @@ Object {
         "type": "equidistance",
       },
       "autoRotate": false,
+      "formatter": [Function],
       "offset": 15,
     },
     "line": null,
@@ -1807,6 +1810,7 @@ Object {
     "label": Object {
       "autoHide": true,
       "autoRotate": false,
+      "formatter": [Function],
     },
     "nice": true,
   },

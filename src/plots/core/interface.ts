@@ -77,12 +77,12 @@ interface AxisLabel extends AxisLabelCfg {
     visible?: boolean;
     suffix?: string;
     /**
-     * 4.2版本开始废除 offsetX,offsetY,用offset替代。
+     * 5.0版本开始废除 offsetX,offsetY,用offset替代。
      * 4.1版本：x轴优先取offsetX,其次offsetY，y轴优先取offsetY,其次offsetX。
      */
     offsetX?: number,
      /**
-     * 4.2版本开始废除 offsetX,offsetY,用offset替代
+     * 5.0版本开始废除 offsetX,offsetY,用offset替代
      * 4.1版本：x轴优先取offsetX,其次offsetY，y轴优先取offsetY,其次offsetX。
      */
     offsetY?: number,

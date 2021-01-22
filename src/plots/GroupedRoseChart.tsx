@@ -35,7 +35,7 @@ interface GroupedRoseOptions extends Options, BasePlotOptions {
 }
 
 const polyfill = (opt: GroupedRoseOptions): GroupedRoseOptions => {
-  warn(false, '<GroupedRose /> 即将在4.2.0后废弃，请使用<Rose />。')
+  warn(false, '<GroupedRose /> 即将在5.0后废弃，请使用<Rose />。')
 
   const options = polyfillOptions(opt);
   replaceApi(REPLACEAPILIST, options);

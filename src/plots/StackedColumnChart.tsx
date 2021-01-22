@@ -12,7 +12,7 @@ interface StackedColumnOptions extends ColumnOptions {};
 export { StackedColumnOptions };
 
 export default createPlot<StackedColumnOptions>(Column, 'StackedColumnChart', props => {
-  warn(false, '<StackedColumnChart />即将在4.2.0中废弃，请使用<ColumnChart />替代。');
+  warn(false, '<StackedColumnChart />即将在5.0中废弃，请使用<ColumnChart />替代。');
   deepMix(props, {
     isStack: true,
   });

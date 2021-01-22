@@ -10,7 +10,7 @@ interface StackedBarOptions extends BarOptions {}
 
 export { StackedBarOptions };
 export default createPlot<StackedBarOptions>(Bar, 'StackedBarChart', props => {
-  warn(false, '<StackedBarChart /> 即将在4.2.0后废弃，请使用<BarChart />替代，');
+  warn(false, '<StackedBarChart /> 即将在5.0后废弃，请使用<BarChart />替代，');
   deepMix(props, {
     isStack: true,
   });

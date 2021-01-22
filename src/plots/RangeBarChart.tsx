@@ -8,7 +8,7 @@ import { deepMix } from '@antv/util';
 interface RangeBarOptions extends BarOptions{}
 export { RangeBarOptions };
 export default createPlot<RangeBarOptions>(Bar, 'RangeBarChart', props => {
-  warn(false, '<RangeBarChart /> 即将在4.2.0后废弃，请使用<BarChart />替代。');
+  warn(false, '<RangeBarChart /> 即将在5.0后废弃，请使用<BarChart />替代。');
   deepMix(props, {
     isRange: true,
   });

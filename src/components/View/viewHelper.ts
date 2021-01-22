@@ -99,8 +99,8 @@ export default class ViewHelper {
   }
   processOptions(options) {
     const { region, start, end, ...other } = options;
-    warn(!start, 'start 属性将在4.1后废弃，请使用 region={{ start: {x:0,y:0}}} 替代');
-    warn(!end, 'end 属性将在4.1后废弃，请使用 region={{ end: {x:0,y:0}}} 替代');
+    warn(!start, 'start 属性将在5.0后废弃，请使用 region={{ start: {x:0,y:0}}} 替代');
+    warn(!end, 'end 属性将在5.0后废弃，请使用 region={{ end: {x:0,y:0}}} 替代');
 
     const regionCfg = _deepMix(
       { start: { x: 0, y: 0 }, end: { x: 1, y: 1 } },

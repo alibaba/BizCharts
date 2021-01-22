@@ -10,7 +10,7 @@ interface RangeColumnOptions extends ColumnOptions {};
 export {RangeColumnOptions};
 
 export default createPlot<RangeColumnOptions>(Column, 'RangeColumnChart', props => {
-  warn(false, '<RangeColumnChart /> 即将在4.2.0后废弃，请使用<ColumnChart />替代。');
+  warn(false, '<RangeColumnChart /> 即将在5.0后废弃，请使用<ColumnChart />替代。');
   deepMix(props, {
     isRange: true,
   })

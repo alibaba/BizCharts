@@ -57,7 +57,7 @@ function Labelline () {
           }
         }
       }} title />
-      <Slider start={0} end={0.8} />
+      <Slider start={0} end={0.8}  />
       <Area position="year*value" />
       <Line position="year*value" />
     </Chart>

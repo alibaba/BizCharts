@@ -10,7 +10,7 @@ interface StepLineOptions extends LineOptions {
 
 export { StepLineOptions };
 export default createPlot<StepLineOptions>(Line, 'StepLineChart', props => {
-  warn(false, '<StepLineChart />即将在4.2.0后废弃，请使用<LineChart />替代。');
+  warn(false, '<StepLineChart />即将在5.0后废弃，请使用<LineChart />替代。');
   props.stepType = props.stepType || props.step || 'hv';
   return polyfill(props);
 });

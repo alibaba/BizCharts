@@ -51,7 +51,7 @@ export { default as createTooltipConnector } from './connector/createTooltipConn
 
 // hooks
 export { default as useView } from './hooks/useChartView';
-// fixme: 更名，在4.1.0后正式更名为 useChartInstance
+// fixme: 更名，在5.0后正式更名为 useChartInstance
 export { default as useRootChart } from './hooks/useChartInstance';
 // 正确写法
 export { default as useChartInstance } from './hooks/useChartInstance';
