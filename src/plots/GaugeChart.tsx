@@ -20,7 +20,7 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
   const {range, min, max, value, ...options} = polyfillOptions(opt);
 
   if (isArray(range)) {
-    warn(true, 'range 应当是个对象，请修改配置。');
+    warn(false, 'range 应当是个对象，请修改配置。');
     set(options, 'range.ticks', range);
     set(options, 'range.color', getTheme().colors10)
   } else {
@@ -28,7 +28,7 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
   }
   const color = get(options, 'color');
   if (!isNil(color)) {
-    warn(true, '请通过配置属性range.color来配置颜色');
+    warn(false, '请通过配置属性range.color来配置颜色');
     set(options, 'range.color', color)
   }
   if (isNil(get(options, 'indicator'))) {
@@ -68,8 +68,8 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
     });
   }
 
-  warn(get(options, 'min') || get(options, 'max'), '属性 `max` 和 `min` 不推荐使用， 请直接配置属性range.ticks');
-  warn(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle', '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。')
+  warn(!(get(options, 'min') || get(options, 'max')), '属性 `max` 和 `min` 不推荐使用， 请直接配置属性range.ticks');
+  warn(!(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle'), '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。')
   // value 转为data，用于placeholder统一判断
   let data = !isNil(options.percent) ? options.percent : value;
   return { data, ...options };

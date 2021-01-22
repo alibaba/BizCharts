@@ -9,6 +9,7 @@ registerTickMethod('linear-strict-tick-method', linearTickMethod);
  * @class
  */
 class LinearStrict extends Linear {
+  [x: string]: any;
   constructor(props) {
     super(props);
     this.type = 'linear-strict';

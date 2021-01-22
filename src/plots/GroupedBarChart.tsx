@@ -24,7 +24,7 @@ const REPLACEAPILIST = [{
 
 export { GroupedBarOptions };
 export default createPlot<GroupedBarOptions>(Bar, 'GroupedBarChart', (props) => {
-  warn(true, '<GroupedBarChart /> 在4.2.0后即将被废弃，请使用<BarChart /> 替代');
+  warn(false, '<GroupedBarChart /> 在4.2.0后即将被废弃，请使用<BarChart /> 替代');
   const { barSize, ...options } = polyfillOptions(props);
   replaceApi(REPLACEAPILIST, options);
   if (!isNil(barSize)) {

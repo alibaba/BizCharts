@@ -1,7 +1,7 @@
 import React from 'react';
 import _isFunction from '@antv/util/lib/is-function';
 import useChart from '../../hooks/useChartInstance';
-import warn from '../../utils/warning';
+import warn from 'warning';
 
 interface IEffectsProps extends React.Props<any> {}
 

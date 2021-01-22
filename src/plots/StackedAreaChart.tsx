@@ -8,6 +8,6 @@ interface StackedAreaOptions extends AreaOptions {}
 
 export { StackedAreaOptions };
 export default createPlot<StackedAreaOptions>(Area, 'StackedAreaChart', props => {
-  warn(true, '<StackedAreaChart /> 即将在4.2.0后废弃，请使用<AreaChart /> 替代。');
+  warn(false, '<StackedAreaChart /> 即将在4.2.0后废弃，请使用<AreaChart /> 替代。');
   return polyfill(props);
 });

@@ -1,6 +1,6 @@
 import _isArray from '@antv/util/lib/is-array';
 import _isString from '@antv/util/lib/is-string';
-import warn from '../utils/warning';
+import warn from 'warning';
 
 export default padding => {
   if (_isArray(padding)) {

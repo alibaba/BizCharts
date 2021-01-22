@@ -1,5 +1,5 @@
 import React from 'react';
-import warn from '../../utils/warning';
+import warn from 'warning';
 import Coordinate from './index';
 
 export default function Coord(props) {

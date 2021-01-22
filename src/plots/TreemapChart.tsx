@@ -34,7 +34,7 @@ const polyfill = (opt: TreemapOptions): TreemapOptions => {
     const maxLevel = get(options, 'maxLevel', 2);
     if (!isNil(maxLevel)) {
         if (maxLevel < 1) {
-            warn(true, 'maxLevel 必须大于等于1');
+            warn(false, 'maxLevel 必须大于等于1');
         } else {
             const data = get(options, 'data', {});
             formatDataByMaxlevel(data, maxLevel)

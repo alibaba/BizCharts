@@ -1,5 +1,5 @@
 // 兼容, 4.1 后删除
-import warn from  '../utils/warning';
+import warn from  'warning';
 
 // annotation G2暂不支持自定义组件。
 import Arc from '../components/Annotation/arc';

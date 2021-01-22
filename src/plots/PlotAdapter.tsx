@@ -1,7 +1,7 @@
 import React from 'react';
 import * as plots from './plots';
 import * as sparkline from './sparkline';
-import warn from '../utils/warning';
+import warn from 'warning';
 
 const PLOT_MAP = {
   ...plots,

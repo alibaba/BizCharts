@@ -28,6 +28,6 @@ export default createPlot<BubbleOptions>(Scatter, 'BubbleChart', (props) => {
   if (!isNil(get(options, 'pointSize'))) {
     set(options, 'size', get(options, 'pointSize'));
   }
-  warn(true, 'BubbleChart 图表类型命名已变更为Scatter，请修改为<ScatterChart />')
+  warn(false, 'BubbleChart 图表类型命名已变更为Scatter，请修改为<ScatterChart />')
   return options;
 });

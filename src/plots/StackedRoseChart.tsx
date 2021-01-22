@@ -34,7 +34,7 @@ interface StackedRoseOptions extends options, BasePlotOptions {
 }
 
 const polyfill = (opt: StackedRoseOptions): StackedRoseOptions => {
-  warn(true, '<StackedRoseChart /> 即将在4.2.0后废弃，请使用<RoseChart />替代，文档查看：')
+  warn(false, '<StackedRoseChart /> 即将在4.2.0后废弃，请使用<RoseChart />替代，')
 
   const options = polyfillOptions(opt);
   replaceApi(REPLACEAPILIST, options);

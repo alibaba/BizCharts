@@ -15,7 +15,7 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
     const { sourceKey, targetKey, notice } = item;
     const value = get(options, sourceKey);
     if (value) {
-      warn(true, notice);
+      warn(false, notice);
       set(options, targetKey, value);
     }
   })
@@ -38,7 +38,7 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
   }
 
   let config = { ...options[sourceKey] };
-  // console.log(options, config)
+
   if (get(options, `${sourceKey}.line.visible`) === false) {
     config.line = null;
   }
@@ -69,7 +69,6 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
 
       config.label = label;
     }
-
   }
 
   if (get(options, `${sourceKey}.tickLine.visible`) === false) {
@@ -79,7 +78,6 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
   if (get(options, `${sourceKey}.title.visible`) === false) {
     config.title = false
   }
-  console.log('targetKey',targetKey,options, config)
   set(options, targetKey, config);
 
 }
@@ -98,11 +96,6 @@ export const polyfillOptions = (opt) => {
 
   // tooltip
   polyfillVisible(polyfillOpt, 'tooltip');
-
-
-  if (get(polyfillOpt, 'forceFit')) {
-    set(polyfillOpt, 'autoFit', get(polyfillOpt, 'forceFit'));
-  }
 
   // legend
   const legendVis = polyfillVisible(polyfillOpt, 'legend');

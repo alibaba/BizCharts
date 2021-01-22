@@ -12,7 +12,7 @@ import { limitInShape } from '@antv/g2/lib/geometry/label/layout/limit-in-shape'
 import { fixedOverlap, overlap } from '@antv/g2/lib/geometry/label/layout/overlap';
 
 import { registerGeometryLabel, registerGeometryLabelLayout } from '../core';
-import warn from '../utils/warning';
+import warn from 'warning';
 
 registerGeometryLabel('base', GeometryLabel);
 registerGeometryLabel('interval', IntervalLabel);
@@ -27,7 +27,7 @@ registerGeometryLabelLayout('limit-in-canvas', limitInCanvas);
 
 export default function Label(props) {
   const { parentInstance, content, ...cfg } = props;
-  warn(false, 'Label组件即将在4.1被取消，请使用图形组件的label属性进行配置');
+  warn(false, 'Label组件即将被取消，请使用图形组件的label属性进行配置');
   parentInstance.label(false)
   parentInstance.label(content, cfg);
   return <></>;

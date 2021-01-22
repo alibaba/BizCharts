@@ -21,7 +21,7 @@ export default createPlot<HeatmapOptions>(Heatmap, 'HeatmapChart', (props) => {
   const { shapeType, ...options } = polyfillOptions(props);
   if (shapeType) {
     options.heatmapStyle = shapeType;
-    warn(true, 'shapeType是g2plot@1.0的属性，即将废弃，请使用 `heatmapStyle` 替代')
+    warn(false, 'shapeType是g2plot@1.0的属性，即将废弃，请使用 `heatmapStyle` 替代')
   }
   // shape 没有指定，但配置了sizeField
   if (!options.shape && options.sizeField) {

@@ -3,7 +3,7 @@ import _isArray from '@antv/util/lib/is-array';
 import _deepMix from '@antv/util/lib/deep-mix';
 import _each from '@antv/util/lib/each';
 import G2View from '@antv/g2/lib/chart/view';
-import warn from '../../utils/warning';
+import warn from 'warning';
 import shallowEqual from '../../utils/shallowEqual';
 
 

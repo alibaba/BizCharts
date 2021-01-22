@@ -19,6 +19,7 @@ import {
   polyfillDescriptionEvent,
 } from './plots/core/polyfill';
 import { isArray, isNil } from '@antv/util';
+import warn from 'warning';
 
 const DEFAULT_PLACEHOLDER = (
   <div
@@ -67,6 +68,10 @@ interface BasePlotOptions {
    * 图表副标题。如需绑定事件请直接使用ReactNode。
    */
   readonly description?: React.ReactNode;
+  /**
+   * 请使用autoFit替代forceFit
+   */
+  forceFit?: boolean;
 }
 
 export { BasePlotOptions };
@@ -239,6 +244,11 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       realCfg.height -= TITLE_HEIGHT;
     }
 
+    if (!isNil(forceFit)) {
+      warn(false, '请使用autoFit替代forceFit');
+    }
+
+
     if (descriptionCfg.visible) {
       // 兼容1.0 plot description的高度
       realCfg.height -= DESCRIPTION_HEIGHT;
@@ -247,9 +257,9 @@ function createPlot<IPlotConfig extends Record<string, any>>(
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
       <div>
         {/* title 不一定有 */}
-        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={TITLE_STYLE}>{titleCfg.text}</div> }
+        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={{...TITLE_STYLE, ...titleCfg.style}}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
-        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={DESCRIPTION_STYLE}>{descriptionCfg.text}</div> }
+        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={{ ...DESCRIPTION_STYLE, ...descriptionCfg.style}}>{descriptionCfg.text}</div> }
         <BxPlot
           // API 统一
           appendPadding={[10, 5, 10, 10]}

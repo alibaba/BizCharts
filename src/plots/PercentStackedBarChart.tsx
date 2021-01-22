@@ -9,7 +9,7 @@ interface PercentStackedBarOptions extends BarOptions {};
 
 export { PercentStackedBarOptions };
 export default createPlot<PercentStackedBarOptions>(Bar, 'PercentStackedBarChart', props => {
-  warn(true, '<PercentStackedBarChart /> 即将在4.2.0后废弃，请使用<BarChart />替代。');
+  warn(false, '<PercentStackedBarChart /> 即将在4.2.0后废弃，请使用<BarChart />替代。');
   deepMix(props, {
     isPercent: true,
     isStack: true,

@@ -18,7 +18,7 @@ interface GroupedColumnOptions extends ColumnOptions, BasePlotOptions {
 }
 export { GroupedColumnOptions };
 export default createPlot<GroupedColumnOptions>(Column, 'GroupedColumnChart', (props) => {
-  warn(true, '<GroupedColumnChart /> 在4.2.0后即将被废弃，请使用<ColumnChart /> 替代');
+  warn(false, '<GroupedColumnChart /> 在4.2.0后即将被废弃，请使用<ColumnChart /> 替代');
   const { columnSize, ...options } = polyfillOptions(props);
   if (!isNil(columnSize)) {
     options.minColumnWidth = columnSize;

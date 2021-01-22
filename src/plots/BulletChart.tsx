@@ -82,33 +82,33 @@ const polyfill = (opt: BulletOptions): BulletOptions => {
   const options = polyfillOptions(opt);
   // size
   if (!isNil(get(opt, 'measureSize'))) {
-    warn(true, 'measureSize已废弃，请使用size.measure替代');
+    warn(false, 'measureSize已废弃，请使用size.measure替代');
     set(options, 'size.measure', get(opt, 'measureSize'));
   }
   if (!isNil(get(opt, 'rangeSize'))) {
-    warn(true, 'rangeSize已废弃，请使用size.range替代');
+    warn(false, 'rangeSize已废弃，请使用size.range替代');
     set(options, 'size.range', get(opt, 'rangeSize'));
   }
   if (!isNil(get(opt, 'markerSize'))) { 
-    warn(true, 'markerSizee已废弃，请使用size.target替代');
+    warn(false, 'markerSizee已废弃，请使用size.target替代');
     set(options, 'size.target', get(opt, 'markerSize'));
   }
   // color
   if (!isNil(get(opt, 'measureColors'))) {
-    warn(true, 'measureColors已废弃，请使用color.measure替代');
+    warn(false, 'measureColors已废弃，请使用color.measure替代');
     set(options, 'color.measure', get(opt, 'measureColors'));
   }
   if (!isNil(get(opt, 'rangeColors'))) {
-    warn(true, 'rangeColors已废弃，请使用color.range替代');
+    warn(false, 'rangeColors已废弃，请使用color.range替代');
     set(options, 'color.range', get(opt, 'rangeColors'));
   }
   if (!isNil(get(opt, 'markerColors'))) { 
-    warn(true, 'markerColors已废弃，请使用color.target替代');
+    warn(false, 'markerColors已废弃，请使用color.target替代');
     set(options, 'color.target', get(opt, 'markerColors'));
   }
   // bulletStyle
   if (!isNil(get(opt, 'markerStyle'))) {
-    warn(true, 'markerStyle已废弃，请使用bulletStyle.target替代');
+    warn(false, 'markerStyle已废弃，请使用bulletStyle.target替代');
     set(options, 'bulletStyle.target', get(opt, 'markerStyle'));
   }
 
@@ -138,7 +138,7 @@ const polyfill = (opt: BulletOptions): BulletOptions => {
     set(options, 'data.0.target', get(opt, 'data.0.targets')[0]);
   }
   if (!isNil(get(opt, 'rangeMax'))) {
-    warn(true, '该属性已废弃，请在数据中配置range，并配置rangeField');
+    warn(false, '该属性已废弃，请在数据中配置range，并配置rangeField');
     set(options, 'data.0.ranges', [get(opt, 'rangeMax')]);
   }
   return options;

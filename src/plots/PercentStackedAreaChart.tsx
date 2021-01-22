@@ -9,7 +9,7 @@ interface PercentStackedAreaOptions extends AreaOptions {}
 
 export { PercentStackedAreaOptions };
 export default createPlot<PercentStackedAreaOptions>(Area, 'PercentStackedAreaChart', props => {
-  warn(true, '<PercentStackedAreaChart /> 即将在4.2.0后废弃，请使用<AreaChart /> 替代。');
+  warn(false, '<PercentStackedAreaChart /> 即将在4.2.0后废弃，请使用<AreaChart /> 替代。');
   deepMix(props, {
     isPercent: true
   });

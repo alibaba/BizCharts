@@ -4,7 +4,7 @@ import _isFunction from '@antv/util/lib/is-function';
 import _isArray from '@antv/util/lib/is-array';
 import _isEqual from '@antv/util/lib/is-equal';
 import { Chart as G2Chart } from '../../core';
-import warn from '../../utils/warning';
+import warn from 'warning';
 import shallowEqual from '../../utils/shallowEqual';
 import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
@@ -208,7 +208,7 @@ class ChartHelper {
     const options = pickWithout(others, [...REACT_PIVATE_PROPS]);
 
     if (options.forceFit) {
-      warn(true, 'forceFit 已废弃，请使用`autoFit`替代');
+      warn(false, 'forceFit 已废弃，请使用`autoFit`替代');
     }
     options.data = processData(data) || [];
     return options;

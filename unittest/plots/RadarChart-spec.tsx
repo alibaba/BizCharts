@@ -113,7 +113,6 @@ describe('Plots-RadarChart', () => {
     // @ts-ignore
     render(<RadarChart
       height={600}
-      // @ts-ignore
       forceFit
       data={data}
       pixelRatio={3}

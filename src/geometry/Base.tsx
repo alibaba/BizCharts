@@ -7,7 +7,7 @@ import { IBaseGemoProps } from '../interface';
 import ChartViewContext from '../context/view';
 import { registerGeometryLabel } from '../core';
 import compareProps from '../utils/compareProps';
-import warn from '../utils/warning';
+import warn from 'warning';
 import './Label';
 
 // 交互事件

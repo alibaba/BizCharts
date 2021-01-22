@@ -117,8 +117,6 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
         set(options, 'label', false);
     }
 
-    console.log(options)
-
     return options;
 }
 

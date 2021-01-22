@@ -20,7 +20,6 @@ interface TinyLineOptions extends Opt, BasePlotOptions {
     /** yField 旧版g2Plot api，即将废弃请查看最新文档 */
     yField?: string,
 
-    /** guideLine 旧版g2Plot api，即将废弃请查看最新文档 */
     guideLine?: Array<object>
 }
 
