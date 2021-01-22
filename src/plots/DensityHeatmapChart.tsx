@@ -23,7 +23,7 @@ export default createPlot<DensityHeatmapOptions>(Heatmap, 'DensityHeatmapChartCh
   replaceApi([{
     sourceKey: 'radius',
     targetKey: 'sizeRatio',
-    notice: '请使用sizeRatio替代',
+    notice: 'radius 请使用sizeRatio替代',
   }], options);
   set(options, 'type', 'density');
   return options;

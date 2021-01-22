@@ -22,7 +22,7 @@ export default createPlot<FunnelOptions>(Funnel, 'FunnelChart', (props) => {
   replaceApi([{
     sourceKey: 'transpose',
     targetKey: 'isTransposed',
-    notice: '请使用isTransposed替代',
+    notice: 'transpose 即将废弃 请使用isTransposed替代',
   }], options);
   return options;
 });
