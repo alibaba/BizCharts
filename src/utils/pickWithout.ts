@@ -2,7 +2,7 @@ import _each from '@antv/util/lib/each';
 import _isString from '@antv/util/lib/is-string';
 
 // 支持正则匹配
-const pickWithout = (obj: Record<string, any>, keys:(string | RegExp)[]) => {
+const pickWithout = (obj: Record<string, any>, keys: (string | RegExp)[]) => {
   const ret: { [key: string]: any } = {};
   _each(obj, (v: any, k: string) => {
     let match = false;

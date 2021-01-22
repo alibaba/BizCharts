@@ -7,7 +7,7 @@
  * @param foldCate 折叠的分类字段名
  * @param foldValue 折叠后的值字段名
  */
-export default (data: any[], fields: string[], foldCate:string, foldValue: string) => {
+export default (data: any[], fields: string[], foldCate: string, foldValue: string) => {
   const resultRows = [];
   data.forEach((row) => {
     fields.forEach((field) => {

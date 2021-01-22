@@ -39,7 +39,7 @@ interface IAdapterProps {
    * }
    */
   adapter?: (IOptions) => IPlotCfg,
-  [key:string]: any,
+  [key: string]: any,
 }
 
 const PlotAdapter: React.FC<IAdapterProps> = (props) => {

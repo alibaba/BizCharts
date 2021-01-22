@@ -34,7 +34,7 @@ const RegExpEvent = new RegExp(`^on(.*)(?=(${EVENT_ACTION_NAMES.map(k => k.repla
 
 export const pickEventName = (props) => {
   const names: [ string, string][] = [];
-  forIn(props, (v, k:string) => {
+  forIn(props, (v, k: string) => {
     const event = k.match(/^on(.*)/)
     if (event) {
       const res = k.match(RegExpEvent);

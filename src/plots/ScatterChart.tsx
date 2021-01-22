@@ -7,7 +7,7 @@ import { StyleAttr } from '@antv/g2plot/lib/types/attr';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions, replaceAxis, polyfillVisible } from './core/polyfill';
 import { AxisAPIOptions, LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
-import { isNil, isObject } from '@antv/util';
+import { isObject } from '@antv/util';
 
 interface TrendLineAPIOptions extends RegressionLineOptions {
     showConfidence?: boolean,

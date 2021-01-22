@@ -2,6 +2,8 @@
 import * as CanvasEngine from '@antv/g-canvas/lib';
 import * as SVGEngine from '@antv/g-svg/lib';
 import { registerEngine } from '@antv/g2/lib/core';
+import './extend/scale/scale';
+
 // 动画
 import './animations';
 // 主题
@@ -14,7 +16,6 @@ registerEngine('svg', SVGEngine);
 export * from '@antv/g2/lib/core';
 export const VERSION = '4.1.2';
 
-import './extend/scale/scale';
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持
 

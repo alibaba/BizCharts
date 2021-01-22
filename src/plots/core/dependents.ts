@@ -1,3 +1,5 @@
+import { Annotation, Axis, Component, Crosshair, Grid, GroupComponent, HtmlComponent, Legend, Slider, Tooltip, Scrollbar } from '@antv/component';
+
 export { ICanvas, IElement, IGroup, IShape } from '@antv/g-base/lib/interfaces';
 export { PathCommand, BBox, Point, ShapeAttrs } from '@antv/g-base/lib/types';
 export { Event, AbstractGroup, AbstractShape } from '@antv/g-base';
@@ -8,7 +10,6 @@ export { Color } from '@antv/attr';
 export { getCoordinate, registerCoordinate, Coordinate, CoordinateCfg } from '@antv/coord';
 export { getScale, registerScale, Scale, ScaleConfig } from '@antv/scale';
 export { Tick } from '@antv/scale/lib/types';
-import { Annotation, Axis, Component, Crosshair, Grid, GroupComponent, HtmlComponent, Legend, Slider, Tooltip, Scrollbar } from '@antv/component';
 export { IComponent, IList } from '@antv/component/lib/interfaces';
 export { CategoryLegendCfg, CircleAxisCfg, LineAxisCfg, GroupComponentCfg, ListItem, AxisLineCfg, AxisTickLineCfg, AxisSubTickLineCfg, AxisTitleCfg, AxisLabelCfg, GridLineCfg, LegendMarkerCfg, LegendTitleCfg, LegendBackgroundCfg, LegendItemNameCfg, LegendItemValueCfg, ContinueLegendCfg, ContinueLegendTrackCfg, ContinueLegendRailCfg, ContinueLegendLabelCfg, ContinueLegendHandlerCfg, CrosshairLineCfg, CrosshairTextCfg, CrosshairTextBackgroundCfg, SliderCfg, TrendCfg, EnhancedTextCfg, LineAnnotationTextCfg, } from '@antv/component/lib/types';
 export { HtmlComponent, GroupComponent, Component, Crosshair };

@@ -141,7 +141,7 @@ class ChartHelper {
         });
       }
       if (!isEqual) {
-        //@ts-ignore
+        // @ts-ignore
         this.chart.isDataChanged = true;
         this.chart.emit(VIEW_LIFE_CIRCLE.BEFORE_CHANGE_DATA);
         // 1. 保存数据

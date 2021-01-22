@@ -1,6 +1,6 @@
 import 'react';
 import warn from 'warning';
-import { Rose, RoseOptions as options } from '@antv/g2plot/lib/plots/rose';
+import { Rose, RoseOptions as Options } from '@antv/g2plot/lib/plots/rose';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
@@ -19,7 +19,7 @@ const REPLACEAPILIST = [{
   notice: 'radiusField 是 g2@1.0的属性，即将废弃，请使用yFeild替代',
 }];
 
-interface GroupedRoseOptions extends options, BasePlotOptions {
+interface GroupedRoseOptions extends Options, BasePlotOptions {
   /** 请使用seriesField替代 */
   groupField?: string;
   /** 请使用xField替代 */

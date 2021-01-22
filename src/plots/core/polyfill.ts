@@ -52,7 +52,7 @@ export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis
   } else {
     let label = get(options, `${sourceKey}.label`, {});
     if (label) {
-      const suffix = label.suffix;
+      const suffix = { ...label.suffix };
       if (!isNil(suffix) || suffix) { // 不是undefined null 或 suffix存在
         label = { ...label, formatter: val => `${val}${suffix}` }
       }

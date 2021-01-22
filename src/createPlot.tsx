@@ -236,8 +236,8 @@ function createPlot<IPlotConfig extends Record<string, any>>(
         </div>
       </ErrorBoundary>;
     }
-    const titleCfg = visibleHelper(title, false);
-    const descriptionCfg = visibleHelper(description, false);
+    const titleCfg = visibleHelper(title, false) as any;
+    const descriptionCfg = visibleHelper(description, false) as any;
 
     if (titleCfg.visible) {
       // 兼容1.0 plot title的高度

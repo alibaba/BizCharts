@@ -2,11 +2,11 @@ import Polygon from '@antv/g2/lib/geometry/polygon';
 import BaseGemo, { IBaseGemoProps } from './Base';
 import { registerGeometry } from '../core';
 
-registerGeometry('Polygon', Polygon);
-
 import '@antv/g2/lib/geometry/shape/polygon';
 import '@antv/g2/lib/geometry/shape/polygon/square';
 
+
+registerGeometry('Polygon', Polygon);
 
 export interface IPolygonGemoProps extends IBaseGemoProps {}
 

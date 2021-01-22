@@ -23,8 +23,8 @@ class GeomHelper {
   public rootChart;
   public geom: Geometry;
   public config: Record<string,any> = {};
-  public GemoBaseClassName:string;
-  public interactionTypes:string[];
+  public GemoBaseClassName: string;
+  public interactionTypes: string[];
   setView(view) {
     this.view = view;
     this.rootChart = view.rootChart || view; // 顶层chart实例
