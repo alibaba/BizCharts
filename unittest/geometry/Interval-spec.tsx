@@ -152,7 +152,6 @@ describe('geomtrys-Interval', () => {
 	test('funnel shape', async () => {
 		let chart = null;
 		render(<Demo shape="funnel" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('funnel');

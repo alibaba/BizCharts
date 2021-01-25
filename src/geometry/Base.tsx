@@ -18,6 +18,8 @@ registerGeometryLabel('base', GeometryLabel);
 
 export { IBaseGemoProps };
 
+const DEFAULT_SORT_GEOMETRYS = ['line', 'area'];
+
 class GeomHelper {
   public view;
   public rootChart;
@@ -29,15 +31,28 @@ class GeomHelper {
     this.view = view;
     this.rootChart = view.rootChart || view; // 顶层chart实例
   }
-  createGeomInstance(GemoBaseClassName) {
-    this.geom = this.view[GemoBaseClassName]();
+  createGeomInstance(GemoBaseClassName, cfg) {
+    this.geom = this.view[GemoBaseClassName](cfg);
+    // 复写原型
+    // @ts-ignore
+    this.geom.__beforeMapping = this.geom.beforeMapping;
+    // @ts-ignore
+    this.geom.beforeMapping = function(data) {
+      const xScale = this.getXScale();
+      if (data && data[0] && DEFAULT_SORT_GEOMETRYS.includes(GemoBaseClassName) && ['time', 'timeCat', 'linear'].includes(xScale.type)) {
+        this.sort(data);
+      }
+      return this.__beforeMapping(data);
+    }
     this.GemoBaseClassName = GemoBaseClassName;
   }
   update(newConfig, component) {
     if (!this.geom) {
       this.setView(component.context);
-
-      this.createGeomInstance(component.GemoBaseClassName);
+      const { sortable, visible, connectNulls } = newConfig;
+      const cfg = { sortable, visible, connectNulls };
+      // 如果是时间类型则对数据排序
+      this.createGeomInstance(component.GemoBaseClassName, cfg);
       this.interactionTypes = component.interactionTypes;
     }
     compareProps(

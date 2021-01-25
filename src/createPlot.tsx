@@ -248,14 +248,12 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       warn(false, '请使用autoFit替代forceFit');
     }
 
-
     if (descriptionCfg.visible) {
       // 兼容1.0 plot description的高度
       realCfg.height -= DESCRIPTION_HEIGHT;
     }
 
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
-      <div>
         {/* title 不一定有 */}
         { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={{...TITLE_STYLE, ...titleCfg.style}}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
@@ -268,7 +266,6 @@ function createPlot<IPlotConfig extends Record<string, any>>(
           {...realCfg}
           PlotClass={Plot}
         />
-      </div>
     </ErrorBoundary>
   });
   Com.displayName = name || Plot.name;

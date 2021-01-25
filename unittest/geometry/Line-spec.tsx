@@ -127,13 +127,52 @@ const MOCK_DATA = [
 	}
 ];
 
+const MOCK_DATA_2 = [
+	{
+		year: "1992-01-01",
+		value: 4,
+	},
+	{
+		year: "1991-01-01",
+		value: 3,
+	},
+	
+	{
+		year: "1993-01-01",
+		value: 3.5,
+	},
+	{
+		year: "1997-01-01",
+		value: 7,
+	},
+	{
+		year: "1995-01-01",
+		value: 4.9,
+	},
+	{
+		year: "1996-01-01",
+		value: 6,
+	},
+	{
+		year: "1994-01-01",
+		value: 5,
+	},
+	{
+		year: "1998-01-01",
+		value: 9,
+	},
+	{
+		year: "1999-01-01",
+		value: 11,
+	},
+];
+
 const Demo = (props) => {
 	const { onGetG2Instance, ...others } = props;
 	return <Chart forceUpdate appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
 		<Line
 			position="month*temperature"
 			color="city"
-			area
 			{...others}
 		/>
 	</Chart>
@@ -146,57 +185,66 @@ describe('geomtrys-Line', () => {
 		render(<Demo onGetG2Instance={c => chart = c} />);
 		expect(chart.geometries.length).toBe(1);
 		expect(chart.geometries[0].type).toBe('line');
-		cleanup()
+		// cleanup()
 	})
 
 	test('smooth shape', async () => {
 		let chart = null;
 		render(<Demo shape="smooth" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('smooth');
-		cleanup()
+		// cleanup()
 
   })
   
   test('step shape: hvh', async () => {
 		let chart = null;
 		render(<Demo shape="hvh" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('hvh');
-		cleanup()
+		// cleanup()
   })
   
   test('step shape: hv', async () => {
 		let chart = null;
 		render(<Demo shape="hv" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('hv');
-		cleanup()
+		// cleanup()
   })
   
   test('step shape: vh', async () => {
 		let chart = null;
 		render(<Demo shape="vh" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('vh');
-		cleanup()
+		// cleanup()
   })
-  
+
   test('step shape: vhv', async () => {
 		let chart = null;
 		render(<Demo shape="vhv" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('vhv');
-		cleanup()
+		// cleanup()
 	})
+
+	test('时间类型 sortable 默认开启', async () => {
+		let chart = null;
+		render(<Chart forceUpdate appendPadding={10} data={MOCK_DATA_2} width={500} height={300} onGetG2Instance={c => {
+			chart = c
+		}}>
+			<Line
+				position="year*value"
+			/>
+		</Chart>);
+		expect(chart.geometries[0].dataArray[0][0]._origin.year).toBe('1991-01-01');
+		// cleanup()
+	})
+
 })
