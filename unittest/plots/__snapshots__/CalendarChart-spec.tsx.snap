@@ -1348,7 +1348,6 @@ Object {
     "2017-05-01",
     "2017-10-31",
   ],
-  "height": NaN,
   "legend": false,
   "meta": Object {
     "day": Object {
@@ -2773,7 +2772,6 @@ Object {
     },
   ],
   "dateField": "date",
-  "height": NaN,
   "legend": false,
   "meta": Object {
     "day": Object {

@@ -170,7 +170,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "legend": Object {
     "position": "top",
   },
@@ -393,7 +392,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "legend": Object {
     "position": "top",
   },
@@ -569,7 +567,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "label": Object {
     "autoRotate": true,
     "formatter": [Function],
@@ -1358,7 +1355,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "legend": Object {
     "position": "top",
   },
@@ -1548,7 +1544,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "legend": Object {
     "position": "top",
   },
@@ -2300,7 +2295,6 @@ Object {
       "user": "b",
     },
   ],
-  "height": NaN,
   "legend": Object {
     "position": "top",
   },

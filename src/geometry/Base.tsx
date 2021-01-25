@@ -33,13 +33,15 @@ class GeomHelper {
   }
   createGeomInstance(GemoBaseClassName, cfg) {
     this.geom = this.view[GemoBaseClassName](cfg);
+    const { sortable } = cfg;
     // 复写原型
     // @ts-ignore
     this.geom.__beforeMapping = this.geom.beforeMapping;
     // @ts-ignore
     this.geom.beforeMapping = function(data) {
+
       const xScale = this.getXScale();
-      if (data && data[0] && DEFAULT_SORT_GEOMETRYS.includes(GemoBaseClassName) && ['time', 'timeCat', 'linear'].includes(xScale.type)) {
+      if ( sortable !== false && data && data[0] && DEFAULT_SORT_GEOMETRYS.includes(GemoBaseClassName) && ['time', 'timeCat'].includes(xScale.type)) {
         this.sort(data);
       }
       return this.__beforeMapping(data);

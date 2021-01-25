@@ -239,21 +239,26 @@ function createPlot<IPlotConfig extends Record<string, any>>(
     const titleCfg = visibleHelper(title, false) as any;
     const descriptionCfg = visibleHelper(description, false) as any;
 
-    if (titleCfg.visible) {
-      // 兼容1.0 plot title的高度
+    let diffHeight = 0;
+
+    if (titleCfg.visible && realCfg.height) {
+      // 兼容1.0 plot title的高度, 简单兼容
       realCfg.height -= TITLE_HEIGHT;
+      diffHeight += TITLE_HEIGHT;
     }
 
     if (!isNil(forceFit)) {
       warn(false, '请使用autoFit替代forceFit');
     }
 
-    if (descriptionCfg.visible) {
+    if (descriptionCfg.visible && realCfg.height) {
       // 兼容1.0 plot description的高度
       realCfg.height -= DESCRIPTION_HEIGHT;
+      diffHeight += DESCRIPTION_HEIGHT;
     }
 
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
+      <div className="bizcharts-plot" style={{ position:'relative', height: props.height || '100%', width: props.width || '100%' }}>
         {/* title 不一定有 */}
         { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={{...TITLE_STYLE, ...titleCfg.style}}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
@@ -265,7 +270,11 @@ function createPlot<IPlotConfig extends Record<string, any>>(
           ref={ref}
           {...realCfg}
           PlotClass={Plot}
+          containerStyle={{
+            height: `calc(100% - ${diffHeight}px)`
+          }}
         />
+      </div>
     </ErrorBoundary>
   });
   Com.displayName = name || Plot.name;

@@ -515,7 +515,6 @@ Object {
       "value": 56,
     },
   ],
-  "height": NaN,
   "label": Object {
     "style": Object {
       "fill": "#fff",
@@ -1089,7 +1088,6 @@ Object {
       "value": 56,
     },
   ],
-  "height": NaN,
   "label": Object {
     "style": Object {
       "fill": "#fff",

@@ -11,7 +11,6 @@ Object {
   "autoFit": undefined,
   "color": "#6a99f9",
   "data": 0.5639,
-  "height": NaN,
   "outline": Object {
     "border": 2,
     "distance": 0,
@@ -48,7 +47,6 @@ Object {
   "autoFit": undefined,
   "color": "#6a99f9",
   "data": 0.5,
-  "height": NaN,
   "outline": Object {
     "border": 4,
     "distance": 8,

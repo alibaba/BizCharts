@@ -93,7 +93,6 @@ Object {
       "月均降雨量": 42.4,
     },
   ],
-  "height": NaN,
   "innerRadius": 0.1,
   "interactions": Array [
     Object {
@@ -230,7 +229,6 @@ Object {
       "月均降雨量": 42.4,
     },
   ],
-  "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -363,7 +361,6 @@ Object {
       "月均降雨量": 42.4,
     },
   ],
-  "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -699,7 +696,6 @@ Object {
       "月均降雨量": 42.4,
     },
   ],
-  "height": NaN,
   "interactions": Array [
     Object {
       "type": "active-region",

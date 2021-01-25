@@ -4,7 +4,7 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
   const Cls = React.forwardRef<any, Iprops>((props: Iprops, ref) => {
     const container = useRef();
     const [inited, setInited] = useState(false);
-    const { className = "bizcharts", containerStyle } = props as any;
+    const { className = "bizcharts", containerStyle, ...options } = props as any;
     useEffect(() => {
       setInited(true);
     }, [])
@@ -14,7 +14,7 @@ export default function withContainer<Iprops>(Component, name: string = 'ChartCo
      className={className}
      // @ts-ignore
      style={{ position:'relative', height: props.height || '100%', width: props.width || '100%', ...containerStyle }} >
-      {inited ? <Component ref={ref} container={container.current} {...props} /> : <></>}
+      {inited ? <Component ref={ref} container={container.current} {...options} /> : <></>}
     </div>
   });
   Cls.displayName = name || Component.name;
