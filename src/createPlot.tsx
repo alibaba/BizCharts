@@ -241,9 +241,9 @@ function createPlot<IPlotConfig extends Record<string, any>>(
 
     let diffHeight = 0;
 
-    if (titleCfg.visible && realCfg.height) {
+    if (titleCfg.visible) {
       // 兼容1.0 plot title的高度, 简单兼容
-      realCfg.height -= TITLE_HEIGHT;
+      realCfg.height && (realCfg.height -= TITLE_HEIGHT);
       diffHeight += TITLE_HEIGHT;
     }
 
@@ -251,9 +251,9 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       warn(false, '请使用autoFit替代forceFit');
     }
 
-    if (descriptionCfg.visible && realCfg.height) {
+    if (descriptionCfg.visible) {
       // 兼容1.0 plot description的高度
-      realCfg.height -= DESCRIPTION_HEIGHT;
+      realCfg.height && (realCfg.height -= DESCRIPTION_HEIGHT);
       diffHeight += DESCRIPTION_HEIGHT;
     }
 

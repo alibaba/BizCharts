@@ -54,15 +54,14 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
   if (!isNil(min) && !isNil(max) && !isNil(value)) {
     // 旧版数据使用方式
     options.percent = value / (max - min);
-    const formatter = get(options, 'axis.label.formatter');
+    const formatter = get(options, 'axis.label.formatter', () => value);
     set(options, 'axis', {
       label: {
-        formatter: v => {
-          const val = v * (max - min);
+        formatter: () => {
           if (isFunction(formatter)) {
-            return formatter(val)
+            return formatter(value)
           }
-          return val;
+          return value;
         }
       },
     });
