@@ -102,12 +102,12 @@ registerShape('area', 'gradient', {
       attrs.fill = `l (90) 0:${d3Color.rgb(clr.r, clr.g, clr.b, 1).formatRgb()} 1:${d3Color.rgb(clr.r, clr.g, clr.b, 0.1).formatRgb()}`;
     }
     // attrs.fill = 'red';
-    container.addShape({
+    const shape = container.addShape({
       type: 'path',
       attrs,
       name: 'area',
     });
-    return container;
+    return shape;
   },
 });
 
@@ -129,7 +129,7 @@ registerShape('area', 'gradient-smooth', {
       attrs,
       name: 'area',
     });
-    return container;
+    return shape;
   }
 });
 export default LineAdvance;
