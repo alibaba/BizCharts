@@ -28,6 +28,8 @@ const DEFAULT_PLACEHOLDER = (
     暂无数据
   </div>
 );
+const TITLE_HEIGHT = 30;
+const DESCRIPTION_HEIGHT = 34;
 
 const DESCRIPTION_STYLE: CSSProperties = {
   padding: '8px 24px 10px 10px',
@@ -36,10 +38,11 @@ const DESCRIPTION_STYLE: CSSProperties = {
   color: 'grey',
   textAlign: 'left',
   lineHeight: '16px',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  height: TITLE_HEIGHT,
 };
-
-const TITLE_HEIGHT = 30;
-const DESCRIPTION_HEIGHT = 34;
 
 const TITLE_STYLE: CSSProperties = {
   padding: '10px 0 0 10px',
@@ -48,6 +51,9 @@ const TITLE_STYLE: CSSProperties = {
   color: 'black',
   textAlign: 'left',
   lineHeight: '20px',
+  position: 'absolute',
+  left: 0,
+  height: DESCRIPTION_HEIGHT,
 };
 
 interface BasePlotOptions {
@@ -240,11 +246,12 @@ function createPlot<IPlotConfig extends Record<string, any>>(
     const descriptionCfg = visibleHelper(description, false) as any;
 
     let diffHeight = 0;
+    const titleStyle = {...TITLE_STYLE, ...titleCfg.style};
+    const descStyle = { ...DESCRIPTION_STYLE, ...descriptionCfg.style, top: titleStyle.height };
 
     if (titleCfg.visible) {
       // 兼容1.0 plot title的高度, 简单兼容
-      realCfg.height && (realCfg.height -= TITLE_HEIGHT);
-      diffHeight += TITLE_HEIGHT;
+      diffHeight += titleStyle.height;
     }
 
     if (!isNil(forceFit)) {
@@ -253,25 +260,27 @@ function createPlot<IPlotConfig extends Record<string, any>>(
 
     if (descriptionCfg.visible) {
       // 兼容1.0 plot description的高度
-      realCfg.height && (realCfg.height -= DESCRIPTION_HEIGHT);
-      diffHeight += DESCRIPTION_HEIGHT;
+      diffHeight += descStyle.height;
     }
 
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
-      <div className="bizcharts-plot" style={{ position:'relative', height: props.height || '100%', width: props.width || '100%' }}>
+      <div className="bizcharts-plot" style={{ position:'relative', display: 'flex', flexDirection: 'column', height: props.height || '100%', width: props.width || '100%' }}>
         {/* title 不一定有 */}
-        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={{...TITLE_STYLE, ...titleCfg.style}}>{titleCfg.text}</div> }
+        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={titleStyle}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
-        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={{ ...DESCRIPTION_STYLE, ...descriptionCfg.style}}>{descriptionCfg.text}</div> }
+        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={descStyle}>{descriptionCfg.text}</div> }
         <BxPlot
           // API 统一
-          appendPadding={[10, 5, 10, 10]}
+          appendPadding={[10 + diffHeight, 5, 10, 10]}
           autoFit={isNil(autoFit) ? forceFit : autoFit}
           ref={ref}
           {...realCfg}
           PlotClass={Plot}
           containerStyle={{
-            height: `calc(100% - ${diffHeight}px)`
+            // 精度有误差
+            top: 0,
+            left: 0,
+            position: 'absolute'
           }}
         />
       </div>

@@ -62,7 +62,7 @@ Object {
   },
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -278,7 +278,7 @@ exports[`Plots-RadarChart area-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -459,7 +459,7 @@ exports[`Plots-RadarChart label-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -645,7 +645,7 @@ exports[`Plots-RadarChart legend-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -753,7 +753,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 470,
+  "height": 500,
   "legend": Object {
     "formatter": [Function],
     "itemName": Object {
@@ -1247,7 +1247,7 @@ exports[`Plots-RadarChart line-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1436,7 +1436,7 @@ exports[`Plots-RadarChart point-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1623,7 +1623,7 @@ Object {
   },
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1731,7 +1731,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 470,
+  "height": 500,
   "legend": Object {
     "position": "top",
   },
@@ -1817,7 +1817,7 @@ exports[`Plots-RadarChart tooltip-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1925,7 +1925,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 470,
+  "height": 500,
   "legend": Object {
     "position": "top",
   },
@@ -2000,7 +2000,7 @@ Object {
   "angleField": "item",
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -2108,7 +2108,7 @@ Object {
       "user": "b",
     },
   ],
-  "height": 570,
+  "height": 600,
   "legend": Object {
     "position": "top",
   },
@@ -2186,7 +2186,7 @@ exports[`Plots-RadarChart 基础2-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,

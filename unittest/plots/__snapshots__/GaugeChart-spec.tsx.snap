@@ -4,7 +4,7 @@ exports[`Plots-GaugeChart 基础仪表图 1`] = `
 Object {
   "animation": false,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -29,7 +29,7 @@ Object {
   },
   "data": 0.75,
   "endAngle": 0.5235987755982988,
-  "height": 370,
+  "height": 400,
   "indicator": Object {
     "pin": Object {
       "style": Object {
@@ -86,7 +86,7 @@ exports[`Plots-GaugeChart 旧版仪表图 1`] = `
 Object {
   "animation": false,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -117,7 +117,7 @@ Object {
   ],
   "data": 0.78,
   "endAngle": 0.5235987755982988,
-  "height": 370,
+  "height": 400,
   "indicator": Object {
     "pin": Object {
       "style": Object {

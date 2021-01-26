@@ -4,7 +4,7 @@ exports[`Plots-RoseChart label-inner-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -24,7 +24,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -69,7 +69,7 @@ exports[`Plots-RoseChart label-outer-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -89,7 +89,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -133,7 +133,7 @@ exports[`Plots-RoseChart label-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -153,7 +153,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -204,7 +204,7 @@ exports[`Plots-RoseChart legend-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -224,7 +224,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -566,7 +566,7 @@ exports[`Plots-RoseChart tooltip-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -586,7 +586,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -638,7 +638,7 @@ exports[`Plots-RoseChart 基础玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -659,7 +659,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "innerRadius": 0.1,
   "interactions": Array [
     Object {
@@ -714,7 +714,7 @@ exports[`Plots-RoseChart 新版本玫瑰图xField*yField*seriesFieldte 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -734,7 +734,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",
@@ -777,7 +777,7 @@ exports[`Plots-RoseChart 老版本玫瑰图categoryField*radiusField*Date 1`] = 
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -799,7 +799,7 @@ Object {
       "scales": 1720,
     },
   ],
-  "height": 470,
+  "height": 500,
   "interactions": Array [
     Object {
       "type": "active-region",

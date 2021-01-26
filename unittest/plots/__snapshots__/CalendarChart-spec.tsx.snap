@@ -4,7 +4,7 @@ exports[`Plots-CalendarChart 1.0日历图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1433,7 +1433,7 @@ exports[`Plots-CalendarChart 新版日历图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,

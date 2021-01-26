@@ -4,7 +4,7 @@ exports[`Plots-RangeColumnChart 区间条形图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,

@@ -5,7 +5,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -38,7 +38,7 @@ Object {
       "value": 1.234567898767891e+35,
     },
   ],
-  "height": 470,
+  "height": 500,
   "label": Object {
     "autoHide": false,
     "autoRotate": true,
@@ -127,7 +127,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -160,7 +160,7 @@ Object {
       "value": 1.234567898767891e+35,
     },
   ],
-  "height": 470,
+  "height": 500,
   "label": Object {
     "layout": Object {
       "cfg": Object {
@@ -256,7 +256,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -296,7 +296,7 @@ Object {
       "value": 1.234567898767891e+35,
     },
   ],
-  "height": 470,
+  "height": 500,
   "label": Object {
     "layout": Object {
       "cfg": Object {

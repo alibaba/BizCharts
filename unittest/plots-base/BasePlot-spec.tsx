@@ -92,7 +92,7 @@ describe('基础功能-以AreaChart为demo', () => {
 
   test('title、 description 高度计算和dom渲染', () => {
     // 图表高度
-    expect(chart.options.height).toBe(336);
+    expect(chart.options.height).toBe(400);
     // dom 快照
     expect(container).toMatchSnapshot();
     cleanup();

@@ -4,7 +4,7 @@ exports[`Plots-ScatterChart label-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -307,7 +307,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 470,
+  "height": 500,
   "label": Object {
     "formatter": [Function],
     "offsetX": 10,
@@ -364,7 +364,7 @@ exports[`Plots-ScatterChart quadrant-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -667,7 +667,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 470,
+  "height": 500,
   "padding": Array [
     90,
     90,
@@ -767,7 +767,7 @@ exports[`Plots-ScatterChart trendline-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1070,7 +1070,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 470,
+  "height": 500,
   "padding": Array [
     90,
     90,
@@ -1141,7 +1141,7 @@ exports[`Plots-ScatterChart xAxis-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1444,7 +1444,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 470,
+  "height": 500,
   "padding": Array [
     90,
     90,
@@ -1539,7 +1539,7 @@ exports[`Plots-ScatterChart 基础散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -1849,7 +1849,7 @@ Object {
       "Title": "Underworld: Blood Wars",
     },
   ],
-  "height": 470,
+  "height": 500,
   "meta": Object {
     "Rating": Object {
       "formatter": [Function],

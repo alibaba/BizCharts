@@ -4,7 +4,7 @@ exports[`Plots-DensityHeatmapChart 基础密度热力图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -69,7 +69,7 @@ exports[`Plots-DensityHeatmapChart 旧版密度热力图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,

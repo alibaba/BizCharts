@@ -4,7 +4,7 @@ exports[`Plots-GroupedRoseChart label-inner-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -129,7 +129,7 @@ exports[`Plots-GroupedRoseChart label-outer-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -253,7 +253,7 @@ exports[`Plots-GroupedRoseChart label-分组玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -385,7 +385,7 @@ exports[`Plots-GroupedRoseChart legend-分组玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
@@ -721,7 +721,7 @@ exports[`Plots-GroupedRoseChart tooltip-分组玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    10,
+    44,
     5,
     10,
     10,
