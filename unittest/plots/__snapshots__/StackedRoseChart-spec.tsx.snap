@@ -137,6 +137,256 @@ Object {
 }
 `;
 
+exports[`Plots-StackedRoseChart label-inner 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "name": "London",
+      "月份": "Jan.",
+      "月均降雨量": 18.9,
+    },
+    Object {
+      "name": "London",
+      "月份": "Feb.",
+      "月均降雨量": 28.8,
+    },
+    Object {
+      "name": "London",
+      "月份": "Mar.",
+      "月均降雨量": 39.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Apr.",
+      "月均降雨量": 81.4,
+    },
+    Object {
+      "name": "London",
+      "月份": "May",
+      "月均降雨量": 47,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jun.",
+      "月均降雨量": 20.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jul.",
+      "月均降雨量": 24,
+    },
+    Object {
+      "name": "London",
+      "月份": "Aug.",
+      "月均降雨量": 35.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jan.",
+      "月均降雨量": 12.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Feb.",
+      "月均降雨量": 23.2,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Mar.",
+      "月均降雨量": 34.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Apr.",
+      "月均降雨量": 99.7,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "May",
+      "月均降雨量": 52.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jun.",
+      "月均降雨量": 35.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jul.",
+      "月均降雨量": 37.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Aug.",
+      "月均降雨量": 42.4,
+    },
+  ],
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isStack": true,
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+    "offset": -15,
+    "visible": true,
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "name",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": false,
+  "xField": "月份",
+  "yAxis": false,
+  "yField": "月均降雨量",
+}
+`;
+
+exports[`Plots-StackedRoseChart label-outer 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "name": "London",
+      "月份": "Jan.",
+      "月均降雨量": 18.9,
+    },
+    Object {
+      "name": "London",
+      "月份": "Feb.",
+      "月均降雨量": 28.8,
+    },
+    Object {
+      "name": "London",
+      "月份": "Mar.",
+      "月均降雨量": 39.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Apr.",
+      "月均降雨量": 81.4,
+    },
+    Object {
+      "name": "London",
+      "月份": "May",
+      "月均降雨量": 47,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jun.",
+      "月均降雨量": 20.3,
+    },
+    Object {
+      "name": "London",
+      "月份": "Jul.",
+      "月均降雨量": 24,
+    },
+    Object {
+      "name": "London",
+      "月份": "Aug.",
+      "月均降雨量": 35.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jan.",
+      "月均降雨量": 12.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Feb.",
+      "月均降雨量": 23.2,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Mar.",
+      "月均降雨量": 34.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Apr.",
+      "月均降雨量": 99.7,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "May",
+      "月均降雨量": 52.6,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jun.",
+      "月均降雨量": 35.5,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Jul.",
+      "月均降雨量": 37.4,
+    },
+    Object {
+      "name": "Berlin",
+      "月份": "Aug.",
+      "月均降雨量": 42.4,
+    },
+  ],
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "isStack": true,
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "name",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "xAxis": false,
+  "xField": "月份",
+  "yAxis": false,
+  "yField": "月均降雨量",
+}
+`;
+
 exports[`Plots-StackedRoseChart label-堆叠图 1`] = `
 Object {
   "animation": true,

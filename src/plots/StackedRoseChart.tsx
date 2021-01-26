@@ -47,6 +47,15 @@ const polyfill = (opt: StackedRoseOptions): StackedRoseOptions => {
     set(options, 'label', false);
   }
 
+  if (get(options, 'label.type') === 'inner') {
+    options.label.offset = -15;
+    delete options.label.type;
+  }
+
+  if (get(options, 'label.type') === 'outer') {
+    delete options.label.type;
+  }
+
   return { ...options, isStack: true };
 }
 

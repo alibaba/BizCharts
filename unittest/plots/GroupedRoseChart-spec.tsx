@@ -27,6 +27,7 @@ const basicCfg = {
   yField: "月均降雨量",
   seriesField: "name",
   autoFit: true,
+  isGroup: true,
 }
 
 
@@ -178,6 +179,38 @@ describe('Plots-GroupedRoseChart', () => {
         style: {
           fill: 'red',
         }
+      }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
+  test('label-inner-bug', () => {
+    let chart = null;
+    render(<GroupedRoseChart
+      title="label-分组玫瑰图"
+      {...basicCfg}
+      label={{
+        type: 'inner'
+      }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
+  test('label-outer-bug', () => {
+    let chart = null;
+    render(<GroupedRoseChart
+      title="label-分组玫瑰图"
+      {...basicCfg}
+      label={{
+        type: 'outer'
       }}
       onGetG2Instance={
         (c) => chart = c

@@ -197,5 +197,38 @@ describe('Plots-StackedRoseChart', () => {
     cleanup();
   });
 
+  test('label-inner', () => {
+    let chart = null;
+    render(<StackedRoseChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
+      title="label-堆叠图"
+      {...basicCfg}
+      label={{
+        visible: true,
+        type: 'inner'
+      }}
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
+  test('label-outer', () => {
+    let chart = null;
+    render(<StackedRoseChart
+      onGetG2Instance={
+        (c) => chart = c
+      }
+      title="label-堆叠图"
+      {...basicCfg}
+      label={{
+        type: 'outer'
+      }}
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
 });
 

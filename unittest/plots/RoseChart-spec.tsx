@@ -180,4 +180,38 @@ describe('Plots-RoseChart', () => {
     cleanup();
   });
 
+  test('label-inner-bug', () => {
+    let chart = null;
+    render(<RoseChart
+      title="label-玫瑰图"
+      {...basicCfg}
+      label={{
+        visible: true,
+        type: 'inner',
+      }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
+  test('label-outer-bug', () => {
+    let chart = null;
+    render(<RoseChart
+      title="label-玫瑰图"
+      {...basicCfg}
+      label={{
+        visible: true,
+        type: 'outer',
+      }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    expect(chart.options).toMatchSnapshot();
+    cleanup();
+  });
+
 });

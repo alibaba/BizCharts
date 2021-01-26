@@ -1,5 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Plots-RoseChart label-inner-bug 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 470,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+    "offset": -15,
+    "visible": true,
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
+exports[`Plots-RoseChart label-outer-bug 1`] = `
+Object {
+  "animation": true,
+  "appendPadding": Array [
+    10,
+    5,
+    10,
+    10,
+  ],
+  "autoFit": true,
+  "data": Array [
+    Object {
+      "Date": "2010-01",
+      "scales": 1998,
+    },
+    Object {
+      "Date": "2010-02",
+      "scales": 1250,
+    },
+    Object {
+      "Date": "2010-03",
+      "scales": 1720,
+    },
+  ],
+  "height": 470,
+  "interactions": Array [
+    Object {
+      "type": "active-region",
+    },
+  ],
+  "label": Object {
+    "layout": Object {
+      "type": "limit-in-shape",
+    },
+    "visible": true,
+  },
+  "legend": Object {
+    "offsetX": -10,
+    "position": "right",
+  },
+  "padding": Array [
+    90,
+    90,
+    90,
+    90,
+  ],
+  "renderer": "canvas",
+  "sectorStyle": Object {
+    "lineWidth": 1,
+    "stroke": "#fff",
+  },
+  "seriesField": "Date",
+  "tooltip": Object {
+    "shared": true,
+    "showMarkers": false,
+  },
+  "width": 600,
+  "xAxis": false,
+  "xField": "Date",
+  "yAxis": false,
+  "yField": "scales",
+}
+`;
+
 exports[`Plots-RoseChart label-玫瑰图 1`] = `
 Object {
   "animation": true,
