@@ -3,6 +3,7 @@ import { Area, AreaOptions as Options } from '@antv/g2plot/lib/plots/area';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions, polyfillVisible, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
+import { isNil } from '@antv/util';
 
 interface AreaOptions extends Options, BasePlotOptions {
   legend?: LengendAPIOptions;
@@ -18,6 +19,9 @@ export const polyfill = (opt: AreaOptions): AreaOptions => {
   polyfillVisible(options, 'line');
   // point
   polyfillVisible(options, 'point');
+
+  // 否则默认开启stack
+  options.isStack = isNil(options.isStack) ? false : options.isStack;
 
   replaceApi([{
     sourceKey: 'stackField',

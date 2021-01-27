@@ -8,7 +8,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "compareField": "quarter",
   "data": Array [
     Object {
@@ -135,7 +135,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "compareField": "quarter",
   "data": Array [
     Object {
@@ -264,7 +264,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "compareField": "quarter",
   "data": Array [
     Object {

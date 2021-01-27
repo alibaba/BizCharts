@@ -10,7 +10,7 @@ import { getTheme } from '../../core';
 const CONTAINER_CLASS: string = 'g2-tooltip';
 
 export interface TooltipProps extends React.ComponentProps<any> {
-  children?: (title?: string, items?: any[], x?: number, y?: number, event?: any) => {},
+  children?: (title?: string, items?: any[], x?: number, y?: number, event?: any) => any,
   [key: string]: any;
 }
 

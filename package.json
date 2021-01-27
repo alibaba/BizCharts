@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.5",
+  "version": "4.1.6-beta.0",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -37,7 +37,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/plots/StackedRoseChart-spec.tsx",
+    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/plots/PieChart-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
@@ -75,6 +75,7 @@
     "@storybook/theming": "^5.3.18",
     "@testing-library/react": "^11.2.2",
     "@types/jest": "^25.2.3",
+    "@types/react-dom": "^17.0.0",
     "@umijs/fabric": "^2.0.0-beta.3",
     "@welldone-software/why-did-you-render": "^3.3.1",
     "airbnb-js-shims": "^2.2.0",

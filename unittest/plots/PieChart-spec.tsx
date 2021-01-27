@@ -174,10 +174,10 @@ describe('Plots-PieChart', () => {
       title="label饼图"
       {...opt}
       onGetG2Instance={
-        (c) => chart = c
+        (c) => {console.log(c); chart = c}
       }
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 });

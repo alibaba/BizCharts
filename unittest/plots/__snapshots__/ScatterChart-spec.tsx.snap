@@ -4,7 +4,7 @@ exports[`Plots-ScatterChart label-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -364,7 +364,7 @@ exports[`Plots-ScatterChart quadrant-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -767,7 +767,7 @@ exports[`Plots-ScatterChart trendline-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -1141,7 +1141,7 @@ exports[`Plots-ScatterChart xAxis-散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -1539,7 +1539,7 @@ exports[`Plots-ScatterChart 基础散点图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,

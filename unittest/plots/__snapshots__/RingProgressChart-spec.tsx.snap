@@ -9,7 +9,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": Array [
     "#5B8FF9",
     "#E8EDF3",

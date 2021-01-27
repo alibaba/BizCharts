@@ -5,7 +5,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -127,7 +127,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -256,7 +256,7 @@ Object {
   "angleField": "value",
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,

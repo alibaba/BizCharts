@@ -4,12 +4,12 @@ exports[`Plots-GaugeChart 基础仪表图 1`] = `
 Object {
   "animation": false,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "axis": Object {
     "grid": null,
     "label": Object {
@@ -86,12 +86,12 @@ exports[`Plots-GaugeChart 旧版仪表图 1`] = `
 Object {
   "animation": false,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "axis": Object {
     "grid": null,
     "label": Object {

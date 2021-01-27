@@ -4,7 +4,7 @@ exports[`Plots-StackedRoseChart color & sectorStyle 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -141,7 +141,7 @@ exports[`Plots-StackedRoseChart label-inner 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -267,7 +267,7 @@ exports[`Plots-StackedRoseChart label-outer 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -391,7 +391,7 @@ exports[`Plots-StackedRoseChart label-堆叠图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -523,7 +523,7 @@ exports[`Plots-StackedRoseChart legend-堆叠图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -858,7 +858,7 @@ exports[`Plots-StackedRoseChart 新版本xField*yField*seriesField 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,

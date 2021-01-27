@@ -3,12 +3,12 @@
 exports[`Plots-LiquidChart 兼容旧版LiquidChart 1`] = `
 Object {
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "#6a99f9",
   "data": 0.5639,
   "outline": Object {
@@ -39,12 +39,12 @@ Object {
 exports[`Plots-LiquidChart 新版使用 1`] = `
 Object {
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "#6a99f9",
   "data": 0.5,
   "outline": Object {

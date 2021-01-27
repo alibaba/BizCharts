@@ -35,7 +35,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     3,
     4,
@@ -113,7 +113,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "pink",
   "columnStyle": Object {
     "fill": "red",
@@ -162,7 +162,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "pink",
   "data": Array [
     3,

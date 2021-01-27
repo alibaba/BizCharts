@@ -62,12 +62,12 @@ Object {
   },
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -278,7 +278,7 @@ exports[`Plots-RadarChart area-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -289,7 +289,7 @@ Object {
     },
     "visible": true,
   },
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -459,12 +459,12 @@ exports[`Plots-RadarChart label-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -645,12 +645,12 @@ exports[`Plots-RadarChart legend-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -852,7 +852,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -1056,7 +1056,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -1247,12 +1247,12 @@ exports[`Plots-RadarChart line-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -1436,12 +1436,12 @@ exports[`Plots-RadarChart point-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -1623,12 +1623,12 @@ Object {
   },
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -1817,12 +1817,12 @@ exports[`Plots-RadarChart tooltip-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "item": "Design",
@@ -2000,7 +2000,7 @@ Object {
   "angleField": "item",
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -2186,12 +2186,12 @@ exports[`Plots-RadarChart 基础2-雷达图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": [Function],
   "data": Array [
     Object {

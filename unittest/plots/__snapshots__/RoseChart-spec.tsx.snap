@@ -4,7 +4,7 @@ exports[`Plots-RoseChart label-inner-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -69,7 +69,7 @@ exports[`Plots-RoseChart label-outer-bug 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -133,7 +133,7 @@ exports[`Plots-RoseChart label-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -204,7 +204,7 @@ exports[`Plots-RoseChart legend-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -566,7 +566,7 @@ exports[`Plots-RoseChart tooltip-玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -638,7 +638,7 @@ exports[`Plots-RoseChart 基础玫瑰图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -714,7 +714,7 @@ exports[`Plots-RoseChart 新版本玫瑰图xField*yField*seriesFieldte 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
@@ -777,7 +777,7 @@ exports[`Plots-RoseChart 老版本玫瑰图categoryField*radiusField*Date 1`] = 
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,

@@ -14,7 +14,7 @@ registerEngine('svg', SVGEngine);
 
 // @ts-ignore
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.1.5';
+export const VERSION = '4.1.6-beta.0';
 
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持

@@ -9,7 +9,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "barWidthRatio": 0.6,
   "data": Array [
     Object {

@@ -4,12 +4,12 @@ exports[`Plots-HeatmapChart 兼容旧版热力图 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": Array [
     "#dddddd",
     "#9ec8e0",
@@ -577,12 +577,12 @@ exports[`Plots-HeatmapChart 新版热力图基础用法 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": Array [
     "#dddddd",
     "#9ec8e0",

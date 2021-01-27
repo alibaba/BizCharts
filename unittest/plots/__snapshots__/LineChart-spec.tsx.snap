@@ -9,7 +9,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "value": 3,

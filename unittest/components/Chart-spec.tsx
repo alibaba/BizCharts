@@ -38,7 +38,7 @@ describe('components-Chart', () => {
   test('changeData', async () => {
     let chart = null;
     render(<Demo onGetG2Instance={c => chart = c} />);
-    await sleep(500);
+    await sleep(1000);
     expect(chart.options.data.length).toBe(507);
   })
 })

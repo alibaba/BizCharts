@@ -12,7 +12,7 @@ Object {
   "areaStyle": Object {
     "fillOpacity": 0.6,
   },
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "l(90) 0:#E5EDFE 1:#ffffff",
   "data": Array [
     3,

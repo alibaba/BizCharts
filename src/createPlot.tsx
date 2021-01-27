@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 
 import _uniqId from '@antv/util/lib/unique-id';
 import _isEqual from '@antv/util/lib/is-equal';
@@ -13,12 +13,14 @@ import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 import { Plot } from '@antv/g2plot/lib/core/plot';
+import ResizeObserver from 'resize-observer-polyfill';
+import getElementSize from './utils/getElementSize';
 import {
   polyfillEvents,
   polyfillTitleEvent,
   polyfillDescriptionEvent,
 } from './plots/core/polyfill';
-import { isArray, isNil } from '@antv/util';
+import { debounce, isArray, isNil } from '@antv/util';
 import warn from 'warning';
 
 const DEFAULT_PLACEHOLDER = (
@@ -28,8 +30,6 @@ const DEFAULT_PLACEHOLDER = (
     暂无数据
   </div>
 );
-const TITLE_HEIGHT = 30;
-const DESCRIPTION_HEIGHT = 34;
 
 const DESCRIPTION_STYLE: CSSProperties = {
   padding: '8px 24px 10px 10px',
@@ -38,10 +38,6 @@ const DESCRIPTION_STYLE: CSSProperties = {
   color: 'grey',
   textAlign: 'left',
   lineHeight: '16px',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  height: TITLE_HEIGHT,
 };
 
 const TITLE_STYLE: CSSProperties = {
@@ -51,9 +47,6 @@ const TITLE_STYLE: CSSProperties = {
   color: 'black',
   textAlign: 'left',
   lineHeight: '20px',
-  position: 'absolute',
-  left: 0,
-  height: DESCRIPTION_HEIGHT,
 };
 
 interface BasePlotOptions {
@@ -214,7 +207,7 @@ class BasePlot extends React.Component<any> {
       <RootChartContext.Provider value={this._context}>
         {/* 每次更新都直接刷新子组件 */}
         <ChartViewContext.Provider value={chartView}>
-          <div>{this.props.children}</div>
+          <div key={_uniqId('plot-chart')}>{this.props.children}</div>
         </ChartViewContext.Provider>
       </RootChartContext.Provider>
     );
@@ -229,8 +222,38 @@ function createPlot<IPlotConfig extends Record<string, any>>(
   transCfg: Function = cfg => cfg,
 ) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit, forceFit, errorContent = ErrorFallback, placeholder, ErrorBoundaryProps, ...cfg } = props;
+    const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, placeholder, ErrorBoundaryProps, ...cfg } = props;
+    
     const realCfg = transCfg(cfg);
+    const container = useRef();
+    const titleDom = useRef();
+    const descDom = useRef();
+
+    const [chartHeight, setChartHeight] = useState(0);
+    const resizeObserver = useRef<ResizeObserver>();
+    const resizeFn = useCallback(() => {
+      if (!container.current) {
+        return
+      }
+      const containerSize = getElementSize(container.current);
+      const titleSize = titleDom.current ? getElementSize(titleDom.current) : { width: 0, height: 0 };
+      const descSize = descDom.current ? getElementSize(descDom.current) : { width: 0, height: 0 };
+      let ch = (containerSize.height - titleSize.height - descSize.height);
+      if (ch === 0) {
+        // 高度为0 是因为用户没有设置高度
+        ch = 350;
+      }
+      if (ch < 20) {
+        // 设置了高度，但是太小了
+        ch = 20;
+      }
+      // 误差达到1像素后再重置，防止精度问题
+      if (Math.abs(chartHeight - ch) > 1) {
+        setChartHeight(ch);
+      }
+    },  [container.current, titleDom.current, chartHeight, descDom.current])
+    const resize = useCallback(debounce(resizeFn, 500),[resizeFn])
+
     const FallbackComponent = React.isValidElement(errorContent) ? () => errorContent : errorContent;
     // 每个图表的showPlaceholder 逻辑不一样，有的是判断value，该方法为静态方法
     if (placeholder && !realCfg.data) {
@@ -244,45 +267,53 @@ function createPlot<IPlotConfig extends Record<string, any>>(
     }
     const titleCfg = visibleHelper(title, false) as any;
     const descriptionCfg = visibleHelper(description, false) as any;
-
-    let diffHeight = 0;
     const titleStyle = {...TITLE_STYLE, ...titleCfg.style};
     const descStyle = { ...DESCRIPTION_STYLE, ...descriptionCfg.style, top: titleStyle.height };
-
-    if (titleCfg.visible) {
-      // 兼容1.0 plot title的高度, 简单兼容
-      diffHeight += titleStyle.height;
-    }
+    const isAutoFit = (forceFit !== undefined) ? forceFit : autoFit;
 
     if (!isNil(forceFit)) {
       warn(false, '请使用autoFit替代forceFit');
-    }
+    };
 
-    if (descriptionCfg.visible) {
-      // 兼容1.0 plot description的高度
-      diffHeight += descStyle.height;
-    }
+    useEffect(() => {
+      if (!isAutoFit) {
+        if (container.current) {
+          resizeFn();
+        }
+        resizeObserver.current && resizeObserver.current.unobserve(container.current);
+      } else {
+        if (container.current) {
+          resizeFn();
+          resizeObserver.current = new ResizeObserver(resize);
+          resizeObserver.current.observe(container.current);
+        } else {
+          setChartHeight(0);
+        }
+      }
+      return () => {
+        resizeObserver.current && resizeObserver.current.unobserve(container.current)
+      };
+    }, [container.current, isAutoFit])
+
 
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
-      <div className="bizcharts-plot" style={{ position:'relative', display: 'flex', flexDirection: 'column', height: props.height || '100%', width: props.width || '100%' }}>
+      <div ref={container} className="bizcharts-plot" style={{ position:'relative', height: props.height || '100%', width: props.width || '100%' }}>
         {/* title 不一定有 */}
-        { titleCfg.visible && <div {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={titleStyle}>{titleCfg.text}</div> }
+        { titleCfg.visible && <div ref={titleDom} {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={titleStyle}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
-        { descriptionCfg.visible && <div {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={descStyle}>{descriptionCfg.text}</div> }
-        <BxPlot
+        { descriptionCfg.visible && <div ref={descDom} {...polyfillDescriptionEvent(realCfg)} className="bizcharts-plot-description" style={descStyle}>{descriptionCfg.text}</div> }
+        {!!chartHeight && <BxPlot
           // API 统一
-          appendPadding={[10 + diffHeight, 5, 10, 10]}
-          autoFit={isNil(autoFit) ? forceFit : autoFit}
+          appendPadding={[10 , 5, 10, 10]}
+          autoFit={isAutoFit}
           ref={ref}
           {...realCfg}
           PlotClass={Plot}
           containerStyle={{
             // 精度有误差
-            top: 0,
-            left: 0,
-            position: 'absolute'
+            height: chartHeight
           }}
-        />
+        />}
       </div>
     </ErrorBoundary>
   });

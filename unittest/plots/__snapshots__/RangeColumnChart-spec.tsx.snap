@@ -4,12 +4,12 @@ exports[`Plots-RangeColumnChart 区间条形图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "color": "l(90) 0:#3e5bdb 1:#b4d9e4",
   "columnStyle": Object {
     "fillOpacity": 0.8,

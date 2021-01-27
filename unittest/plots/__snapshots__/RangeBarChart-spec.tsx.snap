@@ -4,12 +4,12 @@ exports[`Plots-RangeBarChart 区间条形图-旧版 1`] = `
 Object {
   "animation": true,
   "appendPadding": Array [
-    44,
+    10,
     5,
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "barStyle": Object {
     "fillOpacity": 0.8,
   },

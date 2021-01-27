@@ -9,7 +9,7 @@ Object {
     10,
     10,
   ],
-  "autoFit": undefined,
+  "autoFit": true,
   "data": Array [
     Object {
       "label": "Mon.",
@@ -62,7 +62,7 @@ Object {
       "value": 100,
     },
   ],
-  "isStack": true,
+  "isStack": false,
   "legend": Object {
     "position": "top-left",
   },
