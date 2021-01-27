@@ -17,19 +17,22 @@ export { GaugeOptions };
 
 // 该plot 无法完全兼容
 export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
-  const {range, min, max, value, ...options} = polyfillOptions(opt);
+  const {range, min = 0, max = 1, value, ...options} = polyfillOptions(opt);
 
   if (isArray(range)) {
     warn(false, 'range 应当是个对象，请修改配置。');
-    set(options, 'range.ticks', range);
-    set(options, 'range.color', getTheme().colors10)
+    options.range = {
+      ticks: range.map(t => t / (max - min)),
+      color: getTheme().colors10,
+    }
+
   } else {
-    options.range = range;
+    options.range = range || {};
   }
   const color = get(options, 'color');
   if (!isNil(color)) {
     warn(false, '请通过配置属性range.color来配置颜色');
-    set(options, 'range.color', color)
+    options.range.color = color;
   }
   if (isNil(get(options, 'indicator'))) {
     // 默认灰色 indicator
@@ -54,14 +57,15 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
   if (!isNil(min) && !isNil(max) && !isNil(value)) {
     // 旧版数据使用方式
     options.percent = value / (max - min);
-    const formatter = get(options, 'axis.label.formatter', () => value);
+    const formatter = get(options, 'axis.label.formatter');
     set(options, 'axis', {
       label: {
-        formatter: () => {
+        formatter: v => {
+          const val = v * (max - min);
           if (isFunction(formatter)) {
-            return formatter(value)
+            return formatter(val)
           }
-          return value;
+          return val;
         }
       },
     });
