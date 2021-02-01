@@ -1,7 +1,7 @@
 import 'react';
 import { Liquid, LiquidOptions as Options } from '@antv/g2plot/lib/plots/liquid';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions } from './core/polyfill';
+import { polyfillOptions, polyfillVisible } from './core/polyfill';
 import { get, isNil, deepMix, isFunction } from '@antv/util';
 
 type Opt = Omit<Options, 'percent'>;
@@ -25,7 +25,7 @@ export default createPlot<LiquidOptions>(Liquid, 'LiquidChart', (opt) => {
     // 旧版数据使用方式
     options.percent = value / (max - min);
     const formatter = get(options, 'statistic.content.formatter');
-    if (options.statistic) {
+    if (options.statistic !== null && options.statistic !== false) {
       deepMix(options, {
         statistic: {
           content: {
@@ -40,6 +40,10 @@ export default createPlot<LiquidOptions>(Liquid, 'LiquidChart', (opt) => {
       });
     }
   }
+
+  polyfillVisible(options, 'statistic');
+  polyfillVisible(options, 'statistic.title');
+  polyfillVisible(options, 'statistic.content');
 
   // value 转为data，用于placeholder统一判断
   const data = options.percent;
