@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Chart from '../../src/components/Chart';
+import {Chart} from '../../src';
+import Line from '../../src/geometry/Line';
 import Effects from '../../src/components/Effects';
 import { setDefaultErrorFallback } from '../../src/core';
 import { render, act, cleanup, fireEvent, screen } from '@testing-library/react';
@@ -29,6 +30,11 @@ describe('ErrorBoundary', () => {
   //   // expect(container).toMatchSnapshot();
   // });
   test('Chart-ErrorBoundary', () => {
-    
+    // render(<Chart height={200} width={500} data={[{x: 1, y:1}, {x:2, y:2}]} scale={{x: { formatter: d => { return w.e.x }}}} >
+    //   <Line position="x*y" />
+    // </Chart>)
+    render(<Chart height={200} width={500} data={[{x: 1, y:1}, {x:2, y:2}]} scale={{x: {}}} >
+      <Line position="x*y" />
+    </Chart>)
   });
 })

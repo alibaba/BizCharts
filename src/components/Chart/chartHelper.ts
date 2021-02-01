@@ -10,9 +10,11 @@ import pickWithout from '../../utils/pickWithout';
 import cloneDeep from '../../utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from '../../utils/constant';
 import { VIEW_LIFE_CIRCLE } from '@antv/g2/lib/constant';
+import EventEmitter from '@antv/event-emitter';
 
 import { IEvent } from '../../interface';
 import { pickEventName } from './events';
+import { extend } from '@antv/util';
 
 const processData = (data) => {
   if (data && data.rows) {
@@ -21,7 +23,7 @@ const processData = (data) => {
   return data;
 }
 
-class ChartHelper {
+class ChartHelper extends EventEmitter {
   public chart: G2Chart;
   public config: Record<string, any> = {};
   private isNewInstance: boolean;
@@ -42,16 +44,34 @@ class ChartHelper {
     if (!this.chart) {
       return;
     }
+    // this.chart.render();
+    // if (this.isNewInstance) {
+    //   this.onGetG2Instance();
+    //   // @ts-ignore
+    //   this.chart.unbindAutoFit(); // 不使用g2的监听
+    //   this.isNewInstance = false;
+    // }
+    // // 处理elements状态
+    // this.chart.emit('processElemens');
+    try {
+      // 普通error 只能兜住react render周期里的error。 chart render周期的error 要单独处理
+      this.chart.render();
+      if (this.isNewInstance) {
+        this.onGetG2Instance();
+        // @ts-ignore
+        this.chart.unbindAutoFit(); // 不使用g2的监听
+        this.isNewInstance = false;
+      }
+      // 处理elements状态
+      this.chart.emit('processElemens');
 
-    this.chart.render();
-    if (this.isNewInstance) {
-      this.onGetG2Instance();
-      // @ts-ignore
-      this.chart.unbindAutoFit(); // 不使用g2的监听
-      this.isNewInstance = false;
+    } catch(e) {
+      this.emit('renderError', e);
+      this.destory();
+      if(console) {
+        console.error(e?.stack)
+      }
     }
-    // 处理elements状态
-    this.chart.emit('processElemens');
   }
   private onGetG2Instance() {
     // 当且仅当 isNewInstance 的时候执行。

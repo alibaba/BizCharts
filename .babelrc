@@ -1,53 +1,102 @@
 {
   "env": {
     "test": {
-      "presets": [["airbnb", { "looseClasses": true }]],
+      "presets": [
+        ["airbnb", {
+          "looseClasses": true
+        }]
+      ],
       "plugins": [
+        ["@babel/plugin-transform-runtime", {
+          "regenerator": true
+        }],
         ["inline-react-svg", {
           "svgo": false
         }],
-        ["transform-replace-object-assign", { "moduleSpecifier": "object.assign" }],
+        ["transform-replace-object-assign", {
+          "moduleSpecifier": "object.assign"
+        }],
         "istanbul",
       ]
     },
 
     "development": {
-      "presets": [["airbnb", { "looseClasses": true }]],
+      "presets": [
+        ["airbnb", {
+          "looseClasses": true
+        }]
+      ],
       "plugins": [
+        ["@babel/plugin-transform-runtime", {
+          "regenerator": true
+        }],
         ["inline-react-svg", {
           "svgo": false
         }],
-        ["transform-replace-object-assign", { "moduleSpecifier": "object.assign" }],
+        ["transform-replace-object-assign", {
+          "moduleSpecifier": "object.assign"
+        }],
       ],
     },
 
     "production": {
-      "presets": [["airbnb", { "looseClasses": true, "removePropTypes": true }]],
+      "presets": [
+        ["airbnb", {
+          "looseClasses": true,
+          "removePropTypes": true
+        }]
+      ],
       "plugins": [
+        ["@babel/plugin-transform-runtime", {
+          "regenerator": true
+        }],
         ["inline-react-svg", {
           "svgo": false
         }],
-        ["transform-replace-object-assign", { "moduleSpecifier": "object.assign" }],
+        ["transform-replace-object-assign", {
+          "moduleSpecifier": "object.assign"
+        }],
       ],
     },
 
     "cjs": {
-      "presets": [["airbnb", { "looseClasses": true, "removePropTypes": true }]],
+      "presets": [
+        ["airbnb", {
+          "looseClasses": true,
+          "removePropTypes": true
+        }]
+      ],
       "plugins": [
+        ["@babel/plugin-transform-runtime", {
+          "regenerator": true
+        }],
         ["inline-react-svg", {
           "svgo": false
         }],
-        ["transform-replace-object-assign", { "moduleSpecifier": "object.assign" }],
+        ["transform-replace-object-assign", {
+          "moduleSpecifier": "object.assign"
+        }],
       ],
     },
 
     "esm": {
-      "presets": [["airbnb", { "looseClasses": true, "modules": false, "removePropTypes": true }]],
+      "presets": [
+        ["airbnb", {
+          "looseClasses": true,
+          "modules": false,
+          "removePropTypes": true
+        }]
+      ],
       "plugins": [
+        ["@babel/plugin-transform-runtime", {
+          "regenerator": true
+        }],
         ["inline-react-svg", {
           "svgo": false
         }],
-        ["transform-replace-object-assign", { "moduleSpecifier": "object.assign" }],
+        ["transform-replace-object-assign", {
+          "moduleSpecifier": "object.assign"
+        }],
       ],
     },
   },

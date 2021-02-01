@@ -68,7 +68,13 @@ const config = {
           loader: 'babel-loader',
           query: {
             presets: [
-              ["@babel/preset-env", { "targets": "last 2 versions, ie 11", "modules": false }]
+              ["@babel/preset-env", { "targets": "last 2 versions, ie 11" }]
+            ],
+            "plugins": [
+              ["@babel/transform-runtime", {
+                "regenerator": true
+              }],
+              ["@babel/plugin-transform-modules-commonjs"]
             ]
           }
         }],

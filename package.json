@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.6-beta.2",
+  "version": "4.1.6",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -37,7 +37,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/plots/PieChart-spec.tsx",
+    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/boundary/ErrorBoundary-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
@@ -59,6 +59,8 @@
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/register": "^7.7.5",
