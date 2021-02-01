@@ -41,4 +41,11 @@ describe('components-Chart', () => {
     await sleep(1000);
     expect(chart.options.data.length).toBe(507);
   })
+
+  test('数据不变则不更新图表', async () => {
+    let chart = null;
+    render(<Demo onGetG2Instance={c => chart = c} />);
+    await sleep(1000);
+    expect(chart.options.data.length).toBe(507);
+  })
 })

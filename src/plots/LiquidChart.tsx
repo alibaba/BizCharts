@@ -25,18 +25,20 @@ export default createPlot<LiquidOptions>(Liquid, 'LiquidChart', (opt) => {
     // 旧版数据使用方式
     options.percent = value / (max - min);
     const formatter = get(options, 'statistic.content.formatter');
-    deepMix(options, {
-      statistic: {
-        content: {
-          formatter: () => {
-            if (isFunction(formatter)) {
-              formatter(value)
+    if (options.statistic) {
+      deepMix(options, {
+        statistic: {
+          content: {
+            formatter: () => {
+              if (isFunction(formatter)) {
+                formatter(value)
+              }
+              return value;
             }
-            return value;
           }
         }
-      }
-    });
+      });
+    }
   }
 
   // value 转为data，用于placeholder统一判断
