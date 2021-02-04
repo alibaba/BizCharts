@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.6",
+  "version": "4.1.7-beta.2",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -37,7 +37,7 @@
     "prettier": "prettier -c --write **/*",
     "start": "npm run storybook",
     "test": "jest",
-    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/boundary/ErrorBoundary-spec.tsx",
+    "test-live": "DEBUG_MODE=1 cross-env RTL_SKIP_AUTO_CLEANUP=true jest --watch  unittest/plots/RadarChart-spec.tsx",
     "storybook": "start-storybook -p 9004",
     "uitest:snapshot": "ice-chart-develop-cli test-multi-snapshot",
     "uitest": "ice-chart-develop-cli test-multi",
@@ -53,14 +53,15 @@
     "react-reconciler": "^0.25.1",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
-    "warning": "^4.0.3"
+    "warning": "^4.0.3",
+    "babel-plugin-transform-replace-object-assign": "^2.0.0",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1"
   },
   "devDependencies": {
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
-    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/register": "^7.7.5",
@@ -87,7 +88,6 @@
     "babel-plugin-inline-react-svg": "^1.1.0",
     "babel-plugin-inline-svg": "^1.0.1",
     "babel-plugin-istanbul": "^5.2.0",
-    "babel-plugin-transform-replace-object-assign": "^2.0.0",
     "babel-preset-airbnb": "^4.0.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-umi": "^1.8.1",

@@ -5,7 +5,7 @@ import { Scatter, ScatterOptions as options } from '@antv/g2plot/lib/plots/scatt
 import { RegressionLineOptions } from '@antv/g2plot/lib/plots/scatter/types';
 import { StyleAttr } from '@antv/g2plot/lib/types/attr';
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions, replaceAxis, polyfillVisible } from './core/polyfill';
+import { polyfillOptions, polyfillVisible } from './core/polyfill';
 import { AxisAPIOptions, LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 import { isObject } from '@antv/util';
 
@@ -34,9 +34,6 @@ const polyfill = (opt: ScatterOptions): ScatterOptions => {
     if (get(options, 'pointSize')) {
         set(options, 'size', get(options, 'pointSize'));
     }
-
-    replaceAxis(options, 'xAxis', 'xAxis');
-    replaceAxis(options, 'yAxis', 'yAxis');
 
     polyfillVisible(options, 'quadrant')
 

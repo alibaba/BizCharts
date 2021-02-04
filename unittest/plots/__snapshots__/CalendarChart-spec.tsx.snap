@@ -1383,22 +1383,7 @@ Object {
         },
       },
     },
-    "label": Object {
-      "autoHide": Object {
-        "cfg": Object {
-          "minGap": 6,
-        },
-        "type": "equidistance",
-      },
-      "autoRotate": false,
-      "formatter": [Function],
-      "offset": 20,
-      "style": Object {
-        "fill": "#bbb",
-        "fontSize": 12,
-        "textBaseline": "top",
-      },
-    },
+    "label": undefined,
     "line": null,
     "nice": true,
     "tickLine": null,
@@ -1418,10 +1403,7 @@ Object {
         },
       },
     },
-    "label": Object {
-      "autoHide": true,
-      "autoRotate": false,
-    },
+    "label": undefined,
     "nice": true,
     "title": null,
   },

@@ -518,6 +518,9 @@ describe('Plots-RadarChart', () => {
             type: 'line',
           },
         },
+        label: {
+          offsetX: 20,
+        }
       },
       // 开启辅助点
       point: {

@@ -1,4 +1,4 @@
-import { Linear, registerTickMethod, registerScale } from '@antv/scale';
+import { Linear, registerTickMethod, registerScale, getScale } from '@antv/scale';
 
 import linearTickMethod from './linear-tick';
 
@@ -35,4 +35,7 @@ class LinearStrict extends Linear {
 }
 export default LinearStrict;
 
-registerScale('linear-strict', LinearStrict);
+if (!getScale('linear-strict')) {
+  registerScale('linear-strict', LinearStrict);
+}
+

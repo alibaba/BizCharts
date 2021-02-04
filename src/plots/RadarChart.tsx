@@ -7,9 +7,10 @@ import { Radar, RadarOptions as options } from '@antv/g2plot/lib/plots/radar';
 import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
 
 import createPlot, { BasePlotOptions } from '../createPlot';
-import { polyfillOptions, replaceApi, replaceAxis } from './core/polyfill';
+import { polyfillOptions, replaceApi } from './core/polyfill';
 
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
+import { deepMix } from '@antv/util';
 
 const REPLACEAPILIST = [{
     sourceKey: 'angleField',
@@ -19,6 +20,14 @@ const REPLACEAPILIST = [{
     sourceKey: 'radiusField',
     targetKey: 'yField',
     notice: 'radiusField 是 g2@1.0的属性，即将废弃，请使用yFeild替代',
+}, {
+    sourceKey: 'angleAxis',
+    targetKey: 'xAxis',
+    notice: 'angleAxis 是 g2@1.0的属性，即将废弃，请使用xAxis替代',
+}, {
+    sourceKey: 'radiusAxis',
+    targetKey: 'yAxis',
+    notice: 'radiusAxis 是 g2@1.0的属性，即将废弃，请使用yAxis替代',
 }];
 
 interface LineAPIOptions {
@@ -84,8 +93,9 @@ const replaceLineWithLinestyle = (options: RadarOptions) => {
 
 
 const polyfill = (opt: RadarOptions): RadarOptions => {
+    // 先转为统一的，在统一polyfill
+    replaceApi(REPLACEAPILIST, opt);
     const options = polyfillOptions(opt);
-    replaceApi(REPLACEAPILIST, options); // angleField,statusField  api替换
 
     if (get(options, 'area.visible') === false) {
         set(options, 'area', false);
@@ -106,15 +116,21 @@ const polyfill = (opt: RadarOptions): RadarOptions => {
         options.angleAxis.tickLine = get(options, 'angleAxis.tickLine', null);
     }
 
-    replaceAxis(options, 'angleAxis', 'xAxis');
-    replaceAxis(options, 'radiusAxis', 'yAxis');
-
     if (get(options, 'tooltip.visible') === false) {
         set(options, 'tooltip', false);
     }
 
     if (get(options, 'label.visible') === false) {
         set(options, 'label', false);
+    }
+
+    if (get(options, 'yAxis.grid.line.type') === 'line') {
+        deepMix(options, {
+            xAxis: {
+                line: null,
+                tickLine: null,
+            }  
+        }, options);
     }
 
     return options;

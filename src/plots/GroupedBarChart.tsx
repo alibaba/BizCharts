@@ -5,6 +5,7 @@ import { polyfillOptions, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 import { isNil } from '@antv/util';
 import warn from 'warning';
+import { deepMix } from '@antv/util';
 
 interface GroupedBarOptions extends Options, BasePlotOptions {
   /** 图例 */
@@ -31,5 +32,8 @@ export default createPlot<GroupedBarOptions>(Bar, 'GroupedBarChart', (props) => 
     options.minBarWidth = barSize;
     options.maxBarWidth = barSize;
   }
+  deepMix(props, {
+    isGroup: true,
+  });
   return options;
 });

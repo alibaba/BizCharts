@@ -5,6 +5,7 @@ import { polyfillOptions } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 import { isNil } from '@antv/util';
 import warn from 'warning';
+import { deepMix } from '@antv/util';
 
 interface GroupedColumnOptions extends ColumnOptions, BasePlotOptions {
   /** 图例 */
@@ -24,5 +25,8 @@ export default createPlot<GroupedColumnOptions>(Column, 'GroupedColumnChart', (p
     options.minColumnWidth = columnSize;
     options.maxColumnWidth = columnSize;
   }
+  deepMix(props, {
+    isGroup: true,
+  });
   return options;
 });

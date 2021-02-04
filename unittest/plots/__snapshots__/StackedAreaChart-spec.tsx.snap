@@ -62,7 +62,7 @@ Object {
       "value": 100,
     },
   ],
-  "isStack": false,
+  "isStack": true,
   "legend": Object {
     "position": "top-left",
   },

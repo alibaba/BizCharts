@@ -1,5 +1,5 @@
 import warn from 'warning';
-import { get, set, maxBy, minBy, isNil } from '@antv/util';
+import { get, set, maxBy, minBy, isNil, isObject } from '@antv/util';
 import sum from '../../utils/data-transform/sum';
 import { pickEventName } from '../../components/Chart/events';
 
@@ -24,62 +24,59 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
 /**
  * 将的sourceKey的配置作为targetKey的配置； 
  * 例如：将angleAxis的作为xAxis的配置
- * @param options object 图表配置项
- * @param sourceKey string
- * @param targetKey  string
  */
-export const replaceAxis = (options, sourceKey = 'angleAxis', targetKey = 'xAxis') => {
-  if (isNil(options[sourceKey])) {
+export const polyfillAxis = (cfg, name) => {
+  const options: Record<string, any> | boolean = get(cfg, name);
+  if (options === false || options === null) {
+    cfg[name] = null;
     return;
   }
-  if (get(options, `${sourceKey}.visible`) === false) {
-    set(options, targetKey, false);
+  if (options === undefined) {
+    return;
+  }
+  if (options === true) {
+    cfg[name] = {};
+    return;
+  }
+  if (!isObject(options)) {
+    warn(true, `${name} 配置参数不正确`);
     return;
   }
 
-  let config = { ...options[sourceKey] };
 
-  if (get(options, `${sourceKey}.line.visible`) === false) {
-    config.line = null;
-  }
+  polyfillVisible(options, 'line');
+  polyfillVisible(options, 'grid');
+  polyfillVisible(options, 'label');
+  polyfillVisible(options, 'tickLine');
+  polyfillVisible(options, 'title');
 
-  if (get(options, `${sourceKey}.grid.visible`) === false) {
-    config.grid = null;
-  }
+  let label: any = get(options, 'label');
 
-  if (get(options, `${sourceKey}.label.visible`) === false) {
-    config.label = false
-  } else {
-    let label = get(options, `${sourceKey}.label`, {});
-    if (label) {
-      const suffix = { ...label.suffix };
-      if (!isNil(suffix) || suffix) { // 不是undefined null 或 suffix存在
-        label = { ...label, formatter: val => `${val}${suffix}` }
+  if (label) {
+    if (isObject(label)) {
+      const { suffix } = label as any;
+      if (suffix) { // 不是undefined null 或 suffix存在
+        set(label, 'formatter', val => `${val}${suffix}`);
       }
 
-      const { offsetX, offsetY, offset, ...labelCfg } = label;
+      // @ts-ignore
+      const { offsetX, offsetY, offset } = label;
       if (isNil(offset) && (!isNil(offsetX) || !isNil(offsetY))) {
-        if (targetKey === 'xAxis') {
-          label = { ...labelCfg, offset: !isNil(offsetX) ? offsetX : offsetY }
+        if (name === 'xAxis') {
+          set(label, 'offset', !isNil(offsetX) ? offsetX : offsetY);
         }
-        if (targetKey === 'yAxis') {
-          label = { ...labelCfg, offset: !isNil(offsetY) ? offsetY : offsetX }
+        if (name === 'yAxis') {
+          set(label, 'offset', !isNil(offsetY) ? offsetY : offsetX);
         }
+        
       }
-
-      config.label = label;
     }
   }
 
-  if (get(options, `${sourceKey}.tickLine.visible`) === false) {
-    config.tickLine = false
-  }
-
-  if (get(options, `${sourceKey}.title.visible`) === false) {
-    config.title = false
-  }
-  set(options, targetKey, config);
-
+  cfg[name] = {
+    ...options,
+    label,
+  };
 }
 
 // visible的使用转化
@@ -101,8 +98,15 @@ export const polyfillOptions = (opt) => {
   const legendVis = polyfillVisible(polyfillOpt, 'legend');
 
   if (legendVis) {
-    if (get(polyfillOpt, 'legend.title.visible') === false) {
-      set(polyfillOpt, 'legend.title', false);
+    polyfillVisible(polyfillOpt, 'legend.title');
+    const position = get(polyfillOpt, 'legend.position')
+    if (position) {
+      set(polyfillOpt, 'legend.position', ({
+        'top-center': 'top',
+        'right-center': 'right',
+        'left-center': 'left',
+        'bottom-center': 'bottom',
+      })[position] || position)
     }
   }
   const formatter = get(polyfillOpt, 'legend.formatter');
@@ -117,6 +121,10 @@ export const polyfillOptions = (opt) => {
 
   // label
   polyfillVisible(polyfillOpt, 'label');
+
+  // axis
+  polyfillAxis(polyfillOpt, 'xAxis');
+  polyfillAxis(polyfillOpt, 'yAxis');
 
   // 辅助线
   const guideLine = get(polyfillOpt, 'guideLine', []);
