@@ -1,5 +1,5 @@
 import 'react';
-import { Scatter, ScatterOptions as options } from '@antv/g2plot/lib/plots/scatter';
+import { Scatter, ScatterOptions as Options } from '@antv/g2plot/lib/plots/scatter';
 import warn from 'warning';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
@@ -8,7 +8,7 @@ import { polyfillOptions } from './core/polyfill';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 
-interface BubbleOptions extends options, BasePlotOptions {
+interface BubbleOptions extends Options, BasePlotOptions {
   /** 该属性已废弃，请使用size替代 */
   pointSize?: any;
   /** 

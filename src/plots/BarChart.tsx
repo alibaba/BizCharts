@@ -1,14 +1,11 @@
 import 'react';
-import warn from 'warning';
-import get from '@antv/util/lib/get';
-import set from '@antv/util/lib/set';
-import { Bar, BarOptions as options } from '@antv/g2plot/lib/plots/bar';
+import { Bar, BarOptions as Options } from '@antv/g2plot/lib/plots/bar';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { polyfillOptions, replaceApi } from './core/polyfill';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
 import { isNil } from '@antv/util';
 
-interface BarOptions extends options, BasePlotOptions {
+interface BarOptions extends Options, BasePlotOptions {
   /** 请使用seriesField替代 */
   colorField?: any;
   /** 图例 */

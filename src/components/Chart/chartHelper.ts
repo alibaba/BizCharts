@@ -14,7 +14,7 @@ import EventEmitter from '@antv/event-emitter';
 
 import { IEvent } from '../../interface';
 import { pickEventName } from './events';
-import { extend } from '@antv/util';
+
 
 const processData = (data) => {
   if (data && data.rows) {

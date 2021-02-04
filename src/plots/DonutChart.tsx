@@ -17,7 +17,6 @@ interface DonutOptions extends Options, BasePlotOptions {
 
 const polyfill = (opt: DonutOptions): DonutOptions => {
     const options = polyfillOptions(opt);
-    const statistic: any = options.statistic;
 
     polyfillVisible(options, 'statistic');
     polyfillVisible(options, 'statistic.title');

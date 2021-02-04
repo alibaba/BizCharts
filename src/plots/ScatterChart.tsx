@@ -1,7 +1,7 @@
 import 'react';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
-import { Scatter, ScatterOptions as options } from '@antv/g2plot/lib/plots/scatter';
+import { Scatter, ScatterOptions as Options } from '@antv/g2plot/lib/plots/scatter';
 import { RegressionLineOptions } from '@antv/g2plot/lib/plots/scatter/types';
 import { StyleAttr } from '@antv/g2plot/lib/types/attr';
 import createPlot, { BasePlotOptions } from '../createPlot';
@@ -13,7 +13,7 @@ interface TrendLineAPIOptions extends RegressionLineOptions {
     showConfidence?: boolean,
     confidenceStyle?: StyleAttr,
 }
-interface ScatterOptions extends options, BasePlotOptions {
+interface ScatterOptions extends Options, BasePlotOptions {
     legend?: LengendAPIOptions;
 
     tooltip?: TooltipAPIOptions;
@@ -21,11 +21,11 @@ interface ScatterOptions extends options, BasePlotOptions {
     label?: LabelAPIOptions;
 
     /* 请使用regressionLine替代 */
-    trendLine?: options['regressionLine'];
+    trendLine?: Options['regressionLine'];
     xAxis?: AxisAPIOptions,
     yAxis?: AxisAPIOptions,
-    pointSize?: options['size'],
-    size?: options['size'],
+    pointSize?: Options['size'],
+    size?: Options['size'],
     trendline?: TrendLineAPIOptions,
 }
 

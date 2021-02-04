@@ -3,7 +3,7 @@ import isNil from '@antv/util/lib/is-nil';
 import get from '@antv/util/lib/get';
 import set from '@antv/util/lib/set';
 import isObject from '@antv/util/lib/is-object';
-import { Radar, RadarOptions as options } from '@antv/g2plot/lib/plots/radar';
+import { Radar, RadarOptions as Options } from '@antv/g2plot/lib/plots/radar';
 import { MappingOptions } from '@antv/g2plot/lib/adaptor/geometries/base';
 
 import createPlot, { BasePlotOptions } from '../createPlot';
@@ -33,7 +33,7 @@ const REPLACEAPILIST = [{
 interface LineAPIOptions {
     visible?: boolean,
     size?: number,
-    style?: options['lineStyle'], // ShapeAttrs,
+    style?: Options['lineStyle'], // ShapeAttrs,
 }
 
 interface PointAPIOptions extends MappingOptions {
@@ -43,7 +43,7 @@ interface AreaAPIOptions extends MappingOptions {
     visible?: boolean,
 }
 
-interface RadarOptions extends options, BasePlotOptions {
+interface RadarOptions extends Options, BasePlotOptions {
     /** 请使用xField替代 */
     angleField?: string;
     /** 请使用yFeild替代 */
@@ -79,14 +79,12 @@ const getVisibleStyle: (visible: boolean) => object = (visible) => {
 // 将bizcharts.plots的radaChart的Line的API 替换成G2.plots的API替换成LineStyle
 const replaceLineWithLinestyle = (options: RadarOptions) => {
     const { visible, size, style } = get(options, 'line', {})
-    let newStyle = Object.assign({}, style || {},
-        {
-            opacity: 1,
-            lineWidth: typeof size === 'number' ? size : 2,
-            ...getVisibleStyle(visible),
-        },
-    );
-    set(options, 'lineStyle', newStyle);
+    set(options, 'lineStyle', {
+        ...style,
+        opacity: 1,
+        lineWidth: typeof size === 'number' ? size : 2,
+        ...getVisibleStyle(visible),
+    });
 }
 
 

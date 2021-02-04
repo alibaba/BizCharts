@@ -59,7 +59,8 @@ export interface IBaseProps extends React.Props<any> {
 export default class Helper {
   instance: any;
   config: Record<string,any>;
-  constructor(private shape) {
+  private shape: string;
+  constructor(shape) {
     this.shape = shape;
   }
   createInstance(props) {

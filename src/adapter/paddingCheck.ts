@@ -6,7 +6,7 @@ export default padding => {
   if (_isArray(padding)) {
     padding.forEach(element => {
       if (_isString(element)) {
-        warn(false, 'padding 不支持auto 混合使用。请直接设置padding 为auto。更详细内容请查看Chart padding属性文档。')
+        warn(true, 'padding 不支持auto 混合使用。请直接设置padding 为auto。更详细内容请查看Chart padding属性文档。')
       }
     });
   }

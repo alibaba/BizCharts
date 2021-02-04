@@ -9,11 +9,13 @@ module.exports = {
     'no-underscore-dangle': 0,
     'lines-between-class-members': 0,
     '@typescript-eslint/lines-between-class-members': 0,
+    ' @typescript-eslint/consistent-type-imports': 0,
     'class-methods-use-this': 0,
     'no-lonely-if': 0,
     'no-param-reassign': 0,
     'no-useless-escape': 0,
     'no-plusplus': 0,
-    'react/no-typos': 0
+    'react/no-typos': 0,
+    'prefer-destructuring': 0
   }
 };

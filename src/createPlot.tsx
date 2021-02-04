@@ -217,12 +217,12 @@ class BasePlot extends React.Component<any> {
 const BxPlot = withContainer(BasePlot) as any;
 
 function createPlot<IPlotConfig extends Record<string, any>>(
-  Plot,
+  PlotClass,
   name: string,
   transCfg: Function = cfg => cfg,
 ) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, placeholder, ErrorBoundaryProps, ...cfg } = props;
+    const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, containerStyle, placeholder, ErrorBoundaryProps, ...cfg } = props;
     
     const realCfg = transCfg(cfg);
     const container = useRef();
@@ -308,16 +308,17 @@ function createPlot<IPlotConfig extends Record<string, any>>(
           autoFit={isAutoFit}
           ref={ref}
           {...realCfg}
-          PlotClass={Plot}
+          PlotClass={PlotClass}
           containerStyle={{
             // 精度有误差
-            height: chartHeight
+            ...containerStyle,
+            height: chartHeight,
           }}
         />}
       </div>
     </ErrorBoundary>
   });
-  Com.displayName = name || Plot.name;
+  Com.displayName = name || PlotClass.name;
   return Com;
 }
 

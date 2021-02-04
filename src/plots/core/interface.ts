@@ -3,7 +3,7 @@ import { TooltipOptions } from '@antv/g2plot/lib/types/tooltip'
 import { Meta } from '@antv/g2plot/lib/types/meta'
 import { AxisCfg, AxisGridCfg } from '@antv/g2/lib/interface';
 import { ListItem } from '@antv/component/lib/types';
-import { AxisLabelCfg, AxisLineCfg, AxisSubTickLineCfg, AxisTickLineCfg, AxisTitleCfg, ContinueLegendHandlerCfg, ContinueLegendLabelCfg, ContinueLegendRailCfg, ContinueLegendTrackCfg, Coordinate, CrosshairLineCfg, CrosshairTextBackgroundCfg, CrosshairTextCfg, EnhancedTextCfg, GridLineCfg, GroupComponent, HtmlComponent, ICanvas, IGroup, IShape, LegendBackgroundCfg, LegendItemNameCfg, LegendItemValueCfg, LegendMarkerCfg, LegendTitleCfg, PathCommand, Scale, ScaleConfig, ShapeAttrs, LineAnnotationTextCfg, TrendCfg } from './dependents';
+import { AxisLabelCfg, AxisLineCfg, AxisTickLineCfg, AxisTitleCfg} from './dependents';
 
 declare type formatterCallback = (text: string, item: ListItem, index: number) => any;
 
