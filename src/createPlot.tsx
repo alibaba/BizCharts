@@ -291,7 +291,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(
         }
       }
       return () => {
-        resizeObserver.current && resizeObserver.current.unobserve(container.current)
+        resizeObserver.current && container.current && resizeObserver.current.unobserve(container.current)
       };
     }, [container.current, isAutoFit])
 
