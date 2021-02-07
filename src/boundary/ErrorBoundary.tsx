@@ -1,5 +1,13 @@
 import React from 'react';
-import { ErrorBoundary, ErrorBoundaryProps } from 'react-error-boundary';
+import { ErrorBoundary } from 'react-error-boundary';
+export interface ErrorBoundaryProps {
+  onResetKeysChange?: (prevResetKeys: Array<any>, resetKeys: Array<any>) => void
+  onReset?: () => void
+  onError?: (error: Error, info: { componentStack: string }) => void
+  resetKeys?: Array<any>
+  fallback?: React.ReactElement<any, any> | null
+  [key:string]:any
+}
 
 
 let DefaultErrorFallback = ({ error }) => {
@@ -18,7 +26,5 @@ export function ErrorFallback(args) {
 export const setDefaultErrorFallback = (CustComponents) => {
   DefaultErrorFallback = CustComponents;
 }
-
-export { ErrorBoundaryProps };
 
 export default ErrorBoundary;
