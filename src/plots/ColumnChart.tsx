@@ -3,6 +3,7 @@ import { Column, ColumnOptions as Options } from '@antv/g2plot/lib/plots/column'
 import { polyfillOptions, replaceApi } from './core/polyfill';
 import createPlot, { BasePlotOptions } from '../createPlot';
 import { LengendAPIOptions, TooltipAPIOptions, LabelAPIOptions } from './core/interface';
+import { isNil } from '@antv/util';
 
 interface ColumnOptions extends Options, BasePlotOptions {
   /** 请使用seriesField替代 */
@@ -29,8 +30,12 @@ const REPLACEAPILIST = [{
 }];
 
 export const polyfill = (props) => {
-  const options = polyfillOptions(props);
+  const { columnSize, ...options } = polyfillOptions(props);
   replaceApi(REPLACEAPILIST, options);
+  if (!isNil(columnSize)) {
+    options.minColumnWidth = columnSize;
+    options.maxColumnWidth = columnSize;
+  }
   return options;
 };
 

@@ -279,8 +279,8 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       if (!isAutoFit) {
         if (container.current) {
           resizeFn();
+          resizeObserver.current && resizeObserver.current.unobserve(container.current);
         }
-        resizeObserver.current && resizeObserver.current.unobserve(container.current);
       } else {
         if (container.current) {
           resizeFn();
