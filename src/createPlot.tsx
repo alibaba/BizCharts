@@ -1,7 +1,7 @@
 import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 
 import _uniqId from '@antv/util/lib/unique-id';
-import _isEqual from '@antv/util/lib/is-equal';
+
 import _isFunction from '@antv/util/lib/is-function';
 import withContainer from './boundary/withContainer';
 import ErrorBoundary, { ErrorFallback } from './boundary/ErrorBoundary';
@@ -169,7 +169,7 @@ class BasePlot extends React.Component<any> {
       'onGetG2Instance',
       'data',
     ]);
-    return !_isEqual(preConfig, currentConfig);
+    return !shallowEqual(preConfig, currentConfig);
   }
   diffData() {
     // 只有数据更新就不重绘，其他全部直接重新创建实例。

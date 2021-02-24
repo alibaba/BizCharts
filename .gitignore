@@ -1,6 +1,7 @@
 .idea
 .history
 node_modules
+docs
 lib
 esm
 es
