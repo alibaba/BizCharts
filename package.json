@@ -45,7 +45,6 @@
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
-    "@alife/bx-jest-electron": "^0.1.1-beta.1",
     "@antv/component": "^0.6.3",
     "@antv/g2": "~4.1.0",
     "@antv/g2plot": "~2.3.1",
@@ -61,6 +60,8 @@
     "warning": "^4.0.3"
   },
   "devDependencies": {
+    "bx-jest-electron": "^0.1.0",
+    "ts-loader": "^8.0.17",
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
@@ -135,8 +136,8 @@
     "webpack-cli": "^3.3.11"
   },
   "jest": {
-    "runner": "@alife/bx-jest-electron/runner",
-    "testEnvironment": "@alife/bx-jest-electron/environment",
+    "runner": "bx-jest-electron/runner",
+    "testEnvironment": "bx-jest-electron/environment",
     "preset": "ts-jest",
     "collectCoverage": false,
     "collectCoverageFrom": [
