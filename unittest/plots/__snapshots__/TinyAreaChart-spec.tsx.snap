@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-TinyAreaChart 堆叠面积图-旧版 1`] = `
+exports[`Plots-TinyAreaChart 迷你面积图-旧版 1`] = `
 Object {
-  "animation": true,
+  "animation": Object {},
   "appendPadding": Array [
     10,
     5,

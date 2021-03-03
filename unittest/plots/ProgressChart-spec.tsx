@@ -8,8 +8,9 @@ describe('Plots-ProgressChart', () => {
     let chart = null;
     render(<ProgressChart
       width={200}
-      height={100}
-      percent={0.8}
+      height={70}
+      percent={0.71}
+      padding={10}
       color={ ['#5B8FF9', '#E8EDF3']}
       onGetG2Instance={
         (c) => chart = c

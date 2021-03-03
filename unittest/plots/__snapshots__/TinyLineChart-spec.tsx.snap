@@ -2,7 +2,7 @@
 
 exports[`Plots-TinyLineChart TinyLineChart-guidLine-start 1`] = `
 Object {
-  "animation": true,
+  "animation": Object {},
   "annotations": Array [
     Object {
       "end": Array [
@@ -85,7 +85,7 @@ Object {
 
 exports[`Plots-TinyLineChart TinyLineChart-guidLine-type 1`] = `
 Object {
-  "animation": true,
+  "animation": Object {},
   "annotations": Array [
     Object {
       "end": Array [
@@ -161,7 +161,7 @@ Object {
 
 exports[`Plots-TinyLineChart 基础TinyLineChart 1`] = `
 Object {
-  "animation": true,
+  "animation": Object {},
   "appendPadding": Array [
     10,
     5,

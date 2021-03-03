@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 
 
 describe('Plots-RingProgressChart', () => {
-  test('进度条', () => {
+  test('环形进度条', () => {
     let chart = null;
     render(<RingProgressChart
       width={100}
@@ -16,6 +16,6 @@ describe('Plots-RingProgressChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   })
 })

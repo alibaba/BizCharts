@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Plots-RingProgressChart 进度条 1`] = `
+exports[`Plots-RingProgressChart 环形进度条 1`] = `
 Object {
-  "animation": true,
+  "animation": Object {},
   "appendPadding": Array [
     10,
     5,

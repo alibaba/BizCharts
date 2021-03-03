@@ -92,7 +92,7 @@ describe('Plots-TinyColumnChart', () => {
             }}
         />);
         expect(chart.options).toMatchSnapshot();
-        cleanup();
+        // cleanup();
     });
 
 });

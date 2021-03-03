@@ -26,7 +26,7 @@ export const replaceApi = (replaceApiList: Array<ReplaceApi>, options: object) =
  * 例如：将angleAxis的作为xAxis的配置
  */
 export const polyfillAxis = (cfg, name) => {
-  const options: Record<string, any> | boolean = get(cfg, name);
+  const options = get(cfg, name);
   if (options === false || options === null) {
     cfg[name] = null;
     return;
@@ -42,7 +42,6 @@ export const polyfillAxis = (cfg, name) => {
     warn(true, `${name} 配置参数不正确`);
     return;
   }
-
 
   polyfillVisible(options, 'line');
   polyfillVisible(options, 'grid');

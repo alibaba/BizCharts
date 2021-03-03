@@ -15,7 +15,7 @@ const MOCK_DATA = [
 ];
 
 describe('Plots-TinyAreaChart', () => {
-  test('堆叠面积图-旧版', () => {
+  test('迷你面积图-旧版', () => {
     let chart = null;
     render(<TinyAreaChart
       data={MOCK_DATA}
