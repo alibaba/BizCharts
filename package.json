@@ -45,10 +45,10 @@
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
   "dependencies": {
-    "@antv/component": "^0.6.3",
-    "@antv/g2": "~4.1.0",
-    "@antv/g2plot": "~2.3.1",
-    "@antv/util": "^2.0.5",
+    "@antv/component": "*",
+    "@antv/util": "*",
+    "@antv/g2": "4.1.12",
+    "@antv/g2plot": "2.3.12",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "babel-plugin-transform-replace-object-assign": "^2.0.0",
@@ -59,6 +59,7 @@
     "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "bx-jest-electron": "^0.1.0",
     "ts-loader": "^8.0.17",
