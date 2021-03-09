@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.8",
+  "version": "4.1.9",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -61,8 +61,6 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "bx-jest-electron": "^0.1.0",
-    "ts-loader": "^8.0.17",
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
@@ -96,6 +94,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-umi": "^1.8.1",
     "babel-runtime": "^6.26.0",
+    "bx-jest-electron": "^0.1.0",
     "clean-css": "^4.2.1",
     "coveralls": "^3.0.6",
     "cross-env": "^5.2.0",
@@ -108,7 +107,6 @@
     "imports-loader": "^0.8.0",
     "in-publish": "^2.0.0",
     "jest": "^26.0.1",
-    "@alife/bx-jest-electron": "^0.1.0",
     "jest-extended": "^0.11.5",
     "js-beautify": "^1.10.2",
     "moment": "^2.24.0",
@@ -131,6 +129,7 @@
     "snapshot-diff": "^0.8.1",
     "style-loader": "^0.20.3",
     "ts-jest": "^26.1.0",
+    "ts-loader": "^8.0.17",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.6.0",
