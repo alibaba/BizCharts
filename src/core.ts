@@ -2,6 +2,9 @@
 import * as CanvasEngine from '@antv/g-canvas/lib';
 import * as SVGEngine from '@antv/g-svg/lib';
 import { registerEngine } from '@antv/g2/lib/core';
+// 导出自定义比例尺的能力
+export { registerScale, getScale, registerTickMethod } from '@antv/scale';
+
 import './extend/scale/scale';
 
 // 动画
@@ -15,6 +18,7 @@ registerEngine('svg', SVGEngine);
 // @ts-ignore
 export * from '@antv/g2/lib/core';
 export const VERSION = '4.1.9';
+
 
 
 // fixme: supportCSSTransform 在g2@4.1.0 后支持

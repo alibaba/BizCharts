@@ -1,4 +1,5 @@
 import React from 'react';
+import './reactElement/component';
 import _Annotation from '@antv/g2/lib/chart/controller/annotation';
 import * as _ from '@antv/util';
 import ChartViewContext from '../../context/view';
@@ -25,7 +26,19 @@ abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
     const chartIns = this.getChartIns();
     this.id = _.uniqueId('annotation');
     this.annotation = chartIns.annotation();
-    this.annotation[this.annotationType](this.props);
+    // this.annotation[this.annotationType](this.props);
+    if (this.annotationType === 'ReactElement') {
+      this.annotation.annotation({
+        type: 'html',
+        isReactElement: true,
+        ...this.props
+      });
+    } else {
+      this.annotation.annotation({
+        type: this.annotationType,
+        ...this.props
+      });
+    }
     this.annotation.option[this.annotation.option.length - 1].__id = this.id;
   }
   componentDidUpdate() {
@@ -35,9 +48,11 @@ abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
         index = i;
       }
     });
-    this.annotation.option[index] = { type: this.annotationType, ...this.props, __id: this.id };
-    // fixme: 需要判断view的情况
-    this.getChartIns().render();
+    if (this.annotationType === 'ReactElement') {
+      this.annotation.option[index] = { type: 'html', isReactElement: true, ...this.props, __id: this.id };
+    } else {
+      this.annotation.option[index] = { type: this.annotationType, ...this.props, __id: this.id };
+    }
   }
   componentWillUnmount() {
     let index = null;

@@ -44,23 +44,16 @@ class ChartHelper extends EventEmitter {
     if (!this.chart) {
       return;
     }
-    // this.chart.render();
-    // if (this.isNewInstance) {
-    //   this.onGetG2Instance();
-    //   // @ts-ignore
-    //   this.chart.unbindAutoFit(); // 不使用g2的监听
-    //   this.isNewInstance = false;
-    // }
-    // // 处理elements状态
-    // this.chart.emit('processElemens');
     try {
       // 普通error 只能兜住react render周期里的error。 chart render周期的error 要单独处理
-      this.chart.render();
       if (this.isNewInstance) {
+        this.chart.render();
         this.onGetG2Instance();
         // @ts-ignore
         this.chart.unbindAutoFit(); // 不使用g2的监听
         this.isNewInstance = false;
+      } else {
+        this.chart.render(true);
       }
       // 处理elements状态
       this.chart.emit('processElemens');
@@ -176,6 +169,7 @@ class ChartHelper extends EventEmitter {
         }
         this.chart.emit(VIEW_LIFE_CIRCLE.AFTER_CHANGE_DATA);
       }
+      console.log('====', isEqual)
     } else {
       this.chart.data(data);
     }

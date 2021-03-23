@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.9",
+  "version": "4.1.10-beta.1",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -98,6 +98,7 @@
     "clean-css": "^4.2.1",
     "coveralls": "^3.0.6",
     "cross-env": "^5.2.0",
+    "d3-scale": "^3.2.3",
     "declaration-bundler-webpack-plugin": "^1.0.3",
     "eslint": "^6.2.1",
     "git-directory-deploy": "^1.5.1",

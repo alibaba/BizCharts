@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Chart from '../../src/components/Chart';
 import Interval from '../../src/geometry/Interval';
 import { Html } from '../../src/components/Annotation';
+import { ReactElement } from '../../src/components/Annotation';
 import '../../src/core';
 import { render, cleanup } from '@testing-library/react';
 
@@ -131,7 +132,8 @@ const MOCK_DATA = [
 
 const Demo = (props) => {
 	const { onGetG2Instance, ...others } = props;
-	return <Chart forceUpdate appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
+	const [count, setCount] = useState(100);
+	return <Chart appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
 		<Interval
 			position="month*temperature"
 			color="city"
@@ -139,6 +141,7 @@ const Demo = (props) => {
 			{...others}
 		/>
     <Html position={['min', 'max']} html="<div>123</div>" />
+		<ReactElement position={['min', 'max']} refreshDeps={count} content={() => <div>678</div>} />
 	</Chart>
 }
 
@@ -147,8 +150,8 @@ describe('Anno-Annotation', () => {
 	test('html', async () => {
 		let chart = null;
 		render(<Demo onGetG2Instance={c => { console.log(c); chart = c }} />);
-		expect(chart.annotation().option.length).toBe(1);
+		expect(chart.annotation().option.length).toBe(2);
     expect(chart.annotation().option[0].type).toBe('html');
-    cleanup();
+    // cleanup();
 	})
 })

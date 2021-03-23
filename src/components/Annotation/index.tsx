@@ -6,6 +6,7 @@ export { default as DataMarker } from './dataMarker';
 export { default as DataRegion } from './dataRegion';
 export { default as RegionFilter } from './regionFilter';
 export { default as Html } from './html';
+export { default as ReactElement } from './reactElement';
 export { default as Image } from './image';
 export { default as Line } from './line';
 export { default as Region } from './region';
