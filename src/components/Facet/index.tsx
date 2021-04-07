@@ -39,6 +39,14 @@ export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
 function Facet(props: IFacetProps) {
   const chart = useChartView();
   const { type, children, ...cfg } = props;
+  // @ts-ignore
+  if (chart.facetInstance) {
+    // 分面如果已存在不能重复执行，销毁重新配置
+    // @ts-ignore
+    chart.facetInstance.destroy();
+    // @ts-ignore
+    chart.facetInstance = null;
+  }
   if (_isFunction(children)) {
     chart.facet(type, {
       ...cfg,

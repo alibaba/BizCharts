@@ -451,29 +451,10 @@ export interface IBaseGemoProps extends React.Props<any> {
    * @example
    * ```ts
    * // data: [ {x: 1, y: 2, z: 'a'}, {x: 2, y: 2, z: 'b'} ]
-   * // 在每个图形上显示 z 字段对应的数值
-   * label({
-   *   fields: [ 'z' ]
-   * });
+   * 
+   * <Interval label="y" />
    *
-   * label(false); // 不展示 label
-   *
-   * // 在每个图形上显示 x 字段对应的数值，同时配置文本颜色为红色
-   * label('x', {
-   *   style: {
-   *     fill: 'red',
-   *   },
-   * })
-   *
-   * // 以 type 类型的 label 渲染每个图形上显示 x 字段对应的数值，同时格式化文本内容
-   * label('x', (xValue) => {
-   *   return {
-   *     content: xValue + '%',
-   *   };
-   * }, {
-   *   type: 'base' // 声明 label 类型
-   * })
-   * ```
+
    *
    * @type {(LabelOption | false | FieldString | [FieldString, GeometryLabelCfg | LabelCallback] | [FieldString, LabelCallback, GeometryLabelCfg])}
    * @memberof IBaseGemo

@@ -169,7 +169,6 @@ class ChartHelper extends EventEmitter {
         }
         this.chart.emit(VIEW_LIFE_CIRCLE.AFTER_CHANGE_DATA);
       }
-      console.log('====', isEqual)
     } else {
       this.chart.data(data);
     }
