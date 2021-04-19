@@ -16,6 +16,6 @@ describe('Plots-RingProgressChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   })
 })

@@ -34,7 +34,7 @@ function Demo() {
       height={600}
       data={dv.rows}
       padding={[20, 120, 95]}
-      forceFit
+      autoFit
     >
       <Tooltip
         showTitle={false}

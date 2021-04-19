@@ -224,7 +224,7 @@ describe('Plots-CalendarChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
   test('新版日历图', () => {
     let chart = null;
@@ -252,6 +252,6 @@ describe('Plots-CalendarChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 })

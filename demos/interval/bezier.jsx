@@ -121,7 +121,7 @@ const COLORS = [
 ];
 function BezierInterval() {
   return (
-    <Chart height={300} source={data} forceFit padding={[50, 100, 50, 60]} data={data}>
+    <Chart height={300} source={data} autoFit padding={[50, 100, 50, 60]} data={data}>
       <Axis name="genre" tickLine={null} line={null} title={null} />
       <Axis name="sold" visible={false} />
       <Geom

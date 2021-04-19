@@ -10,6 +10,7 @@ import Rect from '@antv/g2/lib/facet/rect';
 import Tree from '@antv/g2/lib/facet/tree';
 
 import useChartView from '../../hooks/useChartView';
+import useChartInstance from '../../hooks/useChartInstance';
 import { registerFacet } from '../../core';
 
 registerFacet('rect', Rect);
@@ -38,6 +39,7 @@ export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
 
 function Facet(props: IFacetProps) {
   const chart = useChartView();
+  const chartInstance = useChartInstance();
   const { type, children, ...cfg } = props;
   // @ts-ignore
   if (chart.facetInstance) {
@@ -46,6 +48,8 @@ function Facet(props: IFacetProps) {
     chart.facetInstance.destroy();
     // @ts-ignore
     chart.facetInstance = null;
+    // todo: 是否有必要区分数据更新和配置项更新，当前处理为全部都重绘
+    chartInstance.forceReRender = true; // 重新渲染，不能更新
   }
   if (_isFunction(children)) {
     chart.facet(type, {

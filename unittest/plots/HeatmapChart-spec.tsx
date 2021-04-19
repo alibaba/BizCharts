@@ -139,7 +139,7 @@ describe('Plots-HeatmapChart', () => {
       data={MOCK_DATA}
       title={{
         visible: true,
-        text: '热力图形状大小映射',
+        text: '新版热力图基础用法',
       }}
       xField='name'
       yField='country'

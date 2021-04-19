@@ -68,7 +68,7 @@ const config = {
   },
   "width": 580,
   "height": 460,
-  "forceFit": false,
+  "autoFit": false,
   "colorField": "x",
   "angleField": "y",
 }

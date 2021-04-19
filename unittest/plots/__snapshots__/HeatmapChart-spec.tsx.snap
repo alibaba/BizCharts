@@ -18,6 +18,9 @@ Object {
     "#114d90",
   ],
   "colorField": "value",
+  "coordinate": Object {
+    "type": "rect",
+  },
   "data": Array [
     Object {
       "country": "AD",
@@ -591,6 +594,9 @@ Object {
     "#114d90",
   ],
   "colorField": "value",
+  "coordinate": Object {
+    "type": "rect",
+  },
   "data": Array [
     Object {
       "country": "AD",

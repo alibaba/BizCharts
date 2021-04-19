@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.10-beta.2",
+  "version": "4.1.10",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -22,8 +22,8 @@
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "browser": "umd/BizCharts.js",
   "module": "es/index.js",
+  "browser": "umd/BizCharts.js",
   "scripts": {
     "build": "run-s clean lib:* build:*",
     "build:umd": "cross-env NODE_ENV=development gulp",
@@ -47,8 +47,8 @@
   "dependencies": {
     "@antv/component": "*",
     "@antv/util": "*",
-    "@antv/g2": "4.1.12",
-    "@antv/g2plot": "2.3.12",
+    "@antv/g2": "4.1.14",
+    "@antv/g2plot": "2.3.18",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "babel-plugin-transform-replace-object-assign": "^2.0.0",

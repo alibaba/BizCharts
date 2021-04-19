@@ -13,6 +13,9 @@ Object {
   "color": "#BAE7FF-#1890FF-#0050B3",
   "colorField": "commits",
   "colors": "#BAE7FF-#1890FF-#0050B3",
+  "coordinate": Object {
+    "type": "rect",
+  },
   "data": Array [
     Object {
       "commits": 1,
@@ -1423,6 +1426,9 @@ Object {
   "autoFit": true,
   "color": "#BAE7FF-#1890FF-#0050B3",
   "colorField": "commits",
+  "coordinate": Object {
+    "type": "rect",
+  },
   "data": Array [
     Object {
       "commits": 1,

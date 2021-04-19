@@ -463,6 +463,6 @@ describe('Plots-WordCloudChart', () => {
     );
     expect(chart.options.tooltip).toBe(false);
     expect(chart.options.random).toBe(false);
-    // cleanup();
+    cleanup();
   });
 });

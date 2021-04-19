@@ -178,6 +178,6 @@ describe('Plots-PieChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
-    // cleanup();
+    cleanup();
   });
 });

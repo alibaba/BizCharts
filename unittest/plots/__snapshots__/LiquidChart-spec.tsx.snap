@@ -9,7 +9,6 @@ Object {
     10,
   ],
   "autoFit": true,
-  "color": "#6a99f9",
   "data": 0.5639,
   "outline": Object {
     "border": 2,
@@ -17,6 +16,7 @@ Object {
   },
   "percent": 0.5639,
   "radius": 0.9,
+  "shape": "circle",
   "statistic": Object {
     "content": Object {
       "formatter": [Function],
@@ -45,7 +45,6 @@ Object {
     10,
   ],
   "autoFit": true,
-  "color": "#6a99f9",
   "data": 0.5,
   "outline": Object {
     "border": 4,
@@ -53,6 +52,7 @@ Object {
   },
   "percent": 0.5,
   "radius": 0.9,
+  "shape": "circle",
   "statistic": Object {
     "content": Object {
       "formatter": [Function],

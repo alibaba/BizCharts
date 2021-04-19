@@ -52,6 +52,10 @@ class ChartHelper extends EventEmitter {
         // @ts-ignore
         this.chart.unbindAutoFit(); // 不使用g2的监听
         this.isNewInstance = false;
+        // @ts-ignore
+      } else if(this.chart.forceReRender) {
+        // forceReRender 填部分g2更新不干净的坑
+        this.chart.render();
       } else {
         this.chart.render(true);
       }

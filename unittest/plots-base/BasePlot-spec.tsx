@@ -166,7 +166,7 @@ describe('基础功能-以AreaChart为demo', () => {
     })
     fireEvent(canvas.get('el'), new MouseEvent('mouseup', getClientPoint(plot.chart.canvas, 130,100)));
     fireEvent.click(screen.getByText(/图表标题/i));
-    // .toHaveBeenCalledTimes(1); 待g2Plot修复 [已修复]
+
     expect(handleClick).toHaveBeenCalledTimes(1);
     // 图表标题是独立的div
     expect(handletTitleClick).toHaveBeenCalledTimes(1);
