@@ -76,7 +76,7 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 
 #### Update
 
-G2 decided to terminate the "Experience Improvement Program". In verson `@antv/g2@3.4.7`（released at 2018.12.26） and above, all tracking code is removed, no unexpected remote request will be sent while you are using G2. And Bizcharts Upgrade the dependent version the first time at 2018.12.26 24:00.
+G2 decided to terminate the "Experience Improvement Program". In version `@antv/g2@3.4.7`（released at 2018.12.26）and above, all tracking code is removed, no unexpected remote request will be sent while you are using G2. And Bizcharts Upgrade the dependent version the first time at 2018.12.26 24:00.
 
 ### License
 BizCharts is available under the License MIT.
