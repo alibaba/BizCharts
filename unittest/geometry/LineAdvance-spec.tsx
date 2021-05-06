@@ -1,6 +1,5 @@
 import React from 'react';
-import Chart from '../../src/components/Chart';
-import LineAdvance from '../../src/geometry/LineAdvance';
+import { Chart, LineAdvance } from '../../src';
 import '../../src/core';
 import { render, cleanup } from '@testing-library/react';
 
@@ -128,8 +127,8 @@ const MOCK_DATA = [
 ];
 
 const Demo = (props) => {
-	const { onGetG2Instance, ...others } = props;
-	return <Chart forceUpdate appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
+	const { onGetG2Instance, pure, ...others } = props;
+	return <Chart forceUpdate pure={pure} appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
 		<LineAdvance
 			position="month*temperature"
 			color="city"
@@ -155,12 +154,21 @@ describe('geomtrys-LineAdvance', () => {
 	test('smooth shape', async () => {
 		let chart = null;
 		render(<Demo shape="smooth" onGetG2Instance={c => {
-			console.log(c);
 			chart = c
 		}} />);
 		expect(chart.geometries[0].elements[0].shapeType).toBe('smooth');
 		expect(chart.geometries[1].elements[0].shapeType).toBe('gradient-smooth');
 		cleanup()
+	});
+
+	test('pure chart tooltip', async () => {
+		let chart = null;
+		render(<Demo shape="smooth" pure onGetG2Instance={c => {
+			chart = c;
+			console.log(chart.options.tooltip)
+		}} />);
+		expect(chart.options.tooltip).toBe(false);
+		cleanup();
 	})
 	
 })

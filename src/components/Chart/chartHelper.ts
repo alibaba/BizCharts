@@ -111,6 +111,8 @@ class ChartHelper extends EventEmitter {
       this.chart.axis(false);
       this.chart.tooltip(false);
       this.chart.legend(false);
+      // @ts-ignore
+      this.chart.isPure = true;
     }
 
     // 事件

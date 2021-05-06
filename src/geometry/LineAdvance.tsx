@@ -10,6 +10,7 @@ import _set from '@antv/util/lib/set';
 import { registerShape } from '../core';
 import * as d3Color from 'd3-color';
 import useChartView from '../hooks/useChartView';
+import useChartInstance from '../hooks/useChartInstance';
 import Line, { ILineGemoProps } from './Line';
 import Point, { IPointGemoProps } from './Point';
 import Area, { IAreaGemoProps }  from './Area';
@@ -46,9 +47,10 @@ const LineAdvance = (props: ILineAdvanceGemoProps) => {
   const { point, area, shape, ...cfg } = props;
 
   const pointCfg = { shape: 'circle' };
+  const chart = useChartInstance();
+  const view = useChartView();
   const areaCfg = { shape: shape === 'smooth' ? 'gradient-smooth' : 'gradient' };
 
-  const view = useChartView();
   const theme = view.getTheme();
   
   // todo: 需要g2层修改
@@ -57,18 +59,22 @@ const LineAdvance = (props: ILineAdvanceGemoProps) => {
   // todo: 需要g2层修改
   theme.geometries.area['gradient-smooth'] = areaStyle;
 
-  // 默认为shared
-  if (_get(view, ['options', 'tooltip', 'shared']) === undefined) {
-    _set(view, ['options', 'tooltip', 'shared'], true);
-  };
-  // 默认showCrosshairs
-  if (_get(view, ['options', 'tooltip', 'showCrosshairs']) === undefined) {
-    _set(view, ['options', 'tooltip', 'showCrosshairs'], true);
-  };
+  if (_get(chart, ['options', 'tooltip']) !== false) {
+    // 默认为shared
+    if (_get(view, ['options', 'tooltip', 'shared']) === undefined) {
+      _set(view, ['options', 'tooltip', 'shared'], true);
+    };
+    // 默认showCrosshairs
+    if (_get(view, ['options', 'tooltip', 'showCrosshairs']) === undefined) {
+      _set(view, ['options', 'tooltip', 'showCrosshairs'], true);
+    };
 
-  if (_get(view, ['options', 'tooltip', 'showMarkers']) === undefined) {
-    _set(view, ['options', 'tooltip', 'showMarkers'], true);
-  };
+    if (_get(view, ['options', 'tooltip', 'showMarkers']) === undefined) {
+      _set(view, ['options', 'tooltip', 'showMarkers'], true);
+    };
+  }
+
+
 
   if (_isObject(pointCfg)) {
     _deepMix(pointCfg, point);
