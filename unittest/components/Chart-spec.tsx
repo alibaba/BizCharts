@@ -48,4 +48,6 @@ describe('components-Chart', () => {
     await sleep(1000);
     expect(chart.options.data.length).toBe(507);
   })
+
+
 })

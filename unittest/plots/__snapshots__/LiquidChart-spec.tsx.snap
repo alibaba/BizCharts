@@ -55,7 +55,6 @@ Object {
   "shape": "circle",
   "statistic": Object {
     "content": Object {
-      "formatter": [Function],
       "style": Object {
         "fontSize": "30px",
         "lineHeight": "30px",

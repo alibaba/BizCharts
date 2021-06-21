@@ -41,6 +41,6 @@ describe('Plots-LiquidChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup()
+    // cleanup()
   })
 })

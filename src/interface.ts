@@ -191,7 +191,7 @@ export interface IViewProps extends React.ComponentPropsWithRef<any> {
   [key:string] : any;
 };
 
-export interface IBaseGemoProps extends React.Props<any> {
+export interface IBaseGemoProps extends React.PropsWithRef<any> {
   /** 图形数据坐标 */
   position: string;
   /**

@@ -73,7 +73,7 @@ abstract class Annotation<PropsI> extends React.Component<PropsI, any> {
     return this.context as any;
   }
   render() {
-    return null;
+    return <React.Fragment />;
   }
 }
 

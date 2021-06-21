@@ -21,7 +21,6 @@ Object {
   "radius": 0.98,
   "statistic": Object {
     "content": Object {
-      "formatter": [Function],
       "style": Object {
         "fill": "#4D4D4D",
         "fontSize": "14px",
