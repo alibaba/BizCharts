@@ -165,10 +165,9 @@ describe('geomtrys-LineAdvance', () => {
 		let chart = null;
 		render(<Demo shape="smooth" pure onGetG2Instance={c => {
 			chart = c;
-			console.log(chart.options.tooltip)
 		}} />);
 		expect(chart.options.tooltip).toBe(false);
 		cleanup();
-	})
+	});
 	
 })

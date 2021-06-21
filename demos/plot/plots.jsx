@@ -105,6 +105,8 @@ function Basic() {
         onGetG2Instance={() => {
           // console.log('onGetG2Instance', c)
         }}
+        placeholder
+        // data={[]}
         onAfterrender={() => { console.log('onAfterrender') }}
       />
 

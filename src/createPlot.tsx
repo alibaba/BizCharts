@@ -20,7 +20,7 @@ import {
   polyfillTitleEvent,
   polyfillDescriptionEvent,
 } from './plots/core/polyfill';
-import { debounce, isArray, isNil } from '@antv/util';
+import { debounce, isArray, isFunction, isNil } from '@antv/util';
 import warn from 'warning';
 
 const DEFAULT_PLACEHOLDER = (
@@ -71,6 +71,11 @@ interface BasePlotOptions {
    * 请使用autoFit替代forceFit
    */
   forceFit?: boolean;
+  /**
+   * 是否是物料组件，因搭建引擎消费ref和原来的组件吐的react实例不兼容。
+   * 该属性会影响ref的消费，为ali-lowcode-engine消费而生。
+   */
+  isMaterial?: boolean;
 }
 
 export { BasePlotOptions };
@@ -222,10 +227,11 @@ function createPlot<IPlotConfig extends Record<string, any>>(
   transCfg: Function = cfg => cfg,
 ) {
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
-    const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, containerStyle, placeholder, ErrorBoundaryProps, ...cfg } = props;
+    // containerStyle 应该删掉，可以通过containerProps.style 配置不影响用户暂时保留
+    const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, containerStyle, containerProps, placeholder, ErrorBoundaryProps, isMaterial, ...cfg } = props;
     
     const realCfg = transCfg(cfg);
-    const container = useRef();
+    const container = useRef<HTMLDivElement>();
     const titleDom = useRef();
     const descDom = useRef();
 
@@ -235,7 +241,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(
       if (!container.current) {
         return
       }
-      const containerSize = getElementSize(container.current);
+      const containerSize = getElementSize(container.current, props)
       const titleSize = titleDom.current ? getElementSize(titleDom.current) : { width: 0, height: 0 };
       const descSize = descDom.current ? getElementSize(descDom.current) : { width: 0, height: 0 };
       let ch = (containerSize.height - titleSize.height - descSize.height);
@@ -297,7 +303,17 @@ function createPlot<IPlotConfig extends Record<string, any>>(
 
 
     return <ErrorBoundary FallbackComponent={FallbackComponent} {...ErrorBoundaryProps}>
-      <div ref={container} className="bizcharts-plot" style={{ position:'relative', height: props.height || '100%', width: props.width || '100%' }}>
+      <div ref={(el) => {
+        container.current = el; // null or div
+        // 合并ref，供搭建引擎消费。原来的ref已使用，搭建引擎需要最外层div。
+        if (isMaterial) {
+          if (isFunction(ref)) {
+            ref(el);
+          } else if(ref) {
+            ref.current = el;
+          }
+        }
+      }} className="bizcharts-plot" {...containerProps} style={{ position:'relative', height: props.height || '100%', width: props.width || '100%' }}>
         {/* title 不一定有 */}
         { titleCfg.visible && <div ref={titleDom} {...polyfillTitleEvent(realCfg)} className="bizcharts-plot-title" style={titleStyle}>{titleCfg.text}</div> }
         {/* description 不一定有 */}
@@ -306,7 +322,8 @@ function createPlot<IPlotConfig extends Record<string, any>>(
           // API 统一
           appendPadding={[10 , 5, 10, 10]}
           autoFit={isAutoFit}
-          ref={ref}
+          // 注意：isMaterial ref 吐的是最外层div，供ali-lowcode-engine消费。原先的消费方式不能breack。
+          ref={isMaterial ? undefined : ref}
           {...realCfg}
           PlotClass={PlotClass}
           containerStyle={{

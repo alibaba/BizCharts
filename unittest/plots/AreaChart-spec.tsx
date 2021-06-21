@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import AreaChart from '../../src/plots/AreaChart';
 import { render, cleanup } from '@testing-library/react';
 
@@ -227,4 +227,63 @@ describe('Plots-AreaChart', () => {
     expect(chart.options.annotations[1].end[1]).toBe((1998 + 1250 + 1720) / 3);
     cleanup();
   });
+
+  test('搭建containerProps透传', async () => {
+    let chart = null;
+    const { baseElement, debug } = render(<AreaChart
+      data={MOCK_DATA}
+      xField="Date"
+      yField="scales"
+      containerProps={{
+        "data-test": 'xxx'
+      }}
+      // @ts-ignore
+      line={{ visible: false }}
+      // @ts-ignore
+      point={{ visible: false }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    expect(baseElement.querySelector('div[data-test="xxx"]')).not.toBeNull();
+    cleanup();
+  })
+
+  test('搭建ref透传', async () => {
+    let chart = null;
+    const chartRef = {current: null};
+    const { baseElement, debug } = render(<AreaChart
+      data={MOCK_DATA}
+      xField="Date"
+      yField="scales"
+      ref={chartRef}
+      isMaterial
+      // @ts-ignore
+      line={{ visible: false }}
+      // @ts-ignore
+      point={{ visible: false }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+    const chartRef2 = {current: null};
+    render(<AreaChart
+      data={MOCK_DATA}
+      xField="Date"
+      yField="scales"
+      ref={chartRef2}
+      // isMaterial
+      // @ts-ignore
+      line={{ visible: false }}
+      // @ts-ignore
+      point={{ visible: false }}
+      onGetG2Instance={
+        (c) => chart = c
+      }
+    />);
+
+    expect(chartRef.current.className).toEqual('bizcharts-plot');
+    expect(chartRef2.current.g2Instance).not.toBeNull();
+
+  })
 });
