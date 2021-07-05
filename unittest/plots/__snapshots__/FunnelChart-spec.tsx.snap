@@ -10,6 +10,14 @@ Object {
   ],
   "autoFit": true,
   "compareField": "quarter",
+  "conversionTag": Object {
+    "offsetX": 10,
+    "offsetY": 0,
+    "style": Object {
+      "fill": "rgba(0,0,0,0.45)",
+      "fontSize": 12,
+    },
+  },
   "data": Array [
     Object {
       "$$conversion$$": Array [
@@ -122,6 +130,26 @@ Object {
       "quarter": "2020Q2",
     },
   ],
+  "label": Object {
+    "style": Object {
+      "fill": "#fff",
+      "fontSize": 12,
+    },
+  },
+  "maxSize": 1,
+  "meta": Object {
+    "$$mappingValue$$": Object {
+      "max": 1,
+      "min": 0,
+      "nice": false,
+    },
+  },
+  "minSize": 0,
+  "tooltip": Object {
+    "shared": false,
+    "showMarkers": false,
+    "showTitle": false,
+  },
   "xField": "action",
   "yField": "pv",
 }
@@ -137,6 +165,14 @@ Object {
   ],
   "autoFit": true,
   "compareField": "quarter",
+  "conversionTag": Object {
+    "offsetX": 10,
+    "offsetY": 0,
+    "style": Object {
+      "fill": "rgba(0,0,0,0.45)",
+      "fontSize": 12,
+    },
+  },
   "data": Array [
     Object {
       "$$conversion$$": Array [
@@ -250,6 +286,26 @@ Object {
     },
   ],
   "isTransposed": true,
+  "label": Object {
+    "style": Object {
+      "fill": "#fff",
+      "fontSize": 12,
+    },
+  },
+  "maxSize": 1,
+  "meta": Object {
+    "$$mappingValue$$": Object {
+      "max": 1,
+      "min": 0,
+      "nice": false,
+    },
+  },
+  "minSize": 0,
+  "tooltip": Object {
+    "shared": false,
+    "showMarkers": false,
+    "showTitle": false,
+  },
   "transpose": true,
   "xField": "action",
   "yField": "pv",
@@ -266,6 +322,14 @@ Object {
   ],
   "autoFit": true,
   "compareField": "quarter",
+  "conversionTag": Object {
+    "offsetX": 10,
+    "offsetY": 0,
+    "style": Object {
+      "fill": "rgba(0,0,0,0.45)",
+      "fontSize": 12,
+    },
+  },
   "data": Array [
     Object {
       "$$conversion$$": Array [
@@ -379,6 +443,26 @@ Object {
     },
   ],
   "isTransposed": true,
+  "label": Object {
+    "style": Object {
+      "fill": "#fff",
+      "fontSize": 12,
+    },
+  },
+  "maxSize": 1,
+  "meta": Object {
+    "$$mappingValue$$": Object {
+      "max": 1,
+      "min": 0,
+      "nice": false,
+    },
+  },
+  "minSize": 0,
+  "tooltip": Object {
+    "shared": false,
+    "showMarkers": false,
+    "showTitle": false,
+  },
   "xField": "action",
   "yField": "pv",
 }

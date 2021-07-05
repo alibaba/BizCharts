@@ -1,7 +1,7 @@
 import React from 'react';
 import _debounce from '@antv/util/lib/debounce';
 import { getChartSize } from '@antv/g2/lib/util/dom';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 import ErrorBoundary, { ErrorFallback } from '../../boundary/ErrorBoundary';
 import withContainer from '../../boundary/withContainer';

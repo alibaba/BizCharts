@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from '../../src/components/Chart';
-import Interval from '../../src/geometry/Interval';
+import LineChart from '../../src/plots/LineChart';
+import LineAdvance from '../../src/geometry/LineAdvance';
 import '../../src/core';
-import { render, cleanup } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
+
 
 const MOCK_DATA = [
 	{
@@ -108,7 +110,7 @@ const MOCK_DATA = [
 	{
 		month: "Nov",
 		city: "Tokyo",
-		temperature: 8.9
+		temperature: 3.9
 	},
 	{
 		month: "Nov",
@@ -118,53 +120,30 @@ const MOCK_DATA = [
 	{
 		month: "Dec",
 		city: "Tokyo",
-		temperature: 5.6
+		temperature: 3.6
 	},
 	{
 		month: "Dec",
 		city: "London",
-		temperature: 9.8
+		temperature: 1.8
 	}
 ];
 
-const Demo = (props) => {
-	const { onGetG2Instance, ...others } = props;
-	return <Chart forceUpdate appendPadding={10} data={MOCK_DATA} width={500} height={300} onGetG2Instance={onGetG2Instance}>
-		<Interval
-			position="month*temperature"
-			color="city"
-			area
-			{...others}
-		/>
-	</Chart>
-}
 
-
-describe('geomtrys-Interval', () => {
-	test('has one geometry', async () => {
-		let chart = null;
-		render(<Demo onGetG2Instance={c => chart = c} />);
-		expect(chart.geometries.length).toBe(1);
-		expect(chart.geometries[0].type).toBe('interval');
-		cleanup()
-	})
-
-	test('funnel shape', async () => {
-		let chart = null;
-		render(<Demo shape="funnel" onGetG2Instance={c => {
-			chart = c
-		}} />);
-		expect(chart.geometries[0].elements[0].shapeType).toBe('funnel');
-		cleanup()
-	})
-
-	test('customInfo, props of interval', async () => {
-		let chart = null;
-		render(<Demo shape="funnel" onGetG2Instance={c => {
-			chart = c
-		}} />);
-		expect(chart.geometries[0].elements[0].shapeType).toBe('funnel');
-		cleanup()
-	})
-
+describe('components-Chart', () => {
+  test('esize-observer', async () => {
+    let chart = null;
+    render(<div >
+      <Chart appendPadding={10} data={MOCK_DATA}  height={300} autoFit>
+      <LineAdvance 
+        shape="smooth"
+        point
+        area
+        position="month*temperature"
+        color="city"
+      />
+    </Chart>
+		<LineChart data={MOCK_DATA} xField="month" yField="temperature" color="city" />
+    </div>);
+  })
 })

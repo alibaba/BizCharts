@@ -13,7 +13,7 @@ import pickWithout from './utils/pickWithout';
 import cloneDeep from './utils/cloneDeep';
 import { REACT_PIVATE_PROPS } from './utils/constant';
 import { Plot } from '@antv/g2plot/lib/core/plot';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 import getElementSize from './utils/getElementSize';
 import {
   polyfillEvents,

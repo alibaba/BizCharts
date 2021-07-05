@@ -58,7 +58,7 @@ class GeomHelper {
     compareProps(
       this.config,
       newConfig,
-      ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size', 'animate', 'state'],
+      ['position', 'shape', 'color', 'label', 'style', 'tooltip', 'size', 'animate', 'state', 'customInfo'],
       (value, key) => {
         // value 已被转为array
         warn(!(key === 'label' && value[0] === true), 'label 值类型错误，应为false | LabelOption | FieldString')
