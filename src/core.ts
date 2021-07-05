@@ -17,7 +17,7 @@ registerEngine('svg', SVGEngine);
 
 // @ts-ignore
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.1.11-beta.1';
+export const VERSION = '4.1.11-beta.2';
 
 
 
