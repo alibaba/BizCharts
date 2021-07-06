@@ -46,8 +46,13 @@ describe('Plots-BulletChart', () => {
       data={[
         {
           title: '满意度',
-          measures: [83],
+          measures: [53],
           targets: [90],
+        },
+        {
+          title: '满意度2',
+          measures: [73],
+          targets: [80],
         },
       ]}
       xField="title"
@@ -61,6 +66,7 @@ describe('Plots-BulletChart', () => {
     expect(chart.options.targetField).toBe('target');
 
     expect(chart.options.data[0].target).toBe(90);
-    cleanup();
+    expect(chart.options.data[1].target).toBe(80);
+    // cleanup();
   });
 })

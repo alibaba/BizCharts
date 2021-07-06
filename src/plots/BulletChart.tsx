@@ -133,13 +133,26 @@ const polyfill = (opt: BulletOptions): BulletOptions => {
     set(options, 'targetField', 'target');
   }
   // polyfill
-  if (isArray(get(opt, 'data.0.targets'))) {
+  warn(!isNil(get(opt, 'rangeMax')), '该属性已废弃，请在数据中配置range，并配置rangeField');
+  if (isArray(get(opt, 'data'))) {
     // 兼容旧版数据格式
-    set(options, 'data.0.target', get(opt, 'data.0.targets')[0]);
-  }
-  if (!isNil(get(opt, 'rangeMax'))) {
-    warn(false, '该属性已废弃，请在数据中配置range，并配置rangeField');
-    set(options, 'data.0.ranges', [get(opt, 'rangeMax')]);
+    set(options, 'data', opt.data.map(it => {
+      let range = {};
+      if (!isNil(get(opt, 'rangeMax'))) {
+        range = { ranges: [get(opt, 'rangeMax')] }
+      }
+      if (isArray(it.targets)) {
+        return {
+          ...range,
+          target: it.targets[0],
+          ...it,
+        }
+      }
+      return {
+        ...range,
+        ...it
+      };
+    }));
   }
   return options;
 }
