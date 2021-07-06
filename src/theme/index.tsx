@@ -16,4 +16,4 @@ antvLight.fontFamily = `"-apple-system", "Segoe UI", "Helvetica Neue", Arial,
 
 registerTheme('dark', createThemeByStyleSheet(antvDark));
 registerTheme('default', createThemeByStyleSheet(antvLight));
-registerTheme('ligtht', createThemeByStyleSheet(antvLight));
+registerTheme('light', createThemeByStyleSheet(antvLight));
