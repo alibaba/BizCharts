@@ -47,14 +47,14 @@
   "dependencies": {
     "@antv/component": "*",
     "@antv/util": "*",
-    "@antv/g2": "4.1.14",
-    "@antv/g2plot": "2.3.18",
+    "@antv/g2": "^4.1.20",
+    "@antv/g2plot": "^2.3.18",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "babel-plugin-transform-replace-object-assign": "^2.0.0",
     "d3-color": "^1.4.1",
-    "react-error-boundary": "3.0.2",
-    "react-reconciler": "^0.25.1",
+    "react-error-boundary": "^3.0.2",
+    "react-reconciler": "^0.26.2",
     "resize-observer-polyfill": "^1.5.1",
     "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
