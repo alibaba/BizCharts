@@ -159,8 +159,14 @@ export interface IViewProps extends React.ComponentPropsWithRef<any> {
   padding?: ViewPadding;
   /** view 的绘制范围，起始点为左上角。 */
   region?: {
-    start?: number | string;
-    end?: number | string;
+    start?: {
+      x: number | string;
+      y: number | string;
+    };
+    end?: {    
+      x: number | string;
+      y: number | string;
+    };
   };
   /**
   * @memberof IView
