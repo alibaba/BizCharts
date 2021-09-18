@@ -12,7 +12,7 @@ interface WordStylePolyfill extends WordStyle {
   // gridSize?:number;
 }
 
-export interface WordCloudCfg extends Partial<WordCloudOptions>, BasePlotOptions {
+export interface WordCloudCfg extends Partial<WordCloudOptions>, Omit<BasePlotOptions, 'events'> {
   tooltip?: TooltipAPIOptions;
   wordStyle?: WordStylePolyfill;
   maskImage?: string;
