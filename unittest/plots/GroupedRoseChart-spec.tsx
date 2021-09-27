@@ -217,7 +217,7 @@ describe('Plots-GroupedRoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
 });

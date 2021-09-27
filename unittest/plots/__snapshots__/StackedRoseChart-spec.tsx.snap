@@ -106,7 +106,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "meta": Object {
@@ -243,7 +242,6 @@ Object {
     "visible": true,
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "renderer": "canvas",
@@ -367,7 +365,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "renderer": "canvas",
@@ -499,7 +496,6 @@ Object {
     "visible": true,
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "renderer": "canvas",
@@ -958,7 +954,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "renderer": "canvas",

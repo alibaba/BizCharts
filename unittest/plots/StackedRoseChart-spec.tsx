@@ -41,7 +41,7 @@ describe('Plots-StackedRoseChart', () => {
       }
     />)
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   test('老版本categoryField,radiusField,stackField --> xField,yField,seriesField', () => {
@@ -61,7 +61,7 @@ describe('Plots-StackedRoseChart', () => {
     expect(chart.options.xField).toBe('月份');
     expect(chart.options.yField).toBe('月均降雨量');
     expect(chart.options.seriesField).toBe('name');
-    cleanup();
+    // cleanup();
   });
 
 
@@ -92,7 +92,7 @@ describe('Plots-StackedRoseChart', () => {
       }
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
 
@@ -132,7 +132,7 @@ describe('Plots-StackedRoseChart', () => {
     expect(fn).not.toHaveBeenCalled();
     expect(fn2).toHaveBeenCalled();
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
 
@@ -171,7 +171,7 @@ describe('Plots-StackedRoseChart', () => {
       showMarkers: false,
       visible: true,
     });
-    cleanup();
+    // cleanup();
   });
 
   test('label-堆叠图', () => {
@@ -194,7 +194,7 @@ describe('Plots-StackedRoseChart', () => {
       }}
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   test('label-inner', () => {
@@ -211,7 +211,7 @@ describe('Plots-StackedRoseChart', () => {
       }}
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
   test('label-outer', () => {
@@ -227,7 +227,7 @@ describe('Plots-StackedRoseChart', () => {
       }}
     />);
     expect(chart.options).toMatchSnapshot();
-    cleanup();
+    // cleanup();
   });
 
 });

@@ -38,7 +38,6 @@ Object {
     "visible": true,
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
@@ -102,7 +101,6 @@ Object {
     "visible": true,
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
@@ -173,7 +171,6 @@ Object {
     "visible": true,
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
@@ -598,7 +595,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
@@ -672,7 +668,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "meta": Object {
@@ -746,7 +741,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
@@ -811,7 +805,6 @@ Object {
     },
   },
   "legend": Object {
-    "offsetX": -10,
     "position": "right",
   },
   "padding": Array [
