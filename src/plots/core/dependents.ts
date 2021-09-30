@@ -22,6 +22,7 @@ type CategoryLegend = typeof Legend.Category;
 type ContinuousLegend = typeof Legend.Continuous;
 export { CategoryLegend, ContinuousLegend };
 type HtmlTooltip = typeof Tooltip.Html;
+
 export { HtmlTooltip };
 export { Slider };
 export { Scrollbar };

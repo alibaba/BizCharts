@@ -4,7 +4,7 @@ import * as SVGEngine from '@antv/g-svg/lib';
 import { registerEngine } from '@antv/g2/lib/core';
 // 导出自定义比例尺的能力
 export { registerScale, getScale, registerTickMethod } from '@antv/scale';
-
+export { setGlobal, GLOBAL } from '@antv/g2Plot/lib/core/global';
 import './extend/scale/scale';
 
 // 动画
@@ -17,7 +17,7 @@ registerEngine('svg', SVGEngine);
 
 // @ts-ignore
 export * from '@antv/g2/lib/core';
-export const VERSION = '4.1.12-beta.1';
+export const VERSION = '4.1.12';
 
 
 
