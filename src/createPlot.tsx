@@ -24,9 +24,9 @@ import { debounce, isArray, isFunction, isNil } from '@antv/util';
 import warn from 'warning';
 
 // 国际化处理
-import { registerLocale } from '@antv/g2Plot/lib/core/locale';
-import { EN_US_LOCALE } from '@antv/g2Plot/lib/locales/en_US';
-import { ZH_CN_LOCALE } from '@antv/g2Plot/lib/locales/zh_CN';
+import { registerLocale } from '@antv/g2plot/lib/core/locale';
+import { EN_US_LOCALE } from '@antv/g2plot/lib/locales/en_US';
+import { ZH_CN_LOCALE } from '@antv/g2plot/lib/locales/zh_CN';
 /** default locale register */
 registerLocale('en-US', EN_US_LOCALE);
 registerLocale('zh-CN', ZH_CN_LOCALE);
@@ -237,7 +237,7 @@ function createPlot<IPlotConfig extends Record<string, any>>(
   const Com = React.forwardRef<any, IPlotConfig>((props: IPlotConfig, ref) => {
     // containerStyle 应该删掉，可以通过containerProps.style 配置不影响用户暂时保留
     const { title, description, autoFit = true, forceFit, errorContent = ErrorFallback, containerStyle, containerProps, placeholder, ErrorBoundaryProps, isMaterial, ...cfg } = props;
-    
+
     const realCfg = transCfg(cfg);
     const container = useRef<HTMLDivElement>();
     const titleDom = useRef();
