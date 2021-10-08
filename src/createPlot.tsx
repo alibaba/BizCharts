@@ -24,9 +24,9 @@ import { debounce, isArray, isFunction, isNil } from '@antv/util';
 import warn from 'warning';
 
 // 国际化处理
-import { registerLocale } from '@antv/g2Plot/lib/core/locale';
-import { EN_US_LOCALE } from '@antv/g2Plot/lib/locales/en_US';
-import { ZH_CN_LOCALE } from '@antv/g2Plot/lib/locales/zh_CN';
+import { registerLocale } from '@antv/g2plot/lib/core/locale';
+import { EN_US_LOCALE } from '@antv/g2plot/lib/locales/en_US';
+import { ZH_CN_LOCALE } from '@antv/g2plot/lib/locales/zh_CN';
 /** default locale register */
 registerLocale('en-US', EN_US_LOCALE);
 registerLocale('zh-CN', ZH_CN_LOCALE);
