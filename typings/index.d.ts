@@ -30,10 +30,12 @@ declare namespace bizcharts{
   }
   export const G2: G2;
 
+  type setTheme = ((option: 'default' | 'dark') =>  void) | ((option: string) => void) | ((option: object) => void)
+
   /**
    * setTheme
    */
-  export const setTheme:G2.Global.setTheme;
+  export const setTheme: setTheme;
   
   /**
    * Util
