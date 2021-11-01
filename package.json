@@ -46,8 +46,8 @@
   },
   "dependencies": {
     "@antv/component": "*",
-    "@antv/g2": "4.1.30",
-    "@antv/g2plot": "2.3.35",
+    "@antv/g2": "4.1.32",
+    "@antv/g2plot": "2.3.39",
     "@antv/util": "*",
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.10",
