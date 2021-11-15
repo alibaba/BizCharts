@@ -20,7 +20,7 @@ import {
   polyfillTitleEvent,
   polyfillDescriptionEvent,
 } from './plots/core/polyfill';
-import { debounce, isArray, isFunction, isNil } from '@antv/util';
+import { debounce, isArray, isFunction, isNil, isEqual } from '@antv/util';
 import warn from 'warning';
 
 // 国际化处理
@@ -133,25 +133,6 @@ class BasePlot extends React.Component<any> {
   }
 
   protected checkInstanceReady() {
-    if (!this.g2Instance) {
-      this.initInstance();
-      this.g2Instance.render();
-    } else if (this.shouldReCreate()) {
-      // 只有数据更新就不重绘，其他全部直接重新创建实例。
-      this.g2Instance.destroy();
-      this.initInstance();
-      this.g2Instance.render();
-    } else if (this.diffConfig()) {
-      const options = pickWithout(this.props, [
-        'container',
-        'PlotClass',
-        'onGetG2Instance',
-        'children',
-      ]);
-      this.g2Instance.update(options);
-    } else if (this.diffData()) {
-      this.g2Instance.changeData(this.props.data);
-    }
     // 缓存配置
     const currentConfig = pickWithout(this.props, [
       ...REACT_PIVATE_PROPS,
@@ -160,6 +141,23 @@ class BasePlot extends React.Component<any> {
       'onGetG2Instance',
       'data',
     ]);
+    if (!this.g2Instance) {
+      this.initInstance();
+      this.g2Instance.render();
+    } else if (this.shouldReCreate()) {
+      // forceupdate
+      this.g2Instance.destroy();
+      this.initInstance();
+      this.g2Instance.render();
+    } else if (this.diffConfig()) {
+      // 对比options是否更新
+      if (!isEqual(currentConfig, this.preConfig)) {
+        this.g2Instance.update(currentConfig);
+      }
+    } else if (this.diffData()) {
+      this.g2Instance.changeData(this.props.data);
+    }
+    
     this.preConfig = cloneDeep(currentConfig);
     this.g2Instance.data = this.props.data;
   }
