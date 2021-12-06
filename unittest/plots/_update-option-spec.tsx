@@ -31,6 +31,10 @@ const Demo = () => {
       setState({...opt, seriesField: undefined });
       console.log('change')
     }}>click me change option seriesField</div>
+    <div onClick={() => {
+      setState({...opt, data: [] });
+      console.log('change')
+    }}>click me change option seriesField</div>
 
     <BarChart
       {...option}

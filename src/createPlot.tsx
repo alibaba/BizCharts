@@ -20,7 +20,8 @@ import {
   polyfillTitleEvent,
   polyfillDescriptionEvent,
 } from './plots/core/polyfill';
-import { debounce, isArray, isFunction, isNil, isEqual } from '@antv/util';
+import { debounce, isArray, isFunction, isNil } from '@antv/util';
+import isEqual from './utils/isEqual';
 import warn from 'warning';
 
 // 国际化处理
@@ -100,13 +101,13 @@ class BasePlot extends React.Component<any> {
     }
     polyfillEvents(this.g2Instance, {}, this.props);
     this.g2Instance.data = this.props.data;
-    this.preConfig = pickWithout(this.props, [
+    this.preConfig = cloneDeep(pickWithout(this.props, [
       ...REACT_PIVATE_PROPS,
       'container',
       'PlotClass',
       'onGetG2Instance',
       'data',
-    ]);
+    ]));
   }
   componentDidUpdate(prevProps) {
     if (this.props.children && this.g2Instance.chart) {
@@ -149,11 +150,12 @@ class BasePlot extends React.Component<any> {
       this.g2Instance.destroy();
       this.initInstance();
       this.g2Instance.render();
-    } else if (this.diffConfig()) {
-      // 对比options是否更新
-      if (!isEqual(currentConfig, this.preConfig)) {
-        this.g2Instance.update(currentConfig);
-      }
+    } else if (this.diffConfig() ) {
+      // options更新
+      this.g2Instance.update({
+        ...currentConfig,
+        data: this.props.data
+      });
     } else if (this.diffData()) {
       this.g2Instance.changeData(this.props.data);
     }
@@ -180,7 +182,7 @@ class BasePlot extends React.Component<any> {
       'onGetG2Instance',
       'data',
     ]);
-    return !shallowEqual(preConfig, currentConfig);
+    return !isEqual(preConfig, currentConfig);
   }
   diffData() {
     // 只有数据更新就不重绘，其他全部直接重新创建实例。
