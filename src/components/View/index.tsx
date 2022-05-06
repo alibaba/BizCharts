@@ -18,6 +18,7 @@ export class View extends React.Component<IViewProps> {
   }
   render() {
     if (!this.viewHelper) {
+      // @ts-ignore
       this.viewHelper = new ViewHelper(this.context.chart);
     }
     this.viewHelper.update(this.props);
@@ -31,4 +32,4 @@ export class View extends React.Component<IViewProps> {
 
 View.contextType = RootChartContext;
 
-export default View
+export default View;
