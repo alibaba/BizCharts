@@ -3,12 +3,12 @@ import { withGroupContext } from '../context/group';
 import Helper from './Base/Helper';
 import Base, { IBaseProps } from './Base';
 
-export interface ITextProps extends IBaseProps, React.Props<any> {
+export interface ITextProps extends IBaseProps {
   // 支持绘图属性
   attrs: {
-    x?: number,
-    y?: number,
-    text?: number,
+    x?: number;
+    y?: number;
+    text?: number;
     [key: string]: any;
   };
   [key: string]: any;

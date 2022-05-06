@@ -7,7 +7,7 @@ import cloneDeep from '../../utils/cloneDeep';
 
 import { EVENTS } from './events';
 
-export interface IBaseProps extends React.Props<any> {
+export interface IBaseProps {
   animate?: {
     /**
      * 目标样式
@@ -58,14 +58,14 @@ export interface IBaseProps extends React.Props<any> {
 
 export default class Helper {
   instance: any;
-  config: Record<string,any>;
+  config: Record<string, any>;
   private shape: string;
   constructor(shape) {
     this.shape = shape;
   }
   createInstance(props) {
-    this.instance = props.group.addShape(this.shape,pickWithout(props, ['group', 'ctx']))
-  };
+    this.instance = props.group.addShape(this.shape, pickWithout(props, ['group', 'ctx']));
+  }
   destroy() {
     if (this.instance) {
       this.instance.remove(true);
@@ -101,6 +101,5 @@ export default class Helper {
     });
 
     this.config = cloneDeep(newConfig);
-
   }
 }

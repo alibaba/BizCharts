@@ -23,7 +23,7 @@ export class Chart extends React.Component<IChartProps> {
         this.props.container,
         this.props.autoFit,
         chart.width,
-        chart.height
+        chart.height,
       );
       if (chart.width !== width || chart.height !== height) {
         chart.changeSize(width, height);
@@ -44,7 +44,6 @@ export class Chart extends React.Component<IChartProps> {
     this.resizeObserver.observe(props.container);
     this.chartHelper = new ChartHelper();
   }
-
 
   componentDidMount() {
     if (this.isError) {
@@ -96,7 +95,14 @@ export class Chart extends React.Component<IChartProps> {
     let { ErrorBoundaryProps } = this.props;
     if ((data === undefined || data.length === 0) && placeholder) {
       this.chartHelper.destory();
-      const pl = placeholder === true ? <div style={{ position: 'relative', top: '48%', color: '#aaa', textAlign: 'center' }}>暂无数据</div> : placeholder;
+      const pl =
+        placeholder === true ? (
+          <div style={{ position: 'relative', top: '48%', color: '#aaa', textAlign: 'center' }}>
+            暂无数据
+          </div>
+        ) : (
+          placeholder
+        );
       return <ErrorBoundary {...ErrorBoundaryProps}>{pl}</ErrorBoundary>;
     }
     this.chartHelper.update(this.props);
@@ -106,21 +112,30 @@ export class Chart extends React.Component<IChartProps> {
       ErrorBoundaryProps = {
         fallback: errorContent,
         ...ErrorBoundaryProps,
-      }
+      };
     } else {
       // react-ErrorBoundary
       ErrorBoundaryProps = {
-        FallbackComponent: ErrorFallback
-      }
+        FallbackComponent: ErrorFallback,
+      };
     }
     return (
+      // @ts-ignore
       <ErrorBoundary
         {...ErrorBoundaryProps}
         key={this.chartHelper.key}
-        onError={(...args) => { this.isError = true; isFunction(ErrorBoundaryProps.onError) && ErrorBoundaryProps.onError(...args)}}
-        onReset={(...args) => { this.isError = false; isFunction(ErrorBoundaryProps.onReset) && ErrorBoundaryProps.onReset(...args)}}
-        resetKeys={[this.chartHelper.key]} fallback={errorContent} >
-        <RootChartContext.Provider  value={this.chartHelper}>
+        onError={(...args) => {
+          this.isError = true;
+          isFunction(ErrorBoundaryProps.onError) && ErrorBoundaryProps.onError(...args);
+        }}
+        onReset={(...args) => {
+          this.isError = false;
+          isFunction(ErrorBoundaryProps.onReset) && ErrorBoundaryProps.onReset(...args);
+        }}
+        resetKeys={[this.chartHelper.key]}
+        fallback={errorContent}
+      >
+        <RootChartContext.Provider value={this.chartHelper}>
           <ChartViewContext.Provider value={this.chartHelper.chart}>
             <GroupContext.Provider value={this.chartHelper.extendGroup}>
               {this.props.children}

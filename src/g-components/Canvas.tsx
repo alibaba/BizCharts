@@ -7,30 +7,28 @@ import CanvasContext from '../context/canvas';
 import GroupContext from '../context/group';
 // import pickWithout from '../utils/pickWithout';
 
-export interface ICanvasProps extends React.Props<any> {
-
+export interface ICanvasProps {
   container?: string | HTMLElement;
   width?: number;
   height?: number;
   capture?: boolean;
   renderer?: Renderer;
   cursor?: Cursor;
-  [key: string]: any
+  [key: string]: any;
 }
 
 class CanvasHelper {
-
   instance: GCanvas | GSVG;
   rootGroup: IGroup;
   createInstance(props) {
     const { children, renderer, ...config } = props;
     if (renderer === 'svg') {
       this.instance = new GSVG({
-        ...config
+        ...config,
       });
     } else {
       this.instance = new GCanvas({
-        ...config
+        ...config,
       });
     }
   }
@@ -64,7 +62,7 @@ class Canvas extends React.Component<ICanvasProps> {
   componentDidMount() {
     this.helper.draw();
   }
-  
+
   componentWillUnmount() {
     this.helper.destory();
   }
@@ -75,14 +73,16 @@ class Canvas extends React.Component<ICanvasProps> {
 
   render() {
     this.helper.update(this.props);
-    return <ErrorBoundary {...this.props.ErrorBoundaryProps}>
-      <CanvasContext.Provider value={this.helper}>
-        <GroupContext.Provider value={this.helper.instance}>
-          <>{this.props.children}</>
-        </GroupContext.Provider>
-      </CanvasContext.Provider>
-    </ErrorBoundary>
+    return (
+      <ErrorBoundary {...this.props.ErrorBoundaryProps}>
+        <CanvasContext.Provider value={this.helper}>
+          <GroupContext.Provider value={this.helper.instance}>
+            <>{this.props.children}</>
+          </GroupContext.Provider>
+        </CanvasContext.Provider>
+      </ErrorBoundary>
+    );
   }
 }
 
-export default withContainer<ICanvasProps>(Canvas)
+export default withContainer<ICanvasProps>(Canvas);

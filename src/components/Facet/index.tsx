@@ -20,12 +20,12 @@ registerFacet('matrix', Matrix);
 registerFacet('circle', Circle);
 registerFacet('tree', Tree);
 
-export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
-  type: "circle" | "rect" | "mirror" | "list" | "matrix" | "tree";
+export interface IFacetProps extends FacetCfg<any>, React.PropsWithChildren<any> {
+  type: 'circle' | 'rect' | 'mirror' | 'list' | 'matrix' | 'tree';
   /** 行标题的样式。 */
-  columnTitle?: FacetTitle,
+  columnTitle?: FacetTitle;
   /** 列标题的样式。 */
-  rowTitle?: FacetTitle,
+  rowTitle?: FacetTitle;
   /** 是否转置。 */
   transpose?: boolean;
   /** 标题样式。 */
@@ -35,7 +35,7 @@ export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
   line?: Line;
   /** 绘制每个分面 */
   eachView: (view, facet) => void;
-};
+}
 
 function Facet(props: IFacetProps) {
   const chart = useChartView();
@@ -55,7 +55,7 @@ function Facet(props: IFacetProps) {
     chart.facet(type, {
       ...cfg,
       // @ts-ignore
-      eachView: children
+      eachView: children,
     });
   } else {
     chart.facet(type, {

@@ -3,8 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { InteractionOption } from '@antv/g2/lib/interface';
 import useChart from '../../hooks/useChartView';
 
-
-export interface IInteractionProps extends InteractionOption, React.Props<any> {
+export interface IInteractionProps extends InteractionOption {
   type: string;
   config?: object;
 }
@@ -18,7 +17,7 @@ export default function Interaction(props: IInteractionProps) {
     chart.interaction(type, config);
     return () => {
       chart.removeInteraction(type);
-    }
+    };
   });
 
   return null;

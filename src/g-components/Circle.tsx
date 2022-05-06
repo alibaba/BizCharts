@@ -3,12 +3,12 @@ import { withGroupContext } from '../context/group';
 import Helper from './Base/Helper';
 import Base, { IBaseProps } from './Base';
 
-export interface ICircleProps extends IBaseProps, React.Props<any> {
+export interface ICircleProps extends IBaseProps {
   // 支持绘图属性
   attrs: {
-    x?: number,
-    y?: number,
-    r?: number,
+    x?: number;
+    y?: number;
+    r?: number;
     [key: string]: any;
   };
   [key: string]: any;

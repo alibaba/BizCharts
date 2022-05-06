@@ -3,13 +3,13 @@ import { withGroupContext } from '../context/group';
 import Helper from './Base/Helper';
 import Base, { IBaseProps } from './Base';
 
-export interface ILineProps extends IBaseProps, React.Props<any> {
+export interface ILineProps extends IBaseProps {
   // 支持绘图属性
   attrs: {
-    x1?: number,
-    y1?: number,
-    x2?: number,
-    y2?: number,
+    x1?: number;
+    y1?: number;
+    x2?: number;
+    y2?: number;
     [key: string]: any;
   };
   [key: string]: any;
