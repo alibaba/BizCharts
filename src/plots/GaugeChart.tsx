@@ -22,7 +22,7 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', opt => {
   if (isArray(range)) {
     warn(false, 'range 应当是个对象，请修改配置。');
     options.range = {
-      ticks: range.map(t => t / (max - min)),
+      ticks: range.map(t => (t - min) / (max - min)),
       color: getTheme().colors10,
     };
   } else {
