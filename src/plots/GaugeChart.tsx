@@ -10,22 +10,21 @@ import { getTheme } from '@antv/g2';
 interface GaugeOptions extends BasePlotOptions, Options {
   /** 该属性是g2Plot@1.0属性，即将废弃，请使用percent替代 */
   value?: number;
-  statistic?: Statistic | Record<string, any>
+  statistic?: Statistic | Record<string, any>;
 }
 
 export { GaugeOptions };
 
 // 该plot 无法完全兼容
-export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
-  const {range, min = 0, max = 1, value, ...options} = polyfillOptions(opt);
+export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', opt => {
+  const { range, min = 0, max = 1, value, ...options } = polyfillOptions(opt);
 
   if (isArray(range)) {
     warn(false, 'range 应当是个对象，请修改配置。');
     options.range = {
       ticks: range.map(t => t / (max - min)),
       color: getTheme().colors10,
-    }
-
+    };
   } else {
     options.range = range || {};
   }
@@ -47,7 +46,7 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
           stroke: '#D0D0D0',
         },
       },
-    })
+    });
   }
   if (get(options, 'statistic.visible')) {
     // 默认使用visible即使用旧版语法的人
@@ -61,18 +60,24 @@ export default createPlot<GaugeOptions>(Gauge, 'GaugeChart', (opt) => {
     set(options, 'axis', {
       label: {
         formatter: v => {
-          const val = v * (max - min);
+          const val = v * (max - min) + min;
           if (isFunction(formatter)) {
-            return formatter(val)
+            return formatter(val);
           }
           return val;
-        }
+        },
       },
     });
   }
 
-  warn(!(get(options, 'min') || get(options, 'max')), '属性 `max` 和 `min` 不推荐使用， 请直接配置属性range.ticks');
-  warn(!(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle'), '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。')
+  warn(
+    !(get(options, 'min') || get(options, 'max')),
+    '属性 `max` 和 `min` 不推荐使用， 请直接配置属性range.ticks',
+  );
+  warn(
+    !(get(options, 'rangeSize') || get(options, 'rangeStyle') || 'rangeBackgroundStyle'),
+    '不再支持rangeSize、rangeStyle、rangeBackgroundStyle属性, 请查看新版仪表盘配置文档。',
+  );
   // value 转为data，用于placeholder统一判断
   const data = !isNil(options.percent) ? options.percent : value;
   return { data, ...options };
