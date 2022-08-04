@@ -1,18 +1,22 @@
 {
   "name": "bizcharts",
-  "version": "4.1.19",
+  "version": "4.1.20",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
     "g2"
   ],
-  "author": "leannechn",
-  "license": "MIT",
   "homepage": "https://bizcharts.net",
   "repository": {
     "type": "git",
     "url": "https://github.com/alibaba/BizCharts"
   },
+  "license": "MIT",
+  "author": "leannechn",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "browser": "umd/BizCharts.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "src",
@@ -20,10 +24,6 @@
     "es",
     "manifest.json"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "module": "es/index.js",
-  "browser": "umd/BizCharts.js",
   "scripts": {
     "build": "run-s clean lib:* build:*",
     "build:umd": "cross-env NODE_ENV=development gulp",
@@ -44,6 +44,24 @@
     "uitest": "ice-chart-develop-cli test-multi",
     "analyze": "webpack --profile --json > umd/stats.json && webpack-bundle-analyzer ./umd/stats.json"
   },
+  "jest": {
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "preset": "ts-jest",
+    "runner": "bx-jest-electron/runner",
+    "testEnvironment": "bx-jest-electron/environment",
+    "testRegex": "/unittest/.*-spec\\.tsx?$"
+  },
   "dependencies": {
     "@antv/component": "*",
     "@antv/g2": "4.1.32",
@@ -59,7 +77,6 @@
     "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
   },
-  "peerDependencies": {},
   "devDependencies": {
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
@@ -136,24 +153,7 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.11"
   },
-  "jest": {
-    "runner": "bx-jest-electron/runner",
-    "testEnvironment": "bx-jest-electron/environment",
-    "preset": "ts-jest",
-    "collectCoverage": false,
-    "collectCoverageFrom": [
-      "src/**/*.{ts,js,tsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ],
-    "testRegex": "/unittest/.*-spec\\.tsx?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
-  },
+  "peerDependencies": {},
   "greenkeeper": {
     "ignore": [
       "mocha",
