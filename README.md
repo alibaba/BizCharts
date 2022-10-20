@@ -3,9 +3,9 @@
 [![](https://img.shields.io/travis/alibaba/BiaCharts.svg)](https://travis-ci.com/alibaba/BizCharts)
 ![](https://img.shields.io/badge/language-react-red.svg)  ![](https://img.shields.io/badge/license-MIT-000000.svg)  [![NPM Package](https://img.shields.io/npm/v/bizcharts.svg)](https://www.npmjs.com/package/bizcharts) [![NPM Downloads](https://img.shields.io/npm/dm/bizcharts.svg)](https://npmjs.org/package/bizcharts)
 
-New charting and visualization library has been released: http://bizcharts.net/products/bizCharts.
+New charting and visualization library has been released: https://bizcharts.taobao.com/products/bizCharts.
 
-[More details about BizCharts](http://bizcharts.net/index)
+[More details about BizCharts](https://bizcharts.taobao.com/index)
 
 ## Features
 - React ES6 grammar
@@ -13,16 +13,16 @@ New charting and visualization library has been released: http://bizcharts.net/p
 - Strong expansion capability
 - Support most data visualization charts
 
-[See more demos.](http://bizcharts.net/products/bizCharts/demo)
+[See more demos.](https://bizcharts.taobao.com/products/bizCharts/demo)
 
 <img src="https://user-images.githubusercontent.com/6628666/33157917-b970a70c-d040-11e7-9601-b1da1dbe26ab.png" width="800">
 
 ## Releases
 
-- v3.5.x: https://bizcharts.net/product/bizcharts/gallery
-- V4.0.0: https://bizcharts.net/product/BizCharts4/gallery
+- v3.5.x: https://bizcharts.taobao.com/product/bizcharts/gallery
+- V4.0.0: https://bizcharts.taobao.com/product/BizCharts4/gallery
 
-Upgrade document: https://bizcharts.net/product/BizCharts4/category/61/page/104
+Upgrade document: https://bizcharts.taobao.com/product/BizCharts4/category/61/page/104
 
 ## Installation
 
@@ -52,7 +52,7 @@ tnpm run uitest
 ```
 
 ## Usage
-[Try it out](https://bizcharts.net/product/BizCharts4/demo/305)
+[Try it out](https://bizcharts.taobao.com/product/BizCharts4/demo/305)
 
 ```jsx
 import {Chart, Axis, Tooltip, Line, Point} from "bizcharts";
@@ -67,7 +67,7 @@ const data = [...];
 ```
 
 
-### [FAQ](http://bizcharts.net/products/bizCharts/docs/qa)
+### [FAQ](https://bizcharts.taobao.com/products/bizCharts/docs/qa)
 
 ### How to Contribute
 We welcome all contributions. You could submit any ideas as pull requests. Thank you for your interest and have a good time.

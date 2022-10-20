@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.20",
+  "version": "4.1.21",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -57,10 +57,19 @@
       "js",
       "json"
     ],
+    "moduleNameMapper": {
+      "^d3-(.*)$": "d3-$1/dist/d3-$1"
+    },
     "preset": "ts-jest",
     "runner": "bx-jest-electron/runner",
     "testEnvironment": "bx-jest-electron/environment",
-    "testRegex": "/unittest/.*-spec\\.tsx?$"
+    "testRegex": "/unittest/.*-spec\\.tsx?$",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(d3-color)/)"
+    ]
+  },
+  "resolutions": {
+    "d3-color": "^3.1.0"
   },
   "dependencies": {
     "@antv/component": "*",
@@ -71,16 +80,16 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@juggle/resize-observer": "^3.3.1",
     "babel-plugin-transform-replace-object-assign": "^2.0.0",
-    "d3-color": "^1.4.1",
+    "d3-color": "^3.1.0",
     "react-error-boundary": "3.0.2",
     "react-reconciler": "^0.25.1",
-    "simple-statistics": "^7.1.0",
     "warning": "^4.0.3"
   },
   "devDependencies": {
     "@antv/data-set": "^0.11.4",
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/register": "^7.7.5",
@@ -146,7 +155,7 @@
     "sass-loader": "^7.2.0",
     "snapshot-diff": "^0.8.1",
     "style-loader": "^0.20.3",
-    "ts-jest": "^26.1.0",
+    "ts-jest": "^26.5.6",
     "ts-loader": "^8.0.17",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
