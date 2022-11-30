@@ -79,6 +79,9 @@ function Basic() {
         data={data}
         yField="year"
         xField="value"
+        events={{
+          onColumnClick:console.log
+        }}
       >
         <Tooltip>
           {() => {

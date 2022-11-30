@@ -39,7 +39,8 @@ export const pickEventName = (props) => {
     if (event) {
       const res = k.match(RegExpEvent);
       if (res) {
-        const target = res[1].replace(/([A-Z])/g,"-$1").toLowerCase();
+        let target = res[1].replace(/([A-Z])/g,"-$1").toLowerCase();
+        target = target.replace('column','interval');
         if (target) {
           names.push([k, `${target.replace('-', '')}:${res[2].toLowerCase()}`]);
         } else {
