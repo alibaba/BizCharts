@@ -72,7 +72,7 @@
     "d3-color": "^3.1.0"
   },
   "dependencies": {
-    "@antv/component": "*",
+    "@antv/component": "0.8.35",
     "@antv/g2": "4.1.32",
     "@antv/g2plot": "2.3.39",
     "@antv/util": "2.0.17",
