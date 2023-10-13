@@ -1,6 +1,6 @@
 {
   "name": "bizcharts",
-  "version": "4.1.22",
+  "version": "4.1.23",
   "description": "bizcharts",
   "keywords": [
     "bizcharts",
@@ -168,8 +168,5 @@
       "mocha",
       "webpack"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://registry.anpm.alibaba-inc.com"
   }
 }
