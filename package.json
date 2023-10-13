@@ -168,5 +168,8 @@
       "mocha",
       "webpack"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.anpm.alibaba-inc.com"
   }
 }
