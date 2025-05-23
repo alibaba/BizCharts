@@ -1,3 +1,10 @@
+# 通知
+非常遗憾通知大家，因组织调整，BizCharts维护团队已解散。6月后官网站点数据库将被下线。
+所有文档已迁移至本仓库docs目录下。  
+感谢大家这么多年的陪伴，大家后续可迁移使用AntV图表组件。  
+AntV API 和 Bizcharts本身是同源，迁移成本最低。同时[DeepSeek](https://www.deepseek.com/) 也可以帮助你完成迁移。同时如果您的项目只是维护不迭代，代码开发问题可以直接咨询DeepSeek 可以提供比较精准的答疑。
+
+
 # BizCharts
 
 [![](https://img.shields.io/travis/alibaba/BiaCharts.svg)](https://travis-ci.com/alibaba/BizCharts)
@@ -5,7 +12,7 @@
 
 New charting and visualization library has been released: https://bizcharts.taobao.com/products/bizCharts.
 
-[More details about BizCharts](https://bizcharts.taobao.com/index)
+
 
 ## Features
 - React ES6 grammar
