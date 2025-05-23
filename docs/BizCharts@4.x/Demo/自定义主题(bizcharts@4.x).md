@@ -1,0 +1,42 @@
+# 自定义主题(bizcharts@4.x)
+
+![预览](http://bizcharts-resource.oss-cn-zhangjiakou.aliyuncs.com/images/83780700-9a3f-11ea-9070-eb4779ccbd10.png)
+
+```js
+import { Chart, Interval,useTheme,registerTheme,getTheme } from 'bizcharts';
+// 注册自己的主题
+registerTheme('my-theme',{
+  defaultColor:'#6DC8EC',
+  geometries: {
+    interval: {
+      rect: {
+        default: { style: { fill: '#6DC8EC', fillOpacity: 0.95 } },
+        active: { style: { stroke: '#5AD8A6', lineWidth: 1 } },
+        inactive: { style: { fillOpacity: 0.3, strokeOpacity: 0.3 } },
+        selected: {},
+      }}}
+})
+
+const data = [
+  { year: '1951 年', sales: 38 },
+  { year: '1952 年', sales: 52 },
+  { year: '1956 年', sales: 61 },
+  { year: '1957 年', sales: 45 },
+  { year: '1958 年', sales: 48 },
+  { year: '1959 年', sales: 38 },
+  { year: '1960 年', sales: 38 },
+  { year: '1962 年', sales: 38 },
+];
+
+
+function Demo() {
+  const [theme,setTheme] = useTheme('my-theme');
+  // 不清楚主题属性有哪些，可以log出来看一下
+  console.log(getTheme('default'));
+  return <Chart height={400} autoFit data={data} theme={theme} interactions={['element-active']} padding={[30, 30, 30, 50]} >
+    <Interval position="year*sales"  />
+  </Chart>
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```

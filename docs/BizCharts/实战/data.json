@@ -1,0 +1,18 @@
+{
+  "id": 59,
+  "name": "实战",
+  "name_en": "use",
+  "product_id": 1,
+  "parent_id": null,
+  "rank": "4",
+  "gmt_create": "2020-03-26T02:01:55.000Z",
+  "gmt_modified": "2020-03-26T02:10:40.000Z",
+  "is_deleted": 0,
+  "is_avaliable": 1,
+  "is_alinw": 0,
+  "type": "normal",
+  "externalPath": "/product/bizcharts/category/59/page/70",
+  "creator_userid": 1,
+  "updator_userid": 1,
+  "children": []
+}

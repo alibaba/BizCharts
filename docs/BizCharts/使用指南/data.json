@@ -1,0 +1,18 @@
+{
+  "id": 12,
+  "name": "使用指南",
+  "name_en": "docs",
+  "product_id": 1,
+  "parent_id": null,
+  "rank": "1",
+  "gmt_create": "2019-11-27T08:26:08.000Z",
+  "gmt_modified": "2019-12-05T11:10:53.000Z",
+  "is_deleted": 0,
+  "is_avaliable": 1,
+  "is_alinw": 0,
+  "type": "normal",
+  "externalPath": "/product/bizcharts/category/12/page/7",
+  "creator_userid": null,
+  "updator_userid": 1,
+  "children": []
+}

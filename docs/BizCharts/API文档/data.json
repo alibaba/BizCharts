@@ -1,0 +1,18 @@
+{
+  "id": 7,
+  "name": "API文档",
+  "name_en": "api",
+  "product_id": 1,
+  "parent_id": null,
+  "rank": "0",
+  "gmt_create": "2019-11-25T07:01:16.000Z",
+  "gmt_modified": "2020-06-09T12:13:54.000Z",
+  "is_deleted": 0,
+  "is_avaliable": 1,
+  "is_alinw": 0,
+  "type": "normal",
+  "externalPath": "/product/bizcharts/category/7/page/12",
+  "creator_userid": null,
+  "updator_userid": 11,
+  "children": []
+}
